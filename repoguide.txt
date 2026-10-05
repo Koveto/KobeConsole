@@ -1,0 +1,137 @@
+KobeConsole - Creating a New Git Repository and Connecting to GitHub
+
+1. Create the Project Folder
+
+Created:
+
+C:\0_code\KobeConsole
+│
+├── launcher.py
+└── games\
+
+Opened the folder in VS Code:
+
+File → Open Folder
+
+--------------------------------------------------
+
+2. Initialize Git Locally
+
+In VS Code:
+
+Source Control → Initialize Repository
+
+Made the initial commit.
+
+Verify Git is working:
+
+git status
+
+Expected result:
+
+On branch main
+nothing to commit, working tree clean
+
+--------------------------------------------------
+
+3. Create a .gitignore
+
+Created:
+
+.gitignore
+
+Contents:
+
+__pycache__/
+*.pyc
+.venv/
+.vscode/
+
+Check status:
+
+git status
+
+Stage file:
+
+git add .gitignore
+
+Commit:
+
+git commit -m "Add gitignore"
+
+--------------------------------------------------
+
+4. Create an Empty GitHub Repository
+
+On GitHub:
+
+New Repository
+
+Name:
+KobeConsole
+
+Important:
+
+DO NOT create:
+- README
+- .gitignore
+- License
+
+Leave the repository empty.
+
+--------------------------------------------------
+
+5. Connect Local Repository to GitHub
+
+Verify no remote exists:
+
+git remote -v
+
+Expected:
+
+(no output)
+
+Add GitHub remote:
+
+git remote add origin https://github.com/Koveto/KobeConsole.git
+
+Verify:
+
+git remote -v
+
+Expected:
+
+origin  https://github.com/Koveto/KobeConsole.git (fetch)
+origin  https://github.com/Koveto/KobeConsole.git (push)
+
+--------------------------------------------------
+
+6. Push Repository to GitHub
+
+Upload local commits:
+
+git push -u origin main
+
+Refresh GitHub.
+
+The repository contents should now appear online.
+
+--------------------------------------------------
+
+Daily Workflow Going Forward
+
+Check status:
+
+git status
+
+Stage changes:
+
+git add .
+
+Commit changes:
+
+git commit -m "Describe the change"
+
+Push to GitHub:
+
+git push
