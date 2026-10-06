@@ -1,6 +1,7 @@
 import pygame
 import subprocess
 import random
+import os
 
 pygame.init()
 
@@ -25,16 +26,16 @@ selected_index = 0
 
 games = [
     {
-        "title": "Heads or Tails",
-        "path": "games/heads_or_tails.py",
+        "title": "Pokemon SMT Game",
+        "path": "games/project1/main.py",
         "color": (0, 100, 255),
         "logo": "assets/logos/logo0.png"
     },
     {
-        "title": "Test Game",
-        "path": "games/test_game.py",
+        "title": "Tic Tac Toe",
+        "path": "games/tic_tac_toe.py",
         "color": (0, 180, 0),
-        "logo": "assets/logos/logo1.png"
+        "logo": "assets/logos/logo2.png"
 
     },
 ]
@@ -47,7 +48,13 @@ for game in games:
 
 
 def launch_game(path):
-    subprocess.run(["python", path])
+
+    game_dir = os.path.dirname(path)
+
+    subprocess.run(
+        ["python", os.path.basename(path)],
+        cwd=game_dir
+    )
 
 def draw_text_outline(
     surface,
@@ -169,7 +176,7 @@ while running:
             )
 
         else:
-            
+
             rect = pygame.Rect(
                 card_x - 70,
                 card_y + 20,
