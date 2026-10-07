@@ -5,24 +5,45 @@ import os
 
 pygame.init()
 
-screen = pygame.display.set_mode((800, 600))
+pygame.joystick.init()
+
+for i in range(pygame.joystick.get_count()):
+    joystick = pygame.joystick.Joystick(i)
+    joystick.init()
+
+
+display_info = pygame.display.Info()
+#1750x1100
+screen = pygame.display.set_mode(
+    (display_info.current_w, display_info.current_h),
+    pygame.NOFRAME
+)
+WIDTH = screen.get_width()
+HEIGHT = screen.get_height()
 pygame.display.set_caption("KobeConsole")
 
 title_font = pygame.font.SysFont(None, 56)
 game_font = pygame.font.SysFont(None, 36)
 info_font = pygame.font.SysFont(None, 28)
 
-particles = []
+def create_particles(count):
 
-for i in range(40):
-    particles.append({
-        "x": random.randint(0, 800),
-        "y": random.randint(0, 600),
-        "speed": random.uniform(0.2, 1.0),
-        "size": random.randint(2, 5)
-    })
+    particles = []
+
+    for _ in range(count):
+        particles.append({
+            "x": random.randint(0, screen.get_width()),
+            "y": random.randint(0, screen.get_height()),
+            "speed": random.uniform(0.2, 1.0),
+            "size": random.randint(2, 5)
+        })
+
+    return particles
+particles = create_particles(80)
 
 selected_index = 0
+fullscreen = False
+time = 0
 
 games = [
     {
@@ -81,13 +102,16 @@ running = True
 
 while running:
 
+    WIDTH = screen.get_width()
+    HEIGHT = screen.get_height()
     screen.fill((20, 20, 40))
     for particle in particles:
 
         particle["y"] += particle["speed"]
 
-        if particle["y"] > 600:
+        if particle["y"] > HEIGHT:
             particle["y"] = 0
+            particle["x"] = random.randint(0, WIDTH)
 
         pygame.draw.circle(
             screen,
@@ -112,36 +136,59 @@ while running:
             elif event.key == pygame.K_RETURN:
                 launch_game(games[selected_index]["path"])
 
-            selected_index = max(0, min(selected_index, len(games) - 1))
+            elif event.key == pygame.K_q:
+                running = False
 
-    #screen.blit(background, (0, 0))
+            """
+            elif event.key == pygame.K_F11:
+
+                fullscreen = not fullscreen
+
+                if fullscreen:
+                    #screen = pygame.display.set_mode(
+                    #    (0, 0),
+                    #    pygame.FULLSCREEN
+                    #)
+                    screen = pygame.display.set_mode((1536, 864), pygame.NOFRAME)
+                    print(
+                        "Fullscreen:",
+                        screen.get_width(),
+                        screen.get_height()
+                    )
+                else:
+                    screen = pygame.display.set_mode(
+                        (1280, 720),
+                        pygame.RESIZABLE
+                    )
+
+                WIDTH = screen.get_width()
+                HEIGHT = screen.get_height()
+
+                particles = create_particles(80)
+            """
+
+    selected_index = max(0, min(selected_index, len(games) - 1))
+
 
     #
     # Draw selected game title
     #
     selected_name = games[selected_index]["title"]
 
-    title_surface = title_font.render(
-        selected_name,
-        True,
-        (255, 255, 255)
-    )
-
-    title_rect = title_surface.get_rect(center=(400, 80))
     draw_text_outline(
         screen,
         selected_name,
         title_font,
         (255, 255, 255),
         (0, 0, 0),
-        (400, 80)
+        (WIDTH // 2, 80)
     )
 
     #
     # Draw game cards
     #
-    card_y = 220
-    center_x = 400
+    card_y = HEIGHT // 2 - 90
+    center_x = WIDTH // 2
     spacing = 220
 
     for index, game in enumerate(games):
@@ -194,23 +241,13 @@ while running:
     #
     # Draw instructions
     #
-    instructions = info_font.render(
-        "Use LEFT/RIGHT arrows and ENTER",
-        True,
-        (200, 200, 200)
-    )
-
-    instructions_rect = instructions.get_rect(
-        center=(400, 525)
-    )
-
     draw_text_outline(
         screen,
-        "Use LEFT/RIGHT arrows and ENTER",
+        "LEFT/RIGHT = Select    ENTER = Launch    F11 = Fullscreen",
         info_font,
         (255, 255, 255),
         (0, 0, 0),
-        (400, 525)
+        (WIDTH // 2, HEIGHT - 50)
     )
 
     pygame.display.flip()

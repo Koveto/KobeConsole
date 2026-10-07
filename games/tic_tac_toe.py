@@ -3,10 +3,17 @@ import random
 
 pygame.init()
 
-WIDTH = 800
-HEIGHT = 600
+display_info = pygame.display.Info()
 
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode(
+    (display_info.current_w,
+     display_info.current_h),
+    pygame.NOFRAME
+)
+
+WIDTH = screen.get_width()
+HEIGHT = screen.get_height()
+
 pygame.display.set_caption("Tic Tac Toe")
 
 font = pygame.font.SysFont(None, 120)
@@ -15,8 +22,8 @@ message_font = pygame.font.SysFont(None, 50)
 particles = []
 for i in range(40):
     particles.append({
-        "x": random.randint(0, 800),
-        "y": random.randint(0, 600),
+        "x": random.randint(0, WIDTH),
+        "y": random.randint(0, HEIGHT),
         "speed": random.uniform(0.2, 1.0),
         "size": random.randint(2, 5)
     })
@@ -124,6 +131,7 @@ while running:
 
         if particle["y"] > HEIGHT:
             particle["y"] = 0
+            particle["x"] = random.randint(0, WIDTH)
 
         pygame.draw.circle(
             screen,
@@ -140,6 +148,9 @@ while running:
         elif event.type == pygame.KEYDOWN:
 
             if event.key == pygame.K_ESCAPE:
+                running = False
+
+            elif event.type == pygame.K_q:
                 running = False
 
             if game_over:
@@ -185,9 +196,12 @@ while running:
                             game_over = True
                             winner = result
 
-    start_x = 200
-    start_y = 100
-    cell_size = 120
+    cell_size = min(WIDTH, HEIGHT) // 6
+    board_width = cell_size * 3
+    board_height = cell_size * 3
+    start_x = (WIDTH - board_width) // 2
+    start_y = (HEIGHT - board_height) // 2 - 50
+        
 
     #
     # draw cells
@@ -255,7 +269,7 @@ while running:
         )
 
         text_rect = text.get_rect(
-            center=(WIDTH // 2, 500)
+            center=(WIDTH // 2, HEIGHT - 150)
         )
 
         screen.blit(
@@ -270,7 +284,7 @@ while running:
         )
 
         restart_rect = restart_text.get_rect(
-            center=(WIDTH // 2, 550)
+            center=(WIDTH // 2, HEIGHT - 100)
         )
 
         screen.blit(
@@ -288,8 +302,10 @@ while running:
             (255, 255, 255)
         )
 
+        message_y = start_y + board_height + 60
+
         text_rect = text.get_rect(
-            center=(WIDTH // 2, 500)
+            center=(WIDTH // 2, message_y)
         )
 
         screen.blit(
@@ -298,5 +314,6 @@ while running:
         )
 
     pygame.display.flip()
+
 
 pygame.quit()

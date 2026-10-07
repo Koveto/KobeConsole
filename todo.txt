@@ -29,3 +29,18 @@ Future:
 [] Bluetooth controller support
 [] Online multiplayer Tic Tac Toe
 [] Bluetooth multiplayer Tic Tac Toe
+
+
+Switch 2 Pro Controller
+
+Windows Results:
+- Detected by pygame
+- Name: If_Hid
+- Axes: 4
+- Buttons: 21
+
+Issues:
+- No button events received
+- No axis events received
+
+Retest on Raspberry Pi after arrival.
