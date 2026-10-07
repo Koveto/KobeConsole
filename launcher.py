@@ -59,6 +59,13 @@ games = [
         "logo": "assets/logos/logo2.png"
 
     },
+    {
+        "title": "Tic Tac Toe",
+        "path": "games/tic_tac_toe.py",
+        "color": (0, 180, 0),
+        "logo": "assets/logos/logo2.png"
+
+    },
 ]
 
 #background = pygame.image.load("assets/backgrounds/bg0.jpg")
