@@ -98,6 +98,15 @@ def swap_symbols():
         my_symbol
     )
 
+def swap_singleplayer_symbols():
+
+    global player_symbol
+    global computer_symbol
+
+    player_symbol, computer_symbol = (
+        computer_symbol,
+        player_symbol
+    )
 
 def check_winner():
 
@@ -288,6 +297,7 @@ while running:
 
                 if game_over:
                     if event.key == pygame.K_RETURN:
+                        swap_singleplayer_symbols()
                         reset_game()
 
                     continue
@@ -330,7 +340,7 @@ while running:
         board_width = cell_size * 3
         board_height = cell_size * 3
         start_x = (WIDTH - board_width) // 2
-        start_y = (HEIGHT - board_height) // 2 - 50
+        start_y = (HEIGHT - board_height) // 2 + 60
             
 
         #
@@ -389,8 +399,12 @@ while running:
 
             if winner == "Tie":
                 message = "Tie Game"
+
+            elif winner == player_symbol:
+                message = "You Win!"
+
             else:
-                message = f"{winner} Wins!"
+                message = "You Lose!"
 
             text = message_font.render(
                 message,
@@ -424,7 +438,7 @@ while running:
 
         else:
 
-            message = "Arrow Keys + Enter | ESC = Exit"
+            message = "Arrow Keys + Enter"
 
             text = message_font.render(
                 message,
@@ -432,7 +446,7 @@ while running:
                 (255, 255, 255)
             )
 
-            message_y = start_y + board_height + 60
+            message_y = start_y + board_height - 50
 
             text_rect = text.get_rect(
                 center=(WIDTH // 2, message_y)
@@ -566,7 +580,11 @@ while running:
                 opponent_symbol = "O"
                 my_turn = True
 
-            except BlockingIOError:
+            except (
+                BlockingIOError,
+                ConnectionResetError,
+                OSError
+            ):
                 pass
 
         for event in pygame.event.get():
@@ -885,7 +903,11 @@ while running:
                 swap_symbols()
                 reset_game()
 
-        except BlockingIOError:
+        except (
+            BlockingIOError,
+            ConnectionResetError,
+            OSError
+        ):
             pass
 
         for event in pygame.event.get():
@@ -961,7 +983,7 @@ while running:
         board_width = cell_size * 3
         board_height = cell_size * 3
         start_x = (WIDTH - board_width) // 2
-        start_y = (HEIGHT - board_height) // 2 - 50
+        start_y = (HEIGHT - board_height) // 2 + 60
             
 
         #
@@ -1020,8 +1042,12 @@ while running:
 
             if winner == "Tie":
                 message = "Tie Game"
+
+            elif winner == my_symbol:
+                message = "You Win!"
+
             else:
-                message = f"{winner} Wins!"
+                message = "You Lose!"
 
             text = message_font.render(
                 message,
@@ -1055,7 +1081,7 @@ while running:
 
         else:
 
-            message = "Arrow Keys + Enter | ESC = Exit"
+            message = "Arrow Keys + Enter"
 
             text = message_font.render(
                 message,
@@ -1074,39 +1100,43 @@ while running:
                 text_rect
             )
 
-        symbol_text = message_font.render(
-            f"You are {my_symbol}",
-            True,
-            (255, 255, 255)
-        )
+        
 
-        symbol_rect = symbol_text.get_rect(
-            center=(WIDTH // 2, 140)
-        )
+        if not game_over:
 
-        screen.blit(
-            symbol_text,
-            symbol_rect
-        )
+            symbol_text = message_font.render(
+                f"You are {my_symbol}",
+                True,
+                (255, 255, 255)
+            )
+    
+            symbol_rect = symbol_text.get_rect(
+                center=(WIDTH // 2, 140)
+            )
+    
+            screen.blit(
+                symbol_text,
+                symbol_rect
+            )
 
-        turn_text = message_font.render(
-            (
-                "Your Turn"
-                if my_turn
-                else "Opponent's Turn"
-            ),
-            True,
-            (255, 255, 0)
-        )
+            turn_text = message_font.render(
+                (
+                    "Your Turn"
+                    if my_turn
+                    else "Opponent's Turn"
+                ),
+                True,
+                (255, 255, 0)
+            )
 
-        turn_rect = turn_text.get_rect(
-            center=(WIDTH // 2, 190)
-        )
+            turn_rect = turn_text.get_rect(
+                center=(WIDTH // 2, 190)
+            )
 
-        screen.blit(
-            turn_text,
-            turn_rect
-        )
+            screen.blit(
+                turn_text,
+                turn_rect
+            )
         
         
     pygame.display.flip()
