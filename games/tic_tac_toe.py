@@ -868,6 +868,10 @@ while running:
                         and board[selected_row][selected_col] == ""
                     ):
                         board[selected_row][selected_col] = my_symbol
+                        my_turn = False
+
+                elif event.key == pygame.K_t:
+                    my_turn = not my_turn
 
         title = font.render(
             "LAN Game",
