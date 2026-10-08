@@ -1,5 +1,11 @@
 import pygame
 import random
+import socket
+
+HOSTNAME = socket.gethostname()
+IP_ADDRESS = socket.gethostbyname(
+    socket.gethostname()
+)
 
 pygame.init()
 
@@ -27,6 +33,22 @@ for i in range(40):
         "speed": random.uniform(0.2, 1.0),
         "size": random.randint(2, 5)
     })
+
+current_screen = "menu"
+
+menu_options = [
+    "Single Player",
+    "Online Multiplayer"
+]
+
+menu_index = 0
+
+multiplayer_options = [
+    "Host Game",
+    "Join Game"
+]
+
+multiplayer_index = 0
 
 board = [
     ["", "", ""],
@@ -140,55 +162,123 @@ while running:
             particle["size"]
         )
 
-    for event in pygame.event.get():
-
-        if event.type == pygame.QUIT:
-            running = False
-
-        elif event.type == pygame.KEYDOWN:
-
-            if event.key == pygame.K_ESCAPE:
+    if current_screen == "menu":
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 running = False
 
-            elif event.type == pygame.K_q:
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    menu_index = max(0, menu_index - 1)
+                elif event.key == pygame.K_DOWN:
+                    menu_index = min(
+                        len(menu_options) - 1,
+                        menu_index + 1
+                    )
+                elif event.key == pygame.K_RETURN:
+                    if menu_index == 0:
+                        current_screen = "singleplayer"
+                    elif menu_index == 1:
+                        current_screen = "multiplayer"
+                elif event.key == pygame.K_q:
+                    running = False
+        title = font.render(
+            "Tic Tac Toe",
+            True,
+            (255, 255, 255)
+        )
+
+        single_color = (
+            (255, 255, 0)
+            if menu_index == 0
+            else (255, 255, 255)
+        )
+
+        option_text = message_font.render(
+            "Single Player",
+            True,
+            single_color
+        )
+
+        multi_color = (
+            (255, 255, 0)
+            if menu_index == 1
+            else (255, 255, 255)
+        )
+
+        multi_text = message_font.render(
+            "Online Multiplayer",
+            True,
+            multi_color
+        )
+
+        multi_rect = multi_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 60)
+        )
+
+        screen.blit(
+            multi_text,
+            multi_rect
+        )
+
+        option_rect = option_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2)
+        )
+
+        screen.blit(
+            option_text,
+            option_rect
+        )
+
+        title_rect = title.get_rect(
+            center=(WIDTH // 2, HEIGHT // 3)
+        )
+
+        screen.blit(
+            title,
+            title_rect
+        )
+    elif current_screen == "singleplayer":
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
                 running = False
 
-            if game_over:
-                if event.key == pygame.K_RETURN:
-                    reset_game()
+            elif event.type == pygame.KEYDOWN:
 
-                elif event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE:
                     running = False
 
-                continue
+                elif event.key == pygame.K_q:
+                    running = False
 
-            if event.key == pygame.K_LEFT:
-                selected_col = max(0, selected_col - 1)
+                if game_over:
+                    if event.key == pygame.K_RETURN:
+                        reset_game()
 
-            elif event.key == pygame.K_RIGHT:
-                selected_col = min(2, selected_col + 1)
+                    elif event.key == pygame.K_ESCAPE:
+                        running = False
 
-            elif event.key == pygame.K_UP:
-                selected_row = max(0, selected_row - 1)
+                    continue
 
-            elif event.key == pygame.K_DOWN:
-                selected_row = min(2, selected_row + 1)
+                if event.key == pygame.K_LEFT:
+                    selected_col = max(0, selected_col - 1)
 
-            elif event.key == pygame.K_RETURN:
+                elif event.key == pygame.K_RIGHT:
+                    selected_col = min(2, selected_col + 1)
 
-                if board[selected_row][selected_col] == "":
+                elif event.key == pygame.K_UP:
+                    selected_row = max(0, selected_row - 1)
 
-                    board[selected_row][selected_col] = player_symbol
+                elif event.key == pygame.K_DOWN:
+                    selected_row = min(2, selected_row + 1)
 
-                    result = check_winner()
+                elif event.key == pygame.K_RETURN:
 
-                    if result:
-                        game_over = True
-                        winner = result
+                    if board[selected_row][selected_col] == "":
 
-                    else:
-
-                        computer_move()
+                        board[selected_row][selected_col] = player_symbol
 
                         result = check_winner()
 
@@ -196,123 +286,371 @@ while running:
                             game_over = True
                             winner = result
 
-    cell_size = min(WIDTH, HEIGHT) // 6
-    board_width = cell_size * 3
-    board_height = cell_size * 3
-    start_x = (WIDTH - board_width) // 2
-    start_y = (HEIGHT - board_height) // 2 - 50
-        
+                        else:
 
-    #
-    # draw cells
-    #
+                            computer_move()
 
-    for row in range(3):
-        for col in range(3):
+                            result = check_winner()
 
-            rect = pygame.Rect(
-                start_x + col * cell_size,
-                start_y + row * cell_size,
-                cell_size,
-                cell_size
-            )
+                            if result:
+                                game_over = True
+                                winner = result
 
-            pygame.draw.rect(
-                screen,
-                (120, 120, 120),
-                rect,
-                2
-            )
+        cell_size = min(WIDTH, HEIGHT) // 6
+        board_width = cell_size * 3
+        board_height = cell_size * 3
+        start_x = (WIDTH - board_width) // 2
+        start_y = (HEIGHT - board_height) // 2 - 50
+            
 
-            if row == selected_row and col == selected_col:
+        #
+        # draw cells
+        #
+
+        for row in range(3):
+            for col in range(3):
+
+                rect = pygame.Rect(
+                    start_x + col * cell_size,
+                    start_y + row * cell_size,
+                    cell_size,
+                    cell_size
+                )
+
                 pygame.draw.rect(
                     screen,
-                    (255, 255, 0),
+                    (120, 120, 120),
                     rect,
-                    4
+                    2
                 )
 
-            symbol = board[row][col]
+                if row == selected_row and col == selected_col:
+                    pygame.draw.rect(
+                        screen,
+                        (255, 255, 0),
+                        rect,
+                        4
+                    )
 
-            if symbol:
+                symbol = board[row][col]
 
-                text = font.render(
-                    symbol,
-                    True,
-                    (255, 255, 255)
-                )
+                if symbol:
 
-                text_rect = text.get_rect(
-                    center=rect.center
-                )
+                    text = font.render(
+                        symbol,
+                        True,
+                        (255, 255, 255)
+                    )
 
-                screen.blit(
-                    text,
-                    text_rect
-                )
+                    text_rect = text.get_rect(
+                        center=rect.center
+                    )
 
-    #
-    # status text
-    #
+                    screen.blit(
+                        text,
+                        text_rect
+                    )
 
-    if game_over:
+        #
+        # status text
+        #
 
-        if winner == "Tie":
-            message = "Tie Game"
+        if game_over:
+
+            if winner == "Tie":
+                message = "Tie Game"
+            else:
+                message = f"{winner} Wins!"
+
+            text = message_font.render(
+                message,
+                True,
+                (255, 255, 255)
+            )
+
+            text_rect = text.get_rect(
+                center=(WIDTH // 2, HEIGHT - 150)
+            )
+
+            screen.blit(
+                text,
+                text_rect
+            )
+
+            restart_text = message_font.render(
+                "ENTER = Play Again    ESC = Exit",
+                True,
+                (200, 200, 200)
+            )
+
+            restart_rect = restart_text.get_rect(
+                center=(WIDTH // 2, HEIGHT - 100)
+            )
+
+            screen.blit(
+                restart_text,
+                restart_rect
+            )
+
         else:
-            message = f"{winner} Wins!"
 
-        text = message_font.render(
-            message,
+            message = "Arrow Keys + Enter | ESC = Exit"
+
+            text = message_font.render(
+                message,
+                True,
+                (255, 255, 255)
+            )
+
+            message_y = start_y + board_height + 60
+
+            text_rect = text.get_rect(
+                center=(WIDTH // 2, message_y)
+            )
+
+            screen.blit(
+                text,
+                text_rect
+            )
+
+    elif current_screen == "multiplayer":
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                running = False
+
+            elif event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_q:
+                    running = False
+
+                elif event.key == pygame.K_ESCAPE:
+                    current_screen = "menu"
+
+                elif event.key == pygame.K_UP:
+                    multiplayer_index = max(0, multiplayer_index - 1)
+
+                elif event.key == pygame.K_DOWN:
+                    multiplayer_index = min(
+                        1,
+                        multiplayer_index + 1
+                    )
+
+                elif event.key == pygame.K_RETURN:
+
+                    if multiplayer_index == 0:
+                        current_screen = "host"
+
+                    elif multiplayer_index == 1:
+                        current_screen = "join"
+                
+
+
+        title = font.render(
+            "Online Multiplayer",
             True,
             (255, 255, 255)
         )
 
-        text_rect = text.get_rect(
-            center=(WIDTH // 2, HEIGHT - 150)
+        title_rect = title.get_rect(
+            center=(WIDTH // 2, HEIGHT // 3)
         )
 
         screen.blit(
-            text,
-            text_rect
+            title,
+            title_rect
         )
 
-        restart_text = message_font.render(
-            "ENTER = Play Again    ESC = Exit",
+        host_color = (
+            (255, 255, 0)
+            if multiplayer_index == 0
+            else (255, 255, 255)
+        )
+
+        host_text = message_font.render(
+            "Host Game",
             True,
-            (200, 200, 200)
+            host_color
         )
 
-        restart_rect = restart_text.get_rect(
+        host_rect = host_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2)
+        )
+
+        screen.blit(
+            host_text,
+            host_rect
+        )
+
+        join_color = (
+            (255, 255, 0)
+            if multiplayer_index == 1
+            else (255, 255, 255)
+        )
+
+        join_text = message_font.render(
+            "Join Game",
+            True,
+            join_color
+        )
+
+        join_rect = join_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 60)
+        )
+
+        screen.blit(
+            join_text,
+            join_rect
+        )
+    
+    elif current_screen == "host":
+        for event in pygame.event.get():
+        
+            if event.type == pygame.QUIT:
+                running = False
+
+            elif event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_q:
+                    running = False
+
+                elif event.key == pygame.K_ESCAPE:
+                    current_screen = "multiplayer"
+        title = font.render(
+            "Host Game",
+            True,
+            (255, 255, 255)
+        )
+
+        title_rect = title.get_rect(
+            center=(WIDTH // 2, HEIGHT // 3)
+        )
+
+        screen.blit(
+            title,
+            title_rect
+        )
+
+        message = message_font.render(
+            "Waiting For Connection...",
+            True,
+            (255, 255, 0)
+        )
+
+        message_rect = message.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2)
+        )
+
+        screen.blit(
+            message,
+            message_rect
+        )
+
+        host_name_text = message_font.render(
+            f"Host: {HOSTNAME}",
+            True,
+            (255, 255, 255)
+        )
+
+        host_name_rect = host_name_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 60)
+        )
+
+        screen.blit(
+            host_name_text,
+            host_name_rect
+        )
+
+        ip_text = message_font.render(
+            f"IP: {IP_ADDRESS}",
+            True,
+            (255, 255, 255)
+        )
+
+        ip_rect = ip_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 120)
+        )
+
+        screen.blit(
+            ip_text,
+            ip_rect
+        )
+
+        back_text = message_font.render(
+            "ESC = Back",
+            True,
+            (255, 255, 255)
+        )
+
+        back_rect = back_text.get_rect(
             center=(WIDTH // 2, HEIGHT - 100)
         )
 
         screen.blit(
-            restart_text,
-            restart_rect
+            back_text,
+            back_rect
         )
 
-    else:
 
-        message = "Arrow Keys + Enter | ESC = Exit"
+    elif current_screen == "join":
+        for event in pygame.event.get():
+        
+            if event.type == pygame.QUIT:
+                running = False
 
-        text = message_font.render(
-            message,
+            elif event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_q:
+                    running = False
+
+                elif event.key == pygame.K_ESCAPE:
+                    current_screen = "multiplayer"
+        title = font.render(
+            "Join Game",
             True,
             (255, 255, 255)
         )
 
-        message_y = start_y + board_height + 60
-
-        text_rect = text.get_rect(
-            center=(WIDTH // 2, message_y)
+        title_rect = title.get_rect(
+            center=(WIDTH // 2, HEIGHT // 3)
         )
 
         screen.blit(
-            text,
-            text_rect
+            title,
+            title_rect
         )
 
+        message = message_font.render(
+            "Waiting For Connection...",
+            True,
+            (255, 255, 0)
+        )
+
+        message_rect = message.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2)
+        )
+
+        screen.blit(
+            message,
+            message_rect
+        )
+
+        back_text = message_font.render(
+            "ESC = Back",
+            True,
+            (255, 255, 255)
+        )
+
+        back_rect = back_text.get_rect(
+            center=(WIDTH // 2, HEIGHT - 100)
+        )
+
+        screen.blit(
+            back_text,
+            back_rect
+        )
+    
     pygame.display.flip()
 
 
