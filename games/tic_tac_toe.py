@@ -12,7 +12,7 @@ attempt_connection = False
 server_socket = None
 client_socket = None
 joined_server = False
-join_status = "Searching..."
+join_status = "Connection Failed"
 is_hosting = False
 received_message = ""
 received_message_new = ""
@@ -735,6 +735,8 @@ while running:
                     socket.AF_INET,
                     socket.SOCK_STREAM
                 )
+
+                client_socket.settimeout(2)
 
                 client_socket.connect(
                     (host_ip_input, PORT)
