@@ -88,6 +88,16 @@ computer_symbol = "O"
 game_over = False
 winner = None
 
+def swap_symbols():
+
+    global my_symbol
+    global opponent_symbol
+
+    my_symbol, opponent_symbol = (
+        opponent_symbol,
+        my_symbol
+    )
+
 
 def check_winner():
 
@@ -279,9 +289,6 @@ while running:
                 if game_over:
                     if event.key == pygame.K_RETURN:
                         reset_game()
-
-                    elif event.key == pygame.K_ESCAPE:
-                        running = False
 
                     continue
 
@@ -861,6 +868,11 @@ while running:
                 col = int(col)
 
                 board[row][col] = opponent_symbol
+                result = check_winner()
+
+                if result:
+                    game_over = True
+                    winner = result
 
                 my_turn = True
 
@@ -880,7 +892,16 @@ while running:
 
                 if event.key == pygame.K_q:
                     running = False
-                elif event.key == pygame.K_LEFT:
+
+                elif event.key == pygame.K_ESCAPE:
+                    running = False
+
+                if game_over:
+                    if event.key == pygame.K_RETURN:
+                        reset_game()
+
+                    continue
+                if event.key == pygame.K_LEFT:
                     selected_col = max(0, selected_col - 1)
 
                 elif event.key == pygame.K_RIGHT:
@@ -900,19 +921,17 @@ while running:
                     ):
 
                         board[selected_row][selected_col] = my_symbol
+                        result = check_winner()
+
+                        if result:
+                            game_over = True
+                            winner = result
 
                         client_socket.send(
                             f"MOVE:{selected_row},{selected_col}".encode()
                         )
 
                         my_turn = False
-
-                elif event.key == pygame.K_t:
-                    client_socket.send(
-                        "TURN".encode()
-                    )
-
-                    my_turn = False
 
         title = font.render(
             "LAN Game",
