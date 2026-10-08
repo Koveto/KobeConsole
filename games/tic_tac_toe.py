@@ -742,6 +742,7 @@ while running:
 
                 joined_server = True
                 join_status = "Connected!"
+                attempt_connection = False
 
                 client_socket.send(
                     "MOVE:1,2".encode()
@@ -751,7 +752,8 @@ while running:
 
             except OSError:
 
-                join_status = "Searching..."
+                join_status = "Connection Failed"
+                attempt_connection = False
 
         if joined_server:
 
