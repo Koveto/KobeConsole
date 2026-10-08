@@ -744,7 +744,7 @@ while running:
                 join_status = "Connected!"
 
                 client_socket.send(
-                    "Hello Back".encode()
+                    "MOVE:1,2".encode()
                 )
 
                 client_socket.setblocking(False)
