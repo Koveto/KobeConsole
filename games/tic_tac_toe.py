@@ -15,6 +15,7 @@ joined_server = False
 join_status = "Searching..."
 is_hosting = False
 received_message = ""
+received_message_new = ""
 temp_socket = socket.socket(
     socket.AF_INET,
     socket.SOCK_DGRAM
@@ -549,12 +550,27 @@ while running:
 
             try:
                 client_socket, address = server_socket.accept()
+                client_socket.setblocking(False)
 
                 connected_players = 1
 
                 client_socket.send(
                     "Hello".encode()
                 )
+
+            except BlockingIOError:
+                pass
+
+        if connected_players == 1:
+
+            try:
+
+                message = client_socket.recv(
+                    1024
+                ).decode()
+
+                if message:
+                    received_message_new = message
 
             except BlockingIOError:
                 pass
@@ -675,6 +691,21 @@ while running:
             players_rect
         )
 
+        received_text = message_font.render(
+            received_message_new,
+            True,
+            (255, 255, 255)
+        )
+
+        received_rect = received_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 300)
+        )
+
+        screen.blit(
+            received_text,
+            received_rect
+        )
+
         back_text = message_font.render(
             "ESC = Back",
             True,
@@ -711,6 +742,10 @@ while running:
 
                 joined_server = True
                 join_status = "Connected!"
+
+                client_socket.send(
+                    "Hello Back".encode()
+                )
 
                 client_socket.setblocking(False)
 
