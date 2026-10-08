@@ -14,8 +14,6 @@ client_socket = None
 joined_server = False
 join_status = "Connection Failed"
 is_hosting = False
-received_message = ""
-received_message_new = ""
 temp_socket = socket.socket(
     socket.AF_INET,
     socket.SOCK_DGRAM
@@ -553,27 +551,14 @@ while running:
                 client_socket.setblocking(False)
 
                 connected_players = 1
-
-                client_socket.send(
-                    "Hello".encode()
-                )
+                current_screen = "lan_game"
 
             except BlockingIOError:
                 pass
 
         if connected_players == 1:
 
-            try:
-
-                message = client_socket.recv(
-                    1024
-                ).decode()
-
-                if message:
-                    received_message_new = message
-
-            except BlockingIOError:
-                pass
+            pass
 
         for event in pygame.event.get():
         
@@ -691,21 +676,6 @@ while running:
             players_rect
         )
 
-        received_text = message_font.render(
-            received_message_new,
-            True,
-            (255, 255, 255)
-        )
-
-        received_rect = received_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 300)
-        )
-
-        screen.blit(
-            received_text,
-            received_rect
-        )
-
         back_text = message_font.render(
             "ESC = Back",
             True,
@@ -745,10 +715,7 @@ while running:
                 joined_server = True
                 join_status = "Connected!"
                 attempt_connection = False
-
-                client_socket.send(
-                    "MOVE:1,2".encode()
-                )
+                current_screen = "lan_game"
 
                 client_socket.setblocking(False)
 
@@ -759,17 +726,7 @@ while running:
 
         if joined_server:
 
-            try:
-
-                message = client_socket.recv(
-                    1024
-                ).decode()
-
-                if message:
-                    received_message = message
-
-            except BlockingIOError:
-                pass
+            pass
 
         for event in pygame.event.get():
         
@@ -867,21 +824,6 @@ while running:
             message_rect
         )
 
-        received_text = message_font.render(
-            received_message,
-            True,
-            (255, 255, 255)
-        )
-
-        received_rect = received_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 60)
-        )
-
-        screen.blit(
-            received_text,
-            received_rect
-        )
-
         back_text = message_font.render(
             "ESC = Back",
             True,
@@ -897,6 +839,48 @@ while running:
             back_rect
         )
     
+    elif current_screen == "lan_game":
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                running = False
+
+            elif event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_q:
+                    running = False
+
+        title = font.render(
+            "LAN Game",
+            True,
+            (255, 255, 255)
+        )
+
+        title_rect = title.get_rect(
+            center=(WIDTH // 2, HEIGHT // 3)
+        )
+
+        screen.blit(
+            title,
+            title_rect
+        )
+
+        message = message_font.render(
+            "Connection Successful",
+            True,
+            (255, 255, 0)
+        )
+
+        message_rect = message.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2)
+        )
+
+        screen.blit(
+            message,
+            message_rect
+        )
+        
+        
     pygame.display.flip()
 
 
