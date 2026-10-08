@@ -230,7 +230,7 @@ while running:
         )
 
         multi_text = message_font.render(
-            "Online Multiplayer",
+            "LAN Multiplayer",
             True,
             multi_color
         )
@@ -471,7 +471,7 @@ while running:
 
 
         title = font.render(
-            "Online Multiplayer",
+            "LAN Multiplayer",
             True,
             (255, 255, 255)
         )
@@ -858,7 +858,7 @@ while running:
         )
 
         title_rect = title.get_rect(
-            center=(WIDTH // 2, HEIGHT // 3)
+            center=(WIDTH // 2, HEIGHT // 8)
         )
 
         screen.blit(
@@ -989,6 +989,15 @@ while running:
             (255, 255, 255)
         )
 
+        turn_rect = turn_text.get_rect(
+            center=(WIDTH // 2, 190)
+        )
+
+        screen.blit(
+            turn_text,
+            turn_rect
+        )
+
         turn_text = message_font.render(
             (
                 "Your Turn"
@@ -997,6 +1006,15 @@ while running:
             ),
             True,
             (255, 255, 0)
+        )
+
+        turn_rect = turn_text.get_rect(
+            center=(WIDTH // 2, 190)
+        )
+
+        screen.blit(
+            turn_text,
+            turn_rect
         )
         
         
