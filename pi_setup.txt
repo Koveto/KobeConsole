@@ -1,0 +1,227 @@
+KOBECONSOLE RASPBERRY PI SETUP GUIDE
+
+========================================
+1. FLASH THE SD CARD
+========================================
+
+Install Raspberry Pi Imager on PC.
+
+Choose Device:
+    Raspberry Pi 5
+
+Choose OS:
+    Raspberry Pi OS (64-bit)
+
+========================================
+2. CUSTOM SETTINGS
+========================================
+
+Hostname:
+    kobepi-1
+
+For second Pi:
+    kobepi-2
+
+Wi-Fi:
+    Use home Wi-Fi
+    Security = Secure Network
+
+SSH:
+    Enabled
+    Password Authentication
+
+Raspberry Pi Connect:
+    Disabled
+
+Choose username and password.
+
+Write image to SD card.
+
+========================================
+3. FIRST BOOT
+========================================
+
+Insert SD card into Pi.
+
+Connect:
+    HDMI monitor
+    USB keyboard
+    USB mouse
+    Power
+
+Boot Pi.
+
+Log into desktop.
+
+========================================
+4. VERIFY SYSTEM
+========================================
+
+Open Terminal.
+
+Check Python:
+
+    python3 --version
+
+Expected:
+    Python 3.x
+
+Check Git:
+
+    git --version
+
+Expected:
+    git version 2.x
+
+========================================
+5. CLONE KOBECONSOLE
+========================================
+
+Go home:
+
+    cd
+
+Clone repo:
+
+    git clone https://github.com/Koveto/KobeConsole.git
+
+Enter repo:
+
+    cd KobeConsole
+
+Verify files:
+
+    ls
+
+========================================
+6. TEST KOBECONSOLE
+========================================
+
+Run launcher:
+
+    python3 launcher.py
+
+Expected:
+    Launcher opens
+
+Test:
+    Tic Tac Toe launches
+
+========================================
+7. CREATE LAUNCH DESKTOP ICON
+========================================
+
+Create file:
+
+    nano ~/Desktop/Launch-KobeConsole.desktop
+
+Paste:
+
+[Desktop Entry]
+Type=Application
+Name=Launch KobeConsole
+Comment=Start KobeConsole Launcher
+Exec=/usr/bin/python3 /home/kobepi-1/KobeConsole/launcher.py
+Path=/home/kobepi-1/KobeConsole
+Icon=/home/kobepi-1/KobeConsole/assets/logos/logo0.png
+Terminal=false
+
+Save:
+
+    Ctrl+O
+    Enter
+    Ctrl+X
+
+Make executable:
+
+    chmod +x ~/Desktop/Launch-KobeConsole.desktop
+
+========================================
+8. CREATE UPDATE DESKTOP ICON
+========================================
+
+Create file:
+
+    nano ~/Desktop/Update-KobeConsole.desktop
+
+Paste:
+
+[Desktop Entry]
+Type=Application
+Name=Update KobeConsole
+Exec=lxterminal -e bash -c "cd /home/kobepi-1/KobeConsole && git pull; echo; echo Done. Press Enter.; read"
+Icon=/home/kobepi-1/KobeConsole/assets/logos/logo0.png
+Terminal=false
+
+Save:
+
+    Ctrl+O
+    Enter
+    Ctrl+X
+
+Make executable:
+
+    chmod +x ~/Desktop/Update-KobeConsole.desktop
+
+========================================
+9. UPDATE WORKFLOW
+========================================
+
+On PC:
+
+    Commit
+    Push
+
+On Pi:
+
+    Double-click:
+        Update KobeConsole
+
+Then:
+
+    Double-click:
+        Launch KobeConsole
+
+========================================
+10. MANUAL UPDATE BACKUP
+========================================
+
+If updater icon fails:
+
+    cd ~/KobeConsole
+    git pull
+
+========================================
+KNOWN WORKING
+========================================
+
+✓ Pi boots
+✓ Desktop loads
+✓ Wi-Fi works
+✓ Git works
+✓ Python works
+✓ KobeConsole cloned
+✓ Launcher works
+✓ Tic Tac Toe works
+✓ Launch desktop icon works
+✓ Update desktop icon works
+
+========================================
+KNOWN ISSUE
+========================================
+
+Pokemon SMT Game:
+    FileNotFoundError on Raspberry Pi
+
+Needs investigation later.
+
+========================================
+SECOND PI
+========================================
+
+Repeat entire process.
+
+Only difference:
+
+Hostname:
+    kobepi-2
