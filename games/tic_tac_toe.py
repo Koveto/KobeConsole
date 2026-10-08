@@ -841,6 +841,19 @@ while running:
         )
     
     elif current_screen == "lan_game":
+
+        try:
+
+            message = client_socket.recv(
+                1024
+            ).decode()
+
+            if message == "TURN":
+                my_turn = True
+
+        except BlockingIOError:
+            pass
+
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
@@ -871,7 +884,11 @@ while running:
                         my_turn = False
 
                 elif event.key == pygame.K_t:
-                    my_turn = not my_turn
+                    client_socket.send(
+                        "TURN".encode()
+                    )
+
+                    my_turn = False
 
         title = font.render(
             "LAN Game",
