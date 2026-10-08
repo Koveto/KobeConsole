@@ -989,13 +989,13 @@ while running:
             (255, 255, 255)
         )
 
-        turn_rect = turn_text.get_rect(
-            center=(WIDTH // 2, 190)
+        symbol_rect = symbol_text.get_rect(
+            center=(WIDTH // 2, 140)
         )
 
         screen.blit(
-            turn_text,
-            turn_rect
+            symbol_text,
+            symbol_rect
         )
 
         turn_text = message_font.render(
