@@ -546,6 +546,8 @@ while running:
 
                 connected_players = 1
 
+                print(f"Connected {address}")
+
                 client_socket.send(
                     "Hello".encode()
                 )
@@ -713,6 +715,8 @@ while running:
 
                 joined_server = True
                 join_status = "Connected!"
+
+                print("Connected to host.")
 
             except OSError:
 
