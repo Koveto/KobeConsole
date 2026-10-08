@@ -3,6 +3,13 @@ import random
 import socket
 
 HOSTNAME = socket.gethostname()
+PORT = 5000
+connected_players = 0
+server_socket = None
+client_socket = None
+joined_server = False
+join_status = "Searching..."
+is_hosting = False
 temp_socket = socket.socket(
     socket.AF_INET,
     socket.SOCK_DGRAM
@@ -514,6 +521,37 @@ while running:
         )
     
     elif current_screen == "host":
+
+        if not is_hosting:
+
+            server_socket = socket.socket(
+                socket.AF_INET,
+                socket.SOCK_STREAM
+            )
+
+            server_socket.bind(
+                (IP_ADDRESS, PORT)
+            )
+
+            server_socket.listen(1)
+            server_socket.setblocking(False)
+
+            is_hosting = True
+
+        if connected_players == 0:
+
+            try:
+                client_socket, address = server_socket.accept()
+
+                connected_players = 1
+
+                print(
+                    f"Connected: {address}"
+                )
+
+            except BlockingIOError:
+                pass
+
         for event in pygame.event.get():
         
             if event.type == pygame.QUIT:
@@ -525,7 +563,21 @@ while running:
                     running = False
 
                 elif event.key == pygame.K_ESCAPE:
+
+                    if server_socket:
+                        server_socket.close()
+                        server_socket = None
+
+                    is_hosting = False
+
                     current_screen = "multiplayer"
+
+        connection_status = (
+            "Hosting..."
+            if is_hosting
+            else "Not Hosting"
+        )
+
         title = font.render(
             "Host Game",
             True,
@@ -542,7 +594,7 @@ while running:
         )
 
         message = message_font.render(
-            "Waiting For Connection...",
+            connection_status,
             True,
             (255, 255, 0)
         )
@@ -586,6 +638,36 @@ while running:
             ip_rect
         )
 
+        port_text = message_font.render(
+            f"Port: {PORT}",
+            True,
+            (255, 255, 255)
+        )
+
+        port_rect = port_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 180)
+        )
+
+        screen.blit(
+            port_text,
+            port_rect
+        )
+
+        players_text = message_font.render(
+            f"Players Connected: {connected_players}",
+            True,
+            (255, 255, 255)
+        )
+
+        players_rect = players_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 240)
+        )
+
+        screen.blit(
+            players_text,
+            players_rect
+        )
+
         back_text = message_font.render(
             "ESC = Back",
             True,
@@ -603,6 +685,28 @@ while running:
 
 
     elif current_screen == "join":
+        if not joined_server:
+
+            try:
+
+                client_socket = socket.socket(
+                    socket.AF_INET,
+                    socket.SOCK_STREAM
+                )
+
+                client_socket.connect(
+                    ("192.168.1.44", PORT)
+                )
+
+                joined_server = True
+                join_status = "Connected!"
+
+                print("Connected to host.")
+
+            except OSError:
+
+                join_status = "Searching..."
+
         for event in pygame.event.get():
         
             if event.type == pygame.QUIT:
@@ -631,7 +735,7 @@ while running:
         )
 
         message = message_font.render(
-            "Waiting For Connection...",
+            join_status,
             True,
             (255, 255, 0)
         )
