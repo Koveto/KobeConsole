@@ -880,6 +880,11 @@ while running:
 
                 my_turn = True
 
+            elif message == "RESET":
+
+                swap_symbols()
+                reset_game()
+
         except BlockingIOError:
             pass
 
@@ -898,7 +903,11 @@ while running:
 
                 if game_over:
                     if event.key == pygame.K_RETURN:
+                        swap_symbols()
                         reset_game()
+                        client_socket.send(
+                            "RESET".encode()
+                        )
 
                     continue
                 if event.key == pygame.K_LEFT:
