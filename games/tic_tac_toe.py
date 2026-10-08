@@ -14,6 +14,7 @@ client_socket = None
 joined_server = False
 join_status = "Searching..."
 is_hosting = False
+received_message = ""
 temp_socket = socket.socket(
     socket.AF_INET,
     socket.SOCK_DGRAM
@@ -711,9 +712,25 @@ while running:
                 joined_server = True
                 join_status = "Connected!"
 
+                client_socket.setblocking(False)
+
             except OSError:
 
                 join_status = "Searching..."
+
+        if joined_server:
+
+            try:
+
+                message = client_socket.recv(
+                    1024
+                ).decode()
+
+                if message:
+                    received_message = message
+
+            except BlockingIOError:
+                pass
 
         for event in pygame.event.get():
         
@@ -809,6 +826,21 @@ while running:
         screen.blit(
             message,
             message_rect
+        )
+
+        received_text = message_font.render(
+            received_message,
+            True,
+            (255, 255, 255)
+        )
+
+        received_rect = received_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 60)
+        )
+
+        screen.blit(
+            received_text,
+            received_rect
         )
 
         back_text = message_font.render(
