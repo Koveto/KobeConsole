@@ -700,7 +700,7 @@ while running:
                 )
 
                 client_socket.connect(
-                    ("192.168.1.44", PORT)
+                    ("192.168.1.143", PORT)
                 )
 
                 """message = client_socket.recv(
