@@ -703,13 +703,13 @@ while running:
                     ("192.168.1.44", PORT)
                 )
 
-                message = client_socket.recv(
+                """message = client_socket.recv(
                     1024
                 ).decode()
 
                 print(
                     f"Received: {message}"
-                )
+                )"""
 
                 joined_server = True
                 join_status = "Connected!"
