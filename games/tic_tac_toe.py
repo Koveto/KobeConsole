@@ -14,6 +14,9 @@ client_socket = None
 joined_server = False
 join_status = "Connection Failed"
 is_hosting = False
+my_symbol = ""
+opponent_symbol = ""
+my_turn = False
 temp_socket = socket.socket(
     socket.AF_INET,
     socket.SOCK_DGRAM
@@ -58,7 +61,7 @@ current_screen = "menu"
 
 menu_options = [
     "Single Player",
-    "Online Multiplayer"
+    "LAN Multiplayer"
 ]
 
 menu_index = 0
@@ -199,7 +202,7 @@ while running:
                     if menu_index == 0:
                         current_screen = "singleplayer"
                     elif menu_index == 1:
-                        current_screen = "multiplayer"
+                        current_screen = "lan_menu"
                 elif event.key == pygame.K_q:
                     running = False
         title = font.render(
@@ -433,7 +436,7 @@ while running:
                 text_rect
             )
 
-    elif current_screen == "multiplayer":
+    elif current_screen == "lan_menu":
 
         for event in pygame.event.get():
 
@@ -552,13 +555,12 @@ while running:
 
                 connected_players = 1
                 current_screen = "lan_game"
+                my_symbol = "X"
+                opponent_symbol = "O"
+                my_turn = True
 
             except BlockingIOError:
                 pass
-
-        if connected_players == 1:
-
-            pass
 
         for event in pygame.event.get():
         
@@ -578,7 +580,7 @@ while running:
 
                     is_hosting = False
 
-                    current_screen = "multiplayer"
+                    current_screen = "lan_menu"
 
         connection_status = (
             "Hosting..."
@@ -716,6 +718,9 @@ while running:
                 join_status = "Connected!"
                 attempt_connection = False
                 current_screen = "lan_game"
+                my_symbol = "O"
+                opponent_symbol = "X"
+                my_turn = False
 
                 client_socket.setblocking(False)
 
@@ -723,10 +728,6 @@ while running:
 
                 join_status = "Connection Failed"
                 attempt_connection = False
-
-        if joined_server:
-
-            pass
 
         for event in pygame.event.get():
         
@@ -739,7 +740,7 @@ while running:
                     running = False
 
                 elif event.key == pygame.K_ESCAPE:
-                    current_screen = "multiplayer"
+                    current_screen = "lan_menu"
 
                 elif event.key == pygame.K_BACKSPACE:
                     host_ip_input = host_ip_input[:-1]
@@ -865,19 +866,137 @@ while running:
             title_rect
         )
 
-        message = message_font.render(
-            "Connection Successful",
+        cell_size = min(WIDTH, HEIGHT) // 6
+        board_width = cell_size * 3
+        board_height = cell_size * 3
+        start_x = (WIDTH - board_width) // 2
+        start_y = (HEIGHT - board_height) // 2 - 50
+            
+
+        #
+        # draw cells
+        #
+
+        for row in range(3):
+            for col in range(3):
+
+                rect = pygame.Rect(
+                    start_x + col * cell_size,
+                    start_y + row * cell_size,
+                    cell_size,
+                    cell_size
+                )
+
+                pygame.draw.rect(
+                    screen,
+                    (120, 120, 120),
+                    rect,
+                    2
+                )
+
+                if row == selected_row and col == selected_col:
+                    pygame.draw.rect(
+                        screen,
+                        (255, 255, 0),
+                        rect,
+                        4
+                    )
+
+                symbol = board[row][col]
+
+                if symbol:
+
+                    text = font.render(
+                        symbol,
+                        True,
+                        (255, 255, 255)
+                    )
+
+                    text_rect = text.get_rect(
+                        center=rect.center
+                    )
+
+                    screen.blit(
+                        text,
+                        text_rect
+                    )
+
+        #
+        # status text
+        #
+
+        if game_over:
+
+            if winner == "Tie":
+                message = "Tie Game"
+            else:
+                message = f"{winner} Wins!"
+
+            text = message_font.render(
+                message,
+                True,
+                (255, 255, 255)
+            )
+
+            text_rect = text.get_rect(
+                center=(WIDTH // 2, HEIGHT - 150)
+            )
+
+            screen.blit(
+                text,
+                text_rect
+            )
+
+            restart_text = message_font.render(
+                "ENTER = Play Again    ESC = Exit",
+                True,
+                (200, 200, 200)
+            )
+
+            restart_rect = restart_text.get_rect(
+                center=(WIDTH // 2, HEIGHT - 100)
+            )
+
+            screen.blit(
+                restart_text,
+                restart_rect
+            )
+
+        else:
+
+            message = "Arrow Keys + Enter | ESC = Exit"
+
+            text = message_font.render(
+                message,
+                True,
+                (255, 255, 255)
+            )
+
+            message_y = start_y + board_height + 60
+
+            text_rect = text.get_rect(
+                center=(WIDTH // 2, message_y)
+            )
+
+            screen.blit(
+                text,
+                text_rect
+            )
+
+        symbol_text = message_font.render(
+            f"You are {my_symbol}",
+            True,
+            (255, 255, 255)
+        )
+
+        turn_text = message_font.render(
+            (
+                "Your Turn"
+                if my_turn
+                else "Opponent's Turn"
+            ),
             True,
             (255, 255, 0)
-        )
-
-        message_rect = message.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2)
-        )
-
-        screen.blit(
-            message,
-            message_rect
         )
         
         
