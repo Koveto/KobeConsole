@@ -848,7 +848,24 @@ while running:
                 1024
             ).decode()
 
-            if message == "TURN":
+            if message.startswith("MOVE:"):
+
+                move_data = message.replace(
+                    "MOVE:",
+                    ""
+                )
+
+                row, col = move_data.split(",")
+
+                row = int(row)
+                col = int(col)
+
+                board[row][col] = opponent_symbol
+
+                my_turn = True
+
+            elif message == "TURN":
+
                 my_turn = True
 
         except BlockingIOError:
@@ -876,11 +893,18 @@ while running:
                     selected_row = min(2, selected_row + 1)
 
                 elif event.key == pygame.K_RETURN:
+
                     if (
                         my_turn
                         and board[selected_row][selected_col] == ""
                     ):
+
                         board[selected_row][selected_col] = my_symbol
+
+                        client_socket.send(
+                            f"MOVE:{selected_row},{selected_col}".encode()
+                        )
+
                         my_turn = False
 
                 elif event.key == pygame.K_t:
