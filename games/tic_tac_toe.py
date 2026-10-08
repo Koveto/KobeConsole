@@ -3,7 +3,7 @@ import random
 import socket
 
 HOSTNAME = socket.gethostname()
-HOST_IP = ""
+HOST_IP = "192.168.1.200"
 PORT = 5000
 connected_players = 0
 server_socket = None
@@ -701,8 +701,12 @@ while running:
                     socket.SOCK_STREAM
                 )
 
+                print(
+                    f"Attempting connection to {HOST_IP}:{PORT}"
+                )
+
                 client_socket.connect(
-                    ("192.168.1.143", PORT)
+                    (HOST_IP, PORT)
                 )
 
                 """message = client_socket.recv(
