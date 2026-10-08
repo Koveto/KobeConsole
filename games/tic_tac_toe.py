@@ -862,6 +862,13 @@ while running:
                 elif event.key == pygame.K_DOWN:
                     selected_row = min(2, selected_row + 1)
 
+                elif event.key == pygame.K_RETURN:
+                    if (
+                        my_turn
+                        and board[selected_row][selected_col] == ""
+                    ):
+                        board[selected_row][selected_col] = my_symbol
+
         title = font.render(
             "LAN Game",
             True,
