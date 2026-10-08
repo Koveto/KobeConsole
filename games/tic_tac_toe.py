@@ -3,9 +3,18 @@ import random
 import socket
 
 HOSTNAME = socket.gethostname()
-IP_ADDRESS = socket.gethostbyname(
-    socket.gethostname()
+temp_socket = socket.socket(
+    socket.AF_INET,
+    socket.SOCK_DGRAM
 )
+
+temp_socket.connect(
+    ("8.8.8.8", 80)
+)
+
+IP_ADDRESS = temp_socket.getsockname()[0]
+
+temp_socket.close()
 
 pygame.init()
 
