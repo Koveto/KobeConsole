@@ -3,6 +3,7 @@ import random
 import socket
 
 HOSTNAME = socket.gethostname()
+HOST_IP = ""
 PORT = 5000
 connected_players = 0
 server_socket = None
@@ -545,6 +546,10 @@ while running:
 
                 connected_players = 1
 
+                client_socket.send(
+                    "Hello".encode()
+                )
+
                 print(
                     f"Connected: {address}"
                 )
@@ -698,10 +703,16 @@ while running:
                     ("192.168.1.44", PORT)
                 )
 
+                message = client_socket.recv(
+                    1024
+                ).decode()
+
+                print(
+                    f"Received: {message}"
+                )
+
                 joined_server = True
                 join_status = "Connected!"
-
-                print("Connected to host.")
 
             except OSError:
 
