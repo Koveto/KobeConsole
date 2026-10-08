@@ -850,6 +850,17 @@ while running:
 
                 if event.key == pygame.K_q:
                     running = False
+                elif event.key == pygame.K_LEFT:
+                    selected_col = max(0, selected_col - 1)
+
+                elif event.key == pygame.K_RIGHT:
+                    selected_col = min(2, selected_col + 1)
+
+                elif event.key == pygame.K_UP:
+                    selected_row = max(0, selected_row - 1)
+
+                elif event.key == pygame.K_DOWN:
+                    selected_row = min(2, selected_row + 1)
 
         title = font.render(
             "LAN Game",
