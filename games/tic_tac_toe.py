@@ -3,7 +3,7 @@ import random
 import socket
 
 HOSTNAME = socket.gethostname()
-HOST_IP = "192.168.1.200"
+HOST_IP = "192.168.1.44"
 PORT = 5000
 connected_players = 0
 server_socket = None
