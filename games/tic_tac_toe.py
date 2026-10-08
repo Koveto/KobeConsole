@@ -3,9 +3,12 @@ import random
 import socket
 
 HOSTNAME = socket.gethostname()
-HOST_IP = "192.168.1.44"
+host_ip = ""
+HOST_IP = ""
+host_ip_input = ""
 PORT = 5000
 connected_players = 0
+attempt_connection = False
 server_socket = None
 client_socket = None
 joined_server = False
@@ -523,6 +526,8 @@ while running:
     
     elif current_screen == "host":
 
+        HOST_IP = IP_ADDRESS
+
         if not is_hosting:
 
             server_socket = socket.socket(
@@ -546,14 +551,8 @@ while running:
 
                 connected_players = 1
 
-                print(f"Connected {address}")
-
                 client_socket.send(
                     "Hello".encode()
-                )
-
-                print(
-                    f"Connected: {address}"
                 )
 
             except BlockingIOError:
@@ -692,7 +691,11 @@ while running:
 
 
     elif current_screen == "join":
-        if not joined_server:
+        if (
+            attempt_connection
+            and not joined_server
+        ):
+
 
             try:
 
@@ -701,26 +704,12 @@ while running:
                     socket.SOCK_STREAM
                 )
 
-                print(
-                    f"Attempting connection to {HOST_IP}:{PORT}"
-                )
-
                 client_socket.connect(
-                    (HOST_IP, PORT)
+                    (host_ip_input, PORT)
                 )
-
-                """message = client_socket.recv(
-                    1024
-                ).decode()
-
-                print(
-                    f"Received: {message}"
-                )"""
 
                 joined_server = True
                 join_status = "Connected!"
-
-                print("Connected to host.")
 
             except OSError:
 
@@ -738,6 +727,15 @@ while running:
 
                 elif event.key == pygame.K_ESCAPE:
                     current_screen = "multiplayer"
+
+                elif event.key == pygame.K_BACKSPACE:
+                    host_ip_input = host_ip_input[:-1]
+
+                elif event.key == pygame.K_RETURN:
+                    attempt_connection = True
+
+                elif event.unicode in "0123456789.":
+                    host_ip_input += event.unicode
         title = font.render(
             "Join Game",
             True,
@@ -751,6 +749,51 @@ while running:
         screen.blit(
             title,
             title_rect
+        )
+
+        ip_prompt = message_font.render(
+            f"Host IP: {host_ip_input}",
+            True,
+            (255, 255, 255)
+        )
+
+        ip_prompt_rect = ip_prompt.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 - 60)
+        )
+
+        screen.blit(
+            ip_prompt,
+            ip_prompt_rect
+        )
+
+        instruction_text = message_font.render(
+            "Type Host IP Address",
+            True,
+            (200, 200, 200)
+        )
+
+        instruction_rect = instruction_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 - 120)
+        )
+
+        screen.blit(
+            instruction_text,
+            instruction_rect
+        )
+
+        connect_text = message_font.render(
+            "ENTER = Connect",
+            True,
+            (200, 200, 200)
+        )
+
+        connect_rect = connect_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 120)
+        )
+
+        screen.blit(
+            connect_text,
+            connect_rect
         )
 
         message = message_font.render(
