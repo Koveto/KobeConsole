@@ -2,6 +2,7 @@ import pygame
 import subprocess
 import random
 import os
+import sys
 
 BASE_DIR = os.path.dirname(
     os.path.abspath(__file__)
@@ -76,6 +77,17 @@ games = [
             "logo2.png"
         )
     },
+    {
+        "title": "Update KobeConsole",
+        "path": None,
+        "color": (220, 180, 0),
+        "logo": os.path.join(
+            BASE_DIR,
+            "assets",
+            "logos",
+            "logo0.png"
+        )
+    },
 ]
 
 #background = pygame.image.load("assets/backgrounds/bg0.jpg")
@@ -84,6 +96,21 @@ games = [
 for game in games:
     game["logo_surface"] = pygame.image.load(game["logo"]).convert_alpha()
 
+
+def update_kobeconsole():
+
+    subprocess.run(
+        ["git", "pull"],
+        cwd=BASE_DIR
+    )
+
+    os.execv(
+        sys.executable,
+        [
+            sys.executable,
+            os.path.abspath(__file__)
+        ]
+    )
 
 def launch_game(path):
 
@@ -161,7 +188,17 @@ while running:
                 selected_index -= 1
 
             elif event.key == pygame.K_RETURN:
-                launch_game(games[selected_index]["path"])
+                selected_game = games[selected_index]
+
+                if selected_game["title"] == "Update KobeConsole":
+
+                    update_kobeconsole()
+
+                else:
+
+                    launch_game(
+                        selected_game["path"]
+                    )
 
             elif event.key == pygame.K_q:
                 running = False
