@@ -182,13 +182,13 @@ while running:
         elif event.type == pygame.JOYBUTTONDOWN:
 
             #
-            # D-Pad Right
+            # Windows D-Pad Right
             #
             if event.button == 14:
                 selected_index += 1
 
             #
-            # D-Pad Left
+            # Windows D-Pad Left
             #
             elif event.button == 13:
                 selected_index -= 1
@@ -196,7 +196,7 @@ while running:
             #
             # A Button
             #
-            elif event.button == 0:
+            elif event.button in [0, 2]:
 
                 selected_game = games[selected_index]
 
@@ -209,12 +209,29 @@ while running:
                     launch_game(
                         selected_game["path"]
                     )
-
+            
             #
             # B Button
             #
             elif event.button == 1:
                 running = False
+
+        elif event.type == pygame.JOYHATMOTION:
+
+            #
+            # Pi D-Pad Right
+            #
+            if event.value == (1, 0):
+                selected_index += 1
+
+            #
+            # Pi D-Pad Left
+            #
+            elif event.value == (-1, 0):
+                selected_index -= 1
+
+            
+
 
         elif event.type == pygame.KEYDOWN:
 

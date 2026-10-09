@@ -1,3 +1,4 @@
+pc...
 left stick left = axis 0 -1
 left stick right = axis 0 1 
 left stick up = axis 1 -1
@@ -23,4 +24,34 @@ right trigger button = axis 5 (1 is pressed, -1 is released, no values between -
 left shoulder button = button 9
 left trigger button = axis 4 (1 is pressed, -1 is released, no values between 1 and -1)
 left stick button = button 7
-right stick button = button 8
+right stick button = button 8​‌
+
+
+
+pi...
+left stick left = axis 0 -1
+left stick right = axis 0 1 
+left stick up = axis 1 -1
+left stick down = axis 1 1
+dpad left = (-1,0)
+dpad right = (1,0)
+dpad up = (0,1)
+dpad down = (0,-1)
+right stick left = axis 2 -1
+right stick right = axis 2 1
+right stick up = axis 3 -1
+right stick down = axis 3 1
+A button = button 2
+B button = button 1
+X button = button 3
+Y button = button 0
++ button = button 9
+- button = button 8
+home button = button 12
+screenshot button = button 13
+right shoulder button = button 5
+right trigger button = button 7
+left shoulder button = button 4
+left trigger button = button 6
+left stick button = button 10
+right stick button = button 11
