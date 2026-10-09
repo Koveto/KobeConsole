@@ -88,6 +88,59 @@ computer_symbol = "O"
 game_over = False
 winner = None
 
+def draw_board(
+    start_x,
+    start_y,
+    cell_size
+):
+
+    for row in range(3):
+        for col in range(3):
+
+            rect = pygame.Rect(
+                start_x + col * cell_size,
+                start_y + row * cell_size,
+                cell_size,
+                cell_size
+            )
+
+            pygame.draw.rect(
+                screen,
+                (120, 120, 120),
+                rect,
+                2
+            )
+
+            if (
+                row == selected_row
+                and col == selected_col
+            ):
+                pygame.draw.rect(
+                    screen,
+                    (255, 255, 0),
+                    rect,
+                    4
+                )
+
+            symbol = board[row][col]
+
+            if symbol:
+
+                text = font.render(
+                    symbol,
+                    True,
+                    (255, 255, 255)
+                )
+
+                text_rect = text.get_rect(
+                    center=rect.center
+                )
+
+                screen.blit(
+                    text,
+                    text_rect
+                )
+
 def swap_symbols():
 
     global my_symbol
@@ -97,6 +150,25 @@ def swap_symbols():
         opponent_symbol,
         my_symbol
     )
+
+def get_board_layout():
+
+    cell_size = min(WIDTH, HEIGHT) // 6
+
+    board_width = cell_size * 3
+    board_height = cell_size * 3
+
+    start_x = (WIDTH - board_width) // 2
+    start_y = (HEIGHT - board_height) // 2 + 60
+
+    return (
+        cell_size,
+        board_width,
+        board_height,
+        start_x,
+        start_y
+    )
+
 
 def swap_singleplayer_symbols():
 
@@ -299,6 +371,8 @@ while running:
                     if event.key == pygame.K_RETURN:
                         swap_singleplayer_symbols()
                         reset_game()
+                        if computer_symbol == "X":
+                            computer_move()
 
                     continue
 
@@ -336,60 +410,27 @@ while running:
                                 game_over = True
                                 winner = result
 
-        cell_size = min(WIDTH, HEIGHT) // 6
-        board_width = cell_size * 3
-        board_height = cell_size * 3
-        start_x = (WIDTH - board_width) // 2
-        start_y = (HEIGHT - board_height) // 2 + 60
+        (
+            cell_size,
+            board_width,
+            board_height,
+            start_x,
+            start_y
+        ) = get_board_layout()
+        title_y = start_y - 220
+        symbol_y = start_y - 120
+        turn_y = start_y - 70
             
 
         #
         # draw cells
         #
 
-        for row in range(3):
-            for col in range(3):
-
-                rect = pygame.Rect(
-                    start_x + col * cell_size,
-                    start_y + row * cell_size,
-                    cell_size,
-                    cell_size
-                )
-
-                pygame.draw.rect(
-                    screen,
-                    (120, 120, 120),
-                    rect,
-                    2
-                )
-
-                if row == selected_row and col == selected_col:
-                    pygame.draw.rect(
-                        screen,
-                        (255, 255, 0),
-                        rect,
-                        4
-                    )
-
-                symbol = board[row][col]
-
-                if symbol:
-
-                    text = font.render(
-                        symbol,
-                        True,
-                        (255, 255, 255)
-                    )
-
-                    text_rect = text.get_rect(
-                        center=rect.center
-                    )
-
-                    screen.blit(
-                        text,
-                        text_rect
-                    )
+        draw_board(
+            start_x,
+            start_y,
+            cell_size
+        )
 
         #
         # status text
@@ -446,7 +487,7 @@ while running:
                 (255, 255, 255)
             )
 
-            message_y = start_y + board_height - 50
+            message_y = start_y + board_height + 60
 
             text_rect = text.get_rect(
                 center=(WIDTH // 2, message_y)
@@ -971,7 +1012,7 @@ while running:
         )
 
         title_rect = title.get_rect(
-            center=(WIDTH // 2, HEIGHT // 8)
+            center=(WIDTH // 2, title_y)
         )
 
         screen.blit(
@@ -979,60 +1020,24 @@ while running:
             title_rect
         )
 
-        cell_size = min(WIDTH, HEIGHT) // 6
-        board_width = cell_size * 3
-        board_height = cell_size * 3
-        start_x = (WIDTH - board_width) // 2
-        start_y = (HEIGHT - board_height) // 2 + 60
+        (
+            cell_size,
+            board_width,
+            board_height,
+            start_x,
+            start_y
+        ) = get_board_layout()
             
 
         #
         # draw cells
         #
 
-        for row in range(3):
-            for col in range(3):
-
-                rect = pygame.Rect(
-                    start_x + col * cell_size,
-                    start_y + row * cell_size,
-                    cell_size,
-                    cell_size
-                )
-
-                pygame.draw.rect(
-                    screen,
-                    (120, 120, 120),
-                    rect,
-                    2
-                )
-
-                if row == selected_row and col == selected_col:
-                    pygame.draw.rect(
-                        screen,
-                        (255, 255, 0),
-                        rect,
-                        4
-                    )
-
-                symbol = board[row][col]
-
-                if symbol:
-
-                    text = font.render(
-                        symbol,
-                        True,
-                        (255, 255, 255)
-                    )
-
-                    text_rect = text.get_rect(
-                        center=rect.center
-                    )
-
-                    screen.blit(
-                        text,
-                        text_rect
-                    )
+        draw_board(
+            start_x,
+            start_y,
+            cell_size
+        )
 
         #
         # status text
@@ -1111,7 +1116,7 @@ while running:
             )
     
             symbol_rect = symbol_text.get_rect(
-                center=(WIDTH // 2, 140)
+                center=(WIDTH // 2, symbol_y)
             )
     
             screen.blit(
@@ -1130,7 +1135,7 @@ while running:
             )
 
             turn_rect = turn_text.get_rect(
-                center=(WIDTH // 2, 190)
+                center=(WIDTH // 2, turn_y)
             )
 
             screen.blit(
