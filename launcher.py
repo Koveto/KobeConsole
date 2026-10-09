@@ -56,14 +56,14 @@ time = 0
 
 games = [
     {
-        "title": "Pokemon SMT Game",
-        "path": "games/project1/main.py",
-        "color": (0, 100, 255),
+        "title": "Update",
+        "path": None,
+        "color": (220, 180, 0),
         "logo": os.path.join(
             BASE_DIR,
             "assets",
             "logos",
-            "logo0.png"
+            "logo1.png"
         )
     },
     {
@@ -78,9 +78,9 @@ games = [
         )
     },
     {
-        "title": "Update KobeConsole",
-        "path": None,
-        "color": (220, 180, 0),
+        "title": "Pokemon SMT Game",
+        "path": "games/project1/main.py",
+        "color": (0, 100, 255),
         "logo": os.path.join(
             BASE_DIR,
             "assets",
@@ -178,6 +178,43 @@ while running:
 
         if event.type == pygame.QUIT:
             running = False
+
+        elif event.type == pygame.JOYBUTTONDOWN:
+
+            #
+            # D-Pad Right
+            #
+            if event.button == 14:
+                selected_index += 1
+
+            #
+            # D-Pad Left
+            #
+            elif event.button == 13:
+                selected_index -= 1
+
+            #
+            # A Button
+            #
+            elif event.button == 0:
+
+                selected_game = games[selected_index]
+
+                if selected_game["title"] == "Update KobeConsole":
+
+                    update_kobeconsole()
+
+                else:
+
+                    launch_game(
+                        selected_game["path"]
+                    )
+
+            #
+            # B Button
+            #
+            elif event.button == 1:
+                running = False
 
         elif event.type == pygame.KEYDOWN:
 
