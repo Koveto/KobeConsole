@@ -3,6 +3,14 @@ import subprocess
 import random
 import os
 
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
+)
+print(
+    "Launcher Running From:",
+    BASE_DIR
+)
+
 pygame.init()
 
 pygame.joystick.init()
@@ -50,14 +58,23 @@ games = [
         "title": "Pokemon SMT Game",
         "path": "games/project1/main.py",
         "color": (0, 100, 255),
-        "logo": "assets/logos/logo0.png"
+        "logo": os.path.join(
+            BASE_DIR,
+            "assets",
+            "logos",
+            "logo0.png"
+        )
     },
     {
         "title": "Tic Tac Toe",
         "path": "games/tic_tac_toe.py",
         "color": (0, 180, 0),
-        "logo": "assets/logos/logo2.png"
-
+        "logo": os.path.join(
+            BASE_DIR,
+            "assets",
+            "logos",
+            "logo2.png"
+        )
     },
 ]
 
@@ -70,10 +87,20 @@ for game in games:
 
 def launch_game(path):
 
-    game_dir = os.path.dirname(path)
+    full_path = os.path.join(
+        BASE_DIR,
+        path
+    )
+
+    game_dir = os.path.dirname(
+        full_path
+    )
 
     subprocess.run(
-        ["python", os.path.basename(path)],
+        [
+            "python3",
+            os.path.basename(full_path)
+        ],
         cwd=game_dir
     )
 
