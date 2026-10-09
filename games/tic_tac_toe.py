@@ -88,6 +88,16 @@ computer_symbol = "O"
 game_over = False
 winner = None
 
+def get_ui_layout():
+
+    return {
+        "title_y": HEIGHT // 8,
+        "symbol_y": HEIGHT // 4,
+        "turn_y": HEIGHT // 4 + 50,
+        "winner_y": HEIGHT - 150,
+        "restart_y": HEIGHT - 100
+    }
+
 def draw_board(
     start_x,
     start_y,
@@ -159,7 +169,7 @@ def get_board_layout():
     board_height = cell_size * 3
 
     start_x = (WIDTH - board_width) // 2
-    start_y = (HEIGHT - board_height) // 2 + 60
+    start_y = (HEIGHT - board_height) // 2 + (HEIGHT // 20)
 
     return (
         cell_size,
@@ -167,6 +177,25 @@ def get_board_layout():
         board_height,
         start_x,
         start_y
+    )
+
+def draw_footer(text):
+
+    ui = get_ui_layout()
+
+    footer = message_font.render(
+        text,
+        True,
+        (200, 200, 200)
+    )
+
+    footer_rect = footer.get_rect(
+        center=(WIDTH // 2, ui["restart_y"])
+    )
+
+    screen.blit(
+        footer,
+        footer_rect
     )
 
 
@@ -352,7 +381,14 @@ while running:
             title,
             title_rect
         )
+
+        draw_footer(
+            "UP/DOWN = Select   ENTER = Confirm   Q = Quit"
+        )
+
     elif current_screen == "singleplayer":
+
+        ui = get_ui_layout()
 
         for event in pygame.event.get():
 
@@ -362,7 +398,8 @@ while running:
             elif event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_ESCAPE:
-                    running = False
+                    reset_game()
+                    current_screen = "menu"
 
                 elif event.key == pygame.K_q:
                     running = False
@@ -417,9 +454,6 @@ while running:
             start_x,
             start_y
         ) = get_board_layout()
-        title_y = start_y - 220
-        symbol_y = start_y - 120
-        turn_y = start_y - 70
             
 
         #
@@ -454,7 +488,7 @@ while running:
             )
 
             text_rect = text.get_rect(
-                center=(WIDTH // 2, HEIGHT - 150)
+                center=(WIDTH // 2, ui["winner_y"])
             )
 
             screen.blit(
@@ -463,13 +497,13 @@ while running:
             )
 
             restart_text = message_font.render(
-                "ENTER = Play Again    ESC = Exit",
+                "ENTER = Play Again    ESC = Menu",
                 True,
                 (200, 200, 200)
             )
 
             restart_rect = restart_text.get_rect(
-                center=(WIDTH // 2, HEIGHT - 100)
+                center=(WIDTH // 2, ui["restart_y"])
             )
 
             screen.blit(
@@ -479,23 +513,8 @@ while running:
 
         else:
 
-            message = "Arrow Keys + Enter"
-
-            text = message_font.render(
-                message,
-                True,
-                (255, 255, 255)
-            )
-
-            message_y = start_y + board_height + 60
-
-            text_rect = text.get_rect(
-                center=(WIDTH // 2, message_y)
-            )
-
-            screen.blit(
-                text,
-                text_rect
+            draw_footer(
+                "ARROWS = Move   ENTER = Place   ESC = Menu"
             )
 
     elif current_screen == "lan_menu":
@@ -511,6 +530,8 @@ while running:
                     running = False
 
                 elif event.key == pygame.K_ESCAPE:
+                    
+                    reset_game()
                     current_screen = "menu"
 
                 elif event.key == pygame.K_UP:
@@ -588,6 +609,10 @@ while running:
             join_text,
             join_rect
         )
+
+        draw_footer(
+            "UP/DOWN = Select   ENTER = Confirm   ESC = Back"
+        )
     
     elif current_screen == "host":
 
@@ -645,6 +670,8 @@ while running:
                         server_socket = None
 
                     is_hosting = False
+                    
+                    reset_game()
 
                     current_screen = "lan_menu"
 
@@ -744,19 +771,8 @@ while running:
             players_rect
         )
 
-        back_text = message_font.render(
-            "ESC = Back",
-            True,
-            (255, 255, 255)
-        )
-
-        back_rect = back_text.get_rect(
-            center=(WIDTH // 2, HEIGHT - 100)
-        )
-
-        screen.blit(
-            back_text,
-            back_rect
+        draw_footer(
+            "ESC = Back     Q = Quit"
         )
 
 
@@ -807,6 +823,7 @@ while running:
 
                 elif event.key == pygame.K_ESCAPE:
                     current_screen = "lan_menu"
+                    reset_game()
 
                 elif event.key == pygame.K_BACKSPACE:
                     host_ip_input = host_ip_input[:-1]
@@ -891,22 +908,13 @@ while running:
             message_rect
         )
 
-        back_text = message_font.render(
-            "ESC = Back",
-            True,
-            (255, 255, 255)
-        )
-
-        back_rect = back_text.get_rect(
-            center=(WIDTH // 2, HEIGHT - 100)
-        )
-
-        screen.blit(
-            back_text,
-            back_rect
+        draw_footer(
+            "ENTER = Connect   ESC = Back   Q = Quit"
         )
     
     elif current_screen == "lan_game":
+
+        ui = get_ui_layout()
 
         try:
 
@@ -962,7 +970,9 @@ while running:
                     running = False
 
                 elif event.key == pygame.K_ESCAPE:
-                    running = False
+                    
+                    reset_game()
+                    current_screen = "menu"
 
                 if game_over:
                     if event.key == pygame.K_RETURN:
@@ -1012,7 +1022,10 @@ while running:
         )
 
         title_rect = title.get_rect(
-            center=(WIDTH // 2, title_y)
+            center=(
+                WIDTH // 2,
+                ui["title_y"]
+            )
         )
 
         screen.blit(
@@ -1061,7 +1074,7 @@ while running:
             )
 
             text_rect = text.get_rect(
-                center=(WIDTH // 2, HEIGHT - 150)
+                center=(WIDTH // 2, ui["winner_y"])
             )
 
             screen.blit(
@@ -1070,13 +1083,13 @@ while running:
             )
 
             restart_text = message_font.render(
-                "ENTER = Play Again    ESC = Exit",
+                "ENTER = Play Again    ESC = Menu",
                 True,
                 (200, 200, 200)
             )
 
             restart_rect = restart_text.get_rect(
-                center=(WIDTH // 2, HEIGHT - 100)
+                center=(WIDTH // 2, ui["restart_y"])
             )
 
             screen.blit(
@@ -1086,23 +1099,8 @@ while running:
 
         else:
 
-            message = "Arrow Keys + Enter"
-
-            text = message_font.render(
-                message,
-                True,
-                (255, 255, 255)
-            )
-
-            message_y = start_y + board_height + 60
-
-            text_rect = text.get_rect(
-                center=(WIDTH // 2, message_y)
-            )
-
-            screen.blit(
-                text,
-                text_rect
+            draw_footer(
+                "ARROWS = Move   ENTER = Place   ESC = Menu"
             )
 
         
@@ -1116,7 +1114,10 @@ while running:
             )
     
             symbol_rect = symbol_text.get_rect(
-                center=(WIDTH // 2, symbol_y)
+                center=(
+                    WIDTH // 2,
+                    ui["symbol_y"]
+                )
             )
     
             screen.blit(
@@ -1135,7 +1136,10 @@ while running:
             )
 
             turn_rect = turn_text.get_rect(
-                center=(WIDTH // 2, turn_y)
+                center=(
+                    WIDTH // 2,
+                    ui["turn_y"]
+                )
             )
 
             screen.blit(
