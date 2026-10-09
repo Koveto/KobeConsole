@@ -88,6 +88,17 @@ games = [
             "logo0.png"
         )
     },
+    {
+        "title": "Update KobeConsole",
+        "path": None,
+        "color": (220, 180, 0),
+        "logo": os.path.join(
+            BASE_DIR,
+            "assets",
+            "logos",
+            "logo0.png"
+        )
+    },
 ]
 
 #background = pygame.image.load("assets/backgrounds/bg0.jpg")
