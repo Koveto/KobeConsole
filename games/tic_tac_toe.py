@@ -88,12 +88,53 @@ computer_symbol = "O"
 game_over = False
 winner = None
 
+def reset_multiplayer():
+
+    global connected_players
+    global attempt_connection
+    global server_socket
+    global client_socket
+    global joined_server
+    global join_status
+    global is_hosting
+    global my_symbol
+    global opponent_symbol
+    global my_turn
+
+    connected_players = 0
+    attempt_connection = False
+
+    joined_server = False
+    join_status = "Connection Failed"
+
+    is_hosting = False
+
+    my_symbol = ""
+    opponent_symbol = ""
+
+    my_turn = False
+
+    if client_socket:
+        try:
+            client_socket.close()
+        except OSError:
+            pass
+
+    if server_socket:
+        try:
+            server_socket.close()
+        except OSError:
+            pass
+
+    client_socket = None
+    server_socket = None
+
 def get_ui_layout():
 
     return {
         "title_y": HEIGHT // 8,
-        "symbol_y": HEIGHT // 4,
-        "turn_y": HEIGHT // 4 + 50,
+        "symbol_y": HEIGHT // 5,
+        "turn_y": HEIGHT // 5 + 50,
         "winner_y": HEIGHT - 150,
         "restart_y": HEIGHT - 100
     }
@@ -665,15 +706,10 @@ while running:
 
                 elif event.key == pygame.K_ESCAPE:
 
-                    if server_socket:
-                        server_socket.close()
-                        server_socket = None
-
-                    is_hosting = False
-                    
                     reset_game()
-
+                    reset_multiplayer()
                     current_screen = "lan_menu"
+
 
         connection_status = (
             "Hosting..."
@@ -822,8 +858,9 @@ while running:
                     running = False
 
                 elif event.key == pygame.K_ESCAPE:
-                    current_screen = "lan_menu"
                     reset_game()
+                    reset_multiplayer()
+                    current_screen = "lan_menu"
 
                 elif event.key == pygame.K_BACKSPACE:
                     host_ip_input = host_ip_input[:-1]
@@ -972,6 +1009,7 @@ while running:
                 elif event.key == pygame.K_ESCAPE:
                     
                     reset_game()
+                    reset_multiplayer()
                     current_screen = "menu"
 
                 if game_over:
