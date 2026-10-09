@@ -225,3 +225,115 @@ Only difference:
 
 Hostname:
     kobepi-2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+KOBECONSOLE AUTOSTART (RASPBERRY PI)
+
+1. Create autostart folder
+
+mkdir -p ~/.config/autostart
+
+2. Create autostart file
+
+nano ~/.config/autostart/kobeconsole.desktop
+
+3. Paste
+
+[Desktop Entry]
+Type=Application
+Name=KobeConsole
+Exec=lxterminal -e bash -c "/usr/bin/python3 /home/USERNAME/KobeConsole/launcher.py"
+Terminal=false
+X-GNOME-Autostart-enabled=true
+
+Replace USERNAME with your Pi username.
+
+Example:
+
+Exec=lxterminal -e bash -c "/usr/bin/python3 /home/kobepi-1/KobeConsole/launcher.py"
+
+4. Save
+
+Ctrl+X
+Y
+Enter
+
+5. Reboot
+
+sudo reboot
+
+--------------------------------------------------
+
+IMPORTANT LESSON LEARNED
+
+Do NOT use:
+
+Exec=/usr/bin/python3 /home/USERNAME/KobeConsole/launcher.py
+
+The launcher may fail silently because the working directory changes during autostart.
+
+Use:
+
+Exec=lxterminal -e bash -c "/usr/bin/python3 /home/USERNAME/KobeConsole/launcher.py"
+
+This opens a terminal and makes debugging much easier.
+
+--------------------------------------------------
+
+IF LAUNCHER OPENS MANUALLY BUT FAILS ON BOOT
+
+Run:
+
+nano ~/.config/autostart/kobeconsole.desktop
+
+Change Exec to:
+
+Exec=lxterminal -e bash -c "/usr/bin/python3 /home/USERNAME/KobeConsole/launcher.py; echo; echo Launcher exited. Press Enter.; read"
+
+Reboot.
+
+Any Python errors will remain visible in the terminal instead of disappearing immediately.
+
+--------------------------------------------------
+
+IF YOU GET FILE NOT FOUND ERRORS
+
+Inside launcher.py:
+
+import os
+
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
+)
+
+Use:
+
+os.path.join(BASE_DIR, ...)
+
+instead of relative paths like:
+
+assets/logos/logo0.png
+
+This fixes asset loading when launched from autostart.
