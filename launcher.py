@@ -89,7 +89,7 @@ games = [
         )
     },
     {
-        "title": "Update KobeConsole",
+        "title": "Update KobeConsole 2",
         "path": None,
         "color": (220, 180, 0),
         "logo": os.path.join(
