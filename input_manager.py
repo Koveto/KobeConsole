@@ -1,7 +1,11 @@
 import pygame
 import platform
 
+
 pygame.joystick.init()
+for i in range(pygame.joystick.get_count()):
+    joystick = pygame.joystick.Joystick(i)
+    joystick.init()
 
 IS_WINDOWS = (
     platform.system() == "Windows"
@@ -11,12 +15,14 @@ IS_LINUX = (
     platform.system() == "Linux"
 )
 
+QUIT_BUTTON = None
 LEFT_STICK_HORIZONTAL = 0
 LEFT_STICK_VERTICAL = 1
 CANCEL_BUTTON = 1
 if IS_WINDOWS:
 
     CONFIRM_BUTTON = 0
+    QUIT_BUTTON = 7
 
     LEFT_BUTTON = 13
     RIGHT_BUTTON = 14
@@ -26,6 +32,7 @@ if IS_WINDOWS:
 elif IS_LINUX:
 
     CONFIRM_BUTTON = 2
+    QUIT_BUTTON = 12
 
     LEFT_HAT = (-1, 0)
     RIGHT_HAT = (1, 0)
@@ -42,6 +49,22 @@ def get_controller_name():
     return joystick.get_name()
 CONTROLLER_NAME = get_controller_name()
 #Controller: PowerA Core (Plus) Wired Controller
+
+def is_quit(event):
+
+    if event.type == pygame.QUIT:
+        return True
+
+    if event.type == pygame.KEYDOWN:
+        return event.key == pygame.K_q
+
+    if (
+        QUIT_BUTTON is not None
+        and event.type == pygame.JOYBUTTONDOWN
+    ):
+        return event.button == QUIT_BUTTON
+
+    return False
 
 def is_left(event):
 

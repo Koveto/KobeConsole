@@ -1,6 +1,15 @@
 import pygame
 import random
 import socket
+import os
+import sys
+
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(__file__)
+    )
+)
+sys.path.append(BASE_DIR)
 from input_manager import *
 
 HOSTNAME = socket.gethostname()
@@ -349,24 +358,31 @@ while running:
 
     if current_screen == "menu":
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+
+            if is_quit(event):
                 running = False
 
-            elif event.type == pygame.KEYDOWN:
-                if is_up(event):
-                    menu_index = max(0, menu_index - 1)
-                elif is_down(event):
-                    menu_index = min(
-                        len(menu_options) - 1,
-                        menu_index + 1
-                    )
-                elif is_confirm(event):
-                    if menu_index == 0:
-                        current_screen = "singleplayer"
-                    elif menu_index == 1:
-                        current_screen = "lan_menu"
-                elif event.key == pygame.K_q:
-                    running = False
+            elif is_up(event):
+
+                menu_index = max(
+                    0,
+                    menu_index - 1
+                )
+
+            elif is_down(event):
+
+                menu_index = min(
+                    len(menu_options) - 1,
+                    menu_index + 1
+                )
+
+            elif is_confirm(event):
+
+                if menu_index == 0:
+                    current_screen = "singleplayer"
+
+                elif menu_index == 1:
+                    current_screen = "lan_menu"
         title = font.render(
             "Tic Tac Toe",
             True,
@@ -434,60 +450,76 @@ while running:
 
         for event in pygame.event.get():
 
-            if event.type == pygame.QUIT:
+            if is_quit(event):
                 running = False
 
-            elif event.type == pygame.KEYDOWN:
+            if is_cancel(event):
+                reset_game()
+                current_screen = "menu"
 
-                if is_cancel(event):
+            if game_over:
+
+                if is_confirm(event):
+
+                    swap_singleplayer_symbols()
                     reset_game()
-                    current_screen = "menu"
 
-                elif event.key == pygame.K_q:
-                    running = False
+                    if computer_symbol == "X":
+                        computer_move()
 
-                if game_over:
-                    if is_confirm(event):
-                        swap_singleplayer_symbols()
-                        reset_game()
-                        if computer_symbol == "X":
-                            computer_move()
+                continue
 
-                    continue
+            if is_left(event):
 
-                if is_left(event):
-                    selected_col = max(0, selected_col - 1)
+                selected_col = max(
+                    0,
+                    selected_col - 1
+                )
 
-                elif is_right(event):
-                    selected_col = min(2, selected_col + 1)
+            elif is_right(event):
 
-                elif is_up(event):
-                    selected_row = max(0, selected_row - 1)
+                selected_col = min(
+                    2,
+                    selected_col + 1
+                )
 
-                elif is_down(event):
-                    selected_row = min(2, selected_row + 1)
+            elif is_up(event):
 
-                elif is_confirm(event):
+                selected_row = max(
+                    0,
+                    selected_row - 1
+                )
 
-                    if board[selected_row][selected_col] == "":
+            elif is_down(event):
 
-                        board[selected_row][selected_col] = player_symbol
+                selected_row = min(
+                    2,
+                    selected_row + 1
+                )
+
+            elif is_confirm(event):
+
+                if board[selected_row][selected_col] == "":
+
+                    board[selected_row][selected_col] = player_symbol
+
+                    result = check_winner()
+
+                    if result:
+
+                        game_over = True
+                        winner = result
+
+                    else:
+
+                        computer_move()
 
                         result = check_winner()
 
                         if result:
+
                             game_over = True
                             winner = result
-
-                        else:
-
-                            computer_move()
-
-                            result = check_winner()
-
-                            if result:
-                                game_over = True
-                                winner = result
 
         (
             cell_size,
@@ -563,35 +595,30 @@ while running:
 
         for event in pygame.event.get():
 
-            if event.type == pygame.QUIT:
+            if is_quit(event):
                 running = False
 
-            elif event.type == pygame.KEYDOWN:
+            elif is_cancel(event):
+                
+                reset_game()
+                current_screen = "menu"
 
-                if event.key == pygame.K_q:
-                    running = False
+            elif is_up(event):
+                multiplayer_index = max(0, multiplayer_index - 1)
 
-                elif is_cancel(event):
-                    
-                    reset_game()
-                    current_screen = "menu"
+            elif is_down(event):
+                multiplayer_index = min(
+                    1,
+                    multiplayer_index + 1
+                )
 
-                elif is_up(event):
-                    multiplayer_index = max(0, multiplayer_index - 1)
+            elif is_confirm(event):
 
-                elif is_down(event):
-                    multiplayer_index = min(
-                        1,
-                        multiplayer_index + 1
-                    )
+                if multiplayer_index == 0:
+                    current_screen = "host"
 
-                elif is_confirm(event):
-
-                    if multiplayer_index == 0:
-                        current_screen = "host"
-
-                    elif multiplayer_index == 1:
-                        current_screen = "join"
+                elif multiplayer_index == 1:
+                    current_screen = "join"
                 
 
 
@@ -697,19 +724,14 @@ while running:
 
         for event in pygame.event.get():
         
-            if event.type == pygame.QUIT:
+            if is_quit(event):
                 running = False
 
-            elif event.type == pygame.KEYDOWN:
+            elif is_cancel(event):
 
-                if event.key == pygame.K_q:
-                    running = False
-
-                elif is_cancel(event):
-
-                    reset_game()
-                    reset_multiplayer()
-                    current_screen = "lan_menu"
+                reset_game()
+                reset_multiplayer()
+                current_screen = "lan_menu"
 
 
         connection_status = (
@@ -850,24 +872,21 @@ while running:
 
         for event in pygame.event.get():
         
-            if event.type == pygame.QUIT:
+            if is_quit(event):
                 running = False
+
+            elif is_cancel(event):
+                reset_game()
+                reset_multiplayer()
+                current_screen = "lan_menu"
+
+            elif is_confirm(event):
+                attempt_connection = True
 
             elif event.type == pygame.KEYDOWN:
 
-                if event.key == pygame.K_q:
-                    running = False
-
-                elif is_cancel(event):
-                    reset_game()
-                    reset_multiplayer()
-                    current_screen = "lan_menu"
-
-                elif event.key == pygame.K_BACKSPACE:
+                if event.key == pygame.K_BACKSPACE:
                     host_ip_input = host_ip_input[:-1]
-
-                elif is_confirm(event):
-                    attempt_connection = True
 
                 elif event.unicode in "0123456789.":
                     host_ip_input += event.unicode
@@ -999,60 +1018,55 @@ while running:
 
         for event in pygame.event.get():
 
-            if event.type == pygame.QUIT:
+            if is_quit(event):
                 running = False
 
-            elif event.type == pygame.KEYDOWN:
+            elif is_cancel(event):
+                
+                reset_game()
+                reset_multiplayer()
+                current_screen = "menu"
 
-                if event.key == pygame.K_q:
-                    running = False
-
-                elif is_cancel(event):
-                    
+            if game_over:
+                if is_confirm(event):
+                    swap_symbols()
                     reset_game()
-                    reset_multiplayer()
-                    current_screen = "menu"
+                    client_socket.send(
+                        "RESET".encode()
+                    )
 
-                if game_over:
-                    if is_confirm(event):
-                        swap_symbols()
-                        reset_game()
-                        client_socket.send(
-                            "RESET".encode()
-                        )
+                continue
+            if is_left(event):
+                selected_col = max(0, selected_col - 1)
 
-                    continue
-                if is_left(event):
-                    selected_col = max(0, selected_col - 1)
+            elif is_right(event):
+                selected_col = min(2, selected_col + 1)
 
-                elif is_right(event):
-                    selected_col = min(2, selected_col + 1)
+            elif is_up(event):
+                selected_row = max(0, selected_row - 1)
 
-                elif is_up(event):
-                    selected_row = max(0, selected_row - 1)
+            elif is_down(event):
+                selected_row = min(2, selected_row + 1)
 
-                elif is_down(event):
-                    selected_row = min(2, selected_row + 1)
+            elif is_confirm(event):
 
-                elif is_confirm(event):
+                if (
+                    my_turn
+                    and board[selected_row][selected_col] == ""
+                ):
 
-                    if (
-                        my_turn
-                        and board[selected_row][selected_col] == ""
-                    ):
+                    board[selected_row][selected_col] = my_symbol
+                    result = check_winner()
 
-                        board[selected_row][selected_col] = my_symbol
-                        result = check_winner()
+                    if result:
+                        game_over = True
+                        winner = result
 
-                        if result:
-                            game_over = True
-                            winner = result
+                    client_socket.send(
+                        f"MOVE:{selected_row},{selected_col}".encode()
+                    )
 
-                        client_socket.send(
-                            f"MOVE:{selected_row},{selected_col}".encode()
-                        )
-
-                        my_turn = False
+                    my_turn = False
 
         title = font.render(
             "LAN Game",

@@ -15,10 +15,6 @@ print(
 
 pygame.init()
 
-for i in range(pygame.joystick.get_count()):
-    joystick = pygame.joystick.Joystick(i)
-    joystick.init()
-
 
 display_info = pygame.display.Info()
 #1750x1100
