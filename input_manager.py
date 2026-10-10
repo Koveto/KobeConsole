@@ -1,11 +1,14 @@
 import pygame
 import platform
 
-
 pygame.joystick.init()
+
 for i in range(pygame.joystick.get_count()):
+
     joystick = pygame.joystick.Joystick(i)
+
     joystick.init()
+
 
 IS_WINDOWS = (
     platform.system() == "Windows"
@@ -15,29 +18,33 @@ IS_LINUX = (
     platform.system() == "Linux"
 )
 
-QUIT_BUTTON = None
-LEFT_STICK_HORIZONTAL = 0
-LEFT_STICK_VERTICAL = 1
-CANCEL_BUTTON = 1
+
+#
+# Controller Mappings
+#
+
 if IS_WINDOWS:
 
-    CONFIRM_BUTTON = 0
-    QUIT_BUTTON = 7
+    CONTROLLER_A = 0
+    CONTROLLER_B = 1
+    CONTROLLER_HOME = 7
 
-    LEFT_BUTTON = 13
-    RIGHT_BUTTON = 14
-    UP_BUTTON = 11
-    DOWN_BUTTON = 12
+    CONTROLLER_DPAD_LEFT = 13
+    CONTROLLER_DPAD_RIGHT = 14
+    CONTROLLER_DPAD_UP = 11
+    CONTROLLER_DPAD_DOWN = 12
 
 elif IS_LINUX:
 
-    CONFIRM_BUTTON = 2
-    QUIT_BUTTON = 12
+    CONTROLLER_A = 2
+    CONTROLLER_B = 1
+    CONTROLLER_HOME = 12
 
-    LEFT_HAT = (-1, 0)
-    RIGHT_HAT = (1, 0)
-    UP_HAT = (0, 1)
-    DOWN_HAT = (0, -1)
+    CONTROLLER_DPAD_LEFT = (-1, 0)
+    CONTROLLER_DPAD_RIGHT = (1, 0)
+    CONTROLLER_DPAD_UP = (0, 1)
+    CONTROLLER_DPAD_DOWN = (0, -1)
+
 
 def get_controller_name():
 
@@ -47,136 +54,235 @@ def get_controller_name():
     joystick = pygame.joystick.Joystick(0)
 
     return joystick.get_name()
+
+
 CONTROLLER_NAME = get_controller_name()
-#Controller: PowerA Core (Plus) Wired Controller
 
-def is_quit(event):
 
-    if event.type == pygame.QUIT:
-        return True
+#
+# Keyboard
+#
 
-    if event.type == pygame.KEYDOWN:
-        return event.key == pygame.K_q
+def is_keyboard_up(event):
 
-    if (
-        QUIT_BUTTON is not None
-        and event.type == pygame.JOYBUTTONDOWN
-    ):
-        return event.button == QUIT_BUTTON
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_UP
+    )
 
-    return False
 
-def is_left(event):
+def is_keyboard_down(event):
 
-    if event.type == pygame.KEYDOWN:
-        return event.key == pygame.K_LEFT
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_DOWN
+    )
+
+
+def is_keyboard_left(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_LEFT
+    )
+
+
+def is_keyboard_right(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_RIGHT
+    )
+
+
+def is_keyboard_enter(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_RETURN
+    )
+
+
+def is_keyboard_escape(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_ESCAPE
+    )
+
+
+def is_keyboard_q(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_q
+    )
+
+
+#
+# Controller D-Pad
+#
+
+def is_controller_dpad_left(event):
 
     if IS_WINDOWS:
+
         return (
             event.type == pygame.JOYBUTTONDOWN
-            and event.button == LEFT_BUTTON
+            and event.button == CONTROLLER_DPAD_LEFT
         )
 
     if IS_LINUX:
+
         return (
             event.type == pygame.JOYHATMOTION
-            and event.value == LEFT_HAT
+            and event.value == CONTROLLER_DPAD_LEFT
         )
 
     return False
 
-def is_right(event):
 
-    #
-    # Keyboard
-    #
-    if event.type == pygame.KEYDOWN:
-        return event.key == pygame.K_RIGHT
+def is_controller_dpad_right(event):
 
-    #
-    # Windows D-Pad
-    #
     if IS_WINDOWS:
-        if event.type == pygame.JOYBUTTONDOWN:
-            return event.button == RIGHT_BUTTON
 
-    #
-    # Pi D-Pad
-    #
+        return (
+            event.type == pygame.JOYBUTTONDOWN
+            and event.button == CONTROLLER_DPAD_RIGHT
+        )
+
     if IS_LINUX:
-        if event.type == pygame.JOYHATMOTION:
-            return event.value == RIGHT_HAT
+
+        return (
+            event.type == pygame.JOYHATMOTION
+            and event.value == CONTROLLER_DPAD_RIGHT
+        )
 
     return False
+
+
+def is_controller_dpad_up(event):
+
+    if IS_WINDOWS:
+
+        return (
+            event.type == pygame.JOYBUTTONDOWN
+            and event.button == CONTROLLER_DPAD_UP
+        )
+
+    if IS_LINUX:
+
+        return (
+            event.type == pygame.JOYHATMOTION
+            and event.value == CONTROLLER_DPAD_UP
+        )
+
+    return False
+
+
+def is_controller_dpad_down(event):
+
+    if IS_WINDOWS:
+
+        return (
+            event.type == pygame.JOYBUTTONDOWN
+            and event.button == CONTROLLER_DPAD_DOWN
+        )
+
+    if IS_LINUX:
+
+        return (
+            event.type == pygame.JOYHATMOTION
+            and event.value == CONTROLLER_DPAD_DOWN
+        )
+
+    return False
+
+
+#
+# Controller Buttons
+#
+
+def is_controller_button_a(event):
+
+    return (
+        event.type == pygame.JOYBUTTONDOWN
+        and event.button == CONTROLLER_A
+    )
+
+
+def is_controller_button_b(event):
+
+    return (
+        event.type == pygame.JOYBUTTONDOWN
+        and event.button == CONTROLLER_B
+    )
+
+
+def is_controller_button_home(event):
+
+    return (
+        event.type == pygame.JOYBUTTONDOWN
+        and event.button == CONTROLLER_HOME
+    )
+
+
+#
+# Actions
+#
 
 def is_up(event):
 
-    #
-    # Keyboard
-    #
-    if event.type == pygame.KEYDOWN:
-        return event.key == pygame.K_UP
+    return (
+        is_keyboard_up(event)
+        or is_controller_dpad_up(event)
+    )
 
-    #
-    # Windows D-Pad
-    #
-    if IS_WINDOWS:
-        if event.type == pygame.JOYBUTTONDOWN:
-            return event.button == UP_BUTTON
-
-    #
-    # Pi D-Pad
-    #
-    if IS_LINUX:
-        if event.type == pygame.JOYHATMOTION:
-            return event.value == UP_HAT
-
-    return False
 
 def is_down(event):
 
-    #
-    # Keyboard
-    #
-    if event.type == pygame.KEYDOWN:
-        return event.key == pygame.K_DOWN
+    return (
+        is_keyboard_down(event)
+        or is_controller_dpad_down(event)
+    )
 
-    #
-    # Windows D-Pad
-    #
-    if IS_WINDOWS:
-        if event.type == pygame.JOYBUTTONDOWN:
-            return event.button == DOWN_BUTTON
 
-    #
-    # Pi D-Pad
-    #
-    if IS_LINUX:
-        if event.type == pygame.JOYHATMOTION:
-            return event.value == DOWN_HAT
+def is_left(event):
 
-    return False
+    return (
+        is_keyboard_left(event)
+        or is_controller_dpad_left(event)
+    )
+
+
+def is_right(event):
+
+    return (
+        is_keyboard_right(event)
+        or is_controller_dpad_right(event)
+    )
+
 
 def is_confirm(event):
 
-    if event.type == pygame.KEYDOWN:
-        return event.key == pygame.K_RETURN
-
-    if event.type == pygame.JOYBUTTONDOWN:
-        return event.button == CONFIRM_BUTTON
-
-    return False
+    return (
+        is_keyboard_enter(event)
+        or is_controller_button_a(event)
+    )
 
 
 def is_cancel(event):
 
-    #
-    # Keyboard
-    #
-    if event.type == pygame.KEYDOWN:
-        return event.key == pygame.K_q
+    return (
+        is_keyboard_escape(event)
+        or is_controller_button_b(event)
+    )
 
-    if event.type == pygame.JOYBUTTONDOWN:
-        return event.button == CANCEL_BUTTON
 
-    return False
+def is_quit(event):
+
+    return (
+        event.type == pygame.QUIT
+        or is_keyboard_q(event)
+        or is_controller_button_home(event)
+    )
