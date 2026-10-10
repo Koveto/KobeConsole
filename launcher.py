@@ -97,6 +97,7 @@ def update_kobeconsole():
         ["git", "pull"],
         cwd=BASE_DIR
     )
+    pygame.event.clear()
     os.execv(
         sys.executable,
         [
