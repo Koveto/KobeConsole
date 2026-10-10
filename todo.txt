@@ -1,46 +1,7 @@
-KobeConsole Deployment Plan
-
-When Pi arrives:
-
-[] Flash Raspberry Pi OS
-[] Boot Pi
-[] Connect keyboard
-[] Connect monitor through HDMI
-[] Connect Wi-Fi
-
-[] Install Python dependencies
-[] Clone KobeConsole repository
-[] Run launcher manually
-
-Goal #1:
-Launcher runs on Raspberry Pi
-
-Goal #2:
-Tic Tac Toe launches from launcher
-
-Goal #3:
-Launcher runs fullscreen
-
-Goal #4:
-Launcher starts automatically on boot
-
-Future:
-[] Controller support
-[] Bluetooth controller support
-[] Online multiplayer Tic Tac Toe
-[] Bluetooth multiplayer Tic Tac Toe
-
-
-Switch 2 Pro Controller
-
-Windows Results:
-- Detected by pygame
-- Name: If_Hid
-- Axes: 4
-- Buttons: 21
-
-Issues:
-- No button events received
-- No axis events received
-
-Retest on Raspberry Pi after arrival.
+1. automatic LAN
+2. controller text
+3. analog stick
+(big picture)
+4. server/online tic tac toe from any wifi
+5. controller wizard visualizing the controller, where I can verify every controller button and swap them around. same with keyboard and mouse
+6. pokemon battle simulator for me and my brother to play together while i am out of state

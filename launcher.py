@@ -169,10 +169,7 @@ while running:
 
     for event in pygame.event.get():
 
-        if is_quit(event):
-            running = False
-
-        elif is_right(event):
+        if is_right(event):
             selected_index += 1
 
         elif is_left(event):

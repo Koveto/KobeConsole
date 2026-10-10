@@ -12,6 +12,8 @@ BASE_DIR = os.path.dirname(
 sys.path.append(BASE_DIR)
 from input_manager import *
 
+DISCOVERY_PORT = 55556
+
 HOSTNAME = socket.gethostname()
 host_ip = ""
 HOST_IP = ""
@@ -97,6 +99,26 @@ computer_symbol = "O"
 
 game_over = False
 winner = None
+
+def broadcast_host():
+
+    broadcast_socket = socket.socket(
+        socket.AF_INET,
+        socket.SOCK_DGRAM
+    )
+
+    broadcast_socket.setsockopt(
+        socket.SOL_SOCKET,
+        socket.SO_BROADCAST,
+        1
+    )
+
+    broadcast_socket.sendto(
+        b"KOBE_TICTACTOE_HOST",
+        ("<broadcast>", DISCOVERY_PORT)
+    )
+
+    broadcast_socket.close()
 
 def reset_multiplayer():
 
@@ -615,10 +637,10 @@ while running:
             elif is_confirm(event):
 
                 if multiplayer_index == 0:
-                    current_screen = "host"
+                    current_screen = "lan_host"
 
                 elif multiplayer_index == 1:
-                    current_screen = "join"
+                    current_screen = "lan_join"
                 
 
 
@@ -700,6 +722,159 @@ while running:
 
             server_socket.listen(1)
             server_socket.setblocking(False)
+
+            is_hosting = True
+
+        if connected_players == 0:
+
+            try:
+                client_socket, address = server_socket.accept()
+                client_socket.setblocking(False)
+
+                connected_players = 1
+                current_screen = "lan_game"
+                my_symbol = "X"
+                opponent_symbol = "O"
+                my_turn = True
+
+            except (
+                BlockingIOError,
+                ConnectionResetError,
+                OSError
+            ):
+                pass
+
+        for event in pygame.event.get():
+        
+            if is_quit(event):
+                running = False
+
+            elif is_cancel(event):
+
+                reset_game()
+                reset_multiplayer()
+                current_screen = "lan_menu"
+
+
+        connection_status = (
+            "Hosting..."
+            if is_hosting
+            else "Not Hosting"
+        )
+
+        title = font.render(
+            "Host Game",
+            True,
+            (255, 255, 255)
+        )
+
+        title_rect = title.get_rect(
+            center=(WIDTH // 2, HEIGHT // 3)
+        )
+
+        screen.blit(
+            title,
+            title_rect
+        )
+
+        message = message_font.render(
+            connection_status,
+            True,
+            (255, 255, 0)
+        )
+
+        message_rect = message.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2)
+        )
+
+        screen.blit(
+            message,
+            message_rect
+        )
+
+        host_name_text = message_font.render(
+            f"Host: {HOSTNAME}",
+            True,
+            (255, 255, 255)
+        )
+
+        host_name_rect = host_name_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 60)
+        )
+
+        screen.blit(
+            host_name_text,
+            host_name_rect
+        )
+
+        ip_text = message_font.render(
+            f"IP: {IP_ADDRESS}",
+            True,
+            (255, 255, 255)
+        )
+
+        ip_rect = ip_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 120)
+        )
+
+        screen.blit(
+            ip_text,
+            ip_rect
+        )
+
+        port_text = message_font.render(
+            f"Port: {PORT}",
+            True,
+            (255, 255, 255)
+        )
+
+        port_rect = port_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 180)
+        )
+
+        screen.blit(
+            port_text,
+            port_rect
+        )
+
+        players_text = message_font.render(
+            f"Players Connected: {connected_players}",
+            True,
+            (255, 255, 255)
+        )
+
+        players_rect = players_text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2 + 240)
+        )
+
+        screen.blit(
+            players_text,
+            players_rect
+        )
+
+        draw_footer(
+            "ESC = Back     Q = Quit"
+        )
+
+    elif current_screen == "lan_host":
+    
+        HOST_IP = IP_ADDRESS
+
+        if not is_hosting:
+
+            server_socket = socket.socket(
+                socket.AF_INET,
+                socket.SOCK_STREAM
+            )
+
+            server_socket.bind(
+                (IP_ADDRESS, PORT)
+            )
+
+            server_socket.listen(1)
+            server_socket.setblocking(False)
+
+            broadcast_host()
 
             is_hosting = True
 
