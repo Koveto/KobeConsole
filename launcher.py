@@ -99,6 +99,7 @@ for game in games:
 
 
 def update_kobeconsole():
+    
 
     print("UPDATE START")
 
