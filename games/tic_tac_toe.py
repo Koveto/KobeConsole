@@ -18,16 +18,11 @@ discovered_host_ip = None
 last_broadcast_time = 0
 
 HOSTNAME = socket.gethostname()
-host_ip = ""
-HOST_IP = ""
-host_ip_input = ""
 PORT = 5000
 connected_players = 0
-attempt_connection = False
 server_socket = None
 client_socket = None
-joined_server = False
-join_status = "Connection Failed"
+is_connected = False
 is_hosting = False
 my_symbol = ""
 opponent_symbol = ""
@@ -147,11 +142,9 @@ def broadcast_host():
 def reset_multiplayer():
 
     global connected_players
-    global attempt_connection
     global server_socket
     global client_socket
-    global joined_server
-    global join_status
+    global is_connected
     global is_hosting
     global my_symbol
     global opponent_symbol
@@ -161,10 +154,8 @@ def reset_multiplayer():
     global last_broadcast_time
 
     connected_players = 0
-    attempt_connection = False
 
-    joined_server = False
-    join_status = "Connection Failed"
+    is_connected = False
 
     is_hosting = False
 
@@ -173,31 +164,77 @@ def reset_multiplayer():
 
     my_turn = False
 
-    if client_socket:
-        try:
-            client_socket.close()
-        except OSError:
-            pass
-
-    if server_socket:
-        try:
-            server_socket.close()
-        except OSError:
-            pass
+    close_socket(client_socket)
+    close_socket(server_socket)
 
     client_socket = None
     server_socket = None
-    if discovery_socket:
-
-        try:
-            discovery_socket.close()
-
-        except OSError:
-            pass
+    close_socket(discovery_socket)
 
     discovery_socket = None
     discovered_host_ip = None
     last_broadcast_time = 0
+
+def close_socket(sock):
+
+    if sock:
+
+        try:
+            sock.close()
+
+        except OSError:
+            pass
+
+def get_navigation_text():
+
+    if using_controller():
+
+        return (
+            "D-PAD = Move   "
+            "A = Confirm   "
+            "B = Back   "
+            "HOME = Quit"
+        )
+
+    return (
+        "ARROWS = Move   "
+        "Z/ENTER = Confirm   "
+        "X/ESC = Back   "
+        "Q = Quit"
+    )
+
+def get_menu_text():
+
+    if using_controller():
+
+        return (
+            "D-PAD = Select   "
+            "A = Confirm   "
+            "B = Back   "
+            "HOME = Quit"
+        )
+
+    return (
+        "UP/DOWN = Select   "
+        "Z/ENTER = Confirm   "
+        "X/ESC = Back   "
+        "Q = Quit"
+    )
+
+def get_restart_text():
+
+    if using_controller():
+
+        return (
+            "A = Play Again    "
+            "B = Menu"
+        )
+
+    return (
+        "Z/ENTER = Play Again    "
+        "X/ESC = Menu"
+    )
+
 
 def get_ui_layout():
 
@@ -501,7 +538,7 @@ while running:
         )
 
         draw_footer(
-            "UP/DOWN = Select   ENTER = Confirm   Q = Quit"
+            get_menu_text()
         )
 
     elif current_screen == "singleplayer":
@@ -631,7 +668,7 @@ while running:
             )
 
             restart_text = message_font.render(
-                "ENTER = Play Again    ESC = Menu",
+                get_restart_text(),
                 True,
                 (200, 200, 200)
             )
@@ -648,7 +685,7 @@ while running:
         else:
 
             draw_footer(
-                "ARROWS = Move   ENTER = Place   ESC = Menu"
+                get_navigation_text()
             )
 
     elif current_screen == "lan_menu":
@@ -740,13 +777,11 @@ while running:
         )
 
         draw_footer(
-            "UP/DOWN = Select   ENTER = Confirm   ESC = Back"
+            get_menu_text()
         )
     
     elif current_screen == "host":
     
-        HOST_IP = IP_ADDRESS
-
         if not is_hosting:
 
             server_socket = socket.socket(
@@ -899,7 +934,7 @@ while running:
         )
 
         draw_footer(
-            "ESC = Back     Q = Quit"
+            get_menu_text()
         )
 
 
@@ -923,7 +958,7 @@ while running:
 
         if (
             discovered_host_ip is not None
-            and not joined_server
+            and not is_connected
         ):
 
             try:
@@ -941,7 +976,7 @@ while running:
 
                 client_socket.setblocking(False)
 
-                joined_server = True
+                is_connected = True
 
                 current_screen = "lan_game"
 
@@ -985,7 +1020,7 @@ while running:
         )
 
         draw_footer(
-            "B = Back     Home = Quit"
+            get_menu_text()
         )
     
     elif current_screen == "lan_game":
@@ -1155,7 +1190,7 @@ while running:
             )
 
             restart_text = message_font.render(
-                "ENTER = Play Again    ESC = Menu",
+                get_restart_text(),
                 True,
                 (200, 200, 200)
             )
@@ -1172,7 +1207,7 @@ while running:
         else:
 
             draw_footer(
-                "ARROWS = Move   ENTER = Place   ESC = Menu"
+                get_navigation_text()
             )
 
         

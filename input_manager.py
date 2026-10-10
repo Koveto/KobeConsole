@@ -58,10 +58,28 @@ def get_controller_name():
 
 CONTROLLER_NAME = get_controller_name()
 
+def using_controller():
+
+    return CONTROLLER_NAME is not None
+
 
 #
 # Keyboard
 #
+
+def is_keyboard_z(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_z
+    )
+
+def is_keyboard_x(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_x
+    )
 
 def is_keyboard_up(event):
 
@@ -267,6 +285,7 @@ def is_confirm(event):
 
     return (
         is_keyboard_enter(event)
+        or is_keyboard_z(event)
         or is_controller_button_a(event)
     )
 
@@ -275,6 +294,7 @@ def is_cancel(event):
 
     return (
         is_keyboard_escape(event)
+        or is_keyboard_x(event)
         or is_controller_button_b(event)
     )
 
