@@ -15,6 +15,7 @@ from input_manager import *
 DISCOVERY_PORT = 55556
 discovery_socket = None
 discovered_host_ip = None
+last_broadcast_time = 0
 
 HOSTNAME = socket.gethostname()
 host_ip = ""
@@ -155,6 +156,9 @@ def reset_multiplayer():
     global my_symbol
     global opponent_symbol
     global my_turn
+    global discovery_socket
+    global discovered_host_ip
+    global last_broadcast_time
 
     connected_players = 0
     attempt_connection = False
@@ -183,6 +187,17 @@ def reset_multiplayer():
 
     client_socket = None
     server_socket = None
+    if discovery_socket:
+
+        try:
+            discovery_socket.close()
+
+        except OSError:
+            pass
+
+    discovery_socket = None
+    discovered_host_ip = None
+    last_broadcast_time = 0
 
 def get_ui_layout():
 
@@ -660,10 +675,10 @@ while running:
             elif is_confirm(event):
 
                 if multiplayer_index == 0:
-                    current_screen = "lan_host"
+                    current_screen = "host"
 
                 elif multiplayer_index == 1:
-                    current_screen = "lan_join"
+                    current_screen = "join"
                 
 
 
@@ -729,157 +744,6 @@ while running:
         )
     
     elif current_screen == "host":
-
-        HOST_IP = IP_ADDRESS
-
-        if not is_hosting:
-
-            server_socket = socket.socket(
-                socket.AF_INET,
-                socket.SOCK_STREAM
-            )
-
-            server_socket.bind(
-                (IP_ADDRESS, PORT)
-            )
-
-            server_socket.listen(1)
-            server_socket.setblocking(False)
-
-            is_hosting = True
-
-        if connected_players == 0:
-
-            try:
-                client_socket, address = server_socket.accept()
-                client_socket.setblocking(False)
-
-                connected_players = 1
-                current_screen = "lan_game"
-                my_symbol = "X"
-                opponent_symbol = "O"
-                my_turn = True
-
-            except (
-                BlockingIOError,
-                ConnectionResetError,
-                OSError
-            ):
-                pass
-
-        for event in pygame.event.get():
-        
-            if is_quit(event):
-                running = False
-
-            elif is_cancel(event):
-
-                reset_game()
-                reset_multiplayer()
-                current_screen = "lan_menu"
-
-
-        connection_status = (
-            "Hosting..."
-            if is_hosting
-            else "Not Hosting"
-        )
-
-        title = font.render(
-            "Host Game",
-            True,
-            (255, 255, 255)
-        )
-
-        title_rect = title.get_rect(
-            center=(WIDTH // 2, HEIGHT // 3)
-        )
-
-        screen.blit(
-            title,
-            title_rect
-        )
-
-        message = message_font.render(
-            connection_status,
-            True,
-            (255, 255, 0)
-        )
-
-        message_rect = message.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2)
-        )
-
-        screen.blit(
-            message,
-            message_rect
-        )
-
-        host_name_text = message_font.render(
-            f"Host: {HOSTNAME}",
-            True,
-            (255, 255, 255)
-        )
-
-        host_name_rect = host_name_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 60)
-        )
-
-        screen.blit(
-            host_name_text,
-            host_name_rect
-        )
-
-        ip_text = message_font.render(
-            f"IP: {IP_ADDRESS}",
-            True,
-            (255, 255, 255)
-        )
-
-        ip_rect = ip_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 120)
-        )
-
-        screen.blit(
-            ip_text,
-            ip_rect
-        )
-
-        port_text = message_font.render(
-            f"Port: {PORT}",
-            True,
-            (255, 255, 255)
-        )
-
-        port_rect = port_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 180)
-        )
-
-        screen.blit(
-            port_text,
-            port_rect
-        )
-
-        players_text = message_font.render(
-            f"Players Connected: {connected_players}",
-            True,
-            (255, 255, 255)
-        )
-
-        players_rect = players_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 240)
-        )
-
-        screen.blit(
-            players_text,
-            players_rect
-        )
-
-        draw_footer(
-            "ESC = Back     Q = Quit"
-        )
-
-    elif current_screen == "lan_host":
     
         HOST_IP = IP_ADDRESS
 
@@ -897,9 +761,15 @@ while running:
             server_socket.listen(1)
             server_socket.setblocking(False)
 
+            is_hosting = True
+
+        current_time = pygame.time.get_ticks()
+
+        if current_time - last_broadcast_time > 1000:
+
             broadcast_host()
 
-            is_hosting = True
+            last_broadcast_time = current_time
 
         if connected_players == 0:
 
@@ -1034,140 +904,6 @@ while running:
 
 
     elif current_screen == "join":
-        if (
-            attempt_connection
-            and not joined_server
-        ):
-
-
-            try:
-
-                client_socket = socket.socket(
-                    socket.AF_INET,
-                    socket.SOCK_STREAM
-                )
-
-                client_socket.settimeout(2)
-
-                client_socket.connect(
-                    (host_ip_input, PORT)
-                )
-
-                joined_server = True
-                join_status = "Connected!"
-                attempt_connection = False
-                current_screen = "lan_game"
-                my_symbol = "O"
-                opponent_symbol = "X"
-                my_turn = False
-
-                client_socket.setblocking(False)
-
-            except OSError:
-
-                join_status = "Connection Failed"
-                attempt_connection = False
-
-        for event in pygame.event.get():
-        
-            if is_quit(event):
-                running = False
-
-            elif is_cancel(event):
-                reset_game()
-                reset_multiplayer()
-                current_screen = "lan_menu"
-
-            elif is_confirm(event):
-                attempt_connection = True
-
-            elif event.type == pygame.KEYDOWN:
-
-                if event.key == pygame.K_BACKSPACE:
-                    host_ip_input = host_ip_input[:-1]
-
-                elif event.unicode in "0123456789.":
-                    host_ip_input += event.unicode
-        title = font.render(
-            "Join Game",
-            True,
-            (255, 255, 255)
-        )
-
-        title_rect = title.get_rect(
-            center=(WIDTH // 2, HEIGHT // 3)
-        )
-
-        screen.blit(
-            title,
-            title_rect
-        )
-
-        ip_prompt = message_font.render(
-            f"Host IP: {host_ip_input}",
-            True,
-            (255, 255, 255)
-        )
-
-        ip_prompt_rect = ip_prompt.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 - 60)
-        )
-
-        screen.blit(
-            ip_prompt,
-            ip_prompt_rect
-        )
-
-        instruction_text = message_font.render(
-            "Type Host IP Address",
-            True,
-            (200, 200, 200)
-        )
-
-        instruction_rect = instruction_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 - 120)
-        )
-
-        screen.blit(
-            instruction_text,
-            instruction_rect
-        )
-
-        connect_text = message_font.render(
-            "ENTER = Connect",
-            True,
-            (200, 200, 200)
-        )
-
-        connect_rect = connect_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 120)
-        )
-
-        screen.blit(
-            connect_text,
-            connect_rect
-        )
-
-        message = message_font.render(
-            join_status,
-            True,
-            (255, 255, 0)
-        )
-
-        message_rect = message.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2)
-        )
-
-        screen.blit(
-            message,
-            message_rect
-        )
-
-        draw_footer(
-            "ENTER = Connect   ESC = Back   Q = Quit"
-        )
-
-    elif current_screen == "lan_join":
 
         if discovery_socket is None:
 
@@ -1229,19 +965,19 @@ while running:
 
                 current_screen = "lan_menu"
 
-        title = font.render(
-            "Connecting...",
-            True,
-            (255, 255, 255)
+        status_text = (
+            f"Found Host: {discovered_host_ip}"
+            if discovered_host_ip
+            else "Searching..."
         )
 
-        title_rect = title.get_rect(
+        status_rect = status_text.get_rect(
             center=(WIDTH // 2, HEIGHT // 2)
         )
 
         screen.blit(
-            title,
-            title_rect
+            status_text,
+            status_rect
         )
 
         draw_footer(
