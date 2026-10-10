@@ -1,0 +1,5100 @@
+{
+  "pokemon": [
+    {
+      "no": 1,
+      "name": "Bulbasaur",
+      "types": ["Grass","Poison"],
+      "stats": {
+        "HP": 45,
+        "Atk": 49,
+        "Def": 49,
+        "SpAtk": 65,
+        "SpDef": 65,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 2,
+      "name": "Ivysaur",
+      "types": ["Grass","Poison"],
+      "stats": {
+        "HP": 60,
+        "Atk": 62,
+        "Def": 63,
+        "SpAtk": 80,
+        "SpDef": 80,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 3,
+      "name": "Venusaur",
+      "types": ["Grass","Poison"],
+      "stats": {
+        "HP": 80,
+        "Atk": 82,
+        "Def": 83,
+        "SpAtk": 100,
+        "SpDef": 100,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 4,
+      "name": "Charmander",
+      "types": ["Fire"],
+      "stats": {
+        "HP": 39,
+        "Atk": 52,
+        "Def": 43,
+        "SpAtk": 60,
+        "SpDef": 50,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 5,
+      "name": "Charmeleon",
+      "types": ["Fire"],
+      "stats": {
+        "HP": 58,
+        "Atk": 64,
+        "Def": 58,
+        "SpAtk": 80,
+        "SpDef": 65,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 6,
+      "name": "Charizard",
+      "types": ["Fire","Flying"],
+      "stats": {
+        "HP": 78,
+        "Atk": 84,
+        "Def": 78,
+        "SpAtk": 109,
+        "SpDef": 85,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 7,
+      "name": "Squirtle",
+      "types": ["Water"],
+      "stats": {
+        "HP": 44,
+        "Atk": 48,
+        "Def": 65,
+        "SpAtk": 50,
+        "SpDef": 64,
+        "Spd": 43
+      }
+    },
+    {
+      "no": 8,
+      "name": "Wartortle",
+      "types": ["Water"],
+      "stats": {
+        "HP": 59,
+        "Atk": 63,
+        "Def": 80,
+        "SpAtk": 65,
+        "SpDef": 80,
+        "Spd": 58
+      }
+    },
+    {
+      "no": 9,
+      "name": "Blastoise",
+      "types": ["Water"],
+      "stats": {
+        "HP": 79,
+        "Atk": 83,
+        "Def": 100,
+        "SpAtk": 85,
+        "SpDef": 105,
+        "Spd": 78
+      }
+    },
+    {
+      "no": 10,
+      "name": "Caterpie",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 30,
+        "Def": 35,
+        "SpAtk": 20,
+        "SpDef": 20,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 11,
+      "name": "Metapod",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 20,
+        "Def": 55,
+        "SpAtk": 25,
+        "SpDef": 25,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 12,
+      "name": "Butterfree",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 45,
+        "Def": 50,
+        "SpAtk": 90,
+        "SpDef": 80,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 13,
+      "name": "Weedle",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 35,
+        "Def": 30,
+        "SpAtk": 20,
+        "SpDef": 20,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 14,
+      "name": "Kakuna",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 25,
+        "Def": 50,
+        "SpAtk": 25,
+        "SpDef": 25,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 15,
+      "name": "Beedrill",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 90,
+        "Def": 40,
+        "SpAtk": 45,
+        "SpDef": 80,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 16,
+      "name": "Pidgey",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 45,
+        "Def": 40,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 56
+      }
+    },
+    {
+      "no": 17,
+      "name": "Pidgeotto",
+      "types": [],
+      "stats": {
+        "HP": 63,
+        "Atk": 60,
+        "Def": 55,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 71
+      }
+    },
+    {
+      "no": 18,
+      "name": "Pidgeot",
+      "types": [],
+      "stats": {
+        "HP": 83,
+        "Atk": 80,
+        "Def": 75,
+        "SpAtk": 70,
+        "SpDef": 70,
+        "Spd": 101
+      }
+    },
+    {
+      "no": 19,
+      "name": "Rattata",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 56,
+        "Def": 35,
+        "SpAtk": 25,
+        "SpDef": 35,
+        "Spd": 72
+      }
+    },
+    {
+      "no": 20,
+      "name": "Raticate",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 81,
+        "Def": 60,
+        "SpAtk": 50,
+        "SpDef": 70,
+        "Spd": 97
+      }
+    },
+    {
+      "no": 21,
+      "name": "Spearow",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 60,
+        "Def": 30,
+        "SpAtk": 31,
+        "SpDef": 31,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 22,
+      "name": "Fearow",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 90,
+        "Def": 65,
+        "SpAtk": 61,
+        "SpDef": 61,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 23,
+      "name": "Ekans",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 60,
+        "Def": 44,
+        "SpAtk": 40,
+        "SpDef": 54,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 24,
+      "name": "Arbok",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 95,
+        "Def": 69,
+        "SpAtk": 65,
+        "SpDef": 79,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 25,
+      "name": "Pikachu",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 55,
+        "Def": 40,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 26,
+      "name": "Raichu",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 90,
+        "Def": 55,
+        "SpAtk": 90,
+        "SpDef": 80,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 27,
+      "name": "Sandshrew",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 75,
+        "Def": 85,
+        "SpAtk": 20,
+        "SpDef": 30,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 28,
+      "name": "Sandslash",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 100,
+        "Def": 110,
+        "SpAtk": 45,
+        "SpDef": 55,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 29,
+      "name": "NidoranF",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 47,
+        "Def": 52,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 41
+      }
+    },
+    {
+      "no": 30,
+      "name": "Nidorina",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 62,
+        "Def": 67,
+        "SpAtk": 55,
+        "SpDef": 55,
+        "Spd": 56
+      }
+    },
+    {
+      "no": 31,
+      "name": "Nidoqueen",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 92,
+        "Def": 87,
+        "SpAtk": 75,
+        "SpDef": 85,
+        "Spd": 76
+      }
+    },
+    {
+      "no": 32,
+      "name": "NidoranM",
+      "types": [],
+      "stats": {
+        "HP": 46,
+        "Atk": 57,
+        "Def": 40,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 33,
+      "name": "Nidorino",
+      "types": [],
+      "stats": {
+        "HP": 61,
+        "Atk": 72,
+        "Def": 57,
+        "SpAtk": 55,
+        "SpDef": 55,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 34,
+      "name": "Nidoking",
+      "types": [],
+      "stats": {
+        "HP": 81,
+        "Atk": 102,
+        "Def": 77,
+        "SpAtk": 85,
+        "SpDef": 75,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 35,
+      "name": "Clefairy",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 45,
+        "Def": 48,
+        "SpAtk": 60,
+        "SpDef": 65,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 36,
+      "name": "Clefable",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 70,
+        "Def": 73,
+        "SpAtk": 95,
+        "SpDef": 90,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 37,
+      "name": "Vulpix",
+      "types": [],
+      "stats": {
+        "HP": 38,
+        "Atk": 41,
+        "Def": 40,
+        "SpAtk": 50,
+        "SpDef": 65,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 38,
+      "name": "Ninetales",
+      "types": [],
+      "stats": {
+        "HP": 73,
+        "Atk": 76,
+        "Def": 75,
+        "SpAtk": 81,
+        "SpDef": 100,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 39,
+      "name": "Jigglypuff",
+      "types": [],
+      "stats": {
+        "HP": 115,
+        "Atk": 45,
+        "Def": 20,
+        "SpAtk": 45,
+        "SpDef": 25,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 40,
+      "name": "Wigglypuff",
+      "types": [],
+      "stats": {
+        "HP": 140,
+        "Atk": 70,
+        "Def": 45,
+        "SpAtk": 85,
+        "SpDef": 50,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 41,
+      "name": "Zubat",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 45,
+        "Def": 35,
+        "SpAtk": 30,
+        "SpDef": 40,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 42,
+      "name": "Golbat",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 80,
+        "Def": 70,
+        "SpAtk": 65,
+        "SpDef": 75,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 43,
+      "name": "Oddish",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 50,
+        "Def": 55,
+        "SpAtk": 75,
+        "SpDef": 65,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 44,
+      "name": "Gloom",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 65,
+        "Def": 70,
+        "SpAtk": 85,
+        "SpDef": 75,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 45,
+      "name": "Vileplume",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 80,
+        "Def": 85,
+        "SpAtk": 110,
+        "SpDef": 90,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 46,
+      "name": "Paras",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 70,
+        "Def": 55,
+        "SpAtk": 45,
+        "SpDef": 55,
+        "Spd": 25
+      }
+    },
+    {
+      "no": 47,
+      "name": "Parasect",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 95,
+        "Def": 80,
+        "SpAtk": 60,
+        "SpDef": 80,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 48,
+      "name": "Venonat",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 55,
+        "Def": 50,
+        "SpAtk": 40,
+        "SpDef": 55,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 49,
+      "name": "Venomoth",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 65,
+        "Def": 60,
+        "SpAtk": 90,
+        "SpDef": 75,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 50,
+      "name": "Diglett",
+      "types": [],
+      "stats": {
+        "HP": 10,
+        "Atk": 55,
+        "Def": 25,
+        "SpAtk": 35,
+        "SpDef": 45,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 51,
+      "name": "Dugtrio",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 100,
+        "Def": 50,
+        "SpAtk": 50,
+        "SpDef": 70,
+        "Spd": 120
+      }
+    },
+    {
+      "no": 52,
+      "name": "Meowth",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 35,
+        "Def": 35,
+        "SpAtk": 50,
+        "SpDef": 40,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 53,
+      "name": "Persian",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 70,
+        "Def": 60,
+        "SpAtk": 65,
+        "SpDef": 65,
+        "Spd": 115
+      }
+    },
+    {
+      "no": 54,
+      "name": "Psyduck",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 52,
+        "Def": 48,
+        "SpAtk": 65,
+        "SpDef": 50,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 55,
+      "name": "Golduck",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 82,
+        "Def": 78,
+        "SpAtk": 95,
+        "SpDef": 80,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 56,
+      "name": "Mankey",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 80,
+        "Def": 35,
+        "SpAtk": 35,
+        "SpDef": 45,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 57,
+      "name": "Primeape",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 105,
+        "Def": 60,
+        "SpAtk": 60,
+        "SpDef": 70,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 58,
+      "name": "Growlithe",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 70,
+        "Def": 45,
+        "SpAtk": 70,
+        "SpDef": 50,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 59,
+      "name": "Arcanine",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 110,
+        "Def": 80,
+        "SpAtk": 100,
+        "SpDef": 80,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 60,
+      "name": "Poliwag",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 50,
+        "Def": 40,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 61,
+      "name": "Poliwhirl",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 65,
+        "Def": 65,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 62,
+      "name": "Poliwrath",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 95,
+        "Def": 95,
+        "SpAtk": 70,
+        "SpDef": 90,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 63,
+      "name": "Abra",
+      "types": [],
+      "stats": {
+        "HP": 25,
+        "Atk": 20,
+        "Def": 15,
+        "SpAtk": 105,
+        "SpDef": 55,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 64,
+      "name": "Kadabra",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 35,
+        "Def": 30,
+        "SpAtk": 120,
+        "SpDef": 70,
+        "Spd": 105
+      }
+    },
+    {
+      "no": 65,
+      "name": "Alakazam",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 50,
+        "Def": 45,
+        "SpAtk": 135,
+        "SpDef": 95,
+        "Spd": 120
+      }
+    },
+    {
+      "no": 66,
+      "name": "Machop",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 80,
+        "Def": 50,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 67,
+      "name": "Machoke",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 100,
+        "Def": 70,
+        "SpAtk": 50,
+        "SpDef": 60,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 68,
+      "name": "Machamp",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 130,
+        "Def": 80,
+        "SpAtk": 65,
+        "SpDef": 85,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 69,
+      "name": "Bellsprout",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 75,
+        "Def": 35,
+        "SpAtk": 70,
+        "SpDef": 30,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 70,
+      "name": "Weepinbell",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 90,
+        "Def": 50,
+        "SpAtk": 85,
+        "SpDef": 45,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 71,
+      "name": "Victreebel",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 105,
+        "Def": 65,
+        "SpAtk": 100,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 72,
+      "name": "Tentacool",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 40,
+        "Def": 35,
+        "SpAtk": 50,
+        "SpDef": 100,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 73,
+      "name": "Tentacruel",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 70,
+        "Def": 65,
+        "SpAtk": 80,
+        "SpDef": 120,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 74,
+      "name": "Geodude",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 80,
+        "Def": 100,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 75,
+      "name": "Graveler",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 95,
+        "Def": 115,
+        "SpAtk": 45,
+        "SpDef": 45,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 76,
+      "name": "Golem",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 120,
+        "Def": 130,
+        "SpAtk": 55,
+        "SpDef": 65,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 77,
+      "name": "Ponyta",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 85,
+        "Def": 55,
+        "SpAtk": 65,
+        "SpDef": 65,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 78,
+      "name": "Rapidash",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 100,
+        "Def": 70,
+        "SpAtk": 80,
+        "SpDef": 80,
+        "Spd": 105
+      }
+    },
+    {
+      "no": 79,
+      "name": "Slowpoke",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 65,
+        "Def": 65,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 15
+      }
+    },
+    {
+      "no": 80,
+      "name": "Slowbro",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 75,
+        "Def": 110,
+        "SpAtk": 100,
+        "SpDef": 80,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 81,
+      "name": "Magnemite",
+      "types": [],
+      "stats": {
+        "HP": 25,
+        "Atk": 35,
+        "Def": 70,
+        "SpAtk": 95,
+        "SpDef": 55,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 82,
+      "name": "Magneton",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 60,
+        "Def": 95,
+        "SpAtk": 120,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 83,
+      "name": "Farfetch'd",
+      "types": [],
+      "stats": {
+        "HP": 52,
+        "Atk": 90,
+        "Def": 55,
+        "SpAtk": 58,
+        "SpDef": 62,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 84,
+      "name": "Doduo",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 85,
+        "Def": 45,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 85,
+      "name": "Dodrio",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 110,
+        "Def": 70,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 86,
+      "name": "Seel",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 45,
+        "Def": 55,
+        "SpAtk": 45,
+        "SpDef": 70,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 87,
+      "name": "Dewgong",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 45,
+        "Def": 55,
+        "SpAtk": 45,
+        "SpDef": 70,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 88,
+      "name": "Grimer",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 80,
+        "Def": 50,
+        "SpAtk": 40,
+        "SpDef": 50,
+        "Spd": 25
+      }
+    },
+    {
+      "no": 89,
+      "name": "Muk",
+      "types": [],
+      "stats": {
+        "HP": 105,
+        "Atk": 105,
+        "Def": 75,
+        "SpAtk": 65,
+        "SpDef": 100,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 90,
+      "name": "Shellder",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 65,
+        "Def": 100,
+        "SpAtk": 45,
+        "SpDef": 25,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 91,
+      "name": "Cloyster",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 95,
+        "Def": 180,
+        "SpAtk": 85,
+        "SpDef": 45,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 92,
+      "name": "Gastly",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 35,
+        "Def": 30,
+        "SpAtk": 100,
+        "SpDef": 35,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 93,
+      "name": "Haunter",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 50,
+        "Def": 45,
+        "SpAtk": 115,
+        "SpDef": 55,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 94,
+      "name": "Gengar",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 65,
+        "Def": 60,
+        "SpAtk": 130,
+        "SpDef": 75,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 95,
+      "name": "Onix",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 45,
+        "Def": 160,
+        "SpAtk": 30,
+        "SpDef": 45,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 96,
+      "name": "Drowzee",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 48,
+        "Def": 45,
+        "SpAtk": 43,
+        "SpDef": 90,
+        "Spd": 42
+      }
+    },
+    {
+      "no": 97,
+      "name": "Hypno",
+      "types": [],
+      "stats": {
+        "HP": 85,
+        "Atk": 73,
+        "Def": 70,
+        "SpAtk": 73,
+        "SpDef": 115,
+        "Spd": 67
+      }
+    },
+    {
+      "no": 98,
+      "name": "Krabby",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 105,
+        "Def": 90,
+        "SpAtk": 25,
+        "SpDef": 25,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 99,
+      "name": "Kingler",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 130,
+        "Def": 115,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 100,
+      "name": "Voltorb",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 30,
+        "Def": 50,
+        "SpAtk": 55,
+        "SpDef": 55,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 101,
+      "name": "Electrode",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 50,
+        "Def": 70,
+        "SpAtk": 80,
+        "SpDef": 80,
+        "Spd": 140
+      }
+    },
+    {
+      "no": 102,
+      "name": "Exeggcute",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 40,
+        "Def": 80,
+        "SpAtk": 60,
+        "SpDef": 45,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 103,
+      "name": "Exeggutor",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 95,
+        "Def": 85,
+        "SpAtk": 125,
+        "SpDef": 75,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 104,
+      "name": "Cubone",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 50,
+        "Def": 95,
+        "SpAtk": 40,
+        "SpDef": 50,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 105,
+      "name": "Marowak",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 80,
+        "Def": 110,
+        "SpAtk": 50,
+        "SpDef": 80,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 106,
+      "name": "Hitmonlee",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 120,
+        "Def": 53,
+        "SpAtk": 35,
+        "SpDef": 110,
+        "Spd": 87
+      }
+    },
+    {
+      "no": 107,
+      "name": "Hitmonchan",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 105,
+        "Def": 79,
+        "SpAtk": 35,
+        "SpDef": 110,
+        "Spd": 76
+      }
+    },
+    {
+      "no": 108,
+      "name": "Lickitung",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 55,
+        "Def": 75,
+        "SpAtk": 60,
+        "SpDef": 75,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 109,
+      "name": "Koffing",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 65,
+        "Def": 95,
+        "SpAtk": 60,
+        "SpDef": 45,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 110,
+      "name": "Weezing",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 90,
+        "Def": 120,
+        "SpAtk": 85,
+        "SpDef": 70,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 111,
+      "name": "Rhyhorn",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 85,
+        "Def": 95,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 25
+      }
+    },
+    {
+      "no": 112,
+      "name": "Rhydon",
+      "types": [],
+      "stats": {
+        "HP": 105,
+        "Atk": 130,
+        "Def": 120,
+        "SpAtk": 45,
+        "SpDef": 45,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 113,
+      "name": "Chansey",
+      "types": [],
+      "stats": {
+        "HP": 250,
+        "Atk": 5,
+        "Def": 5,
+        "SpAtk": 35,
+        "SpDef": 105,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 114,
+      "name": "Tangela",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 55,
+        "Def": 115,
+        "SpAtk": 100,
+        "SpDef": 40,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 115,
+      "name": "Kangaskhan",
+      "types": [],
+      "stats": {
+        "HP": 105,
+        "Atk": 95,
+        "Def": 80,
+        "SpAtk": 40,
+        "SpDef": 80,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 116,
+      "name": "Horsea",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 40,
+        "Def": 70,
+        "SpAtk": 70,
+        "SpDef": 25,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 117,
+      "name": "Seadra",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 65,
+        "Def": 95,
+        "SpAtk": 95,
+        "SpDef": 45,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 118,
+      "name": "Goldeen",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 67,
+        "Def": 60,
+        "SpAtk": 35,
+        "SpDef": 50,
+        "Spd": 63
+      }
+    },
+    {
+      "no": 119,
+      "name": "Seaking",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 92,
+        "Def": 65,
+        "SpAtk": 65,
+        "SpDef": 80,
+        "Spd": 68
+      }
+    },
+    {
+      "no": 120,
+      "name": "Staryu",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 45,
+        "Def": 55,
+        "SpAtk": 70,
+        "SpDef": 55,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 121,
+      "name": "Starmie",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 75,
+        "Def": 85,
+        "SpAtk": 100,
+        "SpDef": 85,
+        "Spd": 115
+      }
+    },
+    {
+      "no": 122,
+      "name": "Mr. Mime",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 45,
+        "Def": 65,
+        "SpAtk": 100,
+        "SpDef": 120,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 123,
+      "name": "Scyther",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 110,
+        "Def": 80,
+        "SpAtk": 55,
+        "SpDef": 80,
+        "Spd": 105
+      }
+    },
+    {
+      "no": 124,
+      "name": "Jynx",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 50,
+        "Def": 35,
+        "SpAtk": 115,
+        "SpDef": 95,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 125,
+      "name": "Electabuzz",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 83,
+        "Def": 57,
+        "SpAtk": 95,
+        "SpDef": 85,
+        "Spd": 105
+      }
+    },
+    {
+      "no": 126,
+      "name": "Magmar",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 95,
+        "Def": 57,
+        "SpAtk": 100,
+        "SpDef": 85,
+        "Spd": 93
+      }
+    },
+    {
+      "no": 127,
+      "name": "Pinsir",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 125,
+        "Def": 100,
+        "SpAtk": 55,
+        "SpDef": 70,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 128,
+      "name": "Tauros",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 100,
+        "Def": 95,
+        "SpAtk": 40,
+        "SpDef": 70,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 129,
+      "name": "Magikarp",
+      "types": [],
+      "stats": {
+        "HP": 20,
+        "Atk": 10,
+        "Def": 55,
+        "SpAtk": 15,
+        "SpDef": 20,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 130,
+      "name": "Gyarados",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 125,
+        "Def": 79,
+        "SpAtk": 60,
+        "SpDef": 100,
+        "Spd": 81
+      }
+    },
+    {
+      "no": 131,
+      "name": "Lapras",
+      "types": [],
+      "stats": {
+        "HP": 130,
+        "Atk": 85,
+        "Def": 80,
+        "SpAtk": 85,
+        "SpDef": 95,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 132,
+      "name": "Ditto",
+      "types": [],
+      "stats": {
+        "HP": 48,
+        "Atk": 48,
+        "Def": 48,
+        "SpAtk": 48,
+        "SpDef": 48,
+        "Spd": 48
+      }
+    },
+    {
+      "no": 133,
+      "name": "Eevee",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 55,
+        "Def": 50,
+        "SpAtk": 45,
+        "SpDef": 65,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 134,
+      "name": "Vaporeon",
+      "types": [],
+      "stats": {
+        "HP": 130,
+        "Atk": 65,
+        "Def": 60,
+        "SpAtk": 110,
+        "SpDef": 95,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 135,
+      "name": "Jolteon",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 65,
+        "Def": 60,
+        "SpAtk": 110,
+        "SpDef": 95,
+        "Spd": 130
+      }
+    },
+    {
+      "no": 136,
+      "name": "Flareon",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 130,
+        "Def": 60,
+        "SpAtk": 95,
+        "SpDef": 110,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 137,
+      "name": "Porygon",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 60,
+        "Def": 70,
+        "SpAtk": 85,
+        "SpDef": 75,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 138,
+      "name": "Omanyte",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 40,
+        "Def": 100,
+        "SpAtk": 90,
+        "SpDef": 55,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 139,
+      "name": "Omastar",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 60,
+        "Def": 125,
+        "SpAtk": 115,
+        "SpDef": 70,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 140,
+      "name": "Kabuto",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 80,
+        "Def": 90,
+        "SpAtk": 55,
+        "SpDef": 45,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 141,
+      "name": "Kabutops",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 115,
+        "Def": 105,
+        "SpAtk": 65,
+        "SpDef": 70,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 142,
+      "name": "Aerodactyl",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 105,
+        "Def": 65,
+        "SpAtk": 60,
+        "SpDef": 75,
+        "Spd": 130
+      }
+    },
+    {
+      "no": 143,
+      "name": "Snorlax",
+      "types": [],
+      "stats": {
+        "HP": 160,
+        "Atk": 110,
+        "Def": 65,
+        "SpAtk": 65,
+        "SpDef": 110,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 144,
+      "name": "Articuno",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 85,
+        "Def": 100,
+        "SpAtk": 95,
+        "SpDef": 125,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 145,
+      "name": "Zapdos",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 90,
+        "Def": 85,
+        "SpAtk": 125,
+        "SpDef": 90,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 146,
+      "name": "Moltres",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 100,
+        "Def": 90,
+        "SpAtk": 125,
+        "SpDef": 85,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 147,
+      "name": "Dratini",
+      "types": [],
+      "stats": {
+        "HP": 41,
+        "Atk": 64,
+        "Def": 45,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 148,
+      "name": "Dragonair",
+      "types": [],
+      "stats": {
+        "HP": 61,
+        "Atk": 84,
+        "Def": 65,
+        "SpAtk": 70,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 149,
+      "name": "Dragonite",
+      "types": [],
+      "stats": {
+        "HP": 91,
+        "Atk": 134,
+        "Def": 95,
+        "SpAtk": 100,
+        "SpDef": 100,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 150,
+      "name": "Mewtwo",
+      "types": [],
+      "stats": {
+        "HP": 106,
+        "Atk": 110,
+        "Def": 90,
+        "SpAtk": 154,
+        "SpDef": 90,
+        "Spd": 130
+      }
+    },
+    {
+      "no": 151,
+      "name": "Mew",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 100,
+        "Def": 100,
+        "SpAtk": 100,
+        "SpDef": 100,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 152,
+      "name": "Chikorita",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 49,
+        "Def": 65,
+        "SpAtk": 49,
+        "SpDef": 65,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 153,
+      "name": "Bayleef",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 62,
+        "Def": 80,
+        "SpAtk": 63,
+        "SpDef": 80,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 154,
+      "name": "Meganium",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 82,
+        "Def": 100,
+        "SpAtk": 83,
+        "SpDef": 100,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 155,
+      "name": "Cyndaquil",
+      "types": [],
+      "stats": {
+        "HP": 39,
+        "Atk": 52,
+        "Def": 43,
+        "SpAtk": 60,
+        "SpDef": 50,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 156,
+      "name": "Quilava",
+      "types": [],
+      "stats": {
+        "HP": 58,
+        "Atk": 64,
+        "Def": 58,
+        "SpAtk": 80,
+        "SpDef": 65,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 157,
+      "name": "Typhlosion",
+      "types": [],
+      "stats": {
+        "HP": 78,
+        "Atk": 84,
+        "Def": 78,
+        "SpAtk": 109,
+        "SpDef": 85,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 158,
+      "name": "Totodile",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 65,
+        "Def": 64,
+        "SpAtk": 44,
+        "SpDef": 48,
+        "Spd": 43
+      }
+    },
+    {
+      "no": 159,
+      "name": "Croconaw",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 80,
+        "Def": 80,
+        "SpAtk": 59,
+        "SpDef": 63,
+        "Spd": 58
+      }
+    },
+    {
+      "no": 160,
+      "name": "Feraligatr",
+      "types": [],
+      "stats": {
+        "HP": 85,
+        "Atk": 105,
+        "Def": 100,
+        "SpAtk": 79,
+        "SpDef": 83,
+        "Spd": 78
+      }
+    },
+    {
+      "no": 161,
+      "name": "Sentret",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 46,
+        "Def": 34,
+        "SpAtk": 35,
+        "SpDef": 45,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 162,
+      "name": "Furret",
+      "types": [],
+      "stats": {
+        "HP": 85,
+        "Atk": 76,
+        "Def": 64,
+        "SpAtk": 45,
+        "SpDef": 55,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 163,
+      "name": "Hoothoot",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 30,
+        "Def": 30,
+        "SpAtk": 36,
+        "SpDef": 56,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 164,
+      "name": "Noctowl",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 50,
+        "Def": 50,
+        "SpAtk": 86,
+        "SpDef": 96,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 165,
+      "name": "Ledyba",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 20,
+        "Def": 30,
+        "SpAtk": 40,
+        "SpDef": 80,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 166,
+      "name": "Ledian",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 35,
+        "Def": 50,
+        "SpAtk": 55,
+        "SpDef": 110,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 167,
+      "name": "Spinarak",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 60,
+        "Def": 40,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 168,
+      "name": "Ariados",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 90,
+        "Def": 70,
+        "SpAtk": 60,
+        "SpDef": 70,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 169,
+      "name": "Crobat",
+      "types": [],
+      "stats": {
+        "HP": 85,
+        "Atk": 90,
+        "Def": 80,
+        "SpAtk": 70,
+        "SpDef": 80,
+        "Spd": 130
+      }
+    },
+    {
+      "no": 170,
+      "name": "Chinchou",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 38,
+        "Def": 38,
+        "SpAtk": 56,
+        "SpDef": 56,
+        "Spd": 67
+      }
+    },
+    {
+      "no": 171,
+      "name": "Lantern",
+      "types": [],
+      "stats": {
+        "HP": 125,
+        "Atk": 58,
+        "Def": 58,
+        "SpAtk": 76,
+        "SpDef": 76,
+        "Spd": 67
+      }
+    },
+    {
+      "no": 172,
+      "name": "Pichu",
+      "types": [],
+      "stats": {
+        "HP": 20,
+        "Atk": 40,
+        "Def": 15,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 173,
+      "name": "Cleffa",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 25,
+        "Def": 28,
+        "SpAtk": 45,
+        "SpDef": 55,
+        "Spd": 15
+      }
+    },
+    {
+      "no": 174,
+      "name": "Igglybuff",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 30,
+        "Def": 15,
+        "SpAtk": 40,
+        "SpDef": 20,
+        "Spd": 15
+      }
+    },
+    {
+      "no": 175,
+      "name": "Togepi",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 20,
+        "Def": 65,
+        "SpAtk": 40,
+        "SpDef": 65,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 176,
+      "name": "Togetic",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 40,
+        "Def": 85,
+        "SpAtk": 80,
+        "SpDef": 105,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 177,
+      "name": "Natu",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 50,
+        "Def": 45,
+        "SpAtk": 70,
+        "SpDef": 45,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 178,
+      "name": "Xatu",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 75,
+        "Def": 70,
+        "SpAtk": 95,
+        "SpDef": 70,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 179,
+      "name": "Mareep",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 40,
+        "Def": 40,
+        "SpAtk": 65,
+        "SpDef": 45,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 180,
+      "name": "Flaaffy",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 55,
+        "Def": 55,
+        "SpAtk": 80,
+        "SpDef": 60,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 181,
+      "name": "Ampharos",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 75,
+        "Def": 85,
+        "SpAtk": 115,
+        "SpDef": 90,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 182,
+      "name": "Bellossom",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 80,
+        "Def": 95,
+        "SpAtk": 90,
+        "SpDef": 100,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 183,
+      "name": "Marill",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 20,
+        "Def": 50,
+        "SpAtk": 20,
+        "SpDef": 50,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 184,
+      "name": "Azumarill",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 50,
+        "Def": 80,
+        "SpAtk": 60,
+        "SpDef": 80,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 185,
+      "name": "Sudowoodo",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 100,
+        "Def": 115,
+        "SpAtk": 30,
+        "SpDef": 65,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 186,
+      "name": "Politoed",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 75,
+        "Def": 75,
+        "SpAtk": 90,
+        "SpDef": 100,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 187,
+      "name": "Hoppip",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 35,
+        "Def": 40,
+        "SpAtk": 35,
+        "SpDef": 55,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 188,
+      "name": "Skiploom",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 45,
+        "Def": 50,
+        "SpAtk": 45,
+        "SpDef": 65,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 189,
+      "name": "Jumpluff",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 55,
+        "Def": 70,
+        "SpAtk": 55,
+        "SpDef": 95,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 190,
+      "name": "Aipom",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 70,
+        "Def": 55,
+        "SpAtk": 40,
+        "SpDef": 55,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 191,
+      "name": "Sunkern",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 30,
+        "Def": 30,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 192,
+      "name": "Sunflora",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 75,
+        "Def": 55,
+        "SpAtk": 105,
+        "SpDef": 85,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 193,
+      "name": "Yanma",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 65,
+        "Def": 45,
+        "SpAtk": 75,
+        "SpDef": 45,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 194,
+      "name": "Wooper",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 45,
+        "Def": 45,
+        "SpAtk": 25,
+        "SpDef": 25,
+        "Spd": 15
+      }
+    },
+    {
+      "no": 195,
+      "name": "Quagsire",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 85,
+        "Def": 85,
+        "SpAtk": 65,
+        "SpDef": 65,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 196,
+      "name": "Espeon",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 65,
+        "Def": 60,
+        "SpAtk": 130,
+        "SpDef": 95,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 197,
+      "name": "Umbreon",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 65,
+        "Def": 110,
+        "SpAtk": 60,
+        "SpDef": 130,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 198,
+      "name": "Murkrow",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 85,
+        "Def": 42,
+        "SpAtk": 85,
+        "SpDef": 42,
+        "Spd": 91
+      }
+    },
+    {
+      "no": 199,
+      "name": "Slowking",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 75,
+        "Def": 80,
+        "SpAtk": 100,
+        "SpDef": 110,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 200,
+      "name": "Misdreavus",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 60,
+        "Def": 60,
+        "SpAtk": 85,
+        "SpDef": 85,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 201,
+      "name": "Unown",
+      "types": [],
+      "stats": {
+        "HP": 48,
+        "Atk": 72,
+        "Def": 48,
+        "SpAtk": 72,
+        "SpDef": 48,
+        "Spd": 48
+      }
+    },
+    {
+      "no": 202,
+      "name": "Wobbuffet",
+      "types": [],
+      "stats": {
+        "HP": 190,
+        "Atk": 33,
+        "Def": 58,
+        "SpAtk": 33,
+        "SpDef": 58,
+        "Spd": 33
+      }
+    },
+    {
+      "no": 203,
+      "name": "Girafarig",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 80,
+        "Def": 65,
+        "SpAtk": 90,
+        "SpDef": 65,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 204,
+      "name": "Pineco",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 65,
+        "Def": 90,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 15
+      }
+    },
+    {
+      "no": 205,
+      "name": "Forretress",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 90,
+        "Def": 140,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 206,
+      "name": "Dunsparce",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 70,
+        "Def": 70,
+        "SpAtk": 65,
+        "SpDef": 65,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 207,
+      "name": "Gligar",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 75,
+        "Def": 105,
+        "SpAtk": 35,
+        "SpDef": 65,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 208,
+      "name": "Steelix",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 85,
+        "Def": 200,
+        "SpAtk": 55,
+        "SpDef": 65,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 209,
+      "name": "Snubbull",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 80,
+        "Def": 50,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 210,
+      "name": "Granbull",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 120,
+        "Def": 75,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 211,
+      "name": "Qwilfish",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 95,
+        "Def": 85,
+        "SpAtk": 55,
+        "SpDef": 55,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 212,
+      "name": "Scizor",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 130,
+        "Def": 100,
+        "SpAtk": 55,
+        "SpDef": 80,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 213,
+      "name": "Shuckle",
+      "types": [],
+      "stats": {
+        "HP": 20,
+        "Atk": 10,
+        "Def": 230,
+        "SpAtk": 10,
+        "SpDef": 230,
+        "Spd": 5
+      }
+    },
+    {
+      "no": 214,
+      "name": "Heracross",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 125,
+        "Def": 75,
+        "SpAtk": 40,
+        "SpDef": 95,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 215,
+      "name": "Sneasel",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 95,
+        "Def": 55,
+        "SpAtk": 35,
+        "SpDef": 75,
+        "Spd": 115
+      }
+    },
+    {
+      "no": 216,
+      "name": "Teddiursa",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 80,
+        "Def": 50,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 217,
+      "name": "Ursaring",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 130,
+        "Def": 75,
+        "SpAtk": 75,
+        "SpDef": 75,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 218,
+      "name": "Slugma",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 40,
+        "Def": 40,
+        "SpAtk": 70,
+        "SpDef": 40,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 219,
+      "name": "Magcargo",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 50,
+        "Def": 120,
+        "SpAtk": 90,
+        "SpDef": 80,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 220,
+      "name": "Swinub",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 50,
+        "Def": 40,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 221,
+      "name": "Piloswine",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 100,
+        "Def": 80,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 222,
+      "name": "Corsola",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 55,
+        "Def": 95,
+        "SpAtk": 65,
+        "SpDef": 95,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 223,
+      "name": "Remoraid",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 65,
+        "Def": 35,
+        "SpAtk": 65,
+        "SpDef": 35,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 224,
+      "name": "Octillery",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 105,
+        "Def": 75,
+        "SpAtk": 105,
+        "SpDef": 75,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 225,
+      "name": "Deliberd",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 55,
+        "Def": 45,
+        "SpAtk": 65,
+        "SpDef": 45,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 226,
+      "name": "Mantine",
+      "types": [],
+      "stats": {
+        "HP": 85,
+        "Atk": 40,
+        "Def": 70,
+        "SpAtk": 80,
+        "SpDef": 140,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 227,
+      "name": "Skarmory",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 80,
+        "Def": 140,
+        "SpAtk": 40,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 228,
+      "name": "Houndour",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 60,
+        "Def": 30,
+        "SpAtk": 80,
+        "SpDef": 50,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 229,
+      "name": "Houndoom",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 90,
+        "Def": 50,
+        "SpAtk": 110,
+        "SpDef": 80,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 230,
+      "name": "Kingdra",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 95,
+        "Def": 95,
+        "SpAtk": 95,
+        "SpDef": 95,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 231,
+      "name": "Phanpy",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 60,
+        "Def": 60,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 232,
+      "name": "Donphan",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 120,
+        "Def": 120,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 233,
+      "name": "Porygon2",
+      "types": [],
+      "stats": {
+        "HP": 85,
+        "Atk": 80,
+        "Def": 90,
+        "SpAtk": 105,
+        "SpDef": 95,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 234,
+      "name": "Stantler",
+      "types": [],
+      "stats": {
+        "HP": 73,
+        "Atk": 95,
+        "Def": 62,
+        "SpAtk": 85,
+        "SpDef": 65,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 235,
+      "name": "Smeargle",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 20,
+        "Def": 35,
+        "SpAtk": 20,
+        "SpDef": 45,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 236,
+      "name": "Tyrogue",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 35,
+        "Def": 35,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 237,
+      "name": "Hitmontop",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 95,
+        "Def": 95,
+        "SpAtk": 35,
+        "SpDef": 110,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 238,
+      "name": "Smoochum",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 30,
+        "Def": 15,
+        "SpAtk": 85,
+        "SpDef": 65,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 239,
+      "name": "Elekid",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 63,
+        "Def": 37,
+        "SpAtk": 65,
+        "SpDef": 55,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 240,
+      "name": "Magby",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 75,
+        "Def": 37,
+        "SpAtk": 70,
+        "SpDef": 55,
+        "Spd": 83
+      }
+    },
+    {
+      "no": 241,
+      "name": "Miltank",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 80,
+        "Def": 105,
+        "SpAtk": 40,
+        "SpDef": 70,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 242,
+      "name": "Blissey",
+      "types": [],
+      "stats": {
+        "HP": 255,
+        "Atk": 10,
+        "Def": 10,
+        "SpAtk": 75,
+        "SpDef": 135,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 243,
+      "name": "Raikou",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 85,
+        "Def": 75,
+        "SpAtk": 115,
+        "SpDef": 100,
+        "Spd": 115
+      }
+    },
+    {
+      "no": 244,
+      "name": "Entei",
+      "types": [],
+      "stats": {
+        "HP": 115,
+        "Atk": 115,
+        "Def": 85,
+        "SpAtk": 90,
+        "SpDef": 75,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 245,
+      "name": "Suicune",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 75,
+        "Def": 115,
+        "SpAtk": 90,
+        "SpDef": 115,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 246,
+      "name": "Larvitar",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 64,
+        "Def": 50,
+        "SpAtk": 45,
+        "SpDef": 50,
+        "Spd": 41
+      }
+    },
+    {
+      "no": 247,
+      "name": "Pupitar",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 84,
+        "Def": 70,
+        "SpAtk": 65,
+        "SpDef": 70,
+        "Spd": 51
+      }
+    },
+    {
+      "no": 248,
+      "name": "Tyranitar",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 134,
+        "Def": 110,
+        "SpAtk": 95,
+        "SpDef": 100,
+        "Spd": 61
+      }
+    },
+    {
+      "no": 249,
+      "name": "Lugia",
+      "types": [],
+      "stats": {
+        "HP": 106,
+        "Atk": 90,
+        "Def": 130,
+        "SpAtk": 90,
+        "SpDef": 154,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 250,
+      "name": "Ho-Oh",
+      "types": [],
+      "stats": {
+        "HP": 106,
+        "Atk": 130,
+        "Def": 90,
+        "SpAtk": 110,
+        "SpDef": 154,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 251,
+      "name": "Celebi",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 100,
+        "Def": 100,
+        "SpAtk": 100,
+        "SpDef": 100,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 252,
+      "name": "Treecko",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 45,
+        "Def": 35,
+        "SpAtk": 65,
+        "SpDef": 55,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 253,
+      "name": "Grovyle",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 65,
+        "Def": 45,
+        "SpAtk": 85,
+        "SpDef": 65,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 254,
+      "name": "Sceptile",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 85,
+        "Def": 65,
+        "SpAtk": 105,
+        "SpDef": 85,
+        "Spd": 120
+      }
+    },
+    {
+      "no": 255,
+      "name": "Torchic",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 60,
+        "Def": 40,
+        "SpAtk": 70,
+        "SpDef": 50,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 256,
+      "name": "Combusken",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 85,
+        "Def": 60,
+        "SpAtk": 85,
+        "SpDef": 60,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 257,
+      "name": "Blaziken",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 120,
+        "Def": 70,
+        "SpAtk": 110,
+        "SpDef": 70,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 258,
+      "name": "Mudkip",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 70,
+        "Def": 50,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 259,
+      "name": "Marshtomp",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 85,
+        "Def": 70,
+        "SpAtk": 60,
+        "SpDef": 70,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 260,
+      "name": "Swampert",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 110,
+        "Def": 90,
+        "SpAtk": 85,
+        "SpDef": 90,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 261,
+      "name": "Poochyena",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 55,
+        "Def": 35,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 262,
+      "name": "Mightyena",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 90,
+        "Def": 70,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 263,
+      "name": "Zigzagoon",
+      "types": [],
+      "stats": {
+        "HP": 38,
+        "Atk": 30,
+        "Def": 41,
+        "SpAtk": 30,
+        "SpDef": 41,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 264,
+      "name": "Linoone",
+      "types": [],
+      "stats": {
+        "HP": 78,
+        "Atk": 70,
+        "Def": 61,
+        "SpAtk": 50,
+        "SpDef": 61,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 265,
+      "name": "Wurmple",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 45,
+        "Def": 35,
+        "SpAtk": 20,
+        "SpDef": 30,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 266,
+      "name": "Silcoon",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 35,
+        "Def": 55,
+        "SpAtk": 25,
+        "SpDef": 25,
+        "Spd": 15
+      }
+    },
+    {
+      "no": 267,
+      "name": "Beautifly",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 70,
+        "Def": 50,
+        "SpAtk": 100,
+        "SpDef": 50,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 268,
+      "name": "Cascoon",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 35,
+        "Def": 55,
+        "SpAtk": 25,
+        "SpDef": 25,
+        "Spd": 15
+      }
+    },
+    {
+      "no": 269,
+      "name": "Dustox",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 50,
+        "Def": 70,
+        "SpAtk": 50,
+        "SpDef": 90,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 270,
+      "name": "Lotad",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 30,
+        "Def": 30,
+        "SpAtk": 40,
+        "SpDef": 50,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 271,
+      "name": "Lombre",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 50,
+        "Def": 50,
+        "SpAtk": 60,
+        "SpDef": 70,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 272,
+      "name": "Ludicolo",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 70,
+        "Def": 70,
+        "SpAtk": 90,
+        "SpDef": 100,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 273,
+      "name": "Seedot",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 40,
+        "Def": 50,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 274,
+      "name": "Nuzleaf",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 70,
+        "Def": 40,
+        "SpAtk": 60,
+        "SpDef": 40,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 275,
+      "name": "Shiftry",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 100,
+        "Def": 60,
+        "SpAtk": 90,
+        "SpDef": 60,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 276,
+      "name": "Taillow",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 55,
+        "Def": 30,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 277,
+      "name": "Swellow",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 85,
+        "Def": 60,
+        "SpAtk": 75,
+        "SpDef": 50,
+        "Spd": 125
+      }
+    },
+    {
+      "no": 278,
+      "name": "Wingull",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 30,
+        "Def": 30,
+        "SpAtk": 55,
+        "SpDef": 30,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 279,
+      "name": "Pelipper",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 50,
+        "Def": 100,
+        "SpAtk": 95,
+        "SpDef": 70,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 280,
+      "name": "Ralts",
+      "types": [],
+      "stats": {
+        "HP": 28,
+        "Atk": 25,
+        "Def": 25,
+        "SpAtk": 45,
+        "SpDef": 35,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 281,
+      "name": "Kirlia",
+      "types": [],
+      "stats": {
+        "HP": 38,
+        "Atk": 35,
+        "Def": 35,
+        "SpAtk": 65,
+        "SpDef": 55,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 282,
+      "name": "Gardevoir",
+      "types": [],
+      "stats": {
+        "HP": 68,
+        "Atk": 65,
+        "Def": 65,
+        "SpAtk": 125,
+        "SpDef": 115,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 283,
+      "name": "Surskit",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 30,
+        "Def": 32,
+        "SpAtk": 50,
+        "SpDef": 52,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 284,
+      "name": "Masquerain",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 60,
+        "Def": 62,
+        "SpAtk": 100,
+        "SpDef": 82,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 285,
+      "name": "Shroomish",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 40,
+        "Def": 60,
+        "SpAtk": 40,
+        "SpDef": 60,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 286,
+      "name": "Breloom",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 130,
+        "Def": 80,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 287,
+      "name": "Slakoth",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 60,
+        "Def": 60,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 288,
+      "name": "Vigoroth",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 80,
+        "Def": 80,
+        "SpAtk": 55,
+        "SpDef": 55,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 289,
+      "name": "Slaking",
+      "types": [],
+      "stats": {
+        "HP": 150,
+        "Atk": 160,
+        "Def": 100,
+        "SpAtk": 95,
+        "SpDef": 65,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 290,
+      "name": "Nincada",
+      "types": [],
+      "stats": {
+        "HP": 31,
+        "Atk": 45,
+        "Def": 90,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 291,
+      "name": "Ninjask",
+      "types": [],
+      "stats": {
+        "HP": 61,
+        "Atk": 90,
+        "Def": 45,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 160
+      }
+    },
+    {
+      "no": 292,
+      "name": "Shedinja",
+      "types": [],
+      "stats": {
+        "HP": 1,
+        "Atk": 90,
+        "Def": 45,
+        "SpAtk": 30,
+        "SpDef": 30,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 293,
+      "name": "Whismur",
+      "types": [],
+      "stats": {
+        "HP": 64,
+        "Atk": 51,
+        "Def": 23,
+        "SpAtk": 51,
+        "SpDef": 23,
+        "Spd": 28
+      }
+    },
+    {
+      "no": 294,
+      "name": "Loudred",
+      "types": [],
+      "stats": {
+        "HP": 84,
+        "Atk": 71,
+        "Def": 43,
+        "SpAtk": 71,
+        "SpDef": 43,
+        "Spd": 48
+      }
+    },
+    {
+      "no": 295,
+      "name": "Exploud",
+      "types": [],
+      "stats": {
+        "HP": 104,
+        "Atk": 91,
+        "Def": 63,
+        "SpAtk": 91,
+        "SpDef": 73,
+        "Spd": 68
+      }
+    },
+    {
+      "no": 296,
+      "name": "Makuhita",
+      "types": [],
+      "stats": {
+        "HP": 72,
+        "Atk": 60,
+        "Def": 30,
+        "SpAtk": 20,
+        "SpDef": 30,
+        "Spd": 25
+      }
+    },
+    {
+      "no": 297,
+      "name": "Hariyama",
+      "types": [],
+      "stats": {
+        "HP": 144,
+        "Atk": 120,
+        "Def": 60,
+        "SpAtk": 40,
+        "SpDef": 60,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 298,
+      "name": "Azurill",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 20,
+        "Def": 40,
+        "SpAtk": 20,
+        "SpDef": 40,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 299,
+      "name": "Nosepass",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 45,
+        "Def": 135,
+        "SpAtk": 45,
+        "SpDef": 90,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 300,
+      "name": "Skitty",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 45,
+        "Def": 45,
+        "SpAtk": 35,
+        "SpDef": 35,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 301,
+      "name": "Delcatty",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 65,
+        "Def": 65,
+        "SpAtk": 55,
+        "SpDef": 55,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 302,
+      "name": "Sableye",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 75,
+        "Def": 75,
+        "SpAtk": 65,
+        "SpDef": 65,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 303,
+      "name": "Mawile",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 85,
+        "Def": 85,
+        "SpAtk": 55,
+        "SpDef": 55,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 304,
+      "name": "Aron",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 70,
+        "Def": 100,
+        "SpAtk": 40,
+        "SpDef": 40,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 305,
+      "name": "Lairon",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 90,
+        "Def": 140,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 306,
+      "name": "Aggron",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 110,
+        "Def": 180,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 307,
+      "name": "Meditite",
+      "types": [],
+      "stats": {
+        "HP": 30,
+        "Atk": 40,
+        "Def": 55,
+        "SpAtk": 40,
+        "SpDef": 55,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 308,
+      "name": "Medicham",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 60,
+        "Def": 75,
+        "SpAtk": 60,
+        "SpDef": 75,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 309,
+      "name": "Electrike",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 45,
+        "Def": 40,
+        "SpAtk": 65,
+        "SpDef": 40,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 310,
+      "name": "Manectric",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 75,
+        "Def": 60,
+        "SpAtk": 105,
+        "SpDef": 60,
+        "Spd": 105
+      }
+    },
+    {
+      "no": 311,
+      "name": "Plusle",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 50,
+        "Def": 40,
+        "SpAtk": 85,
+        "SpDef": 75,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 312,
+      "name": "Minun",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 40,
+        "Def": 50,
+        "SpAtk": 75,
+        "SpDef": 85,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 313,
+      "name": "Volbeat",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 73,
+        "Def": 75,
+        "SpAtk": 47,
+        "SpDef": 85,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 314,
+      "name": "Illumise",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 47,
+        "Def": 75,
+        "SpAtk": 73,
+        "SpDef": 85,
+        "Spd": 85
+      }
+    },
+    {
+      "no": 315,
+      "name": "Roselia",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 60,
+        "Def": 45,
+        "SpAtk": 100,
+        "SpDef": 80,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 316,
+      "name": "Gulpin",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 43,
+        "Def": 53,
+        "SpAtk": 43,
+        "SpDef": 53,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 317,
+      "name": "Swalot",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 73,
+        "Def": 83,
+        "SpAtk": 73,
+        "SpDef": 83,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 318,
+      "name": "Carvanha",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 90,
+        "Def": 20,
+        "SpAtk": 65,
+        "SpDef": 20,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 319,
+      "name": "Sharpedo",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 120,
+        "Def": 40,
+        "SpAtk": 95,
+        "SpDef": 40,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 320,
+      "name": "Wailmer",
+      "types": [],
+      "stats": {
+        "HP": 130,
+        "Atk": 70,
+        "Def": 35,
+        "SpAtk": 70,
+        "SpDef": 35,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 321,
+      "name": "Wailord",
+      "types": [],
+      "stats": {
+        "HP": 170,
+        "Atk": 90,
+        "Def": 45,
+        "SpAtk": 90,
+        "SpDef": 45,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 322,
+      "name": "Numel",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 60,
+        "Def": 40,
+        "SpAtk": 65,
+        "SpDef": 45,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 323,
+      "name": "Camerupt",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 100,
+        "Def": 70,
+        "SpAtk": 105,
+        "SpDef": 75,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 324,
+      "name": "Torkoal",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 85,
+        "Def": 140,
+        "SpAtk": 85,
+        "SpDef": 70,
+        "Spd": 20
+      }
+    },
+    {
+      "no": 325,
+      "name": "Spoink",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 25,
+        "Def": 35,
+        "SpAtk": 70,
+        "SpDef": 80,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 326,
+      "name": "Grumpig",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 45,
+        "Def": 65,
+        "SpAtk": 90,
+        "SpDef": 110,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 327,
+      "name": "Spinda",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 60,
+        "Def": 60,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 328,
+      "name": "Trapinch",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 100,
+        "Def": 45,
+        "SpAtk": 45,
+        "SpDef": 45,
+        "Spd": 10
+      }
+    },
+    {
+      "no": 329,
+      "name": "Vibrava",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 70,
+        "Def": 50,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 330,
+      "name": "Flygon",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 100,
+        "Def": 80,
+        "SpAtk": 80,
+        "SpDef": 80,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 331,
+      "name": "Cacnea",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 85,
+        "Def": 40,
+        "SpAtk": 85,
+        "SpDef": 40,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 332,
+      "name": "Cacturne",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 115,
+        "Def": 60,
+        "SpAtk": 115,
+        "SpDef": 60,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 333,
+      "name": "Swablu",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 40,
+        "Def": 60,
+        "SpAtk": 40,
+        "SpDef": 75,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 334,
+      "name": "Altaria",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 70,
+        "Def": 90,
+        "SpAtk": 70,
+        "SpDef": 105,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 335,
+      "name": "Zangoose",
+      "types": [],
+      "stats": {
+        "HP": 73,
+        "Atk": 115,
+        "Def": 60,
+        "SpAtk": 60,
+        "SpDef": 60,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 336,
+      "name": "Seviper",
+      "types": [],
+      "stats": {
+        "HP": 73,
+        "Atk": 100,
+        "Def": 60,
+        "SpAtk": 100,
+        "SpDef": 60,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 337,
+      "name": "Lunatone",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 55,
+        "Def": 65,
+        "SpAtk": 95,
+        "SpDef": 85,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 338,
+      "name": "Solrock",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 95,
+        "Def": 85,
+        "SpAtk": 55,
+        "SpDef": 65,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 339,
+      "name": "Barboach",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 48,
+        "Def": 43,
+        "SpAtk": 46,
+        "SpDef": 41,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 340,
+      "name": "Whiscash",
+      "types": [],
+      "stats": {
+        "HP": 110,
+        "Atk": 78,
+        "Def": 73,
+        "SpAtk": 76,
+        "SpDef": 71,
+        "Spd": 60
+      }
+    },
+    {
+      "no": 341,
+      "name": "Corphish",
+      "types": [],
+      "stats": {
+        "HP": 43,
+        "Atk": 80,
+        "Def": 65,
+        "SpAtk": 50,
+        "SpDef": 35,
+        "Spd": 35
+      }
+    },
+    {
+      "no": 342,
+      "name": "Crawdaunt",
+      "types": [],
+      "stats": {
+        "HP": 63,
+        "Atk": 120,
+        "Def": 85,
+        "SpAtk": 90,
+        "SpDef": 55,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 343,
+      "name": "Baltoy",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 40,
+        "Def": 55,
+        "SpAtk": 40,
+        "SpDef": 70,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 344,
+      "name": "Claydol",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 70,
+        "Def": 105,
+        "SpAtk": 70,
+        "SpDef": 120,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 345,
+      "name": "Lileep",
+      "types": [],
+      "stats": {
+        "HP": 66,
+        "Atk": 41,
+        "Def": 77,
+        "SpAtk": 61,
+        "SpDef": 87,
+        "Spd": 23
+      }
+    },
+    {
+      "no": 346,
+      "name": "Cradily",
+      "types": [],
+      "stats": {
+        "HP": 86,
+        "Atk": 81,
+        "Def": 97,
+        "SpAtk": 81,
+        "SpDef": 107,
+        "Spd": 43
+      }
+    },
+    {
+      "no": 347,
+      "name": "Anorith",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 95,
+        "Def": 50,
+        "SpAtk": 40,
+        "SpDef": 50,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 348,
+      "name": "Armaldo",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 125,
+        "Def": 100,
+        "SpAtk": 70,
+        "SpDef": 80,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 349,
+      "name": "Feebas",
+      "types": [],
+      "stats": {
+        "HP": 20,
+        "Atk": 15,
+        "Def": 20,
+        "SpAtk": 10,
+        "SpDef": 55,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 350,
+      "name": "Milotic",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 60,
+        "Def": 79,
+        "SpAtk": 100,
+        "SpDef": 125,
+        "Spd": 81
+      }
+    },
+    {
+      "no": 351,
+      "name": "Castform",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 70,
+        "Def": 70,
+        "SpAtk": 70,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 352,
+      "name": "Castform-Sun",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 70,
+        "Def": 70,
+        "SpAtk": 70,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 353,
+      "name": "Castform-Rain",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 70,
+        "Def": 70,
+        "SpAtk": 70,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 354,
+      "name": "Castform-Hail",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 70,
+        "Def": 70,
+        "SpAtk": 70,
+        "SpDef": 70,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 355,
+      "name": "Kecleon",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 90,
+        "Def": 70,
+        "SpAtk": 60,
+        "SpDef": 120,
+        "Spd": 40
+      }
+    },
+    {
+      "no": 356,
+      "name": "Shuppet",
+      "types": [],
+      "stats": {
+        "HP": 44,
+        "Atk": 75,
+        "Def": 35,
+        "SpAtk": 63,
+        "SpDef": 33,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 357,
+      "name": "Banette",
+      "types": [],
+      "stats": {
+        "HP": 64,
+        "Atk": 115,
+        "Def": 65,
+        "SpAtk": 83,
+        "SpDef": 63,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 358,
+      "name": "Duskull",
+      "types": [],
+      "stats": {
+        "HP": 20,
+        "Atk": 40,
+        "Def": 90,
+        "SpAtk": 30,
+        "SpDef": 90,
+        "Spd": 25
+      }
+    },
+    {
+      "no": 359,
+      "name": "Dusclops",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 70,
+        "Def": 130,
+        "SpAtk": 60,
+        "SpDef": 130,
+        "Spd": 25
+      }
+    },
+    {
+      "no": 360,
+      "name": "Tropius",
+      "types": [],
+      "stats": {
+        "HP": 99,
+        "Atk": 68,
+        "Def": 83,
+        "SpAtk": 72,
+        "SpDef": 87,
+        "Spd": 51
+      }
+    },
+    {
+      "no": 361,
+      "name": "Chimecho",
+      "types": [],
+      "stats": {
+        "HP": 75,
+        "Atk": 50,
+        "Def": 80,
+        "SpAtk": 95,
+        "SpDef": 90,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 362,
+      "name": "Absol",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 130,
+        "Def": 60,
+        "SpAtk": 75,
+        "SpDef": 60,
+        "Spd": 75
+      }
+    },
+    {
+      "no": 363,
+      "name": "Wynaut",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 23,
+        "Def": 48,
+        "SpAtk": 23,
+        "SpDef": 48,
+        "Spd": 23
+      }
+    },
+    {
+      "no": 364,
+      "name": "Snorunt",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 50,
+        "Def": 50,
+        "SpAtk": 50,
+        "SpDef": 50,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 365,
+      "name": "Glalie",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 80,
+        "Def": 80,
+        "SpAtk": 80,
+        "SpDef": 80,
+        "Spd": 80
+      }
+    },
+    {
+      "no": 366,
+      "name": "Spheal",
+      "types": [],
+      "stats": {
+        "HP": 70,
+        "Atk": 40,
+        "Def": 50,
+        "SpAtk": 55,
+        "SpDef": 50,
+        "Spd": 25
+      }
+    },
+    {
+      "no": 367,
+      "name": "Sealeo",
+      "types": [],
+      "stats": {
+        "HP": 90,
+        "Atk": 60,
+        "Def": 70,
+        "SpAtk": 75,
+        "SpDef": 70,
+        "Spd": 45
+      }
+    },
+    {
+      "no": 368,
+      "name": "Walrein",
+      "types": [],
+      "stats": {
+        "HP": 110,
+        "Atk": 80,
+        "Def": 90,
+        "SpAtk": 95,
+        "SpDef": 90,
+        "Spd": 65
+      }
+    },
+    {
+      "no": 369,
+      "name": "Clamperl",
+      "types": [],
+      "stats": {
+        "HP": 35,
+        "Atk": 64,
+        "Def": 85,
+        "SpAtk": 74,
+        "SpDef": 55,
+        "Spd": 32
+      }
+    },
+    {
+      "no": 370,
+      "name": "Huntail",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 104,
+        "Def": 105,
+        "SpAtk": 94,
+        "SpDef": 75,
+        "Spd": 52
+      }
+    },
+    {
+      "no": 371,
+      "name": "Gorebyss",
+      "types": [],
+      "stats": {
+        "HP": 55,
+        "Atk": 84,
+        "Def": 105,
+        "SpAtk": 114,
+        "SpDef": 75,
+        "Spd": 52
+      }
+    },
+    {
+      "no": 372,
+      "name": "Relicanth",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 90,
+        "Def": 130,
+        "SpAtk": 45,
+        "SpDef": 65,
+        "Spd": 55
+      }
+    },
+    {
+      "no": 373,
+      "name": "Luvdisc",
+      "types": [],
+      "stats": {
+        "HP": 43,
+        "Atk": 30,
+        "Def": 55,
+        "SpAtk": 40,
+        "SpDef": 65,
+        "Spd": 97
+      }
+    },
+    {
+      "no": 374,
+      "name": "Bagon",
+      "types": [],
+      "stats": {
+        "HP": 45,
+        "Atk": 75,
+        "Def": 60,
+        "SpAtk": 40,
+        "SpDef": 30,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 375,
+      "name": "Shelgon",
+      "types": [],
+      "stats": {
+        "HP": 65,
+        "Atk": 95,
+        "Def": 100,
+        "SpAtk": 60,
+        "SpDef": 50,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 376,
+      "name": "Salamence",
+      "types": [],
+      "stats": {
+        "HP": 95,
+        "Atk": 135,
+        "Def": 80,
+        "SpAtk": 110,
+        "SpDef": 80,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 377,
+      "name": "Beldum",
+      "types": [],
+      "stats": {
+        "HP": 40,
+        "Atk": 55,
+        "Def": 80,
+        "SpAtk": 35,
+        "SpDef": 60,
+        "Spd": 30
+      }
+    },
+    {
+      "no": 378,
+      "name": "Metang",
+      "types": [],
+      "stats": {
+        "HP": 60,
+        "Atk": 75,
+        "Def": 100,
+        "SpAtk": 55,
+        "SpDef": 80,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 379,
+      "name": "Metagross",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 135,
+        "Def": 130,
+        "SpAtk": 95,
+        "SpDef": 90,
+        "Spd": 70
+      }
+    },
+    {
+      "no": 380,
+      "name": "Regirock",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 100,
+        "Def": 200,
+        "SpAtk": 50,
+        "SpDef": 100,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 381,
+      "name": "Regice",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 50,
+        "Def": 100,
+        "SpAtk": 100,
+        "SpDef": 200,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 382,
+      "name": "Registeel",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 75,
+        "Def": 150,
+        "SpAtk": 75,
+        "SpDef": 150,
+        "Spd": 50
+      }
+    },
+    {
+      "no": 383,
+      "name": "Latias",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 80,
+        "Def": 90,
+        "SpAtk": 110,
+        "SpDef": 130,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 384,
+      "name": "Latios",
+      "types": [],
+      "stats": {
+        "HP": 80,
+        "Atk": 90,
+        "Def": 80,
+        "SpAtk": 130,
+        "SpDef": 110,
+        "Spd": 110
+      }
+    },
+    {
+      "no": 385,
+      "name": "Kyogre",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 100,
+        "Def": 90,
+        "SpAtk": 150,
+        "SpDef": 140,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 386,
+      "name": "Groudon",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 150,
+        "Def": 140,
+        "SpAtk": 100,
+        "SpDef": 90,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 387,
+      "name": "Rayquaza",
+      "types": [],
+      "stats": {
+        "HP": 105,
+        "Atk": 150,
+        "Def": 90,
+        "SpAtk": 150,
+        "SpDef": 90,
+        "Spd": 95
+      }
+    },
+    {
+      "no": 388,
+      "name": "Jirachi",
+      "types": [],
+      "stats": {
+        "HP": 100,
+        "Atk": 100,
+        "Def": 100,
+        "SpAtk": 100,
+        "SpDef": 100,
+        "Spd": 100
+      }
+    },
+    {
+      "no": 389,
+      "name": "Deoxys",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 150,
+        "Def": 50,
+        "SpAtk": 150,
+        "SpDef": 50,
+        "Spd": 150
+      }
+    },
+    {
+      "no": 390,
+      "name": "Deoxys-Atk",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 180,
+        "Def": 20,
+        "SpAtk": 180,
+        "SpDef": 20,
+        "Spd": 150
+      }
+    },
+    {
+      "no": 391,
+      "name": "Deoxys-Def",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 70,
+        "Def": 160,
+        "SpAtk": 70,
+        "SpDef": 160,
+        "Spd": 90
+      }
+    },
+    {
+      "no": 392,
+      "name": "Deoxys-Spd",
+      "types": [],
+      "stats": {
+        "HP": 50,
+        "Atk": 95,
+        "Def": 90,
+        "SpAtk": 95,
+        "SpDef": 90,
+        "Spd": 180
+      }
+    }
+  ]
+}

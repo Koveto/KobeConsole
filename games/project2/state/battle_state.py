@@ -2,11 +2,24 @@ import os
 import random
 import pygame
 from battle.battle_font import BattleFont
+from pokemon.pkmn_sprite import *
+from pokemon.pkmn_data import *
 
 class BattleState:
 
     BACKGROUND_SHEET = None
     FRAME_SPRITE = None
+    ROOT = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            ".."
+        )
+    )
+    ENEMY_X = 144
+    ENEMY_Y = 8
+    PLAYER_X = 42
+    PLAYER_Y = 48
+    HP_BOX_SPRITE_PLAYER = None
 
     def __init__(self):
 
@@ -19,7 +32,6 @@ class BattleState:
             scale=1,
             spacing=7
         )
-
         self.menu_font = BattleFont(
             "font_menu.png",
             glyph_w=6,
@@ -27,7 +39,6 @@ class BattleState:
             scale=1,
             spacing=6
         )
-
         self.info_font = BattleFont(
             "font_info.png",
             glyph_w=7,
@@ -35,6 +46,34 @@ class BattleState:
             scale=1,
             spacing=7
         )
+        self.enemy_species_no = random.randint(
+            1,
+            392
+        )
+
+        self.enemy_species = get_species(
+            self.enemy_species_no
+        )
+        self.enemy_sprite = (
+            load_enemy_sprite(
+                self.enemy_species_no
+            )
+        )
+        self.player_species_no = random.randint(
+            1,
+            392
+        )
+
+        self.player_species = get_species(
+            self.player_species_no
+        )
+
+        self.player_sprite = (
+            load_player_sprite(
+                self.player_species_no
+            )
+        )
+        self.hp_box = self._load_hp_box()
 
     def handle_event(
         self,
@@ -62,9 +101,9 @@ class BattleState:
 
         self.dialogue_font.draw_text(
             surface,
-            "DIALOGUE FONT",
-            10,
-            115
+            self.player_species["name"],
+            120,
+            145
         )
 
         self.menu_font.draw_text(
@@ -76,22 +115,55 @@ class BattleState:
 
         self.info_font.draw_text(
             surface,
-            "INFO FONT",
+            str(self.enemy_species["types"]),
             10,
-            145
+            130
         )
+        surface.blit(
+            self.enemy_sprite,
+            (
+                BattleState.ENEMY_X,
+                BattleState.ENEMY_Y
+            )
+        )
+        surface.blit(
+            self.player_sprite,
+            (
+                BattleState.PLAYER_X,
+                BattleState.PLAYER_Y
+            )
+        )
+        surface.blit(
+            self.hp_box,
+            (127, 74)
+        )
+
+    def _load_hp_box(self):
+
+        if BattleState.HP_BOX_SPRITE_PLAYER is None:
+
+            filepath = os.path.join(
+                BattleState.ROOT,
+                "sprites",
+                "hp_plyr_0.png"
+            )
+
+            BattleState.HP_BOX_SPRITE_PLAYER = (
+                pygame.image.load(
+                    filepath
+                ).convert()
+            )
+
+            BattleState.HP_BOX_SPRITE_PLAYER.set_colorkey(
+                (255, 0, 228)
+            )
+
+        return BattleState.HP_BOX_SPRITE_PLAYER
 
     def _load_background(self):
 
-        root = os.path.abspath(
-            os.path.join(
-                os.path.dirname(__file__),
-                ".."
-            )
-        )
-
         filepath = os.path.join(
-            root,
+            BattleState.ROOT,
             "sprites",
             "battlebackgrounds.png"
         )
@@ -124,15 +196,8 @@ class BattleState:
 
         if BattleState.FRAME_SPRITE is None:
 
-            root = os.path.abspath(
-                os.path.join(
-                    os.path.dirname(__file__),
-                    ".."
-                )
-            )
-
             filepath = os.path.join(
-                root,
+                BattleState.ROOT,
                 "sprites",
                 "battleframe.png"
             )
