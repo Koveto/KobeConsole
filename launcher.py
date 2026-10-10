@@ -3,6 +3,7 @@ import subprocess
 import random
 import os
 import sys
+from input_manager import *
 
 BASE_DIR = os.path.dirname(
     os.path.abspath(__file__)
@@ -179,111 +180,29 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        elif event.type == pygame.JOYBUTTONDOWN:
+        elif is_right(event):
+            selected_index += 1
 
-            #
-            # Windows D-Pad Right
-            #
-            if event.button == 14:
-                selected_index += 1
+        elif is_left(event):
+            selected_index -= 1
 
-            #
-            # Windows D-Pad Left
-            #
-            elif event.button == 13:
-                selected_index -= 1
+        elif is_confirm(event):
 
-            #
-            # A Button
-            #
-            elif event.button in [0, 2]:
+            selected_game = games[selected_index]
 
-                selected_game = games[selected_index]
+            if selected_game["title"] == "Update":
 
-                if selected_game["title"] == "Update KobeConsole":
+                update_kobeconsole()
 
-                    update_kobeconsole()
+            else:
 
-                else:
+                launch_game(
+                    selected_game["path"]
+                )
 
-                    launch_game(
-                        selected_game["path"]
-                    )
-            
-            #
-            # B Button
-            #
-            elif event.button == 1:
-                running = False
+        elif is_cancel(event):
+            running = False
 
-        elif event.type == pygame.JOYHATMOTION:
-
-            #
-            # Pi D-Pad Right
-            #
-            if event.value == (1, 0):
-                selected_index += 1
-
-            #
-            # Pi D-Pad Left
-            #
-            elif event.value == (-1, 0):
-                selected_index -= 1
-
-            
-
-
-        elif event.type == pygame.KEYDOWN:
-
-            if event.key == pygame.K_RIGHT:
-                selected_index += 1
-
-            elif event.key == pygame.K_LEFT:
-                selected_index -= 1
-
-            elif event.key == pygame.K_RETURN:
-                selected_game = games[selected_index]
-
-                if selected_game["title"] == "Update KobeConsole":
-
-                    update_kobeconsole()
-
-                else:
-
-                    launch_game(
-                        selected_game["path"]
-                    )
-
-            elif event.key == pygame.K_q:
-                running = False
-
-            """
-            elif event.key == pygame.K_F11:
-
-                fullscreen = not fullscreen
-
-                if fullscreen:
-                    #screen = pygame.display.set_mode(
-                    #    (0, 0),
-                    #    pygame.FULLSCREEN
-                    #)
-                    screen = pygame.display.set_mode((1536, 864), pygame.NOFRAME)
-                    print(
-                        "Fullscreen:",
-                        screen.get_width(),
-                        screen.get_height()
-                    )
-                else:
-                    screen = pygame.display.set_mode(
-                        (1280, 720),
-                        pygame.RESIZABLE
-                    )
-
-                WIDTH = screen.get_width()
-                HEIGHT = screen.get_height()
-
-                particles = create_particles(80)
-            """
 
     selected_index = max(0, min(selected_index, len(games) - 1))
 
