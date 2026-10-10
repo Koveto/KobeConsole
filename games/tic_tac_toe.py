@@ -1,6 +1,7 @@
 import pygame
 import random
 import socket
+from input_manager import *
 
 HOSTNAME = socket.gethostname()
 host_ip = ""
@@ -352,14 +353,14 @@ while running:
                 running = False
 
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
+                if is_up(event):
                     menu_index = max(0, menu_index - 1)
-                elif event.key == pygame.K_DOWN:
+                elif is_down(event):
                     menu_index = min(
                         len(menu_options) - 1,
                         menu_index + 1
                     )
-                elif event.key == pygame.K_RETURN:
+                elif is_confirm(event):
                     if menu_index == 0:
                         current_screen = "singleplayer"
                     elif menu_index == 1:
@@ -438,7 +439,7 @@ while running:
 
             elif event.type == pygame.KEYDOWN:
 
-                if event.key == pygame.K_ESCAPE:
+                if is_cancel(event):
                     reset_game()
                     current_screen = "menu"
 
@@ -446,7 +447,7 @@ while running:
                     running = False
 
                 if game_over:
-                    if event.key == pygame.K_RETURN:
+                    if is_confirm(event):
                         swap_singleplayer_symbols()
                         reset_game()
                         if computer_symbol == "X":
@@ -454,19 +455,19 @@ while running:
 
                     continue
 
-                if event.key == pygame.K_LEFT:
+                if is_left(event):
                     selected_col = max(0, selected_col - 1)
 
-                elif event.key == pygame.K_RIGHT:
+                elif is_right(event):
                     selected_col = min(2, selected_col + 1)
 
-                elif event.key == pygame.K_UP:
+                elif is_up(event):
                     selected_row = max(0, selected_row - 1)
 
-                elif event.key == pygame.K_DOWN:
+                elif is_down(event):
                     selected_row = min(2, selected_row + 1)
 
-                elif event.key == pygame.K_RETURN:
+                elif is_confirm(event):
 
                     if board[selected_row][selected_col] == "":
 
@@ -570,21 +571,21 @@ while running:
                 if event.key == pygame.K_q:
                     running = False
 
-                elif event.key == pygame.K_ESCAPE:
+                elif is_cancel(event):
                     
                     reset_game()
                     current_screen = "menu"
 
-                elif event.key == pygame.K_UP:
+                elif is_up(event):
                     multiplayer_index = max(0, multiplayer_index - 1)
 
-                elif event.key == pygame.K_DOWN:
+                elif is_down(event):
                     multiplayer_index = min(
                         1,
                         multiplayer_index + 1
                     )
 
-                elif event.key == pygame.K_RETURN:
+                elif is_confirm(event):
 
                     if multiplayer_index == 0:
                         current_screen = "host"
@@ -704,7 +705,7 @@ while running:
                 if event.key == pygame.K_q:
                     running = False
 
-                elif event.key == pygame.K_ESCAPE:
+                elif is_cancel(event):
 
                     reset_game()
                     reset_multiplayer()
@@ -857,7 +858,7 @@ while running:
                 if event.key == pygame.K_q:
                     running = False
 
-                elif event.key == pygame.K_ESCAPE:
+                elif is_cancel(event):
                     reset_game()
                     reset_multiplayer()
                     current_screen = "lan_menu"
@@ -865,7 +866,7 @@ while running:
                 elif event.key == pygame.K_BACKSPACE:
                     host_ip_input = host_ip_input[:-1]
 
-                elif event.key == pygame.K_RETURN:
+                elif is_confirm(event):
                     attempt_connection = True
 
                 elif event.unicode in "0123456789.":
@@ -1006,14 +1007,14 @@ while running:
                 if event.key == pygame.K_q:
                     running = False
 
-                elif event.key == pygame.K_ESCAPE:
+                elif is_cancel(event):
                     
                     reset_game()
                     reset_multiplayer()
                     current_screen = "menu"
 
                 if game_over:
-                    if event.key == pygame.K_RETURN:
+                    if is_confirm(event):
                         swap_symbols()
                         reset_game()
                         client_socket.send(
@@ -1021,19 +1022,19 @@ while running:
                         )
 
                     continue
-                if event.key == pygame.K_LEFT:
+                if is_left(event):
                     selected_col = max(0, selected_col - 1)
 
-                elif event.key == pygame.K_RIGHT:
+                elif is_right(event):
                     selected_col = min(2, selected_col + 1)
 
-                elif event.key == pygame.K_UP:
+                elif is_up(event):
                     selected_row = max(0, selected_row - 1)
 
-                elif event.key == pygame.K_DOWN:
+                elif is_down(event):
                     selected_row = min(2, selected_row + 1)
 
-                elif event.key == pygame.K_RETURN:
+                elif is_confirm(event):
 
                     if (
                         my_turn

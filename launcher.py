@@ -15,8 +15,6 @@ print(
 
 pygame.init()
 
-pygame.joystick.init()
-
 for i in range(pygame.joystick.get_count()):
     joystick = pygame.joystick.Joystick(i)
     joystick.init()
@@ -99,19 +97,10 @@ for game in games:
 
 
 def update_kobeconsole():
-    
-
-    print("UPDATE START")
-
     result = subprocess.run(
         ["git", "pull"],
         cwd=BASE_DIR
     )
-
-    print("GIT COMPLETE")
-
-    print("RESTARTING LAUNCHER")
-
     os.execv(
         sys.executable,
         [
@@ -119,8 +108,6 @@ def update_kobeconsole():
             os.path.abspath(__file__)
         ]
     )
-
-    input("YOU SHOULD NEVER SEE THIS")
 
 def launch_game(path):
 
