@@ -1,25 +1,25 @@
 import pygame
+import platform
+
+IS_PI = (
+    platform.system() == "Linux"
+)
 
 
 def is_left(event):
 
-    #
-    # Keyboard
-    #
     if event.type == pygame.KEYDOWN:
         return event.key == pygame.K_LEFT
 
-    #
-    # Windows Controller
-    #
-    if event.type == pygame.JOYBUTTONDOWN:
-        return event.button == 13
+    if IS_PI:
 
-    #
-    # Pi Controller
-    #
-    if event.type == pygame.JOYHATMOTION:
-        return event.value == (-1, 0)
+        if event.type == pygame.JOYHATMOTION:
+            return event.value == (-1, 0)
+
+    else:
+
+        if event.type == pygame.JOYBUTTONDOWN:
+            return event.button == 13
 
     return False
 
@@ -47,23 +47,15 @@ def is_right(event):
 
 def is_confirm(event):
 
-    #
-    # Keyboard
-    #
     if event.type == pygame.KEYDOWN:
         return event.key == pygame.K_RETURN
 
-    #
-    # Windows Controller
-    #
     if event.type == pygame.JOYBUTTONDOWN:
-        return event.button == 0
 
-    #
-    # Pi Controller
-    #
-    if event.type == pygame.JOYBUTTONDOWN:
-        return event.button == 2
+        if IS_PI:
+            return event.button == 2
+
+        return event.button == 0
 
     return False
 
