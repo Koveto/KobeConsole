@@ -965,10 +965,14 @@ while running:
 
                 current_screen = "lan_menu"
 
-        status_text = (
-            f"Found Host: {discovered_host_ip}"
-            if discovered_host_ip
-            else "Searching..."
+        status_text = message_font.render(
+            (
+                f"Found Host: {discovered_host_ip}"
+                if discovered_host_ip
+                else "Searching..."
+            ),
+            True,
+            (255, 255, 0)
         )
 
         status_rect = status_text.get_rect(
