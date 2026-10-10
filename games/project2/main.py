@@ -3,8 +3,9 @@ import pygame
 from constants import *
 
 from state.state_manager import StateManager
-from state.team_builder_state import TeamBuilderState
 from state.battle_state import BattleState
+
+from input_manager_pkmn import *
 
 
 def main():
@@ -17,14 +18,23 @@ def main():
     display_info = pygame.display.Info()
     screen_width = display_info.current_w
     screen_height = display_info.current_h
-    offset_x = (screen_width - GAME_WIDTH) // 2
-    offset_y = (screen_height - GAME_HEIGHT) // 2
+    game_scale = min(
+        screen_width / LOGICAL_WIDTH,
+        screen_height / LOGICAL_HEIGHT
+    )
+    game_width = LOGICAL_WIDTH * game_scale
+    game_height = LOGICAL_HEIGHT * game_scale
+    offset_x = (screen_width - game_width) // 2
+    offset_y = (screen_height - game_height) // 2
     screen = pygame.display.set_mode(
         (screen_width, screen_height),
         pygame.NOFRAME
     )
     game_surface = pygame.Surface(
-        (GAME_WIDTH, GAME_HEIGHT)
+        (
+            LOGICAL_WIDTH,
+            LOGICAL_HEIGHT
+        )
     )
     pygame.display.set_caption(WINDOW_TITLE)
 
@@ -36,16 +46,11 @@ def main():
     state_manager = StateManager()
 
     state_manager.register(
-        STATE_TEAM_BUILDER,
-        TeamBuilderState()
-    )
-
-    state_manager.register(
         STATE_BATTLE,
         BattleState()
     )
 
-    state_manager.change(STATE_TEAM_BUILDER)
+    state_manager.change(STATE_BATTLE)
 
     # ---------------------------------------------------------
     # Main Loop
@@ -57,30 +62,17 @@ def main():
         # Event Handling
         # -----------------------------
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+
+            if is_quit(event):
                 running = False
 
-            if event.type == pygame.KEYDOWN:
-
-                if event.key == KEY_QUIT:
-                    running = False
-
-                # Toggle Pokédex
-                elif event.key == KEY_TEAM_BUILDER:
-                    state_manager.change(STATE_TEAM_BUILDER)
-
-                # Toggle Battle
-                elif event.key == KEY_BATTLE:
-                    state_manager.change(STATE_BATTLE)
-
-            # Pass event to active state
             state_manager.handle_event(event)
 
         # -----------------------------
         # Update + Draw
         # -----------------------------
         state_manager.update()
-        game_surface.fill(COLOR_BLACK)
+        game_surface.fill(COLOR_BLUE)
         state_manager.draw(game_surface)
 
         screen.fill(COLOR_BLACK)
@@ -91,14 +83,25 @@ def main():
             (
                 offset_x - DISPLAY_BORDER_WIDTH,
                 offset_y - DISPLAY_BORDER_WIDTH,
-                GAME_WIDTH + DISPLAY_BORDER_WIDTH * 2,
-                GAME_HEIGHT + DISPLAY_BORDER_WIDTH * 2
+                game_width + DISPLAY_BORDER_WIDTH * 2,
+                game_height + DISPLAY_BORDER_WIDTH * 2
             ),
             DISPLAY_BORDER_WIDTH
         )
-        screen.blit(
+        scaled_surface = pygame.transform.scale(
             game_surface,
-            (offset_x, offset_y)
+            (
+                game_width,
+                game_height
+            )
+        )
+
+        screen.blit(
+            scaled_surface,
+            (
+                offset_x,
+                offset_y
+            )
         )
 
         pygame.display.flip()

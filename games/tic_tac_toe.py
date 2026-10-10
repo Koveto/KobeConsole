@@ -190,7 +190,7 @@ def get_navigation_text():
     if using_controller():
 
         return (
-            "D-PAD = Move   "
+            "D-PAD/STICK = Move   "
             "A = Confirm   "
             "B = Back   "
             "HOME = Quit"
@@ -208,7 +208,7 @@ def get_menu_text():
     if using_controller():
 
         return (
-            "D-PAD = Select   "
+            "D-PAD/STICK = Select   "
             "A = Confirm   "
             "B = Back   "
             "HOME = Quit"
@@ -886,51 +886,6 @@ while running:
         screen.blit(
             host_name_text,
             host_name_rect
-        )
-
-        ip_text = message_font.render(
-            f"IP: {IP_ADDRESS}",
-            True,
-            (255, 255, 255)
-        )
-
-        ip_rect = ip_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 120)
-        )
-
-        screen.blit(
-            ip_text,
-            ip_rect
-        )
-
-        port_text = message_font.render(
-            f"Port: {PORT}",
-            True,
-            (255, 255, 255)
-        )
-
-        port_rect = port_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 180)
-        )
-
-        screen.blit(
-            port_text,
-            port_rect
-        )
-
-        players_text = message_font.render(
-            f"Players Connected: {connected_players}",
-            True,
-            (255, 255, 255)
-        )
-
-        players_rect = players_text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2 + 240)
-        )
-
-        screen.blit(
-            players_text,
-            players_rect
         )
 
         draw_footer(

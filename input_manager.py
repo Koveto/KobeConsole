@@ -1,6 +1,11 @@
 import pygame
 import platform
 
+LEFT_STICK_LEFT_ACTIVE = False
+LEFT_STICK_RIGHT_ACTIVE = False
+LEFT_STICK_UP_ACTIVE = False
+LEFT_STICK_DOWN_ACTIVE = False
+
 pygame.joystick.init()
 
 for i in range(pygame.joystick.get_count()):
@@ -61,6 +66,22 @@ CONTROLLER_NAME = get_controller_name()
 def using_controller():
 
     return CONTROLLER_NAME is not None
+
+def get_launcher_text():
+
+    if using_controller():
+
+        return (
+            "D-PAD/STICK = Select    "
+            "A = Launch    "
+            "B = Exit"
+        )
+
+    return (
+        "LEFT/RIGHT = Select    "
+        "Z/ENTER = Launch    "
+        "X/ESC = Exit"
+    )
 
 
 #
@@ -244,6 +265,125 @@ def is_controller_button_home(event):
         and event.button == CONTROLLER_HOME
     )
 
+def is_controller_left_stick_left(event):
+
+    global LEFT_STICK_LEFT_ACTIVE
+
+    if (
+        event.type == pygame.JOYAXISMOTION
+        and event.axis == 0
+    ):
+
+        #
+        # Stick pushed left
+        #
+        if (
+            event.value < -0.8
+            and not LEFT_STICK_LEFT_ACTIVE
+        ):
+
+            LEFT_STICK_LEFT_ACTIVE = True
+
+            return True
+
+        #
+        # Stick returned to center
+        #
+        elif event.value > -0.3:
+
+            LEFT_STICK_LEFT_ACTIVE = False
+
+    return False
+
+def is_controller_left_stick_right(event):
+
+    global LEFT_STICK_RIGHT_ACTIVE
+
+    if (
+        event.type == pygame.JOYAXISMOTION
+        and event.axis == 0
+    ):
+
+        #
+        # Stick pushed right
+        #
+        if (
+            event.value > 0.8
+            and not LEFT_STICK_RIGHT_ACTIVE
+        ):
+
+            LEFT_STICK_RIGHT_ACTIVE = True
+
+            return True
+
+        #
+        # Stick returned to center
+        #
+        elif event.value < 0.3:
+
+            LEFT_STICK_RIGHT_ACTIVE = False
+
+    return False
+
+def is_controller_left_stick_up(event):
+
+    global LEFT_STICK_UP_ACTIVE
+
+    if (
+        event.type == pygame.JOYAXISMOTION
+        and event.axis == 1
+    ):
+
+        #
+        # Stick pushed up
+        #
+        if (
+            event.value < -0.8
+            and not LEFT_STICK_UP_ACTIVE
+        ):
+
+            LEFT_STICK_UP_ACTIVE = True
+
+            return True
+
+        #
+        # Stick returned to center
+        #
+        elif event.value > -0.3:
+
+            LEFT_STICK_UP_ACTIVE = False
+
+    return False
+
+def is_controller_left_stick_down(event):
+
+    global LEFT_STICK_DOWN_ACTIVE
+
+    if (
+        event.type == pygame.JOYAXISMOTION
+        and event.axis == 1
+    ):
+
+        #
+        # Stick pushed down
+        #
+        if (
+            event.value > 0.8
+            and not LEFT_STICK_DOWN_ACTIVE
+        ):
+
+            LEFT_STICK_DOWN_ACTIVE = True
+
+            return True
+
+        #
+        # Stick returned to center
+        #
+        elif event.value < 0.3:
+
+            LEFT_STICK_DOWN_ACTIVE = False
+
+    return False
 
 #
 # Actions
@@ -253,6 +393,7 @@ def is_up(event):
 
     return (
         is_keyboard_up(event)
+        or is_controller_left_stick_up(event)
         or is_controller_dpad_up(event)
     )
 
@@ -261,6 +402,7 @@ def is_down(event):
 
     return (
         is_keyboard_down(event)
+        or is_controller_left_stick_down(event)
         or is_controller_dpad_down(event)
     )
 
@@ -269,6 +411,7 @@ def is_left(event):
 
     return (
         is_keyboard_left(event)
+        or is_controller_left_stick_left(event)
         or is_controller_dpad_left(event)
     )
 
@@ -277,6 +420,7 @@ def is_right(event):
 
     return (
         is_keyboard_right(event)
+        or is_controller_left_stick_right(event)
         or is_controller_dpad_right(event)
     )
 

@@ -73,8 +73,8 @@ games = [
         )
     },
     {
-        "title": "Pokemon SMT Game",
-        "path": "games/project1/main.py",
+        "title": "Pokemon Battle Simulator",
+        "path": "games/project2/main.py",
         "color": (0, 100, 255),
         "logo": os.path.join(
             BASE_DIR,
@@ -171,6 +171,9 @@ while running:
 
     for event in pygame.event.get():
 
+        if IS_WINDOWS and is_quit(event):
+            running = False
+        
         if is_right(event):
             selected_index += 1
 
@@ -271,7 +274,7 @@ while running:
     #
     draw_text_outline(
         screen,
-        "LEFT/RIGHT = Select    ENTER = Launch    F11 = Fullscreen",
+        get_launcher_text(),
         info_font,
         (255, 255, 255),
         (0, 0, 0),

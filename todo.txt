@@ -1,7 +1,5 @@
-1. automatic LAN
-2. controller text
-3. analog stick
-(big picture)
-4. server/online tic tac toe from any wifi
+1. pokemon battle simulator w/ LAN
+2. tic tac toe but two players/controllers/keyboards are connected to the same system
+3. tic tac toe from any wifi
+4. pokemon battle simulator from any wifi
 5. controller wizard visualizing the controller, where I can verify every controller button and swap them around. same with keyboard and mouse
-6. pokemon battle simulator for me and my brother to play together while i am out of state
