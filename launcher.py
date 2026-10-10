@@ -169,7 +169,7 @@ while running:
 
     for event in pygame.event.get():
 
-        if event.type == pygame.QUIT:
+        if is_quit(event):
             running = False
 
         elif is_right(event):
