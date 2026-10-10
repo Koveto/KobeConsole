@@ -97,7 +97,6 @@ def update_kobeconsole():
         ["git", "pull"],
         cwd=BASE_DIR
     )
-    pygame.event.clear()
     os.execv(
         sys.executable,
         [
@@ -124,6 +123,7 @@ def launch_game(path):
         ],
         cwd=game_dir
     )
+    pygame.event.clear()
 
 def draw_text_outline(
     surface,
