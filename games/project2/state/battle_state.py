@@ -50,7 +50,8 @@ class BattleState:
             glyph_w=6,
             glyph_h=13,
             scale=1,
-            spacing=6
+            spacing=6,
+            row2="0123456789!? -   >/+"
         )
 
         self.info_font = BattleFont(
