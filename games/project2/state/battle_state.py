@@ -212,6 +212,7 @@ class BattleState:
 
                     self.move_row = 0
                     self.move_col = 0
+                    self.dialogue_state = None
 
             elif self.menu_state == "moves":
                 move_index = (
@@ -241,6 +242,7 @@ class BattleState:
 
                 self.menu_state = "command"
                 self.menu_index = 0
+                self.dialogue_state = "command"
 
     def update(self):
 
@@ -407,12 +409,27 @@ class BattleState:
                 second_species = self.player_species
                 second_action = self.selected_action
 
+            if first_user is self.player:
+
+                pokemon_name = (
+                    first_species["name"].upper()
+                )
+
+            else:
+
+                pokemon_name = (
+                    "OPPOSING "
+                    + first_species["name"].upper()
+                )
+
             self.dialogue_line_1 = (
-                f"{first_species['name'].upper()} USED"
+                pokemon_name
             )
 
             self.dialogue_line_2 = (
-                f"{first_action['move'].upper()}!"
+                "USED "
+                + first_action["move"].upper()
+                + "!"
             )
             self.dialogue_state = "battle"
             self.phase_timer = 120
