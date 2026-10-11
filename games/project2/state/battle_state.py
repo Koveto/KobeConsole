@@ -8,6 +8,26 @@ from pokemon.pkmn_data import *
 from pokemon.pkmn_battle import BattlePokemon
 from input_manager_pkmn import *
 
+type_names = {
+    "Electric": "ELEC",
+    "Psychic": "PSYCH",
+    "Fighting": "FIGHT",
+    "Poison": "POISN",
+    "Ground": "GROND",
+    "Flying": "FLYING",
+    "Dragon": "DRAGON",
+    "Normal": "NORML",
+    "Water": "WATER",
+    "Grass": "GRASS",
+    "Fire": "FIRE",
+    "Ice": "ICE",
+    "Rock": "ROCK",
+    "Ghost": "GHOST",
+    "Steel": "STEEL",
+    "Fairy": "FAIRY",
+    "Dark": "DARK",
+    "Bug": "BUG"
+}
 
 class BattleState:
 
@@ -493,7 +513,8 @@ class BattleState:
                             positions[i][1] - 1,
                             75,
                             14
-                        )
+                        ),
+                        1
                     )
 
                 self.menu_font.draw_text(
@@ -501,11 +522,16 @@ class BattleState:
                     move,
                     positions[i][0],
                     positions[i][1]
-                )   
+                )  
+
+            move_type = type_names.get(
+                selected_move["type"],
+                selected_move["type"]
+            ) 
 
             self.menu_font.draw_text(
                 surface,
-                f"TYPE/{selected_move['type'].upper()}",
+                f"TYPE/{move_type}",
                 165,
                 122
             )
