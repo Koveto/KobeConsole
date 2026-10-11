@@ -91,6 +91,9 @@ class BattleState:
         self.turn_started = False
         self.phase_timer = 0
         self.battle_phase = None
+        self.animation_duration = 15
+        self.current_move_category = None
+        self.current_attacker = None    
 
         self.player_attack_offset_x = 0
         self.player_attack_offset_y = 0
@@ -279,18 +282,6 @@ class BattleState:
 
     def update(self):
 
-        if self.phase_timer > 0:
-
-            self.phase_timer -= 1
-
-            if self.phase_timer == 60:
-
-                self.player_attack_offset_x = 0
-                self.player_attack_offset_y = 0
-
-                self.enemy_attack_offset_x = 0
-                self.enemy_attack_offset_y = 0
-
         if self.flash_alpha > 0:
 
             self.flash_alpha -= 8
@@ -298,6 +289,18 @@ class BattleState:
             if self.flash_alpha < 0:
 
                 self.flash_alpha = 0
+
+        if self.battle_phase == "text_pause":
+            self.update_text_pause()
+
+        elif self.battle_phase == "physical_lunge":
+            self.update_physical_lunge()
+
+        elif self.battle_phase == "physical_return":
+            self.update_physical_return()
+
+        elif self.battle_phase == "special_flash":
+            self.update_special_flash()
 
         if not hasattr(
             self,
@@ -461,13 +464,12 @@ class BattleState:
             move_data = get_move(
                 first_action["move"]
             )
-            if move_data["category"] == "Physical":
 
-                self.battle_phase = "physical"
+            self.current_move_category = (
+                move_data["category"]
+            )
 
-            else:
-
-                self.battle_phase = "special"
+            self.current_attacker = first_user
 
             if first_user is self.player:
 
@@ -492,28 +494,14 @@ class BattleState:
                 + "!"
             )
             self.dialogue_state = "battle"
-            self.phase_timer = 120
-            if self.battle_phase == "physical":
+            self.phase_timer = 0
+            self.battle_phase = "text_pause"
 
-                if first_user is self.player:
-
-                    self.player_attack_offset_x = 16
-                    self.player_attack_offset_y = -8
-
-                else:
-
-                    self.enemy_attack_offset_x = -16
-                    self.enemy_attack_offset_y = 8
-
-            else:
-
-                self.flash_color = (
-                    TYPE_COLORS[
-                        move_data["type"]
-                    ]
-                )
-
-                self.flash_alpha = 180
+            self.flash_color = (
+                TYPE_COLORS[
+                    move_data["type"]
+                ]
+            )
 
 
     def draw(
@@ -847,7 +835,124 @@ class BattleState:
             )
 
         return BattleState.HP_BOX_SPRITE_ENEMY
-        
+
+    def update_special_flash(self):
+
+        self.phase_timer += 1
+
+        progress = self.phase_timer / 30
+
+        self.flash_alpha = int(
+            180 * (1 - progress)
+        )
+
+        if self.phase_timer >= 30:
+
+            self.flash_alpha = 0
+            self.phase_timer = 0
+
+            self.battle_phase = "idle"
+
+    def update_text_pause(self):
+
+        self.phase_timer += 1
+
+        if self.phase_timer >= 60:
+
+            self.phase_timer = 0
+
+            if self.current_move_category == "Physical":
+
+                self.battle_phase = (
+                    "physical_lunge"
+                )
+
+            else:
+
+                self.flash_alpha = 180
+
+                self.battle_phase = (
+                    "special_flash"
+                )
+
+    def update_physical_lunge(self):
+
+        self.phase_timer += 1
+
+        progress = (
+            self.phase_timer
+            / self.animation_duration
+        )
+
+        if self.current_attacker is self.player:
+
+            self.player_attack_offset_x = int(
+                16 * progress
+            )
+
+            self.player_attack_offset_y = int(
+                -8 * progress
+            )
+
+        else:
+
+            self.enemy_attack_offset_x = int(
+                -16 * progress
+            )
+
+            self.enemy_attack_offset_y = int(
+                8 * progress
+            )
+
+        if self.phase_timer >= self.animation_duration:
+
+            self.phase_timer = 0
+
+            self.battle_phase = (
+                "physical_return"
+            )
+
+    def update_physical_return(self):
+
+        self.phase_timer += 1
+
+        progress = (
+            self.phase_timer
+            / self.animation_duration
+        )
+
+        if self.current_attacker is self.player:
+
+            self.player_attack_offset_x = int(
+                16 * (1 - progress)
+            )
+
+            self.player_attack_offset_y = int(
+                -8 * (1 - progress)
+            )
+
+        else:
+
+            self.enemy_attack_offset_x = int(
+                -16 * (1 - progress)
+            )
+
+            self.enemy_attack_offset_y = int(
+                8 * (1 - progress)
+            )
+
+        if self.phase_timer >= self.animation_duration:
+
+            self.player_attack_offset_x = 0
+            self.player_attack_offset_y = 0
+
+            self.enemy_attack_offset_x = 0
+            self.enemy_attack_offset_y = 0
+
+            self.phase_timer = 0
+
+            self.battle_phase = "idle"
+            
 
     def _load_hp_fill(self):
 
