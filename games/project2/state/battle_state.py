@@ -487,36 +487,45 @@ class BattleState:
 
                 if i == cursor:
 
-                    text = "> " + text
-
-                self.menu_font.draw_text(
-                    surface,
-                    text,
-                    positions[i][0],
-                    positions[i][1]
-                )
+                    pygame.draw.rect(
+                        surface,
+                        (80, 120, 255),
+                        (
+                            positions[i][0] - 2,
+                            positions[i][1] - 1,
+                            75,
+                            14
+                        )
+                    )
 
             self.menu_font.draw_text(
                 surface,
-                f"TYPE/{selected_move['type'].upper()}",
+                selected_move["type"].upper(),
                 165,
                 122
             )
 
             self.menu_font.draw_text(
                 surface,
-                f"POWER/{selected_move['power']}",
+                str(
+                    selected_move["power"]
+                ),
                 165,
                 138
             )
 
             self.menu_font.draw_text(
                 surface,
-                selected_move[
-                    "category"
-                ].upper(),
-                165,
-                154
+                "TYPE",
+                130,
+                122
+            )
+
+            self.menu_font.draw_text(
+                surface,
+                "POWER",
+                130,
+                138
             )
 
         if self.menu_state == "command":
