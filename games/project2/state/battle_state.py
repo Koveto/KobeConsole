@@ -6,6 +6,7 @@ from battle.battle_font import BattleFont
 from pokemon.pkmn_sprite import *
 from pokemon.pkmn_data import *
 from pokemon.pkmn_battle import BattlePokemon
+from input_manager_pkmn import *
 
 
 class BattleState:
@@ -34,6 +35,7 @@ class BattleState:
 
         self.background = self._load_background()
         self.frame = self._load_frame()
+        self.menu_index = 0
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -116,7 +118,19 @@ class BattleState:
         self,
         event
     ):
-        pass
+        if is_up(event):
+
+            self.menu_index = max(
+                0,
+                self.menu_index - 1
+            )
+
+        elif is_down(event):
+
+            self.menu_index = min(
+                1,
+                self.menu_index + 1
+            )
 
     def update(self):
 
@@ -214,27 +228,6 @@ class BattleState:
         surface.blit(
             self.frame,
             (0, 112)
-        )
-
-        self.dialogue_font.draw_text(
-            surface,
-            self.player_species["name"],
-            120,
-            145
-        )
-
-        self.menu_font.draw_text(
-            surface,
-            "MENU FONT",
-            10,
-            130
-        )
-
-        self.info_font.draw_text(
-            surface,
-            str(self.enemy_species["types"]),
-            10,
-            130
         )
 
         surface.blit(
@@ -357,6 +350,28 @@ class BattleState:
                 33
             )
         )
+
+        options = [
+            "FIGHT",
+            "POKEMON"
+        ]
+
+        for i, option in enumerate(
+            options
+        ):
+
+            text = option
+
+            if i == self.menu_index:
+
+                text = "> " + text
+
+            self.menu_font.draw_text(
+                surface,
+                text,
+                20,
+                130 + i * 15
+            )
 
     def _load_enemy_hp_box(self):
 
