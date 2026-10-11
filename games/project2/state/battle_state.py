@@ -121,6 +121,8 @@ class BattleState:
         self.second_action = None
 
         self.second_move_pending = False
+        self.party_cursor = 0
+        self.fainted_side = None
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -333,6 +335,9 @@ class BattleState:
 
         elif self.battle_phase == "faint_message":
             self.update_faint_message()
+
+        elif self.battle_phase == "forced_switch":
+            pass
 
 
         if not hasattr(
@@ -807,6 +812,12 @@ class BattleState:
                 138
             )
 
+        if self.battle_phase == "forced_switch":
+
+            self.draw_party_menu(
+                surface
+            )
+
         if self.dialogue_state == "command":
 
             self.dialogue_font.draw_text(
@@ -877,6 +888,49 @@ class BattleState:
                 (0, 0)
             )
 
+    def draw_party_menu(
+        self,
+        surface
+    ):
+
+        pygame.draw.rect(
+            surface,
+            (255, 255, 255),
+            (10, 10, 220, 90)
+        )
+
+        for i, pokemon in enumerate(
+            self.player_team
+        ):
+
+            y = 16 + i * 14
+
+            color = (
+                (255, 0, 0)
+                if pokemon["current_hp"] <= 0
+                else (0, 0, 0)
+            )
+
+            prefix = (
+                ">"
+                if i == self.party_cursor
+                else " "
+            )
+
+            text = (
+                f"{prefix}"
+                f"{pokemon['species']['name']} "
+                f"{pokemon['current_hp']}/"
+                f"{pokemon['max_hp']}"
+            )
+
+            self.menu_font.draw_text(
+                surface,
+                text,
+                16,
+                y
+            )
+
     def _load_enemy_hp_box(self):
 
         if BattleState.HP_BOX_SPRITE_ENEMY is None:
@@ -905,7 +959,19 @@ class BattleState:
 
         if self.phase_timer <= 0:
 
-            self.battle_phase = "idle"
+            if self.fainted_side == "player":
+
+                self.party_cursor = 0
+
+                self.battle_phase = (
+                    "forced_switch"
+                )
+
+            else:
+
+                print(
+                    "Enemy replacement goes here"
+                )
 
     def resolve_turn_progress(self):
 
@@ -920,6 +986,8 @@ class BattleState:
             self.dialogue_state = "battle"
 
             self.phase_timer = 180
+
+            self.fainted_side = "enemy"
 
             self.battle_phase = "faint_message"
 
@@ -936,6 +1004,8 @@ class BattleState:
             self.dialogue_state = "battle"
 
             self.phase_timer = 180
+
+            self.fainted_side = "player"
 
             self.battle_phase = "faint_message"
 
