@@ -23,6 +23,7 @@ class LeadSelectState:
         self.team_sprites = []
         self.team_sent = False
         self.opponent_team = []
+        self.pending_messages = []
 
         for _ in range(6):
 
@@ -129,13 +130,28 @@ class LeadSelectState:
             )
 
             self.team_sent = True
-        """
         try:
 
+            data = self.client_socket.recv(
+                1024
+            )
+
+            if data:
+
+                self.pending_messages.append(
+                    data.decode()
+                )
+
+        except (
+            BlockingIOError,
+            OSError
+        ):
+            pass
+
+        while self.pending_messages:
+
             message = (
-                self.client_socket.recv(
-                    1024
-                ).decode()
+                self.pending_messages.pop(0)
             )
 
             if message.startswith(
@@ -160,19 +176,17 @@ class LeadSelectState:
                             int(species_id)
                         )
                     )
+
             elif message.startswith(
                 "LEAD:"
             ):
 
                 self.opponent_ready = True
 
-        except (
-            BlockingIOError,
-            OSError
+        if (
+            self.selected_lead is not None
+            and self.opponent_ready
         ):
-            pass
-        """
-        if self.selected_lead is not None:
 
             self.state_manager.shared[
                 "player_team"
