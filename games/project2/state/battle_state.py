@@ -133,26 +133,28 @@ class BattleState:
                 ]
             )
 
-            self.player_lead = (
-                self.state_manager.shared[
-                    "player_lead"
-                ]
-            )
-
-            self.opponent_team = (
-                self.state_manager.shared[
-                    "opponent_team"
-                ]
-            )
-
             lead_pokemon = (
                 self.player_team[
                     self.player_lead
                 ]
             )
 
+            self.player_species_no = (
+                lead_pokemon[
+                    "species_no"
+                ]
+            )
+
             self.player_species = (
-                lead_pokemon["species"]
+                lead_pokemon[
+                    "species"
+                ]
+            )
+
+            self.player_sprite = (
+                load_player_sprite(
+                    self.player_species_no
+                )
             )
 
     def draw(
