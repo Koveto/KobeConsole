@@ -112,6 +112,18 @@ class BattleState:
         self.enemy_hp_box = self._load_enemy_hp_box()
         self.hp_fill = self._load_hp_fill()
 
+        player_team = (
+            self.state_manager.shared[
+                "player_team"
+            ]
+        )
+
+        player_lead = (
+            self.state_manager.shared[
+                "player_lead"
+            ]
+        )
+
     def handle_event(
         self,
         event
