@@ -1447,6 +1447,25 @@ class BattleState:
 
     def resolve_turn_progress(self):
 
+        if (
+            self.player.current_hp <= 0
+            and self.enemy.current_hp <= 0
+        ):
+
+            self.dialogue_line_1 = (
+                "DRAW!"
+            )
+
+            self.dialogue_line_2 = (
+                "PRESS A"
+            )
+
+            self.dialogue_state = "battle"
+
+            self.battle_phase = "battle_over"
+
+            return
+
         if self.all_fainted(
             self.opponent_team
         ):
