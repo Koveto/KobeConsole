@@ -5,6 +5,7 @@ from pokemon.pkmn_data import get_species
 from pokemon.pkmn_sprite import load_enemy_sprite
 from input_manager_pkmn import *
 from constants import *
+from pokemon.pkmn_battle import BattlePokemon
 
 
 class LeadSelectState:
@@ -37,10 +38,10 @@ class LeadSelectState:
             )
 
             self.team.append(
-                {
-                    "species_no": species_no,
-                    "species": species
-                }
+                BattlePokemon(
+                    species,
+                    level=50
+                )
             )
 
             self.team_sprites.append(
@@ -116,7 +117,7 @@ class LeadSelectState:
 
                 team_ids.append(
                     str(
-                        pokemon["species_no"]
+                        pokemon.species["no"]
                     )
                 )
 
@@ -170,9 +171,14 @@ class LeadSelectState:
 
                 for species_id in species_ids:
 
+                    species = get_species(
+                        int(species_id)
+                    )
+
                     self.opponent_team.append(
-                        get_species(
-                            int(species_id)
+                        BattlePokemon(
+                            species,
+                            level=50
                         )
                     )
 
@@ -224,9 +230,7 @@ class LeadSelectState:
             self.team
         ):
 
-            name = pokemon[
-                "species"
-            ]["name"]
+            name = pokemon.species["name"]
 
             if (
                 self.selected_lead is None
@@ -304,7 +308,7 @@ class LeadSelectState:
 
             self.font.draw_text(
                 surface,
-                pokemon["name"],
+                pokemon.species["name"],
                 170,
                 30 + i * 15
             )

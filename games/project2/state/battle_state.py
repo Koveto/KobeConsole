@@ -365,12 +365,12 @@ class BattleState:
                 ]
             )
 
-            enemy_pokemon = (
+            self.enemy = (
                 self.opponent_team[0]
             )
 
             self.enemy_species = (
-                enemy_pokemon
+                self.enemy.species
             )
 
             self.enemy_species_no = (
@@ -390,32 +390,20 @@ class BattleState:
                 ]
             )
 
-            self.player_species_no = (
-                lead_pokemon[
-                    "species_no"
-                ]
-            )
+            self.player = lead_pokemon
 
             self.player_species = (
-                lead_pokemon[
-                    "species"
-                ]
+                self.player.species
+            )
+
+            self.player_species_no = (
+                self.player_species["no"]
             )
 
             self.player_sprite = (
                 load_player_sprite(
                     self.player_species_no
                 )
-            )
-
-            self.enemy = BattlePokemon(
-                self.enemy_species,
-                level=50
-            )
-
-            self.player = BattlePokemon(
-                self.player_species,
-                level=50
             )
 
             self.displayed_player_hp = (
@@ -896,7 +884,7 @@ class BattleState:
         pygame.draw.rect(
             surface,
             (255, 255, 255),
-            (10, 10, 220, 90)
+            (10, 10, 220, 100)
         )
 
         for i, pokemon in enumerate(
@@ -905,23 +893,23 @@ class BattleState:
 
             y = 16 + i * 14
 
-            color = (
-                (255, 0, 0)
-                if pokemon["current_hp"] <= 0
-                else (0, 0, 0)
-            )
+            if pokemon.current_hp <= 0:
 
-            prefix = (
-                ">"
-                if i == self.party_cursor
-                else " "
-            )
+                prefix = "X "
+
+            elif i == self.party_cursor:
+
+                prefix = "> "
+
+            else:
+
+                prefix = "  "
 
             text = (
                 f"{prefix}"
-                f"{pokemon['species']['name']} "
-                f"{pokemon['current_hp']}/"
-                f"{pokemon['max_hp']}"
+                f"{pokemon.species['name']} "
+                f"{pokemon.current_hp}/"
+                f"{pokemon.max_hp}"
             )
 
             self.menu_font.draw_text(
