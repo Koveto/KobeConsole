@@ -4,6 +4,10 @@ from constants import *
 
 from state.state_manager import StateManager
 from state.battle_state import BattleState
+from state.menu_state import MenuState
+from state.lan_menu_state import LanMenuState
+from state.host_state import HostState
+from state.join_state import JoinState
 
 from input_manager_pkmn import *
 
@@ -50,7 +54,27 @@ def main():
         BattleState()
     )
 
-    state_manager.change(STATE_BATTLE)
+    state_manager.register(
+        STATE_MENU,
+        MenuState()
+    )
+
+    state_manager.register(
+        STATE_LAN_MENU,
+        LanMenuState()
+    )
+
+    state_manager.register(
+        STATE_HOST,
+        HostState()
+    )
+
+    state_manager.register(
+        STATE_JOIN,
+        JoinState()
+    )
+
+    state_manager.change(STATE_MENU)
 
     # ---------------------------------------------------------
     # Main Loop

@@ -11,6 +11,8 @@ class StateManager:
         state
     ):
 
+        state.state_manager = self
+
         self.states[name] = state
 
     def change(

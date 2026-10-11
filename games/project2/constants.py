@@ -14,6 +14,10 @@ LOGICAL_TILE_SIZE = 16
 
 # States
 STATE_BATTLE = "battle"
+STATE_MENU = "menu"
+STATE_LAN_MENU = "lan_menu"
+STATE_HOST = "host"
+STATE_JOIN = "join"
 
 DISPLAY_BORDER_COLOR = (40, 40, 40)
 DISPLAY_BORDER_WIDTH = 2
