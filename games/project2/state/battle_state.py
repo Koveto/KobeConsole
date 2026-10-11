@@ -896,7 +896,7 @@ class BattleState:
             self.flash_alpha = 0
             self.phase_timer = 0
 
-            self.battle_phase = "idle"
+            self.battle_phase = "damage"
 
     def update_text_pause(self):
 
@@ -964,7 +964,7 @@ class BattleState:
 
             self.defender_visible = True
 
-            self.battle_phase = "idle"
+            self.battle_phase = "damage"
 
             self.phase_timer = 0
 
@@ -1044,7 +1044,7 @@ class BattleState:
 
             self.phase_timer = 0
 
-            self.battle_phase = "idle"
+            self.battle_phase = "damage"
             
 
     def _load_hp_fill(self):
