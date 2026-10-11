@@ -834,7 +834,19 @@ class BattleState:
 
                 return
             
-            if self.player.speed >= self.enemy.speed:
+            player_key = (
+                self.player.speed,
+                self.player_species_no,
+                self.player.current_hp
+            )
+
+            enemy_key = (
+                self.enemy.speed,
+                self.enemy_species_no,
+                self.enemy.current_hp
+            )
+
+            if player_key > enemy_key:
 
                 self.first_user = self.player
                 first_species = self.player_species
@@ -853,6 +865,7 @@ class BattleState:
                 self.second_user = self.player
                 second_species = self.player_species
                 self.second_action = self.selected_action
+
             self.second_move_pending = True
             if self.first_action["type"] == "swap":
 
