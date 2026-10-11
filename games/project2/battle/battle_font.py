@@ -7,10 +7,11 @@ class BattleFont:
     Supports variable glyph width, height, scale, and spacing.
     """
 
-    def __init__(self, filename, glyph_w, glyph_h, scale=4, spacing=None):
+    def __init__(self, filename, glyph_w, glyph_h, scale=4, spacing=None,row2=None):
         self.glyph_w = glyph_w
         self.glyph_h = glyph_h
         self.scale = scale
+        self.row2 = row2
 
         # If spacing not provided, default to scaled width
         self.spacing = spacing if spacing is not None else glyph_w * scale
@@ -65,7 +66,10 @@ class BattleFont:
             self.glyphs[chr(ord('a') + i)] = glyph
 
         # Row 2: digits + punctuation (26 glyphs)
-        row2 = "0123456789!?.-\"\"''/+"  # exactly 26 characters
+        row2 = self.row2
+
+        if row2 is None:
+            row2 = "0123456789!?.-\"\"''/+"
 
         for i, ch in enumerate(row2):
             rect = pygame.Rect(
