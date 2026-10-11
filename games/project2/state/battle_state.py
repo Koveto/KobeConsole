@@ -454,7 +454,7 @@ class BattleState:
               and not self.waiting_for_opponent):
 
             moves = (
-                self.player_moves
+                self.player.moves
             )
 
             positions = [
