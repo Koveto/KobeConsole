@@ -64,3 +64,53 @@ def listen_for_hosts():
     except OSError:
 
         return None
+
+def create_server(
+    ip_address
+):
+
+    server_socket = socket.socket(
+        socket.AF_INET,
+        socket.SOCK_STREAM
+    )
+
+    server_socket.bind(
+        (
+            ip_address,
+            PORT
+        )
+    )
+
+    server_socket.listen(1)
+
+    server_socket.setblocking(
+        False
+    )
+
+    return server_socket
+
+def connect_to_server(
+    host_ip
+):
+
+    client_socket = socket.socket(
+        socket.AF_INET,
+        socket.SOCK_STREAM
+    )
+
+    client_socket.settimeout(
+        2
+    )
+
+    client_socket.connect(
+        (
+            host_ip,
+            PORT
+        )
+    )
+
+    client_socket.setblocking(
+        False
+    )
+
+    return client_socket

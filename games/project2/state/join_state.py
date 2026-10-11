@@ -1,7 +1,7 @@
 import pygame
 
 from battle.battle_font import BattleFont
-from network.lan import listen_for_hosts
+from network.lan import *
 
 
 class JoinState:
@@ -21,6 +21,8 @@ class JoinState:
         )
 
         self.discovered_host_ip = None
+        self.connected = False
+        self.client_socket = None
 
     def handle_event(
         self,
@@ -51,6 +53,25 @@ class JoinState:
         ):
             pass
 
+        if (
+            self.discovered_host_ip is not None
+            and not self.connected
+        ):
+
+            try:
+
+                self.client_socket = (
+                    connect_to_server(
+                        self.discovered_host_ip
+                    )
+                )
+
+                self.connected = True
+
+            except OSError:
+
+                pass
+
     def draw(
         self,
         surface
@@ -75,3 +96,16 @@ class JoinState:
                 40,
                 80
             )
+
+        status = (
+            "CONNECTED"
+            if self.connected
+            else "SEARCHING..."
+        )
+
+        self.font.draw_text(
+            surface,
+            status,
+            40,
+            40
+        )

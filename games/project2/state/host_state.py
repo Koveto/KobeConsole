@@ -6,7 +6,7 @@ from input_manager_pkmn import *
 import pygame
 
 from battle.battle_font import BattleFont
-from network.lan import broadcast_host
+from network.lan import *
 
 class HostState:
 
@@ -20,6 +20,15 @@ class HostState:
             spacing=6
         )
         self.last_broadcast_time = 0
+        self.ip_address = get_local_ip()
+
+        self.server_socket = create_server(
+            self.ip_address
+        )
+
+        self.client_socket = None
+
+        self.connected = False
 
     def handle_event(
         self,
@@ -47,6 +56,22 @@ class HostState:
             self.last_broadcast_time = (
                 current_time
             )
+        if not self.connected:
+
+            try:
+
+                (
+                    self.client_socket,
+                    address
+                ) = self.server_socket.accept()
+
+                self.connected = True
+
+            except (
+                BlockingIOError,
+                OSError
+            ):
+                pass
 
     def draw(
         self,
@@ -56,10 +81,16 @@ class HostState:
         surface.fill(
             (255, 255, 255)
         )
+        
+        status = (
+            "CONNECTED"
+            if self.connected
+            else "HOSTING..."
+        )
 
         self.font.draw_text(
             surface,
-            "HOSTING...",
+            status,
             60,
             70
         )
