@@ -284,7 +284,8 @@ class BattleState:
 
             if self.phase_timer == 60:
 
-                self.attack_offset_x = 0
+                self.player_attack_offset_x = 0
+                self.enemy_attack_offset_x = 0
 
         if not hasattr(
             self,
