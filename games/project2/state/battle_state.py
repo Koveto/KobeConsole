@@ -370,7 +370,7 @@ class BattleState:
             self.menu_font.draw_text(
                 surface,
                 text,
-                190,
+                180,
                 124 + i * 15
             )
 
@@ -378,14 +378,14 @@ class BattleState:
             surface,
             "WHAT WILL",
             12,
-            120
+            121
         )
 
         self.dialogue_font.draw_text(
             surface,
             f"{self.player_species['name'].upper()} DO?",
             12,
-            135
+            136
         )
 
     def _load_enemy_hp_box(self):
