@@ -463,8 +463,8 @@ class BattleState:
             positions = [
                 (10, 122),
                 (120, 122),
-                (10, 138),
-                (120, 138)
+                (10, 134),
+                (120, 134)
             ]
 
             cursor = (
@@ -492,14 +492,14 @@ class BattleState:
             self.menu_font.draw_text(
                 surface,
                 "TYPE/NORMAL",
-                150,
+                160,
                 122
             )
 
             self.menu_font.draw_text(
                 surface,
                 "POWER/40",
-                150,
+                160,
                 138
             )
 
