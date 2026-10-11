@@ -37,6 +37,7 @@ class BattleState:
         self.frame = self._load_frame()
         self.menu_index = 0
         self.menu_state = "command"
+        self.move_index = 0
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
