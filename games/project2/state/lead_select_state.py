@@ -109,7 +109,7 @@ class LeadSelectState:
                     "is_host"
                 ]
             )
-        if not self.team_sent:
+        if False:
 
             team_ids = []
 
