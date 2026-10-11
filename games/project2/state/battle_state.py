@@ -97,7 +97,7 @@ class BattleState:
         self.animation_duration = 15
         self.current_move_category = None
         self.current_attacker = None    
-
+        self.party_preview_sprite = None
         self.player_attack_offset_x = 0
         self.player_attack_offset_y = 0
 
@@ -214,6 +214,10 @@ class BattleState:
         event
     ):
 
+        if self.dialogue_state == "battle":
+
+            return
+        
         if self.battle_phase == "forced_switch":
 
             if is_up(event):
@@ -223,11 +227,35 @@ class BattleState:
                     self.party_cursor - 1
                 )
 
+                selected = (
+                    self.player_team[
+                        self.party_cursor
+                    ]
+                )
+
+                self.party_preview_sprite = (
+                    load_enemy_sprite(
+                        selected.species["no"]
+                    )
+                )
+
             elif is_down(event):
 
                 self.party_cursor = min(
                     len(self.player_team) - 1,
                     self.party_cursor + 1
+                )
+
+                selected = (
+                    self.player_team[
+                        self.party_cursor
+                    ]
+                )
+
+                self.party_preview_sprite = (
+                    load_enemy_sprite(
+                        selected.species["no"]
+                    )
                 )
 
             elif is_confirm(event):
@@ -992,16 +1020,8 @@ class BattleState:
                 16,
                 y
             )
-        selected_pokemon = (
-            self.player_team[
-                self.party_cursor
-            ]
-        )
-        sprite = load_enemy_sprite(
-            selected_pokemon.species["no"]
-        )
         surface.blit(
-            sprite,
+            self.party_preview_sprite,
             (
                 165,
                 25
@@ -1040,9 +1060,22 @@ class BattleState:
 
                 self.party_cursor = 0
 
+                selected = (
+                    self.player_team[
+                        self.party_cursor
+                    ]
+                )
+
+                self.party_preview_sprite = (
+                    load_enemy_sprite(
+                        selected.species["no"]
+                    )
+                )
+
                 self.battle_phase = (
                     "forced_switch"
                 )
+
 
             else:
 
