@@ -2,7 +2,7 @@ import pygame
 
 from battle.battle_font import BattleFont
 from network.lan import *
-
+from constants import *
 
 class JoinState:
 
@@ -67,6 +67,9 @@ class JoinState:
                 )
 
                 self.connected = True
+                self.state_manager.change(
+                    STATE_LAN_BATTLE
+                )
 
             except OSError:
 
@@ -79,13 +82,6 @@ class JoinState:
 
         surface.fill(
             (255, 255, 255)
-        )
-
-        self.font.draw_text(
-            surface,
-            "SEARCHING...",
-            40,
-            40
         )
 
         if self.discovered_host_ip:
