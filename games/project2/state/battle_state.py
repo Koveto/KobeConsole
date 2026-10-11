@@ -36,6 +36,7 @@ class BattleState:
         self.background = self._load_background()
         self.frame = self._load_frame()
         self.menu_index = 0
+        self.menu_state = "command"
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -121,17 +122,46 @@ class BattleState:
     ):
         if is_up(event):
 
-            self.menu_index = max(
-                0,
-                self.menu_index - 1
-            )
+            if self.menu_state == "command":
+
+                self.menu_index = max(
+                    0,
+                    self.menu_index - 1
+                )
+
+            else:
+
+                self.move_index = max(
+                    0,
+                    self.move_index - 1
+                )
 
         elif is_down(event):
 
+            max_index = (
+                1
+                if self.menu_state == "command"
+                else 3
+            )
+
             self.menu_index = min(
-                1,
+                max_index,
                 self.menu_index + 1
             )
+
+        elif is_confirm(event):
+
+            if self.menu_state == "command":
+
+                if self.menu_index == 0:
+
+                    self.menu_state = "moves"
+
+        elif is_cancel(event):
+
+            if self.menu_state == "moves":
+
+                self.menu_state = "command"
 
     def update(self):
 
@@ -352,10 +382,29 @@ class BattleState:
             )
         )
 
-        options = [
-            "FIGHT",
-            "POKEMON"
-        ]
+        if self.menu_state == "command":
+
+            options = [
+                "FIGHT",
+                "POKEMON"
+            ]
+
+            selected_index = (
+                self.menu_index
+            )
+
+        else:
+
+            options = [
+                "MOVE 1",
+                "MOVE 2",
+                "MOVE 3",
+                "MOVE 4"
+            ]
+
+            selected_index = (
+                self.move_index
+            )
 
         for i, option in enumerate(
             options
@@ -363,7 +412,7 @@ class BattleState:
 
             text = option
 
-            if i == self.menu_index:
+            if i == selected_index:
 
                 text = "> " + text
 
