@@ -29,6 +29,27 @@ type_names = {
     "Bug": "BUG"
 }
 
+TYPE_COLORS = {
+    "Fire": (255, 80, 0),
+    "Water": (0, 120, 255),
+    "Grass": (0, 200, 0),
+    "Electric": (255, 255, 0),
+    "Psychic": (255, 0, 180),
+    "Ice": (120, 220, 255),
+    "Rock": (160, 140, 80),
+    "Ground": (180, 120, 40),
+    "Poison": (180, 0, 180),
+    "Ghost": (100, 60, 160),
+    "Dragon": (80, 80, 255),
+    "Dark": (60, 60, 60),
+    "Steel": (160, 160, 180),
+    "Fairy": (255, 120, 220),
+    "Bug": (120, 180, 0),
+    "Normal": (200, 200, 200),
+    "Flying": (180, 220, 255),
+    "Fighting": (200, 60, 60)
+}
+
 class BattleState:
 
     BACKGROUND_SHEET = None
@@ -69,6 +90,17 @@ class BattleState:
         self.dialogue_line_2 = ""
         self.turn_started = False
         self.phase_timer = 0
+        self.battle_phase = None
+
+        self.player_attack_offset_x = 0
+        self.enemy_attack_offset_x = 0
+
+        self.attack_offset_y = 0
+
+        self.flash_alpha = 0
+        self.flash_color = None
+
+        self.defender_visible = True
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -249,6 +281,10 @@ class BattleState:
         if self.phase_timer > 0:
 
             self.phase_timer -= 1
+
+            if self.phase_timer == 60:
+
+                self.attack_offset_x = 0
 
         if not hasattr(
             self,
@@ -433,6 +469,13 @@ class BattleState:
             )
             self.dialogue_state = "battle"
             self.phase_timer = 120
+            if first_user is self.player:
+
+                self.player_attack_offset_x = 8
+
+            else:
+
+                self.enemy_attack_offset_x = -8
 
 
     def draw(
@@ -461,7 +504,9 @@ class BattleState:
         surface.blit(
             self.player_sprite,
             (
-                BattleState.PLAYER_X,
+                BattleState.PLAYER_X
+                + self.attack_offset_x,
+
                 BattleState.PLAYER_Y
             )
         )

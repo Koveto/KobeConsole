@@ -77,14 +77,14 @@
       "power": 85
     },
 
-    "Dragon Breath": {
+    "DragonBreth": {
       "type": "Dragon",
       "category": "Special",
       "accuracy": 100,
       "power": 60
     },
 
-    "Thunder Punch": {
+    "ThunderPnch": {
       "type": "Electric",
       "category": "Physical",
       "accuracy": 100,
@@ -413,7 +413,7 @@
     "power": 80
     },
 
-    "Ancient Power": {
+    "AncientPwr": {
     "type": "Rock",
     "category": "Special",
     "accuracy": 100,
@@ -497,7 +497,7 @@
     "power": 95
     },
 
-    "Dazzling Gleam": {
+    "DazzlGleam": {
     "type": "Fairy",
     "category": "Special",
     "accuracy": 100,
