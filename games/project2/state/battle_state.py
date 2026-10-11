@@ -377,6 +377,24 @@ class BattleState:
                     self.move_col = 0
                     self.dialogue_state = None
 
+                elif self.menu_index == 1:
+
+                    self.party_cursor = 0
+
+                    selected = (
+                        self.player_team[
+                            self.party_cursor
+                        ]
+                    )
+
+                    self.party_preview_sprite = (
+                        load_enemy_sprite(
+                            selected.species["no"]
+                        )
+                    )
+
+                    self.battle_phase = "forced_switch"
+
             elif self.menu_state == "moves":
                 move_index = (
                 self.move_row * 2
