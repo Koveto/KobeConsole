@@ -139,6 +139,22 @@ class BattleState:
                 ]
             )
 
+            self.opponent_team = (
+                self.state_manager.shared[
+                    "opponent_team"
+                ]
+            )
+
+            lead_pokemon = (
+                self.player_team[
+                    self.player_lead
+                ]
+            )
+
+            self.player_species = (
+                lead_pokemon["species"]
+            )
+
     def draw(
         self,
         surface

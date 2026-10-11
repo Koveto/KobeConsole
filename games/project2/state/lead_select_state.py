@@ -54,14 +54,12 @@ class LeadSelectState:
         self.selected_lead = None
         self.opponent_ready = False
         self.ready_sent = False
+        self.opponent_lead = None
 
     def handle_event(
         self,
         event
     ):
-
-        #if self.selected_lead is not None:
-        #    return
 
         if is_up(event):
 
