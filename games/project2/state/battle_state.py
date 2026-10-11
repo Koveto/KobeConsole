@@ -186,7 +186,7 @@ class BattleState:
                     self.move_row = 0
                     self.move_col = 0
 
-            if self.menu_state == "moves":
+            elif self.menu_state == "moves":
                 move_index = (
                 self.move_row * 2
                 + self.move_col
