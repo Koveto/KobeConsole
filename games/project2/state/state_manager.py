@@ -5,6 +5,8 @@ class StateManager:
         self.states = {}
         self.current_state = None
 
+        self.shared = {}
+
     def register(
         self,
         name,

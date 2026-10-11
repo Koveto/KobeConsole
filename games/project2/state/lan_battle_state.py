@@ -20,6 +20,8 @@ class LanBattleState:
 
         self.team = []
         self.team_sprites = []
+        self.team_sent = False
+        self.opponent_team = []
 
         for _ in range(6):
 
@@ -78,7 +80,83 @@ class LanBattleState:
             )
 
     def update(self):
-        pass
+
+        if not hasattr(
+            self,
+            "client_socket"
+        ):
+
+            self.client_socket = (
+                self.state_manager.shared[
+                    "client_socket"
+                ]
+            )
+
+            self.is_host = (
+                self.state_manager.shared[
+                    "is_host"
+                ]
+            )
+        if (
+            self.is_host
+            and not self.team_sent
+        ):
+
+            team_ids = []
+
+            for pokemon in self.team:
+
+                team_ids.append(
+                    str(
+                        pokemon["species_no"]
+                    )
+                )
+
+            self.client_socket.send(
+                (
+                    "TEAM:"
+                    + ",".join(team_ids)
+                ).encode()
+            )
+
+            self.team_sent = True
+
+        try:
+
+            message = (
+                self.client_socket.recv(
+                    1024
+                ).decode()
+            )
+
+            if message.startswith(
+                "TEAM:"
+            ):
+
+                team_data = message.replace(
+                    "TEAM:",
+                    ""
+                )
+
+                species_ids = (
+                    team_data.split(",")
+                )
+
+                self.opponent_team = []
+
+                for species_id in species_ids:
+
+                    self.opponent_team.append(
+                        get_species(
+                            int(species_id)
+                        )
+                    )
+
+        except (
+            BlockingIOError,
+            OSError
+        ):
+            pass
 
     def draw(
         self,
@@ -156,4 +234,15 @@ class LanBattleState:
                 "READY",
                 10,
                 140
+            )
+
+        for i, pokemon in enumerate(
+            self.opponent_team
+        ):
+
+            self.font.draw_text(
+                surface,
+                pokemon["name"],
+                170,
+                30 + i * 15
             )

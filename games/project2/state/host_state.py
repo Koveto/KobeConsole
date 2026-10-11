@@ -66,6 +66,15 @@ class HostState:
                 ) = self.server_socket.accept()
 
                 self.connected = True
+
+                self.state_manager.shared[
+                    "client_socket"
+                ] = self.client_socket
+
+                self.state_manager.shared[
+                    "is_host"
+                ] = True
+
                 self.state_manager.change(
                     STATE_LAN_BATTLE
                 )

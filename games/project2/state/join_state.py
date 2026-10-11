@@ -67,6 +67,15 @@ class JoinState:
                 )
 
                 self.connected = True
+
+                self.state_manager.shared[
+                    "client_socket"
+                ] = self.client_socket
+
+                self.state_manager.shared[
+                    "is_host"
+                ] = False
+
                 self.state_manager.change(
                     STATE_LAN_BATTLE
                 )
