@@ -114,6 +114,14 @@ class BattleState:
         self.damage_target = None
         self.damage_amount = 0
 
+        self.first_user = None
+        self.first_action = None
+
+        self.second_user = None
+        self.second_action = None
+
+        self.second_move_pending = False
+
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
             glyph_w=7,
@@ -320,6 +328,9 @@ class BattleState:
         elif self.battle_phase == "damage":
             self.update_damage_animation()
 
+        elif self.battle_phase == "resolve_turn":
+            self.resolve_turn_progress()
+
         if not hasattr(
             self,
             "battle_initialized"
@@ -466,38 +477,39 @@ class BattleState:
             
             if self.player.speed >= self.enemy.speed:
 
-                first_user = self.player
+                self.first_user = self.player
                 first_species = self.player_species
-                first_action = self.selected_action
+                self.first_action = self.selected_action
 
-                second_user = self.enemy
+                self.second_user = self.enemy
                 second_species = self.enemy_species
-                second_action = self.opponent_action
+                self.second_action = self.opponent_action
 
             else:
 
-                first_user = self.enemy
+                self.first_user = self.enemy
                 first_species = self.enemy_species
-                first_action = self.opponent_action
+                self.first_action = self.opponent_action
 
-                second_user = self.player
+                self.second_user = self.player
                 second_species = self.player_species
-                second_action = self.selected_action
+                self.second_action = self.selected_action
+            self.second_move_pending = True
 
             move_data = get_move(
-                first_action["move"]
+                self.first_action["move"]
             )
             damage = calculate_damage(
-                first_user,
-                second_user,
+                self.first_user,
+                self.second_user,
                 move_data
             )
-            second_user.current_hp = max(
+            self.second_user.current_hp = max(
                 0,
-                second_user.current_hp - damage
+                self.second_user.current_hp - damage
             )
 
-            self.damage_target = second_user
+            self.damage_target = self.second_user
 
             self.phase_timer = 0
             self.battle_phase = "damage"
@@ -506,9 +518,9 @@ class BattleState:
                 move_data["category"]
             )
 
-            self.current_attacker = first_user
+            self.current_attacker = self.first_user
 
-            if first_user is self.player:
+            if self.first_user is self.player:
 
                 pokemon_name = (
                     first_species["name"].upper()
@@ -527,7 +539,7 @@ class BattleState:
 
             self.dialogue_line_2 = (
                 "USED "
-                + first_action["move"].upper()
+                + self.first_action["move"].upper()
                 + "!"
             )
             self.dialogue_state = "battle"
@@ -881,6 +893,85 @@ class BattleState:
 
         return BattleState.HP_BOX_SPRITE_ENEMY
 
+    def resolve_turn_progress(self):
+
+        if self.enemy.current_hp <= 0:
+
+            self.battle_phase = "idle"
+
+            return
+
+        if self.player.current_hp <= 0:
+
+            self.battle_phase = "idle"
+
+            return
+
+        if self.second_move_pending:
+        
+            self.second_move_pending = False
+
+            move_data = get_move(
+                self.second_action["move"]
+            )
+
+            damage = calculate_damage(
+                self.second_user,
+                self.first_user,
+                move_data
+            )
+
+            self.first_user.current_hp = max(
+                0,
+                self.first_user.current_hp - damage
+            )
+
+            self.damage_target = (
+                self.first_user
+            )
+
+            self.current_attacker = (
+                self.second_user
+            )
+
+            self.current_move_category = (
+                move_data["category"]
+            )
+
+            if self.second_user is self.player:
+
+                pokemon_name = (
+                    self.player_species["name"].upper()
+                )
+
+            else:
+
+                pokemon_name = (
+                    "OPPOSING "
+                    + self.enemy_species["name"].upper()
+                )
+
+            self.dialogue_line_1 = pokemon_name
+
+            self.dialogue_line_2 = (
+                "USED "
+                + self.second_action["move"].upper()
+                + "!"
+            )
+
+            self.phase_timer = 0
+            self.battle_phase = "text_pause"
+
+            self.flash_color = (
+                TYPE_COLORS[
+                    move_data["type"]
+                ]
+            )
+
+            return
+
+        self.battle_phase = "idle"
+
     def update_special_flash(self):
 
         self.phase_timer += 1
@@ -964,7 +1055,7 @@ class BattleState:
 
             self.defender_visible = True
 
-            self.battle_phase = "damage"
+            self.battle_phase = "resolve_turn"
 
             self.phase_timer = 0
 
