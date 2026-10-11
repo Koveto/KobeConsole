@@ -309,6 +309,111 @@ class BattleState:
                     self.fainted_side = None
 
             return
+
+        if self.battle_phase == "party_select":
+
+
+            if is_cancel(event):
+
+                self.battle_phase = None
+
+                self.menu_state = "command"
+
+                self.dialogue_state = "command"
+                    
+            if is_up(event):
+
+                self.party_cursor = max(
+                    0,
+                    self.party_cursor - 1
+                )
+
+                selected = (
+                    self.player_team[
+                        self.party_cursor
+                    ]
+                )
+
+                self.party_preview_sprite = (
+                    load_enemy_sprite(
+                        selected.species["no"]
+                    )
+                )
+
+            elif is_down(event):
+
+                self.party_cursor = min(
+                    len(self.player_team) - 1,
+                    self.party_cursor + 1
+                )
+
+                selected = (
+                    self.player_team[
+                        self.party_cursor
+                    ]
+                )
+
+                self.party_preview_sprite = (
+                    load_enemy_sprite(
+                        selected.species["no"]
+                    )
+                )
+
+            elif is_confirm(event):
+
+                pokemon = (
+                    self.player_team[
+                        self.party_cursor
+                    ]
+                )
+
+                if pokemon.current_hp > 0:
+
+                    self.player = pokemon
+
+                    self.client_socket.send(
+                        f"SWITCH:{self.party_cursor}".encode()
+                    )
+
+                    self.player_species = (
+                        pokemon.species
+                    )
+
+                    self.player_species_no = (
+                        pokemon.species["no"]
+                    )
+
+                    self.player_sprite = (
+                        load_player_sprite(
+                            self.player_species_no
+                        )
+                    )
+
+                    self.displayed_player_hp = (
+                        self.player.current_hp
+                    )
+
+                    self.selected_action = None
+                    self.opponent_action = None
+
+                    self.first_user = None
+                    self.first_action = None
+
+                    self.second_user = None
+                    self.second_action = None
+
+                    self.turn_started = False
+                    self.second_move_pending = False
+
+                    self.waiting_for_opponent = False
+
+                    self.dialogue_state = "command"
+                    self.menu_state = "command"
+
+                    self.battle_phase = None
+                    self.fainted_side = None
+
+            return
                 
         if self.dialogue_state == "battle":
         
@@ -393,7 +498,7 @@ class BattleState:
                         )
                     )
 
-                    self.battle_phase = "forced_switch"
+                    self.battle_phase = "party_select"
 
             elif self.menu_state == "moves":
                 move_index = (
@@ -982,7 +1087,10 @@ class BattleState:
                 138
             )
 
-        if self.battle_phase == "forced_switch":
+        if (
+            self.battle_phase == "forced_switch"
+            or self.battle_phase == "party_select"
+        ):
 
             self.draw_party_menu(
                 surface
