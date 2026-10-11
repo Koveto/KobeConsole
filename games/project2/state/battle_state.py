@@ -497,7 +497,9 @@ class BattleState:
         surface.blit(
             self.enemy_sprite,
             (
-                BattleState.ENEMY_X,
+                BattleState.ENEMY_X
+                + self.enemy_attack_offset_x,
+
                 BattleState.ENEMY_Y
             )
         )
@@ -506,7 +508,7 @@ class BattleState:
             self.player_sprite,
             (
                 BattleState.PLAYER_X
-                + self.attack_offset_x,
+                + self.player_attack_offset_x,
 
                 BattleState.PLAYER_Y
             )
