@@ -262,13 +262,13 @@ class BattleState:
                     ]
                 )
 
-                if pokemon.current_hp > 0:
-
-                    self.player = pokemon
+                if (pokemon.current_hp > 0 and pokemon is not self.player):
 
                     self.client_socket.send(
                         f"SWITCH:{self.party_cursor}".encode()
                     )
+
+                    self.player = pokemon
 
                     self.player_species = (
                         pokemon.species
@@ -367,51 +367,21 @@ class BattleState:
                     ]
                 )
 
-                if pokemon.current_hp > 0:
+                if (pokemon.current_hp > 0 and pokemon is not self.player):
 
-                    self.player = pokemon
+                    self.selected_action = {
+                        "type": "swap",
+                        "index": self.party_cursor
+                    }
 
                     self.client_socket.send(
-                        f"SWITCH:{self.party_cursor}".encode()
+                        f"SWAP:{self.party_cursor}".encode()
                     )
 
-                    self.player_species = (
-                        pokemon.species
-                    )
-
-                    self.player_species_no = (
-                        pokemon.species["no"]
-                    )
-
-                    self.player_sprite = (
-                        load_player_sprite(
-                            self.player_species_no
-                        )
-                    )
-
-                    self.displayed_player_hp = (
-                        self.player.current_hp
-                    )
-
-                    self.selected_action = None
-                    self.opponent_action = None
-
-                    self.first_user = None
-                    self.first_action = None
-
-                    self.second_user = None
-                    self.second_action = None
-
-                    self.turn_started = False
-                    self.second_move_pending = False
-
-                    self.waiting_for_opponent = False
-
-                    self.dialogue_state = "command"
-                    self.menu_state = "command"
+                    self.waiting_for_opponent = True
+                    self.dialogue_state = "waiting"
 
                     self.battle_phase = None
-                    self.fainted_side = None
 
             return
                 
@@ -751,6 +721,21 @@ class BattleState:
 
                 self.battle_phase = None
                 self.fainted_side = None
+
+            elif message.startswith(
+                "SWAP:"
+            ):
+                swap_index = int(
+                    message.replace(
+                        "SWAP:",
+                        ""
+                    )
+                )
+
+                self.opponent_action = {
+                    "type": "swap",
+                    "index": swap_index
+                }
 
         if (
             self.selected_action is not None
