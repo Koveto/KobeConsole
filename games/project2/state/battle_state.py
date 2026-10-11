@@ -139,6 +139,34 @@ class BattleState:
                 ]
             )
 
+            self.opponent_team = (
+                self.state_manager.shared[
+                    "opponent_team"
+                ]
+            )
+
+            enemy_pokemon = (
+                self.opponent_team[0]
+            )
+
+            self.enemy_species_no = (
+                enemy_pokemon[
+                    "species_no"
+                ]
+            )
+
+            self.enemy_species = (
+                enemy_pokemon[
+                    "species"
+                ]
+            )
+
+            self.enemy_sprite = (
+                load_enemy_sprite(
+                    self.enemy_species_no
+                )
+            )
+
             lead_pokemon = (
                 self.player_team[
                     self.player_lead
@@ -161,6 +189,16 @@ class BattleState:
                 load_player_sprite(
                     self.player_species_no
                 )
+            )
+
+            self.enemy = BattlePokemon(
+                self.enemy_species,
+                level=50
+            )
+
+            self.player = BattlePokemon(
+                self.player_species,
+                level=50
             )
 
     def draw(
