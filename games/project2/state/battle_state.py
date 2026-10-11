@@ -156,9 +156,9 @@ class BattleState:
                 enemy_pokemon
             )
 
-            #self.enemy_species_no = (
-            #    self.enemy_species["id"]
-            #)
+            self.enemy_species_no = (
+                self.enemy_species["no"]
+            )
 
 
             self.enemy_sprite = (
