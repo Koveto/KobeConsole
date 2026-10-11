@@ -64,6 +64,11 @@ class BattleState:
         self.waiting_for_opponent = False
         self.pending_messages = []
         self.move_sent = False
+        self.dialogue_state = "command"
+        self.dialogue_line_1 = ""
+        self.dialogue_line_2 = ""
+        self.turn_started = False
+        self.phase_timer = 0
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -228,6 +233,7 @@ class BattleState:
                 )
                 
                 self.waiting_for_opponent = True
+                self.dialogue_state = "waiting"
 
         elif is_cancel(event):
 
@@ -237,6 +243,10 @@ class BattleState:
                 self.menu_index = 0
 
     def update(self):
+
+        if self.phase_timer > 0:
+
+            self.phase_timer -= 1
 
         if not hasattr(
             self,
@@ -372,17 +382,41 @@ class BattleState:
         if (
             self.selected_action is not None
             and self.opponent_action is not None
+            and not self.turn_started
         ):
+            self.turn_started = True
 
-            print(
-                "MINE:",
-                self.selected_action
+            
+            if self.player.speed >= self.enemy.speed:
+
+                first_user = self.player
+                first_species = self.player_species
+                first_action = self.selected_action
+
+                second_user = self.enemy
+                second_species = self.enemy_species
+                second_action = self.opponent_action
+
+            else:
+
+                first_user = self.enemy
+                first_species = self.enemy_species
+                first_action = self.opponent_action
+
+                second_user = self.player
+                second_species = self.player_species
+                second_action = self.selected_action
+
+            self.dialogue_line_1 = (
+                f"{first_species['name'].upper()} USED"
             )
 
-            print(
-                "THEIRS:",
-                self.opponent_action
+            self.dialogue_line_2 = (
+                f"{first_action['move'].upper()}!"
             )
+            self.dialogue_state = "battle"
+            self.phase_timer = 120
+
 
     def draw(
         self,
@@ -618,7 +652,7 @@ class BattleState:
                 138
             )
 
-        if self.menu_state == "command":
+        if self.dialogue_state == "command":
 
             self.dialogue_font.draw_text(
                 surface,
@@ -634,7 +668,7 @@ class BattleState:
                 136
             )
 
-        if self.waiting_for_opponent:
+        elif self.dialogue_state == "waiting":
 
             self.dialogue_font.draw_text(
                 surface,
@@ -646,6 +680,22 @@ class BattleState:
             self.dialogue_font.draw_text(
                 surface,
                 "OPPONENT...",
+                12,
+                136
+            )
+
+        elif self.dialogue_state == "battle":
+
+            self.dialogue_font.draw_text(
+                surface,
+                self.dialogue_line_1,
+                12,
+                121
+            )
+
+            self.dialogue_font.draw_text(
+                surface,
+                self.dialogue_line_2,
                 12,
                 136
             )
