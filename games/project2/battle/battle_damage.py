@@ -36,10 +36,10 @@ def calculate_damage(
         )
     )
 
-    rand = random.uniform(
-        0.85,
-        1.0
-    )
+    rand = 1.0#random.uniform(
+    #    0.85,
+    #    1.0
+    #)
 
     base_damage = (
         2
