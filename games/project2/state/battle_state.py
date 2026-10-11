@@ -266,6 +266,10 @@ class BattleState:
 
                     self.player = pokemon
 
+                    self.client_socket.send(
+                        f"SWITCH:{self.party_cursor}".encode()
+                    )
+
                     self.player_species = (
                         pokemon.species
                     )
@@ -284,12 +288,25 @@ class BattleState:
                         self.player.current_hp
                     )
 
-                    self.fainted_side = None
+                    self.selected_action = None
+                    self.opponent_action = None
+
+                    self.first_user = None
+                    self.first_action = None
+
+                    self.second_user = None
+                    self.second_action = None
+
+                    self.turn_started = False
+                    self.second_move_pending = False
+
+                    self.waiting_for_opponent = False
 
                     self.dialogue_state = "command"
                     self.menu_state = "command"
 
                     self.battle_phase = None
+                    self.fainted_side = None
 
             return
                 
@@ -557,6 +574,60 @@ class BattleState:
                     "type": "move",
                     "move": move_name
                 }
+
+            elif message.startswith(
+                "SWITCH:"
+            ):
+
+                switch_index = int(
+                    message.replace(
+                        "SWITCH:",
+                        ""
+                    )
+                )
+
+                self.enemy = (
+                    self.opponent_team[
+                        switch_index
+                    ]
+                )
+
+                self.enemy_species = (
+                    self.enemy.species
+                )
+
+                self.enemy_species_no = (
+                    self.enemy_species["no"]
+                )
+
+                self.enemy_sprite = (
+                    load_enemy_sprite(
+                        self.enemy_species_no
+                    )
+                )
+
+                self.displayed_enemy_hp = (
+                    self.enemy.current_hp
+                )
+
+                self.selected_action = None
+                self.opponent_action = None
+
+                self.first_user = None
+                self.first_action = None
+
+                self.second_user = None
+                self.second_action = None
+
+                self.turn_started = False
+                self.second_move_pending = False
+
+                self.waiting_for_opponent = False
+                self.menu_state = "command"
+                self.dialogue_state = "command"
+
+                self.battle_phase = None
+                self.fainted_side = None
 
         if (
             self.selected_action is not None
@@ -1021,13 +1092,15 @@ class BattleState:
                 16,
                 y
             )
-        surface.blit(
-            self.party_preview_sprite,
-            (
-                165,
-                25
+        if self.party_preview_sprite:
+
+            surface.blit(
+                self.party_preview_sprite,
+                (
+                    165,
+                    25
+                )
             )
-        )
 
     def _load_enemy_hp_box(self):
 
