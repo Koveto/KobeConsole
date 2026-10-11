@@ -744,6 +744,57 @@ class BattleState:
         ):
             self.turn_started = True
 
+            if self.selected_action["type"] == "swap":
+
+                pokemon = self.player_team[
+                    self.selected_action["index"]
+                ]
+
+                self.player = pokemon
+
+                self.player_species = (
+                    pokemon.species
+                )
+
+                self.player_species_no = (
+                    pokemon.species["no"]
+                )
+
+                self.player_sprite = (
+                    load_player_sprite(
+                        self.player_species_no
+                    )
+                )
+
+                self.displayed_player_hp = (
+                    self.player.current_hp
+                )
+
+            if self.opponent_action["type"] == "swap":
+
+                pokemon = self.opponent_team[
+                    self.opponent_action["index"]
+                ]
+
+                self.enemy = pokemon
+
+                self.enemy_species = (
+                    pokemon.species
+                )
+
+                self.enemy_species_no = (
+                    pokemon.species["no"]
+                )
+
+                self.enemy_sprite = (
+                    load_enemy_sprite(
+                        self.enemy_species_no
+                    )
+                )
+
+                self.displayed_enemy_hp = (
+                    self.enemy.current_hp
+                )
             
             if self.player.speed >= self.enemy.speed:
 
@@ -765,6 +816,11 @@ class BattleState:
                 second_species = self.player_species
                 self.second_action = self.selected_action
             self.second_move_pending = True
+            if self.first_action["type"] == "swap":
+
+                self.battle_phase = "resolve_turn"
+
+                return
 
             move_data = get_move(
                 self.first_action["move"]
@@ -1307,6 +1363,29 @@ class BattleState:
         if self.second_move_pending:
         
             self.second_move_pending = False
+
+            if self.second_action["type"] == "swap":
+
+                self.selected_action = None
+                self.opponent_action = None
+
+                self.first_user = None
+                self.first_action = None
+
+                self.second_user = None
+                self.second_action = None
+
+                self.turn_started = False
+                self.second_move_pending = False
+
+                self.waiting_for_opponent = False
+
+                self.menu_state = "command"
+                self.dialogue_state = "command"
+
+                self.battle_phase = None
+
+                return
 
             move_data = get_move(
                 self.second_action["move"]
