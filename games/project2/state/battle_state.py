@@ -62,6 +62,8 @@ class BattleState:
         self.selected_action = None
         self.opponent_action = None
         self.waiting_for_opponent = False
+        self.pending_messages = []
+        self.move_sent = False
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -211,11 +213,19 @@ class BattleState:
                 self.move_row * 2
                 + self.move_col
                 )
-                
+                move_name = (
+                    self.player.moves[
+                        move_index
+                    ]
+                )
                 self.selected_action = {
-                "type": "move",
-                "index": move_index
+                    "type": "move",
+                    "move": move_name
                 }
+
+                self.client_socket.send(
+                    f"MOVE:{move_name}".encode()
+                )
                 
                 self.waiting_for_opponent = True
 
@@ -307,6 +317,71 @@ class BattleState:
             self.player = BattlePokemon(
                 self.player_species,
                 level=50
+            )
+
+        if not hasattr(
+            self,
+            "client_socket"
+        ):
+
+            self.client_socket = (
+                self.state_manager.shared[
+                    "client_socket"
+                ]
+            )
+
+        try:
+
+            data = self.client_socket.recv(
+                1024
+            )
+
+            if data:
+
+                self.pending_messages.append(
+                    data.decode()
+                )
+
+        except (
+            BlockingIOError,
+            OSError
+        ):
+            pass
+
+        while self.pending_messages:
+
+            message = (
+                self.pending_messages.pop(0)
+            )
+
+            if message.startswith(
+                "MOVE:"
+            ):
+
+                move_name = (
+                    message.replace(
+                        "MOVE:",
+                        ""
+                    )
+                )
+
+                self.opponent_action = {
+                    "type": "move",
+                    "move": move_name
+                }
+        if (
+            self.selected_action is not None
+            and self.opponent_action is not None
+        ):
+
+            print(
+                "MINE:",
+                self.selected_action
+            )
+
+            print(
+                "THEIRS:",
+                self.opponent_action
             )
 
     def draw(
