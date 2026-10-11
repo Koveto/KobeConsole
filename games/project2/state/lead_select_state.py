@@ -172,10 +172,7 @@ class LeadSelectState:
         ):
             pass
         """
-        if (
-            self.selected_lead is not None
-            and self.opponent_ready
-        ):
+        if self.selected_lead is not None:
 
             self.state_manager.shared[
                 "player_team"
