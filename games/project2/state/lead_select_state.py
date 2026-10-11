@@ -129,7 +129,7 @@ class LeadSelectState:
             )
 
             self.team_sent = True
-
+        """
         try:
 
             message = (
@@ -171,7 +171,7 @@ class LeadSelectState:
             OSError
         ):
             pass
-
+        """
         if (
             self.selected_lead is not None
             and self.opponent_ready
