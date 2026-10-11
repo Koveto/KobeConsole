@@ -39,6 +39,9 @@ class BattleState:
         self.menu_state = "command"
         self.move_row = 0
         self.move_col = 0
+        self.selected_action = None
+        self.opponent_action = None
+        self.waiting_for_opponent = False
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -182,6 +185,19 @@ class BattleState:
 
                     self.move_row = 0
                     self.move_col = 0
+
+            if self.menu_state == "moves":
+                move_index = (
+                self.move_row * 2
+                + self.move_col
+                )
+                
+                self.selected_action = {
+                "type": "move",
+                "index": move_index
+                }
+                
+                self.waiting_for_opponent = True
 
         elif is_cancel(event):
 
@@ -475,6 +491,22 @@ class BattleState:
             self.dialogue_font.draw_text(
                 surface,
                 f"{self.player_species['name'].upper()} DO?",
+                12,
+                136
+            )
+
+        if self.waiting_for_opponent:
+
+            self.dialogue_font.draw_text(
+                surface,
+                "WAITING FOR",
+                12,
+                121
+            )
+
+            self.dialogue_font.draw_text(
+                surface,
+                "OPPONENT...",
                 12,
                 136
             )
