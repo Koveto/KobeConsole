@@ -192,11 +192,11 @@ class BattleState:
         self.enemy_hp_box = self._load_enemy_hp_box()
         self.hp_fill = self._load_hp_fill()
         self.displayed_player_hp = (
-            self.displayed_player_hp
+            self.player.current_hp
         )
 
         self.displayed_enemy_hp = (
-            self.displayed_enemy_hp
+            self.enemy.current_hp
         )
 
     def handle_event(
@@ -348,9 +348,6 @@ class BattleState:
             enemy_pokemon = (
                 self.opponent_team[0]
             )
-            print(
-                enemy_pokemon
-            )
 
             self.enemy_species = (
                 enemy_pokemon
@@ -399,6 +396,14 @@ class BattleState:
             self.player = BattlePokemon(
                 self.player_species,
                 level=50
+            )
+
+            self.displayed_player_hp = (
+                self.player.current_hp
+            )
+
+            self.displayed_enemy_hp = (
+                self.enemy.current_hp
             )
 
         if not hasattr(
@@ -927,7 +932,7 @@ class BattleState:
 
             if (
                 self.displayed_player_hp
-                > self.displayed_player_hp
+                > self.player.current_hp
             ):
                 self.displayed_player_hp -= 1
 
@@ -935,7 +940,7 @@ class BattleState:
 
             if (
                 self.displayed_enemy_hp
-                > self.displayed_enemy_hp
+                > self.enemy.current_hp
             ):
                 self.displayed_enemy_hp -= 1
 
@@ -945,14 +950,14 @@ class BattleState:
 
             animation_finished = (
                 self.displayed_player_hp
-                == self.displayed_player_hp
+                == self.player.current_hp
             )
 
         else:
 
             animation_finished = (
                 self.displayed_enemy_hp
-                == self.displayed_enemy_hp
+                == self.enemy.current_hp
             )
 
         if animation_finished:
