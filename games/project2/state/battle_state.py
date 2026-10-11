@@ -1299,6 +1299,15 @@ class BattleState:
                 (0, 0)
             )
 
+    def all_fainted(
+        self,
+        team
+    ):
+        return all(
+            pokemon.current_hp <= 0
+            for pokemon in team
+        )
+    
     def draw_party_menu(
         self,
         surface
@@ -1415,6 +1424,39 @@ class BattleState:
                 pass
 
     def resolve_turn_progress(self):
+
+        if self.all_fainted(
+            self.opponent_team
+        ):
+
+            self.dialogue_line_1 = (
+                "YOU WIN!"
+            )
+
+            self.dialogue_line_2 = ""
+
+            self.dialogue_state = "battle"
+
+            self.turn_started = True
+
+            return
+
+
+        if self.all_fainted(
+            self.player_team
+        ):
+
+            self.dialogue_line_1 = (
+                "YOU LOSE!"
+            )
+
+            self.dialogue_line_2 = ""
+
+            self.dialogue_state = "battle"
+
+            self.turn_started = True
+
+            return
 
         if self.enemy.current_hp <= 0:
 
