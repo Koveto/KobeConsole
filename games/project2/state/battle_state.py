@@ -818,9 +818,73 @@ class BattleState:
             self.second_move_pending = True
             if self.first_action["type"] == "swap":
 
-                self.battle_phase = "resolve_turn"
+                self.first_user = self.second_user
+                self.first_action = self.second_action
+
+                self.second_move_pending = False
+
+                move_data = get_move(
+                    self.first_action["move"]
+                )
+
+                damage = calculate_damage(
+                    self.first_user,
+                    self.player if self.first_user is self.enemy else self.enemy,
+                    move_data
+                )
+
+                target = (
+                    self.player
+                    if self.first_user is self.enemy
+                    else self.enemy
+                )
+
+                target.current_hp = max(
+                    0,
+                    target.current_hp - damage
+                )
+
+                self.damage_target = target
+
+                self.current_move_category = (
+                    move_data["category"]
+                )
+
+                self.current_attacker = (
+                    self.first_user
+                )
+
+                if self.first_user is self.player:
+
+                    pokemon_name = (
+                        self.player_species["name"].upper()
+                    )
+
+                else:
+
+                    pokemon_name = (
+                        "OPPOSING "
+                        + self.enemy_species["name"].upper()
+                    )
+
+                self.dialogue_line_1 = (
+                    pokemon_name
+                )
+
+                self.dialogue_line_2 = (
+                    "USED "
+                    + self.first_action["move"].upper()
+                    + "!"
+                )
+
+                self.dialogue_state = "battle"
+
+                self.phase_timer = 0
+
+                self.battle_phase = "text_pause"
 
                 return
+
 
             move_data = get_move(
                 self.first_action["move"]
