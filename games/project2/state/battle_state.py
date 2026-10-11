@@ -108,6 +108,11 @@ class BattleState:
         self.flash_color = None
 
         self.defender_visible = True
+        self.displayed_player_hp = 0
+        self.displayed_enemy_hp = 0
+
+        self.damage_target = None
+        self.damage_amount = 0
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -186,6 +191,13 @@ class BattleState:
         self.hp_box = self._load_hp_box()
         self.enemy_hp_box = self._load_enemy_hp_box()
         self.hp_fill = self._load_hp_fill()
+        self.displayed_player_hp = (
+            self.displayed_player_hp
+        )
+
+        self.displayed_enemy_hp = (
+            self.displayed_enemy_hp
+        )
 
     def handle_event(
         self,
@@ -304,6 +316,9 @@ class BattleState:
 
         elif self.battle_phase == "special_flash":
             self.update_special_flash()
+
+        elif self.battle_phase == "damage":
+            self.update_damage_animation()
 
         if not hasattr(
             self,
@@ -472,6 +487,15 @@ class BattleState:
                 second_user,
                 move_data
             )
+            second_user.current_hp = max(
+                0,
+                second_user.current_hp - damage
+            )
+
+            self.damage_target = second_user
+
+            self.phase_timer = 0
+            self.battle_phase = "damage"
 
             self.current_move_category = (
                 move_data["category"]
@@ -527,27 +551,35 @@ class BattleState:
             (0, 112)
         )
 
-        surface.blit(
-            self.enemy_sprite,
-            (
-                BattleState.ENEMY_X
-                + self.enemy_attack_offset_x,
+        if (
+            self.damage_target is not self.enemy
+            or self.defender_visible
+        ):
 
-                BattleState.ENEMY_Y
-                + self.enemy_attack_offset_y
+            surface.blit(
+                self.enemy_sprite,
+                (
+                    BattleState.ENEMY_X
+                    + self.enemy_attack_offset_x,
+                    BattleState.ENEMY_Y
+                    + self.enemy_attack_offset_y
+                )
             )
-        )
 
-        surface.blit(
-            self.player_sprite,
-            (
-                BattleState.PLAYER_X
-                + self.player_attack_offset_x,
+        if (
+            self.damage_target is not self.player
+            or self.defender_visible
+        ):
 
-                BattleState.PLAYER_Y
-                + self.player_attack_offset_y
+            surface.blit(
+                self.player_sprite,
+                (
+                    BattleState.PLAYER_X
+                    + self.player_attack_offset_x,
+                    BattleState.PLAYER_Y
+                    + self.player_attack_offset_y
+                )
             )
-        )
 
         surface.blit(
             self.hp_box,
@@ -563,7 +595,7 @@ class BattleState:
         )
 
         hp_text = (
-            f"{self.player.current_hp}"
+            f"{self.displayed_player_hp}"
             f"/"
             f"{self.player.max_hp}"
         )
@@ -585,7 +617,7 @@ class BattleState:
         )
 
         hp_ratio = (
-            self.player.current_hp
+            self.displayed_player_hp
             / self.player.max_hp
         )
 
@@ -630,7 +662,7 @@ class BattleState:
         )
 
         enemy_hp_ratio = (
-            self.enemy.current_hp
+            self.displayed_enemy_hp
             / self.enemy.max_hp
         )
 
@@ -882,6 +914,54 @@ class BattleState:
                 self.battle_phase = (
                     "special_flash"
                 )
+
+    def update_damage_animation(self):
+
+        self.phase_timer += 1
+
+        self.defender_visible = (
+            (self.phase_timer // 5) % 2 == 0
+        )
+
+        if self.damage_target is self.player:
+
+            if (
+                self.displayed_player_hp
+                > self.displayed_player_hp
+            ):
+                self.displayed_player_hp -= 1
+
+        else:
+
+            if (
+                self.displayed_enemy_hp
+                > self.displayed_enemy_hp
+            ):
+                self.displayed_enemy_hp -= 1
+
+        animation_finished = True
+
+        if self.damage_target is self.player:
+
+            animation_finished = (
+                self.displayed_player_hp
+                == self.displayed_player_hp
+            )
+
+        else:
+
+            animation_finished = (
+                self.displayed_enemy_hp
+                == self.displayed_enemy_hp
+            )
+
+        if animation_finished:
+
+            self.defender_visible = True
+
+            self.battle_phase = "idle"
+
+            self.phase_timer = 0
 
     def update_physical_lunge(self):
 
