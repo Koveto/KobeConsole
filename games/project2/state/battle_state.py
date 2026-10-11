@@ -425,7 +425,8 @@ class BattleState:
             )
         )
 
-        if self.menu_state == "command":
+        if (self.menu_state == "command"
+            and not self.waiting_for_opponent):
 
             options = [
                 "FIGHT",
@@ -449,33 +450,56 @@ class BattleState:
                     124 + i * 15
                 )
 
-        else:
+        elif (self.menu_state == "moves"
+              and not self.waiting_for_opponent):
 
-            self.menu_font.draw_text(
-                surface,
-                "> TACKLE",
-                10,
-                122
-            )
-
-            self.menu_font.draw_text(
-                surface,
+            moves = [
+                "TACKLE",
                 "GROWL",
-                120,
+                "TAIL WHIP",
+                "SCRATCH"
+            ]
+
+            positions = [
+                (10, 122),
+                (120, 122),
+                (10, 138),
+                (120, 138)
+            ]
+
+            cursor = (
+                self.move_row * 2
+                + self.move_col
+            )
+
+            for i, move in enumerate(
+                moves
+            ):
+
+                text = move
+
+                if i == cursor:
+
+                    text = "> " + text
+
+                self.menu_font.draw_text(
+                    surface,
+                    text,
+                    positions[i][0],
+                    positions[i][1]
+                )
+
+            self.menu_font.draw_text(
+                surface,
+                "TYPE/NORMAL",
+                150,
                 122
             )
 
             self.menu_font.draw_text(
                 surface,
-                "TAIL WHIP",
-                10,
-                138
-            )
-
-            self.menu_font.draw_text(
-                surface,
-                "SCRATCH",
-                120,
+                "POWER/40",
+                150,
                 138
             )
 
