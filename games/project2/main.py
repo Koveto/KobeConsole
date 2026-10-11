@@ -8,6 +8,7 @@ from state.menu_state import MenuState
 from state.lan_menu_state import LanMenuState
 from state.host_state import HostState
 from state.join_state import JoinState
+from state.lan_battle_state import LanBattleState
 
 from input_manager_pkmn import *
 
@@ -72,6 +73,11 @@ def main():
     state_manager.register(
         STATE_JOIN,
         JoinState()
+    )
+
+    state_manager.register(
+        STATE_LAN_BATTLE,
+        LanBattleState()
     )
 
     state_manager.change(STATE_MENU)
