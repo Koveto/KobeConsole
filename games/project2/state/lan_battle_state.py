@@ -2,7 +2,7 @@ import random
 
 from battle.battle_font import BattleFont
 from pokemon.pkmn_data import get_species
-from pokemon.pkmn_sprite import load_player_sprite
+from pokemon.pkmn_sprite import load_enemy_sprite
 from input_manager_pkmn import *
 
 
@@ -42,7 +42,7 @@ class LanBattleState:
             )
 
             self.team_sprites.append(
-                load_player_sprite(
+                load_enemy_sprite(
                     species_no
                 )
             )
@@ -97,10 +97,7 @@ class LanBattleState:
                     "is_host"
                 ]
             )
-        if (
-            self.is_host
-            and not self.team_sent
-        ):
+        if not self.team_sent:
 
             team_ids = []
 
@@ -208,12 +205,19 @@ class LanBattleState:
             else self.index
         )
 
+        sprite = self.team_sprites[
+            preview_index
+        ]
+
+        sprite_x = (
+            surface.get_width()
+            - sprite.get_width()
+        ) // 2
+
         surface.blit(
-            self.team_sprites[
-                preview_index
-            ],
+            sprite,
             (
-                140,
+                sprite_x,
                 35
             )
         )
