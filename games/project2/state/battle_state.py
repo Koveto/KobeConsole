@@ -229,8 +229,8 @@ class BattleState:
                     None
                 )
 
-                self.state_manager.change_state(
-                    "menu"
+                self.state_manager.change(
+                    STATE_MENU
                 )
 
             return
