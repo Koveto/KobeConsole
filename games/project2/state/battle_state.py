@@ -887,21 +887,21 @@ class BattleState:
         if self.current_attacker is self.player:
 
             self.player_attack_offset_x = int(
-                16 * progress
+                48 * progress
             )
 
             self.player_attack_offset_y = int(
-                -8 * progress
+                -24 * progress
             )
 
         else:
 
             self.enemy_attack_offset_x = int(
-                -16 * progress
+                -48 * progress
             )
 
             self.enemy_attack_offset_y = int(
-                8 * progress
+                24 * progress
             )
 
         if self.phase_timer >= self.animation_duration:
@@ -924,21 +924,21 @@ class BattleState:
         if self.current_attacker is self.player:
 
             self.player_attack_offset_x = int(
-                16 * (1 - progress)
+                48 * (1 - progress)
             )
 
             self.player_attack_offset_y = int(
-                -8 * (1 - progress)
+                -24 * (1 - progress)
             )
 
         else:
 
             self.enemy_attack_offset_x = int(
-                -16 * (1 - progress)
+                -48 * (1 - progress)
             )
 
             self.enemy_attack_offset_y = int(
-                8 * (1 - progress)
+                24 * (1 - progress)
             )
 
         if self.phase_timer >= self.animation_duration:
