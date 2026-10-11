@@ -1,6 +1,7 @@
 import os
 import random
 import pygame
+from constants import *
 
 from battle.battle_font import BattleFont
 from pokemon.pkmn_sprite import *
@@ -213,6 +214,27 @@ class BattleState:
         self,
         event
     ):
+
+        if self.battle_phase == "battle_over":
+
+            if is_confirm(event):
+
+                try:
+                    self.client_socket.close()
+                except OSError:
+                    pass
+
+                self.state_manager.shared.pop(
+                    "client_socket",
+                    None
+                )
+
+                self.state_manager.change_state(
+                    "menu"
+                )
+
+            return
+
 
         if self.battle_phase == "forced_switch":
 
@@ -1437,7 +1459,7 @@ class BattleState:
 
             self.dialogue_state = "battle"
 
-            self.turn_started = True
+            self.battle_phase = "battle_over"
 
             return
 
@@ -1454,7 +1476,7 @@ class BattleState:
 
             self.dialogue_state = "battle"
 
-            self.turn_started = True
+            self.battle_phase = "battle_over"
 
             return
 
