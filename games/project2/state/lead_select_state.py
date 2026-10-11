@@ -59,8 +59,8 @@ class LeadSelectState:
         event
     ):
 
-        if self.selected_lead is not None:
-            return
+        #if self.selected_lead is not None:
+        #    return
 
         if is_up(event):
 
@@ -198,8 +198,15 @@ class LeadSelectState:
         surface
     ):
 
+        
         surface.fill(
             (255, 255, 255)
+        )
+        self.font.draw_text(
+            surface,
+            str(self.index),
+            200,
+            140
         )
 
         self.font.draw_text(
