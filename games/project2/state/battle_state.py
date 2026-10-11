@@ -112,18 +112,6 @@ class BattleState:
         self.enemy_hp_box = self._load_enemy_hp_box()
         self.hp_fill = self._load_hp_fill()
 
-        player_team = (
-            self.state_manager.shared[
-                "player_team"
-            ]
-        )
-
-        player_lead = (
-            self.state_manager.shared[
-                "player_lead"
-            ]
-        )
-
     def handle_event(
         self,
         event
@@ -131,6 +119,7 @@ class BattleState:
         pass
 
     def update(self):
+
         if not hasattr(
             self,
             "battle_initialized"
@@ -138,19 +127,13 @@ class BattleState:
 
             self.battle_initialized = True
 
-            print(
+            self.player_team = (
                 self.state_manager.shared[
                     "player_team"
                 ]
             )
 
-            print(
-                self.state_manager.shared[
-                    "opponent_team"
-                ]
-            )
-
-            print(
+            self.player_lead = (
                 self.state_manager.shared[
                     "player_lead"
                 ]
