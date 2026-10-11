@@ -119,7 +119,30 @@ class BattleState:
         pass
 
     def update(self):
-        pass
+        if not hasattr(
+            self,
+            "battle_initialized"
+        ):
+
+            self.battle_initialized = True
+
+            print(
+                self.state_manager.shared[
+                    "player_team"
+                ]
+            )
+
+            print(
+                self.state_manager.shared[
+                    "opponent_team"
+                ]
+            )
+
+            print(
+                self.state_manager.shared[
+                    "player_lead"
+                ]
+            )
 
     def draw(
         self,

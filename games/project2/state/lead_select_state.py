@@ -4,9 +4,10 @@ from battle.battle_font import BattleFont
 from pokemon.pkmn_data import get_species
 from pokemon.pkmn_sprite import load_enemy_sprite
 from input_manager_pkmn import *
+from constants import *
 
 
-class LanBattleState:
+class LeadSelectState:
 
     def __init__(self):
 
@@ -50,6 +51,8 @@ class LanBattleState:
         self.index = 0
 
         self.selected_lead = None
+        self.opponent_ready = False
+        self.ready_sent = False
 
     def handle_event(
         self,
@@ -78,6 +81,15 @@ class LanBattleState:
             self.selected_lead = (
                 self.index
             )
+
+            if not self.ready_sent:
+
+                self.client_socket.send(
+                    f"LEAD:{self.index}".encode()
+                )
+
+                self.ready_sent = True
+
 
     def update(self):
 
@@ -148,12 +160,38 @@ class LanBattleState:
                             int(species_id)
                         )
                     )
+            elif message.startswith(
+                "LEAD:"
+            ):
+
+                self.opponent_ready = True
 
         except (
             BlockingIOError,
             OSError
         ):
             pass
+
+        if (
+            self.selected_lead is not None
+            and self.opponent_ready
+        ):
+
+            self.state_manager.shared[
+                "player_team"
+            ] = self.team
+
+            self.state_manager.shared[
+                "opponent_team"
+            ] = self.opponent_team
+
+            self.state_manager.shared[
+                "player_lead"
+            ] = self.selected_lead
+
+            self.state_manager.change(
+                STATE_BATTLE
+            )
 
     def draw(
         self,
@@ -238,6 +276,15 @@ class LanBattleState:
                 "READY",
                 10,
                 140
+            )
+
+        if self.opponent_ready:
+
+            self.font.draw_text(
+                surface,
+                "OPPONENT READY",
+                10,
+                155
             )
 
         for i, pokemon in enumerate(

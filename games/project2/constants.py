@@ -18,7 +18,7 @@ STATE_MENU = "menu"
 STATE_LAN_MENU = "lan_menu"
 STATE_HOST = "host"
 STATE_JOIN = "join"
-STATE_LAN_BATTLE = "lan_battle"
+STATE_LEAD_SELECT = "lead_select"
 
 DISPLAY_BORDER_COLOR = (40, 40, 40)
 DISPLAY_BORDER_WIDTH = 2
