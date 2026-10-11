@@ -795,6 +795,22 @@ class BattleState:
                 self.displayed_enemy_hp = (
                     self.enemy.current_hp
                 )
+
+            if (
+                self.selected_action["type"] == "swap"
+                and self.opponent_action["type"] == "swap"
+            ):
+
+                self.selected_action = None
+                self.opponent_action = None
+
+                self.turn_started = False
+                self.waiting_for_opponent = False
+
+                self.dialogue_state = "command"
+                self.menu_state = "command"
+
+                return
             
             if self.player.speed >= self.enemy.speed:
 
@@ -818,6 +834,19 @@ class BattleState:
             self.second_move_pending = True
             if self.first_action["type"] == "swap":
 
+                if self.second_action["type"] == "swap":
+
+                    self.selected_action = None
+                    self.opponent_action = None
+
+                    self.turn_started = False
+                    self.waiting_for_opponent = False
+
+                    self.dialogue_state = "command"
+                    self.menu_state = "command"
+
+                    return
+
                 self.first_user = self.second_user
                 self.first_action = self.second_action
 
@@ -829,7 +858,9 @@ class BattleState:
 
                 damage = calculate_damage(
                     self.first_user,
-                    self.player if self.first_user is self.enemy else self.enemy,
+                    self.player
+                    if self.first_user is self.enemy
+                    else self.enemy,
                     move_data
                 )
 
@@ -850,9 +881,7 @@ class BattleState:
                     move_data["category"]
                 )
 
-                self.current_attacker = (
-                    self.first_user
-                )
+                self.current_attacker = self.first_user
 
                 if self.first_user is self.player:
 
@@ -880,7 +909,6 @@ class BattleState:
                 self.dialogue_state = "battle"
 
                 self.phase_timer = 0
-
                 self.battle_phase = "text_pause"
 
                 return
