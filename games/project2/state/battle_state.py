@@ -37,7 +37,8 @@ class BattleState:
         self.frame = self._load_frame()
         self.menu_index = 0
         self.menu_state = "command"
-        self.move_index = 0
+        self.move_row = 0
+        self.move_col = 0
 
         self.dialogue_font = BattleFont(
             "font_dialogue.png",
@@ -132,23 +133,44 @@ class BattleState:
 
             else:
 
-                self.move_index = max(
+                self.move_row = max(
                     0,
-                    self.move_index - 1
+                    self.move_row - 1
                 )
 
         elif is_down(event):
 
-            max_index = (
-                1
-                if self.menu_state == "command"
-                else 3
-            )
+            if self.menu_state == "command":
 
-            self.menu_index = min(
-                max_index,
-                self.menu_index + 1
-            )
+                self.menu_index = min(
+                    1,
+                    self.menu_index + 1
+                )
+
+            else:
+
+                self.move_row = min(
+                    1,
+                    self.move_row + 1
+                )
+
+        elif is_left(event):
+
+            if self.menu_state == "moves":
+
+                self.move_col = max(
+                    0,
+                    self.move_col - 1
+                )
+
+        elif is_right(event):
+
+            if self.menu_state == "moves":
+
+                self.move_col = min(
+                    1,
+                    self.move_col + 1
+                )
 
         elif is_confirm(event):
 
@@ -158,11 +180,15 @@ class BattleState:
 
                     self.menu_state = "moves"
 
+                    self.move_row = 0
+                    self.move_col = 0
+
         elif is_cancel(event):
 
             if self.menu_state == "moves":
 
                 self.menu_state = "command"
+                self.menu_index = 0
 
     def update(self):
 
@@ -390,53 +416,68 @@ class BattleState:
                 "POKEMON"
             ]
 
-            selected_index = (
-                self.menu_index
-            )
+            for i, option in enumerate(
+                options
+            ):
+
+                text = option
+
+                if i == self.menu_index:
+
+                    text = "> " + text
+
+                self.menu_font.draw_text(
+                    surface,
+                    text,
+                    180,
+                    124 + i * 15
+                )
 
         else:
 
-            options = [
-                "MOVE 1",
-                "MOVE 2",
-                "MOVE 3",
-                "MOVE 4"
-            ]
-
-            selected_index = (
-                self.move_index
+            self.menu_font.draw_text(
+                surface,
+                "> TACKLE",
+                10,
+                122
             )
-
-        for i, option in enumerate(
-            options
-        ):
-
-            text = option
-
-            if i == selected_index:
-
-                text = "> " + text
 
             self.menu_font.draw_text(
                 surface,
-                text,
-                180,
-                124 + i * 15
+                "GROWL",
+                120,
+                122
             )
 
-        self.dialogue_font.draw_text(
-            surface,
-            "WHAT WILL",
-            12,
-            121
-        )
+            self.menu_font.draw_text(
+                surface,
+                "TAIL WHIP",
+                10,
+                138
+            )
 
-        self.dialogue_font.draw_text(
-            surface,
-            f"{self.player_species['name'].upper()} DO?",
-            12,
-            136
-        )
+            self.menu_font.draw_text(
+                surface,
+                "SCRATCH",
+                120,
+                138
+            )
+
+        if self.menu_state == "command":
+
+            self.dialogue_font.draw_text(
+                surface,
+                "WHAT WILL",
+                12,
+                121
+            )
+
+            self.dialogue_font.draw_text(
+                surface,
+                f"{self.player_species['name'].upper()} DO?",
+                12,
+                136
+            )
 
     def _load_enemy_hp_box(self):
 
