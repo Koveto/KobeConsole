@@ -53,6 +53,62 @@ class BattlePokemon:
 
         return 1.0
 
+    def calculate_damage(
+        attacker,
+        defender,
+        move_data,
+        type_multiplier
+    ):
+
+        if move_data["category"] == "Physical":
+
+            attack_stat = attacker.atk
+            defense_stat = defender.defense
+
+        else:
+
+            attack_stat = attacker.spatk
+            defense_stat = defender.spdef
+
+        stab = 1.0
+
+        if move_data["type"] in attacker.species["types"]:
+            stab = 1.5
+
+        rand = random.uniform(
+            0.85,
+            1.0
+        )
+
+        base_damage = (
+            2 +
+            math.floor(
+                (
+                    (attack_stat / defense_stat)
+                    * move_data["power"]
+                    * (
+                        2 +
+                        math.floor(
+                            (2 * attacker.level) / 5
+                        )
+                    )
+                ) / 50
+            )
+        )
+
+        damage = math.floor(
+            base_damage
+            * stab
+            * type_multiplier
+            * rand
+        )
+
+        return max(
+            1,
+            damage
+        )
+
+
     def calculate_max_hp(self):
 
         base_hp = self.species["stats"]["HP"]

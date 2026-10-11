@@ -7,6 +7,9 @@ from pokemon.pkmn_sprite import *
 from pokemon.pkmn_data import *
 from pokemon.pkmn_battle import BattlePokemon
 from input_manager_pkmn import *
+from battle.battle_damage import (
+    calculate_damage
+)
 
 type_names = {
     "Electric": "ELEC",
@@ -463,6 +466,11 @@ class BattleState:
 
             move_data = get_move(
                 first_action["move"]
+            )
+            damage = calculate_damage(
+                first_user,
+                second_user,
+                move_data
             )
 
             self.current_move_category = (
