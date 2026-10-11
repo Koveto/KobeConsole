@@ -240,10 +240,32 @@ class BattleState:
 
                 if pokemon.current_hp > 0:
 
-                    print(
-                        "Selected:",
-                        pokemon.species["name"]
+                    self.player = pokemon
+
+                    self.player_species = (
+                        pokemon.species
                     )
+
+                    self.player_species_no = (
+                        pokemon.species["no"]
+                    )
+
+                    self.player_sprite = (
+                        load_player_sprite(
+                            self.player_species_no
+                        )
+                    )
+
+                    self.displayed_player_hp = (
+                        self.player.current_hp
+                    )
+
+                    self.fainted_side = None
+
+                    self.dialogue_state = "command"
+                    self.menu_state = "command"
+
+                    self.battle_phase = None
 
             return
                 
@@ -970,6 +992,21 @@ class BattleState:
                 16,
                 y
             )
+        selected_pokemon = (
+            self.player_team[
+                self.party_cursor
+            ]
+        )
+        sprite = load_enemy_sprite(
+            selected_pokemon.species["no"]
+        )
+        surface.blit(
+            sprite,
+            (
+                165,
+                25
+            )
+        )
 
     def _load_enemy_hp_box(self):
 
@@ -1009,9 +1046,7 @@ class BattleState:
 
             else:
 
-                print(
-                    "Enemy replacement goes here"
-                )
+                pass
 
     def resolve_turn_progress(self):
 

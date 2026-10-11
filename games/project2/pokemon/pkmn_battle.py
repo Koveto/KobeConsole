@@ -105,7 +105,7 @@ class BattlePokemon:
         )
 
         return max(
-            1,
+            0,
             damage
         )
 
