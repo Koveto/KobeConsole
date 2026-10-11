@@ -148,18 +148,18 @@ class BattleState:
             enemy_pokemon = (
                 self.opponent_team[0]
             )
-
-            self.enemy_species_no = (
-                enemy_pokemon[
-                    "species_no"
-                ]
+            print(
+                enemy_pokemon
             )
 
             self.enemy_species = (
-                enemy_pokemon[
-                    "species"
-                ]
+                enemy_pokemon
             )
+
+            #self.enemy_species_no = (
+            #    self.enemy_species["id"]
+            #)
+
 
             self.enemy_sprite = (
                 load_enemy_sprite(
