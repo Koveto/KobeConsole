@@ -296,7 +296,7 @@
       },
       "moves": [
         "Twineedle",
-        "Ancient Power",
+        "AncientPwr",
         "Bug Bite",
         "Sludge Wave"
       ]
@@ -556,7 +556,7 @@
         "Thunderbolt",
         "Ominous Wind",
         "Discharge",
-        "Thunder Punch"
+        "ThunderPnch"
       ]
     },
     {
@@ -744,7 +744,7 @@
         "Spd": 35
       },
       "moves": [
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Aqua Tail",
         "Play Rough",
         "Spirit Break"
@@ -768,7 +768,7 @@
         "Poison Jab",
         "Moonblast",
         "Spirit Break",
-        "Dazzling Gleam"
+        "DazzlGleam"
       ]
     },
     {
@@ -1515,7 +1515,7 @@
         "Spd": 70
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Giga Drain",
         "Sludge Wave",
         "Wood Hammer"
@@ -1582,7 +1582,7 @@
       },
       "moves": [
         "Rock Slide",
-        "Ancient Power",
+        "AncientPwr",
         "Energy Ball",
         "Drill Run"
       ]
@@ -1604,7 +1604,7 @@
       },
       "moves": [
         "Stone Edge",
-        "Ancient Power",
+        "AncientPwr",
         "Outrage",
         "Mud Bomb"
       ]
@@ -1626,7 +1626,7 @@
       },
       "moves": [
         "Power Gem",
-        "Ancient Power",
+        "AncientPwr",
         "Drain Punch",
         "Mud Bomb"
       ]
@@ -1733,9 +1733,9 @@
         "Spd": 45
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Thunder Fang",
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Flash Cannon"
       ]
     },
@@ -2145,7 +2145,7 @@
         "Psychic",
         "Discharge",
         "Thunderbolt",
-        "Thunder Punch"
+        "ThunderPnch"
       ]
     },
     {
@@ -2207,7 +2207,7 @@
         "Spd": 55
       },
       "moves": [
-        "Dragon Breath",
+        "DragonBreth",
         "Zen Headbutt",
         "Seed Bomb",
         "Energy Ball"
@@ -2675,7 +2675,7 @@
         "Spd": 105
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Thunderbolt",
         "Thunder Fang",
         "Energy Ball"
@@ -2806,7 +2806,7 @@
         "Aqua Tail",
         "Waterfall",
         "Blizzard",
-        "Dragon Breath"
+        "DragonBreth"
       ]
     },
     {
@@ -2887,7 +2887,7 @@
         "Spd": 130
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Earthquake",
         "Thunderbolt",
         "Discharge"
@@ -2910,7 +2910,7 @@
       "moves": [
         "Flare Blitz",
         "Fire Punch",
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Flamethrower"
       ]
     },
@@ -2995,7 +2995,7 @@
         "Spd": 55
       },
       "moves": [
-        "Ancient Power",
+        "AncientPwr",
         "Flare Blitz",
         "Aqua Tail",
         "Stone Edge"
@@ -3017,7 +3017,7 @@
         "Spd": 80
       },
       "moves": [
-        "Ancient Power",
+        "AncientPwr",
         "Rock Slide",
         "Hydro Pump",
         "Snarl"
@@ -3062,7 +3062,7 @@
       "moves": [
         "Double-Edge",
         "Body Slam",
-        "Dragon Breath",
+        "DragonBreth",
         "Tri Attack"
       ]
     },
@@ -3082,7 +3082,7 @@
         "Spd": 85
       },
       "moves": [
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Icicle Crash",
         "Hurricane",
         "Blizzard"
@@ -3148,7 +3148,7 @@
       },
       "moves": [
         "Outrage",
-        "Dragon Breath",
+        "DragonBreth",
         "Sludge Wave",
         "Dragon Claw"
       ]
@@ -3168,7 +3168,7 @@
         "Spd": 70
       },
       "moves": [
-        "Dragon Breath",
+        "DragonBreth",
         "Outrage",
         "Energy Ball",
         "Dragon Claw"
@@ -3703,7 +3703,7 @@
         "Spd": 15
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Moonblast",
         "Play Rough",
         "Spirit Break"
@@ -3749,7 +3749,7 @@
         "Play Rough",
         "Spirit Break",
         "Shadow Punch",
-        "Dazzling Gleam"
+        "DazzlGleam"
       ]
     },
     {
@@ -3834,7 +3834,7 @@
       },
       "moves": [
         "Discharge",
-        "Thunder Punch",
+        "ThunderPnch",
         "Thunderbolt",
         "Play Rough"
       ]
@@ -3857,7 +3857,7 @@
         "Thunderbolt",
         "Thunder Fang",
         "Hurricane",
-        "Thunder Punch"
+        "ThunderPnch"
       ]
     },
     {
@@ -3876,7 +3876,7 @@
       },
       "moves": [
         "Brave Bird",
-        "Thunder Punch",
+        "ThunderPnch",
         "Thunder Fang",
         "Thunderbolt"
       ]
@@ -3919,7 +3919,7 @@
       },
       "moves": [
         "Poison Jab",
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Hydro Pump",
         "Waterfall"
       ]
@@ -3941,7 +3941,7 @@
       },
       "moves": [
         "Discharge",
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Surf",
         "Aqua Tail"
       ]
@@ -3963,7 +3963,7 @@
       "moves": [
         "Power Gem",
         "Sludge Wave",
-        "Ancient Power",
+        "AncientPwr",
         "Stone Edge"
       ]
     },
@@ -4478,7 +4478,7 @@
       },
       "moves": [
         "Hyper Voice",
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Spirit Break",
         "Moonblast"
       ]
@@ -4630,7 +4630,7 @@
       },
       "moves": [
         "Body Slam",
-        "Dragon Breath",
+        "DragonBreth",
         "Double-Edge",
         "Hyper Voice"
       ]
@@ -4740,7 +4740,7 @@
         "Blizzard",
         "Earth Power",
         "Ice Beam",
-        "Ancient Power"
+        "AncientPwr"
       ]
     },
     {
@@ -5020,7 +5020,7 @@
         "Body Slam",
         "Tri Attack",
         "Hyper Voice",
-        "Ancient Power"
+        "AncientPwr"
       ]
     },
     {
@@ -5124,7 +5124,7 @@
       },
       "moves": [
         "Thunderbolt",
-        "Thunder Punch",
+        "ThunderPnch",
         "Thunder Fang",
         "Moonblast"
       ]
@@ -5207,7 +5207,7 @@
         "Spd": 115
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Thunderbolt",
         "Close Combat",
         "Thunder Fang"
@@ -5272,7 +5272,7 @@
       },
       "moves": [
         "Mud Bomb",
-        "Ancient Power",
+        "AncientPwr",
         "Power Gem",
         "Giga Drain"
       ]
@@ -5295,7 +5295,7 @@
       "moves": [
         "Rock Slide",
         "Drill Run",
-        "Ancient Power",
+        "AncientPwr",
         "Discharge"
       ]
     },
@@ -5447,7 +5447,7 @@
         "Giga Drain",
         "Seed Bomb",
         "Wood Hammer",
-        "Ancient Power"
+        "AncientPwr"
       ]
     },
     {
@@ -5575,7 +5575,7 @@
       },
       "moves": [
         "Waterfall",
-        "Thunder Punch",
+        "ThunderPnch",
         "Mud Bomb",
         "Aqua Tail"
       ]
@@ -5660,7 +5660,7 @@
       "moves": [
         "Double-Edge",
         "Tri Attack",
-        "Thunder Punch",
+        "ThunderPnch",
         "Hyper Voice"
       ]
     },
@@ -5682,7 +5682,7 @@
         "Signal Beam",
         "Silver Wind",
         "Twineedle",
-        "Dragon Breath"
+        "DragonBreth"
       ]
     },
     {
@@ -6030,7 +6030,7 @@
       "moves": [
         "Psychic",
         "Play Rough",
-        "Ancient Power",
+        "AncientPwr",
         "Zen Headbutt"
       ]
     },
@@ -6396,7 +6396,7 @@
         "Tri Attack",
         "Spirit Break",
         "Double-Edge",
-        "Dazzling Gleam"
+        "DazzlGleam"
       ]
     },
     {
@@ -6500,7 +6500,7 @@
         "Spd": 50
       },
       "moves": [
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Metal Claw",
         "Flash Cannon",
         "Surf"
@@ -6634,7 +6634,7 @@
         "Discharge",
         "Shadow Punch",
         "Thunder Fang",
-        "Thunder Punch"
+        "ThunderPnch"
       ]
     },
     {
@@ -6655,7 +6655,7 @@
         "Thunderbolt",
         "Shadow Punch",
         "Discharge",
-        "Thunder Punch"
+        "ThunderPnch"
       ]
     },
     {
@@ -6673,7 +6673,7 @@
         "Spd": 95
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Iron Head",
         "Thunderbolt",
         "Thunder Fang"
@@ -6696,7 +6696,7 @@
       "moves": [
         "Outrage",
         "Discharge",
-        "Thunder Punch",
+        "ThunderPnch",
         "Thunder Fang"
       ]
     },
@@ -6737,7 +6737,7 @@
       },
       "moves": [
         "Signal Beam",
-        "Dazzling Gleam",
+        "DazzlGleam",
         "Twineedle",
         "Silver Wind"
       ]
@@ -6800,7 +6800,7 @@
         "Spd": 55
       },
       "moves": [
-        "Dragon Breath",
+        "DragonBreth",
         "Gunk Shot",
         "Poison Jab",
         "Sludge Bomb"
@@ -6993,7 +6993,7 @@
         "Spd": 80
       },
       "moves": [
-        "Dragon Breath",
+        "DragonBreth",
         "Psybeam",
         "Psychic",
         "Psycho Cut"
@@ -7081,7 +7081,7 @@
       "moves": [
         "Psycho Cut",
         "Mud Bomb",
-        "Dragon Breath",
+        "DragonBreth",
         "Earth Power"
       ]
     },
@@ -7124,7 +7124,7 @@
       "moves": [
         "Wood Hammer",
         "Energy Ball",
-        "Ancient Power",
+        "AncientPwr",
         "Snarl"
       ]
     },
@@ -7169,7 +7169,7 @@
         "Body Slam",
         "Outrage",
         "Brave Bird",
-        "Dragon Breath"
+        "DragonBreth"
       ]
     },
     {
@@ -7232,7 +7232,7 @@
       "moves": [
         "Power Gem",
         "Flash Cannon",
-        "Ancient Power",
+        "AncientPwr",
         "Psychic"
       ]
     },
@@ -7408,7 +7408,7 @@
         "Giga Drain",
         "Rock Slide",
         "Fire Blast",
-        "Ancient Power"
+        "AncientPwr"
       ]
     },
     {
@@ -7429,7 +7429,7 @@
       "moves": [
         "Bug Bite",
         "Power Gem",
-        "Ancient Power",
+        "AncientPwr",
         "Giga Drain"
       ]
     },
@@ -7449,10 +7449,10 @@
         "Spd": 75
       },
       "moves": [
-        "Dragon Breath",
+        "DragonBreth",
         "Bug Bite",
         "Rock Slide",
-        "Ancient Power"
+        "AncientPwr"
       ]
     },
     {
@@ -7495,7 +7495,7 @@
         "Aqua Tail",
         "Hydro Pump",
         "Waterfall",
-        "Dazzling Gleam"
+        "DazzlGleam"
       ]
     },
     {
@@ -7851,7 +7851,7 @@
         "Spd": 25
       },
       "moves": [
-        "Ancient Power",
+        "AncientPwr",
         "Ice Beam",
         "Ice Punch",
         "Surf"
@@ -7895,7 +7895,7 @@
         "Spd": 65
       },
       "moves": [
-        "Thunder Punch",
+        "ThunderPnch",
         "Ice Punch",
         "Aqua Tail",
         "Icicle Crash"
@@ -8022,7 +8022,7 @@
         "Spd": 50
       },
       "moves": [
-        "Dragon Breath",
+        "DragonBreth",
         "Bug Bite",
         "Dragon Pulse",
         "Dragon Claw"
@@ -8046,7 +8046,7 @@
         "Earthquake",
         "Outrage",
         "Dragon Pulse",
-        "Dragon Breath"
+        "DragonBreth"
       ]
     },
     {
@@ -8152,7 +8152,7 @@
         "Spd": 50
       },
       "moves": [
-        "Ancient Power",
+        "AncientPwr",
         "Hurricane",
         "Rock Slide",
         "Power Gem"
@@ -8302,7 +8302,7 @@
         "Spd": 95
       },
       "moves": [
-        "Dragon Breath",
+        "DragonBreth",
         "Ominous Wind",
         "Brave Bird",
         "Dragon Pulse"
