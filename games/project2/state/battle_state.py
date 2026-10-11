@@ -453,23 +453,30 @@ class BattleState:
         elif (self.menu_state == "moves"
               and not self.waiting_for_opponent):
 
-            moves = [
-                "TACKLE",
-                "GROWL",
-                "TAIL WHIP",
-                "SCRATCH"
-            ]
+            moves = (
+                self.player_moves
+            )
 
             positions = [
                 (10, 122),
-                (100, 122),
+                (90, 122),
                 (10, 138),
-                (100, 138)
+                (90, 138)
             ]
 
             cursor = (
                 self.move_row * 2
                 + self.move_col
+            )
+
+            selected_move_name = (
+                moves[cursor]
+            )
+
+            selected_move = (
+                get_move(
+                    selected_move_name
+                )
             )
 
             for i, move in enumerate(
@@ -491,16 +498,25 @@ class BattleState:
 
             self.menu_font.draw_text(
                 surface,
-                "TYPE/NORMAL",
+                f"TYPE/{selected_move['type'].upper()}",
                 165,
                 122
             )
 
             self.menu_font.draw_text(
                 surface,
-                "POWER/40",
+                f"POWER/{selected_move['power']}",
                 165,
                 138
+            )
+
+            self.menu_font.draw_text(
+                surface,
+                selected_move[
+                    "category"
+                ].upper(),
+                165,
+                154
             )
 
         if self.menu_state == "command":

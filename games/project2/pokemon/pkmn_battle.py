@@ -12,6 +12,10 @@ class BattlePokemon:
 
         self.species = species
 
+        self.moves = (
+            species["moves"]
+        )
+
         self.level = level
 
         self.evs = [

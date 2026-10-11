@@ -3,7 +3,10 @@
     {
       "no": 1,
       "name": "Bulbasaur",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 49,
@@ -11,12 +14,21 @@
         "SpAtk": 65,
         "SpDef": 65,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Ominous Wind",
+        "Wood Hammer",
+        "Sludge Bomb",
+        "Energy Ball"
+      ]
     },
     {
       "no": 2,
       "name": "Ivysaur",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 62,
@@ -24,12 +36,21 @@
         "SpAtk": 80,
         "SpDef": 80,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Giga Drain",
+        "Blizzard",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 3,
       "name": "Venusaur",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 82,
@@ -37,12 +58,20 @@
         "SpAtk": 100,
         "SpDef": 100,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Sludge Wave",
+        "Wood Hammer",
+        "Fire Blast"
+      ]
     },
     {
       "no": 4,
       "name": "Charmander",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 39,
         "Atk": 52,
@@ -50,12 +79,20 @@
         "SpAtk": 60,
         "SpDef": 50,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Moonblast",
+        "Flamethrower",
+        "Flare Blitz",
+        "Fire Blast"
+      ]
     },
     {
       "no": 5,
       "name": "Charmeleon",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 58,
         "Atk": 64,
@@ -63,12 +100,21 @@
         "SpAtk": 80,
         "SpDef": 65,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Flare Blitz",
+        "Hydro Pump",
+        "Fire Punch",
+        "Flamethrower"
+      ]
     },
     {
       "no": 6,
       "name": "Charizard",
-      "types": ["Fire","Flying"],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "stats": {
         "HP": 78,
         "Atk": 84,
@@ -76,12 +122,20 @@
         "SpAtk": 109,
         "SpDef": 85,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Fire Punch",
+        "Brave Bird",
+        "Fire Blast",
+        "Spirit Break"
+      ]
     },
     {
       "no": 7,
       "name": "Squirtle",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 44,
         "Atk": 48,
@@ -89,12 +143,20 @@
         "SpAtk": 50,
         "SpDef": 64,
         "Spd": 43
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Aqua Tail",
+        "Drill Run",
+        "Surf"
+      ]
     },
     {
       "no": 8,
       "name": "Wartortle",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 59,
         "Atk": 63,
@@ -102,12 +164,20 @@
         "SpAtk": 65,
         "SpDef": 80,
         "Spd": 58
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Bug Bite",
+        "Hydro Pump",
+        "Surf"
+      ]
     },
     {
       "no": 9,
       "name": "Blastoise",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 79,
         "Atk": 83,
@@ -115,12 +185,20 @@
         "SpAtk": 85,
         "SpDef": 105,
         "Spd": 78
-      }
+      },
+      "moves": [
+        "Stone Edge",
+        "Hydro Pump",
+        "Surf",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 10,
       "name": "Caterpie",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 30,
@@ -128,12 +206,20 @@
         "SpAtk": 20,
         "SpDef": 20,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Bug Bite",
+        "Silver Wind",
+        "Twineedle",
+        "Ice Beam"
+      ]
     },
     {
       "no": 11,
       "name": "Metapod",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 20,
@@ -141,12 +227,21 @@
         "SpAtk": 25,
         "SpDef": 25,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Twineedle",
+        "Bug Bite",
+        "Brave Bird",
+        "Silver Wind"
+      ]
     },
     {
       "no": 12,
       "name": "Butterfree",
-      "types": ["Bug","Flying"],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 45,
@@ -154,12 +249,21 @@
         "SpAtk": 90,
         "SpDef": 80,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Bug Bite",
+        "Sludge Bomb",
+        "Air Slash"
+      ]
     },
     {
       "no": 13,
       "name": "Weedle",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 35,
@@ -167,12 +271,21 @@
         "SpAtk": 20,
         "SpDef": 20,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Power Gem",
+        "Sludge Bomb",
+        "Twineedle"
+      ]
     },
     {
       "no": 14,
       "name": "Kakuna",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 25,
@@ -180,12 +293,21 @@
         "SpAtk": 25,
         "SpDef": 25,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Twineedle",
+        "Ancient Power",
+        "Bug Bite",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 15,
       "name": "Beedrill",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 90,
@@ -193,12 +315,21 @@
         "SpAtk": 45,
         "SpDef": 80,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Sludge Wave",
+        "Silver Wind",
+        "Twineedle"
+      ]
     },
     {
       "no": 16,
       "name": "Pidgey",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 45,
@@ -206,12 +337,21 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 56
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Zen Headbutt",
+        "Body Slam",
+        "Air Slash"
+      ]
     },
     {
       "no": 17,
       "name": "Pidgeotto",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 63,
         "Atk": 60,
@@ -219,12 +359,21 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 71
-      }
+      },
+      "moves": [
+        "Rock Slide",
+        "Hyper Voice",
+        "Hurricane",
+        "Double-Edge"
+      ]
     },
     {
       "no": 18,
       "name": "Pidgeot",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 83,
         "Atk": 80,
@@ -232,12 +381,20 @@
         "SpAtk": 70,
         "SpDef": 70,
         "Spd": 101
-      }
+      },
+      "moves": [
+        "Iron Head",
+        "Double-Edge",
+        "Fly",
+        "Body Slam"
+      ]
     },
     {
       "no": 19,
       "name": "Rattata",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 56,
@@ -245,12 +402,20 @@
         "SpAtk": 25,
         "SpDef": 35,
         "Spd": 72
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Discharge",
+        "Double-Edge",
+        "Body Slam"
+      ]
     },
     {
       "no": 20,
       "name": "Raticate",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 81,
@@ -258,12 +423,21 @@
         "SpAtk": 50,
         "SpDef": 70,
         "Spd": 97
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Energy Ball",
+        "Tri Attack",
+        "Double-Edge"
+      ]
     },
     {
       "no": 21,
       "name": "Spearow",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 60,
@@ -271,12 +445,21 @@
         "SpAtk": 31,
         "SpDef": 31,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Hurricane",
+        "Double-Edge",
+        "Body Slam",
+        "Flash Cannon"
+      ]
     },
     {
       "no": 22,
       "name": "Fearow",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 90,
@@ -284,12 +467,20 @@
         "SpAtk": 61,
         "SpDef": 61,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Brave Bird",
+        "Hyper Voice",
+        "Hurricane",
+        "Body Slam"
+      ]
     },
     {
       "no": 23,
       "name": "Ekans",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 60,
@@ -297,12 +488,20 @@
         "SpAtk": 40,
         "SpDef": 54,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Stone Edge",
+        "Gunk Shot",
+        "Sludge Bomb"
+      ]
     },
     {
       "no": 24,
       "name": "Arbok",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 95,
@@ -310,12 +509,20 @@
         "SpAtk": 65,
         "SpDef": 79,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Flash Cannon",
+        "Gunk Shot",
+        "Sludge Bomb"
+      ]
     },
     {
       "no": 25,
       "name": "Pikachu",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 55,
@@ -323,12 +530,20 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Thunder Fang",
+        "Thunderbolt",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 26,
       "name": "Raichu",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 90,
@@ -336,12 +551,20 @@
         "SpAtk": 90,
         "SpDef": 80,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Thunderbolt",
+        "Ominous Wind",
+        "Discharge",
+        "Thunder Punch"
+      ]
     },
     {
       "no": 27,
       "name": "Sandshrew",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 75,
@@ -349,12 +572,20 @@
         "SpAtk": 20,
         "SpDef": 30,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Focus Blast",
+        "Earthquake",
+        "Drill Run"
+      ]
     },
     {
       "no": 28,
       "name": "Sandslash",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 100,
@@ -362,12 +593,20 @@
         "SpAtk": 45,
         "SpDef": 55,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Earthquake",
+        "Mud Bomb",
+        "Energy Ball"
+      ]
     },
     {
       "no": 29,
       "name": "NidoranF",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 47,
@@ -375,12 +614,20 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 41
-      }
+      },
+      "moves": [
+        "Gunk Shot",
+        "Stone Edge",
+        "Sludge Wave",
+        "Poison Jab"
+      ]
     },
     {
       "no": 30,
       "name": "Nidorina",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 62,
@@ -388,12 +635,21 @@
         "SpAtk": 55,
         "SpDef": 55,
         "Spd": 56
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Sludge Bomb",
+        "Body Slam",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 31,
       "name": "Nidoqueen",
-      "types": ["Poison","Ground"],
+      "types": [
+        "Poison",
+        "Ground"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 92,
@@ -401,12 +657,20 @@
         "SpAtk": 75,
         "SpDef": 85,
         "Spd": 76
-      }
+      },
+      "moves": [
+        "Sludge Bomb",
+        "Earth Power",
+        "Poison Jab",
+        "Thunder Fang"
+      ]
     },
     {
       "no": 32,
       "name": "NidoranM",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 46,
         "Atk": 57,
@@ -414,12 +678,20 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Moonblast",
+        "Poison Jab",
+        "Sludge Wave",
+        "Gunk Shot"
+      ]
     },
     {
       "no": 33,
       "name": "Nidorino",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 61,
         "Atk": 72,
@@ -427,12 +699,21 @@
         "SpAtk": 55,
         "SpDef": 55,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Gunk Shot",
+        "Sludge Wave",
+        "Drill Run"
+      ]
     },
     {
       "no": 34,
       "name": "Nidoking",
-      "types": ["Poison", "Ground"],
+      "types": [
+        "Poison",
+        "Ground"
+      ],
       "stats": {
         "HP": 81,
         "Atk": 102,
@@ -440,12 +721,20 @@
         "SpAtk": 85,
         "SpDef": 75,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Gunk Shot",
+        "Sludge Bomb",
+        "Fire Blast",
+        "Earthquake"
+      ]
     },
     {
       "no": 35,
       "name": "Clefairy",
-      "types": ["Fairy"],
+      "types": [
+        "Fairy"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 45,
@@ -453,12 +742,20 @@
         "SpAtk": 60,
         "SpDef": 65,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Dazzling Gleam",
+        "Aqua Tail",
+        "Play Rough",
+        "Spirit Break"
+      ]
     },
     {
       "no": 36,
       "name": "Clefable",
-      "types": ["Fairy"],
+      "types": [
+        "Fairy"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 70,
@@ -466,12 +763,20 @@
         "SpAtk": 95,
         "SpDef": 90,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Moonblast",
+        "Spirit Break",
+        "Dazzling Gleam"
+      ]
     },
     {
       "no": 37,
       "name": "Vulpix",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 38,
         "Atk": 41,
@@ -479,12 +784,20 @@
         "SpAtk": 50,
         "SpDef": 65,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Thunderbolt",
+        "Fire Blast",
+        "Flare Blitz",
+        "Flamethrower"
+      ]
     },
     {
       "no": 38,
       "name": "Ninetales",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 73,
         "Atk": 76,
@@ -492,12 +805,21 @@
         "SpAtk": 81,
         "SpDef": 100,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Fire Punch",
+        "Flare Blitz",
+        "Fire Blast",
+        "Shadow Punch"
+      ]
     },
     {
       "no": 39,
       "name": "Jigglypuff",
-      "types": ["Normal","Fairy"],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "stats": {
         "HP": 115,
         "Atk": 45,
@@ -505,12 +827,21 @@
         "SpAtk": 45,
         "SpDef": 25,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Ice Punch",
+        "Body Slam",
+        "Double-Edge",
+        "Play Rough"
+      ]
     },
     {
       "no": 40,
       "name": "Wigglytuff",
-      "types": ["Normal","Fairy"],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "stats": {
         "HP": 140,
         "Atk": 70,
@@ -518,12 +849,21 @@
         "SpAtk": 85,
         "SpDef": 50,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Spirit Break",
+        "Double-Edge",
+        "Tri Attack",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 41,
       "name": "Zubat",
-      "types": ["Poison","Flying"],
+      "types": [
+        "Poison",
+        "Flying"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 45,
@@ -531,12 +871,21 @@
         "SpAtk": 30,
         "SpDef": 40,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Sludge Bomb",
+        "Poison Jab",
+        "Fly",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 42,
       "name": "Golbat",
-      "types": ["Poison","Flying"],
+      "types": [
+        "Poison",
+        "Flying"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 80,
@@ -544,12 +893,21 @@
         "SpAtk": 65,
         "SpDef": 75,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Fly",
+        "Sludge Wave",
+        "Gunk Shot",
+        "Ice Punch"
+      ]
     },
     {
       "no": 43,
       "name": "Oddish",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 50,
@@ -557,12 +915,21 @@
         "SpAtk": 75,
         "SpDef": 65,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Wood Hammer",
+        "Giga Drain",
+        "Seed Bomb",
+        "Gunk Shot"
+      ]
     },
     {
       "no": 44,
       "name": "Gloom",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 65,
@@ -570,12 +937,21 @@
         "SpAtk": 85,
         "SpDef": 75,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Sludge Bomb",
+        "Thunderbolt",
+        "Seed Bomb"
+      ]
     },
     {
       "no": 45,
       "name": "Vileplume",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 80,
@@ -583,12 +959,21 @@
         "SpAtk": 110,
         "SpDef": 90,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Earth Power",
+        "Poison Jab",
+        "Energy Ball"
+      ]
     },
     {
       "no": 46,
       "name": "Paras",
-      "types": ["Bug","Grass"],
+      "types": [
+        "Bug",
+        "Grass"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 70,
@@ -596,12 +981,21 @@
         "SpAtk": 45,
         "SpDef": 55,
         "Spd": 25
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Energy Ball",
+        "Giga Drain",
+        "Signal Beam"
+      ]
     },
     {
       "no": 47,
       "name": "Parasect",
-      "types": ["Bug","Grass"],
+      "types": [
+        "Bug",
+        "Grass"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 95,
@@ -609,12 +1003,21 @@
         "SpAtk": 60,
         "SpDef": 80,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Psychic",
+        "Twineedle",
+        "Bug Bite",
+        "Energy Ball"
+      ]
     },
     {
       "no": 48,
       "name": "Venonat",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 55,
@@ -622,12 +1025,21 @@
         "SpAtk": 40,
         "SpDef": 55,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Snarl",
+        "Twineedle",
+        "Sludge Bomb",
+        "Silver Wind"
+      ]
     },
     {
       "no": 49,
       "name": "Venomoth",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 65,
@@ -635,12 +1047,20 @@
         "SpAtk": 90,
         "SpDef": 75,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Sludge Bomb",
+        "Body Slam",
+        "Twineedle",
+        "Silver Wind"
+      ]
     },
     {
       "no": 50,
       "name": "Diglett",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 10,
         "Atk": 55,
@@ -648,12 +1068,20 @@
         "SpAtk": 35,
         "SpDef": 45,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Drill Run",
+        "Moonblast",
+        "Mud Bomb",
+        "Earth Power"
+      ]
     },
     {
       "no": 51,
       "name": "Dugtrio",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 100,
@@ -661,12 +1089,20 @@
         "SpAtk": 50,
         "SpDef": 70,
         "Spd": 120
-      }
+      },
+      "moves": [
+        "Mud Bomb",
+        "Drill Run",
+        "Seed Bomb",
+        "Earth Power"
+      ]
     },
     {
       "no": 52,
       "name": "Meowth",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 35,
@@ -674,12 +1110,20 @@
         "SpAtk": 50,
         "SpDef": 40,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Double-Edge",
+        "Rock Slide",
+        "Tri Attack"
+      ]
     },
     {
       "no": 53,
       "name": "Persian",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 70,
@@ -687,12 +1131,20 @@
         "SpAtk": 65,
         "SpDef": 65,
         "Spd": 115
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Earth Power",
+        "Double-Edge",
+        "Body Slam"
+      ]
     },
     {
       "no": 54,
       "name": "Psyduck",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 52,
@@ -700,12 +1152,20 @@
         "SpAtk": 65,
         "SpDef": 50,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Surf",
+        "Flash Cannon",
+        "Hydro Pump",
+        "Waterfall"
+      ]
     },
     {
       "no": 55,
       "name": "Golduck",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 82,
@@ -713,12 +1173,20 @@
         "SpAtk": 95,
         "SpDef": 80,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Hydro Pump",
+        "Aqua Tail",
+        "Drill Run"
+      ]
     },
     {
       "no": 56,
       "name": "Mankey",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 80,
@@ -726,12 +1194,20 @@
         "SpAtk": 35,
         "SpDef": 45,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Dragon Claw",
+        "Focus Blast",
+        "Drain Punch",
+        "Aura Sphere"
+      ]
     },
     {
       "no": 57,
       "name": "Primeape",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 105,
@@ -739,12 +1215,20 @@
         "SpAtk": 60,
         "SpDef": 70,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Close Combat",
+        "Aura Sphere",
+        "Drain Punch",
+        "Iron Head"
+      ]
     },
     {
       "no": 58,
       "name": "Growlithe",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 70,
@@ -752,12 +1236,20 @@
         "SpAtk": 70,
         "SpDef": 50,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Flare Blitz",
+        "Fire Punch",
+        "Fire Blast",
+        "Icicle Crash"
+      ]
     },
     {
       "no": 59,
       "name": "Arcanine",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 110,
@@ -765,12 +1257,20 @@
         "SpAtk": 100,
         "SpDef": 80,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Flamethrower",
+        "Fire Punch",
+        "Play Rough",
+        "Flare Blitz"
+      ]
     },
     {
       "no": 60,
       "name": "Poliwag",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 50,
@@ -778,12 +1278,20 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Hydro Pump",
+        "Gunk Shot",
+        "Waterfall"
+      ]
     },
     {
       "no": 61,
       "name": "Poliwhirl",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 65,
@@ -791,12 +1299,21 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Fire Blast",
+        "Surf",
+        "Hydro Pump",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 62,
       "name": "Poliwrath",
-      "types": ["Water","Fighting"],
+      "types": [
+        "Water",
+        "Fighting"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 95,
@@ -804,12 +1321,20 @@
         "SpAtk": 70,
         "SpDef": 90,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Focus Blast",
+        "Hydro Pump",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 63,
       "name": "Abra",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 25,
         "Atk": 20,
@@ -817,12 +1342,20 @@
         "SpAtk": 105,
         "SpDef": 55,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Psybeam",
+        "Drain Punch",
+        "Psychic",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 64,
       "name": "Kadabra",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 35,
@@ -830,12 +1363,20 @@
         "SpAtk": 120,
         "SpDef": 70,
         "Spd": 105
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Psybeam",
+        "Brave Bird",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 65,
       "name": "Alakazam",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 50,
@@ -843,12 +1384,20 @@
         "SpAtk": 135,
         "SpDef": 95,
         "Spd": 120
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Psybeam",
+        "Psychic",
+        "Energy Ball"
+      ]
     },
     {
       "no": 66,
       "name": "Machop",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 80,
@@ -856,12 +1405,20 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Focus Blast",
+        "Aura Sphere",
+        "Close Combat"
+      ]
     },
     {
       "no": 67,
       "name": "Machoke",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 100,
@@ -869,12 +1426,20 @@
         "SpAtk": 50,
         "SpDef": 60,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Drain Punch",
+        "Silver Wind",
+        "Focus Blast",
+        "Close Combat"
+      ]
     },
     {
       "no": 68,
       "name": "Machamp",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 130,
@@ -882,12 +1447,21 @@
         "SpAtk": 65,
         "SpDef": 85,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Close Combat",
+        "Aura Sphere",
+        "Flare Blitz",
+        "Drain Punch"
+      ]
     },
     {
       "no": 69,
       "name": "Bellsprout",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 75,
@@ -895,12 +1469,21 @@
         "SpAtk": 70,
         "SpDef": 30,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Sludge Wave",
+        "Seed Bomb",
+        "Iron Head",
+        "Giga Drain"
+      ]
     },
     {
       "no": 70,
       "name": "Weepinbell",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 90,
@@ -908,12 +1491,21 @@
         "SpAtk": 85,
         "SpDef": 45,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Wood Hammer",
+        "Giga Drain",
+        "Poison Jab",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 71,
       "name": "Victreebel",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 105,
@@ -921,12 +1513,21 @@
         "SpAtk": 100,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Giga Drain",
+        "Sludge Wave",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 72,
       "name": "Tentacool",
-      "types": ["Water","Poison"],
+      "types": [
+        "Water",
+        "Poison"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 40,
@@ -934,12 +1535,21 @@
         "SpAtk": 50,
         "SpDef": 100,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Sludge Bomb",
+        "Waterfall",
+        "Hurricane",
+        "Surf"
+      ]
     },
     {
       "no": 73,
       "name": "Tentacruel",
-      "types": ["Water","Poison"],
+      "types": [
+        "Water",
+        "Poison"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 70,
@@ -947,12 +1557,21 @@
         "SpAtk": 80,
         "SpDef": 120,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Sludge Wave",
+        "Bug Bite",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 74,
       "name": "Geodude",
-      "types": ["Rock","Ground"],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 80,
@@ -960,12 +1579,21 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Rock Slide",
+        "Ancient Power",
+        "Energy Ball",
+        "Drill Run"
+      ]
     },
     {
       "no": 75,
       "name": "Graveler",
-      "types": ["Rock","Ground"],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 95,
@@ -973,12 +1601,21 @@
         "SpAtk": 45,
         "SpDef": 45,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Stone Edge",
+        "Ancient Power",
+        "Outrage",
+        "Mud Bomb"
+      ]
     },
     {
       "no": 76,
       "name": "Golem",
-      "types": ["Rock","Ground"],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 120,
@@ -986,12 +1623,20 @@
         "SpAtk": 55,
         "SpDef": 65,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Power Gem",
+        "Ancient Power",
+        "Drain Punch",
+        "Mud Bomb"
+      ]
     },
     {
       "no": 77,
       "name": "Ponyta",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 85,
@@ -999,12 +1644,20 @@
         "SpAtk": 65,
         "SpDef": 65,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Flare Blitz",
+        "Flamethrower",
+        "Fire Punch"
+      ]
     },
     {
       "no": 78,
       "name": "Rapidash",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 100,
@@ -1012,12 +1665,21 @@
         "SpAtk": 80,
         "SpDef": 80,
         "Spd": 105
-      }
+      },
+      "moves": [
+        "Flash Cannon",
+        "Fire Punch",
+        "Flamethrower",
+        "Flare Blitz"
+      ]
     },
     {
       "no": 79,
       "name": "Slowpoke",
-      "types": ["Water","Psychic"],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 65,
@@ -1025,12 +1687,21 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 15
-      }
+      },
+      "moves": [
+        "Bug Bite",
+        "Surf",
+        "Psybeam",
+        "Hydro Pump"
+      ]
     },
     {
       "no": 80,
       "name": "Slowbro",
-      "types": ["Water","Psychic"],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 75,
@@ -1038,12 +1709,21 @@
         "SpAtk": 100,
         "SpDef": 80,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Zen Headbutt",
+        "Outrage",
+        "Waterfall"
+      ]
     },
     {
       "no": 81,
       "name": "Magnemite",
-      "types": ["Electric","Steel"],
+      "types": [
+        "Electric",
+        "Steel"
+      ],
       "stats": {
         "HP": 25,
         "Atk": 35,
@@ -1051,12 +1731,21 @@
         "SpAtk": 95,
         "SpDef": 55,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Thunder Fang",
+        "Dazzling Gleam",
+        "Flash Cannon"
+      ]
     },
     {
       "no": 82,
       "name": "Magneton",
-      "types": ["Electric","Steel"],
+      "types": [
+        "Electric",
+        "Steel"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 60,
@@ -1064,12 +1753,21 @@
         "SpAtk": 120,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Outrage",
+        "Thunder Fang",
+        "Metal Claw",
+        "Discharge"
+      ]
     },
     {
       "no": 83,
       "name": "Farfetch'd",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 52,
         "Atk": 90,
@@ -1077,12 +1775,21 @@
         "SpAtk": 58,
         "SpDef": 62,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Body Slam",
+        "Discharge",
+        "Brave Bird"
+      ]
     },
     {
       "no": 84,
       "name": "Doduo",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 85,
@@ -1090,12 +1797,21 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Drain Punch",
+        "Tri Attack",
+        "Double-Edge",
+        "Air Slash"
+      ]
     },
     {
       "no": 85,
       "name": "Dodrio",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 110,
@@ -1103,12 +1819,20 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Sludge Wave",
+        "Body Slam",
+        "Air Slash",
+        "Double-Edge"
+      ]
     },
     {
       "no": 86,
       "name": "Seel",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 45,
@@ -1116,12 +1840,21 @@
         "SpAtk": 45,
         "SpDef": 70,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Surf",
+        "Zen Headbutt",
+        "Hydro Pump"
+      ]
     },
     {
       "no": 87,
       "name": "Dewgong",
-      "types": ["Water","Ice"],
+      "types": [
+        "Water",
+        "Ice"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 45,
@@ -1129,12 +1862,20 @@
         "SpAtk": 45,
         "SpDef": 70,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Surf",
+        "Ice Punch",
+        "Discharge"
+      ]
     },
     {
       "no": 88,
       "name": "Grimer",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 80,
@@ -1142,12 +1883,20 @@
         "SpAtk": 40,
         "SpDef": 50,
         "Spd": 25
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Gunk Shot",
+        "Shadow Ball",
+        "Sludge Bomb"
+      ]
     },
     {
       "no": 89,
       "name": "Muk",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 105,
         "Atk": 105,
@@ -1155,12 +1904,20 @@
         "SpAtk": 65,
         "SpDef": 100,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Gunk Shot",
+        "Sludge Bomb",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 90,
       "name": "Shellder",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 65,
@@ -1168,12 +1925,21 @@
         "SpAtk": 45,
         "SpDef": 25,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Drain Punch",
+        "Aqua Tail",
+        "Surf"
+      ]
     },
     {
       "no": 91,
       "name": "Cloyster",
-      "types": ["Water","Ice"],
+      "types": [
+        "Water",
+        "Ice"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 95,
@@ -1181,12 +1947,21 @@
         "SpAtk": 85,
         "SpDef": 45,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Snarl",
+        "Blizzard",
+        "Hydro Pump",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 92,
       "name": "Gastly",
-      "types": ["Ghost","Poison"],
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 35,
@@ -1194,12 +1969,21 @@
         "SpAtk": 100,
         "SpDef": 35,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Shadow Ball",
+        "Ominous Wind",
+        "Poison Jab",
+        "Bug Bite"
+      ]
     },
     {
       "no": 93,
       "name": "Haunter",
-      "types": ["Ghost","Poison"],
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 50,
@@ -1207,12 +1991,21 @@
         "SpAtk": 115,
         "SpDef": 55,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Shadow Ball",
+        "Ice Punch",
+        "Shadow Claw",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 94,
       "name": "Gengar",
-      "types": ["Ghost","Poison"],
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 65,
@@ -1220,12 +2013,21 @@
         "SpAtk": 130,
         "SpDef": 75,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Shadow Punch",
+        "Play Rough",
+        "Shadow Ball",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 95,
       "name": "Onix",
-      "types": ["Rock","Ground"],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 45,
@@ -1233,12 +2035,20 @@
         "SpAtk": 30,
         "SpDef": 45,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Power Gem",
+        "Rock Slide",
+        "Earth Power",
+        "Flash Cannon"
+      ]
     },
     {
       "no": 96,
       "name": "Drowzee",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 48,
@@ -1246,12 +2056,20 @@
         "SpAtk": 43,
         "SpDef": 90,
         "Spd": 42
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Waterfall",
+        "Psychic",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 97,
       "name": "Hypno",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 85,
         "Atk": 73,
@@ -1259,12 +2077,20 @@
         "SpAtk": 73,
         "SpDef": 115,
         "Spd": 67
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Psybeam",
+        "Moonblast",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 98,
       "name": "Krabby",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 105,
@@ -1272,12 +2098,20 @@
         "SpAtk": 25,
         "SpDef": 25,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Waterfall",
+        "Flash Cannon",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 99,
       "name": "Kingler",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 130,
@@ -1285,12 +2119,20 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Earth Power",
+        "Waterfall",
+        "Surf"
+      ]
     },
     {
       "no": 100,
       "name": "Voltorb",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 30,
@@ -1298,12 +2140,20 @@
         "SpAtk": 55,
         "SpDef": 55,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Psychic",
+        "Discharge",
+        "Thunderbolt",
+        "Thunder Punch"
+      ]
     },
     {
       "no": 101,
       "name": "Electrode",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 50,
@@ -1311,12 +2161,21 @@
         "SpAtk": 80,
         "SpDef": 80,
         "Spd": 140
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Thunderbolt",
+        "Thunder Fang",
+        "Mirror Shot"
+      ]
     },
     {
       "no": 102,
       "name": "Exeggcute",
-      "types": ["Grass","Psychic"],
+      "types": [
+        "Grass",
+        "Psychic"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 40,
@@ -1324,12 +2183,21 @@
         "SpAtk": 60,
         "SpDef": 45,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Wood Hammer",
+        "Seed Bomb",
+        "Dragon Claw",
+        "Psychic"
+      ]
     },
     {
       "no": 103,
       "name": "Exeggutor",
-      "types": ["Grass","Psychic"],
+      "types": [
+        "Grass",
+        "Psychic"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 95,
@@ -1337,12 +2205,20 @@
         "SpAtk": 125,
         "SpDef": 75,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Dragon Breath",
+        "Zen Headbutt",
+        "Seed Bomb",
+        "Energy Ball"
+      ]
     },
     {
       "no": 104,
       "name": "Cubone",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 50,
@@ -1350,12 +2226,20 @@
         "SpAtk": 40,
         "SpDef": 50,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Snarl",
+        "Earthquake",
+        "Mud Bomb",
+        "Earth Power"
+      ]
     },
     {
       "no": 105,
       "name": "Marowak",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 80,
@@ -1363,12 +2247,20 @@
         "SpAtk": 50,
         "SpDef": 80,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Earthquake",
+        "Mud Bomb",
+        "Outrage"
+      ]
     },
     {
       "no": 106,
       "name": "Hitmonlee",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 120,
@@ -1376,12 +2268,20 @@
         "SpAtk": 35,
         "SpDef": 110,
         "Spd": 87
-      }
+      },
+      "moves": [
+        "Aura Sphere",
+        "Focus Blast",
+        "Drain Punch",
+        "Ice Beam"
+      ]
     },
     {
       "no": 107,
       "name": "Hitmonchan",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 105,
@@ -1389,12 +2289,20 @@
         "SpAtk": 35,
         "SpDef": 110,
         "Spd": 76
-      }
+      },
+      "moves": [
+        "Focus Blast",
+        "Drain Punch",
+        "Shadow Claw",
+        "Aura Sphere"
+      ]
     },
     {
       "no": 108,
       "name": "Lickitung",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 55,
@@ -1402,12 +2310,20 @@
         "SpAtk": 60,
         "SpDef": 75,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Flare Blitz",
+        "Tri Attack",
+        "Double-Edge",
+        "Body Slam"
+      ]
     },
     {
       "no": 109,
       "name": "Koffing",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 65,
@@ -1415,12 +2331,20 @@
         "SpAtk": 60,
         "SpDef": 45,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Sludge Bomb",
+        "Psybeam",
+        "Poison Jab",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 110,
       "name": "Weezing",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 90,
@@ -1428,12 +2352,21 @@
         "SpAtk": 85,
         "SpDef": 70,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Sludge Wave",
+        "Close Combat",
+        "Sludge Bomb",
+        "Gunk Shot"
+      ]
     },
     {
       "no": 111,
       "name": "Rhyhorn",
-      "types": ["Ground","Rock"],
+      "types": [
+        "Ground",
+        "Rock"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 85,
@@ -1441,12 +2374,21 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 25
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Mud Bomb",
+        "Rock Slide",
+        "Earthquake"
+      ]
     },
     {
       "no": 112,
       "name": "Rhydon",
-      "types": ["Ground","Rock"],
+      "types": [
+        "Ground",
+        "Rock"
+      ],
       "stats": {
         "HP": 105,
         "Atk": 130,
@@ -1454,12 +2396,20 @@
         "SpAtk": 45,
         "SpDef": 45,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Surf",
+        "Rock Slide",
+        "Earthquake",
+        "Mud Bomb"
+      ]
     },
     {
       "no": 113,
       "name": "Chansey",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 250,
         "Atk": 5,
@@ -1467,12 +2417,20 @@
         "SpAtk": 35,
         "SpDef": 105,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Outrage",
+        "Double-Edge",
+        "Body Slam"
+      ]
     },
     {
       "no": 114,
       "name": "Tangela",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 55,
@@ -1480,12 +2438,20 @@
         "SpAtk": 100,
         "SpDef": 40,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Giga Drain",
+        "Wood Hammer",
+        "Seed Bomb",
+        "Poison Jab"
+      ]
     },
     {
       "no": 115,
       "name": "Kangaskhan",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 105,
         "Atk": 95,
@@ -1493,12 +2459,20 @@
         "SpAtk": 40,
         "SpDef": 80,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Hyper Voice",
+        "Double-Edge",
+        "Body Slam"
+      ]
     },
     {
       "no": 116,
       "name": "Horsea",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 40,
@@ -1506,12 +2480,20 @@
         "SpAtk": 70,
         "SpDef": 25,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Dragon Claw",
+        "Surf",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 117,
       "name": "Seadra",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 65,
@@ -1519,12 +2501,20 @@
         "SpAtk": 95,
         "SpDef": 45,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Night Slash",
+        "Surf",
+        "Waterfall",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 118,
       "name": "Goldeen",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 67,
@@ -1532,12 +2522,20 @@
         "SpAtk": 35,
         "SpDef": 50,
         "Spd": 63
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Metal Claw",
+        "Aqua Tail",
+        "Waterfall"
+      ]
     },
     {
       "no": 119,
       "name": "Seaking",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 92,
@@ -1545,12 +2543,20 @@
         "SpAtk": 65,
         "SpDef": 80,
         "Spd": 68
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Waterfall",
+        "Hydro Pump",
+        "Fly"
+      ]
     },
     {
       "no": 120,
       "name": "Staryu",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 45,
@@ -1558,12 +2564,21 @@
         "SpAtk": 70,
         "SpDef": 55,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Surf",
+        "Dragon Pulse",
+        "Waterfall"
+      ]
     },
     {
       "no": 121,
       "name": "Starmie",
-      "types": ["Water","Psychic"],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 75,
@@ -1571,12 +2586,21 @@
         "SpAtk": 100,
         "SpDef": 85,
         "Spd": 115
-      }
+      },
+      "moves": [
+        "Surf",
+        "Psychic",
+        "Blizzard",
+        "Hydro Pump"
+      ]
     },
     {
       "no": 122,
       "name": "Mr. Mime",
-      "types": ["Psychic","Fairy"],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 45,
@@ -1584,12 +2608,21 @@
         "SpAtk": 100,
         "SpDef": 120,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Psychic",
+        "Psybeam",
+        "Play Rough"
+      ]
     },
     {
       "no": 123,
       "name": "Scyther",
-      "types": ["Bug","Flying"],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 110,
@@ -1597,12 +2630,21 @@
         "SpAtk": 55,
         "SpDef": 80,
         "Spd": 105
-      }
+      },
+      "moves": [
+        "Twineedle",
+        "Silver Wind",
+        "Ice Punch",
+        "Hurricane"
+      ]
     },
     {
       "no": 124,
       "name": "Jynx",
-      "types": ["Ice","Psychic"],
+      "types": [
+        "Ice",
+        "Psychic"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 50,
@@ -1610,12 +2652,20 @@
         "SpAtk": 115,
         "SpDef": 95,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Flamethrower",
+        "Blizzard",
+        "Ice Beam"
+      ]
     },
     {
       "no": 125,
       "name": "Electabuzz",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 83,
@@ -1623,12 +2673,20 @@
         "SpAtk": 95,
         "SpDef": 85,
         "Spd": 105
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Thunderbolt",
+        "Thunder Fang",
+        "Energy Ball"
+      ]
     },
     {
       "no": 126,
       "name": "Magmar",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 95,
@@ -1636,12 +2694,20 @@
         "SpAtk": 100,
         "SpDef": 85,
         "Spd": 93
-      }
+      },
+      "moves": [
+        "Icicle Crash",
+        "Fire Punch",
+        "Flare Blitz",
+        "Fire Blast"
+      ]
     },
     {
       "no": 127,
       "name": "Pinsir",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 125,
@@ -1649,12 +2715,20 @@
         "SpAtk": 55,
         "SpDef": 70,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Flare Blitz",
+        "Signal Beam",
+        "Twineedle",
+        "Silver Wind"
+      ]
     },
     {
       "no": 128,
       "name": "Tauros",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 100,
@@ -1662,12 +2736,20 @@
         "SpAtk": 40,
         "SpDef": 70,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Drill Run",
+        "Tri Attack",
+        "Body Slam",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 129,
       "name": "Magikarp",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 20,
         "Atk": 10,
@@ -1675,12 +2757,21 @@
         "SpAtk": 15,
         "SpDef": 20,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Waterfall",
+        "Seed Bomb",
+        "Surf"
+      ]
     },
     {
       "no": 130,
       "name": "Gyarados",
-      "types": ["Water","Flying"],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 125,
@@ -1688,12 +2779,21 @@
         "SpAtk": 60,
         "SpDef": 100,
         "Spd": 81
-      }
+      },
+      "moves": [
+        "Ice Beam",
+        "Hurricane",
+        "Hydro Pump",
+        "Surf"
+      ]
     },
     {
       "no": 131,
       "name": "Lapras",
-      "types": ["Water","Ice"],
+      "types": [
+        "Water",
+        "Ice"
+      ],
       "stats": {
         "HP": 130,
         "Atk": 85,
@@ -1701,12 +2801,20 @@
         "SpAtk": 85,
         "SpDef": 95,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Waterfall",
+        "Blizzard",
+        "Dragon Breath"
+      ]
     },
     {
       "no": 132,
       "name": "Ditto",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 48,
         "Atk": 48,
@@ -1714,12 +2822,20 @@
         "SpAtk": 48,
         "SpDef": 48,
         "Spd": 48
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Sludge Wave",
+        "Double-Edge",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 133,
       "name": "Eevee",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 55,
@@ -1727,12 +2843,20 @@
         "SpAtk": 45,
         "SpDef": 65,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Hurricane",
+        "Tri Attack",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 134,
       "name": "Vaporeon",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 130,
         "Atk": 65,
@@ -1740,12 +2864,20 @@
         "SpAtk": 110,
         "SpDef": 95,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Psycho Cut",
+        "Waterfall",
+        "Surf"
+      ]
     },
     {
       "no": 135,
       "name": "Jolteon",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 65,
@@ -1753,12 +2885,20 @@
         "SpAtk": 110,
         "SpDef": 95,
         "Spd": 130
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Earthquake",
+        "Thunderbolt",
+        "Discharge"
+      ]
     },
     {
       "no": 136,
       "name": "Flareon",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 130,
@@ -1766,12 +2906,20 @@
         "SpAtk": 95,
         "SpDef": 110,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Flare Blitz",
+        "Fire Punch",
+        "Dazzling Gleam",
+        "Flamethrower"
+      ]
     },
     {
       "no": 137,
       "name": "Porygon",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 60,
@@ -1779,12 +2927,21 @@
         "SpAtk": 85,
         "SpDef": 75,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Shadow Punch",
+        "Tri Attack",
+        "Body Slam",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 138,
       "name": "Omanyte",
-      "types": ["Rock","Water"],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 40,
@@ -1792,12 +2949,21 @@
         "SpAtk": 90,
         "SpDef": 55,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Stone Edge",
+        "Shadow Ball",
+        "Rock Slide"
+      ]
     },
     {
       "no": 139,
       "name": "Omastar",
-      "types": ["Rock","Water"],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 60,
@@ -1805,12 +2971,21 @@
         "SpAtk": 115,
         "SpDef": 70,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Power Gem",
+        "Stone Edge",
+        "Aqua Tail",
+        "Earthquake"
+      ]
     },
     {
       "no": 140,
       "name": "Kabuto",
-      "types": ["Rock","Water"],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 80,
@@ -1818,12 +2993,21 @@
         "SpAtk": 55,
         "SpDef": 45,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Ancient Power",
+        "Flare Blitz",
+        "Aqua Tail",
+        "Stone Edge"
+      ]
     },
     {
       "no": 141,
       "name": "Kabutops",
-      "types": ["Rock","Water"],
+      "types": [
+        "Rock",
+        "Water"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 115,
@@ -1831,12 +3015,21 @@
         "SpAtk": 65,
         "SpDef": 70,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Ancient Power",
+        "Rock Slide",
+        "Hydro Pump",
+        "Snarl"
+      ]
     },
     {
       "no": 142,
       "name": "Aerodactyl",
-      "types": ["Rock","Flying"],
+      "types": [
+        "Rock",
+        "Flying"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 105,
@@ -1844,12 +3037,20 @@
         "SpAtk": 60,
         "SpDef": 75,
         "Spd": 130
-      }
+      },
+      "moves": [
+        "Stone Edge",
+        "Rock Slide",
+        "Fly",
+        "Brave Bird"
+      ]
     },
     {
       "no": 143,
       "name": "Snorlax",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 160,
         "Atk": 110,
@@ -1857,12 +3058,21 @@
         "SpAtk": 65,
         "SpDef": 110,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Body Slam",
+        "Dragon Breath",
+        "Tri Attack"
+      ]
     },
     {
       "no": 144,
       "name": "Articuno",
-      "types": ["Ice","Flying"],
+      "types": [
+        "Ice",
+        "Flying"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 85,
@@ -1870,12 +3080,21 @@
         "SpAtk": 95,
         "SpDef": 125,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Dazzling Gleam",
+        "Icicle Crash",
+        "Hurricane",
+        "Blizzard"
+      ]
     },
     {
       "no": 145,
       "name": "Zapdos",
-      "types": ["Electric","Flying"],
+      "types": [
+        "Electric",
+        "Flying"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 90,
@@ -1883,12 +3102,21 @@
         "SpAtk": 125,
         "SpDef": 90,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Thunder Fang",
+        "Dragon Claw",
+        "Air Slash",
+        "Discharge"
+      ]
     },
     {
       "no": 146,
       "name": "Moltres",
-      "types": ["Fire","Flying"],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 100,
@@ -1896,12 +3124,20 @@
         "SpAtk": 125,
         "SpDef": 85,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Air Slash",
+        "Aqua Tail",
+        "Fire Punch",
+        "Fire Blast"
+      ]
     },
     {
       "no": 147,
       "name": "Dratini",
-      "types": ["Dragon"],
+      "types": [
+        "Dragon"
+      ],
       "stats": {
         "HP": 41,
         "Atk": 64,
@@ -1909,12 +3145,20 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Outrage",
+        "Dragon Breath",
+        "Sludge Wave",
+        "Dragon Claw"
+      ]
     },
     {
       "no": 148,
       "name": "Dragonair",
-      "types": ["Dragon"],
+      "types": [
+        "Dragon"
+      ],
       "stats": {
         "HP": 61,
         "Atk": 84,
@@ -1922,12 +3166,21 @@
         "SpAtk": 70,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Dragon Breath",
+        "Outrage",
+        "Energy Ball",
+        "Dragon Claw"
+      ]
     },
     {
       "no": 149,
       "name": "Dragonite",
-      "types": ["Dragon","Flying"],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "stats": {
         "HP": 91,
         "Atk": 134,
@@ -1935,12 +3188,20 @@
         "SpAtk": 100,
         "SpDef": 100,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Dragon Claw",
+        "Power Gem",
+        "Air Slash",
+        "Outrage"
+      ]
     },
     {
       "no": 150,
       "name": "Mewtwo",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 106,
         "Atk": 110,
@@ -1948,12 +3209,20 @@
         "SpAtk": 154,
         "SpDef": 90,
         "Spd": 130
-      }
+      },
+      "moves": [
+        "Psybeam",
+        "Psycho Cut",
+        "Psychic",
+        "Thunderbolt"
+      ]
     },
     {
       "no": 151,
       "name": "Mew",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 100,
@@ -1961,12 +3230,20 @@
         "SpAtk": 100,
         "SpDef": 100,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Sludge Bomb",
+        "Psybeam",
+        "Psychic",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 152,
       "name": "Chikorita",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 49,
@@ -1974,12 +3251,20 @@
         "SpAtk": 49,
         "SpDef": 65,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Wood Hammer",
+        "Seed Bomb",
+        "Sludge Bomb"
+      ]
     },
     {
       "no": 153,
       "name": "Bayleef",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 62,
@@ -1987,12 +3272,20 @@
         "SpAtk": 63,
         "SpDef": 80,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Giga Drain",
+        "Blizzard",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 154,
       "name": "Meganium",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 82,
@@ -2000,12 +3293,20 @@
         "SpAtk": 83,
         "SpDef": 100,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Mirror Shot",
+        "Giga Drain",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 155,
       "name": "Cyndaquil",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 39,
         "Atk": 52,
@@ -2013,12 +3314,20 @@
         "SpAtk": 60,
         "SpDef": 50,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Fly",
+        "Fire Punch",
+        "Flare Blitz",
+        "Fire Blast"
+      ]
     },
     {
       "no": 156,
       "name": "Quilava",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 58,
         "Atk": 64,
@@ -2026,12 +3335,20 @@
         "SpAtk": 80,
         "SpDef": 65,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Flamethrower",
+        "Flare Blitz",
+        "Play Rough",
+        "Fire Blast"
+      ]
     },
     {
       "no": 157,
       "name": "Typhlosion",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 78,
         "Atk": 84,
@@ -2039,12 +3356,20 @@
         "SpAtk": 109,
         "SpDef": 85,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Iron Head",
+        "Fire Blast",
+        "Flare Blitz",
+        "Fire Punch"
+      ]
     },
     {
       "no": 158,
       "name": "Totodile",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 65,
@@ -2052,12 +3377,20 @@
         "SpAtk": 44,
         "SpDef": 48,
         "Spd": 43
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Aqua Tail",
+        "Surf",
+        "Flamethrower"
+      ]
     },
     {
       "no": 159,
       "name": "Croconaw",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 80,
@@ -2065,12 +3398,20 @@
         "SpAtk": 59,
         "SpDef": 63,
         "Spd": 58
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Aqua Tail",
+        "Waterfall",
+        "Surf"
+      ]
     },
     {
       "no": 160,
       "name": "Feraligatr",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 85,
         "Atk": 105,
@@ -2078,12 +3419,20 @@
         "SpAtk": 79,
         "SpDef": 83,
         "Spd": 78
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Waterfall",
+        "Psycho Cut",
+        "Hydro Pump"
+      ]
     },
     {
       "no": 161,
       "name": "Sentret",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 46,
@@ -2091,12 +3440,20 @@
         "SpAtk": 35,
         "SpDef": 45,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Earthquake",
+        "Tri Attack",
+        "Body Slam",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 162,
       "name": "Furret",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 85,
         "Atk": 76,
@@ -2104,12 +3461,21 @@
         "SpAtk": 45,
         "SpDef": 55,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Body Slam",
+        "Hyper Voice",
+        "Double-Edge"
+      ]
     },
     {
       "no": 163,
       "name": "Hoothoot",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 30,
@@ -2117,12 +3483,21 @@
         "SpAtk": 36,
         "SpDef": 56,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Brave Bird",
+        "Tri Attack",
+        "Body Slam"
+      ]
     },
     {
       "no": 164,
       "name": "Noctowl",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 50,
@@ -2130,12 +3505,21 @@
         "SpAtk": 86,
         "SpDef": 96,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Tri Attack",
+        "Brave Bird",
+        "Air Slash"
+      ]
     },
     {
       "no": 165,
       "name": "Ledyba",
-      "types": ["Bug","Flying"],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 20,
@@ -2143,12 +3527,21 @@
         "SpAtk": 40,
         "SpDef": 80,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Focus Blast",
+        "Bug Bite",
+        "Signal Beam",
+        "Air Slash"
+      ]
     },
     {
       "no": 166,
       "name": "Ledian",
-      "types": ["Bug","Flying"],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 35,
@@ -2156,12 +3549,21 @@
         "SpAtk": 55,
         "SpDef": 110,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Signal Beam",
+        "Hurricane",
+        "Twineedle"
+      ]
     },
     {
       "no": 167,
       "name": "Spinarak",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 60,
@@ -2169,12 +3571,21 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Gunk Shot",
+        "Twineedle",
+        "Signal Beam",
+        "Metal Claw"
+      ]
     },
     {
       "no": 168,
       "name": "Ariados",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 90,
@@ -2182,12 +3593,21 @@
         "SpAtk": 60,
         "SpDef": 70,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Silver Wind",
+        "Twineedle",
+        "Giga Drain"
+      ]
     },
     {
       "no": 169,
       "name": "Crobat",
-      "types": ["Poison","Flying"],
+      "types": [
+        "Poison",
+        "Flying"
+      ],
       "stats": {
         "HP": 85,
         "Atk": 90,
@@ -2195,12 +3615,21 @@
         "SpAtk": 70,
         "SpDef": 80,
         "Spd": 130
-      }
+      },
+      "moves": [
+        "Sludge Bomb",
+        "Air Slash",
+        "Fly",
+        "Gunk Shot"
+      ]
     },
     {
       "no": 170,
       "name": "Chinchou",
-      "types": ["Water","Electric"],
+      "types": [
+        "Water",
+        "Electric"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 38,
@@ -2208,12 +3637,21 @@
         "SpAtk": 56,
         "SpDef": 56,
         "Spd": 67
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Surf",
+        "Aqua Tail",
+        "Discharge"
+      ]
     },
     {
       "no": 171,
       "name": "Lantern",
-      "types": ["Water","Electric"],
+      "types": [
+        "Water",
+        "Electric"
+      ],
       "stats": {
         "HP": 125,
         "Atk": 58,
@@ -2221,12 +3659,20 @@
         "SpAtk": 76,
         "SpDef": 76,
         "Spd": 67
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Sludge Bomb",
+        "Waterfall",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 172,
       "name": "Pichu",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 20,
         "Atk": 40,
@@ -2234,12 +3680,20 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Thunderbolt",
+        "Thunder Fang",
+        "Discharge",
+        "Shadow Ball"
+      ]
     },
     {
       "no": 173,
       "name": "Cleffa",
-      "types": ["Fairy"],
+      "types": [
+        "Fairy"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 25,
@@ -2247,12 +3701,21 @@
         "SpAtk": 45,
         "SpDef": 55,
         "Spd": 15
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Moonblast",
+        "Play Rough",
+        "Spirit Break"
+      ]
     },
     {
       "no": 174,
       "name": "Igglybuff",
-      "types": ["Normal","Fairy"],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 30,
@@ -2260,12 +3723,20 @@
         "SpAtk": 40,
         "SpDef": 20,
         "Spd": 15
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Tri Attack",
+        "Spirit Break",
+        "Close Combat"
+      ]
     },
     {
       "no": 175,
       "name": "Togepi",
-      "types": ["Fairy"],
+      "types": [
+        "Fairy"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 20,
@@ -2273,12 +3744,21 @@
         "SpAtk": 40,
         "SpDef": 65,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Play Rough",
+        "Spirit Break",
+        "Shadow Punch",
+        "Dazzling Gleam"
+      ]
     },
     {
       "no": 176,
       "name": "Togetic",
-      "types": ["Fairy","Flying"],
+      "types": [
+        "Fairy",
+        "Flying"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 40,
@@ -2286,12 +3766,21 @@
         "SpAtk": 80,
         "SpDef": 105,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Brave Bird",
+        "Moonblast",
+        "Play Rough"
+      ]
     },
     {
       "no": 177,
       "name": "Natu",
-      "types": ["Psychic","Flying"],
+      "types": [
+        "Psychic",
+        "Flying"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 50,
@@ -2299,12 +3788,21 @@
         "SpAtk": 70,
         "SpDef": 45,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Psychic",
+        "Hurricane",
+        "Moonblast",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 178,
       "name": "Xatu",
-      "types": ["Psychic","Flying"],
+      "types": [
+        "Psychic",
+        "Flying"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 75,
@@ -2312,12 +3810,20 @@
         "SpAtk": 95,
         "SpDef": 70,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Fly",
+        "Surf",
+        "Psychic",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 179,
       "name": "Mareep",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 40,
@@ -2325,12 +3831,20 @@
         "SpAtk": 65,
         "SpDef": 45,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Thunder Punch",
+        "Thunderbolt",
+        "Play Rough"
+      ]
     },
     {
       "no": 180,
       "name": "Flaaffy",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 55,
@@ -2338,12 +3852,20 @@
         "SpAtk": 80,
         "SpDef": 60,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Thunderbolt",
+        "Thunder Fang",
+        "Hurricane",
+        "Thunder Punch"
+      ]
     },
     {
       "no": 181,
       "name": "Ampharos",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 75,
@@ -2351,12 +3873,20 @@
         "SpAtk": 115,
         "SpDef": 90,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Brave Bird",
+        "Thunder Punch",
+        "Thunder Fang",
+        "Thunderbolt"
+      ]
     },
     {
       "no": 182,
       "name": "Bellossom",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 80,
@@ -2364,12 +3894,21 @@
         "SpAtk": 90,
         "SpDef": 100,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Play Rough",
+        "Seed Bomb",
+        "Giga Drain",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 183,
       "name": "Marill",
-      "types": ["Water","Fairy"],
+      "types": [
+        "Water",
+        "Fairy"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 20,
@@ -2377,12 +3916,21 @@
         "SpAtk": 20,
         "SpDef": 50,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Dazzling Gleam",
+        "Hydro Pump",
+        "Waterfall"
+      ]
     },
     {
       "no": 184,
       "name": "Azumarill",
-      "types": ["Water","Fairy"],
+      "types": [
+        "Water",
+        "Fairy"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 50,
@@ -2390,12 +3938,20 @@
         "SpAtk": 60,
         "SpDef": 80,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Dazzling Gleam",
+        "Surf",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 185,
       "name": "Sudowoodo",
-      "types": ["Rock"],
+      "types": [
+        "Rock"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 100,
@@ -2403,12 +3959,20 @@
         "SpAtk": 30,
         "SpDef": 65,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Power Gem",
+        "Sludge Wave",
+        "Ancient Power",
+        "Stone Edge"
+      ]
     },
     {
       "no": 186,
       "name": "Politoed",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 75,
@@ -2416,12 +3980,21 @@
         "SpAtk": 90,
         "SpDef": 100,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Close Combat",
+        "Surf",
+        "Waterfall",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 187,
       "name": "Hoppip",
-      "types": ["Grass","Flying"],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 35,
@@ -2429,12 +4002,21 @@
         "SpAtk": 35,
         "SpDef": 55,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Crunch",
+        "Air Slash",
+        "Seed Bomb",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 188,
       "name": "Skiploom",
-      "types": ["Grass","Flying"],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 45,
@@ -2442,12 +4024,21 @@
         "SpAtk": 45,
         "SpDef": 65,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Wood Hammer",
+        "Brave Bird",
+        "Flamethrower",
+        "Energy Ball"
+      ]
     },
     {
       "no": 189,
       "name": "Jumpluff",
-      "types": ["Grass","Flying"],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 55,
@@ -2455,12 +4046,20 @@
         "SpAtk": 55,
         "SpDef": 95,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Giga Drain",
+        "Air Slash",
+        "Bug Bite"
+      ]
     },
     {
       "no": 190,
       "name": "Aipom",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 70,
@@ -2468,12 +4067,20 @@
         "SpAtk": 40,
         "SpDef": 55,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Iron Head",
+        "Body Slam",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 191,
       "name": "Sunkern",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 30,
@@ -2481,12 +4088,20 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Energy Ball",
+        "Wood Hammer",
+        "Poison Jab"
+      ]
     },
     {
       "no": 192,
       "name": "Sunflora",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 75,
@@ -2494,12 +4109,21 @@
         "SpAtk": 105,
         "SpDef": 85,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Dragon Claw",
+        "Wood Hammer",
+        "Giga Drain"
+      ]
     },
     {
       "no": 193,
       "name": "Yanma",
-      "types": ["Bug","Flying"],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 65,
@@ -2507,12 +4131,21 @@
         "SpAtk": 75,
         "SpDef": 45,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Brave Bird",
+        "Bug Bite",
+        "Silver Wind",
+        "Psychic"
+      ]
     },
     {
       "no": 194,
       "name": "Wooper",
-      "types": ["Water","Ground"],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 45,
@@ -2520,12 +4153,21 @@
         "SpAtk": 25,
         "SpDef": 25,
         "Spd": 15
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Earth Power",
+        "Flash Cannon",
+        "Surf"
+      ]
     },
     {
       "no": 195,
       "name": "Quagsire",
-      "types": ["Water","Ground"],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 85,
@@ -2533,12 +4175,20 @@
         "SpAtk": 65,
         "SpDef": 65,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Mirror Shot",
+        "Aqua Tail",
+        "Mud Bomb",
+        "Surf"
+      ]
     },
     {
       "no": 196,
       "name": "Espeon",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 65,
@@ -2546,12 +4196,20 @@
         "SpAtk": 130,
         "SpDef": 95,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Psychic",
+        "Psybeam",
+        "Discharge"
+      ]
     },
     {
       "no": 197,
       "name": "Umbreon",
-      "types": ["Dark"],
+      "types": [
+        "Dark"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 65,
@@ -2559,12 +4217,21 @@
         "SpAtk": 60,
         "SpDef": 130,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Night Slash",
+        "Silver Wind",
+        "Snarl",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 198,
       "name": "Murkrow",
-      "types": ["Dark","Flying"],
+      "types": [
+        "Dark",
+        "Flying"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 85,
@@ -2572,12 +4239,21 @@
         "SpAtk": 85,
         "SpDef": 42,
         "Spd": 91
-      }
+      },
+      "moves": [
+        "Sludge Wave",
+        "Night Slash",
+        "Brave Bird",
+        "Crunch"
+      ]
     },
     {
       "no": 199,
       "name": "Slowking",
-      "types": ["Water","Psychic"],
+      "types": [
+        "Water",
+        "Psychic"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 75,
@@ -2585,12 +4261,20 @@
         "SpAtk": 100,
         "SpDef": 110,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Psybeam",
+        "Shadow Punch",
+        "Hydro Pump",
+        "Surf"
+      ]
     },
     {
       "no": 200,
       "name": "Misdreavus",
-      "types": ["Ghost"],
+      "types": [
+        "Ghost"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 60,
@@ -2598,12 +4282,20 @@
         "SpAtk": 85,
         "SpDef": 85,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Shadow Ball",
+        "Shadow Punch",
+        "Shadow Claw",
+        "Energy Ball"
+      ]
     },
     {
       "no": 201,
       "name": "Unown",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 48,
         "Atk": 72,
@@ -2611,12 +4303,20 @@
         "SpAtk": 72,
         "SpDef": 48,
         "Spd": 48
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Zen Headbutt",
+        "Seed Bomb",
+        "Psychic"
+      ]
     },
     {
       "no": 202,
       "name": "Wobbuffet",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 190,
         "Atk": 33,
@@ -2624,12 +4324,21 @@
         "SpAtk": 33,
         "SpDef": 58,
         "Spd": 33
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Psychic",
+        "Ominous Wind",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 203,
       "name": "Girafarig",
-      "types": ["Normal", "Psychic"],
+      "types": [
+        "Normal",
+        "Psychic"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 80,
@@ -2637,12 +4346,20 @@
         "SpAtk": 90,
         "SpDef": 65,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Tri Attack",
+        "Flamethrower",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 204,
       "name": "Pineco",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 65,
@@ -2650,12 +4367,21 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 15
-      }
+      },
+      "moves": [
+        "Twineedle",
+        "Flamethrower",
+        "Silver Wind",
+        "Signal Beam"
+      ]
     },
     {
       "no": 205,
       "name": "Forretress",
-      "types": ["Bug","Steel"],
+      "types": [
+        "Bug",
+        "Steel"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 90,
@@ -2663,12 +4389,20 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Bug Bite",
+        "Flash Cannon",
+        "Drain Punch",
+        "Twineedle"
+      ]
     },
     {
       "no": 206,
       "name": "Dunsparce",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 70,
@@ -2676,12 +4410,21 @@
         "SpAtk": 65,
         "SpDef": 65,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Tri Attack",
+        "Surf",
+        "Double-Edge"
+      ]
     },
     {
       "no": 207,
       "name": "Gligar",
-      "types": ["Ground","Flying"],
+      "types": [
+        "Ground",
+        "Flying"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 75,
@@ -2689,12 +4432,21 @@
         "SpAtk": 35,
         "SpDef": 65,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Earthquake",
+        "Snarl",
+        "Drill Run",
+        "Air Slash"
+      ]
     },
     {
       "no": 208,
       "name": "Steelix",
-      "types": ["Steel","Ground"],
+      "types": [
+        "Steel",
+        "Ground"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 85,
@@ -2702,12 +4454,20 @@
         "SpAtk": 55,
         "SpDef": 65,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Drill Run",
+        "Mirror Shot",
+        "Metal Claw",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 209,
       "name": "Snubbull",
-      "types": ["Fairy"],
+      "types": [
+        "Fairy"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 80,
@@ -2715,12 +4475,20 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Dazzling Gleam",
+        "Spirit Break",
+        "Moonblast"
+      ]
     },
     {
       "no": 210,
       "name": "Granbull",
-      "types": ["Fairy"],
+      "types": [
+        "Fairy"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 120,
@@ -2728,12 +4496,21 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Play Rough",
+        "Spirit Break",
+        "Moonblast",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 211,
       "name": "Qwilfish",
-      "types": ["Water","Poison"],
+      "types": [
+        "Water",
+        "Poison"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 95,
@@ -2741,12 +4518,21 @@
         "SpAtk": 55,
         "SpDef": 55,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Brave Bird",
+        "Sludge Bomb",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 212,
       "name": "Scizor",
-      "types": ["Bug","Steel"],
+      "types": [
+        "Bug",
+        "Steel"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 130,
@@ -2754,12 +4540,21 @@
         "SpAtk": 55,
         "SpDef": 80,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Signal Beam",
+        "Flash Cannon",
+        "Stone Edge",
+        "Bug Bite"
+      ]
     },
     {
       "no": 213,
       "name": "Shuckle",
-      "types": ["Bug","Rock"],
+      "types": [
+        "Bug",
+        "Rock"
+      ],
       "stats": {
         "HP": 20,
         "Atk": 10,
@@ -2767,12 +4562,21 @@
         "SpAtk": 10,
         "SpDef": 230,
         "Spd": 5
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Power Gem",
+        "Bug Bite",
+        "Twineedle"
+      ]
     },
     {
       "no": 214,
       "name": "Heracross",
-      "types": ["Bug","Fighting"],
+      "types": [
+        "Bug",
+        "Fighting"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 125,
@@ -2780,12 +4584,21 @@
         "SpAtk": 40,
         "SpDef": 95,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Twineedle",
+        "Bug Bite",
+        "Aura Sphere",
+        "Signal Beam"
+      ]
     },
     {
       "no": 215,
       "name": "Sneasel",
-      "types": ["Dark","Ice"],
+      "types": [
+        "Dark",
+        "Ice"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 95,
@@ -2793,12 +4606,20 @@
         "SpAtk": 35,
         "SpDef": 75,
         "Spd": 115
-      }
+      },
+      "moves": [
+        "Shadow Ball",
+        "Dark Pulse",
+        "Icicle Crash",
+        "Night Slash"
+      ]
     },
     {
       "no": 216,
       "name": "Teddiursa",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 80,
@@ -2806,12 +4627,20 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Dragon Breath",
+        "Double-Edge",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 217,
       "name": "Ursaring",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 130,
@@ -2819,12 +4648,20 @@
         "SpAtk": 75,
         "SpDef": 75,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Hyper Voice",
+        "Fly",
+        "Double-Edge"
+      ]
     },
     {
       "no": 218,
       "name": "Slugma",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 40,
@@ -2832,12 +4669,21 @@
         "SpAtk": 70,
         "SpDef": 40,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Fly",
+        "Fire Punch",
+        "Fire Blast",
+        "Flamethrower"
+      ]
     },
     {
       "no": 219,
       "name": "Magcargo",
-      "types": ["Fire","Rock"],
+      "types": [
+        "Fire",
+        "Rock"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 50,
@@ -2845,12 +4691,21 @@
         "SpAtk": 90,
         "SpDef": 80,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Rock Slide",
+        "Flare Blitz",
+        "Mirror Shot",
+        "Fire Blast"
+      ]
     },
     {
       "no": 220,
       "name": "Swinub",
-      "types": ["Ice","Ground"],
+      "types": [
+        "Ice",
+        "Ground"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 50,
@@ -2858,12 +4713,21 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Ice Punch",
+        "Mud Bomb",
+        "Dark Pulse",
+        "Blizzard"
+      ]
     },
     {
       "no": 221,
       "name": "Piloswine",
-      "types": ["Ice","Ground"],
+      "types": [
+        "Ice",
+        "Ground"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 100,
@@ -2871,12 +4735,21 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Blizzard",
+        "Earth Power",
+        "Ice Beam",
+        "Ancient Power"
+      ]
     },
     {
       "no": 222,
       "name": "Corsola",
-      "types": ["Water","Rock"],
+      "types": [
+        "Water",
+        "Rock"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 55,
@@ -2884,12 +4757,20 @@
         "SpAtk": 65,
         "SpDef": 95,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Sludge Bomb",
+        "Waterfall",
+        "Stone Edge"
+      ]
     },
     {
       "no": 223,
       "name": "Remoraid",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 65,
@@ -2897,12 +4778,20 @@
         "SpAtk": 65,
         "SpDef": 35,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Metal Claw",
+        "Aqua Tail",
+        "Hydro Pump"
+      ]
     },
     {
       "no": 224,
       "name": "Octillery",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 105,
@@ -2910,12 +4799,21 @@
         "SpAtk": 105,
         "SpDef": 75,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Surf",
+        "Hydro Pump",
+        "Aqua Tail",
+        "Brave Bird"
+      ]
     },
     {
       "no": 225,
       "name": "Deliberd",
-      "types": ["Ice","Flying"],
+      "types": [
+        "Ice",
+        "Flying"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 55,
@@ -2923,12 +4821,21 @@
         "SpAtk": 65,
         "SpDef": 45,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Air Slash",
+        "Ice Punch",
+        "Surf",
+        "Ice Beam"
+      ]
     },
     {
       "no": 226,
       "name": "Mantine",
-      "types": ["Water","Flying"],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "stats": {
         "HP": 85,
         "Atk": 40,
@@ -2936,12 +4843,21 @@
         "SpAtk": 80,
         "SpDef": 140,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Rock Slide",
+        "Waterfall",
+        "Brave Bird",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 227,
       "name": "Skarmory",
-      "types": ["Steel","Flying"],
+      "types": [
+        "Steel",
+        "Flying"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 80,
@@ -2949,12 +4865,21 @@
         "SpAtk": 40,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Mirror Shot",
+        "Iron Head",
+        "Drill Run",
+        "Fly"
+      ]
     },
     {
       "no": 228,
       "name": "Houndour",
-      "types": ["Dark","Fire"],
+      "types": [
+        "Dark",
+        "Fire"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 60,
@@ -2962,12 +4887,21 @@
         "SpAtk": 80,
         "SpDef": 50,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Crunch",
+        "Thunderbolt",
+        "Night Slash",
+        "Fire Blast"
+      ]
     },
     {
       "no": 229,
       "name": "Houndoom",
-      "types": ["Dark","Fire"],
+      "types": [
+        "Dark",
+        "Fire"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 90,
@@ -2975,12 +4909,21 @@
         "SpAtk": 110,
         "SpDef": 80,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Crunch",
+        "Snarl",
+        "Twineedle",
+        "Fire Punch"
+      ]
     },
     {
       "no": 230,
       "name": "Kingdra",
-      "types": ["Water","Dragon"],
+      "types": [
+        "Water",
+        "Dragon"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 95,
@@ -2988,12 +4931,20 @@
         "SpAtk": 95,
         "SpDef": 95,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Surf",
+        "Aqua Tail",
+        "Outrage",
+        "Metal Claw"
+      ]
     },
     {
       "no": 231,
       "name": "Phanpy",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 60,
@@ -3001,12 +4952,20 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Mud Bomb",
+        "Focus Blast",
+        "Earth Power",
+        "Earthquake"
+      ]
     },
     {
       "no": 232,
       "name": "Donphan",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 120,
@@ -3014,12 +4973,20 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Surf",
+        "Drill Run",
+        "Mud Bomb"
+      ]
     },
     {
       "no": 233,
       "name": "Porygon2",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 85,
         "Atk": 80,
@@ -3027,12 +4994,20 @@
         "SpAtk": 105,
         "SpDef": 95,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Body Slam",
+        "Hyper Voice",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 234,
       "name": "Stantler",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 73,
         "Atk": 95,
@@ -3040,12 +5015,20 @@
         "SpAtk": 85,
         "SpDef": 65,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Tri Attack",
+        "Hyper Voice",
+        "Ancient Power"
+      ]
     },
     {
       "no": 235,
       "name": "Smeargle",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 20,
@@ -3053,12 +5036,20 @@
         "SpAtk": 20,
         "SpDef": 45,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Tri Attack",
+        "Dragon Pulse",
+        "Double-Edge"
+      ]
     },
     {
       "no": 236,
       "name": "Tyrogue",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 35,
@@ -3066,12 +5057,20 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Close Combat",
+        "Drain Punch",
+        "Aura Sphere",
+        "Night Slash"
+      ]
     },
     {
       "no": 237,
       "name": "Hitmontop",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 95,
@@ -3079,12 +5078,21 @@
         "SpAtk": 35,
         "SpDef": 110,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Focus Blast",
+        "Silver Wind",
+        "Aura Sphere",
+        "Drain Punch"
+      ]
     },
     {
       "no": 238,
       "name": "Smoochum",
-      "types": ["Ice","Psychic"],
+      "types": [
+        "Ice",
+        "Psychic"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 30,
@@ -3092,12 +5100,20 @@
         "SpAtk": 85,
         "SpDef": 65,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Blizzard",
+        "Icicle Crash",
+        "Gunk Shot"
+      ]
     },
     {
       "no": 239,
       "name": "Elekid",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 63,
@@ -3105,12 +5121,20 @@
         "SpAtk": 65,
         "SpDef": 55,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Thunderbolt",
+        "Thunder Punch",
+        "Thunder Fang",
+        "Moonblast"
+      ]
     },
     {
       "no": 240,
       "name": "Magby",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 75,
@@ -3118,12 +5142,20 @@
         "SpAtk": 70,
         "SpDef": 55,
         "Spd": 83
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Flamethrower",
+        "Fire Blast",
+        "Flare Blitz"
+      ]
     },
     {
       "no": 241,
       "name": "Miltank",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 80,
@@ -3131,12 +5163,20 @@
         "SpAtk": 40,
         "SpDef": 70,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Body Slam",
+        "Close Combat",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 242,
       "name": "Blissey",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 255,
         "Atk": 10,
@@ -3144,12 +5184,20 @@
         "SpAtk": 75,
         "SpDef": 135,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Earth Power",
+        "Tri Attack",
+        "Body Slam"
+      ]
     },
     {
       "no": 243,
       "name": "Raikou",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 85,
@@ -3157,12 +5205,20 @@
         "SpAtk": 115,
         "SpDef": 100,
         "Spd": 115
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Thunderbolt",
+        "Close Combat",
+        "Thunder Fang"
+      ]
     },
     {
       "no": 244,
       "name": "Entei",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 115,
         "Atk": 115,
@@ -3170,12 +5226,20 @@
         "SpAtk": 90,
         "SpDef": 75,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Fire Punch",
+        "Flamethrower",
+        "Flare Blitz",
+        "Dragon Pulse"
+      ]
     },
     {
       "no": 245,
       "name": "Suicune",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 75,
@@ -3183,12 +5247,21 @@
         "SpAtk": 90,
         "SpDef": 115,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Surf",
+        "Snarl",
+        "Hydro Pump",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 246,
       "name": "Larvitar",
-      "types": ["Rock","Ground"],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 64,
@@ -3196,12 +5269,21 @@
         "SpAtk": 45,
         "SpDef": 50,
         "Spd": 41
-      }
+      },
+      "moves": [
+        "Mud Bomb",
+        "Ancient Power",
+        "Power Gem",
+        "Giga Drain"
+      ]
     },
     {
       "no": 247,
       "name": "Pupitar",
-      "types": ["Rock","Ground"],
+      "types": [
+        "Rock",
+        "Ground"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 84,
@@ -3209,12 +5291,21 @@
         "SpAtk": 65,
         "SpDef": 70,
         "Spd": 51
-      }
+      },
+      "moves": [
+        "Rock Slide",
+        "Drill Run",
+        "Ancient Power",
+        "Discharge"
+      ]
     },
     {
       "no": 248,
       "name": "Tyranitar",
-      "types": ["Rock","Dark"],
+      "types": [
+        "Rock",
+        "Dark"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 134,
@@ -3222,12 +5313,21 @@
         "SpAtk": 95,
         "SpDef": 100,
         "Spd": 61
-      }
+      },
+      "moves": [
+        "Stone Edge",
+        "Flamethrower",
+        "Dark Pulse",
+        "Rock Slide"
+      ]
     },
     {
       "no": 249,
       "name": "Lugia",
-      "types": ["Psychic","Flying"],
+      "types": [
+        "Psychic",
+        "Flying"
+      ],
       "stats": {
         "HP": 106,
         "Atk": 90,
@@ -3235,12 +5335,21 @@
         "SpAtk": 90,
         "SpDef": 154,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Psychic",
+        "Hurricane",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 250,
       "name": "Ho-Oh",
-      "types": ["Fire","Flying"],
+      "types": [
+        "Fire",
+        "Flying"
+      ],
       "stats": {
         "HP": 106,
         "Atk": 130,
@@ -3248,12 +5357,21 @@
         "SpAtk": 110,
         "SpDef": 154,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Thunder Fang",
+        "Brave Bird",
+        "Fire Punch",
+        "Fire Blast"
+      ]
     },
     {
       "no": 251,
       "name": "Celebi",
-      "types": ["Psychic","Grass"],
+      "types": [
+        "Psychic",
+        "Grass"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 100,
@@ -3261,12 +5379,20 @@
         "SpAtk": 100,
         "SpDef": 100,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Giga Drain",
+        "Zen Headbutt",
+        "Psybeam"
+      ]
     },
     {
       "no": 252,
       "name": "Treecko",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 45,
@@ -3274,12 +5400,20 @@
         "SpAtk": 65,
         "SpDef": 55,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Giga Drain",
+        "Seed Bomb",
+        "Energy Ball",
+        "Psybeam"
+      ]
     },
     {
       "no": 253,
       "name": "Grovyle",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 65,
@@ -3287,12 +5421,20 @@
         "SpAtk": 85,
         "SpDef": 65,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Seed Bomb",
+        "Wood Hammer",
+        "Giga Drain"
+      ]
     },
     {
       "no": 254,
       "name": "Sceptile",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 85,
@@ -3300,12 +5442,20 @@
         "SpAtk": 105,
         "SpDef": 85,
         "Spd": 120
-      }
+      },
+      "moves": [
+        "Giga Drain",
+        "Seed Bomb",
+        "Wood Hammer",
+        "Ancient Power"
+      ]
     },
     {
       "no": 255,
       "name": "Torchic",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 60,
@@ -3313,12 +5463,21 @@
         "SpAtk": 70,
         "SpDef": 50,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Flamethrower",
+        "Double-Edge",
+        "Flare Blitz",
+        "Fire Blast"
+      ]
     },
     {
       "no": 256,
       "name": "Combusken",
-      "types": ["Fire","Fighting"],
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 85,
@@ -3326,12 +5485,21 @@
         "SpAtk": 85,
         "SpDef": 60,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Fire Punch",
+        "Thunder Fang",
+        "Drain Punch",
+        "Flamethrower"
+      ]
     },
     {
       "no": 257,
       "name": "Blaziken",
-      "types": ["Fire","Fighting"],
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 120,
@@ -3339,12 +5507,20 @@
         "SpAtk": 110,
         "SpDef": 70,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Focus Blast",
+        "Spirit Break",
+        "Fire Blast",
+        "Flare Blitz"
+      ]
     },
     {
       "no": 258,
       "name": "Mudkip",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 70,
@@ -3352,12 +5528,21 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Hydro Pump",
+        "Aqua Tail",
+        "Ominous Wind"
+      ]
     },
     {
       "no": 259,
       "name": "Marshtomp",
-      "types": ["Water","Ground"],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 85,
@@ -3365,12 +5550,21 @@
         "SpAtk": 60,
         "SpDef": 70,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Mud Bomb",
+        "Surf",
+        "Earthquake",
+        "Waterfall"
+      ]
     },
     {
       "no": 260,
       "name": "Swampert",
-      "types": ["Water","Ground"],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 110,
@@ -3378,12 +5572,20 @@
         "SpAtk": 85,
         "SpDef": 90,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Thunder Punch",
+        "Mud Bomb",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 261,
       "name": "Poochyena",
-      "types": ["Dark"],
+      "types": [
+        "Dark"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 55,
@@ -3391,12 +5593,20 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Crunch",
+        "Earth Power",
+        "Snarl",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 262,
       "name": "Mightyena",
-      "types": ["Dark"],
+      "types": [
+        "Dark"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 90,
@@ -3404,12 +5614,20 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Close Combat",
+        "Crunch",
+        "Night Slash",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 263,
       "name": "Zigzagoon",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 38,
         "Atk": 30,
@@ -3417,12 +5635,20 @@
         "SpAtk": 30,
         "SpDef": 41,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Mud Bomb",
+        "Double-Edge",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 264,
       "name": "Linoone",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 78,
         "Atk": 70,
@@ -3430,12 +5656,20 @@
         "SpAtk": 50,
         "SpDef": 61,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Tri Attack",
+        "Thunder Punch",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 265,
       "name": "Wurmple",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 45,
@@ -3443,12 +5677,20 @@
         "SpAtk": 20,
         "SpDef": 30,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Signal Beam",
+        "Silver Wind",
+        "Twineedle",
+        "Dragon Breath"
+      ]
     },
     {
       "no": 266,
       "name": "Silcoon",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 35,
@@ -3456,12 +5698,21 @@
         "SpAtk": 25,
         "SpDef": 25,
         "Spd": 15
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Earthquake",
+        "Bug Bite",
+        "Twineedle"
+      ]
     },
     {
       "no": 267,
       "name": "Beautifly",
-      "types": ["Bug","Flying"],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 70,
@@ -3469,12 +5720,20 @@
         "SpAtk": 100,
         "SpDef": 50,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Bug Bite",
+        "Giga Drain",
+        "Hurricane"
+      ]
     },
     {
       "no": 268,
       "name": "Cascoon",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 35,
@@ -3482,12 +5741,21 @@
         "SpAtk": 25,
         "SpDef": 25,
         "Spd": 15
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Fire Blast",
+        "Signal Beam",
+        "Twineedle"
+      ]
     },
     {
       "no": 269,
       "name": "Dustox",
-      "types": ["Bug","Poison"],
+      "types": [
+        "Bug",
+        "Poison"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 50,
@@ -3495,12 +5763,21 @@
         "SpAtk": 50,
         "SpDef": 90,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Gunk Shot",
+        "Ice Punch",
+        "Signal Beam",
+        "Bug Bite"
+      ]
     },
     {
       "no": 270,
       "name": "Lotad",
-      "types": ["Water","Grass"],
+      "types": [
+        "Water",
+        "Grass"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 30,
@@ -3508,12 +5785,21 @@
         "SpAtk": 40,
         "SpDef": 50,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Signal Beam",
+        "Aqua Tail",
+        "Giga Drain"
+      ]
     },
     {
       "no": 271,
       "name": "Lombre",
-      "types": ["Water","Grass"],
+      "types": [
+        "Water",
+        "Grass"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 50,
@@ -3521,12 +5807,21 @@
         "SpAtk": 60,
         "SpDef": 70,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Surf",
+        "Wood Hammer",
+        "Brave Bird"
+      ]
     },
     {
       "no": 272,
       "name": "Ludicolo",
-      "types": ["Water","Grass"],
+      "types": [
+        "Water",
+        "Grass"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 70,
@@ -3534,12 +5829,20 @@
         "SpAtk": 90,
         "SpDef": 100,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Giga Drain",
+        "Twineedle",
+        "Surf"
+      ]
     },
     {
       "no": 273,
       "name": "Seedot",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 40,
@@ -3547,12 +5850,21 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Rock Slide",
+        "Giga Drain",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 274,
       "name": "Nuzleaf",
-      "types": ["Grass","Dark"],
+      "types": [
+        "Grass",
+        "Dark"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 70,
@@ -3560,12 +5872,21 @@
         "SpAtk": 60,
         "SpDef": 40,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Wood Hammer",
+        "Snarl",
+        "Stone Edge",
+        "Giga Drain"
+      ]
     },
     {
       "no": 275,
       "name": "Shiftry",
-      "types": ["Grass","Dark"],
+      "types": [
+        "Grass",
+        "Dark"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 100,
@@ -3573,12 +5894,21 @@
         "SpAtk": 90,
         "SpDef": 60,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Seed Bomb",
+        "Night Slash",
+        "Sludge Wave"
+      ]
     },
     {
       "no": 276,
       "name": "Taillow",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 55,
@@ -3586,12 +5916,21 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Dragon Pulse",
+        "Air Slash",
+        "Hyper Voice",
+        "Tri Attack"
+      ]
     },
     {
       "no": 277,
       "name": "Swellow",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 85,
@@ -3599,12 +5938,21 @@
         "SpAtk": 75,
         "SpDef": 50,
         "Spd": 125
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Hyper Voice",
+        "Hurricane",
+        "Icicle Crash"
+      ]
     },
     {
       "no": 278,
       "name": "Wingull",
-      "types": ["Water","Flying"],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 30,
@@ -3612,12 +5960,21 @@
         "SpAtk": 55,
         "SpDef": 30,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Fly",
+        "Hydro Pump",
+        "Dragon Claw"
+      ]
     },
     {
       "no": 279,
       "name": "Pelipper",
-      "types": ["Water","Flying"],
+      "types": [
+        "Water",
+        "Flying"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 50,
@@ -3625,12 +5982,21 @@
         "SpAtk": 95,
         "SpDef": 70,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Air Slash",
+        "Earthquake",
+        "Surf"
+      ]
     },
     {
       "no": 280,
       "name": "Ralts",
-      "types": ["Psychic","Fairy"],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "stats": {
         "HP": 28,
         "Atk": 25,
@@ -3638,12 +6004,21 @@
         "SpAtk": 45,
         "SpDef": 35,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Moonblast",
+        "Drain Punch",
+        "Psychic"
+      ]
     },
     {
       "no": 281,
       "name": "Kirlia",
-      "types": ["Psychic","Fairy"],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "stats": {
         "HP": 38,
         "Atk": 35,
@@ -3651,12 +6026,21 @@
         "SpAtk": 65,
         "SpDef": 55,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Psychic",
+        "Play Rough",
+        "Ancient Power",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 282,
       "name": "Gardevoir",
-      "types": ["Psychic","Fairy"],
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
       "stats": {
         "HP": 68,
         "Atk": 65,
@@ -3664,12 +6048,21 @@
         "SpAtk": 125,
         "SpDef": 115,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Signal Beam",
+        "Zen Headbutt",
+        "Spirit Break"
+      ]
     },
     {
       "no": 283,
       "name": "Surskit",
-      "types": ["Bug","Water"],
+      "types": [
+        "Bug",
+        "Water"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 30,
@@ -3677,12 +6070,21 @@
         "SpAtk": 50,
         "SpDef": 52,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Silver Wind",
+        "Bug Bite",
+        "Outrage"
+      ]
     },
     {
       "no": 284,
       "name": "Masquerain",
-      "types": ["Bug","Water"],
+      "types": [
+        "Bug",
+        "Water"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 60,
@@ -3690,12 +6092,20 @@
         "SpAtk": 100,
         "SpDef": 82,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Silver Wind",
+        "Surf",
+        "Signal Beam",
+        "Double-Edge"
+      ]
     },
     {
       "no": 285,
       "name": "Shroomish",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 40,
@@ -3703,12 +6113,21 @@
         "SpAtk": 40,
         "SpDef": 60,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Energy Ball",
+        "Giga Drain",
+        "Shadow Punch",
+        "Seed Bomb"
+      ]
     },
     {
       "no": 286,
       "name": "Breloom",
-      "types": ["Grass","Fighting"],
+      "types": [
+        "Grass",
+        "Fighting"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 130,
@@ -3716,12 +6135,20 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Giga Drain",
+        "Drain Punch",
+        "Air Slash",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 287,
       "name": "Slakoth",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 60,
@@ -3729,12 +6156,20 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Double-Edge",
+        "Body Slam",
+        "Tri Attack",
+        "Close Combat"
+      ]
     },
     {
       "no": 288,
       "name": "Vigoroth",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 80,
@@ -3742,12 +6177,20 @@
         "SpAtk": 55,
         "SpDef": 55,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Hyper Voice",
+        "Double-Edge",
+        "Giga Drain"
+      ]
     },
     {
       "no": 289,
       "name": "Slaking",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 150,
         "Atk": 160,
@@ -3755,12 +6198,21 @@
         "SpAtk": 95,
         "SpDef": 65,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Double-Edge",
+        "Hurricane",
+        "Tri Attack"
+      ]
     },
     {
       "no": 290,
       "name": "Nincada",
-      "types": ["Bug","Ground"],
+      "types": [
+        "Bug",
+        "Ground"
+      ],
       "stats": {
         "HP": 31,
         "Atk": 45,
@@ -3768,12 +6220,21 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Earth Power",
+        "Twineedle",
+        "Bug Bite",
+        "Ice Punch"
+      ]
     },
     {
       "no": 291,
       "name": "Ninjask",
-      "types": ["Bug","Flying"],
+      "types": [
+        "Bug",
+        "Flying"
+      ],
       "stats": {
         "HP": 61,
         "Atk": 90,
@@ -3781,12 +6242,21 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 160
-      }
+      },
+      "moves": [
+        "Twineedle",
+        "Signal Beam",
+        "Silver Wind",
+        "Air Slash"
+      ]
     },
     {
       "no": 292,
       "name": "Shedinja",
-      "types": ["Bug","Ghost"],
+      "types": [
+        "Bug",
+        "Ghost"
+      ],
       "stats": {
         "HP": 1,
         "Atk": 90,
@@ -3794,12 +6264,20 @@
         "SpAtk": 30,
         "SpDef": 30,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Bug Bite",
+        "Flash Cannon",
+        "Ominous Wind",
+        "Silver Wind"
+      ]
     },
     {
       "no": 293,
       "name": "Whismur",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 64,
         "Atk": 51,
@@ -3807,12 +6285,20 @@
         "SpAtk": 51,
         "SpDef": 23,
         "Spd": 28
-      }
+      },
+      "moves": [
+        "Hyper Voice",
+        "Aura Sphere",
+        "Tri Attack",
+        "Double-Edge"
+      ]
     },
     {
       "no": 294,
       "name": "Loudred",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 84,
         "Atk": 71,
@@ -3820,12 +6306,20 @@
         "SpAtk": 71,
         "SpDef": 43,
         "Spd": 48
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Double-Edge",
+        "Earth Power",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 295,
       "name": "Exploud",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 104,
         "Atk": 91,
@@ -3833,12 +6327,20 @@
         "SpAtk": 91,
         "SpDef": 73,
         "Spd": 68
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Body Slam",
+        "Hyper Voice",
+        "Close Combat"
+      ]
     },
     {
       "no": 296,
       "name": "Makuhita",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 72,
         "Atk": 60,
@@ -3846,12 +6348,20 @@
         "SpAtk": 20,
         "SpDef": 30,
         "Spd": 25
-      }
+      },
+      "moves": [
+        "Close Combat",
+        "Aura Sphere",
+        "Fly",
+        "Focus Blast"
+      ]
     },
     {
       "no": 297,
       "name": "Hariyama",
-      "types": ["Fighting"],
+      "types": [
+        "Fighting"
+      ],
       "stats": {
         "HP": 144,
         "Atk": 120,
@@ -3859,12 +6369,21 @@
         "SpAtk": 40,
         "SpDef": 60,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Focus Blast",
+        "Aura Sphere",
+        "Surf",
+        "Drain Punch"
+      ]
     },
     {
       "no": 298,
       "name": "Azurill",
-      "types": ["Normal","Fairy"],
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 20,
@@ -3872,12 +6391,20 @@
         "SpAtk": 20,
         "SpDef": 40,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Spirit Break",
+        "Double-Edge",
+        "Dazzling Gleam"
+      ]
     },
     {
       "no": 299,
       "name": "Nosepass",
-      "types": ["Rock"],
+      "types": [
+        "Rock"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 45,
@@ -3885,12 +6412,20 @@
         "SpAtk": 45,
         "SpDef": 90,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Rock Slide",
+        "Stone Edge",
+        "Shadow Punch",
+        "Power Gem"
+      ]
     },
     {
       "no": 300,
       "name": "Skitty",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 45,
@@ -3898,12 +6433,20 @@
         "SpAtk": 35,
         "SpDef": 35,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Hyper Voice",
+        "Body Slam",
+        "Twineedle"
+      ]
     },
     {
       "no": 301,
       "name": "Delcatty",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 65,
@@ -3911,12 +6454,21 @@
         "SpAtk": 55,
         "SpDef": 55,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Body Slam",
+        "Double-Edge",
+        "Close Combat"
+      ]
     },
     {
       "no": 302,
       "name": "Sableye",
-      "types": ["Dark","Ghost"],
+      "types": [
+        "Dark",
+        "Ghost"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 75,
@@ -3924,12 +6476,21 @@
         "SpAtk": 65,
         "SpDef": 65,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Night Slash",
+        "Shadow Ball",
+        "Shadow Claw",
+        "Dark Pulse"
+      ]
     },
     {
       "no": 303,
       "name": "Mawile",
-      "types": ["Steel","Fairy"],
+      "types": [
+        "Steel",
+        "Fairy"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 85,
@@ -3937,12 +6498,21 @@
         "SpAtk": 55,
         "SpDef": 55,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Dazzling Gleam",
+        "Metal Claw",
+        "Flash Cannon",
+        "Surf"
+      ]
     },
     {
       "no": 304,
       "name": "Aron",
-      "types": ["Steel","Rock"],
+      "types": [
+        "Steel",
+        "Rock"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 70,
@@ -3950,12 +6520,21 @@
         "SpAtk": 40,
         "SpDef": 40,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Power Gem",
+        "Mirror Shot",
+        "Fly",
+        "Metal Claw"
+      ]
     },
     {
       "no": 305,
       "name": "Lairon",
-      "types": ["Steel","Rock"],
+      "types": [
+        "Steel",
+        "Rock"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 90,
@@ -3963,12 +6542,21 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Mirror Shot",
+        "Metal Claw",
+        "Power Gem",
+        "Hyper Voice"
+      ]
     },
     {
       "no": 306,
       "name": "Aggron",
-      "types": ["Steel","Rock"],
+      "types": [
+        "Steel",
+        "Rock"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 110,
@@ -3976,12 +6564,21 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Air Slash",
+        "Iron Head",
+        "Mirror Shot",
+        "Stone Edge"
+      ]
     },
     {
       "no": 307,
       "name": "Meditite",
-      "types": ["Fighting","Psychic"],
+      "types": [
+        "Fighting",
+        "Psychic"
+      ],
       "stats": {
         "HP": 30,
         "Atk": 40,
@@ -3989,12 +6586,21 @@
         "SpAtk": 40,
         "SpDef": 55,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Waterfall",
+        "Aura Sphere",
+        "Drain Punch"
+      ]
     },
     {
       "no": 308,
       "name": "Medicham",
-      "types": ["Fighting","Psychic"],
+      "types": [
+        "Fighting",
+        "Psychic"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 60,
@@ -4002,12 +6608,20 @@
         "SpAtk": 60,
         "SpDef": 75,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Dragon Pulse",
+        "Zen Headbutt",
+        "Focus Blast",
+        "Close Combat"
+      ]
     },
     {
       "no": 309,
       "name": "Electrike",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 45,
@@ -4015,12 +6629,20 @@
         "SpAtk": 65,
         "SpDef": 40,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Discharge",
+        "Shadow Punch",
+        "Thunder Fang",
+        "Thunder Punch"
+      ]
     },
     {
       "no": 310,
       "name": "Manectric",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 75,
@@ -4028,12 +6650,20 @@
         "SpAtk": 105,
         "SpDef": 60,
         "Spd": 105
-      }
+      },
+      "moves": [
+        "Thunderbolt",
+        "Shadow Punch",
+        "Discharge",
+        "Thunder Punch"
+      ]
     },
     {
       "no": 311,
       "name": "Plusle",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 50,
@@ -4041,12 +6671,20 @@
         "SpAtk": 85,
         "SpDef": 75,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Iron Head",
+        "Thunderbolt",
+        "Thunder Fang"
+      ]
     },
     {
       "no": 312,
       "name": "Minun",
-      "types": ["Electric"],
+      "types": [
+        "Electric"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 40,
@@ -4054,12 +6692,20 @@
         "SpAtk": 75,
         "SpDef": 85,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Outrage",
+        "Discharge",
+        "Thunder Punch",
+        "Thunder Fang"
+      ]
     },
     {
       "no": 313,
       "name": "Volbeat",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 73,
@@ -4067,12 +6713,20 @@
         "SpAtk": 47,
         "SpDef": 85,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Twineedle",
+        "Silver Wind",
+        "Metal Claw",
+        "Signal Beam"
+      ]
     },
     {
       "no": 314,
       "name": "Illumise",
-      "types": ["Bug"],
+      "types": [
+        "Bug"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 47,
@@ -4080,12 +6734,21 @@
         "SpAtk": 73,
         "SpDef": 85,
         "Spd": 85
-      }
+      },
+      "moves": [
+        "Signal Beam",
+        "Dazzling Gleam",
+        "Twineedle",
+        "Silver Wind"
+      ]
     },
     {
       "no": 315,
       "name": "Roselia",
-      "types": ["Grass","Poison"],
+      "types": [
+        "Grass",
+        "Poison"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 60,
@@ -4093,12 +6756,20 @@
         "SpAtk": 100,
         "SpDef": 80,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Gunk Shot",
+        "Giga Drain",
+        "Energy Ball",
+        "Psychic"
+      ]
     },
     {
       "no": 316,
       "name": "Gulpin",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 43,
@@ -4106,12 +6777,20 @@
         "SpAtk": 43,
         "SpDef": 53,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Gunk Shot",
+        "Sludge Wave",
+        "Hurricane"
+      ]
     },
     {
       "no": 317,
       "name": "Swalot",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 73,
@@ -4119,12 +6798,21 @@
         "SpAtk": 73,
         "SpDef": 83,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Dragon Breath",
+        "Gunk Shot",
+        "Poison Jab",
+        "Sludge Bomb"
+      ]
     },
     {
       "no": 318,
       "name": "Carvanha",
-      "types": ["Water","Dark"],
+      "types": [
+        "Water",
+        "Dark"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 90,
@@ -4132,12 +6820,21 @@
         "SpAtk": 65,
         "SpDef": 20,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Double-Edge",
+        "Dark Pulse",
+        "Waterfall"
+      ]
     },
     {
       "no": 319,
       "name": "Sharpedo",
-      "types": ["Water","Dark"],
+      "types": [
+        "Water",
+        "Dark"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 120,
@@ -4145,12 +6842,20 @@
         "SpAtk": 95,
         "SpDef": 40,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Gunk Shot",
+        "Aqua Tail",
+        "Snarl",
+        "Waterfall"
+      ]
     },
     {
       "no": 320,
       "name": "Wailmer",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 130,
         "Atk": 70,
@@ -4158,12 +6863,20 @@
         "SpAtk": 70,
         "SpDef": 35,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Surf",
+        "Hurricane",
+        "Hydro Pump"
+      ]
     },
     {
       "no": 321,
       "name": "Wailord",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 170,
         "Atk": 90,
@@ -4171,12 +6884,21 @@
         "SpAtk": 90,
         "SpDef": 45,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Flare Blitz",
+        "Aqua Tail",
+        "Surf"
+      ]
     },
     {
       "no": 322,
       "name": "Numel",
-      "types": ["Fire","Ground"],
+      "types": [
+        "Fire",
+        "Ground"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 60,
@@ -4184,12 +6906,21 @@
         "SpAtk": 65,
         "SpDef": 45,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Flamethrower",
+        "Drill Run",
+        "Double-Edge",
+        "Flare Blitz"
+      ]
     },
     {
       "no": 323,
       "name": "Camerupt",
-      "types": ["Fire","Ground"],
+      "types": [
+        "Fire",
+        "Ground"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 100,
@@ -4197,12 +6928,20 @@
         "SpAtk": 105,
         "SpDef": 75,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Fire Blast",
+        "Flare Blitz",
+        "Drill Run",
+        "Earthquake"
+      ]
     },
     {
       "no": 324,
       "name": "Torkoal",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 85,
@@ -4210,12 +6949,20 @@
         "SpAtk": 85,
         "SpDef": 70,
         "Spd": 20
-      }
+      },
+      "moves": [
+        "Flare Blitz",
+        "Fire Punch",
+        "Flamethrower",
+        "Psybeam"
+      ]
     },
     {
       "no": 325,
       "name": "Spoink",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 25,
@@ -4223,12 +6970,20 @@
         "SpAtk": 70,
         "SpDef": 80,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Psychic",
+        "Spirit Break",
+        "Psybeam"
+      ]
     },
     {
       "no": 326,
       "name": "Grumpig",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 45,
@@ -4236,12 +6991,20 @@
         "SpAtk": 90,
         "SpDef": 110,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Dragon Breath",
+        "Psybeam",
+        "Psychic",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 327,
       "name": "Spinda",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 60,
@@ -4249,12 +7012,20 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Zen Headbutt",
+        "Body Slam",
+        "Double-Edge"
+      ]
     },
     {
       "no": 328,
       "name": "Trapinch",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 100,
@@ -4262,12 +7033,21 @@
         "SpAtk": 45,
         "SpDef": 45,
         "Spd": 10
-      }
+      },
+      "moves": [
+        "Spirit Break",
+        "Mud Bomb",
+        "Earthquake",
+        "Earth Power"
+      ]
     },
     {
       "no": 329,
       "name": "Vibrava",
-      "types": ["Ground","Dragon"],
+      "types": [
+        "Ground",
+        "Dragon"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 70,
@@ -4275,12 +7055,21 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Mud Bomb",
+        "Signal Beam",
+        "Earth Power",
+        "Dragon Pulse"
+      ]
     },
     {
       "no": 330,
       "name": "Flygon",
-      "types": ["Ground","Dragon"],
+      "types": [
+        "Ground",
+        "Dragon"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 100,
@@ -4288,12 +7077,20 @@
         "SpAtk": 80,
         "SpDef": 80,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Mud Bomb",
+        "Dragon Breath",
+        "Earth Power"
+      ]
     },
     {
       "no": 331,
       "name": "Cacnea",
-      "types": ["Grass"],
+      "types": [
+        "Grass"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 85,
@@ -4301,12 +7098,21 @@
         "SpAtk": 85,
         "SpDef": 40,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Seed Bomb",
+        "Double-Edge",
+        "Wood Hammer",
+        "Energy Ball"
+      ]
     },
     {
       "no": 332,
       "name": "Cacturne",
-      "types": ["Grass","Dark"],
+      "types": [
+        "Grass",
+        "Dark"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 115,
@@ -4314,12 +7120,21 @@
         "SpAtk": 115,
         "SpDef": 60,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Wood Hammer",
+        "Energy Ball",
+        "Ancient Power",
+        "Snarl"
+      ]
     },
     {
       "no": 333,
       "name": "Swablu",
-      "types": ["Normal","Flying"],
+      "types": [
+        "Normal",
+        "Flying"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 40,
@@ -4327,12 +7142,21 @@
         "SpAtk": 40,
         "SpDef": 75,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Body Slam",
+        "Mud Bomb",
+        "Fly"
+      ]
     },
     {
       "no": 334,
       "name": "Altaria",
-      "types": ["Dragon","Flying"],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 70,
@@ -4340,12 +7164,20 @@
         "SpAtk": 70,
         "SpDef": 105,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Outrage",
+        "Brave Bird",
+        "Dragon Breath"
+      ]
     },
     {
       "no": 335,
       "name": "Zangoose",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 73,
         "Atk": 115,
@@ -4353,12 +7185,20 @@
         "SpAtk": 60,
         "SpDef": 60,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Power Gem",
+        "Double-Edge",
+        "Hyper Voice",
+        "Body Slam"
+      ]
     },
     {
       "no": 336,
       "name": "Seviper",
-      "types": ["Poison"],
+      "types": [
+        "Poison"
+      ],
       "stats": {
         "HP": 73,
         "Atk": 100,
@@ -4366,12 +7206,21 @@
         "SpAtk": 100,
         "SpDef": 60,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Poison Jab",
+        "Outrage",
+        "Sludge Wave",
+        "Gunk Shot"
+      ]
     },
     {
       "no": 337,
       "name": "Lunatone",
-      "types": ["Rock","Psychic"],
+      "types": [
+        "Rock",
+        "Psychic"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 55,
@@ -4379,12 +7228,21 @@
         "SpAtk": 95,
         "SpDef": 85,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Power Gem",
+        "Flash Cannon",
+        "Ancient Power",
+        "Psychic"
+      ]
     },
     {
       "no": 338,
       "name": "Solrock",
-      "types": ["Rock","Psychic"],
+      "types": [
+        "Rock",
+        "Psychic"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 95,
@@ -4392,12 +7250,21 @@
         "SpAtk": 55,
         "SpDef": 65,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Psybeam",
+        "Power Gem",
+        "Rock Slide",
+        "Iron Head"
+      ]
     },
     {
       "no": 339,
       "name": "Barboach",
-      "types": ["Water","Ground"],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 48,
@@ -4405,12 +7272,21 @@
         "SpAtk": 46,
         "SpDef": 41,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Earthquake",
+        "Waterfall",
+        "Drill Run"
+      ]
     },
     {
       "no": 340,
       "name": "Whiscash",
-      "types": ["Water","Ground"],
+      "types": [
+        "Water",
+        "Ground"
+      ],
       "stats": {
         "HP": 110,
         "Atk": 78,
@@ -4418,12 +7294,20 @@
         "SpAtk": 76,
         "SpDef": 71,
         "Spd": 60
-      }
+      },
+      "moves": [
+        "Drill Run",
+        "Night Slash",
+        "Surf",
+        "Hydro Pump"
+      ]
     },
     {
       "no": 341,
       "name": "Corphish",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 43,
         "Atk": 80,
@@ -4431,12 +7315,21 @@
         "SpAtk": 50,
         "SpDef": 35,
         "Spd": 35
-      }
+      },
+      "moves": [
+        "Surf",
+        "Blizzard",
+        "Hydro Pump",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 342,
       "name": "Crawdaunt",
-      "types": ["Water","Dark"],
+      "types": [
+        "Water",
+        "Dark"
+      ],
       "stats": {
         "HP": 63,
         "Atk": 120,
@@ -4444,12 +7337,21 @@
         "SpAtk": 90,
         "SpDef": 55,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Night Slash",
+        "Hydro Pump",
+        "Drain Punch"
+      ]
     },
     {
       "no": 343,
       "name": "Baltoy",
-      "types": ["Ground","Psychic"],
+      "types": [
+        "Ground",
+        "Psychic"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 40,
@@ -4457,12 +7359,21 @@
         "SpAtk": 40,
         "SpDef": 70,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Earth Power",
+        "Fire Punch",
+        "Drill Run"
+      ]
     },
     {
       "no": 344,
       "name": "Claydol",
-      "types": ["Ground","Psychic"],
+      "types": [
+        "Ground",
+        "Psychic"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 70,
@@ -4470,12 +7381,21 @@
         "SpAtk": 70,
         "SpDef": 120,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Earthquake",
+        "Psybeam",
+        "Drill Run",
+        "Close Combat"
+      ]
     },
     {
       "no": 345,
       "name": "Lileep",
-      "types": ["Rock","Grass"],
+      "types": [
+        "Rock",
+        "Grass"
+      ],
       "stats": {
         "HP": 66,
         "Atk": 41,
@@ -4483,12 +7403,21 @@
         "SpAtk": 61,
         "SpDef": 87,
         "Spd": 23
-      }
+      },
+      "moves": [
+        "Giga Drain",
+        "Rock Slide",
+        "Fire Blast",
+        "Ancient Power"
+      ]
     },
     {
       "no": 346,
       "name": "Cradily",
-      "types": ["Rock","Grass"],
+      "types": [
+        "Rock",
+        "Grass"
+      ],
       "stats": {
         "HP": 86,
         "Atk": 81,
@@ -4496,12 +7425,21 @@
         "SpAtk": 81,
         "SpDef": 107,
         "Spd": 43
-      }
+      },
+      "moves": [
+        "Bug Bite",
+        "Power Gem",
+        "Ancient Power",
+        "Giga Drain"
+      ]
     },
     {
       "no": 347,
       "name": "Anorith",
-      "types": ["Rock","Bug"],
+      "types": [
+        "Rock",
+        "Bug"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 95,
@@ -4509,12 +7447,21 @@
         "SpAtk": 40,
         "SpDef": 50,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Dragon Breath",
+        "Bug Bite",
+        "Rock Slide",
+        "Ancient Power"
+      ]
     },
     {
       "no": 348,
       "name": "Armaldo",
-      "types": ["Rock","Bug"],
+      "types": [
+        "Rock",
+        "Bug"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 125,
@@ -4522,12 +7469,20 @@
         "SpAtk": 70,
         "SpDef": 80,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Signal Beam",
+        "Shadow Claw",
+        "Power Gem",
+        "Stone Edge"
+      ]
     },
     {
       "no": 349,
       "name": "Feebas",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 20,
         "Atk": 15,
@@ -4535,12 +7490,20 @@
         "SpAtk": 10,
         "SpDef": 55,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Hydro Pump",
+        "Waterfall",
+        "Dazzling Gleam"
+      ]
     },
     {
       "no": 350,
       "name": "Milotic",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 60,
@@ -4548,12 +7511,20 @@
         "SpAtk": 100,
         "SpDef": 125,
         "Spd": 81
-      }
+      },
+      "moves": [
+        "Surf",
+        "Waterfall",
+        "Hydro Pump",
+        "Moonblast"
+      ]
     },
     {
       "no": 351,
       "name": "Castform",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 70,
@@ -4561,12 +7532,20 @@
         "SpAtk": 70,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Body Slam",
+        "Silver Wind",
+        "Double-Edge",
+        "Tri Attack"
+      ]
     },
     {
       "no": 352,
       "name": "Castform-Sun",
-      "types": ["Fire"],
+      "types": [
+        "Fire"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 70,
@@ -4574,12 +7553,20 @@
         "SpAtk": 70,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Fire Blast",
+        "Flamethrower",
+        "Fire Punch",
+        "Shadow Ball"
+      ]
     },
     {
       "no": 353,
       "name": "Castform-Rain",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 70,
@@ -4587,12 +7574,20 @@
         "SpAtk": 70,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Focus Blast",
+        "Aqua Tail",
+        "Surf"
+      ]
     },
     {
       "no": 354,
       "name": "Castform-Hail",
-      "types": ["Ice"],
+      "types": [
+        "Ice"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 70,
@@ -4600,12 +7595,20 @@
         "SpAtk": 70,
         "SpDef": 70,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Blizzard",
+        "Icicle Crash",
+        "Ice Punch",
+        "Gunk Shot"
+      ]
     },
     {
       "no": 355,
       "name": "Kecleon",
-      "types": ["Normal"],
+      "types": [
+        "Normal"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 90,
@@ -4613,12 +7616,20 @@
         "SpAtk": 60,
         "SpDef": 120,
         "Spd": 40
-      }
+      },
+      "moves": [
+        "Tri Attack",
+        "Hyper Voice",
+        "Double-Edge",
+        "Snarl"
+      ]
     },
     {
       "no": 356,
       "name": "Shuppet",
-      "types": ["Ghost"],
+      "types": [
+        "Ghost"
+      ],
       "stats": {
         "HP": 44,
         "Atk": 75,
@@ -4626,12 +7637,20 @@
         "SpAtk": 63,
         "SpDef": 33,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Outrage",
+        "Shadow Claw",
+        "Ominous Wind",
+        "Shadow Ball"
+      ]
     },
     {
       "no": 357,
       "name": "Banette",
-      "types": ["Ghost"],
+      "types": [
+        "Ghost"
+      ],
       "stats": {
         "HP": 64,
         "Atk": 115,
@@ -4639,12 +7658,20 @@
         "SpAtk": 83,
         "SpDef": 63,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Icicle Crash",
+        "Shadow Punch",
+        "Shadow Ball",
+        "Ominous Wind"
+      ]
     },
     {
       "no": 358,
       "name": "Duskull",
-      "types": ["Ghost"],
+      "types": [
+        "Ghost"
+      ],
       "stats": {
         "HP": 20,
         "Atk": 40,
@@ -4652,12 +7679,20 @@
         "SpAtk": 30,
         "SpDef": 90,
         "Spd": 25
-      }
+      },
+      "moves": [
+        "Fly",
+        "Ominous Wind",
+        "Shadow Punch",
+        "Shadow Ball"
+      ]
     },
     {
       "no": 359,
       "name": "Dusclops",
-      "types": ["Ghost"],
+      "types": [
+        "Ghost"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 70,
@@ -4665,12 +7700,21 @@
         "SpAtk": 60,
         "SpDef": 130,
         "Spd": 25
-      }
+      },
+      "moves": [
+        "Ominous Wind",
+        "Giga Drain",
+        "Shadow Ball",
+        "Shadow Claw"
+      ]
     },
     {
       "no": 360,
       "name": "Tropius",
-      "types": ["Grass","Flying"],
+      "types": [
+        "Grass",
+        "Flying"
+      ],
       "stats": {
         "HP": 99,
         "Atk": 68,
@@ -4678,12 +7722,20 @@
         "SpAtk": 72,
         "SpDef": 87,
         "Spd": 51
-      }
+      },
+      "moves": [
+        "Giga Drain",
+        "Silver Wind",
+        "Fly",
+        "Wood Hammer"
+      ]
     },
     {
       "no": 361,
       "name": "Chimecho",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 75,
         "Atk": 50,
@@ -4691,12 +7743,20 @@
         "SpAtk": 95,
         "SpDef": 90,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Psychic",
+        "Zen Headbutt",
+        "Ice Punch",
+        "Psybeam"
+      ]
     },
     {
       "no": 362,
       "name": "Absol",
-      "types": ["Dark"],
+      "types": [
+        "Dark"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 130,
@@ -4704,12 +7764,20 @@
         "SpAtk": 75,
         "SpDef": 60,
         "Spd": 75
-      }
+      },
+      "moves": [
+        "Dark Pulse",
+        "Snarl",
+        "Gunk Shot",
+        "Night Slash"
+      ]
     },
     {
       "no": 363,
       "name": "Wynaut",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 23,
@@ -4717,12 +7785,20 @@
         "SpAtk": 23,
         "SpDef": 48,
         "Spd": 23
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Psycho Cut",
+        "Psychic",
+        "Power Gem"
+      ]
     },
     {
       "no": 364,
       "name": "Snorunt",
-      "types": ["Ice"],
+      "types": [
+        "Ice"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 50,
@@ -4730,12 +7806,20 @@
         "SpAtk": 50,
         "SpDef": 50,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Ice Punch",
+        "Blizzard",
+        "Psybeam",
+        "Ice Beam"
+      ]
     },
     {
       "no": 365,
       "name": "Glalie",
-      "types": ["Ice"],
+      "types": [
+        "Ice"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 80,
@@ -4743,12 +7827,21 @@
         "SpAtk": 80,
         "SpDef": 80,
         "Spd": 80
-      }
+      },
+      "moves": [
+        "Blizzard",
+        "Dragon Pulse",
+        "Icicle Crash",
+        "Ice Beam"
+      ]
     },
     {
       "no": 366,
       "name": "Spheal",
-      "types": ["Ice","Water"],
+      "types": [
+        "Ice",
+        "Water"
+      ],
       "stats": {
         "HP": 70,
         "Atk": 40,
@@ -4756,12 +7849,21 @@
         "SpAtk": 55,
         "SpDef": 50,
         "Spd": 25
-      }
+      },
+      "moves": [
+        "Ancient Power",
+        "Ice Beam",
+        "Ice Punch",
+        "Surf"
+      ]
     },
     {
       "no": 367,
       "name": "Sealeo",
-      "types": ["Ice","Water"],
+      "types": [
+        "Ice",
+        "Water"
+      ],
       "stats": {
         "HP": 90,
         "Atk": 60,
@@ -4769,12 +7871,21 @@
         "SpAtk": 75,
         "SpDef": 70,
         "Spd": 45
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Blizzard",
+        "Icicle Crash",
+        "Stone Edge"
+      ]
     },
     {
       "no": 368,
       "name": "Walrein",
-      "types": ["Ice","Water"],
+      "types": [
+        "Ice",
+        "Water"
+      ],
       "stats": {
         "HP": 110,
         "Atk": 80,
@@ -4782,12 +7893,20 @@
         "SpAtk": 95,
         "SpDef": 90,
         "Spd": 65
-      }
+      },
+      "moves": [
+        "Thunder Punch",
+        "Ice Punch",
+        "Aqua Tail",
+        "Icicle Crash"
+      ]
     },
     {
       "no": 369,
       "name": "Clamperl",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 35,
         "Atk": 64,
@@ -4795,12 +7914,20 @@
         "SpAtk": 74,
         "SpDef": 55,
         "Spd": 32
-      }
+      },
+      "moves": [
+        "Waterfall",
+        "Surf",
+        "Aqua Tail",
+        "Thunderbolt"
+      ]
     },
     {
       "no": 370,
       "name": "Huntail",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 104,
@@ -4808,12 +7935,20 @@
         "SpAtk": 94,
         "SpDef": 75,
         "Spd": 52
-      }
+      },
+      "moves": [
+        "Aqua Tail",
+        "Surf",
+        "Night Slash",
+        "Waterfall"
+      ]
     },
     {
       "no": 371,
       "name": "Gorebyss",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 55,
         "Atk": 84,
@@ -4821,12 +7956,21 @@
         "SpAtk": 114,
         "SpDef": 75,
         "Spd": 52
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Outrage",
+        "Waterfall",
+        "Aqua Tail"
+      ]
     },
     {
       "no": 372,
       "name": "Relicanth",
-      "types": ["Water","Rock"],
+      "types": [
+        "Water",
+        "Rock"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 90,
@@ -4834,12 +7978,20 @@
         "SpAtk": 45,
         "SpDef": 65,
         "Spd": 55
-      }
+      },
+      "moves": [
+        "Stone Edge",
+        "Waterfall",
+        "Hydro Pump",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 373,
       "name": "Luvdisc",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 43,
         "Atk": 30,
@@ -4847,12 +7999,20 @@
         "SpAtk": 40,
         "SpDef": 65,
         "Spd": 97
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Surf",
+        "Flare Blitz",
+        "Waterfall"
+      ]
     },
     {
       "no": 374,
       "name": "Bagon",
-      "types": ["Dragon"],
+      "types": [
+        "Dragon"
+      ],
       "stats": {
         "HP": 45,
         "Atk": 75,
@@ -4860,12 +8020,20 @@
         "SpAtk": 40,
         "SpDef": 30,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Dragon Breath",
+        "Bug Bite",
+        "Dragon Pulse",
+        "Dragon Claw"
+      ]
     },
     {
       "no": 375,
       "name": "Shelgon",
-      "types": ["Dragon"],
+      "types": [
+        "Dragon"
+      ],
       "stats": {
         "HP": 65,
         "Atk": 95,
@@ -4873,12 +8041,21 @@
         "SpAtk": 60,
         "SpDef": 50,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Earthquake",
+        "Outrage",
+        "Dragon Pulse",
+        "Dragon Breath"
+      ]
     },
     {
       "no": 376,
       "name": "Salamence",
-      "types": ["Dragon","Flying"],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "stats": {
         "HP": 95,
         "Atk": 135,
@@ -4886,12 +8063,21 @@
         "SpAtk": 110,
         "SpDef": 80,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Dragon Claw",
+        "Outrage",
+        "Hurricane",
+        "Dragon Pulse"
+      ]
     },
     {
       "no": 377,
       "name": "Beldum",
-      "types": ["Steel","Psychic"],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "stats": {
         "HP": 40,
         "Atk": 55,
@@ -4899,12 +8085,21 @@
         "SpAtk": 35,
         "SpDef": 60,
         "Spd": 30
-      }
+      },
+      "moves": [
+        "Iron Head",
+        "Mirror Shot",
+        "Double-Edge",
+        "Psybeam"
+      ]
     },
     {
       "no": 378,
       "name": "Metang",
-      "types": ["Steel","Psychic"],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "stats": {
         "HP": 60,
         "Atk": 75,
@@ -4912,12 +8107,21 @@
         "SpAtk": 55,
         "SpDef": 80,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Flash Cannon",
+        "Iron Head",
+        "Air Slash",
+        "Psychic"
+      ]
     },
     {
       "no": 379,
       "name": "Metagross",
-      "types": ["Steel","Psychic"],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 135,
@@ -4925,12 +8129,20 @@
         "SpAtk": 95,
         "SpDef": 90,
         "Spd": 70
-      }
+      },
+      "moves": [
+        "Metal Claw",
+        "Flash Cannon",
+        "Fire Punch",
+        "Zen Headbutt"
+      ]
     },
     {
       "no": 380,
       "name": "Regirock",
-      "types": ["Rock"],
+      "types": [
+        "Rock"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 100,
@@ -4938,12 +8150,20 @@
         "SpAtk": 50,
         "SpDef": 100,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Ancient Power",
+        "Hurricane",
+        "Rock Slide",
+        "Power Gem"
+      ]
     },
     {
       "no": 381,
       "name": "Regice",
-      "types": ["Ice"],
+      "types": [
+        "Ice"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 50,
@@ -4951,12 +8171,20 @@
         "SpAtk": 100,
         "SpDef": 200,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Ice Beam",
+        "Ice Punch",
+        "Icicle Crash",
+        "Tri Attack"
+      ]
     },
     {
       "no": 382,
       "name": "Registeel",
-      "types": ["Steel"],
+      "types": [
+        "Steel"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 75,
@@ -4964,12 +8192,21 @@
         "SpAtk": 75,
         "SpDef": 150,
         "Spd": 50
-      }
+      },
+      "moves": [
+        "Metal Claw",
+        "Outrage",
+        "Flash Cannon",
+        "Iron Head"
+      ]
     },
     {
       "no": 383,
       "name": "Latias",
-      "types": ["Dragon","Psychic"],
+      "types": [
+        "Dragon",
+        "Psychic"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 80,
@@ -4977,12 +8214,21 @@
         "SpAtk": 110,
         "SpDef": 130,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Dragon Pulse",
+        "Outrage",
+        "Rock Slide",
+        "Psychic"
+      ]
     },
     {
       "no": 384,
       "name": "Latios",
-      "types": ["Dragon","Psychic"],
+      "types": [
+        "Dragon",
+        "Psychic"
+      ],
       "stats": {
         "HP": 80,
         "Atk": 90,
@@ -4990,12 +8236,20 @@
         "SpAtk": 130,
         "SpDef": 110,
         "Spd": 110
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Outrage",
+        "Dragon Pulse",
+        "Earthquake"
+      ]
     },
     {
       "no": 385,
       "name": "Kyogre",
-      "types": ["Water"],
+      "types": [
+        "Water"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 100,
@@ -5003,12 +8257,20 @@
         "SpAtk": 150,
         "SpDef": 140,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Hydro Pump",
+        "Aqua Tail",
+        "Surf",
+        "Stone Edge"
+      ]
     },
     {
       "no": 386,
       "name": "Groudon",
-      "types": ["Ground"],
+      "types": [
+        "Ground"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 150,
@@ -5016,12 +8278,21 @@
         "SpAtk": 100,
         "SpDef": 90,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Earthquake",
+        "Fire Blast",
+        "Earth Power",
+        "Drill Run"
+      ]
     },
     {
       "no": 387,
       "name": "Rayquaza",
-      "types": ["Dragon","Flying"],
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
       "stats": {
         "HP": 105,
         "Atk": 150,
@@ -5029,12 +8300,21 @@
         "SpAtk": 150,
         "SpDef": 90,
         "Spd": 95
-      }
+      },
+      "moves": [
+        "Dragon Breath",
+        "Ominous Wind",
+        "Brave Bird",
+        "Dragon Pulse"
+      ]
     },
     {
       "no": 388,
       "name": "Jirachi",
-      "types": ["Steel","Psychic"],
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
       "stats": {
         "HP": 100,
         "Atk": 100,
@@ -5042,12 +8322,20 @@
         "SpAtk": 100,
         "SpDef": 100,
         "Spd": 100
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Flash Cannon",
+        "Metal Claw",
+        "Psycho Cut"
+      ]
     },
     {
       "no": 389,
       "name": "Deoxys",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 150,
@@ -5055,12 +8343,20 @@
         "SpAtk": 150,
         "SpDef": 50,
         "Spd": 150
-      }
+      },
+      "moves": [
+        "Psycho Cut",
+        "Zen Headbutt",
+        "Psychic",
+        "Surf"
+      ]
     },
     {
       "no": 390,
       "name": "Deoxys-Atk",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 180,
@@ -5068,12 +8364,20 @@
         "SpAtk": 180,
         "SpDef": 20,
         "Spd": 150
-      }
+      },
+      "moves": [
+        "Psychic",
+        "Snarl",
+        "Zen Headbutt",
+        "Psybeam"
+      ]
     },
     {
       "no": 391,
       "name": "Deoxys-Def",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 70,
@@ -5081,12 +8385,20 @@
         "SpAtk": 70,
         "SpDef": 160,
         "Spd": 90
-      }
+      },
+      "moves": [
+        "Zen Headbutt",
+        "Dragon Claw",
+        "Psycho Cut",
+        "Psybeam"
+      ]
     },
     {
       "no": 392,
       "name": "Deoxys-Spd",
-      "types": ["Psychic"],
+      "types": [
+        "Psychic"
+      ],
       "stats": {
         "HP": 50,
         "Atk": 95,
@@ -5094,7 +8406,13 @@
         "SpAtk": 95,
         "SpDef": 90,
         "Spd": 180
-      }
+      },
+      "moves": [
+        "Psychic",
+        "Zen Headbutt",
+        "Psycho Cut",
+        "Poison Jab"
+      ]
     }
   ]
 }
