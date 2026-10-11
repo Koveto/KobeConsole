@@ -188,6 +188,13 @@ class LeadSelectState:
 
                 self.opponent_ready = True
 
+                self.opponent_lead = int(
+                    message.replace(
+                        "LEAD:",
+                        ""
+                    )
+                )
+
         if (
             self.selected_lead is not None
             and self.opponent_ready
@@ -204,6 +211,31 @@ class LeadSelectState:
             self.state_manager.shared[
                 "player_lead"
             ] = self.selected_lead
+
+            if (
+                self.selected_lead is not None
+                and self.opponent_ready
+            ):
+
+                self.state_manager.shared[
+                    "player_team"
+                ] = self.team
+
+                self.state_manager.shared[
+                    "opponent_team"
+                ] = self.opponent_team
+
+                self.state_manager.shared[
+                    "player_lead"
+                ] = self.selected_lead
+
+                self.state_manager.shared[
+                    "opponent_lead"
+                ] = self.opponent_lead
+
+                self.state_manager.change(
+                    STATE_BATTLE
+                )
 
             self.state_manager.change(
                 STATE_BATTLE

@@ -213,6 +213,40 @@ class BattleState:
         self,
         event
     ):
+
+        if self.battle_phase == "forced_switch":
+
+            if is_up(event):
+
+                self.party_cursor = max(
+                    0,
+                    self.party_cursor - 1
+                )
+
+            elif is_down(event):
+
+                self.party_cursor = min(
+                    len(self.player_team) - 1,
+                    self.party_cursor + 1
+                )
+
+            elif is_confirm(event):
+
+                pokemon = (
+                    self.player_team[
+                        self.party_cursor
+                    ]
+                )
+
+                if pokemon.current_hp > 0:
+
+                    print(
+                        "Selected:",
+                        pokemon.species["name"]
+                    )
+
+            return
+                
         if is_up(event):
 
             if self.menu_state == "command":
@@ -365,8 +399,16 @@ class BattleState:
                 ]
             )
 
+            self.opponent_lead = (
+                self.state_manager.shared[
+                    "opponent_lead"
+                ]
+            )
+
             self.enemy = (
-                self.opponent_team[0]
+                self.opponent_team[
+                    self.opponent_lead
+                ]
             )
 
             self.enemy_species = (
@@ -897,13 +939,23 @@ class BattleState:
 
                 prefix = "X "
 
-            elif i == self.party_cursor:
-
-                prefix = "> "
-
             else:
 
                 prefix = "  "
+
+            if i == self.party_cursor:
+
+                pygame.draw.rect(
+                    surface,
+                    (80, 120, 255),
+                    (
+                        12,
+                        y - 1,
+                        140,
+                        14
+                    ),
+                    1
+                )
 
             text = (
                 f"{prefix}"
