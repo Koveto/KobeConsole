@@ -133,6 +133,12 @@ class BattleState:
                 ]
             )
 
+            self.player_lead = (
+                self.state_manager.shared[
+                    "player_lead"
+                ]
+            )
+
             lead_pokemon = (
                 self.player_team[
                     self.player_lead
