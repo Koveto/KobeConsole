@@ -214,10 +214,6 @@ class BattleState:
         event
     ):
 
-        if self.dialogue_state == "battle":
-
-            return
-        
         if self.battle_phase == "forced_switch":
 
             if is_up(event):
@@ -296,6 +292,11 @@ class BattleState:
                     self.battle_phase = None
 
             return
+                
+        if self.dialogue_state == "battle":
+        
+            return
+                
                 
         if is_up(event):
 
