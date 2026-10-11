@@ -331,6 +331,10 @@ class BattleState:
         elif self.battle_phase == "resolve_turn":
             self.resolve_turn_progress()
 
+        elif self.battle_phase == "faint_message":
+            self.update_faint_message()
+
+
         if not hasattr(
             self,
             "battle_initialized"
@@ -467,6 +471,7 @@ class BattleState:
                     "type": "move",
                     "move": move_name
                 }
+
         if (
             self.selected_action is not None
             and self.opponent_action is not None
@@ -504,6 +509,7 @@ class BattleState:
                 self.second_user,
                 move_data
             )
+
             self.second_user.current_hp = max(
                 0,
                 self.second_user.current_hp - damage
@@ -892,18 +898,46 @@ class BattleState:
             )
 
         return BattleState.HP_BOX_SPRITE_ENEMY
+    
+    def update_faint_message(self):
+
+        self.phase_timer -= 1
+
+        if self.phase_timer <= 0:
+
+            self.battle_phase = "idle"
 
     def resolve_turn_progress(self):
 
         if self.enemy.current_hp <= 0:
 
-            self.battle_phase = "idle"
+            self.dialogue_line_1 = (
+                self.enemy_species["name"].upper()
+            )
+
+            self.dialogue_line_2 = "FAINTED!"
+
+            self.dialogue_state = "battle"
+
+            self.phase_timer = 180
+
+            self.battle_phase = "faint_message"
 
             return
 
         if self.player.current_hp <= 0:
 
-            self.battle_phase = "idle"
+            self.dialogue_line_1 = (
+                self.player_species["name"].upper()
+            )
+
+            self.dialogue_line_2 = "FAINTED!"
+
+            self.dialogue_state = "battle"
+
+            self.phase_timer = 180
+
+            self.battle_phase = "faint_message"
 
             return
 
@@ -970,7 +1004,24 @@ class BattleState:
 
             return
 
-        self.battle_phase = "idle"
+        self.selected_action = None
+        self.opponent_action = None
+
+        self.first_user = None
+        self.first_action = None
+
+        self.second_user = None
+        self.second_action = None
+
+        self.turn_started = False
+        self.second_move_pending = False
+
+        self.waiting_for_opponent = False
+
+        self.menu_state = "command"
+        self.dialogue_state = "command"
+
+        self.battle_phase = None
 
     def update_special_flash(self):
 

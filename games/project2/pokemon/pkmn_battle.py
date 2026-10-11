@@ -75,10 +75,11 @@ class BattlePokemon:
         if move_data["type"] in attacker.species["types"]:
             stab = 1.5
 
-        rand = random.uniform(
-            0.85,
-            1.0
-        )
+        rand = 1
+        #random.uniform(
+        #    0.85,
+        #    1.0
+        #)
 
         base_damage = (
             2 +
