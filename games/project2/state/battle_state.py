@@ -93,9 +93,10 @@ class BattleState:
         self.battle_phase = None
 
         self.player_attack_offset_x = 0
-        self.enemy_attack_offset_x = 0
+        self.player_attack_offset_y = 0
 
-        self.attack_offset_y = 0
+        self.enemy_attack_offset_x = 0
+        self.enemy_attack_offset_y = 0
 
         self.flash_alpha = 0
         self.flash_color = None
@@ -285,7 +286,18 @@ class BattleState:
             if self.phase_timer == 60:
 
                 self.player_attack_offset_x = 0
+                self.player_attack_offset_y = 0
+
                 self.enemy_attack_offset_x = 0
+                self.enemy_attack_offset_y = 0
+
+        if self.flash_alpha > 0:
+
+            self.flash_alpha -= 8
+
+            if self.flash_alpha < 0:
+
+                self.flash_alpha = 0
 
         if not hasattr(
             self,
@@ -446,6 +458,17 @@ class BattleState:
                 second_species = self.player_species
                 second_action = self.selected_action
 
+            move_data = get_move(
+                first_action["move"]
+            )
+            if move_data["category"] == "Physical":
+
+                self.battle_phase = "physical"
+
+            else:
+
+                self.battle_phase = "special"
+
             if first_user is self.player:
 
                 pokemon_name = (
@@ -470,13 +493,27 @@ class BattleState:
             )
             self.dialogue_state = "battle"
             self.phase_timer = 120
-            if first_user is self.player:
+            if self.battle_phase == "physical":
 
-                self.player_attack_offset_x = 8
+                if first_user is self.player:
+
+                    self.player_attack_offset_x = 16
+                    self.player_attack_offset_y = -8
+
+                else:
+
+                    self.enemy_attack_offset_x = -16
+                    self.enemy_attack_offset_y = 8
 
             else:
 
-                self.enemy_attack_offset_x = -8
+                self.flash_color = (
+                    TYPE_COLORS[
+                        move_data["type"]
+                    ]
+                )
+
+                self.flash_alpha = 180
 
 
     def draw(
@@ -501,6 +538,7 @@ class BattleState:
                 + self.enemy_attack_offset_x,
 
                 BattleState.ENEMY_Y
+                + self.enemy_attack_offset_y
             )
         )
 
@@ -511,6 +549,7 @@ class BattleState:
                 + self.player_attack_offset_x,
 
                 BattleState.PLAYER_Y
+                + self.player_attack_offset_y
             )
         )
 
@@ -763,6 +802,28 @@ class BattleState:
                 self.dialogue_line_2,
                 12,
                 136
+            )
+
+        if self.flash_alpha > 0:
+
+            overlay = pygame.Surface(
+                (
+                    surface.get_width(),
+                    surface.get_height()
+                )
+            )
+
+            overlay.fill(
+                self.flash_color
+            )
+
+            overlay.set_alpha(
+                self.flash_alpha
+            )
+
+            surface.blit(
+                overlay,
+                (0, 0)
             )
 
     def _load_enemy_hp_box(self):
