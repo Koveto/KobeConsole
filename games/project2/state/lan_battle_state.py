@@ -2,6 +2,7 @@ import random
 
 from battle.battle_font import BattleFont
 from pokemon.pkmn_data import get_species
+from pokemon.pkmn_sprite import load_player_sprite
 from input_manager_pkmn import *
 
 
@@ -18,6 +19,7 @@ class LanBattleState:
         )
 
         self.team = []
+        self.team_sprites = []
 
         for _ in range(6):
 
@@ -26,8 +28,19 @@ class LanBattleState:
                 392
             )
 
+            species = get_species(
+                species_no
+            )
+
             self.team.append(
-                get_species(
+                {
+                    "species_no": species_no,
+                    "species": species
+                }
+            )
+
+            self.team_sprites.append(
+                load_player_sprite(
                     species_no
                 )
             )
@@ -87,17 +100,21 @@ class LanBattleState:
             self.team
         ):
 
-            name = pokemon["name"]
+            name = pokemon[
+                "species"
+            ]["name"]
 
             if (
                 self.selected_lead is None
                 and i == self.index
             ):
+
                 name = "> " + name
 
             elif (
                 self.selected_lead == i
             ):
+
                 name = "* " + name
 
             self.font.draw_text(
@@ -106,6 +123,22 @@ class LanBattleState:
                 10,
                 30 + i * 15
             )
+
+        preview_index = (
+            self.selected_lead
+            if self.selected_lead is not None
+            else self.index
+        )
+
+        surface.blit(
+            self.team_sprites[
+                preview_index
+            ],
+            (
+                140,
+                35
+            )
+        )
 
         if self.selected_lead is None:
 
