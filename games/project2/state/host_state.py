@@ -64,6 +64,9 @@ class HostState:
                     self.client_socket,
                     address
                 ) = self.server_socket.accept()
+                self.client_socket.setblocking(
+                    False
+                )
 
                 self.connected = True
 

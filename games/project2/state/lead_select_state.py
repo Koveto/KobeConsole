@@ -130,7 +130,7 @@ class LeadSelectState:
             )
 
             self.team_sent = True
-        """
+        
         try:
 
             data = self.client_socket.recv(
@@ -148,7 +148,6 @@ class LeadSelectState:
             OSError
         ):
             pass
-        """
 
         while self.pending_messages:
 
