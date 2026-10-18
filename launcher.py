@@ -83,6 +83,17 @@ games = [
             "logo0.png"
         )
     },
+    {
+        "title": "Pokemon Battle Simulator V2",
+        "path": "games/project3/main.py",
+        "color": (0, 100, 255),
+        "logo": os.path.join(
+            BASE_DIR,
+            "assets",
+            "logos",
+            "logo0.png"
+        )
+    },
 ]
 
 #background = pygame.image.load("assets/backgrounds/bg0.jpg")
