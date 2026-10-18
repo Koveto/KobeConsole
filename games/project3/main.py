@@ -1,8 +1,6 @@
 import pygame
 
 from constants import *
-from app import app
-from input_manager import *
 from update import *
 from handle_event import *
 from draw import *
@@ -31,6 +29,7 @@ def main():
             H_SCREEN_LOGICAL
         )
     )
+    init_draw()
     pygame.display.set_caption(TEXT_WINDOW_TITLE)
     clock = pygame.time.Clock()
     app.state = STATE_LAUNCHER_MENU

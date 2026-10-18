@@ -1,4 +1,3 @@
-import pygame, os
 from constants import *
 
 class Font:
