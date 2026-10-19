@@ -337,3 +337,40 @@ instead of relative paths like:
 assets/logos/logo0.png
 
 This fixes asset loading when launched from autostart.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Error: Your local changes to the following files would be overwritten 
+git fetch origin
+git reset --hard origin/master
+git clean -fd
+git pull

@@ -1,8 +1,74 @@
 from constants import *
+from pkmn_species import *
+from pkmn_move import *
 
+SPECIES = {}
+def load_species():
+    global SPECIES
+    if SPECIES:
+        return
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "pkmn_stats.json"
+    )
+    with open(
+        filepath,
+        "r",
+        encoding="utf-8"
+    ) as infile:
+        data = json.load(infile)
+    for species_data in data["pokemon"]:
 
+        species = PokemonSpecies(
+            no=species_data["no"],
+            name=species_data["name"],
+            types=species_data["types"],
+            stats=species_data["stats"],
+            moves=species_data["moves"]
+        )
 
+        SPECIES[species.no] = species
+def get_species(pokedex_number):
+    load_species()
+    return SPECIES.get(pokedex_number)
+def generate_list_names_dex_numbers():
+    load_species()
+    for species in SPECIES.values():
 
+        print(
+            f"PKMN_{species.name.upper().replace(' ', '_')} = {species.no}"
+        )
+
+MOVE_DATA = {}
+def load_moves():
+    global MOVE_DATA
+    if MOVE_DATA:
+        return
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "pkmn_moves.json"
+    )
+    with open(
+        filepath,
+        "r",
+        encoding="utf-8"
+    ) as infile:
+        data = json.load(
+            infile
+        )["moves"]
+    for name, move_data in data.items():
+        MOVE_DATA[name] = Move(
+            name=name,
+            move_type=move_data["type"],
+            category=move_data["category"],
+            accuracy=move_data["accuracy"],
+            power=move_data["power"]
+        )
+def get_move(name):
+    load_moves()
+    return MOVE_DATA.get(name)
 
 def get_local_ip():
 
