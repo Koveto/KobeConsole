@@ -22,6 +22,9 @@ def handle_event_TEAM_PREVIEW(event):
         app.TEAM_PREVIEW_column = 0
     elif is_right(event):
         app.TEAM_PREVIEW_column = 1
+    elif is_confirm(event):
+        if app.TEAM_PREVIEW_column == 0:
+            app.TEAM_PREVIEW_selected_lead = app.TEAM_PREVIEW_index
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):

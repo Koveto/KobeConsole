@@ -56,6 +56,12 @@ def draw_TEAM_PREVIEW():
                 cursor,
                 (15, y)
             )
+        if app.TEAM_PREVIEW_selected_lead == i:
+            app.font0.draw_text(
+                app.screen,
+                "*",
+                5,y
+            )
         app.font0.draw_text(
             app.screen,
             pokemon.species_name,
@@ -105,19 +111,23 @@ def draw_TEAM_PREVIEW():
             ]
         )
     if pokemon is not None:
-        app.font0.draw_text(
-            app.screen,
-            pokemon.species_name,
-            10,
-            130
-        )
         app.screen.blit(
             pokemon.front_sprite,
             (
-                100,
-                40
+                100,40
             )
-        )
+        )    
+    ready_text = ""
+    if (app.TEAM_PREVIEW_opponent_ready):
+        ready_text = "OPPONENT READY"
+    elif ((app.TEAM_PREVIEW_selected_lead is not None) and 
+          (not app.TEAM_PREVIEW_opponent_ready)):
+        ready_text = "WAITING FOR OPPONENT"
+    app.font0.draw_text(
+        app.screen,
+        ready_text,
+        10,130
+    )
 
 def draw_LAN_JOIN():
     app.screen.fill(COLOR_WHITE)
