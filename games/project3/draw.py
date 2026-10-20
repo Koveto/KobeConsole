@@ -36,18 +36,14 @@ def draw_LAN_TEAM_PREVIEW():
     app.font0.draw_text(
         app.screen,
         "TEAM PREVIEW",
-        30, 20
+        10,10
     )
-    app.font0.draw_text(
-        app.screen,
-        str(app.STATE_LAN_TEAM_PREVIEW_index),
-        30, 40
-    )
-    app.font0.draw_text(
-        app.screen,
-        app.STATE_LAN_TEAM_PREVIEW_last_message,
-        30, 60
-    )
+    for i, pokemon in enumerate(app.STATE_LAN_TEAM_PREVIEW_team):
+        app.font0.draw_text(
+            app.screen,
+            pokemon.species_name,
+            10, 30 + i * 15
+        )
 
 def draw_LAN_JOIN():
     app.screen.fill(COLOR_WHITE)

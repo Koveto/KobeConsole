@@ -1,5 +1,6 @@
 from constants import *
 from func import *
+from pkmn import *
 
 def change_state(new_state):
     if  (new_state == STATE_LAUNCHER_MENU):
@@ -20,8 +21,9 @@ def change_state(new_state):
         app.STATE_LAN_JOIN_discovered_host_ip = None
         app.STATE_LAN_JOIN_client_socket = None
     if  (new_state == STATE_LAN_TEAM_PREVIEW):
+        load_species()
         app.STATE_LAN_TEAM_PREVIEW_index = 0
-        app.STATE_LAN_TEAM_PREVIEW_team = []
+        app.STATE_LAN_TEAM_PREVIEW_team = [Pokemon.from_species_number(random.randint(1, len(SPECIES))) for _ in range(6)]
         app.STATE_LAN_TEAM_PREVIEW_opponent_team = []
         app.STATE_LAN_TEAM_PREVIEW_selected_lead = None
         app.STATE_LAN_TEAM_PREVIEW_opponent_lead = None
