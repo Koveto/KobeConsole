@@ -38,20 +38,20 @@ def update_TEAM_PREVIEW():
             }
         )
         app.TEAM_PREVIEW_ready_sent = True
-        for packet in recv_packets():
-            if packet["type"] == "TEAM":
-                app.TEAM_PREVIEW_opponent_team = []
-                for pokemon_data in packet["data"]:
-                    app.TEAM_PREVIEW_opponent_team.append(
-                        Pokemon.from_dict(
-                            pokemon_data
-                        )
+    for packet in recv_packets():
+        if packet["type"] == "TEAM":
+            app.TEAM_PREVIEW_opponent_team = []
+            for pokemon_data in packet["data"]:
+                app.TEAM_PREVIEW_opponent_team.append(
+                    Pokemon.from_dict(
+                        pokemon_data
                     )
-            elif packet["type"] == "LEAD":
-                app.TEAM_PREVIEW_opponent_lead = (
-                    packet["data"]
                 )
-                app.TEAM_PREVIEW_opponent_ready = True
+        elif packet["type"] == "LEAD":
+            app.TEAM_PREVIEW_opponent_lead = (
+                packet["data"]
+            )
+            app.TEAM_PREVIEW_opponent_ready = True
 
 def update_LAN_JOIN():
     if app.LAN_JOIN_discovery_socket is None:
