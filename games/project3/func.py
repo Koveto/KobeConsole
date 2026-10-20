@@ -13,14 +13,18 @@ def send_packet(packet):
 def recv_packets():
     packets = []
     try:
-        data = app.connection_socket.recv(8192)
+        data = app.connection_socket.recv(
+            8192
+        )
         if data:
-            app.connection_buffer += data.decode()
+            app.connection_buffer += (
+                data.decode()
+            )
     except (
         BlockingIOError,
         OSError
     ):
-        return packets
+        pass
     while "\n" in app.connection_buffer:
         line, app.connection_buffer = (
             app.connection_buffer.split(
@@ -29,7 +33,11 @@ def recv_packets():
             )
         )
         if line:
-            packets.append(json.loads(line))
+            packets.append(
+                json.loads(
+                    line
+                )
+            )
     return packets
 
 SPECIES = {}
