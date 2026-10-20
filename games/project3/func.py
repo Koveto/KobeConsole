@@ -2,6 +2,36 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+def send_packet(packet):
+    app.connection_socket.send(
+        (
+            json.dumps(packet)
+            + "\n"
+        ).encode()
+    )
+
+def recv_packets():
+    packets = []
+    try:
+        data = app.connection_socket.recv(8192)
+        if data:
+            app.connection_buffer += data.decode()
+    except (
+        BlockingIOError,
+        OSError
+    ):
+        return packets
+    while "\n" in app.connection_buffer:
+        line, app.connection_buffer = (
+            app.connection_buffer.split(
+                "\n",
+                1
+            )
+        )
+        if line:
+            packets.append(json.loads(line))
+    return packets
+
 SPECIES = {}
 def load_species():
     global SPECIES

@@ -17,14 +17,11 @@ def update_TEAM_PREVIEW():
             team_data.append(
                 pokemon.to_dict()
             )
-        message = json.dumps(
-            team_data
-        )
-        app.connection_socket.send(
-            (
-                "TEAM:"
-                + message
-            ).encode()
+        send_packet(
+            {
+                "type": "TEAM",
+                "data": team_data
+            }
         )
         app.TEAM_PREVIEW_team_sent = True
     if (
@@ -33,13 +30,12 @@ def update_TEAM_PREVIEW():
         and
         not app.TEAM_PREVIEW_ready_sent
     ):
-        app.connection_socket.send(
-            (
-                "LEAD:"
-                + str(
+        send_packet(
+            {
+                "type": "LEAD",
+                "data":
                     app.TEAM_PREVIEW_selected_lead
-                )
-            ).encode()
+            }
         )
         app.TEAM_PREVIEW_ready_sent = True
     try:
@@ -50,36 +46,20 @@ def update_TEAM_PREVIEW():
         )
         if data:
             message = data.decode()
-            if message.startswith(
-                "TEAM:"
-            ):
-                json_text = (
-                    message.replace(
-                        "TEAM:",
-                        "",
-                        1
-                    )
-                )
-                team_data = json.loads(
-                    json_text
-                )
-                app.TEAM_PREVIEW_opponent_team = []
-                for pokemon_data in team_data:
-                    app.TEAM_PREVIEW_opponent_team.append(
-                        Pokemon.from_dict(
-                            pokemon_data
+            for packet in recv_packets():
+                if packet["type"] == "TEAM":
+                    app.TEAM_PREVIEW_opponent_team = []
+                    for pokemon_data in packet["data"]:
+                        app.TEAM_PREVIEW_opponent_team.append(
+                            Pokemon.from_dict(
+                                pokemon_data
+                            )
                         )
+                elif packet["type"] == "LEAD":
+                    app.TEAM_PREVIEW_opponent_lead = (
+                        packet["data"]
                     )
-            elif message.startswith(
-                "LEAD:"
-            ):
-                app.TEAM_PREVIEW_opponent_lead = int(
-                    message.replace(
-                        "LEAD:",
-                        ""
-                    )
-                )
-                app.TEAM_PREVIEW_opponent_ready = True
+                    app.TEAM_PREVIEW_opponent_ready = True
     except (
         BlockingIOError,
         OSError

@@ -5,6 +5,7 @@ class App:
         self.font0 = None
         self.connection_socket = None
         self.connection_is_host = None
+        self.connection_buffer = ""
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
