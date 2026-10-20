@@ -1763,7 +1763,7 @@
     },
     {
       "no": 83,
-      "name": "Farfetch'd",
+      "name": "Farfetchd",
       "types": [
         "Normal",
         "Flying"
@@ -7542,7 +7542,7 @@
     },
     {
       "no": 352,
-      "name": "Castform-Sun",
+      "name": "CastformSun",
       "types": [
         "Fire"
       ],
@@ -7563,7 +7563,7 @@
     },
     {
       "no": 353,
-      "name": "Castform-Rain",
+      "name": "CastformRain",
       "types": [
         "Water"
       ],
@@ -7584,7 +7584,7 @@
     },
     {
       "no": 354,
-      "name": "Castform-Hail",
+      "name": "CastformHail",
       "types": [
         "Ice"
       ],
@@ -8353,7 +8353,7 @@
     },
     {
       "no": 390,
-      "name": "Deoxys-Atk",
+      "name": "DeoxysAtk",
       "types": [
         "Psychic"
       ],
@@ -8374,7 +8374,7 @@
     },
     {
       "no": 391,
-      "name": "Deoxys-Def",
+      "name": "DeoxysDef",
       "types": [
         "Psychic"
       ],
@@ -8395,7 +8395,7 @@
     },
     {
       "no": 392,
-      "name": "Deoxys-Spd",
+      "name": "DeoxysSpd",
       "types": [
         "Psychic"
       ],

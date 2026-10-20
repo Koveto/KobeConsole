@@ -32,7 +32,7 @@ def main():
     init_draw()
     pygame.display.set_caption(TEXT_WINDOW_TITLE)
     clock = pygame.time.Clock()
-    app.state = STATE_LAUNCHER_MENU
+    app.state = LAUNCHER_MENU
     app.font0 = Font(
                 "font_menu.png",
                 glyph_w=6,

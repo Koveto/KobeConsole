@@ -14,11 +14,11 @@ H_SCREEN_LOGICAL = 160
 TEXT_WINDOW_TITLE = "Pkmn Battle Simulator V2"
 TEXT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-STATE_LAUNCHER_MENU    = 0
-STATE_LAN_HOST_JOIN    = 1
-STATE_LAN_HOST         = 2
-STATE_LAN_JOIN         = 3
-STATE_LAN_TEAM_PREVIEW = 4
+LAUNCHER_MENU    = 0
+LAN_HOST_JOIN    = 1
+LAN_HOST         = 2
+LAN_JOIN         = 3
+TEAM_PREVIEW = 4
 
 COLOR_BLACK = (0, 0, 0)
 COLOR_BLUE = (0, 0, 255)

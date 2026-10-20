@@ -20,142 +20,114 @@ def init_draw():
     )
 
 def draw():
-    if app.state == STATE_LAUNCHER_MENU:
+    if app.state == LAUNCHER_MENU:
         draw_LAUNCHER_MENU()
-    elif app.state == STATE_LAN_HOST_JOIN:
+    elif app.state == LAN_HOST_JOIN:
         draw_LAN_HOST_JOIN()
-    elif app.state == STATE_LAN_HOST:
+    elif app.state == LAN_HOST:
         draw_LAN_HOST()
-    elif app.state == STATE_LAN_JOIN:
+    elif app.state == LAN_JOIN:
         draw_LAN_JOIN()
-    elif app.state == STATE_LAN_TEAM_PREVIEW:
-        draw_LAN_TEAM_PREVIEW()
+    elif app.state == TEAM_PREVIEW:
+        draw_TEAM_PREVIEW()
 
-def draw_LAN_TEAM_PREVIEW():
-
+def draw_TEAM_PREVIEW():
     app.screen.fill(COLOR_WHITE)
-
     app.font0.draw_text(
         app.screen,
         "YOUR TEAM",
         10, 10
     )
-
     app.font0.draw_text(
         app.screen,
         "OPPONENT",
-        130, 10
+        170, 10
     )
-
-    #
-    # Your Team
-    #
-
     for i, pokemon in enumerate(
-        app.STATE_LAN_TEAM_PREVIEW_team
+        app.TEAM_PREVIEW_team
     ):
-
         y = 30 + i * 15
-
         if (
-            app.STATE_LAN_TEAM_PREVIEW_column == 0
+            app.TEAM_PREVIEW_column == 0
             and
-            i == app.STATE_LAN_TEAM_PREVIEW_index
+            i == app.TEAM_PREVIEW_index
         ):
             app.screen.blit(
                 cursor,
-                (15, y + 3)
+                (15, y)
             )
-
         app.font0.draw_text(
             app.screen,
             pokemon.species_name,
             30,
             y
         )
-
-    #
-    # Opponent Team
-    #
-
     for i in range(6):
-
         y = 30 + i * 15
-
         if (
-            app.STATE_LAN_TEAM_PREVIEW_column == 1
+            app.TEAM_PREVIEW_column == 1
             and
-            i == app.STATE_LAN_TEAM_PREVIEW_index
+            i == app.TEAM_PREVIEW_index
         ):
             app.screen.blit(
                 cursor,
-                (130, y + 3)
+                (170, y)
             )
-
-        app.font0.draw_text(
-            app.screen,
-            "-----",
-            145,
-            y
-        )
-
-    #
-    # Selected Pokemon
-    #
-
+        if i < len(app.TEAM_PREVIEW_opponent_team):
+            opponent = app.TEAM_PREVIEW_opponent_team[i]
+            app.font0.draw_text(
+                app.screen,
+                opponent.species_name,
+                185, y
+            )
+        else:
+            app.font0.draw_text(
+                app.screen,
+                "-----",
+                185, y
+            )
     pokemon = None
-
-    if app.STATE_LAN_TEAM_PREVIEW_column == 0:
-
+    if app.TEAM_PREVIEW_column == 0:
         pokemon = (
-            app.STATE_LAN_TEAM_PREVIEW_team[
-                app.STATE_LAN_TEAM_PREVIEW_index
+            app.TEAM_PREVIEW_team[
+                app.TEAM_PREVIEW_index
             ]
         )
-
     elif (
-        app.STATE_LAN_TEAM_PREVIEW_index
+        app.TEAM_PREVIEW_index
         < len(
-            app.STATE_LAN_TEAM_PREVIEW_opponent_team
+            app.TEAM_PREVIEW_opponent_team
         )
     ):
-
         pokemon = (
-            app.STATE_LAN_TEAM_PREVIEW_opponent_team[
-                app.STATE_LAN_TEAM_PREVIEW_index
+            app.TEAM_PREVIEW_opponent_team[
+                app.TEAM_PREVIEW_index
             ]
         )
-
-    #
-    # Draw Selected Pokemon
-    #
-
     if pokemon is not None:
-
         app.font0.draw_text(
             app.screen,
             pokemon.species_name,
             10,
             130
         )
-
         app.screen.blit(
             pokemon.front_sprite,
             (
-                80,
+                100,
                 40
             )
         )
 
 def draw_LAN_JOIN():
     app.screen.fill(COLOR_WHITE)
-    if app.STATE_LAN_JOIN_discovered_host_ip:
+    if app.LAN_JOIN_discovered_host_ip:
         app.font0.draw_text(
             app.screen,
-            app.STATE_LAN_JOIN_discovered_host_ip,
+            app.LAN_JOIN_discovered_host_ip,
             40, 80
         )
-    status = ("CONNECTED" if app.STATE_LAN_JOIN_connected else "SEARCHING...")
+    status = ("CONNECTED" if app.LAN_JOIN_connected else "SEARCHING...")
     app.font0.draw_text(
         app.screen,
         status,
@@ -164,7 +136,7 @@ def draw_LAN_JOIN():
 
 def draw_LAN_HOST():
     app.screen.fill(COLOR_WHITE)
-    status = ("CONNECTED" if app.STATE_LAN_HOST_connected else "HOSTING...")
+    status = ("CONNECTED" if app.LAN_HOST_connected else "HOSTING...")
     app.font0.draw_text(
         app.screen,
         status,
@@ -183,7 +155,7 @@ def draw_LAN_HOST_JOIN():
     )
     for i, option in enumerate(options):
         y = 80 + (i * 20)
-        if i == app.STATE_LAN_HOST_JOIN_index:
+        if i == app.LAN_HOST_JOIN_index:
             app.screen.blit(
                 cursor,
                 (30, y + 3)
@@ -201,9 +173,9 @@ def draw_LAUNCHER_MENU():
         "Pokemon Battle Simulator",
         70, 40
     )
-    for i, option in enumerate(app.STATE_LAUNCHER_MENU_options):
+    for i, option in enumerate(app.LAUNCHER_MENU_options):
         y = 80 + (i * 20)
-        if i == app.STATE_LAUNCHER_MENU_index:
+        if i == app.LAUNCHER_MENU_index:
             app.screen.blit(
                 cursor,
                 (30, y + 3)
