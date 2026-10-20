@@ -27,6 +27,21 @@ def update_TEAM_PREVIEW():
             ).encode()
         )
         app.TEAM_PREVIEW_team_sent = True
+    if (
+        app.TEAM_PREVIEW_selected_lead
+        is not None
+        and
+        not app.TEAM_PREVIEW_ready_sent
+    ):
+        app.connection_socket.send(
+            (
+                "LEAD:"
+                + str(
+                    app.TEAM_PREVIEW_selected_lead
+                )
+            ).encode()
+        )
+        app.TEAM_PREVIEW_ready_sent = True
     try:
         data = (
             app.connection_socket.recv(
@@ -55,6 +70,16 @@ def update_TEAM_PREVIEW():
                             pokemon_data
                         )
                     )
+            elif message.startswith(
+                "LEAD:"
+            ):
+                app.TEAM_PREVIEW_opponent_lead = int(
+                    message.replace(
+                        "LEAD:",
+                        ""
+                    )
+                )
+                app.TEAM_PREVIEW_opponent_ready = True
     except (
         BlockingIOError,
         OSError

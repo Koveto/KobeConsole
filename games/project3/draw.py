@@ -54,18 +54,24 @@ def draw_TEAM_PREVIEW():
         ):
             app.screen.blit(
                 cursor,
-                (15, y)
+                (5, y)
             )
         if app.TEAM_PREVIEW_selected_lead == i:
-            app.font0.draw_text(
+            pygame.draw.rect(
                 app.screen,
-                "*",
-                5,y
+                COLOR_BLACK,
+                (
+                    18,
+                    y - 1,
+                    70,
+                    15
+                ),
+                1
             )
         app.font0.draw_text(
             app.screen,
             pokemon.species_name,
-            30,
+            20,
             y
         )
     for i in range(6):
@@ -77,20 +83,20 @@ def draw_TEAM_PREVIEW():
         ):
             app.screen.blit(
                 cursor,
-                (170, y)
+                (160, y)
             )
         if i < len(app.TEAM_PREVIEW_opponent_team):
             opponent = app.TEAM_PREVIEW_opponent_team[i]
             app.font0.draw_text(
                 app.screen,
                 opponent.species_name,
-                185, y
+                175, y
             )
         else:
             app.font0.draw_text(
                 app.screen,
                 "-----",
-                185, y
+                175, y
             )
     pokemon = None
     if app.TEAM_PREVIEW_column == 0:
@@ -114,7 +120,7 @@ def draw_TEAM_PREVIEW():
         app.screen.blit(
             pokemon.front_sprite,
             (
-                100,40
+                90,40
             )
         )    
     ready_text = ""
