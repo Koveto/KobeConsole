@@ -32,20 +32,119 @@ def draw():
         draw_LAN_TEAM_PREVIEW()
 
 def draw_LAN_TEAM_PREVIEW():
+
     app.screen.fill(COLOR_WHITE)
+
     app.font0.draw_text(
         app.screen,
-        "TEAM PREVIEW",
-        10,10
+        "YOUR TEAM",
+        10, 10
     )
-    for i, pokemon in enumerate(app.STATE_LAN_TEAM_PREVIEW_team):
+
+    app.font0.draw_text(
+        app.screen,
+        "OPPONENT",
+        130, 10
+    )
+
+    #
+    # Your Team
+    #
+
+    for i, pokemon in enumerate(
+        app.STATE_LAN_TEAM_PREVIEW_team
+    ):
+
         y = 30 + i * 15
-        if (i == app.STATE_LAN_TEAM_PREVIEW_index):
-            app.screen.blit(cursor, (0, y+3))
+
+        if (
+            app.STATE_LAN_TEAM_PREVIEW_column == 0
+            and
+            i == app.STATE_LAN_TEAM_PREVIEW_index
+        ):
+            app.screen.blit(
+                cursor,
+                (15, y + 3)
+            )
+
         app.font0.draw_text(
             app.screen,
             pokemon.species_name,
-            15, y
+            30,
+            y
+        )
+
+    #
+    # Opponent Team
+    #
+
+    for i in range(6):
+
+        y = 30 + i * 15
+
+        if (
+            app.STATE_LAN_TEAM_PREVIEW_column == 1
+            and
+            i == app.STATE_LAN_TEAM_PREVIEW_index
+        ):
+            app.screen.blit(
+                cursor,
+                (130, y + 3)
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            "-----",
+            145,
+            y
+        )
+
+    #
+    # Selected Pokemon
+    #
+
+    pokemon = None
+
+    if app.STATE_LAN_TEAM_PREVIEW_column == 0:
+
+        pokemon = (
+            app.STATE_LAN_TEAM_PREVIEW_team[
+                app.STATE_LAN_TEAM_PREVIEW_index
+            ]
+        )
+
+    elif (
+        app.STATE_LAN_TEAM_PREVIEW_index
+        < len(
+            app.STATE_LAN_TEAM_PREVIEW_opponent_team
+        )
+    ):
+
+        pokemon = (
+            app.STATE_LAN_TEAM_PREVIEW_opponent_team[
+                app.STATE_LAN_TEAM_PREVIEW_index
+            ]
+        )
+
+    #
+    # Draw Selected Pokemon
+    #
+
+    if pokemon is not None:
+
+        app.font0.draw_text(
+            app.screen,
+            pokemon.species_name,
+            10,
+            130
+        )
+
+        app.screen.blit(
+            pokemon.front_sprite,
+            (
+                80,
+                40
+            )
         )
 
 def draw_LAN_JOIN():

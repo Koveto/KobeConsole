@@ -31,4 +31,5 @@ def change_state(new_state):
         app.STATE_LAN_TEAM_PREVIEW_opponent_ready = False
         app.STATE_LAN_TEAM_PREVIEW_pending_messages = []
         app.STATE_LAN_TEAM_PREVIEW_last_message = ""
+        app.STATE_LAN_TEAM_PREVIEW_column = 0
     app.state = new_state

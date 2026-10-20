@@ -32,7 +32,6 @@ class App:
         self.STATE_LAN_TEAM_PREVIEW_opponent_lead = None
         self.STATE_LAN_TEAM_PREVIEW_ready_sent = None
         self.STATE_LAN_TEAM_PREVIEW_opponent_ready = None
-        self.STATE_LAN_TEAM_PREVIEW_pending_messages = None
-        self.STATE_LAN_TEAM_PREVIEW_last_message = None
+        self.STATE_LAN_TEAM_PREVIEW_column = None
 
 app = App()

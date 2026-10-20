@@ -18,8 +18,10 @@ def handle_event_LAN_TEAM_PREVIEW(event):
         app.STATE_LAN_TEAM_PREVIEW_index = max(0, app.STATE_LAN_TEAM_PREVIEW_index - 1)
     elif is_down(event):
         app.STATE_LAN_TEAM_PREVIEW_index = min(5, app.STATE_LAN_TEAM_PREVIEW_index + 1)
-    elif is_confirm(event):
-        app.STATE_LAN_TEAM_PREVIEW_selected_lead = app.STATE_LAN_TEAM_PREVIEW_index
+    elif is_left(event):
+        app.STATE_LAN_TEAM_PREVIEW_column = 0
+    elif is_right(event):
+        app.STATE_LAN_TEAM_PREVIEW_column = 1
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):
