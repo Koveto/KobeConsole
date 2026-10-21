@@ -25,7 +25,7 @@ def change_state(new_state):
         (new_state == TEAM_PREVIEW):
         load_species()
         app.TEAM_PREVIEW_index = 0
-        app.TEAM_PREVIEW_team = [Pokemon.from_species_number(random.randint(1, len(SPECIES))) for _ in range(6)]
+        app.TEAM_PREVIEW_team = app.selected_team
         app.TEAM_PREVIEW_opponent_team = []
         app.TEAM_PREVIEW_selected_lead = None
         app.TEAM_PREVIEW_opponent_lead = None
@@ -41,4 +41,6 @@ def change_state(new_state):
         app.PKMN_VIEW_mode = "STATS"
     if  (new_state == SPECIES_VIEW):
         app.SPECIES_VIEW_mode = "STATS"
+    if  (new_state == TEAM_SELECT):
+        app.TEAM_SELECT_index = 0
     app.state = new_state

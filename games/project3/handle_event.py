@@ -18,6 +18,20 @@ def handle_event(event):
         handle_event_SPECIES_VIEW(event)
     elif app.state == BATTLE_START:
         handle_event_BATTLE_START(event)
+    elif app.state == TEAM_SELECT:
+        handle_event_TEAM_SELECT(event)
+
+def handle_event_TEAM_SELECT(event):
+    if is_up(event):
+        app.TEAM_SELECT_index = max(0, app.TEAM_SELECT_index - 1)
+    elif is_down(event):
+        app.TEAM_SELECT_index = min(len(app.available_teams) - 1, app.TEAM_SELECT_index + 1)
+    elif is_confirm(event):
+        if app.available_teams[app.TEAM_SELECT_index] == "Random Team":
+            app.selected_team = [Pokemon.from_species_number(random.randint(1,len(SPECIES))) for _ in range(6)]
+        change_state(TEAM_PREVIEW)
+    elif is_cancel(event):
+        change_state(LAN_HOST_JOIN)
 
 def handle_event_BATTLE_START(event):
     pass
@@ -138,6 +152,11 @@ def handle_event_TEAM_PREVIEW(event):
             elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):
                 app.SPECIES_VIEW_species = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
             change_state(SPECIES_VIEW)
+    elif (
+        is_cancel(event) and \
+        app.TEAM_PREVIEW_selected_lead is None
+    ):
+        change_state(TEAM_SELECT)
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):

@@ -8,6 +8,8 @@ class App:
         self.connection_is_host = None
         self.connection_buffer = ""
         self.option_info = False
+        self.selected_team = None
+        self.available_teams = ["Random Team"]
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
@@ -44,5 +46,7 @@ class App:
 
         self.SPECIES_VIEW_species = None
         self.SPECIES_VIEW_mode = None
+
+        self.TEAM_SELECT_index = 0
 
 app = App()

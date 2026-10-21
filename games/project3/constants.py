@@ -22,6 +22,7 @@ TEAM_PREVIEW     = 4
 PKMN_VIEW        = 5
 SPECIES_VIEW     = 6
 BATTLE_START     = 7
+TEAM_SELECT      = 8
 
 COLOR_BLACK = (0, 0, 0)
 COLOR_BLUE = (0, 0, 255)

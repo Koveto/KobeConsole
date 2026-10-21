@@ -37,6 +37,28 @@ def draw():
         draw_SPECIES_VIEW()
     elif app.state == BATTLE_START:
         draw_BATTLE_START()
+    elif app.state == TEAM_SELECT:
+        draw_TEAM_SELECT()
+
+def draw_TEAM_SELECT():
+    app.screen.fill(COLOR_WHITE)
+    app.font0.draw_text(
+        app.screen,
+        "SELECT TEAM",
+        10,10
+    )
+    for i, team_name in enumerate(app.available_teams):
+        if i == app.TEAM_SELECT_index:
+            app.screen.blit(
+                cursor,
+                (10, 40 + i * 15)
+            )
+        app.font0.draw_text(
+            app.screen,
+            team_name,
+            20,
+            40 + i * 15
+        )
 
 def draw_BATTLE_START():
     app.screen.fill(COLOR_WHITE)

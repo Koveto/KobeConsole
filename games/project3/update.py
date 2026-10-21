@@ -111,7 +111,7 @@ def update_LAN_JOIN():
             app.LAN_JOIN_is_host = False
             app.connection_socket = app.LAN_JOIN_client_socket
             app.connection_is_host = False
-            change_state(TEAM_PREVIEW)
+            change_state(TEAM_SELECT)
         except OSError:
             pass
 
@@ -132,7 +132,7 @@ def update_LAN_HOST():
             app.LAN_HOST_is_host = True
             app.connection_socket = app.LAN_HOST_client_socket
             app.connection_is_host = True
-            change_state(TEAM_PREVIEW)
+            change_state(TEAM_SELECT)
         except (
             BlockingIOError,
             OSError
