@@ -59,6 +59,15 @@ def draw_TEAM_SELECT():
             20,
             40 + i * 15
         )
+    for i, pokemon in enumerate(app.TEAM_SELECT_preview_team):
+        column = i % 2
+        row = i // 2
+        x = 120 + column * 50
+        y = 15 + row * 40
+        app.screen.blit(
+            pokemon.front_sprite,
+            (x,y)
+        )
 
 def draw_BATTLE_START():
     app.screen.fill(COLOR_WHITE)

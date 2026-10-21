@@ -24,8 +24,16 @@ def handle_event(event):
 def handle_event_TEAM_SELECT(event):
     if is_up(event):
         app.TEAM_SELECT_index = max(0, app.TEAM_SELECT_index - 1)
+        app.TEAM_SELECT_preview_team = [
+            Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
+            for _ in range(6)
+        ]
     elif is_down(event):
         app.TEAM_SELECT_index = min(len(app.available_teams) - 1, app.TEAM_SELECT_index + 1)
+        app.TEAM_SELECT_preview_team = [
+            Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
+            for _ in range(6)
+        ]
     elif is_confirm(event):
         if app.available_teams[app.TEAM_SELECT_index] == "Random Team":
             load_species()

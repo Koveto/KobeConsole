@@ -42,9 +42,15 @@ def change_state(new_state):
     if  (new_state == SPECIES_VIEW):
         app.SPECIES_VIEW_mode = "STATS"
     if  (new_state == TEAM_SELECT):
+        load_species()
         app.TEAM_SELECT_index = 0
-        teams = load_teams()
+        teams_data = load_teams()
+        app.teams_data = teams_data["teams"]
         app.available_teams = []
-        for team_data in teams["teams"]:
-            app.available_teams.append(team_data["name"])
+        for team in app.teams_data:
+            app.available_teams.append(team["name"])
+        app.TEAM_SELECT_preview_team = [
+            Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
+            for _ in range(6)
+        ]
     app.state = new_state

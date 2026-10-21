@@ -48,5 +48,6 @@ class App:
         self.SPECIES_VIEW_mode = None
 
         self.TEAM_SELECT_index = 0
+        self.TEAM_SELECT_preview_team = []
 
 app = App()

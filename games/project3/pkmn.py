@@ -72,7 +72,7 @@ class Pokemon:
         moves=None,
         evs=None,
         ivs=None,
-        is_shiny=False,
+        is_shiny=None,
         front_sprite_number=None,
         back_sprite_number=None,
         status=None
@@ -148,7 +148,8 @@ class Pokemon:
         self.special_attack_modifier = 0
         self.special_defense_modifier = 0
         self.speed_modifier = 0
-        self.is_shiny = is_shiny
+        if is_shiny not in (True, False):
+            is_shiny = random.randint(1,2) == 1
         self.front_sprite_number = front_sprite_number
         self.back_sprite_number = back_sprite_number
         if self.front_sprite_number is None:
