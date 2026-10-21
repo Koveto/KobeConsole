@@ -33,5 +33,5 @@ def change_state(new_state):
         app.TEAM_PREVIEW_column = 0
         app.TEAM_PREVIEW_team_sent = False
     if  (new_state == PKMN_VIEW):
-        app.PKMN_VIEW_pokemon = None
+        pass
     app.state = new_state
