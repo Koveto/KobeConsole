@@ -10,6 +10,7 @@ class App:
         self.option_info = False
         self.selected_team = None
         self.available_teams = ["Random Team"]
+        self.teams_data = []
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",

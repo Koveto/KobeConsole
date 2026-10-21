@@ -63,7 +63,7 @@ def draw_TEAM_SELECT():
         column = i % 2
         row = i // 2
         x = 120 + column * 50
-        y = 15 + row * 40
+        y = row * 48
         app.screen.blit(
             pokemon.front_sprite,
             (x,y)

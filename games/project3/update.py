@@ -15,6 +15,14 @@ def update():
         update_SPECIES_VIEW()
     elif app.state == BATTLE_START:
         update_BATTLE_START()
+    elif app.state == TEAM_SELECT:
+        update_TEAM_SELECT()
+
+def update_TEAM_SELECT():
+    for packet in recv_packets():
+        if packet["type"] == "DISCONNECT":
+            disconnect()
+            change_state(LAN_HOST_JOIN)
 
 def update_BATTLE_START():
     for packet in recv_packets():

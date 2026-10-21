@@ -1,15 +1,10 @@
 {
     "teams": [
         {
-            "name": "Random Team",
-            "pokemon": []
+            "name": "Random Team"
         },
         {
-            "name": "Rain Team",
-            "pokemon": []
-        },
-        {
-            "name": "Sand Team",
+            "name": "Test Team",
             "pokemon": []
         }
     ]
