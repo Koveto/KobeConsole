@@ -28,10 +28,9 @@ def handle_event_TEAM_SELECT(event):
         app.TEAM_SELECT_index = min(len(app.available_teams) - 1, app.TEAM_SELECT_index + 1)
     elif is_confirm(event):
         if app.available_teams[app.TEAM_SELECT_index] == "Random Team":
+            load_species()
             app.selected_team = [Pokemon.from_species_number(random.randint(1,len(SPECIES))) for _ in range(6)]
         change_state(TEAM_PREVIEW)
-    elif is_cancel(event):
-        change_state(LAN_HOST_JOIN)
 
 def handle_event_BATTLE_START(event):
     pass
