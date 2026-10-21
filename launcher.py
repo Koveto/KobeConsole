@@ -182,7 +182,7 @@ while running:
 
     for event in pygame.event.get():
 
-        if IS_WINDOWS and is_quit(event):
+        if (IS_WINDOWS and is_quit(event)) or (event.type == pygame.QUIT):
             running = False
         
         if is_right(event):

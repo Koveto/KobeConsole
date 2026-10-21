@@ -14,13 +14,6 @@ ALPHA_KEY = (
     235,
     255
 )
-STATUS_NONE = None
-STATUS_POISON = "POISON"
-STATUS_BURN = "BURN"
-STATUS_PARALYSIS = "PARALYSIS"
-STATUS_SLEEP = "SLEEP"
-STATUS_FREEZE = "FREEZE"
-STATUS_FAINTED = "FAINTED"
 def load_pokemon_sheet():
     global POKEMON_SHEET
     if POKEMON_SHEET is not None:
@@ -279,7 +272,8 @@ class Pokemon:
             ),
             back_sprite_number=(
                 pokemon.back_sprite_number
-            )
+            ),
+            status=pokemon.status
         )
 
     def nature_multiplier(
@@ -357,7 +351,7 @@ class Pokemon:
             is_shiny=data["is_shiny"],
             front_sprite_number=data["front_sprite_number"],
             back_sprite_number=data["back_sprite_number"],
-            status=data["status"]
+            status=data.get("status", STATUS_NONE)
         )
 
     def animate_sprite(self):
