@@ -44,11 +44,11 @@ def draw_PKMN_VIEW():
             get_type_icon(
                 pokemon_type
             ),
-            (10 + i * 35, 25)
+            (10 + i * 32, 25)
         )
     app.font0.draw_text(
         app.screen,
-        pokemon.species_name,
+        pokemon.species_name + pokemon.gender,
         10, 10
     )
     app.screen.blit(
@@ -57,12 +57,7 @@ def draw_PKMN_VIEW():
     )
     app.font0.draw_text(
         app.screen,
-        pokemon.nature.name,
-        10, 30
-    )
-    app.font0.draw_text(
-        app.screen,
-        f"HP {pokemon.hp_max}",
+        f"HP  {pokemon.hp_max}",
         10, 50
     )
     app.font0.draw_text(

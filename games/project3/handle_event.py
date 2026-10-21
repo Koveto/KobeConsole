@@ -16,8 +16,39 @@ def handle_event(event):
         handle_event_PKMN_VIEW(event)
 
 def handle_event_PKMN_VIEW(event):
+    if is_up(event):
+        app.TEAM_PREVIEW_index = max(
+            0, app.TEAM_PREVIEW_index - 1
+        )
+    elif is_down(event):
+        app.TEAM_PREVIEW_index = min(
+            5, app.TEAM_PREVIEW_index + 1
+        )
+    elif is_left(event):
+        app.TEAM_PREVIEW_column = 0
+    elif is_right(event):
+        app.TEAM_PREVIEW_column = 1
+    if app.TEAM_PREVIEW_column == 0:
+        app.PKMN_VIEW_pokemon = (
+            app.TEAM_PREVIEW_team[
+                app.TEAM_PREVIEW_index
+            ]
+        )
+    elif (
+        app.TEAM_PREVIEW_index
+        < len(
+            app.TEAM_PREVIEW_opponent_team
+        )
+    ):
+        app.PKMN_VIEW_pokemon = (
+            app.TEAM_PREVIEW_opponent_team[
+                app.TEAM_PREVIEW_index
+            ]
+        )
     if is_cancel(event):
-        change_state(app.previous_state)
+        change_state(
+            app.previous_state
+        )
 
 def handle_event_TEAM_PREVIEW(event):
     if is_up(event):
