@@ -21,7 +21,8 @@ def change_state(new_state):
         app.LAN_JOIN_connected = False
         app.LAN_JOIN_discovered_host_ip = None
         app.LAN_JOIN_client_socket = None
-    if  (new_state == TEAM_PREVIEW):
+    if  ((app.state == LAN_HOST) or (app.state == LAN_JOIN)) and \
+        (new_state == TEAM_PREVIEW):
         load_species()
         app.TEAM_PREVIEW_index = 0
         app.TEAM_PREVIEW_team = [Pokemon.from_species_number(random.randint(1, len(SPECIES))) for _ in range(6)]
@@ -32,6 +33,9 @@ def change_state(new_state):
         app.TEAM_PREVIEW_opponent_ready = False
         app.TEAM_PREVIEW_column = 0
         app.TEAM_PREVIEW_team_sent = False
+    if  (app.state == PKMN_VIEW) and \
+        (new_state == TEAM_PREVIEW):
+        pass
     if  (new_state == PKMN_VIEW):
         pass
     app.state = new_state
