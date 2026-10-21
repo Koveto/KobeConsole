@@ -2,6 +2,21 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+def load_teams():
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "teams.json"
+    )
+    with open(
+        filepath,
+        "r",
+        encoding="utf-8"
+    ) as infile:
+        return json.load(
+            infile
+        )
+
 TYPE_CHART = {
     "Normal": {
         "Rock": 0.5, "Ghost": 0.0, "Steel": 0.5

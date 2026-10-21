@@ -43,4 +43,8 @@ def change_state(new_state):
         app.SPECIES_VIEW_mode = "STATS"
     if  (new_state == TEAM_SELECT):
         app.TEAM_SELECT_index = 0
+        teams = load_teams()
+        app.available_teams = []
+        for team_data in teams["teams"]:
+            app.available_teams.append(team_data["name"])
     app.state = new_state
