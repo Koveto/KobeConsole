@@ -2,6 +2,26 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+def disconnect():
+    if app.connection_socket is not None:
+        try:
+            send_packet({"type":"DISCONNECT"})
+        except OSError:
+            pass
+        try:
+            app.connection_socket.close()
+        except OSError:
+            pass
+    app.connection_socket = None
+    app.connection_is_host = False
+    app.LAN_HOST_connected = False
+    app.LAN_JOIN_connected = False
+    app.TEAM_PREVIEW_opponent_team = []
+    app.TEAM_PREVIEW_selected_lead = None
+    app.TEAM_PREVIEW_opponent_lead = None
+    app.TEAM_PREVIEW_opponent_ready = False
+    app.TEAM_PREVIEW_ready_sent = False
+
 TYPE_SHEET = None
 TYPE_ICON_WIDTH = 32
 TYPE_ICON_HEIGHT = 16

@@ -100,6 +100,22 @@ def draw_PKMN_VIEW():
             move.name,
             120, 90 + i * 15
         )
+    if app.PKMN_VIEW_move_index is not None:
+        selected_move = pokemon.moves[app.PKMN_VIEW_move_index]
+        app.screen.blit(
+            get_type_icon(selected_move.type),
+            (180,100)
+        )
+        app.font0.draw_text(
+            app.screen,
+            "PWR " + str(selected_move.power),
+            180, 120
+        )
+        app.font0.draw_text(
+            app.screen,
+            "ACC " + str(selected_move.accuracy),
+            180, 135
+        )
 
 def draw_TEAM_PREVIEW():
     app.screen.fill(COLOR_WHITE)

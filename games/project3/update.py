@@ -9,6 +9,14 @@ def update():
         update_LAN_JOIN()
     elif app.state == TEAM_PREVIEW:
         update_TEAM_PREVIEW()
+    elif app.state == PKMN_VIEW:
+        update_PKMN_VIEW()
+
+def update_PKMN_VIEW():
+    for packet in recv_packets():
+        if packet["type"] == "DISCONNECT":
+            disconnect()
+            change_state(LAN_HOST_JOIN)
 
 def update_TEAM_PREVIEW():
     if not app.TEAM_PREVIEW_team_sent:
@@ -53,6 +61,7 @@ def update_TEAM_PREVIEW():
             )
             app.TEAM_PREVIEW_opponent_ready = True
         elif packet["type"] == "DISCONNECT":
+            disconnect()
             change_state(LAN_HOST_JOIN)
 
 def update_LAN_JOIN():

@@ -17,17 +17,25 @@ def handle_event(event):
 
 def handle_event_PKMN_VIEW(event):
     if is_up(event):
-        app.TEAM_PREVIEW_index = max(
-            0, app.TEAM_PREVIEW_index - 1
-        )
+        if app.PKMN_VIEW_move_index is None:
+            app.TEAM_PREVIEW_index = max(
+                0, app.TEAM_PREVIEW_index - 1
+            )
+        else:
+            app.PKMN_VIEW_move_index = max(0, app.PKMN_VIEW_move_index - 1)
     elif is_down(event):
-        app.TEAM_PREVIEW_index = min(
-            5, app.TEAM_PREVIEW_index + 1
-        )
+        if app.PKMN_VIEW_move_index is None:
+            app.TEAM_PREVIEW_index = min(
+                5, app.TEAM_PREVIEW_index + 1
+            )
+        else:
+            app.PKMN_VIEW_move_index = min(len(app.PKMN_VIEW_pokemon.moves) - 1, app.PKMN_VIEW_move_index + 1)
     elif is_left(event):
-        app.TEAM_PREVIEW_column = 0
+        if app.PKMN_VIEW_move_index is None:
+            app.TEAM_PREVIEW_column = 0
     elif is_right(event):
-        app.TEAM_PREVIEW_column = 1
+        if app.PKMN_VIEW_move_index is None:
+            app.TEAM_PREVIEW_column = 1
     if app.TEAM_PREVIEW_column == 0:
         app.PKMN_VIEW_pokemon = (
             app.TEAM_PREVIEW_team[

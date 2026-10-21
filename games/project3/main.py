@@ -45,6 +45,7 @@ def main():
             if is_quit(event):
                 if app.connection_socket is not None:
                     send_packet({"type":"DISCONNECT"})
+                disconnect()
                 running = False
             handle_event(event)
         update()
