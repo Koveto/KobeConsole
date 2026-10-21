@@ -1,4 +1,5 @@
 from constants import *
+from func import *
 
 cursor = None
 
@@ -36,6 +37,15 @@ def draw():
 def draw_PKMN_VIEW():
     pokemon = app.PKMN_VIEW_pokemon
     app.screen.fill(COLOR_WHITE)
+    for i, pokemon_type in enumerate(
+        pokemon.species.types
+    ):
+        app.screen.blit(
+            get_type_icon(
+                pokemon_type
+            ),
+            (10 + i * 35, 25)
+        )
     app.font0.draw_text(
         app.screen,
         pokemon.species_name,

@@ -14,6 +14,13 @@ ALPHA_KEY = (
     235,
     255
 )
+STATUS_NONE = None
+STATUS_POISON = "POISON"
+STATUS_BURN = "BURN"
+STATUS_PARALYSIS = "PARALYSIS"
+STATUS_SLEEP = "SLEEP"
+STATUS_FREEZE = "FREEZE"
+STATUS_FAINTED = "FAINTED"
 def load_pokemon_sheet():
     global POKEMON_SHEET
     if POKEMON_SHEET is not None:
@@ -91,6 +98,7 @@ class Pokemon:
         if (gender not in Pokemon.VALID_GENDERS):
             raise ValueError(f"Invalid gender: {gender}")
         self.gender = gender
+        self.status = None
         if evs is None:
             evs = [0,0,0,0,0,0]
         if len(evs) != 6:

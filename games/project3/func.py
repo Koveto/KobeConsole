@@ -2,6 +2,59 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+TYPE_SHEET = None
+TYPE_ICON_WIDTH = 32
+TYPE_ICON_HEIGHT = 16
+TYPE_ALPHA_KEY = (255, 0, 228)
+TYPE_POSITIONS = {
+    "Normal":   (0, 0),
+    "Fighting": (1, 0),
+    "Flying":   (2, 0),
+    "Poison":   (3, 0),
+    "Ground":   (0, 1),
+    "Rock":     (1, 1),
+    "Bug":      (2, 1),
+    "Ghost":    (3, 1),
+    "Steel":    (0, 2),
+    "Fairy":    (1, 2),
+    "Fire":     (2, 2),
+    "Water":    (3, 2),
+    "Grass":    (0, 3),
+    "Electric": (1, 3),
+    "Psychic":  (2, 3),
+    "Ice":      (3, 3),
+    "Dragon":   (0, 4),
+    "Dark":     (1, 4)
+}
+def load_type_sheet():
+    global TYPE_SHEET
+    if TYPE_SHEET is not None:
+        return
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "sprites",
+        "types.png"
+    )
+    TYPE_SHEET = pygame.image.load(
+        filepath
+    ).convert()
+    TYPE_SHEET.set_colorkey(
+        TYPE_ALPHA_KEY
+    )
+def get_type_icon(
+    type_name
+):
+    load_type_sheet()
+    column, row = TYPE_POSITIONS[type_name]
+    rect = pygame.Rect(
+        column * TYPE_ICON_WIDTH,
+        row * TYPE_ICON_HEIGHT,
+        TYPE_ICON_WIDTH,
+        TYPE_ICON_HEIGHT
+    )
+    return TYPE_SHEET.subsurface(rect)
+
+
 def send_packet(packet):
     app.connection_socket.send(
         (
