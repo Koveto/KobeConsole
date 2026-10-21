@@ -14,6 +14,12 @@ def handle_event(event):
         handle_event_TEAM_PREVIEW(event)
     elif app.state == PKMN_VIEW:
         handle_event_PKMN_VIEW(event)
+    elif app.state == SPECIES_VIEW:
+        handle_event_SPECIES_VIEW(event)
+
+def handle_event_SPECIES_VIEW(event):
+    if is_cancel(event):
+        change_state(app.previous_state)
 
 def handle_event_PKMN_VIEW(event):
     if is_up(event):
@@ -98,11 +104,16 @@ def handle_event_TEAM_PREVIEW(event):
         if app.TEAM_PREVIEW_column == 0:
             app.TEAM_PREVIEW_selected_lead = app.TEAM_PREVIEW_index
     elif is_cvxy(event):
+        #if app.TEAM_PREVIEW_column == 0:
+        #    app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
+        #elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):
+        #    app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
+        #change_state(PKMN_VIEW)
         if app.TEAM_PREVIEW_column == 0:
-            app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
+            app.SPECIES_VIEW_species = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
         elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):
-            app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
-        change_state(PKMN_VIEW)
+            app.SPECIES_VIEW_species = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
+        change_state(SPECIES_VIEW)
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):

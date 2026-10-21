@@ -41,4 +41,7 @@ class App:
         self.PKMN_VIEW_move_index = None
         self.PKMN_VIEW_mode = None
 
+        self.SPECIES_VIEW_species = None
+        self.SPECIES_VIEW_index = 0
+
 app = App()
