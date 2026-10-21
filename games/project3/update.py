@@ -44,6 +44,12 @@ def update_TEAM_SELECT():
         elif packet["type"] == "DISCONNECT":
             disconnect()
             change_state(LAN_HOST_JOIN)
+    if (
+        app.selected_team is not None
+        and
+        app.TEAM_SELECT_opponent_team is not None
+    ):
+        change_state(TEAM_PREVIEW)
 
 def update_BATTLE_START():
     for packet in recv_packets():
