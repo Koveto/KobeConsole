@@ -5,22 +5,45 @@ from pkmn_move import *
 def disconnect():
     if app.connection_socket is not None:
         try:
-            send_packet({"type":"DISCONNECT"})
+            send_packet({"type": "DISCONNECT"})
         except OSError:
             pass
-        try:
-            app.connection_socket.close()
-        except OSError:
-            pass
+    sockets = [
+        app.connection_socket,
+        app.LAN_HOST_server_socket,
+        app.LAN_HOST_client_socket,
+        app.LAN_JOIN_discovery_socket,
+        app.LAN_JOIN_client_socket
+    ]
+    for sock in sockets:
+        if sock is not None:
+            try:
+                sock.close()
+            except OSError:
+                pass
     app.connection_socket = None
+    app.LAN_HOST_server_socket = None
+    app.LAN_HOST_client_socket = None
+    app.LAN_JOIN_discovery_socket = None
+    app.LAN_JOIN_client_socket = None
     app.connection_is_host = False
     app.LAN_HOST_connected = False
     app.LAN_JOIN_connected = False
+    app.LAN_HOST_is_host = False
+    app.LAN_JOIN_is_host = False
+    app.connection_buffer = ""
+    app.TEAM_PREVIEW_team = None
     app.TEAM_PREVIEW_opponent_team = []
     app.TEAM_PREVIEW_selected_lead = None
     app.TEAM_PREVIEW_opponent_lead = None
-    app.TEAM_PREVIEW_opponent_ready = False
     app.TEAM_PREVIEW_ready_sent = False
+    app.TEAM_PREVIEW_opponent_ready = False
+    app.TEAM_PREVIEW_team_sent = False
+    app.TEAM_PREVIEW_index = 0
+    app.TEAM_PREVIEW_column = 0
+    app.PKMN_VIEW_pokemon = None
+    app.PKMN_VIEW_move_index = None
+    app.PKMN_VIEW_mode = "STATS"
 
 TYPE_SHEET = None
 TYPE_ICON_WIDTH = 32
