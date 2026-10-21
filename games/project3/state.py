@@ -3,6 +3,7 @@ from func import *
 from pkmn import *
 
 def change_state(new_state):
+    app.previous_state = app.state
     if  (new_state == LAUNCHER_MENU):
         app.LAUNCHER_MENU_index = 0
     if  (new_state == LAN_HOST_JOIN):
@@ -31,4 +32,6 @@ def change_state(new_state):
         app.TEAM_PREVIEW_opponent_ready = False
         app.TEAM_PREVIEW_column = 0
         app.TEAM_PREVIEW_team_sent = False
+    if  (new_state == PKMN_VIEW):
+        app.PKMN_VIEW_pokemon = None
     app.state = new_state

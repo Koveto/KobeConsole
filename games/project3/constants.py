@@ -18,7 +18,8 @@ LAUNCHER_MENU    = 0
 LAN_HOST_JOIN    = 1
 LAN_HOST         = 2
 LAN_JOIN         = 3
-TEAM_PREVIEW = 4
+TEAM_PREVIEW     = 4
+PKMN_VIEW        = 5
 
 COLOR_BLACK = (0, 0, 0)
 COLOR_BLUE = (0, 0, 255)

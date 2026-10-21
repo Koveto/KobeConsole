@@ -32,6 +32,8 @@ if IS_WINDOWS:
 
     CONTROLLER_A = 0
     CONTROLLER_B = 1
+    CONTROLLER_X = 2
+    CONTROLLER_Y = 3
     CONTROLLER_HOME = 7
 
     CONTROLLER_DPAD_LEFT = 13
@@ -43,6 +45,8 @@ elif IS_LINUX:
 
     CONTROLLER_A = 2
     CONTROLLER_B = 1
+    CONTROLLER_X = 3
+    CONTROLLER_Y = 0
     CONTROLLER_HOME = 12
 
     CONTROLLER_DPAD_LEFT = (-1, 0)
@@ -100,6 +104,13 @@ def is_keyboard_x(event):
     return (
         event.type == pygame.KEYDOWN
         and event.key == pygame.K_x
+    )
+
+def is_keyboard_c(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_c
     )
 
 def is_keyboard_up(event):
@@ -255,6 +266,21 @@ def is_controller_button_b(event):
     return (
         event.type == pygame.JOYBUTTONDOWN
         and event.button == CONTROLLER_B
+    )
+
+def is_controller_button_x(event):
+
+    return (
+        event.type == pygame.JOYBUTTONDOWN
+        and event.button == CONTROLLER_X
+    )
+
+
+def is_controller_button_y(event):
+
+    return (
+        event.type == pygame.JOYBUTTONDOWN
+        and event.button == CONTROLLER_Y
     )
 
 
@@ -431,6 +457,14 @@ def is_confirm(event):
         is_keyboard_enter(event)
         or is_keyboard_z(event)
         or is_controller_button_a(event)
+    )
+
+def is_cxy(event):
+
+    return (
+        is_keyboard_c(event)
+        or is_controller_button_x(event)
+        or is_controller_button_y(event)
     )
 
 

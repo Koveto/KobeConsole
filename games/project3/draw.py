@@ -30,6 +30,62 @@ def draw():
         draw_LAN_JOIN()
     elif app.state == TEAM_PREVIEW:
         draw_TEAM_PREVIEW()
+    elif app.state == PKMN_VIEW:
+        draw_PKMN_VIEW()
+
+def draw_PKMN_VIEW():
+    pokemon = app.PKMN_VIEW_pokemon
+    app.screen.fill(COLOR_WHITE)
+    app.font0.draw_text(
+        app.screen,
+        pokemon.species_name,
+        10, 10
+    )
+    app.screen.blit(
+        pokemon.front_sprite,
+        (100, 10)
+    )
+    app.font0.draw_text(
+        app.screen,
+        pokemon.nature.name,
+        10, 30
+    )
+    app.font0.draw_text(
+        app.screen,
+        f"HP {pokemon.hp_max}",
+        10, 50
+    )
+    app.font0.draw_text(
+        app.screen,
+        f"ATK {pokemon.attack}",
+        10, 65
+    )
+    app.font0.draw_text(
+        app.screen,
+        f"DEF {pokemon.defense}",
+        10, 80
+    )
+    app.font0.draw_text(
+        app.screen,
+        f"SPA {pokemon.special_attack}",
+        10, 95
+    )
+    app.font0.draw_text(
+        app.screen,
+        f"SPD {pokemon.special_defense}",
+        10, 110
+    )
+    app.font0.draw_text(
+        app.screen,
+        f"SPE {pokemon.speed}",
+        10, 125
+    )
+    for i, move in enumerate(pokemon.moves):
+        app.font0.draw_text(
+            app.screen,
+            move.name,
+            120, 90 + i * 15
+        )
 
 def draw_TEAM_PREVIEW():
     app.screen.fill(COLOR_WHITE)

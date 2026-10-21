@@ -1,6 +1,7 @@
 class App:
     def __init__(self):
         self.state = None
+        self.previous_state = None
         self.screen = None
         self.font0 = None
         self.connection_socket = None
@@ -35,5 +36,7 @@ class App:
         self.TEAM_PREVIEW_opponent_ready = None
         self.TEAM_PREVIEW_column = None
         self.TEAM_PREVIEW_team_sent = None
+
+        self.PKMN_VIEW_pokemon = None
 
 app = App()
