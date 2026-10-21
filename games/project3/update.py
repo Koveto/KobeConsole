@@ -19,8 +19,29 @@ def update():
         update_TEAM_SELECT()
 
 def update_TEAM_SELECT():
+    if (
+        app.selected_team is not None
+        and
+        not app.TEAM_SELECT_team_sent
+    ):
+        team_data = []
+        for pokemon in app.selected_team:
+            team_data.append(pokemon.to_dict())
+        send_packet(
+            {
+                "type": "TEAM",
+                "data": team_data
+            }
+        )
+        app.TEAM_SELECT_team_sent = True
     for packet in recv_packets():
-        if packet["type"] == "DISCONNECT":
+        if packet["type"] == "TEAM":
+            app.TEAM_SELECT_opponent_team = []
+            for pokemon_data in packet["data"]:
+                app.TEAM_SELECT_opponent_team.append(
+                    Pokemon.from_dict(pokemon_data)
+                )
+        elif packet["type"] == "DISCONNECT":
             disconnect()
             change_state(LAN_HOST_JOIN)
 

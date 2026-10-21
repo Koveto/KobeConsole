@@ -49,5 +49,7 @@ class App:
 
         self.TEAM_SELECT_index = 0
         self.TEAM_SELECT_preview_team = []
+        self.TEAM_SELECT_team_sent = False
+        self.TEAM_SELECT_opponent_team = None
 
 app = App()

@@ -26,7 +26,9 @@ def change_state(new_state):
         load_species()
         app.TEAM_PREVIEW_index = 0
         app.TEAM_PREVIEW_team = app.selected_team
-        app.TEAM_PREVIEW_opponent_team = []
+        app.TEAM_PREVIEW_opponent_team = (
+            app.TEAM_SELECT_opponent_team
+        )
         app.TEAM_PREVIEW_selected_lead = None
         app.TEAM_PREVIEW_opponent_lead = None
         app.TEAM_PREVIEW_ready_sent = False
@@ -38,6 +40,8 @@ def change_state(new_state):
     if  (new_state == SPECIES_VIEW):
         app.SPECIES_VIEW_mode = "STATS"
     if  (new_state == TEAM_SELECT):
+        app.TEAM_SELECT_team_sent = False
+        app.TEAM_SELECT_opponent_team = None
         load_species()
         app.TEAM_SELECT_index = 0
         teams_data = load_teams()
