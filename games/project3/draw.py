@@ -86,11 +86,6 @@ def draw_PKMN_VIEW():
         10, 125
     )
     for i, move in enumerate(pokemon.moves):
-        app.font0.draw_text(
-            app.screen,
-            move.name,
-            120, 90 + i * 15
-        )
         if (app.PKMN_VIEW_move_index == i):
             pygame.draw.rect(
                 app.screen,
@@ -100,6 +95,11 @@ def draw_PKMN_VIEW():
                  90,
                  14)
             )
+        app.font0.draw_text(
+            app.screen,
+            move.name,
+            120, 90 + i * 15
+        )
 
 def draw_TEAM_PREVIEW():
     app.screen.fill(COLOR_WHITE)
