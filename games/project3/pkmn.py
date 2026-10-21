@@ -150,6 +150,7 @@ class Pokemon:
         self.speed_modifier = 0
         if is_shiny not in (True, False):
             is_shiny = random.randint(1,2) == 1
+        self.is_shiny = is_shiny
         self.front_sprite_number = front_sprite_number
         self.back_sprite_number = back_sprite_number
         if self.front_sprite_number is None:
