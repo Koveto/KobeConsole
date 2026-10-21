@@ -81,7 +81,8 @@ class Pokemon:
         ivs=None,
         is_shiny=False,
         front_sprite_number=None,
-        back_sprite_number=None
+        back_sprite_number=None,
+        status=None
     ):
         self.species = species
         self.species_no = species.no
@@ -98,7 +99,7 @@ class Pokemon:
         if (gender not in Pokemon.VALID_GENDERS):
             raise ValueError(f"Invalid gender: {gender}")
         self.gender = gender
-        self.status = None
+        self.status = status
         if evs is None:
             evs = [0,0,0,0,0,0]
         if len(evs) != 6:
@@ -335,7 +336,8 @@ class Pokemon:
                 self.special_defense_iv,
                 self.speed_iv
             ],
-            "moves": [move.name for move in self.moves]
+            "moves": [move.name for move in self.moves],
+            "status": self.status
         }
 
     @classmethod
@@ -354,7 +356,8 @@ class Pokemon:
             moves=data["moves"],
             is_shiny=data["is_shiny"],
             front_sprite_number=data["front_sprite_number"],
-            back_sprite_number=data["back_sprite_number"]
+            back_sprite_number=data["back_sprite_number"],
+            status=data["status"]
         )
 
     def animate_sprite(self):
@@ -385,3 +388,13 @@ class Pokemon:
             raise ValueError("back sprite 0-1")
         self.back_sprite_number = number
         self.update_sprites()
+
+    def nature_symbol(
+            self,
+            stat_name
+    ):
+        if (self.nature.boosted_stat == stat_name):
+            return "+"
+        if (self.nature.reduced_stat == stat_name):
+            return "-"
+        return ""

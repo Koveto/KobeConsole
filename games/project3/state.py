@@ -38,4 +38,5 @@ def change_state(new_state):
         pass
     if  (new_state == PKMN_VIEW):
         app.PKMN_VIEW_move_index = None
+        app.PKMN_VIEW_mode = "STATS"
     app.state = new_state

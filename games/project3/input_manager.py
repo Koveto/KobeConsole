@@ -113,6 +113,13 @@ def is_keyboard_c(event):
         and event.key == pygame.K_c
     )
 
+def is_keyboard_v(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_v
+    )
+
 def is_keyboard_up(event):
 
     return (
@@ -459,11 +466,26 @@ def is_confirm(event):
         or is_controller_button_a(event)
     )
 
-def is_cxy(event):
+def is_cvxy(event):
+
+    return (
+        is_keyboard_c(event)
+        or is_keyboard_v(event)
+        or is_controller_button_x(event)
+        or is_controller_button_y(event)
+    )
+
+def is_cx(event):
 
     return (
         is_keyboard_c(event)
         or is_controller_button_x(event)
+    )
+
+def is_vy(event):
+
+    return (
+        is_keyboard_v(event)
         or is_controller_button_y(event)
     )
 

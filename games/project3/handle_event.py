@@ -53,10 +53,15 @@ def handle_event_PKMN_VIEW(event):
                 app.TEAM_PREVIEW_index
             ]
         )
-    if is_confirm(event):
+    elif is_cx(event):
+        if app.PKMN_VIEW_mode == "STATS":
+            app.PKMN_VIEW_mode = "EVS"
+        else:
+            app.PKMN_VIEW_mode = "STATS"
+    elif is_confirm(event):
         if app.PKMN_VIEW_move_index is None:
             app.PKMN_VIEW_move_index = 0
-    if is_cancel(event):
+    elif is_cancel(event):
         if app.PKMN_VIEW_move_index is not None:
             app.PKMN_VIEW_move_index = None
         else:
@@ -74,7 +79,7 @@ def handle_event_TEAM_PREVIEW(event):
     elif is_confirm(event):
         if app.TEAM_PREVIEW_column == 0:
             app.TEAM_PREVIEW_selected_lead = app.TEAM_PREVIEW_index
-    elif is_cxy(event):
+    elif is_cvxy(event):
         if app.TEAM_PREVIEW_column == 0:
             app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
         elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):

@@ -39,5 +39,6 @@ class App:
 
         self.PKMN_VIEW_pokemon = None
         self.PKMN_VIEW_move_index = None
+        self.PKMN_VIEW_mode = None
 
 app = App()
