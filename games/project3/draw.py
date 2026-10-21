@@ -91,6 +91,15 @@ def draw_PKMN_VIEW():
             move.name,
             120, 90 + i * 15
         )
+        if (app.PKMN_VIEW_move_index == i):
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (115,
+                 88 + i * 15,
+                 90,
+                 14)
+            )
 
 def draw_TEAM_PREVIEW():
     app.screen.fill(COLOR_WHITE)

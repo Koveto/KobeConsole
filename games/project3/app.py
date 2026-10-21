@@ -38,5 +38,6 @@ class App:
         self.TEAM_PREVIEW_team_sent = None
 
         self.PKMN_VIEW_pokemon = None
+        self.PKMN_VIEW_move_index = None
 
 app = App()

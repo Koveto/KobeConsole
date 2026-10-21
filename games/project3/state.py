@@ -37,5 +37,5 @@ def change_state(new_state):
         (new_state == TEAM_PREVIEW):
         pass
     if  (new_state == PKMN_VIEW):
-        pass
+        app.PKMN_VIEW_move_index = None
     app.state = new_state

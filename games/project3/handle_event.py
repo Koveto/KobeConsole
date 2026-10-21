@@ -45,10 +45,14 @@ def handle_event_PKMN_VIEW(event):
                 app.TEAM_PREVIEW_index
             ]
         )
+    if is_confirm(event):
+        if app.PKMN_VIEW_move_index is None:
+            app.PKMN_VIEW_move_index = 0
     if is_cancel(event):
-        change_state(
-            app.previous_state
-        )
+        if app.PKMN_VIEW_move_index is not None:
+            app.PKMN_VIEW_move_index = None
+        else:
+            change_state(app.previous_state)
 
 def handle_event_TEAM_PREVIEW(event):
     if is_up(event):
