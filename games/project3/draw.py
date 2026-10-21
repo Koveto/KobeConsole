@@ -53,83 +53,85 @@ def draw_SPECIES_VIEW():
         species.species_name + species.gender,
         10, 10
     )
-    app.font0.draw_text(
-        app.screen,
-        f"HP  {species.hp_base}",
-        10, 60
-    )
-    app.font0.draw_text(
-        app.screen,
-        f"ATK {species.attack_base}",
-        10, 75
-    )
-    app.font0.draw_text(
-        app.screen,
-        f"DEF {species.defense_base}",
-        10, 90
-    )
-    app.font0.draw_text(
-        app.screen,
-        f"SPA {species.special_attack_base}",
-        10, 105
-    )
-    app.font0.draw_text(
-        app.screen,
-        f"SPD {species.special_defense_base}",
-        10, 120
-    )
-    app.font0.draw_text(
-        app.screen,
-        f"SPE {species.speed_base}",
-        10, 135
-    )
-    draw_bar(60,63,species.hp_base,255)
-    draw_bar(60,78,species.attack_base,190)
-    draw_bar(60,93,species.defense_base,230)
-    draw_bar(60,108,species.special_attack_base,194)
-    draw_bar(60,123,species.special_defense_base,230)
-    draw_bar(60,138,species.speed_base,200)
-    affinities = get_affinities(species)
-    pygame.draw.rect(
-        app.screen,
-        COLOR_WHITE,
-        (
-            0,
-            50,
-            256,
-            110
+    if app.SPECIES_VIEW_mode == "STATS":
+        app.font0.draw_text(
+            app.screen,
+            f"HP  {species.hp_base}",
+            10, 60
         )
-    )
-    for index, type_name in enumerate(TYPE_ORDER):
-        column = index % 6
-        row = index // 6
-        x = 0 + column * 32
-        y = 63 + row * 32
-        app.screen.blit(
-            get_type_icon(type_name),
-            (x,y)
+        app.font0.draw_text(
+            app.screen,
+            f"ATK {species.attack_base}",
+            10, 75
         )
-        multiplier = affinities[
-            type_name
-        ]
-        text = None
-        if multiplier == 4:
-            text = "4x"
-        elif multiplier == 2:
-            text = "2x"
-        elif multiplier == 0.5:
-            text = "1/2x"
-        elif multiplier == 0.25:
-            text = "1/4x"
-        elif multiplier == 0:
-            text = "0x"
-        if text is not None:
-            app.font0.draw_text(
-                app.screen,
-                text,
-                x + 3,
-                y + 16
+        app.font0.draw_text(
+            app.screen,
+            f"DEF {species.defense_base}",
+            10, 90
+        )
+        app.font0.draw_text(
+            app.screen,
+            f"SPA {species.special_attack_base}",
+            10, 105
+        )
+        app.font0.draw_text(
+            app.screen,
+            f"SPD {species.special_defense_base}",
+            10, 120
+        )
+        app.font0.draw_text(
+            app.screen,
+            f"SPE {species.speed_base}",
+            10, 135
+        )
+        draw_bar(60,63,species.hp_base,255)
+        draw_bar(60,78,species.attack_base,190)
+        draw_bar(60,93,species.defense_base,230)
+        draw_bar(60,108,species.special_attack_base,194)
+        draw_bar(60,123,species.special_defense_base,230)
+        draw_bar(60,138,species.speed_base,200)
+    elif app.SPECIES_VIEW_mode == "AFFINITIES":
+        affinities = get_affinities(species)
+        pygame.draw.rect(
+            app.screen,
+            COLOR_WHITE,
+            (
+                0,
+                50,
+                256,
+                110
             )
+        )
+        for index, type_name in enumerate(TYPE_ORDER):
+            column = index % 6
+            row = index // 6
+            x = 0 + column * 32
+            y = 63 + row * 32
+            app.screen.blit(
+                get_type_icon(type_name),
+                (x,y)
+            )
+            multiplier = affinities[
+                type_name
+            ]
+            text = None
+            if multiplier == 4:
+                text = "4x"
+            elif multiplier == 2:
+                text = "2x"
+            elif multiplier == 0.5:
+                text = "1/2x"
+            elif multiplier == 0.25:
+                text = "1/4x"
+            elif multiplier == 0:
+                text = "0x"
+            if text is not None:
+                app.font0.draw_text(
+                    app.screen,
+                    text,
+                    x + 3,
+                    y + 16
+                )
     app.screen.blit(
         species.front_sprite,
         (166, 0)

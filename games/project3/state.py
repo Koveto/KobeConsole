@@ -40,5 +40,5 @@ def change_state(new_state):
         app.PKMN_VIEW_move_index = None
         app.PKMN_VIEW_mode = "STATS"
     if  (new_state == SPECIES_VIEW):
-        app.SPECIES_VIEW_index = None
+        app.SPECIES_VIEW_mode = "STATS"
     app.state = new_state
