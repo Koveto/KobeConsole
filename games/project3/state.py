@@ -21,7 +21,7 @@ def change_state(new_state):
         app.LAN_JOIN_connected = False
         app.LAN_JOIN_discovered_host_ip = None
         app.LAN_JOIN_client_socket = None
-    if  ((app.state == LAN_HOST) or (app.state == LAN_JOIN)) and \
+    if  ((app.state == TEAM_SELECT)) and \
         (new_state == TEAM_PREVIEW):
         load_species()
         app.TEAM_PREVIEW_index = 0
