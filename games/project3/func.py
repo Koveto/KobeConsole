@@ -69,6 +69,9 @@ def recv_packets():
         data = app.connection_socket.recv(
             8192
         )
+        if data == b"":
+            packets.append({"type":"DISCONNECT"})
+            return packets
         if data:
             app.connection_buffer += (
                 data.decode()

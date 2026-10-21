@@ -43,6 +43,8 @@ def main():
     while running:
         for event in pygame.event.get():
             if is_quit(event):
+                if app.connection_socket is not None:
+                    send_packet({"type":"DISCONNECT"})
                 running = False
             handle_event(event)
         update()

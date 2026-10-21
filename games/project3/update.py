@@ -52,6 +52,8 @@ def update_TEAM_PREVIEW():
                 packet["data"]
             )
             app.TEAM_PREVIEW_opponent_ready = True
+        elif packet["type"] == "DISCONNECT":
+            change_state(LAN_HOST_JOIN)
 
 def update_LAN_JOIN():
     if app.LAN_JOIN_discovery_socket is None:
