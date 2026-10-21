@@ -23,23 +23,26 @@ def handle_event(event):
 
 def handle_event_TEAM_SELECT(event):
     if is_up(event):
-        app.TEAM_SELECT_index = max(0, app.TEAM_SELECT_index - 1)
-        app.TEAM_SELECT_preview_team = [
-            Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
-            for _ in range(6)
-        ]
+        if app.selected_team is None:
+            app.TEAM_SELECT_index = max(0, app.TEAM_SELECT_index - 1)
+            app.TEAM_SELECT_preview_team = [
+                Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
+                for _ in range(6)
+            ]
     elif is_down(event):
-        app.TEAM_SELECT_index = min(len(app.available_teams) - 1, app.TEAM_SELECT_index + 1)
-        app.TEAM_SELECT_preview_team = [
-            Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
-            for _ in range(6)
-        ]
+        if app.selected_team is None:
+            app.TEAM_SELECT_index = min(len(app.available_teams) - 1, app.TEAM_SELECT_index + 1)
+            app.TEAM_SELECT_preview_team = [
+                Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
+                for _ in range(6)
+            ]
     elif is_confirm(event):
-        load_species()
-        selected_team_data = app.teams_data[app.TEAM_SELECT_index]
-        if selected_team_data["name"] == "Random Team":
-            app.selected_team = [Pokemon.from_species_number(random.choice(list(SPECIES.keys()))) for _ in range(6)]
-        app.TEAM_SELECT_team_sent = False
+        if app.selected_team is None:
+            load_species()
+            selected_team_data = app.teams_data[app.TEAM_SELECT_index]
+            if selected_team_data["name"] == "Random Team":
+                app.selected_team = [Pokemon.from_species_number(random.choice(list(SPECIES.keys()))) for _ in range(6)]
+            app.TEAM_SELECT_team_sent = False
 
 def handle_event_BATTLE_START(event):
     pass
@@ -160,11 +163,6 @@ def handle_event_TEAM_PREVIEW(event):
             elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):
                 app.SPECIES_VIEW_species = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
             change_state(SPECIES_VIEW)
-    elif (
-        is_cancel(event) and \
-        app.TEAM_PREVIEW_selected_lead is None
-    ):
-        change_state(TEAM_SELECT)
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):
