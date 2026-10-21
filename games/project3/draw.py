@@ -35,11 +35,11 @@ def draw():
         draw_PKMN_VIEW()
 
 def draw_bar(x,y,value,max_value):
-    width = int(value / max_value * 40)
+    width = int(value / max_value * 80)
     pygame.draw.rect(
         app.screen,
         COLOR_BLACK,
-        (x,y,40,6),
+        (x,y,80,6),
         1
     )
     pygame.draw.rect(
@@ -64,10 +64,6 @@ def draw_PKMN_VIEW():
         app.screen,
         pokemon.species_name + pokemon.gender,
         10, 10
-    )
-    app.screen.blit(
-        pokemon.front_sprite,
-        (166, 10)
     )
     if app.PKMN_VIEW_mode == "STATS":
         app.font0.draw_text(
@@ -100,12 +96,12 @@ def draw_PKMN_VIEW():
             f"SPE {pokemon.speed}",
             10, 135
         )
-        draw_bar(55,63,pokemon.hp_max,714)
-        draw_bar(55,78,pokemon.attack,526)
-        draw_bar(55,93,pokemon.defense,526)
-        draw_bar(55,108,pokemon.special_attack,526)
-        draw_bar(55,123,pokemon.special_defense,526)
-        draw_bar(55,138,pokemon.speed,526)
+        draw_bar(60,63,pokemon.hp_max,714)
+        draw_bar(60,78,pokemon.attack,526)
+        draw_bar(60,93,pokemon.defense,526)
+        draw_bar(60,108,pokemon.special_attack,526)
+        draw_bar(60,123,pokemon.special_defense,526)
+        draw_bar(60,138,pokemon.speed,526)
     elif app.PKMN_VIEW_mode == "EVS":
         app.font0.draw_text(
             app.screen,
@@ -124,12 +120,12 @@ def draw_PKMN_VIEW():
         )
         app.font0.draw_text(
             app.screen,
-            "SPA " + str(pokemon.special_attack_ev) + pokemon.nature_symbol("spa"),
+            "SPA " + str(pokemon.special_attack_ev) + pokemon.nature_symbol("spatk"),
             10, 105
         )
         app.font0.draw_text(
             app.screen,
-            "SPD " + str(pokemon.special_defense_ev) + pokemon.nature_symbol("spd"),
+            "SPD " + str(pokemon.special_defense_ev) + pokemon.nature_symbol("spdef"),
             10, 120
         )
         app.font0.draw_text(
@@ -137,12 +133,12 @@ def draw_PKMN_VIEW():
             "SPE " + str(pokemon.speed_ev) + pokemon.nature_symbol("spe"),
             10, 135
         )
-        draw_bar(55,63,pokemon.hp_ev,252)
-        draw_bar(55,78,pokemon.attack_ev,252)
-        draw_bar(55,93,pokemon.defense_ev,252)
-        draw_bar(55,108,pokemon.special_attack_ev,252)
-        draw_bar(55,123,pokemon.special_defense_ev,252)
-        draw_bar(55,138,pokemon.speed_ev,252)
+        draw_bar(60,63,pokemon.hp_ev,252)
+        draw_bar(60,78,pokemon.attack_ev,252)
+        draw_bar(60,93,pokemon.defense_ev,252)
+        draw_bar(60,108,pokemon.special_attack_ev,252)
+        draw_bar(60,123,pokemon.special_defense_ev,252)
+        draw_bar(60,138,pokemon.speed_ev,252)
     for i, move in enumerate(pokemon.moves):
         if (app.PKMN_VIEW_move_index == i):
             pygame.draw.rect(
@@ -198,8 +194,8 @@ def draw_PKMN_VIEW():
         for index, type_name in enumerate(TYPE_ORDER):
             column = index % 6
             row = index // 6
-            x = 60 + column * 32
-            y = 60 + row * 32
+            x = 0 + column * 32
+            y = 63 + row * 32
             app.screen.blit(
                 get_type_icon(type_name),
                 (x,y)
@@ -213,18 +209,22 @@ def draw_PKMN_VIEW():
             elif multiplier == 2:
                 text = "2x"
             elif multiplier == 0.5:
-                text = "1/2"
+                text = "1/2x"
             elif multiplier == 0.25:
-                text = "1/4"
+                text = "1/4x"
             elif multiplier == 0:
                 text = "0x"
             if text is not None:
                 app.font0.draw_text(
                     app.screen,
                     text,
-                    x,
+                    x + 3,
                     y + 16
                 )
+    app.screen.blit(
+        pokemon.front_sprite,
+        (166, 0)
+    )
     
 
 def draw_TEAM_PREVIEW():
