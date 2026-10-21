@@ -67,82 +67,82 @@ def draw_PKMN_VIEW():
     )
     app.screen.blit(
         pokemon.front_sprite,
-        (100, 10)
+        (166, 10)
     )
     if app.PKMN_VIEW_mode == "STATS":
         app.font0.draw_text(
             app.screen,
             f"HP  {pokemon.hp_max}",
-            10, 50
+            10, 60
         )
         app.font0.draw_text(
             app.screen,
             f"ATK {pokemon.attack}",
-            10, 65
+            10, 75
         )
         app.font0.draw_text(
             app.screen,
             f"DEF {pokemon.defense}",
-            10, 80
+            10, 90
         )
         app.font0.draw_text(
             app.screen,
             f"SPA {pokemon.special_attack}",
-            10, 95
+            10, 105
         )
         app.font0.draw_text(
             app.screen,
             f"SPD {pokemon.special_defense}",
-            10, 110
+            10, 120
         )
         app.font0.draw_text(
             app.screen,
             f"SPE {pokemon.speed}",
-            10, 125
+            10, 135
         )
-        draw_bar(55,55,pokemon.hp_max,400)
-        draw_bar(55,70,pokemon.attack,400)
-        draw_bar(55,85,pokemon.defense,400)
-        draw_bar(55,100,pokemon.special_attack,400)
-        draw_bar(55,115,pokemon.special_defense,400)
-        draw_bar(55,130,pokemon.speed,400)
+        draw_bar(55,63,pokemon.hp_max,714)
+        draw_bar(55,78,pokemon.attack,526)
+        draw_bar(55,93,pokemon.defense,526)
+        draw_bar(55,108,pokemon.special_attack,526)
+        draw_bar(55,123,pokemon.special_defense,526)
+        draw_bar(55,138,pokemon.speed,526)
     elif app.PKMN_VIEW_mode == "EVS":
         app.font0.draw_text(
             app.screen,
             "HP  " + str(pokemon.hp_ev),
-            10, 50
+            10, 60
         )
         app.font0.draw_text(
             app.screen,
             "ATK " + str(pokemon.attack_ev) + pokemon.nature_symbol("atk"),
-            10, 65
+            10, 75
         )
         app.font0.draw_text(
             app.screen,
             "DEF " + str(pokemon.defense_ev) + pokemon.nature_symbol("def"),
-            10, 80
+            10, 90
         )
         app.font0.draw_text(
             app.screen,
             "SPA " + str(pokemon.special_attack_ev) + pokemon.nature_symbol("spa"),
-            10, 95
+            10, 105
         )
         app.font0.draw_text(
             app.screen,
             "SPD " + str(pokemon.special_defense_ev) + pokemon.nature_symbol("spd"),
-            10, 110
+            10, 120
         )
         app.font0.draw_text(
             app.screen,
             "SPE " + str(pokemon.speed_ev) + pokemon.nature_symbol("spe"),
-            10, 125
+            10, 135
         )
-        draw_bar(55,55,pokemon.hp_ev,400)
-        draw_bar(55,70,pokemon.attack_ev,400)
-        draw_bar(55,85,pokemon.defense_ev,400)
-        draw_bar(55,100,pokemon.special_attack_ev,400)
-        draw_bar(55,115,pokemon.special_defense_ev,400)
-        draw_bar(55,130,pokemon.speed_ev,400)
+        draw_bar(55,63,pokemon.hp_ev,252)
+        draw_bar(55,78,pokemon.attack_ev,252)
+        draw_bar(55,93,pokemon.defense_ev,252)
+        draw_bar(55,108,pokemon.special_attack_ev,252)
+        draw_bar(55,123,pokemon.special_defense_ev,252)
+        draw_bar(55,138,pokemon.speed_ev,252)
     for i, move in enumerate(pokemon.moves):
         if (app.PKMN_VIEW_move_index == i):
             pygame.draw.rect(
