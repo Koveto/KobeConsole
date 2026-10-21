@@ -148,41 +148,84 @@ def draw_PKMN_VIEW():
             pygame.draw.rect(
                 app.screen,
                 COLOR_BLACK,
-                (115,
+                (155,
                  89 + i * 15,
                  90,
-                 14),
+                 15),
                  1
             )
         app.font0.draw_text(
             app.screen,
             move.name,
-            120, 90 + i * 15
+            160, 90 + i * 15
         )
     if app.PKMN_VIEW_move_index is not None:
         selected_move = pokemon.moves[app.PKMN_VIEW_move_index]
         pygame.draw.rect(
             app.screen,
             COLOR_WHITE,
-            (62,
-             80,
+            (102,
+             81,
              50,
              75)
         )
         app.screen.blit(
             get_type_icon(selected_move.type),
-            (70,90)
+            (110,90)
         )
         app.font0.draw_text(
             app.screen,
             "PWR " + str(selected_move.power),
-            70, 110
+            110, 110
         )
         app.font0.draw_text(
             app.screen,
             "ACC " + str(selected_move.accuracy),
-            70, 125
+            110, 125
         )
+    if app.PKMN_VIEW_mode == "AFFINITIES":
+        affinities = get_affinities(pokemon)
+        pygame.draw.rect(
+            app.screen,
+            COLOR_WHITE,
+            (
+                0,
+                50,
+                256,
+                110
+            )
+        )
+        for index, type_name in enumerate(TYPE_ORDER):
+            column = index % 6
+            row = index // 6
+            x = 60 + column * 32
+            y = 60 + row * 32
+            app.screen.blit(
+                get_type_icon(type_name),
+                (x,y)
+            )
+            multiplier = affinities[
+                type_name
+            ]
+            text = None
+            if multiplier == 4:
+                text = "4x"
+            elif multiplier == 2:
+                text = "2x"
+            elif multiplier == 0.5:
+                text = "1/2"
+            elif multiplier == 0.25:
+                text = "1/4"
+            elif multiplier == 0:
+                text = "0x"
+            if text is not None:
+                app.font0.draw_text(
+                    app.screen,
+                    text,
+                    x,
+                    y + 16
+                )
+    
 
 def draw_TEAM_PREVIEW():
     app.screen.fill(COLOR_WHITE)

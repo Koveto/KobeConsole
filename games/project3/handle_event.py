@@ -51,6 +51,11 @@ def handle_event_PKMN_VIEW(event):
             app.PKMN_VIEW_mode = "EVS"
         else:
             app.PKMN_VIEW_mode = "STATS"
+    elif is_vy(event):
+        if app.PKMN_VIEW_mode == "AFFINITIES":
+            app.PKMN_VIEW_mode = "STATS"
+        else:
+            app.PKMN_VIEW_mode = "AFFINITIES"
     elif is_confirm(event):
         if app.PKMN_VIEW_move_index is None:
             app.PKMN_VIEW_move_index = 0
