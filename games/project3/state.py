@@ -49,8 +49,5 @@ def change_state(new_state):
         app.available_teams = []
         for team in app.teams_data:
             app.available_teams.append(team["name"])
-        app.TEAM_SELECT_preview_team = [
-            Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
-            for _ in range(6)
-        ]
+        app.TEAM_SELECT_preview_team = []
     app.state = new_state

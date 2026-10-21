@@ -68,6 +68,13 @@ def draw_TEAM_SELECT():
             pokemon.front_sprite,
             (x,y)
         )
+    if app.selected_team is not None:
+        app.font0.draw_text(
+            app.screen,
+            "WAITING FOR OPPONENT",
+            10,
+            130
+        )
 
 def draw_BATTLE_START():
     app.screen.fill(COLOR_WHITE)
