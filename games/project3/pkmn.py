@@ -84,11 +84,11 @@ class Pokemon:
         if not (Pokemon.MIN_LEVEL <= level <= Pokemon.MAX_LEVEL):
             raise ValueError(f"Invalid level: {level}")
         self.level = level
+        if nature is None:
+            nature = random.choice(list(NATURES.values()))
         if not isinstance(nature,Nature):
             raise ValueError("Invalid nature")
         self.nature = nature
-        if self.nature is None:
-            self.nature = random.choice(list(NATURES.values()))
         if gender is None:
             gender = random.choice(Pokemon.VALID_GENDERS)
         if (gender not in Pokemon.VALID_GENDERS):
