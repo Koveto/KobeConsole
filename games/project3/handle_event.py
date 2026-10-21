@@ -38,7 +38,7 @@ def handle_event_TEAM_SELECT(event):
         load_species()
         selected_team_data = app.teams_data[app.TEAM_SELECT_index]
         if selected_team_data["name"] == "Random Team":
-            app.selected_team = [Pokemon.from_species_number(random.randint(1,SPECIES.keys())) for _ in range(6)]
+            app.selected_team = [Pokemon.from_species_number(random.choice(list(SPECIES.keys()))) for _ in range(6)]
         change_state(TEAM_PREVIEW)
 
 def handle_event_BATTLE_START(event):
