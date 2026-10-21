@@ -93,7 +93,8 @@ def draw_PKMN_VIEW():
                 (115,
                  88 + i * 15,
                  90,
-                 14)
+                 14),
+                 1
             )
         app.font0.draw_text(
             app.screen,
@@ -104,17 +105,17 @@ def draw_PKMN_VIEW():
         selected_move = pokemon.moves[app.PKMN_VIEW_move_index]
         app.screen.blit(
             get_type_icon(selected_move.type),
-            (180,100)
+            (10,45)
         )
         app.font0.draw_text(
             app.screen,
             "PWR " + str(selected_move.power),
-            180, 120
+            10, 65
         )
         app.font0.draw_text(
             app.screen,
             "ACC " + str(selected_move.accuracy),
-            180, 135
+            10, 80
         )
 
 def draw_TEAM_PREVIEW():
