@@ -88,10 +88,12 @@ def handle_event_TEAM_PREVIEW(event):
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):
+        disconnect()
         change_state(LAN_HOST_JOIN)
 
 def handle_event_LAN_HOST(event):
     if is_cancel(event):
+        disconnect()
         change_state(LAN_HOST_JOIN)
 
 def handle_event_LAN_HOST_JOIN(event):

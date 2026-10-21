@@ -32,7 +32,7 @@ def disconnect():
     app.LAN_HOST_is_host = False
     app.LAN_JOIN_is_host = False
     app.connection_buffer = ""
-    app.TEAM_PREVIEW_team = None
+    app.TEAM_PREVIEW_team = []
     app.TEAM_PREVIEW_opponent_team = []
     app.TEAM_PREVIEW_selected_lead = None
     app.TEAM_PREVIEW_opponent_lead = None
