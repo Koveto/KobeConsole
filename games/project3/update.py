@@ -45,7 +45,7 @@ def update_PKMN_VIEW():
             change_state(LAN_HOST_JOIN)
 
 def update_TEAM_PREVIEW():
-    if not app.TEAM_PREVIEW_team_sent:
+    if not app.TEAM_PREVIEW_opponent_team:
         team_data = []
         for pokemon in app.TEAM_PREVIEW_team:
             team_data.append(
@@ -57,7 +57,6 @@ def update_TEAM_PREVIEW():
                 "data": team_data
             }
         )
-        app.TEAM_PREVIEW_team_sent = True
     if (
         app.TEAM_PREVIEW_selected_lead
         is not None

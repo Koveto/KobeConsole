@@ -193,7 +193,6 @@ def disconnect():
     app.TEAM_PREVIEW_opponent_lead = None
     app.TEAM_PREVIEW_ready_sent = False
     app.TEAM_PREVIEW_opponent_ready = False
-    app.TEAM_PREVIEW_team_sent = False
     app.TEAM_PREVIEW_index = 0
     app.TEAM_PREVIEW_column = 0
     app.PKMN_VIEW_pokemon = None

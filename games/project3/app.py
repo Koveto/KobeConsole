@@ -39,7 +39,6 @@ class App:
         self.TEAM_PREVIEW_ready_sent = None
         self.TEAM_PREVIEW_opponent_ready = None
         self.TEAM_PREVIEW_column = None
-        self.TEAM_PREVIEW_team_sent = None
 
         self.PKMN_VIEW_pokemon = None
         self.PKMN_VIEW_move_index = None
