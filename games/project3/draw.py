@@ -35,6 +35,11 @@ def draw():
         draw_PKMN_VIEW()
     elif app.state == SPECIES_VIEW:
         draw_SPECIES_VIEW()
+    elif app.state == BATTLE_START:
+        draw_BATTLE_START()
+
+def draw_BATTLE_START():
+    app.screen.fill(COLOR_WHITE)
 
 def draw_SPECIES_VIEW():
     species = app.SPECIES_VIEW_species

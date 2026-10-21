@@ -11,6 +11,24 @@ def update():
         update_TEAM_PREVIEW()
     elif app.state == PKMN_VIEW:
         update_PKMN_VIEW()
+    elif app.state == SPECIES_VIEW:
+        update_SPECIES_VIEW()
+    elif app.state == BATTLE_START:
+        update_BATTLE_START()
+
+def update_BATTLE_START():
+    for packet in recv_packets():
+        if packet["type"] == "DISCONNECT":
+            disconnect()
+            change_state(LAN_HOST_JOIN)
+
+
+def update_SPECIES_VIEW():
+    for packet in recv_packets():
+        if packet["type"] == "DISCONNECT":
+            disconnect()
+            change_state(LAN_HOST_JOIN)
+
 
 def update_PKMN_VIEW():
     for packet in recv_packets():
@@ -63,6 +81,16 @@ def update_TEAM_PREVIEW():
         elif packet["type"] == "DISCONNECT":
             disconnect()
             change_state(LAN_HOST_JOIN)
+    if (
+        app.TEAM_PREVIEW_selected_lead
+        is not None
+        and
+        app.TEAM_PREVIEW_opponent_ready
+    ):
+
+        change_state(
+            BATTLE_START
+        )
 
 def update_LAN_JOIN():
     if app.LAN_JOIN_discovery_socket is None:

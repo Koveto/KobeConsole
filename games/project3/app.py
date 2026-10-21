@@ -7,6 +7,7 @@ class App:
         self.connection_socket = None
         self.connection_is_host = None
         self.connection_buffer = ""
+        self.option_info = False
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
