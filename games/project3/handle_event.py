@@ -22,27 +22,86 @@ def handle_event(event):
         handle_event_TEAM_SELECT(event)
 
 def handle_event_TEAM_SELECT(event):
-    if is_up(event):
-        if app.selected_team is None:
-            app.TEAM_SELECT_index = max(0, app.TEAM_SELECT_index - 1)
+
+    if (
+        is_up(event)
+        and
+        app.selected_team is None
+    ):
+        app.TEAM_SELECT_index = max(
+            0,
+            app.TEAM_SELECT_index - 1
+        )
+        if (
+            app.available_teams[
+                app.TEAM_SELECT_index
+            ]
+            ==
+            "Random Team"
+        ):
+            app.TEAM_SELECT_preview_team = []
+        else:
             app.TEAM_SELECT_preview_team = [
-                Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
+                Pokemon.from_species_number(3),
+                Pokemon.from_species_number(6),
+                Pokemon.from_species_number(9),
+                Pokemon.from_species_number(25),
+                Pokemon.from_species_number(94),
+                Pokemon.from_species_number(149)
+            ]
+    elif (
+        is_down(event)
+        and
+        app.selected_team is None
+    ):
+        app.TEAM_SELECT_index = min(
+            len(app.available_teams) - 1,
+            app.TEAM_SELECT_index + 1
+        )
+        if (
+            app.available_teams[
+                app.TEAM_SELECT_index
+            ]
+            ==
+            "Random Team"
+        ):
+            app.TEAM_SELECT_preview_team = []
+        else:
+            app.TEAM_SELECT_preview_team = [
+                Pokemon.from_species_number(3),
+                Pokemon.from_species_number(6),
+                Pokemon.from_species_number(9),
+                Pokemon.from_species_number(25),
+                Pokemon.from_species_number(94),
+                Pokemon.from_species_number(149)
+            ]
+    elif (
+        is_confirm(event)
+        and
+        app.selected_team is None
+    ):
+        load_species()
+        selected_team_data = (
+            app.teams_data[
+                app.TEAM_SELECT_index
+            ]
+        )
+        if (
+            selected_team_data["name"]
+            ==
+            "Random Team"
+        ):
+            app.selected_team = [
+                Pokemon.from_species_number(
+                    random.choice(
+                        list(
+                            SPECIES.keys()
+                        )
+                    )
+                )
                 for _ in range(6)
             ]
-    elif is_down(event):
-        if app.selected_team is None:
-            app.TEAM_SELECT_index = min(len(app.available_teams) - 1, app.TEAM_SELECT_index + 1)
-            app.TEAM_SELECT_preview_team = [
-                Pokemon.from_species_number(random.choice(list(SPECIES.keys())))
-                for _ in range(6)
-            ]
-    elif is_confirm(event):
-        if app.selected_team is None:
-            load_species()
-            selected_team_data = app.teams_data[app.TEAM_SELECT_index]
-            if selected_team_data["name"] == "Random Team":
-                app.selected_team = [Pokemon.from_species_number(random.choice(list(SPECIES.keys()))) for _ in range(6)]
-            app.TEAM_SELECT_team_sent = False
+        app.TEAM_SELECT_team_sent = False
 
 def handle_event_BATTLE_START(event):
     pass
