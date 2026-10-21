@@ -66,7 +66,7 @@ class Pokemon:
         self,
         species,
         level=100,
-        nature=HARDY,
+        nature=None,
         gender=None,
         nickname=None,
         moves=None,
@@ -87,6 +87,8 @@ class Pokemon:
         if not isinstance(nature,Nature):
             raise ValueError("Invalid nature")
         self.nature = nature
+        if self.nature is None:
+            self.nature = random.choice(list(NATURES.values()))
         if gender is None:
             gender = random.choice(Pokemon.VALID_GENDERS)
         if (gender not in Pokemon.VALID_GENDERS):
@@ -94,7 +96,12 @@ class Pokemon:
         self.gender = gender
         self.status = status
         if evs is None:
+            stats = [0,1,2,3,4,5]
+            random.shuffle(stats)
             evs = [0,0,0,0,0,0]
+            evs[stats[0]] = 252
+            evs[stats[1]] = 252
+            evs[stats[2]] = 4
         if len(evs) != 6:
             raise ValueError("EV list must contain 6 values")
         if any(ev < 0 or ev > 252 for ev in evs):

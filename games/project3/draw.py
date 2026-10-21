@@ -34,6 +34,20 @@ def draw():
     elif app.state == PKMN_VIEW:
         draw_PKMN_VIEW()
 
+def draw_bar(x,y,value,max_value):
+    width = int(value / max_value * 40)
+    pygame.draw.rect(
+        app.screen,
+        COLOR_BLACK,
+        (x,y,40,6),
+        1
+    )
+    pygame.draw.rect(
+        app.screen,
+        COLOR_BLACK,
+        (x,y,width,6)
+    )
+
 def draw_PKMN_VIEW():
     pokemon = app.PKMN_VIEW_pokemon
     app.screen.fill(COLOR_WHITE)
@@ -86,6 +100,12 @@ def draw_PKMN_VIEW():
             f"SPE {pokemon.speed}",
             10, 125
         )
+        draw_bar(55,55,pokemon.hp_max,400)
+        draw_bar(55,70,pokemon.attack,400)
+        draw_bar(55,85,pokemon.defense,400)
+        draw_bar(55,100,pokemon.special_attack,400)
+        draw_bar(55,115,pokemon.special_defense,400)
+        draw_bar(55,130,pokemon.speed,400)
     elif app.PKMN_VIEW_mode == "EVS":
         app.font0.draw_text(
             app.screen,
@@ -117,6 +137,12 @@ def draw_PKMN_VIEW():
             "SPE " + str(pokemon.speed_ev) + pokemon.nature_symbol("spe"),
             10, 125
         )
+        draw_bar(55,55,pokemon.hp_ev,400)
+        draw_bar(55,70,pokemon.attack_ev,400)
+        draw_bar(55,85,pokemon.defense_ev,400)
+        draw_bar(55,100,pokemon.special_attack_ev,400)
+        draw_bar(55,115,pokemon.special_defense_ev,400)
+        draw_bar(55,130,pokemon.speed_ev,400)
     for i, move in enumerate(pokemon.moves):
         if (app.PKMN_VIEW_move_index == i):
             pygame.draw.rect(
