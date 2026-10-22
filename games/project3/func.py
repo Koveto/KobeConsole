@@ -2,6 +2,89 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+KEYBOARD_GRID = [
+    ["A","B","C","D","E","F","G"],
+    ["H","I","J","K","L","M","N"],
+    ["O","P","Q","R","S","T","U"],
+    ["V","W","X","Y","Z"],
+    ["0","1","2","3","4","5","6","7","8","9"],
+    ["SPACE","BACK","DONE"]
+]
+
+def load_player():
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "player.json"
+    )
+    with open(
+        filepath,
+        "r",
+        encoding="utf-8"
+    ) as infile:
+        return json.load(
+            infile
+        )
+def save_player():
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "player.json"
+    )
+    with open(
+        filepath,
+        "w",
+        encoding="utf-8"
+    ) as outfile:
+        json.dump(
+            {
+                "player_name": (
+                    app.player_name
+                ),
+                "player_sprite": (
+                    app.player_sprite
+                )
+            },
+            outfile,
+            indent=4
+        )
+
+TRAINER_SHEET = None
+TRAINER_CELL_SIZE = 65
+TRAINER_SPRITE_SIZE = 64
+TRAINER_BORDER_SIZE = 1
+TRAINER_ALPHA_KEY = (112,192,160)
+def load_trainer_sheet():
+    global TRAINER_SHEET
+    if TRAINER_SHEET is not None:
+        return
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "sprites",
+        "trainers.png"
+    )
+    TRAINER_SHEET = pygame.image.load(
+        filepath
+    ).convert()
+    TRAINER_SHEET.set_colorkey(
+        TRAINER_ALPHA_KEY
+    )
+def get_trainer_sprite(sprite_number):
+    load_trainer_sheet()
+    column = sprite_number % 10
+    row = sprite_number // 10
+    x = (column * TRAINER_CELL_SIZE + TRAINER_BORDER_SIZE)
+    y = (row * TRAINER_CELL_SIZE + TRAINER_BORDER_SIZE)
+    rect = pygame.Rect(
+        x,
+        y,
+        TRAINER_SPRITE_SIZE,
+        TRAINER_SPRITE_SIZE
+    )
+    return TRAINER_SHEET.subsurface(
+        rect
+    )
+
 def load_teams():
     filepath = os.path.join(
         TEXT_ROOT,

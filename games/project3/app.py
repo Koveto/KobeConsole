@@ -10,6 +10,9 @@ class App:
         self.selected_team = None
         self.available_teams = []
         self.teams_data = []
+        self.player_name = "KOBE"
+        self.player_sprite = 0
+        self.pkmn_animation_time = 0
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
@@ -54,8 +57,12 @@ class App:
         self.TEAM_SELECT_selected_team_data = None
 
         self.OPTIONS_index = 0
+        self.OPTIONS_editing_name = False
         self.option_omniscient = False
         self.option_pkmn_animation = True
-        self.pkmn_animation_time = 0
+
+        self.KEYBOARD_row = 0
+        self.KEYBOARD_column = 0
+        self.KEYBOARD_text = ""
 
 app = App()

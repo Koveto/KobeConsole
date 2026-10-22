@@ -22,16 +22,143 @@ def handle_event(event):
         handle_event_TEAM_SELECT(event)
     elif app.state == OPTIONS:
         handle_event_OPTIONS(event)
+    elif app.state == KEYBOARD:
+        handle_event_KEYBOARD(event)
+
+def handle_event_KEYBOARD(event):
+    if not using_controller():
+        if event.type == pygame.KEYDOWN:
+            if (
+                event.unicode.isalnum()
+                and
+                len(app.KEYBOARD_text) < 10
+            ):
+                app.KEYBOARD_text += (
+                    event.unicode.upper()
+                )
+            elif (
+                event.key == pygame.K_SPACE
+                and
+                len(app.KEYBOARD_text) < 10
+            ):
+                app.KEYBOARD_text += " "
+            elif (
+                event.key == pygame.K_RETURN
+            ):
+                app.player_name = (
+                    app.KEYBOARD_text
+                )
+                save_player()
+                change_state(
+                    OPTIONS
+                )
+            elif (
+                event.key == pygame.K_BACKSPACE
+            ):
+                app.KEYBOARD_text = (
+                    app.KEYBOARD_text[:-1]
+                )
+    else:
+        if is_up(event):
+            app.KEYBOARD_row = max(
+                0,
+                app.KEYBOARD_row - 1
+            )
+        elif is_down(event):
+            app.KEYBOARD_row = min(
+                len(KEYBOARD_GRID) - 1,
+                app.KEYBOARD_row + 1
+            )
+        elif is_left(event):
+            app.KEYBOARD_column = max(
+                0,
+                app.KEYBOARD_column - 1
+            )
+        elif is_right(event):
+            max_column = (
+                len(
+                    KEYBOARD_GRID[
+                        app.KEYBOARD_row
+                    ]
+                ) - 1
+            )
+            app.KEYBOARD_column = min(
+                max_column,
+                app.KEYBOARD_column + 1
+            )
+        elif is_confirm(event):
+            row = KEYBOARD_GRID[
+                app.KEYBOARD_row
+            ]
+            app.KEYBOARD_column = min(
+                app.KEYBOARD_column,
+                len(row) - 1
+            )
+            selected = row[
+                app.KEYBOARD_column
+            ]
+            if (
+                selected == "SPACE"
+                and
+                len(app.KEYBOARD_text) < 10
+            ):
+                app.KEYBOARD_text += " "
+            elif (
+                selected == "BACK"
+            ):
+                app.KEYBOARD_text = (
+                    app.KEYBOARD_text[:-1]
+                )
+            elif (
+                selected == "DONE"
+            ):
+                app.player_name = (
+                    app.KEYBOARD_text
+                )
+                save_player()
+                change_state(
+                    OPTIONS
+                )
+            elif (
+                len(app.KEYBOARD_text) < 10
+            ):
+                app.KEYBOARD_text += (
+                    selected
+                )
+        elif is_cancel(event):
+            app.KEYBOARD_text = app.KEYBOARD_text[:-1]
+    app.KEYBOARD_column = min(
+        app.KEYBOARD_column,
+        len(
+            KEYBOARD_GRID[
+                app.KEYBOARD_row
+            ]
+        ) - 1
+    )
 
 def handle_event_OPTIONS(event):
     if is_up(event):
         app.OPTIONS_index = max(0, app.OPTIONS_index - 1)
     elif is_down(event):
-        app.OPTIONS_index = min(1, app.OPTIONS_index + 1)
+        app.OPTIONS_index = min(3, app.OPTIONS_index + 1)
+    elif is_left(event):
+        if app.OPTIONS_index == 1:
+            app.player_sprite -= 1
+            if app.player_sprite < 0:
+                app.player_sprite = 161
+            save_player()
+    elif is_right(event):
+        if app.OPTIONS_index == 1:
+            app.player_sprite += 1
+            if app.player_sprite > 161:
+                app.player_sprite = 1
+            save_player()
     elif is_confirm(event):
         if app.OPTIONS_index == 0:
+            change_state(KEYBOARD)
+        elif app.OPTIONS_index == 2:
             app.option_omniscient = not app.option_omniscient
-        elif app.OPTIONS_index == 1:
+        elif app.OPTIONS_index == 3:
             app.option_pkmn_animation = not app.option_pkmn_animation
     elif is_cancel(event):
         change_state(LAUNCHER_MENU)

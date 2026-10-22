@@ -14,25 +14,29 @@ H_SCREEN_LOGICAL = 160
 TEXT_WINDOW_TITLE = "Pkmn Battle Simulator V2"
 TEXT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-LAUNCHER_MENU    = 0
-LAN_HOST_JOIN    = 1
-LAN_HOST         = 2
-LAN_JOIN         = 3
-TEAM_PREVIEW     = 4
-PKMN_VIEW        = 5
-SPECIES_VIEW     = 6
-BATTLE_START     = 7
-TEAM_SELECT      = 8
-OPTIONS          = 9
+LAUNCHER_MENU      = 0
+LAN_HOST_JOIN      = 1
+LAN_HOST           = 2
+LAN_JOIN           = 3
+TEAM_PREVIEW       = 4
+PKMN_VIEW          = 5
+SPECIES_VIEW       = 6
+BATTLE_START       = 7
+TEAM_SELECT        = 8
+OPTIONS            = 9
+KEYBOARD       = 10
+OPTIONS_CONTROLLER = 11
+OPTIONS_MUSIC      = 12
 
 COLOR_BLACK = (0, 0, 0)
 COLOR_BLUE = (0, 0, 255)
 COLOR_WHITE = (255, 255, 255)
 COLOR_ALPHA_0 = (255, 0, 228)
 
-NUM_TARGET_FPS = 30
+NUM_TARGET_FPS     = 30
 NUM_DISCOVERY_PORT = 55556
-NUM_PORT = 5000
+NUM_PORT           = 5000
+NUM_PLAYER_SPRITES = 162
 
 STATUS_NONE = None
 STATUS_POISON = "POISON"

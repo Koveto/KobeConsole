@@ -30,6 +30,9 @@ def main():
         )
     )
     init_draw()
+    player_data = load_player()
+    app.player_name = player_data["player_name"]
+    app.player_sprite = player_data["player_sprite"]
     pygame.display.set_caption(TEXT_WINDOW_TITLE)
     clock = pygame.time.Clock()
     app.state = LAUNCHER_MENU

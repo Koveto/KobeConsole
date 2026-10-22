@@ -46,6 +46,72 @@ def draw():
         draw_TEAM_SELECT()
     elif app.state == OPTIONS:
         draw_OPTIONS()
+    elif app.state == KEYBOARD:
+        draw_KEYBOARD()
+
+def draw_KEYBOARD():
+    app.screen.fill(COLOR_WHITE)
+    app.font0.draw_text(
+        app.screen,
+        "ENTER NAME",
+        40,
+        10
+    )
+    app.font0.draw_text(
+        app.screen,
+        app.KEYBOARD_text,
+        120,
+        10
+    )
+    pygame.draw.rect(
+        app.screen,
+        COLOR_BLACK,
+        (
+            118,
+            8,
+            80,
+            15
+        ),
+        1
+    )
+    for row_index, row in enumerate(
+        KEYBOARD_GRID
+    ):
+        for column_index, text in enumerate(
+            row
+        ):
+            if row_index == len(KEYBOARD_GRID) - 1:
+                x_positions = [
+                    40,   # SPACE
+                    100,  # BACK
+                    160   # DONE
+                ]
+                x = x_positions[column_index]
+            else:
+                x = 40 + column_index * 20
+            y = 30 + row_index * 20
+            if (
+                row_index
+                ==
+                app.KEYBOARD_row
+                and
+                column_index
+                ==
+                app.KEYBOARD_column
+            ):
+                app.screen.blit(
+                    cursor,
+                    (
+                        x - 10,
+                        y
+                    )
+                )
+            app.font0.draw_text(
+                app.screen,
+                text,
+                x,
+                y
+            )
 
 def draw_OPTIONS():
     app.screen.fill(
@@ -58,6 +124,14 @@ def draw_OPTIONS():
         10
     )
     options = [
+        (
+            "Player Name",
+            app.player_name
+        ),
+        (
+            "Player Sprite",
+            str(app.player_sprite)
+        ),
         (
             "Omniscient",
             "ON" if app.option_omniscient else "OFF"
@@ -80,6 +154,16 @@ def draw_OPTIONS():
             20,
             y
         )
+    app.screen.blit(
+        get_trainer_sprite(app.player_sprite),
+        (170,30)
+    )
+    app.font0.draw_text(
+        app.screen,
+        app.player_name,
+        170,
+        100
+    )
 
 def draw_TEAM_SELECT():
     app.screen.fill(COLOR_WHITE)
@@ -571,7 +655,7 @@ def draw_LAUNCHER_MENU():
     app.font0.draw_text(
         app.screen,
         "Pokemon Battle Simulator",
-        70, 40
+        40, 30
     )
     for i, option in enumerate(app.LAUNCHER_MENU_options):
         y = 80 + (i * 20)
@@ -585,3 +669,14 @@ def draw_LAUNCHER_MENU():
             option,
             45, y
         )
+    
+    app.screen.blit(
+        get_trainer_sprite(app.player_sprite),
+        (170,50)
+    )
+    app.font0.draw_text(
+        app.screen,
+        app.player_name,
+        170,
+        120
+    )

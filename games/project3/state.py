@@ -51,4 +51,6 @@ def change_state(new_state):
             app.available_teams.append(team["name"])
         app.TEAM_SELECT_selected_team_data = app.teams_data[0]
         app.TEAM_SELECT_preview_team = []
+    if  (new_state == KEYBOARD):
+        app.KEYBOARD_text = app.player_name
     app.state = new_state
