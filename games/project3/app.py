@@ -9,7 +9,7 @@ class App:
         self.connection_buffer = ""
         self.option_info = False
         self.selected_team = None
-        self.available_teams = ["Random Team"]
+        self.available_teams = []
         self.teams_data = []
 
         self.LAUNCHER_MENU_index = 0
@@ -44,12 +44,13 @@ class App:
         self.PKMN_VIEW_move_index = None
         self.PKMN_VIEW_mode = None
 
-        self.SPECIES_VIEW_species = None
+        self.SPECIES_VIEW_pokemon = None
         self.SPECIES_VIEW_mode = None
 
         self.TEAM_SELECT_index = 0
         self.TEAM_SELECT_preview_team = []
         self.TEAM_SELECT_team_sent = False
         self.TEAM_SELECT_opponent_team = None
+        self.TEAM_SELECT_selected_team_data = None
 
 app = App()

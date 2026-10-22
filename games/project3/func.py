@@ -198,6 +198,28 @@ def disconnect():
     app.PKMN_VIEW_pokemon = None
     app.PKMN_VIEW_move_index = None
     app.PKMN_VIEW_mode = "STATS"
+    app.selected_team = None
+    app.TEAM_SELECT_preview_team = []
+    app.TEAM_SELECT_opponent_team = None
+    app.TEAM_SELECT_team_sent = False
+    app.TEAM_SELECT_selected_team_data = None
+
+def save_teams(data):
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "teams.json"
+    )
+    with open(
+        filepath,
+        "w",
+        encoding="utf-8"
+    ) as outfile:
+        json.dump(
+            data,
+            outfile,
+            indent=4
+        )
 
 TYPE_SHEET = None
 TYPE_ICON_WIDTH = 32

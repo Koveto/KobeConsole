@@ -80,10 +80,10 @@ def draw_BATTLE_START():
     app.screen.fill(COLOR_WHITE)
 
 def draw_SPECIES_VIEW():
-    species = app.SPECIES_VIEW_species
+    pokemon = app.SPECIES_VIEW_pokemon
     app.screen.fill(COLOR_WHITE)
     for i, pokemon_type in enumerate(
-        species.species.types
+        pokemon.species.types
     ):
         app.screen.blit(
             get_type_icon(
@@ -93,48 +93,48 @@ def draw_SPECIES_VIEW():
         )
     app.font0.draw_text(
         app.screen,
-        species.species_name + species.gender,
+        pokemon.species_name + pokemon.gender,
         10, 10
     )
     if app.SPECIES_VIEW_mode == "STATS":
         app.font0.draw_text(
             app.screen,
-            f"HP  {species.hp_base}",
+            f"HP  {pokemon.hp_base}",
             10, 60
         )
         app.font0.draw_text(
             app.screen,
-            f"ATK {species.attack_base}",
+            f"ATK {pokemon.attack_base}",
             10, 75
         )
         app.font0.draw_text(
             app.screen,
-            f"DEF {species.defense_base}",
+            f"DEF {pokemon.defense_base}",
             10, 90
         )
         app.font0.draw_text(
             app.screen,
-            f"SPA {species.special_attack_base}",
+            f"SPA {pokemon.special_attack_base}",
             10, 105
         )
         app.font0.draw_text(
             app.screen,
-            f"SPD {species.special_defense_base}",
+            f"SPD {pokemon.special_defense_base}",
             10, 120
         )
         app.font0.draw_text(
             app.screen,
-            f"SPE {species.speed_base}",
+            f"SPE {pokemon.speed_base}",
             10, 135
         )
-        draw_bar(60,63,species.hp_base,255)
-        draw_bar(60,78,species.attack_base,190)
-        draw_bar(60,93,species.defense_base,230)
-        draw_bar(60,108,species.special_attack_base,194)
-        draw_bar(60,123,species.special_defense_base,230)
-        draw_bar(60,138,species.speed_base,200)
+        draw_bar(60,63,pokemon.hp_base,255)
+        draw_bar(60,78,pokemon.attack_base,190)
+        draw_bar(60,93,pokemon.defense_base,230)
+        draw_bar(60,108,pokemon.special_attack_base,194)
+        draw_bar(60,123,pokemon.special_defense_base,230)
+        draw_bar(60,138,pokemon.speed_base,200)
     elif app.SPECIES_VIEW_mode == "AFFINITIES":
-        affinities = get_affinities(species)
+        affinities = get_affinities(pokemon)
         pygame.draw.rect(
             app.screen,
             COLOR_WHITE,
@@ -176,7 +176,7 @@ def draw_SPECIES_VIEW():
                     y + 16
                 )
     app.screen.blit(
-        species.front_sprite,
+        pokemon.front_sprite,
         (166, 0)
     )
 

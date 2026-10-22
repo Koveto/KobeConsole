@@ -24,9 +24,10 @@ def update_TEAM_SELECT():
         and
         not app.TEAM_SELECT_team_sent
     ):
-        team_data = []
-        for pokemon in app.selected_team:
-            team_data.append(pokemon.to_dict())
+        team_data = [
+            pokemon.to_dict()
+            for pokemon in app.selected_team
+        ]
         send_packet(
             {
                 "type": "TEAM",
@@ -72,18 +73,6 @@ def update_PKMN_VIEW():
             change_state(LAN_HOST_JOIN)
 
 def update_TEAM_PREVIEW():
-    if not app.TEAM_PREVIEW_opponent_team:
-        team_data = []
-        for pokemon in app.TEAM_PREVIEW_team:
-            team_data.append(
-                pokemon.to_dict()
-            )
-        send_packet(
-            {
-                "type": "TEAM",
-                "data": team_data
-            }
-        )
     if (
         app.TEAM_PREVIEW_selected_lead
         is not None
@@ -99,29 +88,22 @@ def update_TEAM_PREVIEW():
         )
         app.TEAM_PREVIEW_ready_sent = True
     for packet in recv_packets():
-        if packet["type"] == "TEAM":
-            app.TEAM_PREVIEW_opponent_team = []
-            for pokemon_data in packet["data"]:
-                app.TEAM_PREVIEW_opponent_team.append(
-                    Pokemon.from_dict(
-                        pokemon_data
-                    )
-                )
-        elif packet["type"] == "LEAD":
+        if packet["type"] == "LEAD":
             app.TEAM_PREVIEW_opponent_lead = (
                 packet["data"]
             )
             app.TEAM_PREVIEW_opponent_ready = True
         elif packet["type"] == "DISCONNECT":
             disconnect()
-            change_state(LAN_HOST_JOIN)
+            change_state(
+                LAN_HOST_JOIN
+            )
     if (
         app.TEAM_PREVIEW_selected_lead
         is not None
         and
         app.TEAM_PREVIEW_opponent_ready
     ):
-
         change_state(
             BATTLE_START
         )
