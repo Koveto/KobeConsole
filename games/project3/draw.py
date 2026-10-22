@@ -39,6 +39,37 @@ def draw():
         draw_BATTLE_START()
     elif app.state == TEAM_SELECT:
         draw_TEAM_SELECT()
+    elif app.state == OPTIONS:
+        draw_OPTIONS()
+
+def draw_OPTIONS():
+    app.screen.fill(COLOR_WHITE)
+    app.font0.draw_text(
+        app.screen,
+        "OPTIONS",
+        10,
+        10
+    )
+    text = (
+        "ON"
+        if app.option_omniscient
+        else
+        "OFF"
+    )
+    if (
+        app.OPTIONS_index
+        == 0
+    ):
+        app.screen.blit(
+            cursor,
+            (10,40)
+        )
+    app.font0.draw_text(
+        app.screen,
+        f"Omniscient: {text}",
+        20,
+        40
+    )
 
 def draw_TEAM_SELECT():
     app.screen.fill(COLOR_WHITE)

@@ -20,6 +20,23 @@ def handle_event(event):
         handle_event_BATTLE_START(event)
     elif app.state == TEAM_SELECT:
         handle_event_TEAM_SELECT(event)
+    elif app.state == OPTIONS:
+        handle_event_OPTIONS(event)
+
+def handle_event_OPTIONS(event):
+    if (
+        is_confirm(event)
+    ):
+        app.option_omniscient = (
+            not
+            app.option_omniscient
+        )
+    elif (
+        is_cancel(event)
+    ):
+        change_state(
+            LAUNCHER_MENU
+        )
 
 def handle_event_TEAM_SELECT(event):
     if (
@@ -211,8 +228,7 @@ def handle_event_TEAM_PREVIEW(event):
     elif is_down(event):
         app.TEAM_PREVIEW_index = min(5, app.TEAM_PREVIEW_index + 1)
     elif is_left(event):
-        if app.option_omniscient:
-            app.TEAM_PREVIEW_column = 0
+        app.TEAM_PREVIEW_column = 0
     elif is_right(event):
         if app.option_omniscient:
             app.TEAM_PREVIEW_column = 1
@@ -220,18 +236,27 @@ def handle_event_TEAM_PREVIEW(event):
         if app.TEAM_PREVIEW_column == 0:
             app.TEAM_PREVIEW_selected_lead = app.TEAM_PREVIEW_index
     elif is_cvxy(event):
-        if app.option_omniscient:
-            if app.TEAM_PREVIEW_column == 0:
-                app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
-            elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):
-                app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
+        if app.TEAM_PREVIEW_column == 0:
+            app.PKMN_VIEW_pokemon = (
+                app.TEAM_PREVIEW_team[
+                    app.TEAM_PREVIEW_index
+                ]
+            )
             change_state(PKMN_VIEW)
-        else:
-            if app.TEAM_PREVIEW_column == 0:
-                app.SPECIES_VIEW_pokemon = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
-            elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):
-                app.SPECIES_VIEW_pokemon = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
-            change_state(SPECIES_VIEW)
+        elif (
+            app.option_omniscient
+            and
+            app.TEAM_PREVIEW_index
+            < len(
+                app.TEAM_PREVIEW_opponent_team
+            )
+        ):
+            app.PKMN_VIEW_pokemon = (
+                app.TEAM_PREVIEW_opponent_team[
+                    app.TEAM_PREVIEW_index
+                ]
+            )
+            change_state(PKMN_VIEW)
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):
@@ -266,3 +291,5 @@ def handle_event_LAUNCHER_MENU(event):
             pass
         elif app.LAUNCHER_MENU_index == 1:
             change_state(LAN_HOST_JOIN)
+        elif app.LAUNCHER_MENU_index == 2:
+            change_state(OPTIONS)

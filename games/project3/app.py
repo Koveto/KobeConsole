@@ -14,7 +14,8 @@ class App:
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
-                                            "LAN Multiplayer")
+                                      "LAN Multiplayer",
+                                      "Options")
         
         self.LAN_HOST_JOIN_index = None
 
@@ -52,5 +53,7 @@ class App:
         self.TEAM_SELECT_team_sent = False
         self.TEAM_SELECT_opponent_team = None
         self.TEAM_SELECT_selected_team_data = None
+
+        self.OPTIONS_index = 0
 
 app = App()
