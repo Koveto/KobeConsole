@@ -380,11 +380,12 @@ def draw_TEAM_PREVIEW():
         "YOUR TEAM",
         10, 10
     )
-    app.font0.draw_text(
-        app.screen,
-        "OPPONENT",
-        170, 10
-    )
+    if app.option_omniscient:
+        app.font0.draw_text(
+            app.screen,
+            "OPPONENT",
+            170, 10
+        )
     for i, pokemon in enumerate(
         app.TEAM_PREVIEW_team
     ):
@@ -416,30 +417,31 @@ def draw_TEAM_PREVIEW():
             20,
             y
         )
-    for i in range(6):
-        y = 30 + i * 15
-        if (
-            app.TEAM_PREVIEW_column == 1
-            and
-            i == app.TEAM_PREVIEW_index
-        ):
-            app.screen.blit(
-                cursor,
-                (160, y)
-            )
-        if i < len(app.TEAM_PREVIEW_opponent_team):
-            opponent = app.TEAM_PREVIEW_opponent_team[i]
-            app.font0.draw_text(
-                app.screen,
-                opponent.species_name,
-                175, y
-            )
-        else:
-            app.font0.draw_text(
-                app.screen,
-                "-----",
-                175, y
-            )
+    if app.option_omniscient:
+        for i in range(6):
+            y = 30 + i * 15
+            if (
+                app.TEAM_PREVIEW_column == 1
+                and
+                i == app.TEAM_PREVIEW_index
+            ):
+                app.screen.blit(
+                    cursor,
+                    (160, y)
+                )
+            if i < len(app.TEAM_PREVIEW_opponent_team):
+                opponent = app.TEAM_PREVIEW_opponent_team[i]
+                app.font0.draw_text(
+                    app.screen,
+                    opponent.species_name,
+                    175, y
+                )
+            else:
+                app.font0.draw_text(
+                    app.screen,
+                    "-----",
+                    175, y
+                )
     pokemon = None
     if app.TEAM_PREVIEW_column == 0:
         pokemon = (
@@ -448,10 +450,9 @@ def draw_TEAM_PREVIEW():
             ]
         )
     elif (
-        app.TEAM_PREVIEW_index
-        < len(
-            app.TEAM_PREVIEW_opponent_team
-        )
+        app.option_omniscient
+        and
+        (app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team))
     ):
         pokemon = (
             app.TEAM_PREVIEW_opponent_team[

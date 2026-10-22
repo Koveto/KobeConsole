@@ -211,14 +211,16 @@ def handle_event_TEAM_PREVIEW(event):
     elif is_down(event):
         app.TEAM_PREVIEW_index = min(5, app.TEAM_PREVIEW_index + 1)
     elif is_left(event):
-        app.TEAM_PREVIEW_column = 0
+        if app.option_omniscient:
+            app.TEAM_PREVIEW_column = 0
     elif is_right(event):
-        app.TEAM_PREVIEW_column = 1
+        if app.option_omniscient:
+            app.TEAM_PREVIEW_column = 1
     elif is_confirm(event):
         if app.TEAM_PREVIEW_column == 0:
             app.TEAM_PREVIEW_selected_lead = app.TEAM_PREVIEW_index
     elif is_cvxy(event):
-        if app.option_info:
+        if app.option_omniscient:
             if app.TEAM_PREVIEW_column == 0:
                 app.PKMN_VIEW_pokemon = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
             elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):

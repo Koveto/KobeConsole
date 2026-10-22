@@ -7,7 +7,7 @@ class App:
         self.connection_socket = None
         self.connection_is_host = None
         self.connection_buffer = ""
-        self.option_info = False
+        self.option_omniscient = False
         self.selected_team = None
         self.available_teams = []
         self.teams_data = []
