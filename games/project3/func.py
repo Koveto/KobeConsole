@@ -204,6 +204,14 @@ def disconnect():
     app.TEAM_SELECT_team_sent = False
     app.TEAM_SELECT_selected_team_data = None
 
+def get_loaded_pokemon():
+    pokemon = []
+    pokemon.extend(app.selected_team or [])
+    pokemon.extend(app.TEAM_PREVIEW_team or [])
+    pokemon.extend(app.TEAM_PREVIEW_opponent_team or [])
+    pokemon.extend(app.TEAM_SELECT_preview_team or [])
+    return pokemon
+
 def save_teams(data):
     filepath = os.path.join(
         TEXT_ROOT,

@@ -20,6 +20,11 @@ def init_draw():
         COLOR_ALPHA_0
     )
 
+def get_display_sprite(pokemon):
+    if app.option_pkmn_animation:
+        return pokemon.front_sprite_anim
+    return pokemon.front_sprite
+
 def draw():
     if app.state == LAUNCHER_MENU:
         draw_LAUNCHER_MENU()
@@ -43,33 +48,38 @@ def draw():
         draw_OPTIONS()
 
 def draw_OPTIONS():
-    app.screen.fill(COLOR_WHITE)
+    app.screen.fill(
+        COLOR_WHITE
+    )
     app.font0.draw_text(
         app.screen,
         "OPTIONS",
         10,
         10
     )
-    text = (
-        "ON"
-        if app.option_omniscient
-        else
-        "OFF"
-    )
-    if (
-        app.OPTIONS_index
-        == 0
-    ):
-        app.screen.blit(
-            cursor,
-            (10,40)
+    options = [
+        (
+            "Omniscient",
+            "ON" if app.option_omniscient else "OFF"
+        ),
+        (
+            "Pokemon Animation",
+            "ON" if app.option_pkmn_animation else "OFF"
         )
-    app.font0.draw_text(
-        app.screen,
-        f"Omniscient: {text}",
-        20,
-        40
-    )
+    ]
+    for i, (label, value) in enumerate(options):
+        y = 40 + i * 20
+        if i == app.OPTIONS_index:
+            app.screen.blit(
+                cursor,
+                (10, y)
+            )
+        app.font0.draw_text(
+            app.screen,
+            f"{label}: {value}",
+            20,
+            y
+        )
 
 def draw_TEAM_SELECT():
     app.screen.fill(COLOR_WHITE)
@@ -96,7 +106,7 @@ def draw_TEAM_SELECT():
         x = 105 + column * 64
         y = row * 48 #48
         app.screen.blit(
-            pokemon.front_sprite,
+            get_display_sprite(pokemon),
             (x,y)
         )
     if app.selected_team is not None:
@@ -207,7 +217,7 @@ def draw_SPECIES_VIEW():
                     y + 16
                 )
     app.screen.blit(
-        pokemon.front_sprite,
+        get_display_sprite(pokemon),
         (166, 0)
     )
 
@@ -399,7 +409,7 @@ def draw_PKMN_VIEW():
                     y + 16
                 )
     app.screen.blit(
-        pokemon.front_sprite,
+        get_display_sprite(pokemon),
         (166, 0)
     )
     
@@ -492,7 +502,7 @@ def draw_TEAM_PREVIEW():
         )
     if pokemon is not None:
         app.screen.blit(
-            pokemon.front_sprite,
+            get_display_sprite(pokemon),
             (
                 90,40
             )

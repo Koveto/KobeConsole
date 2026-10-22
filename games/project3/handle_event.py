@@ -24,19 +24,17 @@ def handle_event(event):
         handle_event_OPTIONS(event)
 
 def handle_event_OPTIONS(event):
-    if (
-        is_confirm(event)
-    ):
-        app.option_omniscient = (
-            not
-            app.option_omniscient
-        )
-    elif (
-        is_cancel(event)
-    ):
-        change_state(
-            LAUNCHER_MENU
-        )
+    if is_up(event):
+        app.OPTIONS_index = max(0, app.OPTIONS_index - 1)
+    elif is_down(event):
+        app.OPTIONS_index = min(1, app.OPTIONS_index + 1)
+    elif is_confirm(event):
+        if app.OPTIONS_index == 0:
+            app.option_omniscient = not app.option_omniscient
+        elif app.OPTIONS_index == 1:
+            app.option_pkmn_animation = not app.option_pkmn_animation
+    elif is_cancel(event):
+        change_state(LAUNCHER_MENU)
 
 def handle_event_TEAM_SELECT(event):
     if (
@@ -181,7 +179,8 @@ def handle_event_PKMN_VIEW(event):
         if app.PKMN_VIEW_move_index is None:
             app.TEAM_PREVIEW_column = 0
     elif is_right(event):
-        if app.PKMN_VIEW_move_index is None:
+        if ((app.PKMN_VIEW_move_index is None) and \
+            (app.option_omniscient)):
             app.TEAM_PREVIEW_column = 1
     elif is_cx(event):
         if app.PKMN_VIEW_mode == "STATS":
@@ -210,10 +209,8 @@ def handle_event_PKMN_VIEW(event):
             ]
         )
     elif (
-        app.TEAM_PREVIEW_index
-        < len(
-            app.TEAM_PREVIEW_opponent_team
-        )
+        app.option_omniscient and
+        app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team)
     ):
         app.PKMN_VIEW_pokemon = (
             app.TEAM_PREVIEW_opponent_team[

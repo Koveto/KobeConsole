@@ -7,7 +7,6 @@ class App:
         self.connection_socket = None
         self.connection_is_host = None
         self.connection_buffer = ""
-        self.option_omniscient = False
         self.selected_team = None
         self.available_teams = []
         self.teams_data = []
@@ -55,5 +54,8 @@ class App:
         self.TEAM_SELECT_selected_team_data = None
 
         self.OPTIONS_index = 0
+        self.option_omniscient = False
+        self.option_pkmn_animation = True
+        self.pkmn_animation_time = 0
 
 app = App()

@@ -3,6 +3,11 @@ from func import *
 from state import *
 
 def update():
+    current_time = pygame.time.get_ticks()
+    if (app.option_pkmn_animation and current_time - app.pkmn_animation_time > 500):
+        app.pkmn_animation_time = current_time
+        for pokemon in get_loaded_pokemon():
+            pokemon.animate_sprite()
     if app.state == LAN_HOST:
         update_LAN_HOST()
     elif app.state == LAN_JOIN:
