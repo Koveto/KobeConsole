@@ -206,10 +206,23 @@ def disconnect():
 
 def get_loaded_pokemon():
     pokemon = []
-    pokemon.extend(app.selected_team or [])
-    pokemon.extend(app.TEAM_PREVIEW_team or [])
-    pokemon.extend(app.TEAM_PREVIEW_opponent_team or [])
-    pokemon.extend(app.TEAM_SELECT_preview_team or [])
+    seen = set()
+    for p in (app.selected_team or []):
+        if id(p) not in seen:
+            pokemon.append(p)
+            seen.add(id(p))
+    for p in (app.TEAM_PREVIEW_team or []):
+        if id(p) not in seen:
+            pokemon.append(p)
+            seen.add(id(p))
+    for p in (app.TEAM_PREVIEW_opponent_team or []):
+        if id(p) not in seen:
+            pokemon.append(p)
+            seen.add(id(p))
+    for p in (app.TEAM_SELECT_preview_team or []):
+        if id(p) not in seen:
+            pokemon.append(p)
+            seen.add(id(p))
     return pokemon
 
 def save_teams(data):
