@@ -199,16 +199,16 @@ class Pokemon:
             front_column = 5 + self.front_sprite_number
             back_column = 8 + self.back_sprite_number
             if self.front_sprite_anim_state:
-                anim_column = 5
-            else:
                 anim_column = 6
+            else:
+                anim_column = 7
         else:
             front_column = self.front_sprite_number
             back_column = 3 + self.back_sprite_number
             if self.front_sprite_anim_state:
-                anim_column = 0
-            else:
                 anim_column = 1
+            else:
+                anim_column = 2
         self.front_sprite = get_sprite(self.species_no,front_column)
         self.front_sprite_anim = get_sprite(self.species_no,anim_column)
         self.back_sprite = get_sprite(self.species_no,back_column)
