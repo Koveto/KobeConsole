@@ -58,4 +58,8 @@ def change_state(new_state):
             app.OPTIONS_MUSIC_index = 0
             app.OPTIONS_MUSIC_scroll = 0
             app.music_data = load_music_data()
+    if  (new_state == SINGLE_MENU):
+        app.SINGLE_MENU_index = 0
+    if  (new_state == SINGLE_MENU_TRAINER):
+        app.SINGLE_MENU_TRAINER_index = 0
     app.state = new_state

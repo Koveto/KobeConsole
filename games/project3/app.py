@@ -18,6 +18,8 @@ class App:
         self.current_music = None
         self.current_music_mode = None
         self.muted = False
+        self.player_lead = None
+        self.opponent_lead = None
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
@@ -76,5 +78,20 @@ class App:
 
         self.OPTIONS_MUSIC_index = 0
         self.OPTIONS_MUSIC_scroll = 0
+
+        self.SINGLE_MENU_index = 0
+        self.SINGLE_MENU_options = (
+            "Trainer Battle",
+            "Endless Battle",
+            "Defend Gym",
+            "Tournament"
+        )
+
+        self.SINGLE_MENU_TRAINER_index = 0
+        self.SINGLE_MENU_TRAINER_options = (
+            "Random Team",
+            "My Team",
+            "Trainer"
+        )
 
 app = App()

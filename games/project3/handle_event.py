@@ -26,6 +26,29 @@ def handle_event(event):
         handle_event_KEYBOARD(event)
     elif app.state == OPTIONS_MUSIC:
         handle_event_OPTIONS_MUSIC(event)
+    elif app.state == SINGLE_MENU:
+        handle_event_SINGLE_MENU(event)
+    elif app.state == SINGLE_MENU_TRAINER:
+        handle_event_SINGLE_MENU_TRAINER(event)
+
+def handle_event_SINGLE_MENU_TRAINER(event):
+    if is_up(event):
+        app.SINGLE_MENU_TRAINER_index = max(0, app.SINGLE_MENU_TRAINER_index - 1)
+    elif is_down(event):
+        app.SINGLE_MENU_TRAINER_index = min(2, app.SINGLE_MENU_TRAINER_index + 1)
+    elif is_cancel(event):
+        change_state(SINGLE_MENU)
+
+def handle_event_SINGLE_MENU(event):
+    if is_up(event):
+        app.SINGLE_MENU_index = max(0, app.SINGLE_MENU_index - 1)
+    elif is_down(event):
+        app.SINGLE_MENU_index = min(len(app.SINGLE_MENU_options) - 1, app.SINGLE_MENU_index + 1)
+    elif is_cancel(event):
+        change_state(LAUNCHER_MENU)
+    elif is_confirm(event):
+        if app.SINGLE_MENU_index == 0:
+            change_state(SINGLE_MENU_TRAINER)
 
 def handle_event_OPTIONS_MUSIC(event):
     filenames = sorted(
@@ -498,7 +521,7 @@ def handle_event_LAUNCHER_MENU(event):
         app.LAUNCHER_MENU_index = min(len(app.LAUNCHER_MENU_options) - 1, app.LAUNCHER_MENU_index + 1)
     elif is_confirm(event):
         if app.LAUNCHER_MENU_index == 0:
-            pass
+            change_state(SINGLE_MENU)
         elif app.LAUNCHER_MENU_index == 1:
             change_state(LAN_HOST_JOIN)
         elif app.LAUNCHER_MENU_index == 2:

@@ -50,6 +50,55 @@ def draw():
         draw_KEYBOARD()
     elif app.state == OPTIONS_MUSIC:
         draw_OPTIONS_MUSIC()
+    elif app.state == SINGLE_MENU:
+        draw_SINGLE_MENU()
+    elif app.state == SINGLE_MENU_TRAINER:
+        draw_SINGLE_MENU_TRAINER()
+
+def draw_SINGLE_MENU_TRAINER():
+    app.screen.fill(COLOR_WHITE)
+    app.font0.draw_text(
+        app.screen,
+        "TRAINER BATTLE",
+        10, 10
+    )
+    options = [
+        "Random Team",
+        "My Team",
+        "Trainer"
+    ]
+    for i, text in enumerate(options):
+        y = 40 + i * 20
+        if i == app.SINGLE_MENU_TRAINER_index:
+            app.screen.blit(cursor, (10, y))
+        app.font0.draw_text(
+            app.screen,
+            text,
+            20, y
+        )
+
+def draw_SINGLE_MENU():
+    app.screen.fill(COLOR_WHITE)
+    app.font0.draw_text(
+        app.screen,
+        "SINGLE PLAYER",
+        10, 10
+    )
+    options = [
+        "Trainer Battle        DEFEATED  0",
+        "Endless Battle          RECORD  0",
+        "Defend Gym                GYMS  0",
+        "Tournament              TITLES  0"
+    ]
+    for i, text in enumerate(options):
+        y = 40 + i * 20
+        if i == app.SINGLE_MENU_index:
+            app.screen.blit(cursor, (10, y))
+        app.font0.draw_text(
+            app.screen,
+            text,
+            20, y
+        )
 
 def draw_OPTIONS_MUSIC():
     app.screen.fill(COLOR_WHITE)
