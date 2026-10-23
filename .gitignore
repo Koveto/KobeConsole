@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .venv/
 .vscode/
+games/project3/data/player.json
+games/project3/data/options.json
+games/project3/data/music.json
