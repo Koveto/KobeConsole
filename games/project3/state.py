@@ -25,10 +25,7 @@ def change_state(new_state):
         (new_state == TEAM_PREVIEW):
         load_species()
         app.TEAM_PREVIEW_index = 0
-        app.TEAM_PREVIEW_team = app.selected_team
-        app.TEAM_PREVIEW_opponent_team = (
-            app.TEAM_SELECT_opponent_team
-        )
+        app.opponent_team = app.TEAM_SELECT_opponent_team
         app.TEAM_PREVIEW_selected_lead = None
         app.TEAM_PREVIEW_opponent_lead = None
         app.TEAM_PREVIEW_ready_sent = False
@@ -51,6 +48,9 @@ def change_state(new_state):
             app.available_teams.append(team["name"])
         app.TEAM_SELECT_selected_team_data = app.teams_data[0]
         app.TEAM_SELECT_preview_team = []
+    if  (new_state == OPTIONS):
+        app.OPTIONS_scroll = 0
+        app.OPTIONS_index = 0
     if  (new_state == KEYBOARD):
         app.KEYBOARD_text = app.player_name
     if  (new_state == OPTIONS_MUSIC):

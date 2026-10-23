@@ -2,5 +2,7 @@
     "omniscient": true,
     "pkmn_animation": true,
     "music_shuffle": true,
-    "mute": false
+    "mute": false,
+    "level": 99,
+    "level_npc": 98
 }

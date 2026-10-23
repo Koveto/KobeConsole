@@ -25,13 +25,13 @@ def update():
 
 def update_TEAM_SELECT():
     if (
-        app.selected_team is not None
+        app.player_team is not None
         and
         not app.TEAM_SELECT_team_sent
     ):
         team_data = [
             pokemon.to_dict()
-            for pokemon in app.selected_team
+            for pokemon in app.player_team
         ]
         send_packet(
             {
@@ -51,7 +51,7 @@ def update_TEAM_SELECT():
             disconnect()
             change_state(LAN_HOST_JOIN)
     if (
-        app.selected_team is not None
+        app.player_team is not None
         and
         app.TEAM_SELECT_opponent_team is not None
     ):

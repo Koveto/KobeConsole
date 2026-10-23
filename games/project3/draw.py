@@ -235,11 +235,24 @@ def draw_OPTIONS():
             "ON"
             if app.option_music_shuffle
             else "OFF"
+        ),
+        (
+            "Player Level",
+            app.option_level
+        ),
+        (
+            "Opponent Level",
+            app.option_level_npc
         )
     ]
-    for i, (label, value) in enumerate(options):
-        y = 40 + i * 20
-        if i == app.OPTIONS_index:
+    visible_options = options[
+        app.OPTIONS_scroll:
+        app.OPTIONS_scroll + 6
+    ]
+    for row, (label, value) in enumerate(visible_options):
+        actual_index = app.OPTIONS_scroll + row
+        y = 40 + row * 20
+        if actual_index == app.OPTIONS_index:
             app.screen.blit(
                 cursor,
                 (10, y)
@@ -289,7 +302,7 @@ def draw_TEAM_SELECT():
             get_display_sprite(pokemon),
             (x,y)
         )
-    if app.selected_team is not None:
+    if app.player_team is not None:
         app.font0.draw_text(
             app.screen,
             "WAITING FOR OPPONENT",
@@ -314,7 +327,7 @@ def draw_SPECIES_VIEW():
         )
     app.font0.draw_text(
         app.screen,
-        pokemon.species_name + pokemon.gender,
+        pokemon.species_name + pokemon.gender + " LV" + str(pokemon.level),
         10, 10
     )
     if app.SPECIES_VIEW_mode == "STATS":
@@ -429,7 +442,7 @@ def draw_PKMN_VIEW():
         )
     app.font0.draw_text(
         app.screen,
-        pokemon.species_name + pokemon.gender,
+        pokemon.species_name + pokemon.gender + " LV" + str(pokemon.level),
         10, 10
     )
     if app.PKMN_VIEW_mode == "STATS":
@@ -608,7 +621,7 @@ def draw_TEAM_PREVIEW():
             170, 10
         )
     for i, pokemon in enumerate(
-        app.TEAM_PREVIEW_team
+        app.player_team
     ):
         y = 30 + i * 15
         if (
@@ -650,8 +663,8 @@ def draw_TEAM_PREVIEW():
                     cursor,
                     (160, y)
                 )
-            if i < len(app.TEAM_PREVIEW_opponent_team):
-                opponent = app.TEAM_PREVIEW_opponent_team[i]
+            if i < len(app.opponent_team):
+                opponent = app.opponent_team[i]
                 app.font0.draw_text(
                     app.screen,
                     opponent.species_name,
@@ -666,17 +679,17 @@ def draw_TEAM_PREVIEW():
     pokemon = None
     if app.TEAM_PREVIEW_column == 0:
         pokemon = (
-            app.TEAM_PREVIEW_team[
+            app.player_team[
                 app.TEAM_PREVIEW_index
             ]
         )
     elif (
         app.option_omniscient
         and
-        (app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team))
+        (app.TEAM_PREVIEW_index < len(app.opponent_team))
     ):
         pokemon = (
-            app.TEAM_PREVIEW_opponent_team[
+            app.opponent_team[
                 app.TEAM_PREVIEW_index
             ]
         )

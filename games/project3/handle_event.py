@@ -200,20 +200,36 @@ def handle_event_KEYBOARD(event):
 def handle_event_OPTIONS(event):
     if is_up(event):
         app.OPTIONS_index = max(0, app.OPTIONS_index - 1)
+        if app.OPTIONS_index < app.OPTIONS_scroll:
+            app.OPTIONS_scroll -= 1
     elif is_down(event):
-        app.OPTIONS_index = min(5, app.OPTIONS_index + 1)
+        app.OPTIONS_index = min(7, app.OPTIONS_index + 1)
+        if app.OPTIONS_index >= app.OPTIONS_scroll + 6:
+            app.OPTIONS_scroll += 1
     elif is_left(event):
         if app.OPTIONS_index == 1:
             app.player_sprite -= 1
             if app.player_sprite < 0:
                 app.player_sprite = 161
             save_player()
+        elif app.OPTIONS_index == 6:
+            app.option_level = max(1, app.option_level - 1)
+            save_options()
+        elif app.OPTIONS_index == 7:
+            app.option_level_npc = max(1, app.option_level_npc - 1)
+            save_options()
     elif is_right(event):
         if app.OPTIONS_index == 1:
             app.player_sprite += 1
             if app.player_sprite > 161:
-                app.player_sprite = 1
+                app.player_sprite = 0
             save_player()
+        elif app.OPTIONS_index == 6:
+            app.option_level = min(100, app.option_level + 1)
+            save_options()
+        elif app.OPTIONS_index == 7:
+            app.option_level_npc = min(100, app.option_level_npc + 1)
+            save_options()
     elif is_confirm(event):
         if app.OPTIONS_index == 0:
             change_state(KEYBOARD)
@@ -235,7 +251,7 @@ def handle_event_TEAM_SELECT(event):
     if (
         is_up(event)
         and
-        app.selected_team is None
+        app.player_team is None
     ):
         app.TEAM_SELECT_index = max(
             0,
@@ -262,7 +278,7 @@ def handle_event_TEAM_SELECT(event):
     elif (
         is_down(event)
         and
-        app.selected_team is None
+        app.player_team is None
     ):
         app.TEAM_SELECT_index = min(
             len(app.available_teams) - 1,
@@ -289,7 +305,7 @@ def handle_event_TEAM_SELECT(event):
     elif (
         is_confirm(event)
         and
-        app.selected_team is None
+        app.player_team is None
     ):
         load_species()
         app.TEAM_SELECT_selected_team_data = (
@@ -301,7 +317,7 @@ def handle_event_TEAM_SELECT(event):
             app.TEAM_SELECT_selected_team_data["name"]
             == "Random Team"
         ):
-            app.selected_team = [
+            app.player_team = [
                 Pokemon.from_species_number(
                     random.choice(
                         list(
@@ -312,13 +328,15 @@ def handle_event_TEAM_SELECT(event):
                 for _ in range(6)
             ]
         else:
-            app.selected_team = [
+            app.player_team = [
                 Pokemon.from_dict(
                     pokemon_data
                 )
                 for pokemon_data
                 in app.TEAM_SELECT_selected_team_data["pokemon"]
             ]
+        for pokemon in app.player_team:
+            pokemon.set_level(app.option_level)
         app.TEAM_SELECT_team_sent = False
 
 def handle_event_BATTLE_START(event):
@@ -341,9 +359,9 @@ def handle_event_SPECIES_VIEW(event):
     elif is_cancel(event):
         change_state(app.previous_state)
     if app.TEAM_PREVIEW_column == 0:
-        app.SPECIES_VIEW_pokemon = app.TEAM_PREVIEW_team[app.TEAM_PREVIEW_index]
-    elif app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team):
-        app.SPECIES_VIEW_pokemon = app.TEAM_PREVIEW_opponent_team[app.TEAM_PREVIEW_index]
+        app.SPECIES_VIEW_pokemon = app.player_team[app.TEAM_PREVIEW_index]
+    elif app.TEAM_PREVIEW_index < len(app.opponent_team):
+        app.SPECIES_VIEW_pokemon = app.opponent_team[app.TEAM_PREVIEW_index]
 
 def handle_event_PKMN_VIEW(event):
     if is_up(event):
@@ -399,16 +417,16 @@ def handle_event_PKMN_VIEW(event):
             )
     if app.TEAM_PREVIEW_column == 0:
         app.PKMN_VIEW_pokemon = (
-            app.TEAM_PREVIEW_team[
+            app.player_team[
                 app.TEAM_PREVIEW_index
             ]
         )
     elif (
         app.option_omniscient and
-        app.TEAM_PREVIEW_index < len(app.TEAM_PREVIEW_opponent_team)
+        app.TEAM_PREVIEW_index < len(app.opponent_team)
     ):
         app.PKMN_VIEW_pokemon = (
-            app.TEAM_PREVIEW_opponent_team[
+            app.opponent_team[
                 app.TEAM_PREVIEW_index
             ]
         )
@@ -430,7 +448,7 @@ def handle_event_TEAM_PREVIEW(event):
     elif is_cvxy(event):
         if app.TEAM_PREVIEW_column == 0:
             app.PKMN_VIEW_pokemon = (
-                app.TEAM_PREVIEW_team[
+                app.player_team[
                     app.TEAM_PREVIEW_index
                 ]
             )
@@ -440,11 +458,11 @@ def handle_event_TEAM_PREVIEW(event):
             and
             app.TEAM_PREVIEW_index
             < len(
-                app.TEAM_PREVIEW_opponent_team
+                app.opponent_team
             )
         ):
             app.PKMN_VIEW_pokemon = (
-                app.TEAM_PREVIEW_opponent_team[
+                app.opponent_team[
                     app.TEAM_PREVIEW_index
                 ]
             )

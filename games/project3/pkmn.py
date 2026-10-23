@@ -401,3 +401,53 @@ class Pokemon:
         if (self.nature.reduced_stat == stat_name):
             return "-"
         return ""
+
+    def set_level(
+        self,
+        level
+    ):
+        if not (
+            Pokemon.MIN_LEVEL
+            <= level
+            <= Pokemon.MAX_LEVEL
+        ):
+            raise ValueError(
+                f"Invalid level: {level}"
+            )
+        old_hp_max = self.hp_max
+        self.level = level
+        self.hp_max = (
+            self.calculate_hp()
+        )
+        self.attack = (
+            self.calculate_attack()
+        )
+        self.defense = (
+            self.calculate_defense()
+        )
+        self.special_attack = (
+            self.calculate_special_attack()
+        )
+        self.special_defense = (
+            self.calculate_special_defense()
+        )
+        self.speed = (
+            self.calculate_speed()
+        )
+        if old_hp_max > 0:
+            hp_percent = (
+                self.hp_current
+                / old_hp_max
+            )
+            self.hp_current = int(
+                self.hp_max
+                * hp_percent
+            )
+        else:
+            self.hp_current = (
+                self.hp_max
+            )
+        self.hp_current = min(
+            self.hp_current,
+            self.hp_max
+        )

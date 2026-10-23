@@ -40,6 +40,8 @@ def main():
     app.option_pkmn_animation = options_data["pkmn_animation"]
     app.option_music_shuffle = options_data["music_shuffle"]
     app.option_mute = options_data["mute"]
+    app.option_level = options_data["level"]
+    app.option_level_npc = options_data["level_npc"]
     if app.option_mute:
         pygame.mixer.music.set_volume(0.0)
     else:

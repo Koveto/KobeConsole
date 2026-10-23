@@ -7,7 +7,8 @@ class App:
         self.connection_socket = None
         self.connection_is_host = None
         self.connection_buffer = ""
-        self.selected_team = None
+        self.player_team = None
+        self.opponent_team = None
         self.available_teams = []
         self.teams_data = []
         self.player_name = "KOBE"
@@ -39,7 +40,6 @@ class App:
         self.LAN_JOIN_is_host = None
 
         self.TEAM_PREVIEW_index = None
-        self.TEAM_PREVIEW_team = None
         self.TEAM_PREVIEW_opponent_team = None
         self.TEAM_PREVIEW_selected_lead = None
         self.TEAM_PREVIEW_opponent_lead = None
@@ -62,10 +62,13 @@ class App:
 
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
+        self.OPTIONS_scroll = 0
         self.option_omniscient = False
         self.option_pkmn_animation = True
         self.option_music_shuffle = False
         self.option_mute = False
+        self.option_level = 100
+        self.option_level_npc = 100
 
         self.KEYBOARD_row = 0
         self.KEYBOARD_column = 0

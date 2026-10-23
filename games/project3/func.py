@@ -22,7 +22,11 @@ def save_options():
                 "music_shuffle":
                     app.option_music_shuffle,
                 "mute":
-                    app.option_mute
+                    app.option_mute,
+                "level":
+                    app.option_level,
+                "level_npc":
+                    app.option_level_npc
             },
             outfile,
             indent=4
@@ -50,7 +54,9 @@ def load_options():
             "omniscient": False,
             "pkmn_animation": True,
             "music_shuffle": True,
-            "mute": False
+            "mute": False,
+            "level": 100,
+            "level_npc": 100
         }
         with open(
             filepath,
@@ -144,11 +150,9 @@ def play_random_menu_music():
     ):
         if data["menu"]:
             songs.append(filename)
-    print(songs)
     if not songs:
         return
     song = random.choice(songs)
-    print("PLAYING",song)
     app.current_music_mode = ("MENU")
     play_music(song)
 
@@ -436,8 +440,8 @@ def disconnect():
     app.LAN_HOST_is_host = False
     app.LAN_JOIN_is_host = False
     app.connection_buffer = ""
-    app.TEAM_PREVIEW_team = []
-    app.TEAM_PREVIEW_opponent_team = []
+    app.player_team = []
+    app.opponent_team = []
     app.TEAM_PREVIEW_selected_lead = None
     app.TEAM_PREVIEW_opponent_lead = None
     app.TEAM_PREVIEW_ready_sent = False
@@ -447,7 +451,7 @@ def disconnect():
     app.PKMN_VIEW_pokemon = None
     app.PKMN_VIEW_move_index = None
     app.PKMN_VIEW_mode = "STATS"
-    app.selected_team = None
+    app.player_team = None
     app.TEAM_SELECT_preview_team = []
     app.TEAM_SELECT_opponent_team = None
     app.TEAM_SELECT_team_sent = False
@@ -456,15 +460,15 @@ def disconnect():
 def get_loaded_pokemon():
     pokemon = []
     seen = set()
-    for p in (app.selected_team or []):
+    for p in (app.player_team or []):
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
-    for p in (app.TEAM_PREVIEW_team or []):
+    for p in (app.player_team or []):
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
-    for p in (app.TEAM_PREVIEW_opponent_team or []):
+    for p in (app.opponent_team or []):
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
@@ -618,9 +622,7 @@ def get_species(pokedex_number):
 def generate_list_names_dex_numbers():
     load_species()
     for species in SPECIES.values():
-        print(
-            f"PKMN_{species.name.upper().replace(' ', '_')} = {species.no}"
-        )
+        print(f"PKMN_{species.name.upper().replace(' ', '_')} = {species.no}")
 
 MOVE_DATA = {}
 def load_moves():
