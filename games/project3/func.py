@@ -97,22 +97,20 @@ def load_music_data():
         TEXT_ROOT,
         "music"
     )
-    music_data = {}
-    if os.path.exists(filepath):
-        try:
-            with open(
-                filepath,
-                "r",
-                encoding="utf-8"
-            ) as infile:
-                music_data = json.load(
-                    infile
-                )
-        except (
-            FileNotFoundError,
-            json.JSONDecodeError
-        ):
-            music_data = {}
+    try:
+        with open(
+            filepath,
+            "r",
+            encoding="utf-8"
+        ) as infile:
+            music_data = json.load(
+                infile
+            )
+    except (
+        FileNotFoundError,
+        json.JSONDecodeError
+    ):
+        music_data = {}
     current_music_files = set()
     for filename in os.listdir(music_folder):
         if filename.lower().endswith(".ogg"):
@@ -187,14 +185,35 @@ def load_player():
         "data",
         "player.json"
     )
-    with open(
-        filepath,
-        "r",
-        encoding="utf-8"
-    ) as infile:
-        return json.load(
-            infile
-        )
+    try:
+        with open(
+            filepath,
+            "r",
+            encoding="utf-8"
+        ) as infile:
+            return json.load(
+                infile
+            )
+    except (
+        FileNotFoundError,
+        json.JSONDecodeError
+    ):
+        player_data = {
+            "player_name": "KOBE",
+            "player_sprite": 0
+        }
+        with open(
+            filepath,
+            "w",
+            encoding="utf-8"
+        ) as outfile:
+
+            json.dump(
+                player_data,
+                outfile,
+                indent=4
+            )
+        return player_data
 def save_player():
     filepath = os.path.join(
         TEXT_ROOT,
