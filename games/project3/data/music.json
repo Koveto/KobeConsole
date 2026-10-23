@@ -1,0 +1,462 @@
+{
+    "DPP Cynthia.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "HGSS Red.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "ORAS Maxie.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "ORAS Primal.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "ORAS Steven.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "ORAS Zinnia.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "PE Trace.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "DPP Frontier Brain.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "DPP Galactic Commander.ogg": {
+        "menu": false,
+        "battle": true
+    },
+    "RBY Casino.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Celadon City.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Champion Blue.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Cinnabar Island.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Cycling.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Indigo Plateau.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Rocket Hideout.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Route 6.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Staff Credits.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Surfing.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Vermillion City.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "BW Kyurem.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "DPP Elite Four.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "DPP Galactic Boss.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "DPP Gym Leader.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "DPP Lab.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "DPP Rival.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "FRLG Champion Rival.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "FRLG Gym Leader.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Frontier Brain.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Groudon.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Gym Leader.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Kanto Gym.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Rival Encounter.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Rival.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Rocket Battle.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "HGSS Suicune.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Aqua Appears.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Deoxys.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Elite Four.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Emotion.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Giratina.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Gym Leader.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS HoOh.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Lisia.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Lugia.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Rayquaza.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Regi Trio.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Rival Battle.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Team Magma.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Wally Encounter.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Wally.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS World Champion.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "ORAS Zinnia Encounter.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "RBY Cerulean City.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Come Along.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Gym Leader.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Gym.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Lab.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Pallet Town.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Pewter City.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Pokemon Center.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Professor Oak.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Rival Appears.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Route 1.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Route 24.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Route 3.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY St Anne.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Title.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Trainer Battle.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "RBY Wild Battle.ogg": {
+        "menu": true,
+        "battle": false
+    },
+    "SM Champion.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Elite Four.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Gladion.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Guzma.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Hau.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Kahuna.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Solgaleo.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Totem.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SM Trainer Battle.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Battle Tower.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Bede.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Chairman Rose.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Champion.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Elite Four.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Eternamax.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Eternatus Zacian.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Eternatus.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Final Hop.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Final Marnie.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Hop.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Illusion Zacian.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Marnie.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Oleana.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Piers.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Team Yell.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Trainer Battle.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Wild Battle.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "SS Zacian.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Cyrus.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Final Hau.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Ghetsis.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Giovanni Meet.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Giovanni.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Lysandre.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Maxie.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Megalopolis.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Necrozma.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Rainbow Rocket.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Recon Encounter.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Trainer Battle.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Ultra Necrozma.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Ultra Recon Squad.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "USUM Wild Battle.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "XY Champion Diantha.ogg": {
+        "menu": false,
+        "battle": false
+    },
+    "XY Elite Four.ogg": {
+        "menu": false,
+        "battle": false
+    }
+}

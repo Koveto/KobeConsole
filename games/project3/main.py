@@ -8,6 +8,8 @@ from font import *
 
 def main():
     pygame.init()
+    pygame.mixer.init()
+    pygame.mixer.music.set_endevent(MUSIC_END_EVENT)
     display_info = pygame.display.Info()
     screen_width = display_info.current_w
     screen_height = display_info.current_h
@@ -33,6 +35,17 @@ def main():
     player_data = load_player()
     app.player_name = player_data["player_name"]
     app.player_sprite = player_data["player_sprite"]
+    options_data = load_options()
+    app.option_omniscient = options_data["omniscient"]
+    app.option_pkmn_animation = options_data["pkmn_animation"]
+    app.option_music_shuffle = options_data["music_shuffle"]
+    app.option_mute = options_data["mute"]
+    if app.option_mute:
+        pygame.mixer.music.set_volume(0.0)
+    else:
+        pygame.mixer.music.set_volume(1.0)
+    app.music_data = load_music_data()
+    play_random_menu_music()
     pygame.display.set_caption(TEXT_WINDOW_TITLE)
     clock = pygame.time.Clock()
     app.state = LAUNCHER_MENU
@@ -50,6 +63,23 @@ def main():
                     send_packet({"type":"DISCONNECT"})
                 disconnect()
                 running = False
+            elif event.type == MUSIC_END_EVENT:
+                if app.option_music_shuffle:
+                    if app.current_music_mode == "MENU":
+                        play_random_menu_music()
+                    elif app.current_music_mode == "BATTLE":
+                        play_random_battle_music()
+            elif is_mute_toggle(event):
+                app.muted = not app.muted
+                if app.muted:
+                    pygame.mixer.music.set_volume(0.0)
+                else:
+                    pygame.mixer.music.set_volume(1.0)
+            elif is_skip_song(event):
+                if app.current_music_mode == "MENU":
+                    play_random_menu_music()
+                elif app.current_music_mode == "BATTLE":
+                    play_random_battle_music()
             handle_event(event)
         update()
         app.screen.fill(COLOR_BLUE)

@@ -2,6 +2,172 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+def save_options():
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "options.json"
+    )
+    with open(
+        filepath,
+        "w",
+        encoding="utf-8"
+    ) as outfile:
+        json.dump(
+            {
+                "omniscient":
+                    app.option_omniscient,
+                "pkmn_animation":
+                    app.option_pkmn_animation,
+                "music_shuffle":
+                    app.option_music_shuffle,
+                "mute":
+                    app.option_mute
+            },
+            outfile,
+            indent=4
+        )
+def load_options():
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "options.json"
+    )
+    try:
+        with open(
+            filepath,
+            "r",
+            encoding="utf-8"
+        ) as infile:
+            return json.load(
+                infile
+            )
+    except (
+        FileNotFoundError,
+        json.JSONDecodeError
+    ):
+        options = {
+            "omniscient": False,
+            "pkmn_animation": True,
+            "music_shuffle": True,
+            "mute": False
+        }
+        with open(
+            filepath,
+            "w",
+            encoding="utf-8"
+        ) as outfile:
+            json.dump(
+                options,
+                outfile,
+                indent=4
+            )
+        return options
+
+def save_music_data(music_data):
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "music.json"
+    )
+    with open(
+        filepath,
+        "w",
+        encoding="utf-8"
+    ) as outfile:
+        json.dump(
+            music_data,
+            outfile,
+            indent=4
+        )
+
+def load_music_data():
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "music.json"
+    )
+    music_folder = os.path.join(
+        TEXT_ROOT,
+        "music"
+    )
+    music_data = {}
+    if os.path.exists(filepath):
+        try:
+            with open(
+                filepath,
+                "r",
+                encoding="utf-8"
+            ) as infile:
+                music_data = json.load(
+                    infile
+                )
+        except (
+            FileNotFoundError,
+            json.JSONDecodeError
+        ):
+            music_data = {}
+    current_music_files = set()
+    for filename in os.listdir(music_folder):
+        if filename.lower().endswith(".ogg"):
+            current_music_files.add(filename)
+        if filename not in music_data:
+            music_data[filename] = {
+                "menu": False,
+                "battle": False
+            }
+    for filename in list(music_data.keys()):
+        if filename not in current_music_files:
+            del music_data[filename]
+    save_music_data(music_data)
+    return music_data
+
+def play_music(filename):
+    music_path = os.path.join(
+        TEXT_ROOT,
+        "music",
+        filename
+    )
+    pygame.mixer.music.load(
+        music_path
+    )
+    if app.option_music_shuffle:
+        pygame.mixer.music.play()
+    else:
+        pygame.mixer.music.play(-1)
+    app.current_music = filename
+
+def play_random_menu_music():
+    songs = []
+    for filename, data in (
+        app.music_data.items()
+    ):
+        if data["menu"]:
+            songs.append(filename)
+    print(songs)
+    if not songs:
+        return
+    song = random.choice(songs)
+    print("PLAYING",song)
+    app.current_music_mode = ("MENU")
+    play_music(song)
+
+def play_random_battle_music():
+    songs = []
+    for filename, data in (
+        app.music_data.items()
+    ):
+        if data["battle"]:
+            songs.append(filename)
+    if not songs:
+        return
+    app.current_music_mode = ("BATTLE")
+    play_music(random.choice(songs))
+
+def stop_music():
+    pygame.mixer.music.stop()
+    app.current_music = None
+
 KEYBOARD_GRID = [
     ["A","B","C","D","E","F","G"],
     ["H","I","J","K","L","M","N"],
@@ -452,7 +618,6 @@ def get_species(pokedex_number):
 def generate_list_names_dex_numbers():
     load_species()
     for species in SPECIES.values():
-
         print(
             f"PKMN_{species.name.upper().replace(' ', '_')} = {species.no}"
         )

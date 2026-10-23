@@ -48,6 +48,86 @@ def draw():
         draw_OPTIONS()
     elif app.state == KEYBOARD:
         draw_KEYBOARD()
+    elif app.state == OPTIONS_MUSIC:
+        draw_OPTIONS_MUSIC()
+
+def draw_OPTIONS_MUSIC():
+    app.screen.fill(COLOR_WHITE)
+    app.font0.draw_text(
+        app.screen,
+        "MUSIC",
+        10, 10
+    )
+    app.font0.draw_text(
+        app.screen,
+        "MENU",
+        165, 10
+    )
+    app.font0.draw_text(
+        app.screen,
+        "BATTLE",
+        205, 10
+    )
+    filenames = sorted(
+        app.music_data.keys()
+    )
+    visible_files = filenames[
+        app.OPTIONS_MUSIC_scroll:
+        app.OPTIONS_MUSIC_scroll + 8
+    ]
+    for row, filename in enumerate(visible_files):
+        actual_index = app.OPTIONS_MUSIC_scroll + row
+        y = 35 + row * 15
+        if (
+            actual_index
+            ==
+            app.OPTIONS_MUSIC_index
+        ):
+            app.screen.blit(
+                cursor,
+                (
+                    5, y
+                )
+            )
+        app.font0.draw_text(
+            app.screen,
+            filename[:-4],
+            20,
+            y
+        )
+        menu_text = (
+            "Y"
+            if app.music_data[
+                filename
+            ]["menu"]
+            else "N"
+        )
+        battle_text = (
+            "Y"
+            if app.music_data[
+                filename
+            ]["battle"]
+            else "N"
+        )
+        app.font0.draw_text(
+            app.screen,
+            menu_text,
+            175,
+            y
+        )
+        app.font0.draw_text(
+            app.screen,
+            battle_text,
+            215,
+            y
+        )
+        if app.current_music == filename:
+            app.font0.draw_text(
+                app.screen,
+                ">",
+                230,
+                y
+            )
 
 def draw_KEYBOARD():
     app.screen.fill(COLOR_WHITE)
@@ -130,15 +210,31 @@ def draw_OPTIONS():
         ),
         (
             "Player Sprite",
-            str(app.player_sprite)
+            str(
+                app.player_sprite
+            )
+        ),
+        (
+            "Music",
+            ""
         ),
         (
             "Omniscient",
-            "ON" if app.option_omniscient else "OFF"
+            "ON"
+            if app.option_omniscient
+            else "OFF"
         ),
         (
             "Pokemon Animation",
-            "ON" if app.option_pkmn_animation else "OFF"
+            "ON"
+            if app.option_pkmn_animation
+            else "OFF"
+        ),
+        (
+            "Music Shuffle",
+            "ON"
+            if app.option_music_shuffle
+            else "OFF"
         )
     ]
     for i, (label, value) in enumerate(options):

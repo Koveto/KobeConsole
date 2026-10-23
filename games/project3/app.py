@@ -13,6 +13,10 @@ class App:
         self.player_name = "KOBE"
         self.player_sprite = 0
         self.pkmn_animation_time = 0
+        self.music_data = {}
+        self.current_music = None
+        self.current_music_mode = None
+        self.muted = False
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
@@ -60,9 +64,14 @@ class App:
         self.OPTIONS_editing_name = False
         self.option_omniscient = False
         self.option_pkmn_animation = True
+        self.option_music_shuffle = False
+        self.option_mute = False
 
         self.KEYBOARD_row = 0
         self.KEYBOARD_column = 0
         self.KEYBOARD_text = ""
+
+        self.OPTIONS_MUSIC_index = 0
+        self.OPTIONS_MUSIC_scroll = 0
 
 app = App()

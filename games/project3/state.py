@@ -53,4 +53,9 @@ def change_state(new_state):
         app.TEAM_SELECT_preview_team = []
     if  (new_state == KEYBOARD):
         app.KEYBOARD_text = app.player_name
+    if  (new_state == OPTIONS_MUSIC):
+        if new_state == OPTIONS_MUSIC:
+            app.OPTIONS_MUSIC_index = 0
+            app.OPTIONS_MUSIC_scroll = 0
+            app.music_data = load_music_data()
     app.state = new_state

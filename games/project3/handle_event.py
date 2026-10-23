@@ -24,6 +24,67 @@ def handle_event(event):
         handle_event_OPTIONS(event)
     elif app.state == KEYBOARD:
         handle_event_KEYBOARD(event)
+    elif app.state == OPTIONS_MUSIC:
+        handle_event_OPTIONS_MUSIC(event)
+
+def handle_event_OPTIONS_MUSIC(event):
+    filenames = sorted(
+        app.music_data.keys()
+    )
+    if is_up(event):
+        app.OPTIONS_MUSIC_index = max(
+            0,
+            app.OPTIONS_MUSIC_index - 1
+        )
+        if (
+            app.OPTIONS_MUSIC_index
+            <
+            app.OPTIONS_MUSIC_scroll
+        ):
+            app.OPTIONS_MUSIC_scroll -= 1
+    elif is_down(event):
+        app.OPTIONS_MUSIC_index = min(
+            len(filenames) - 1,
+            app.OPTIONS_MUSIC_index + 1
+        )
+        if (
+            app.OPTIONS_MUSIC_index
+            >=
+            app.OPTIONS_MUSIC_scroll + 8
+        ):
+            app.OPTIONS_MUSIC_scroll += 1
+    elif is_confirm(event):
+        filename = filenames[app.OPTIONS_MUSIC_index]
+        if app.current_music == filename:
+            stop_music()
+        else:
+            play_music(filename)
+    elif is_cancel(event):
+        change_state(OPTIONS)
+    elif is_cx(event):
+        filename = filenames[app.OPTIONS_MUSIC_index]
+        app.music_data[
+            filename
+        ]["menu"] = (
+            not
+            app.music_data[
+                filename
+            ]["menu"]
+        )
+        save_music_data(app.music_data)
+    elif is_vy(event):
+        filename = filenames[
+            app.OPTIONS_MUSIC_index
+        ]
+        app.music_data[
+            filename
+        ]["battle"] = (
+            not
+            app.music_data[
+                filename
+            ]["battle"]
+        )
+        save_music_data(app.music_data)
 
 def handle_event_KEYBOARD(event):
     if not using_controller():
@@ -140,7 +201,7 @@ def handle_event_OPTIONS(event):
     if is_up(event):
         app.OPTIONS_index = max(0, app.OPTIONS_index - 1)
     elif is_down(event):
-        app.OPTIONS_index = min(3, app.OPTIONS_index + 1)
+        app.OPTIONS_index = min(5, app.OPTIONS_index + 1)
     elif is_left(event):
         if app.OPTIONS_index == 1:
             app.player_sprite -= 1
@@ -157,9 +218,16 @@ def handle_event_OPTIONS(event):
         if app.OPTIONS_index == 0:
             change_state(KEYBOARD)
         elif app.OPTIONS_index == 2:
-            app.option_omniscient = not app.option_omniscient
+            change_state(OPTIONS_MUSIC)
         elif app.OPTIONS_index == 3:
+            app.option_omniscient = not app.option_omniscient
+            save_options()
+        elif app.OPTIONS_index == 4:
             app.option_pkmn_animation = not app.option_pkmn_animation
+            save_options()
+        elif app.OPTIONS_index == 5:
+            app.option_music_shuffle = not app.option_music_shuffle
+            save_options()
     elif is_cancel(event):
         change_state(LAUNCHER_MENU)
 

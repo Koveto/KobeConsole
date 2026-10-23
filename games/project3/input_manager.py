@@ -35,6 +35,8 @@ if IS_WINDOWS:
     CONTROLLER_X = 2
     CONTROLLER_Y = 3
     CONTROLLER_HOME = 7
+    CONTROLLER_LEFT_SHOULDER = 9
+    CONTROLLER_RIGHT_SHOULDER = 10
 
     CONTROLLER_DPAD_LEFT = 13
     CONTROLLER_DPAD_RIGHT = 14
@@ -48,6 +50,8 @@ elif IS_LINUX:
     CONTROLLER_X = 3
     CONTROLLER_Y = 0
     CONTROLLER_HOME = 12
+    CONTROLLER_LEFT_SHOULDER = 4
+    CONTROLLER_RIGHT_SHOULDER = 5
 
     CONTROLLER_DPAD_LEFT = (-1, 0)
     CONTROLLER_DPAD_RIGHT = (1, 0)
@@ -97,6 +101,20 @@ def is_keyboard_z(event):
     return (
         event.type == pygame.KEYDOWN
         and event.key == pygame.K_z
+    )
+
+def is_keyboard_m(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_m
+    )
+
+def is_keyboard_n(event):
+
+    return (
+        event.type == pygame.KEYDOWN
+        and event.key == pygame.K_n
     )
 
 def is_keyboard_x(event):
@@ -259,6 +277,22 @@ def is_controller_dpad_down(event):
 #
 # Controller Buttons
 #
+
+def is_controller_left_shoulder(event):
+
+    return (
+        event.type == pygame.JOYBUTTONDOWN
+        and event.button
+        == CONTROLLER_LEFT_SHOULDER
+    )
+
+def is_controller_right_shoulder(event):
+
+    return (
+        event.type == pygame.JOYBUTTONDOWN
+        and event.button
+        == CONTROLLER_RIGHT_SHOULDER
+    )
 
 def is_controller_button_a(event):
 
@@ -505,4 +539,20 @@ def is_quit(event):
         event.type == pygame.QUIT
         or is_keyboard_q(event)
         or is_controller_button_home(event)
+    )
+
+def is_mute_toggle(event):
+
+    return (
+        is_keyboard_m(event)
+        or
+        is_controller_right_shoulder(event)
+    )
+
+def is_skip_song(event):
+
+    return (
+        is_keyboard_n(event)
+        or
+        is_controller_left_shoulder(event)
     )
