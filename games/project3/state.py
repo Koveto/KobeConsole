@@ -24,13 +24,13 @@ def change_state(new_state):
     if  ((app.state == TEAM_SELECT)) and \
         (new_state == TEAM_PREVIEW):
         load_species()
-        app.TEAM_PREVIEW_index = 0
+        app.preview_index = 0
+        app.preview_column = 0
         app.opponent_team = app.TEAM_SELECT_opponent_team
-        app.TEAM_PREVIEW_selected_lead = None
-        app.TEAM_PREVIEW_opponent_lead = None
+        app.player_lead = None
+        app.opponent_lead = None
         app.TEAM_PREVIEW_ready_sent = False
         app.TEAM_PREVIEW_opponent_ready = False
-        app.TEAM_PREVIEW_column = 0
     if  (new_state == PKMN_VIEW):
         app.PKMN_VIEW_move_index = None
         app.PKMN_VIEW_mode = "STATS"
@@ -40,15 +40,21 @@ def change_state(new_state):
         app.TEAM_SELECT_team_sent = False
         app.TEAM_SELECT_opponent_team = None
         load_species()
-        app.TEAM_SELECT_index = 0
+        app.team_select_index = 0
+        app.team_select_scroll = 0
         teams_data = load_teams()
-        app.teams_data = teams_data["teams"]
+        app.teams_data = (
+            teams_data["teams"]
+        )
         app.available_teams = []
         for team in app.teams_data:
-            app.available_teams.append(team["name"])
-        app.TEAM_SELECT_selected_team_data = app.teams_data[0]
-        app.TEAM_SELECT_preview_team = []
-        app.TEAM_SELECT_scroll = 0
+            app.available_teams.append(
+                team["name"]
+            )
+        app.selected_team_data = (
+            app.teams_data[0]
+        )
+        app.team_select_preview_team = []
     if  (new_state == OPTIONS):
         app.OPTIONS_scroll = 0
         app.OPTIONS_index = 0
@@ -84,8 +90,8 @@ def change_state(new_state):
         else:
             app.SINGLE_MENU_TRAINER_selected_team = 0
     if  (new_state == SINGLE_TEAM_SELECT):
-        app.SINGLE_TEAM_SELECT_index = 0
-        app.SINGLE_TEAM_SELECT_scroll = 0
+        app.team_select_index = 0
+        app.team_select_scroll = 0
         teams_data = load_teams()
         app.teams_data = (
             teams_data["teams"]
@@ -95,26 +101,32 @@ def change_state(new_state):
             app.available_teams.append(
                 team["name"]
             )
-        app.SINGLE_TEAM_SELECT_preview_team = []
+        app.team_select_preview_team = []
         selected_team_data = (
             app.teams_data[
                 app.SINGLE_TEAM_SELECT_index
             ]
         )
+        app.selected_team_data = (
+            selected_team_data
+        )
         if (
             selected_team_data["name"]
             != "Random Team"
         ):
-            app.SINGLE_TEAM_SELECT_preview_team = [
+            preview_team = [
                 Pokemon.from_dict(
                     pokemon_data
                 )
                 for pokemon_data in
                 selected_team_data["pokemon"]
             ]
+            app.team_select_preview_team = (
+                preview_team
+            )
     if  (new_state == SINGLE_TEAM_PREVIEW):
-        app.SINGLE_TEAM_PREVIEW_index = 0
-        app.SINGLE_TEAM_PREVIEW_column = 0
+        app.preview_index = 0
+        app.preview_column = 0
         app.player_lead = None
         
     app.state = new_state

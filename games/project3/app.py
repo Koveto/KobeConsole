@@ -23,6 +23,13 @@ class App:
         self.trainers_data = []
         self.single_battle_mode = None
         self.selected_trainer_data = None
+        self.preview_index = 0
+        self.preview_column = 0
+        self.team_select_index = 0
+        self.team_select_scroll = 0
+        self.team_select_preview_team = []
+        self.selected_team_data = None
+
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
@@ -44,13 +51,9 @@ class App:
         self.LAN_JOIN_client_socket = None
         self.LAN_JOIN_is_host = None
 
-        self.TEAM_PREVIEW_index = None
         self.TEAM_PREVIEW_opponent_team = None
-        self.TEAM_PREVIEW_selected_lead = None
-        self.TEAM_PREVIEW_opponent_lead = None
         self.TEAM_PREVIEW_ready_sent = None
         self.TEAM_PREVIEW_opponent_ready = None
-        self.TEAM_PREVIEW_column = None
 
         self.PKMN_VIEW_pokemon = None
         self.PKMN_VIEW_move_index = None
@@ -61,12 +64,8 @@ class App:
         self.SPECIES_VIEW_pokemon = None
         self.SPECIES_VIEW_mode = None
 
-        self.TEAM_SELECT_index = 0
-        self.TEAM_SELECT_preview_team = []
         self.TEAM_SELECT_team_sent = False
         self.TEAM_SELECT_opponent_team = None
-        self.TEAM_SELECT_selected_team_data = None
-        self.TEAM_SELECT_scroll = 0
 
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
@@ -101,12 +100,5 @@ class App:
         )
         self.SINGLE_MENU_TRAINER_selected_trainer = 0
         self.SINGLE_MENU_TRAINER_selected_team = 0
-
-        self.SINGLE_TEAM_SELECT_index = 0
-        self.SINGLE_TEAM_SELECT_preview_team = []
-        self.SINGLE_TEAM_SELECT_scroll = 0
-
-        self.SINGLE_TEAM_PREVIEW_index = 0
-        self.SINGLE_TEAM_PREVIEW_column = 0
 
 app = App()

@@ -89,7 +89,7 @@ def update_PKMN_VIEW():
 
 def update_TEAM_PREVIEW():
     if (
-        app.TEAM_PREVIEW_selected_lead
+        app.player_lead
         is not None
         and
         not app.TEAM_PREVIEW_ready_sent
@@ -98,23 +98,26 @@ def update_TEAM_PREVIEW():
             {
                 "type": "LEAD",
                 "data":
-                    app.TEAM_PREVIEW_selected_lead
+                    app.player_lead
             }
         )
         app.TEAM_PREVIEW_ready_sent = True
     for packet in recv_packets():
         if packet["type"] == "LEAD":
-            app.TEAM_PREVIEW_opponent_lead = (
+            app.opponent_lead = (
                 packet["data"]
             )
             app.TEAM_PREVIEW_opponent_ready = True
-        elif packet["type"] == "DISCONNECT":
+        elif (
+            packet["type"]
+            == "DISCONNECT"
+        ):
             disconnect()
             change_state(
                 LAN_HOST_JOIN
             )
     if (
-        app.TEAM_PREVIEW_selected_lead
+        app.player_lead
         is not None
         and
         app.TEAM_PREVIEW_opponent_ready

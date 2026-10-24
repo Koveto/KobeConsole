@@ -37,66 +37,58 @@ def handle_event(event):
 
 def handle_event_SINGLE_TEAM_PREVIEW(event):
     if is_up(event):
-        app.SINGLE_TEAM_PREVIEW_index = max(
+        app.preview_index = max(
             0,
-            app.SINGLE_TEAM_PREVIEW_index - 1
+            app.preview_index - 1
         )
     elif is_down(event):
-        app.SINGLE_TEAM_PREVIEW_index = min(
+        app.preview_index = min(
             5,
-            app.SINGLE_TEAM_PREVIEW_index + 1
+            app.preview_index + 1
         )
     elif is_left(event):
-        app.SINGLE_TEAM_PREVIEW_column = 0
+        app.preview_column = 0
     elif is_right(event):
         if app.option_omniscient:
-            app.SINGLE_TEAM_PREVIEW_column = 1
+            app.preview_column = 1
     elif is_confirm(event):
-        if (
-            app.SINGLE_TEAM_PREVIEW_column
-            == 0
-        ):
+        if app.preview_column == 0:
             app.player_lead = (
-                app.SINGLE_TEAM_PREVIEW_index
+                app.preview_index
             )
     elif is_cvxy(event):
-        if (
-            app.SINGLE_TEAM_PREVIEW_column
-            == 0
-        ):
-            app.PKMN_VIEW_pokemon = (
-                app.player_team[
-                    app.SINGLE_TEAM_PREVIEW_index
-                ]
-            )
+        if app.preview_column == 0:
             app.PKMN_VIEW_index = (
-                app.SINGLE_TEAM_PREVIEW_index
+                app.preview_index
             )
             app.PKMN_VIEW_column = (
-                app.SINGLE_TEAM_PREVIEW_column
-            )   
+                app.preview_column
+            )
+            app.PKMN_VIEW_pokemon = (
+                app.player_team[
+                    app.preview_index
+                ]
+            )
             change_state(
                 PKMN_VIEW
             )
         elif (
             app.option_omniscient
             and
-            app.SINGLE_TEAM_PREVIEW_index
+            app.preview_index
             <
-            len(
-                app.opponent_team
-            )
+            len(app.opponent_team)
         ):
-            app.PKMN_VIEW_pokemon = (
-                app.opponent_team[
-                    app.SINGLE_TEAM_PREVIEW_index
-                ]
-            )
             app.PKMN_VIEW_index = (
-                app.SINGLE_TEAM_PREVIEW_index
+                app.preview_index
             )
             app.PKMN_VIEW_column = (
-                app.SINGLE_TEAM_PREVIEW_column
+                app.preview_column
+            )
+            app.PKMN_VIEW_pokemon = (
+                app.opponent_team[
+                    app.preview_index
+                ]
             )
             change_state(
                 PKMN_VIEW
@@ -108,74 +100,20 @@ def handle_event_SINGLE_TEAM_PREVIEW(event):
 
 def handle_event_SINGLE_TEAM_SELECT(event):
     if is_up(event):
-        app.SINGLE_TEAM_SELECT_index = max(
-            0,
-            app.SINGLE_TEAM_SELECT_index - 1
+        handle_generic_team_select_navigation(
+            -1
         )
-        if (
-            app.SINGLE_TEAM_SELECT_index
-            <
-            app.SINGLE_TEAM_SELECT_scroll
-        ):
-
-            app.SINGLE_TEAM_SELECT_scroll -= 1
-        selected_team_data = (
-            app.teams_data[
-                app.SINGLE_TEAM_SELECT_index
-            ]
-        )
-        if (
-            selected_team_data["name"]
-            == "Random Team"
-        ):
-            app.SINGLE_TEAM_SELECT_preview_team = []
-        else:
-            app.SINGLE_TEAM_SELECT_preview_team = [
-                Pokemon.from_dict(
-                    pokemon_data
-                )
-                for pokemon_data in
-                selected_team_data["pokemon"]
-            ]
     elif is_down(event):
-        app.SINGLE_TEAM_SELECT_index = min(
-            len(app.available_teams) - 1,
-            app.SINGLE_TEAM_SELECT_index + 1
+        handle_generic_team_select_navigation(
+            1
         )
-        if (
-            app.SINGLE_TEAM_SELECT_index
-            >=
-            app.SINGLE_TEAM_SELECT_scroll + 7
-        ):
-
-            app.SINGLE_TEAM_SELECT_scroll += 1
-        selected_team_data = (
-            app.teams_data[
-                app.SINGLE_TEAM_SELECT_index
-            ]
-        )
-        if (
-            selected_team_data["name"]
-            == "Random Team"
-        ):
-            app.SINGLE_TEAM_SELECT_preview_team = []
-        else:
-            app.SINGLE_TEAM_SELECT_preview_team = [
-                Pokemon.from_dict(
-                    pokemon_data
-                )
-                for pokemon_data in
-                selected_team_data["pokemon"]
-            ]
     elif is_cancel(event):
         change_state(
             SINGLE_MENU_TRAINER
         )
     elif is_confirm(event):
         selected_team_data = (
-            app.teams_data[
-                app.SINGLE_TEAM_SELECT_index
-            ]
+            app.selected_team_data
         )
         if (
             selected_team_data["name"]
@@ -545,82 +483,25 @@ def handle_event_TEAM_SELECT(event):
         and
         app.player_team is None
     ):
-        app.TEAM_SELECT_index = max(
-            0,
-            app.TEAM_SELECT_index - 1
+        handle_generic_team_select_navigation(
+            -1
         )
-        if (
-            app.TEAM_SELECT_index
-            <
-            app.TEAM_SELECT_scroll
-        ):
-
-            app.TEAM_SELECT_scroll -= 1
-        app.TEAM_SELECT_selected_team_data = (
-            app.teams_data[
-                app.TEAM_SELECT_index
-            ]
-        )
-        if (
-            app.TEAM_SELECT_selected_team_data["name"]
-            == "Random Team"
-        ):
-            app.TEAM_SELECT_preview_team = []
-        else:
-            app.TEAM_SELECT_preview_team = [
-                Pokemon.from_dict(
-                    pokemon_data
-                )
-                for pokemon_data
-                in app.TEAM_SELECT_selected_team_data["pokemon"]
-            ]
     elif (
         is_down(event)
         and
         app.player_team is None
     ):
-        app.TEAM_SELECT_index = min(
-            len(app.available_teams) - 1,
-            app.TEAM_SELECT_index + 1
+        handle_generic_team_select_navigation(
+            1
         )
-        if (
-            app.TEAM_SELECT_index
-            >=
-            app.TEAM_SELECT_scroll + 7
-        ):
-
-            app.TEAM_SELECT_scroll += 1
-        app.TEAM_SELECT_selected_team_data = (
-            app.teams_data[
-                app.TEAM_SELECT_index
-            ]
-        )
-        if (
-            app.TEAM_SELECT_selected_team_data["name"]
-            == "Random Team"
-        ):
-            app.TEAM_SELECT_preview_team = []
-        else:
-            app.TEAM_SELECT_preview_team = [
-                Pokemon.from_dict(
-                    pokemon_data
-                )
-                for pokemon_data
-                in app.TEAM_SELECT_selected_team_data["pokemon"]
-            ]
     elif (
         is_confirm(event)
         and
         app.player_team is None
     ):
         load_species()
-        app.TEAM_SELECT_selected_team_data = (
-            app.teams_data[
-                app.TEAM_SELECT_index
-            ]
-        )
         if (
-            app.TEAM_SELECT_selected_team_data["name"]
+            app.selected_team_data["name"]
             == "Random Team"
         ):
             app.player_team = [
@@ -639,7 +520,7 @@ def handle_event_TEAM_SELECT(event):
                     pokemon_data
                 )
                 for pokemon_data
-                in app.TEAM_SELECT_selected_team_data["pokemon"]
+                in app.selected_team_data["pokemon"]
             ]
         for pokemon in app.player_team:
             pokemon.set_level(app.option_level)
@@ -650,24 +531,55 @@ def handle_event_BATTLE_START(event):
 
 def handle_event_SPECIES_VIEW(event):
     if is_up(event):
-        app.TEAM_PREVIEW_index = max(0, app.TEAM_PREVIEW_index - 1)
+        app.preview_index = max(
+            0,
+            app.preview_index - 1
+        )
     elif is_down(event):
-        app.TEAM_PREVIEW_index = min(5, app.TEAM_PREVIEW_index + 1)
+        app.preview_index = min(
+            5,
+            app.preview_index + 1
+        )
     elif is_left(event):
-        app.TEAM_PREVIEW_column = 0
+        if app.option_omniscient:
+            app.preview_column = 0
     elif is_right(event):
-        app.TEAM_PREVIEW_column = 1
+        if app.option_omniscient:
+            app.preview_column = 1
     elif is_vy(event):
-        if app.SPECIES_VIEW_mode == "STATS":
-            app.SPECIES_VIEW_mode = "AFFINITIES"
+        if (
+            app.SPECIES_VIEW_mode
+            == "STATS"
+        ):
+            app.SPECIES_VIEW_mode = (
+                "AFFINITIES"
+            )
         else:
-            app.SPECIES_VIEW_mode = "STATS"
+            app.SPECIES_VIEW_mode = (
+                "STATS"
+            )
     elif is_cancel(event):
-        change_state(app.previous_state)
-    if app.TEAM_PREVIEW_column == 0:
-        app.SPECIES_VIEW_pokemon = app.player_team[app.TEAM_PREVIEW_index]
-    elif app.TEAM_PREVIEW_index < len(app.opponent_team):
-        app.SPECIES_VIEW_pokemon = app.opponent_team[app.TEAM_PREVIEW_index]
+        change_state(
+            app.previous_state
+        )
+    if app.preview_column == 0:
+        app.SPECIES_VIEW_pokemon = (
+            app.player_team[
+                app.preview_index
+            ]
+        )
+    elif (
+        app.option_omniscient
+        and
+        app.preview_index
+        <
+        len(app.opponent_team)
+    ):
+        app.SPECIES_VIEW_pokemon = (
+            app.opponent_team[
+                app.preview_index
+            ]
+        )
 
 def handle_event_PKMN_VIEW(event):
     if is_up(event):
@@ -752,51 +664,62 @@ def handle_event_PKMN_VIEW(event):
 
 def handle_event_TEAM_PREVIEW(event):
     if is_up(event):
-        app.TEAM_PREVIEW_index = max(0, app.TEAM_PREVIEW_index - 1)
+        app.preview_index = max(
+            0,
+            app.preview_index - 1
+        )
     elif is_down(event):
-        app.TEAM_PREVIEW_index = min(5, app.TEAM_PREVIEW_index + 1)
+        app.preview_index = min(
+            5,
+            app.preview_index + 1
+        )
     elif is_left(event):
-        app.TEAM_PREVIEW_column = 0
+        app.preview_column = 0
     elif is_right(event):
         if app.option_omniscient:
-            app.TEAM_PREVIEW_column = 1
+            app.preview_column = 1
     elif is_confirm(event):
-        if app.TEAM_PREVIEW_column == 0:
-            app.TEAM_PREVIEW_selected_lead = app.TEAM_PREVIEW_index
+        if app.preview_column == 0:
+            app.player_lead = (
+                app.preview_index
+            )
     elif is_cvxy(event):
-        if app.TEAM_PREVIEW_column == 0:
+        if app.preview_column == 0:
             app.PKMN_VIEW_index = (
-                app.TEAM_PREVIEW_index
+                app.preview_index
             )
             app.PKMN_VIEW_column = (
-                app.TEAM_PREVIEW_column
+                app.preview_column
             )
             app.PKMN_VIEW_pokemon = (
                 app.player_team[
-                    app.TEAM_PREVIEW_index
+                    app.preview_index
                 ]
             )
-            change_state(PKMN_VIEW)
+            change_state(
+                PKMN_VIEW
+            )
         elif (
             app.option_omniscient
             and
-            app.TEAM_PREVIEW_index
-            < len(
-                app.opponent_team
-            )
+            app.preview_index
+            <
+            len(app.opponent_team)
         ):
             app.PKMN_VIEW_index = (
-                app.TEAM_PREVIEW_index
+                app.preview_index
             )
             app.PKMN_VIEW_column = (
-                app.TEAM_PREVIEW_column
+                app.preview_column
             )
             app.PKMN_VIEW_pokemon = (
                 app.opponent_team[
-                    app.TEAM_PREVIEW_index
+                    app.preview_index
                 ]
             )
-            change_state(PKMN_VIEW)
+            change_state(
+                PKMN_VIEW
+            )
 
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):
@@ -833,3 +756,44 @@ def handle_event_LAUNCHER_MENU(event):
             change_state(LAN_HOST_JOIN)
         elif app.LAUNCHER_MENU_index == 2:
             change_state(OPTIONS)
+
+def handle_generic_team_select_navigation(
+    move_direction
+):
+    app.team_select_index = max(
+        0,
+        min(
+            len(app.available_teams) - 1,
+            app.team_select_index + move_direction
+        )
+    )
+    if (
+        app.team_select_index
+        <
+        app.team_select_scroll
+    ):
+        app.team_select_scroll -= 1
+    elif (
+        app.team_select_index
+        >=
+        app.team_select_scroll + 7
+    ):
+        app.team_select_scroll += 1
+    app.selected_team_data = (
+        app.teams_data[
+            app.team_select_index
+        ]
+    )
+    if (
+        app.selected_team_data["name"]
+        == "Random Team"
+    ):
+        app.team_select_preview_team = []
+    else:
+        app.team_select_preview_team = [
+            Pokemon.from_dict(
+                pokemon_data
+            )
+            for pokemon_data in
+            app.selected_team_data["pokemon"]
+        ]

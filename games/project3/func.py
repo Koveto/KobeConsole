@@ -474,22 +474,25 @@ def disconnect():
     app.LAN_HOST_is_host = False
     app.LAN_JOIN_is_host = False
     app.connection_buffer = ""
-    app.player_team = []
-    app.opponent_team = []
-    app.TEAM_PREVIEW_selected_lead = None
-    app.TEAM_PREVIEW_opponent_lead = None
-    app.TEAM_PREVIEW_ready_sent = False
-    app.TEAM_PREVIEW_opponent_ready = False
-    app.TEAM_PREVIEW_index = 0
-    app.TEAM_PREVIEW_column = 0
+    app.player_team = None
+    app.opponent_team = None
+    app.player_lead = None
+    app.opponent_lead = None
+    app.preview_index = 0
+    app.preview_column = 0
     app.PKMN_VIEW_pokemon = None
     app.PKMN_VIEW_move_index = None
     app.PKMN_VIEW_mode = "STATS"
-    app.player_team = None
-    app.TEAM_SELECT_preview_team = []
+    app.SPECIES_VIEW_pokemon = None
+    app.SPECIES_VIEW_mode = "STATS"
+    app.team_select_index = 0
+    app.team_select_scroll = 0
+    app.team_select_preview_team = []
+    app.selected_team_data = None
     app.TEAM_SELECT_opponent_team = None
     app.TEAM_SELECT_team_sent = False
-    app.TEAM_SELECT_selected_team_data = None
+    app.TEAM_PREVIEW_ready_sent = False
+    app.TEAM_PREVIEW_opponent_ready = False
 
 def get_loaded_pokemon():
     pokemon = []
@@ -498,15 +501,11 @@ def get_loaded_pokemon():
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
-    for p in (app.player_team or []):
-        if id(p) not in seen:
-            pokemon.append(p)
-            seen.add(id(p))
     for p in (app.opponent_team or []):
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
-    for p in (app.TEAM_SELECT_preview_team or []):
+    for p in (app.team_select_preview_team or []):
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
