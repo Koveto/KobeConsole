@@ -48,6 +48,7 @@ def change_state(new_state):
             app.available_teams.append(team["name"])
         app.TEAM_SELECT_selected_team_data = app.teams_data[0]
         app.TEAM_SELECT_preview_team = []
+        app.TEAM_SELECT_scroll = 0
     if  (new_state == OPTIONS):
         app.OPTIONS_scroll = 0
         app.OPTIONS_index = 0
@@ -62,4 +63,58 @@ def change_state(new_state):
         app.SINGLE_MENU_index = 0
     if  (new_state == SINGLE_MENU_TRAINER):
         app.SINGLE_MENU_TRAINER_index = 0
+        app.single_battle_mode = None
+        app.selected_trainer_data = None
+        trainers_data = load_trainers()
+        app.trainers_data = (
+            trainers_data["trainers"]
+        )
+        teams_data = load_teams()
+        app.teams_data = (
+            teams_data["teams"]
+        )
+        app.teams_data = [
+            team
+            for team in app.teams_data
+            if team["name"] != "Random Team"
+        ]
+        app.SINGLE_MENU_TRAINER_selected_trainer = 0
+        if len(app.teams_data) == 0:
+            app.SINGLE_MENU_TRAINER_selected_team = None
+        else:
+            app.SINGLE_MENU_TRAINER_selected_team = 0
+    if  (new_state == SINGLE_TEAM_SELECT):
+        app.SINGLE_TEAM_SELECT_index = 0
+        app.SINGLE_TEAM_SELECT_scroll = 0
+        teams_data = load_teams()
+        app.teams_data = (
+            teams_data["teams"]
+        )
+        app.available_teams = []
+        for team in app.teams_data:
+            app.available_teams.append(
+                team["name"]
+            )
+        app.SINGLE_TEAM_SELECT_preview_team = []
+        selected_team_data = (
+            app.teams_data[
+                app.SINGLE_TEAM_SELECT_index
+            ]
+        )
+        if (
+            selected_team_data["name"]
+            != "Random Team"
+        ):
+            app.SINGLE_TEAM_SELECT_preview_team = [
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+                for pokemon_data in
+                selected_team_data["pokemon"]
+            ]
+    if  (new_state == SINGLE_TEAM_PREVIEW):
+        app.SINGLE_TEAM_PREVIEW_index = 0
+        app.SINGLE_TEAM_PREVIEW_column = 0
+        app.player_lead = None
+        
     app.state = new_state

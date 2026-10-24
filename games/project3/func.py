@@ -2,6 +2,21 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+def load_trainers():
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "trainers.json"
+    )
+    with open(
+        filepath,
+        "r",
+        encoding="utf-8"
+    ) as infile:
+        return json.load(
+            infile
+        )
+
 def save_options():
     filepath = os.path.join(
         TEXT_ROOT,

@@ -72,10 +72,20 @@ def update_SPECIES_VIEW():
 
 
 def update_PKMN_VIEW():
+    if (
+        app.connection_socket
+        is None
+    ):
+        return
     for packet in recv_packets():
-        if packet["type"] == "DISCONNECT":
+        if (
+            packet["type"]
+            == "DISCONNECT"
+        ):
             disconnect()
-            change_state(LAN_HOST_JOIN)
+            change_state(
+                LAN_HOST_JOIN
+            )
 
 def update_TEAM_PREVIEW():
     if (

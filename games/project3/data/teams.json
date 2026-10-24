@@ -4,7 +4,1834 @@
             "name": "Random Team"
         },
         {
-            "name": "Test Team",
+            "name": "Test Team 1",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 2",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 3",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 4",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 5",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 6",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 7",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 8",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 9",
+            "pokemon": [
+                {
+                    "species_no": 251,
+                    "nickname": "Celebi",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Seed Bomb",
+                        "Giga Drain",
+                        "Zen Headbutt",
+                        "Psybeam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 92,
+                    "nickname": "Gastly",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Ball",
+                        "Ominous Wind",
+                        "Poison Jab",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 322,
+                    "nickname": "Numel",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Drill Run",
+                        "Double-Edge",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 277,
+                    "nickname": "Swellow",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Hurricane",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 189,
+                    "nickname": "Jumpluff",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Energy Ball",
+                        "Giga Drain",
+                        "Air Slash",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 11,
+                    "nickname": "Metapod",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Bug Bite",
+                        "Brave Bird",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 10",
             "pokemon": [
                 {
                     "species_no": 251,

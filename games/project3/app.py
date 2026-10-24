@@ -20,6 +20,9 @@ class App:
         self.muted = False
         self.player_lead = None
         self.opponent_lead = None
+        self.trainers_data = []
+        self.single_battle_mode = None
+        self.selected_trainer_data = None
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
@@ -52,6 +55,8 @@ class App:
         self.PKMN_VIEW_pokemon = None
         self.PKMN_VIEW_move_index = None
         self.PKMN_VIEW_mode = None
+        self.PKMN_VIEW_index = 0
+        self.PKMN_VIEW_column = 0
 
         self.SPECIES_VIEW_pokemon = None
         self.SPECIES_VIEW_mode = None
@@ -61,6 +66,7 @@ class App:
         self.TEAM_SELECT_team_sent = False
         self.TEAM_SELECT_opponent_team = None
         self.TEAM_SELECT_selected_team_data = None
+        self.TEAM_SELECT_scroll = 0
 
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
@@ -93,5 +99,14 @@ class App:
             "My Team",
             "Trainer"
         )
+        self.SINGLE_MENU_TRAINER_selected_trainer = 0
+        self.SINGLE_MENU_TRAINER_selected_team = 0
+
+        self.SINGLE_TEAM_SELECT_index = 0
+        self.SINGLE_TEAM_SELECT_preview_team = []
+        self.SINGLE_TEAM_SELECT_scroll = 0
+
+        self.SINGLE_TEAM_PREVIEW_index = 0
+        self.SINGLE_TEAM_PREVIEW_column = 0
 
 app = App()
