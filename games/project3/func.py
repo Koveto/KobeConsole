@@ -17,130 +17,6 @@ def load_trainers():
             infile
         )
 
-def save_options():
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "options.json"
-    )
-    with open(
-        filepath,
-        "w",
-        encoding="utf-8"
-    ) as outfile:
-        json.dump(
-            {
-                "omniscient":
-                    app.option_omniscient,
-                "pkmn_animation":
-                    app.option_pkmn_animation,
-                "music_shuffle":
-                    app.option_music_shuffle,
-                "mute":
-                    app.option_mute,
-                "level":
-                    app.option_level,
-                "level_npc":
-                    app.option_level_npc
-            },
-            outfile,
-            indent=4
-        )
-def load_options():
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "options.json"
-    )
-    try:
-        with open(
-            filepath,
-            "r",
-            encoding="utf-8"
-        ) as infile:
-            return json.load(
-                infile
-            )
-    except (
-        FileNotFoundError,
-        json.JSONDecodeError
-    ):
-        options = {
-            "omniscient": False,
-            "pkmn_animation": True,
-            "music_shuffle": True,
-            "mute": False,
-            "level": 100,
-            "level_npc": 100
-        }
-        with open(
-            filepath,
-            "w",
-            encoding="utf-8"
-        ) as outfile:
-            json.dump(
-                options,
-                outfile,
-                indent=4
-            )
-        return options
-
-def save_music_data(music_data):
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "music.json"
-    )
-    with open(
-        filepath,
-        "w",
-        encoding="utf-8"
-    ) as outfile:
-        json.dump(
-            music_data,
-            outfile,
-            indent=4
-        )
-
-def load_music_data():
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "music.json"
-    )
-    music_folder = os.path.join(
-        TEXT_ROOT,
-        "music"
-    )
-    try:
-        with open(
-            filepath,
-            "r",
-            encoding="utf-8"
-        ) as infile:
-            music_data = json.load(
-                infile
-            )
-    except (
-        FileNotFoundError,
-        json.JSONDecodeError
-    ):
-        music_data = {}
-    current_music_files = set()
-    for filename in os.listdir(music_folder):
-        if filename.lower().endswith(".ogg"):
-            current_music_files.add(filename)
-        if filename not in music_data:
-            music_data[filename] = {
-                "menu": False,
-                "battle": False
-            }
-    for filename in list(music_data.keys()):
-        if filename not in current_music_files:
-            del music_data[filename]
-    save_music_data(music_data)
-    return music_data
-
 def play_music(filename):
     music_path = os.path.join(
         TEXT_ROOT,
@@ -194,65 +70,6 @@ KEYBOARD_GRID = [
     ["SPACE","BACK","DONE"]
 ]
 
-def load_player():
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "player.json"
-    )
-    try:
-        with open(
-            filepath,
-            "r",
-            encoding="utf-8"
-        ) as infile:
-            return json.load(
-                infile
-            )
-    except (
-        FileNotFoundError,
-        json.JSONDecodeError
-    ):
-        player_data = {
-            "player_name": "KOBE",
-            "player_sprite": 0
-        }
-        with open(
-            filepath,
-            "w",
-            encoding="utf-8"
-        ) as outfile:
-
-            json.dump(
-                player_data,
-                outfile,
-                indent=4
-            )
-        return player_data
-def save_player():
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "player.json"
-    )
-    with open(
-        filepath,
-        "w",
-        encoding="utf-8"
-    ) as outfile:
-        json.dump(
-            {
-                "player_name": (
-                    app.player_name
-                ),
-                "player_sprite": (
-                    app.player_sprite
-                )
-            },
-            outfile,
-            indent=4
-        )
-
 TRAINER_SHEET = None
 TRAINER_CELL_SIZE = 65
 TRAINER_SPRITE_SIZE = 64
@@ -290,19 +107,13 @@ def get_trainer_sprite(sprite_number):
     )
 
 def load_teams():
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "teams.json"
-    )
-    with open(
-        filepath,
-        "r",
-        encoding="utf-8"
-    ) as infile:
-        return json.load(
-            infile
-        )
+    save_data = load_save()
+    return {
+        "teams":
+            save_data[
+                "teams"
+            ]
+    }
 
 TYPE_CHART = {
     "Normal": {
@@ -512,21 +323,53 @@ def get_loaded_pokemon():
     return pokemon
 
 def save_teams(data):
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "teams.json"
+    save_data = load_save()
+    save_data[
+        "teams"
+    ] = data[
+        "teams"
+    ]
+    save_save(
+        save_data
     )
-    with open(
-        filepath,
-        "w",
-        encoding="utf-8"
-    ) as outfile:
-        json.dump(
-            data,
-            outfile,
-            indent=4
+
+def get_selected_team_index():
+    save_data = load_save()
+    return save_data[
+        "selected_team"
+    ]
+
+def set_selected_team_index(
+    index
+):
+    save_data = load_save()
+    save_data[
+        "selected_team"
+    ] = index
+    save_save(
+        save_data
+    )
+
+def get_trainer_defeats():
+    save_data = load_save()
+    return save_data[
+        "trainer_defeats"
+    ]
+
+def save_trainer_defeat(
+    trainer_name
+):
+    save_data = load_save()
+    defeats = save_data[
+        "trainer_defeats"
+    ]
+    if trainer_name not in defeats:
+        defeats.append(
+            trainer_name
         )
+    save_save(
+        save_data
+    )
 
 TYPE_SHEET = None
 TYPE_ICON_WIDTH = 32

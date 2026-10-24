@@ -4,6 +4,7 @@ import json
 import socket
 import math
 import random
+import copy
 from app import app
 from input_manager import *
 
@@ -29,8 +30,7 @@ OPTIONS_CONTROLLER  = 11
 OPTIONS_MUSIC       = 12
 SINGLE_MENU         = 13
 SINGLE_MENU_TRAINER = 14
-SINGLE_TEAM_SELECT  = 15
-SINGLE_TEAM_PREVIEW = 16
+BATTLE_END          = 15
 
 COLOR_BLACK = (0, 0, 0)
 COLOR_BLUE = (0, 0, 255)

@@ -30,168 +30,11 @@ def handle_event(event):
         handle_event_SINGLE_MENU(event)
     elif app.state == SINGLE_MENU_TRAINER:
         handle_event_SINGLE_MENU_TRAINER(event)
-    elif app.state == SINGLE_TEAM_SELECT:
-        handle_event_SINGLE_TEAM_SELECT(event)
-    elif app.state == SINGLE_TEAM_PREVIEW:
-        handle_event_SINGLE_TEAM_PREVIEW(event)
+    elif app.state == BATTLE_END:
+        handle_event_BATTLE_END(event)
 
-def handle_event_SINGLE_TEAM_PREVIEW(event):
-    if is_up(event):
-        app.preview_index = max(
-            0,
-            app.preview_index - 1
-        )
-    elif is_down(event):
-        app.preview_index = min(
-            5,
-            app.preview_index + 1
-        )
-    elif is_left(event):
-        app.preview_column = 0
-    elif is_right(event):
-        if app.option_omniscient:
-            app.preview_column = 1
-    elif is_confirm(event):
-        if app.preview_column == 0:
-            app.player_lead = (
-                app.preview_index
-            )
-    elif is_cvxy(event):
-        if app.preview_column == 0:
-            app.PKMN_VIEW_index = (
-                app.preview_index
-            )
-            app.PKMN_VIEW_column = (
-                app.preview_column
-            )
-            app.PKMN_VIEW_pokemon = (
-                app.player_team[
-                    app.preview_index
-                ]
-            )
-            change_state(
-                PKMN_VIEW
-            )
-        elif (
-            app.option_omniscient
-            and
-            app.preview_index
-            <
-            len(app.opponent_team)
-        ):
-            app.PKMN_VIEW_index = (
-                app.preview_index
-            )
-            app.PKMN_VIEW_column = (
-                app.preview_column
-            )
-            app.PKMN_VIEW_pokemon = (
-                app.opponent_team[
-                    app.preview_index
-                ]
-            )
-            change_state(
-                PKMN_VIEW
-            )
-    elif is_cancel(event):
-        change_state(
-            SINGLE_TEAM_SELECT
-        )
-
-def handle_event_SINGLE_TEAM_SELECT(event):
-    if is_up(event):
-        handle_generic_team_select_navigation(
-            -1
-        )
-    elif is_down(event):
-        handle_generic_team_select_navigation(
-            1
-        )
-    elif is_cancel(event):
-        change_state(
-            SINGLE_MENU_TRAINER
-        )
-    elif is_confirm(event):
-        selected_team_data = (
-            app.selected_team_data
-        )
-        if (
-            selected_team_data["name"]
-            == "Random Team"
-        ):
-            app.player_team = [
-                Pokemon.from_species_number(
-                    random.choice(
-                        list(
-                            SPECIES.keys()
-                        )
-                    )
-                )
-                for _ in range(6)
-            ]
-        else:
-            app.player_team = [
-                Pokemon.from_dict(
-                    pokemon_data
-                )
-                for pokemon_data in
-                selected_team_data["pokemon"]
-            ]
-        for pokemon in app.player_team:
-            pokemon.set_level(
-                app.option_level
-            )
-        if (
-            app.single_battle_mode
-            == "RANDOM_TEAM"
-        ):
-            app.opponent_team = [
-                Pokemon.from_species_number(
-                    random.choice(
-                        list(
-                            SPECIES.keys()
-                        )
-                    )
-                )
-                for _ in range(6)
-            ]
-        elif (
-            app.single_battle_mode
-            == "MY_TEAM"
-        ):
-            selected_team_data = (
-                app.teams_data[
-                    app.SINGLE_MENU_TRAINER_selected_team
-                ]
-            )
-            app.opponent_team = [
-                Pokemon.from_dict(
-                    pokemon_data
-                )
-                for pokemon_data in
-                selected_team_data["pokemon"]
-            ]
-        elif (
-            app.single_battle_mode
-            == "TRAINER"
-        ):
-            app.opponent_team = [
-                Pokemon.from_species_number(
-                    species_no
-                )
-                for species_no in
-                app.selected_trainer_data[
-                    "team"
-                ]
-            ]
-        for pokemon in app.opponent_team:
-            pokemon.set_level(
-                app.option_level_npc
-            )
-        change_state(
-            SINGLE_TEAM_PREVIEW
-        )
-
+def handle_event_BATTLE_END(event):
+    pass
 
 def handle_event_SINGLE_MENU_TRAINER(event):
     if is_up(event):
@@ -224,18 +67,47 @@ def handle_event_SINGLE_MENU_TRAINER(event):
                 app.SINGLE_MENU_TRAINER_selected_trainer
             ]
         )
+        app.team_select_return_state = (
+            SINGLE_MENU_TRAINER
+        )
+
+        app.allow_team_change = True
+        app.allow_lead_change = True
+
+        if (
+            app.single_battle_mode
+            == "MY_TEAM"
+            and
+            app.SINGLE_MENU_TRAINER_selected_team
+            is None
+        ):
+            return
+
         change_state(
-            SINGLE_TEAM_SELECT
+            TEAM_SELECT
         )
     elif is_left(event):
-        if app.SINGLE_MENU_TRAINER_index == 1:
-            app.SINGLE_MENU_TRAINER_selected_team = max(0, app.SINGLE_MENU_TRAINER_selected_team - 1)
+        if (
+            app.SINGLE_MENU_TRAINER_index == 1
+            and
+            app.SINGLE_MENU_TRAINER_selected_team
+            is not None
+        ):
+            app.SINGLE_MENU_TRAINER_selected_team = max(
+                0,
+                app.SINGLE_MENU_TRAINER_selected_team - 1
+            )
         elif app.SINGLE_MENU_TRAINER_index == 2:
             app.SINGLE_MENU_TRAINER_selected_trainer = max(
                 0, app.SINGLE_MENU_TRAINER_selected_trainer - 1
             )
     elif is_right(event):
-        if app.SINGLE_MENU_TRAINER_index == 1:
+        if (
+            app.SINGLE_MENU_TRAINER_index == 1
+            and
+            app.SINGLE_MENU_TRAINER_selected_team
+            is not None
+        ):
             app.SINGLE_MENU_TRAINER_selected_team = min(
                 len(app.teams_data) - 1,
                 app.SINGLE_MENU_TRAINER_selected_team + 1
@@ -478,6 +350,7 @@ def handle_event_OPTIONS(event):
         change_state(LAUNCHER_MENU)
 
 def handle_event_TEAM_SELECT(event):
+    is_lan_battle = app.connection_socket is not None
     if (
         is_up(event)
         and
@@ -494,16 +367,22 @@ def handle_event_TEAM_SELECT(event):
         handle_generic_team_select_navigation(
             1
         )
+    elif is_cancel(event):
+
+        if (
+            app.connection_socket
+            is None
+        ):
+            change_state(
+                app.team_select_return_state
+            )
     elif (
         is_confirm(event)
         and
         app.player_team is None
     ):
         load_species()
-        if (
-            app.selected_team_data["name"]
-            == "Random Team"
-        ):
+        if app.team_select_index == 0:
             app.player_team = [
                 Pokemon.from_species_number(
                     random.choice(
@@ -519,12 +398,70 @@ def handle_event_TEAM_SELECT(event):
                 Pokemon.from_dict(
                     pokemon_data
                 )
-                for pokemon_data
-                in app.selected_team_data["pokemon"]
+                for pokemon_data in
+                app.selected_team_data["pokemon"]
             ]
         for pokemon in app.player_team:
             pokemon.set_level(app.option_level)
-        app.TEAM_SELECT_team_sent = False
+        if is_lan_battle:
+            app.TEAM_SELECT_team_sent = False
+        else:
+            if (
+                app.single_battle_mode
+                == "RANDOM_TEAM"
+            ):
+                app.opponent_team = [
+                    Pokemon.from_species_number(
+                        random.choice(
+                            list(
+                                SPECIES.keys()
+                            )
+                        )
+                    )
+                    for _ in range(6)
+                ]
+            elif (
+                app.single_battle_mode
+                == "MY_TEAM"
+            ):
+                selected_team_data = (
+                    app.teams_data[
+                        app.SINGLE_MENU_TRAINER_selected_team
+                    ]
+                )
+                app.opponent_team = [
+                    Pokemon.from_dict(
+                        pokemon_data
+                    )
+                    for pokemon_data in
+                    selected_team_data[
+                        "pokemon"
+                    ]
+                ]
+            elif (
+                app.single_battle_mode
+                == "TRAINER"
+            ):
+                app.opponent_team = [
+                    Pokemon.from_species_number(
+                        species_no
+                    )
+                    for species_no in
+                    app.selected_trainer_data[
+                        "team"
+                    ]
+                ]
+            for pokemon in app.opponent_team:
+                pokemon.set_level(
+                    app.option_level_npc
+                )
+            app.team_preview_return_state = (
+                TEAM_SELECT
+            )
+            change_state(
+                TEAM_PREVIEW
+            )
+
 
 def handle_event_BATTLE_START(event):
     pass
@@ -607,21 +544,31 @@ def handle_event_PKMN_VIEW(event):
                 app.PKMN_VIEW_move_index + 1
             )
     elif is_left(event):
+
         if (
             app.PKMN_VIEW_move_index
             is None
             and
             app.option_omniscient
         ):
-            app.PKMN_VIEW_column = 0
+            
+            if app.PKMN_VIEW_column == 0:
+                app.PKMN_VIEW_column = 1
+            else:
+                app.PKMN_VIEW_column = 0
+
     elif is_right(event):
+
         if (
             app.PKMN_VIEW_move_index
             is None
             and
             app.option_omniscient
         ):
-            app.PKMN_VIEW_column = 1
+            if app.PKMN_VIEW_column == 0:
+                app.PKMN_VIEW_column = 1
+            else:
+                app.PKMN_VIEW_column = 0
     elif is_cx(event):
         if app.PKMN_VIEW_mode == "STATS":
             app.PKMN_VIEW_mode = "EVS"
@@ -683,6 +630,13 @@ def handle_event_TEAM_PREVIEW(event):
             app.player_lead = (
                 app.preview_index
             )
+            if (
+                app.connection_socket
+                is None
+            ):
+                change_state(
+                    BATTLE_START
+                )
     elif is_cvxy(event):
         if app.preview_column == 0:
             app.PKMN_VIEW_index = (
@@ -720,7 +674,18 @@ def handle_event_TEAM_PREVIEW(event):
             change_state(
                 PKMN_VIEW
             )
-
+    elif is_cancel(event):
+        if (
+            app.allow_team_change
+            and
+            app.team_select_return_state
+            is not None
+        ):
+            app.restore_team_select = True
+            change_state(
+                app.team_preview_return_state
+            )
+        
 def handle_event_LAN_JOIN(event):
     if is_cancel(event):
         disconnect()
@@ -760,6 +725,7 @@ def handle_event_LAUNCHER_MENU(event):
 def handle_generic_team_select_navigation(
     move_direction
 ):
+
     app.team_select_index = max(
         0,
         min(
@@ -767,33 +733,43 @@ def handle_generic_team_select_navigation(
             app.team_select_index + move_direction
         )
     )
+
     if (
         app.team_select_index
-        <
-        app.team_select_scroll
+        < app.team_select_scroll
     ):
         app.team_select_scroll -= 1
+
     elif (
         app.team_select_index
-        >=
-        app.team_select_scroll + 7
+        >= app.team_select_scroll + 7
     ):
         app.team_select_scroll += 1
+
+    if app.team_select_index == 0:
+
+        app.selected_team_data = None
+
+        app.team_select_preview_team = []
+
+        return
+
+    team_index = (
+        app.team_select_index - 1
+    )
+
     app.selected_team_data = (
         app.teams_data[
-            app.team_select_index
+            team_index
         ]
     )
-    if (
-        app.selected_team_data["name"]
-        == "Random Team"
-    ):
-        app.team_select_preview_team = []
-    else:
-        app.team_select_preview_team = [
-            Pokemon.from_dict(
-                pokemon_data
-            )
-            for pokemon_data in
-            app.selected_team_data["pokemon"]
+
+    app.team_select_preview_team = [
+        Pokemon.from_dict(
+            pokemon_data
+        )
+        for pokemon_data in
+        app.selected_team_data[
+            "pokemon"
         ]
+    ]

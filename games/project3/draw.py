@@ -55,22 +55,11 @@ def draw():
         draw_SINGLE_MENU()
     elif app.state == SINGLE_MENU_TRAINER:
         draw_SINGLE_MENU_TRAINER()
-    elif app.state == SINGLE_TEAM_SELECT:
-        draw_SINGLE_TEAM_SELECT()
-    elif app.state == SINGLE_TEAM_PREVIEW:
-        draw_SINGLE_TEAM_PREVIEW()
+    elif app.state == BATTLE_END:
+        draw_BATTLE_END()
 
-def draw_SINGLE_TEAM_PREVIEW():
-    draw_generic_team_preview(
-        app.preview_index,
-        app.preview_column,
-        app.player_lead
-    )
-
-def draw_SINGLE_TEAM_SELECT():
-    draw_generic_team_select(
-        "TEAM SELECT"
-    )
+def draw_BATTLE_END():
+    app.screen.fill(COLOR_WHITE)
 
 def draw_SINGLE_MENU_TRAINER():
     app.screen.fill(COLOR_WHITE)
@@ -387,11 +376,20 @@ def draw_OPTIONS():
     )
 
 def draw_TEAM_SELECT():
+
     waiting_text = None
-    if app.player_team is not None:
+
+    if (
+        app.connection_socket
+        is not None
+        and
+        app.player_team is not None
+    ):
+
         waiting_text = (
             "WAITING FOR OPPONENT"
         )
+
     draw_generic_team_select(
         "SELECT TEAM",
         waiting_text

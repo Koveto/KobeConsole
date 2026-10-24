@@ -1,6 +1,7 @@
 from constants import *
 from func import *
 from state import *
+from save import *
 
 def update():
     current_time = pygame.time.get_ticks()
@@ -22,8 +23,29 @@ def update():
         update_BATTLE_START()
     elif app.state == TEAM_SELECT:
         update_TEAM_SELECT()
+    elif app.state == BATTLE_END:
+        update_BATTLE_END()
+
+def update_BATTLE_END():
+
+    if (
+        app.single_battle_mode
+        == "TRAINER"
+    ):
+
+        save_trainer_defeat(
+            app.selected_trainer_data[
+                "name"
+            ]
+        )
+
+    change_state(
+        SINGLE_MENU_TRAINER
+    )
 
 def update_TEAM_SELECT():
+    if app.connection_socket is None:
+        return
     if (
         app.player_team is not None
         and
@@ -51,17 +73,17 @@ def update_TEAM_SELECT():
             disconnect()
             change_state(LAN_HOST_JOIN)
     if (
+        app.connection_socket
+        is not None
+        and
         app.player_team is not None
         and
-        app.TEAM_SELECT_opponent_team is not None
+        app.TEAM_SELECT_opponent_team
+        is not None
     ):
-        change_state(TEAM_PREVIEW)
-
-def update_BATTLE_START():
-    for packet in recv_packets():
-        if packet["type"] == "DISCONNECT":
-            disconnect()
-            change_state(LAN_HOST_JOIN)
+        change_state(
+            TEAM_PREVIEW
+        )
 
 
 def update_SPECIES_VIEW():
@@ -88,6 +110,8 @@ def update_PKMN_VIEW():
             )
 
 def update_TEAM_PREVIEW():
+    if app.connection_socket is None:
+        return
     if (
         app.player_lead
         is not None
@@ -172,3 +196,27 @@ def update_LAN_HOST():
             OSError
         ):
             pass
+
+def update_BATTLE_START():
+
+    if (
+        app.connection_socket
+        is None
+    ):
+
+        change_state(
+            BATTLE_END
+        )
+
+        return
+
+    for packet in recv_packets():
+
+        if (
+            packet["type"]
+            == "DISCONNECT"
+        ):
+            disconnect()
+            change_state(
+                LAN_HOST_JOIN
+            )

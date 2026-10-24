@@ -4,6 +4,7 @@ import random
 import pygame
 from nature import *
 from func import *
+from save import *
 
 POKEMON_SHEET = None
 CELL_SIZE = 69

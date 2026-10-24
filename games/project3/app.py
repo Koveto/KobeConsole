@@ -29,7 +29,22 @@ class App:
         self.team_select_scroll = 0
         self.team_select_preview_team = []
         self.selected_team_data = None
-
+        self.game_mode = None
+        self.allow_team_change = True
+        self.allow_lead_change = True
+        self.pending_opponent_team = None
+        self.pending_opponent_trainer = None
+        self.battle_result = None
+        self.team_select_return_state = None
+        self.team_preview_return_state = None
+        self.restore_team_select = False
+        
+        self.option_omniscient = False
+        self.option_pkmn_animation = True
+        self.option_music_shuffle = False
+        self.option_mute = False
+        self.option_level = 100
+        self.option_level_npc = 100
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
@@ -70,12 +85,6 @@ class App:
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
         self.OPTIONS_scroll = 0
-        self.option_omniscient = False
-        self.option_pkmn_animation = True
-        self.option_music_shuffle = False
-        self.option_mute = False
-        self.option_level = 100
-        self.option_level_npc = 100
 
         self.KEYBOARD_row = 0
         self.KEYBOARD_column = 0

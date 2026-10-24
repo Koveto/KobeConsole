@@ -5,6 +5,53 @@ from update import *
 from handle_event import *
 from draw import *
 from font import *
+from save import *
+
+def generate_test_teams():
+
+    load_species()
+
+    save_data = load_save()
+
+    teams = []
+
+    species_list = list(
+        SPECIES.keys()
+    )
+
+    for team_index in range(10):
+
+        team = {
+            "name":
+                f"Test Team {team_index + 1}",
+            "pokemon": []
+        }
+
+        for _ in range(6):
+
+            pokemon = (
+                Pokemon.from_species_number(
+                    random.choice(
+                        species_list
+                    )
+                )
+            )
+
+            team["pokemon"].append(
+                pokemon.to_dict()
+            )
+
+        teams.append(
+            team
+        )
+
+    save_data[
+        "teams"
+    ] = teams
+
+    save_save(
+        save_data
+    )
 
 def main():
     pygame.init()
@@ -57,6 +104,7 @@ def main():
                 glyph_h=13,
                 scale=1,
                 spacing=6)
+    generate_test_teams()
     running = True
     while running:
         for event in pygame.event.get():
