@@ -104,7 +104,7 @@ def change_state(new_state):
         app.team_select_preview_team = []
         selected_team_data = (
             app.teams_data[
-                app.SINGLE_TEAM_SELECT_index
+                app.team_select_index
             ]
         )
         app.selected_team_data = (
