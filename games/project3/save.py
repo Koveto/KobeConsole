@@ -263,3 +263,16 @@ def save_music_data(
         save_data
     )
 
+def get_num_trainer_defeats():
+
+    return len(
+        get_trainer_defeats()
+    )
+
+def reset_save():
+
+    save_save(
+        copy.deepcopy(
+            SAVE_DEFAULT
+        )
+    )

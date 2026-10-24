@@ -7,51 +7,59 @@ from draw import *
 from font import *
 from save import *
 
-def generate_test_teams():
+def upgrade_trainers():
 
-    load_species()
-
-    save_data = load_save()
-
-    teams = []
-
-    species_list = list(
-        SPECIES.keys()
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "trainers.json"
     )
 
-    for team_index in range(10):
+    with open(
+        filepath,
+        "r",
+        encoding="utf-8"
+    ) as infile:
 
-        team = {
-            "name":
-                f"Test Team {team_index + 1}",
-            "pokemon": []
-        }
+        trainers_data = json.load(
+            infile
+        )
 
-        for _ in range(6):
+    for trainer in trainers_data[
+        "trainers"
+    ]:
+
+        new_team = []
+
+        for species_no in trainer[
+            "team"
+        ]:
 
             pokemon = (
                 Pokemon.from_species_number(
-                    random.choice(
-                        species_list
-                    )
+                    species_no
                 )
             )
 
-            team["pokemon"].append(
+            new_team.append(
                 pokemon.to_dict()
             )
 
-        teams.append(
-            team
+        trainer["team"] = (
+            new_team
         )
 
-    save_data[
-        "teams"
-    ] = teams
+    with open(
+        filepath,
+        "w",
+        encoding="utf-8"
+    ) as outfile:
 
-    save_save(
-        save_data
-    )
+        json.dump(
+            trainers_data,
+            outfile,
+            indent=4
+        )
 
 def main():
     pygame.init()
@@ -104,7 +112,8 @@ def main():
                 glyph_h=13,
                 scale=1,
                 spacing=6)
-    generate_test_teams()
+    #generate_test_teams()
+    #upgrade_trainers()
     running = True
     while running:
         for event in pygame.event.get():

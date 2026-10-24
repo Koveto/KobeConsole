@@ -31,13 +31,28 @@ def update_BATTLE_END():
     if (
         app.single_battle_mode
         == "TRAINER"
+        and
+        app.selected_trainer_data
+        is not None
     ):
 
-        save_trainer_defeat(
+        trainer_name = (
             app.selected_trainer_data[
                 "name"
             ]
         )
+
+        if (
+            trainer_name
+            not in
+            get_trainer_defeats()
+        ):
+
+            save_trainer_defeat(
+                trainer_name
+            )
+
+    app.restore_single_menu_trainer = True
 
     change_state(
         SINGLE_MENU_TRAINER

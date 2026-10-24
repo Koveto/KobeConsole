@@ -87,26 +87,63 @@ def change_state(new_state):
     if  (new_state == SINGLE_MENU):
         app.SINGLE_MENU_index = 0
     if  (new_state == SINGLE_MENU_TRAINER):
-        app.SINGLE_MENU_TRAINER_index = 0
-        app.single_battle_mode = None
-        app.selected_trainer_data = None
-        trainers_data = load_trainers()
-        app.trainers_data = (
-            trainers_data["trainers"]
-        )
-        teams_data = load_teams()
-        app.teams_data = (
-            teams_data["teams"]
-        )
-        app.teams_data = [
-            team
-            for team in app.teams_data
-            if team["name"] != "Random Team"
-        ]
-        app.SINGLE_MENU_TRAINER_selected_trainer = 0
-        if len(app.teams_data) == 0:
-            app.SINGLE_MENU_TRAINER_selected_team = None
+        if app.restore_single_menu_trainer:
+            app.restore_single_menu_trainer = False
         else:
-            app.SINGLE_MENU_TRAINER_selected_team = 0
-        
+            app.SINGLE_MENU_TRAINER_index = 0
+            app.single_battle_mode = None
+            app.selected_trainer_data = None
+            trainers_data = load_trainers()
+            app.trainers_data = (
+                trainers_data["trainers"]
+            )
+            teams_data = load_teams()
+            app.teams_data = (
+                teams_data["teams"]
+            )
+            app.teams_data = [
+                team
+                for team in app.teams_data
+                if team["name"] != "Random Team"
+            ]
+            app.SINGLE_MENU_TRAINER_selected_trainer = 0
+            trainer = (
+                app.trainers_data[
+                    app.SINGLE_MENU_TRAINER_selected_trainer
+                ]
+            )
+
+            app.SINGLE_MENU_TRAINER_preview_team = [
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+                for pokemon_data in
+                trainer["team"]
+            ]
+            if len(app.teams_data) == 0:
+                app.SINGLE_MENU_TRAINER_selected_team = None
+            else:
+                app.SINGLE_MENU_TRAINER_selected_team = 0
+            app.SINGLE_MENU_TRAINER_my_team_preview = []
+
+            if (
+                app.SINGLE_MENU_TRAINER_selected_team
+                is not None
+            ):
+
+                selected_team = (
+                    app.teams_data[
+                        app.SINGLE_MENU_TRAINER_selected_team
+                    ]
+                )
+
+                app.SINGLE_MENU_TRAINER_my_team_preview = [
+                    Pokemon.from_dict(
+                        pokemon_data
+                    )
+                    for pokemon_data
+                    in
+                    selected_team["pokemon"]
+                ]
+                    
     app.state = new_state

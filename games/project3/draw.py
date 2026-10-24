@@ -86,46 +86,92 @@ def draw_SINGLE_MENU_TRAINER():
         get_trainer_sprite(app.player_sprite),
         (4,96)
     )
-    trainer = app.trainers_data[app.SINGLE_MENU_TRAINER_selected_trainer]
-    trainer_sprite = get_trainer_sprite(trainer["sprite"])
-    app.screen.blit(
-        trainer_sprite,
-        (68, 96)
+    trainer = (
+        app.trainers_data[
+            app.SINGLE_MENU_TRAINER_selected_trainer
+        ]
     )
+    trainer_name = trainer["name"]
     app.font0.draw_text(
         app.screen,
-        trainer["name"],
+        trainer_name,
         68,
         57
     )
-    app.font0.draw_text(
-        app.screen,
-        "DEFEATED",
-        68, 69
-    )
-    if len(app.teams_data) > 0:
-        selected_team = (
-            app.teams_data[
-                app.SINGLE_MENU_TRAINER_selected_team
-            ]
-        )
+    if (
+        trainer_name
+        in
+        get_trainer_defeats()
+    ):
         app.font0.draw_text(
             app.screen,
-            "-" + selected_team["name"],
-            63,
-            41
+            "DEFEATED",
+            68,
+            69
         )
-        preview_team = [
-            Pokemon.from_dict(pokemon_data)
-            for pokemon_data in selected_team["pokemon"]
-        ]
-        for i, pokemon in enumerate(preview_team):
+    preview_team = []
+    if (
+        app.SINGLE_MENU_TRAINER_index
+        == 0
+    ):
+        pass
+    elif (
+        app.SINGLE_MENU_TRAINER_index
+        == 1
+    ):
+        app.screen.blit(
+            get_trainer_sprite(
+                app.player_sprite
+            ),
+            (68, 96)
+        )
+        if (
+            len(app.teams_data) > 0
+            and
+            app.SINGLE_MENU_TRAINER_selected_team
+            is not None
+        ):
+            selected_team = (
+                app.teams_data[
+                    app.SINGLE_MENU_TRAINER_selected_team
+                ]
+            )
+            app.font0.draw_text(
+                app.screen,
+                "-" + selected_team["name"],
+                63,
+                41
+            )
+            preview_team = (
+                app.SINGLE_MENU_TRAINER_my_team_preview
+            )
+    else:
+        app.screen.blit(
+            get_trainer_sprite(
+                trainer["sprite"]
+            ),
+            (68, 96)
+        )
+        preview_team = (
+            app.SINGLE_MENU_TRAINER_preview_team
+        )
+    show_preview = (
+        app.SINGLE_MENU_TRAINER_index == 1
+        or
+        app.option_omniscient
+    )
+    if show_preview:
+        for i, pokemon in enumerate(
+            preview_team
+        ):
             column = i % 2
             row = i // 2
             x = 128 + column * 48
             y = row * 48
             app.screen.blit(
-                get_display_sprite(pokemon),
+                get_display_sprite(
+                    pokemon
+                ),
                 (x, y)
             )
 
@@ -137,7 +183,7 @@ def draw_SINGLE_MENU():
         10, 10
     )
     options = [
-        "Trainer Battle        DEFEATED  0",
+       f"Trainer Battle        DEFEATED  {get_num_trainer_defeats()}",
         "Endless Battle          RECORD  0",
         "Defend Gym                GYMS  0",
         "Tournament              TITLES  0"

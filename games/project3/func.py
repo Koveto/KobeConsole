@@ -320,56 +320,21 @@ def get_loaded_pokemon():
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
+    for p in (
+        app.SINGLE_MENU_TRAINER_preview_team
+        or []
+    ):
+        if id(p) not in seen:
+            pokemon.append(p)
+            seen.add(id(p))
+    for p in (
+        app.SINGLE_MENU_TRAINER_my_team_preview
+        or []
+    ):
+        if id(p) not in seen:
+            pokemon.append(p)
+            seen.add(id(p))
     return pokemon
-
-def save_teams(data):
-    save_data = load_save()
-    save_data[
-        "teams"
-    ] = data[
-        "teams"
-    ]
-    save_save(
-        save_data
-    )
-
-def get_selected_team_index():
-    save_data = load_save()
-    return save_data[
-        "selected_team"
-    ]
-
-def set_selected_team_index(
-    index
-):
-    save_data = load_save()
-    save_data[
-        "selected_team"
-    ] = index
-    save_save(
-        save_data
-    )
-
-def get_trainer_defeats():
-    save_data = load_save()
-    return save_data[
-        "trainer_defeats"
-    ]
-
-def save_trainer_defeat(
-    trainer_name
-):
-    save_data = load_save()
-    defeats = save_data[
-        "trainer_defeats"
-    ]
-    if trainer_name not in defeats:
-        defeats.append(
-            trainer_name
-        )
-    save_save(
-        save_data
-    )
 
 TYPE_SHEET = None
 TYPE_ICON_WIDTH = 32

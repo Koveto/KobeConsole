@@ -38,6 +38,7 @@ class App:
         self.team_select_return_state = None
         self.team_preview_return_state = None
         self.restore_team_select = False
+        self.restore_single_menu_trainer = False
         
         self.option_omniscient = False
         self.option_pkmn_animation = True
@@ -109,5 +110,7 @@ class App:
         )
         self.SINGLE_MENU_TRAINER_selected_trainer = 0
         self.SINGLE_MENU_TRAINER_selected_team = 0
+        self.SINGLE_MENU_TRAINER_preview_team = []
+        self.SINGLE_MENU_TRAINER_my_team_preview = []
 
 app = App()

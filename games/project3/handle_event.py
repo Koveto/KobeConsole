@@ -83,6 +83,7 @@ def handle_event_SINGLE_MENU_TRAINER(event):
         ):
             return
 
+        app.restore_single_menu_trainer = True
         change_state(
             TEAM_SELECT
         )
@@ -97,10 +98,38 @@ def handle_event_SINGLE_MENU_TRAINER(event):
                 0,
                 app.SINGLE_MENU_TRAINER_selected_team - 1
             )
+            selected_team = (
+                app.teams_data[
+                    app.SINGLE_MENU_TRAINER_selected_team
+                ]
+            )
+
+            app.SINGLE_MENU_TRAINER_my_team_preview = [
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+                for pokemon_data
+                in
+                selected_team["pokemon"]
+            ]
         elif app.SINGLE_MENU_TRAINER_index == 2:
             app.SINGLE_MENU_TRAINER_selected_trainer = max(
-                0, app.SINGLE_MENU_TRAINER_selected_trainer - 1
+                0,
+                app.SINGLE_MENU_TRAINER_selected_trainer - 1
             )
+            trainer = (
+                app.trainers_data[
+                    app.SINGLE_MENU_TRAINER_selected_trainer
+                ]
+            )
+            app.SINGLE_MENU_TRAINER_preview_team = [
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+                for pokemon_data
+                in
+                trainer["team"]
+            ]
     elif is_right(event):
         if (
             app.SINGLE_MENU_TRAINER_index == 1
@@ -112,11 +141,88 @@ def handle_event_SINGLE_MENU_TRAINER(event):
                 len(app.teams_data) - 1,
                 app.SINGLE_MENU_TRAINER_selected_team + 1
             )
+            selected_team = (
+                app.teams_data[
+                    app.SINGLE_MENU_TRAINER_selected_team
+                ]
+            )
+
+            app.SINGLE_MENU_TRAINER_my_team_preview = [
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+                for pokemon_data
+                in
+                selected_team["pokemon"]
+            ]
         elif app.SINGLE_MENU_TRAINER_index == 2:
             app.SINGLE_MENU_TRAINER_selected_trainer = min(
-                len(app.trainers_data) - 1, 
+                len(app.trainers_data) - 1,
                 app.SINGLE_MENU_TRAINER_selected_trainer + 1
             )
+            trainer = (
+                app.trainers_data[
+                    app.SINGLE_MENU_TRAINER_selected_trainer
+                ]
+            )
+            app.SINGLE_MENU_TRAINER_preview_team = [
+
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+
+                for pokemon_data
+                in
+                trainer["team"]
+
+            ]
+
+def generate_test_teams():
+
+    load_species()
+
+    save_data = load_save()
+
+    teams = []
+
+    species_list = list(
+        SPECIES.keys()
+    )
+
+    for team_index in range(10):
+
+        team = {
+            "name":
+                f"Test Team {team_index + 1}",
+            "pokemon": []
+        }
+
+        for _ in range(6):
+
+            pokemon = (
+                Pokemon.from_species_number(
+                    random.choice(
+                        species_list
+                    )
+                )
+            )
+
+            team["pokemon"].append(
+                pokemon.to_dict()
+            )
+
+        teams.append(
+            team
+        )
+
+    save_data[
+        "teams"
+    ] = teams
+
+    save_save(
+        save_data
+    )
+
 
 def handle_event_SINGLE_MENU(event):
     if is_up(event):
@@ -128,6 +234,12 @@ def handle_event_SINGLE_MENU(event):
     elif is_confirm(event):
         if app.SINGLE_MENU_index == 0:
             change_state(SINGLE_MENU_TRAINER)
+    elif is_vy(event):
+        reset_save()
+        generate_test_teams()
+        change_state(
+            SINGLE_MENU
+        )
 
 def handle_event_OPTIONS_MUSIC(event):
     filenames = sorted(
@@ -443,10 +555,10 @@ def handle_event_TEAM_SELECT(event):
                 == "TRAINER"
             ):
                 app.opponent_team = [
-                    Pokemon.from_species_number(
-                        species_no
+                    Pokemon.from_dict(
+                        pokemon_data
                     )
-                    for species_no in
+                    for pokemon_data in
                     app.selected_trainer_data[
                         "team"
                     ]
