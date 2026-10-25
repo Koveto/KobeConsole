@@ -42,6 +42,14 @@ class App:
         self.endless_active = False
         self.endless_wins = 0
         self.endless_trainer_index = None
+        self.tournament_active = False
+        self.tournament_round = 0
+        self.tournament_trainers = []
+        self.tournament_current_trainer = None
+        self.tournament_quarterfinals = []
+        self.tournament_semifinals = []
+        self.tournament_finals = []
+        self.tournament_champion = None
         
         self.option_omniscient = False
         self.option_pkmn_animation = True

@@ -303,3 +303,29 @@ def save_endless_record(
     save_save(
         save_data
     )
+
+def get_num_titles():
+
+    save_data = load_save()
+
+    return save_data[
+        "titles"
+    ]
+
+def save_title():
+
+    save_data = load_save()
+    titles = get_num_titles() + 1
+
+    save_data[
+        "titles"
+    ] = max(
+        titles,
+        save_data[
+            "titles"
+        ]
+    )
+
+    save_save(
+        save_data
+    )

@@ -3,9 +3,11 @@ from func import *
 from pkmn import *
 
 cursor = None
+bracket = None
 
 def init_draw():
     global cursor
+    global bracket
 
     cursor_filepath = os.path.join(
         TEXT_ROOT,
@@ -20,6 +22,16 @@ def init_draw():
     cursor.set_colorkey(
         COLOR_ALPHA_0
     )
+
+    bracket_filepath = os.path.join(
+        TEXT_ROOT,
+        "sprites",
+        "bracket.png"
+    )
+
+    bracket = pygame.image.load(
+        bracket_filepath
+    ).convert()
 
 def get_display_sprite(pokemon):
     if app.option_pkmn_animation:
@@ -57,6 +69,121 @@ def draw():
         draw_SINGLE_MENU_TRAINER()
     elif app.state == BATTLE_END:
         draw_BATTLE_END()
+    elif app.state == SINGLE_BRACKET:
+        draw_SINGLE_BRACKET()
+
+def draw_SINGLE_BRACKET():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.screen.blit(
+        bracket,
+        (0, 0)
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "TOURNAMENT",
+        180,
+        5
+    )
+
+    quarterfinal_positions = [
+        (10, 3),
+        (10, 22),
+        (10, 41),
+        (10, 60),
+        (10, 79),
+        (10, 97),
+        (10, 115),
+        (10, 134)
+    ]
+
+    semifinal_positions = [
+        (77, 14),
+        (77, 49),
+        (77, 85),
+        (77, 121)
+    ]
+
+    final_positions = [
+        (143, 41),
+        (143, 91)
+    ]
+
+    #
+    # Quarterfinals
+    #
+
+    for i, participant in enumerate(
+        app.tournament_quarterfinals
+    ):
+
+        if participant == "PLAYER":
+            text = app.player_name
+        else:
+            text = participant["name"]
+
+        x, y = (
+            quarterfinal_positions[i]
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            text,
+            x,
+            y
+        )
+
+    #
+    # Semifinals
+    #
+
+    for i, participant in enumerate(
+        app.tournament_semifinals
+    ):
+
+        if participant == "PLAYER":
+            text = app.player_name
+        else:
+            text = participant["name"]
+
+        x, y = (
+            semifinal_positions[i]
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            text,
+            x,
+            y
+        )
+
+    #
+    # Finals
+    #
+
+    for i, participant in enumerate(
+        app.tournament_finals
+    ):
+
+        if participant == "PLAYER":
+            text = app.player_name
+        else:
+            text = participant["name"]
+
+        x, y = (
+            final_positions[i]
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            text,
+            x,
+            y
+        )
 
 def draw_BATTLE_END():
     app.screen.fill(COLOR_WHITE)
@@ -186,7 +313,7 @@ def draw_SINGLE_MENU():
        f"Trainer Battle        DEFEATED  {get_num_trainer_defeats()}",
        f"Endless Battle          RECORD  {get_endless_record()}",
         "Defend Gym                GYMS  0",
-        "Tournament              TITLES  0"
+       f"Tournament              TITLES  {get_num_titles()}"
     ]
     for i, text in enumerate(options):
         y = 40 + i * 20

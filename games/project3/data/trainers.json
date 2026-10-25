@@ -1394,8 +1394,8 @@
                     "status": null
                 },
                 {
-                    "species_no": 376,
-                    "nickname": "Salamence",
+                    "species_no": 379,
+                    "nickname": "Metagross",
                     "level": 100,
                     "nature": "Quiet",
                     "gender": "\u2642",
@@ -1404,9 +1404,9 @@
                     "back_sprite_number": 0,
                     "evs": [
                         252,
-                        0,
-                        4,
                         252,
+                        4,
+                        0,
                         0,
                         0
                     ],

@@ -32,6 +32,103 @@ def handle_event(event):
         handle_event_SINGLE_MENU_TRAINER(event)
     elif app.state == BATTLE_END:
         handle_event_BATTLE_END(event)
+    elif app.state == SINGLE_BRACKET:
+        handle_event_SINGLE_BRACKET(event)
+
+def start_tournament():
+    app.tournament_semifinals = []
+    app.tournament_finals = []
+    app.tournament_active = True
+    app.tournament_round = 0
+    selected_trainers = random.sample(
+        app.trainers_data,
+        7
+    )
+    app.tournament_quarterfinals = [
+        "PLAYER",
+        selected_trainers[0],
+        selected_trainers[1],
+        selected_trainers[2],
+        selected_trainers[3],
+        selected_trainers[4],
+        selected_trainers[5],
+        selected_trainers[6]
+    ]
+    app.tournament_current_trainer = (
+        app.tournament_quarterfinals[1]
+    )
+
+def handle_event_SINGLE_BRACKET(
+    event
+):
+
+    if is_confirm(event):
+
+        if (
+            app.tournament_round
+            == 0
+        ):
+
+            app.team_select_return_state = (
+                SINGLE_BRACKET
+            )
+
+            app.allow_team_change = True
+
+            app.allow_lead_change = True
+
+            change_state(
+                TEAM_SELECT
+            )
+
+        else:
+
+            if (
+                app.tournament_round
+                == 1
+            ):
+
+                opponent = (
+                    app.tournament_semifinals[
+                        1
+                    ]
+                )
+
+            else:
+
+                opponent = (
+                    app.tournament_finals[
+                        1
+                    ]
+                )
+
+            app.tournament_current_trainer = (
+                opponent
+            )
+
+            app.selected_trainer_data = (
+                opponent
+            )
+
+            app.opponent_team = [
+
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+
+                for pokemon_data
+                in
+                opponent["team"]
+
+            ]
+
+            app.allow_team_change = False
+
+            app.allow_lead_change = True
+
+            change_state(
+                TEAM_PREVIEW
+            )
 
 def start_next_endless_battle():
     trainer_index = random.randint(
@@ -286,6 +383,10 @@ def handle_event_SINGLE_MENU(event):
                 change_state(
                     TEAM_SELECT
                 )
+        elif app.SINGLE_MENU_index == 3:
+            app.game_mode = "TOURNAMENT"
+            start_tournament()
+            change_state(SINGLE_BRACKET)
     elif is_vy(event):
         reset_save()
         generate_test_teams()
@@ -572,6 +673,15 @@ def handle_event_TEAM_SELECT(event):
         else:
             if app.game_mode == "ENDLESS":
                 start_next_endless_battle()
+            elif app.game_mode == "TOURNAMENT":
+                trainer = app.tournament_current_trainer
+                app.selected_trainer_data = trainer
+                app.opponent_team = [
+                    Pokemon.from_dict(
+                        pokemon_data
+                    )
+                    for pokemon_data in trainer["team"]
+                ]
             elif (
                 app.single_battle_mode
                 == "RANDOM_TEAM"

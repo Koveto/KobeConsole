@@ -63,6 +63,97 @@ def update_BATTLE_END():
         return
 
     if (
+        app.game_mode
+        == "TOURNAMENT"
+    ):
+
+        if random.choice(
+            [True, False]
+        ):
+
+            app.tournament_round += 1
+            app.player_lead = None
+
+            if (
+                app.tournament_round
+                == 1
+            ):
+
+                app.tournament_semifinals = [
+
+                    "PLAYER",
+
+                    random.choice(
+                        [
+                            app.tournament_quarterfinals[2],
+                            app.tournament_quarterfinals[3]
+                        ]
+                    ),
+
+                    random.choice(
+                        [
+                            app.tournament_quarterfinals[4],
+                            app.tournament_quarterfinals[5]
+                        ]
+                    ),
+
+                    random.choice(
+                        [
+                            app.tournament_quarterfinals[6],
+                            app.tournament_quarterfinals[7]
+                        ]
+                    )
+
+                ]
+
+            elif (
+                app.tournament_round
+                == 2
+            ):
+
+                app.tournament_finals = [
+
+                    "PLAYER",
+
+                    random.choice(
+                        [
+                            app.tournament_semifinals[2],
+                            app.tournament_semifinals[3]
+                        ]
+                    )
+
+                ]
+
+            elif (
+                app.tournament_round
+                >= 3
+            ):
+
+                    save_title()
+
+                    app.tournament_active = False
+
+                    change_state(
+                        SINGLE_MENU
+                    )
+
+                    return
+
+            change_state(
+                SINGLE_BRACKET
+            )
+
+        else:
+
+            app.tournament_active = False
+
+            change_state(
+                SINGLE_MENU
+            )
+
+        return
+
+    if (
         app.single_battle_mode
         == "TRAINER"
         and
