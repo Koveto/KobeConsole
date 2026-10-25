@@ -39,6 +39,9 @@ class App:
         self.team_preview_return_state = None
         self.restore_team_select = False
         self.restore_single_menu_trainer = False
+        self.endless_active = False
+        self.endless_wins = 0
+        self.endless_trainer_index = None
         
         self.option_omniscient = False
         self.option_pkmn_animation = True

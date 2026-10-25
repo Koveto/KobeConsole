@@ -86,6 +86,8 @@ def change_state(new_state):
             app.music_data = load_music_data()
     if  (new_state == SINGLE_MENU):
         app.SINGLE_MENU_index = 0
+        trainers_data = load_trainers()
+        app.trainers_data = trainers_data["trainers"]
     if  (new_state == SINGLE_MENU_TRAINER):
         if app.restore_single_menu_trainer:
             app.restore_single_menu_trainer = False

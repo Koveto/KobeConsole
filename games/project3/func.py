@@ -604,3 +604,4 @@ def connect_to_server(
     )
 
     return client_socket
+

@@ -33,6 +33,34 @@ def handle_event(event):
     elif app.state == BATTLE_END:
         handle_event_BATTLE_END(event)
 
+def start_next_endless_battle():
+    trainer_index = random.randint(
+        0,
+        len(app.trainers_data) - 1
+    )
+    app.endless_trainer_index = (
+        trainer_index
+    )
+    trainer = (
+        app.trainers_data[
+            trainer_index
+        ]
+    )
+    app.selected_trainer_data = (
+        trainer
+    )
+    app.opponent_team = [
+        Pokemon.from_dict(
+            pokemon_data
+        )
+        for pokemon_data in
+        trainer["team"]
+    ]
+    for pokemon in app.opponent_team:
+        pokemon.set_level(
+            app.option_level_npc
+        )
+
 def handle_event_BATTLE_END(event):
     pass
 
@@ -233,7 +261,31 @@ def handle_event_SINGLE_MENU(event):
         change_state(LAUNCHER_MENU)
     elif is_confirm(event):
         if app.SINGLE_MENU_index == 0:
-            change_state(SINGLE_MENU_TRAINER)
+            change_state(
+                SINGLE_MENU_TRAINER
+            )
+        elif app.SINGLE_MENU_index == 1:
+            app.game_mode = (
+                "ENDLESS"
+            )
+            if app.endless_active:
+                start_next_endless_battle()
+                change_state(
+                    TEAM_PREVIEW
+                )
+            else:
+                app.endless_active = (
+                    True
+                )
+                app.endless_wins = 0
+                app.team_select_return_state = (
+                    SINGLE_MENU
+                )
+                app.allow_team_change = True
+                app.allow_lead_change = True
+                change_state(
+                    TEAM_SELECT
+                )
     elif is_vy(event):
         reset_save()
         generate_test_teams()
@@ -518,7 +570,9 @@ def handle_event_TEAM_SELECT(event):
         if is_lan_battle:
             app.TEAM_SELECT_team_sent = False
         else:
-            if (
+            if app.game_mode == "ENDLESS":
+                start_next_endless_battle()
+            elif (
                 app.single_battle_mode
                 == "RANDOM_TEAM"
             ):
@@ -788,6 +842,13 @@ def handle_event_TEAM_PREVIEW(event):
             )
     elif is_cancel(event):
         if (
+            app.game_mode
+            == "ENDLESS"
+        ):
+            change_state(
+                SINGLE_MENU
+            )
+        elif (
             app.allow_team_change
             and
             app.team_select_return_state

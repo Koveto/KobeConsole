@@ -276,3 +276,30 @@ def reset_save():
             SAVE_DEFAULT
         )
     )
+
+def get_endless_record():
+
+    save_data = load_save()
+
+    return save_data[
+        "endless_record"
+    ]
+
+def save_endless_record(
+    wins
+):
+
+    save_data = load_save()
+
+    save_data[
+        "endless_record"
+    ] = max(
+        wins,
+        save_data[
+            "endless_record"
+        ]
+    )
+
+    save_save(
+        save_data
+    )

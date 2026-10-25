@@ -2,6 +2,7 @@ from constants import *
 from func import *
 from state import *
 from save import *
+from handle_event import start_next_endless_battle
 
 def update():
     current_time = pygame.time.get_ticks()
@@ -27,6 +28,39 @@ def update():
         update_BATTLE_END()
 
 def update_BATTLE_END():
+    if (
+        app.game_mode
+        == "ENDLESS"
+    ):
+        if random.choice(
+            [True, False]
+        ):
+
+            app.endless_wins += 1
+
+            save_endless_record(
+                app.endless_wins
+            )
+
+            start_next_endless_battle()
+
+            app.player_lead = None
+
+            change_state(
+                TEAM_PREVIEW
+            )
+
+        else:
+
+            app.endless_active = False
+
+            app.endless_wins = 0
+
+            change_state(
+                SINGLE_MENU
+            )
+
+        return
 
     if (
         app.single_battle_mode
@@ -35,25 +69,20 @@ def update_BATTLE_END():
         app.selected_trainer_data
         is not None
     ):
-
         trainer_name = (
             app.selected_trainer_data[
                 "name"
             ]
         )
-
         if (
             trainer_name
             not in
             get_trainer_defeats()
         ):
-
             save_trainer_defeat(
                 trainer_name
             )
-
     app.restore_single_menu_trainer = True
-
     change_state(
         SINGLE_MENU_TRAINER
     )

@@ -184,7 +184,7 @@ def draw_SINGLE_MENU():
     )
     options = [
        f"Trainer Battle        DEFEATED  {get_num_trainer_defeats()}",
-        "Endless Battle          RECORD  0",
+       f"Endless Battle          RECORD  {get_endless_record()}",
         "Defend Gym                GYMS  0",
         "Tournament              TITLES  0"
     ]
