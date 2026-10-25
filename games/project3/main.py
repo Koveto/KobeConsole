@@ -43,6 +43,7 @@ def main():
     app.option_mute = options_data["mute"]
     app.option_level = options_data["level"]
     app.option_level_npc = options_data["level_npc"]
+    app.teams_data = load_teams()["teams"]
     if app.option_mute:
         pygame.mixer.music.set_volume(0.0)
     else:

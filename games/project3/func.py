@@ -334,6 +334,50 @@ def get_loaded_pokemon():
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
+    if (
+        app.DAMAGE_CALCULATOR_attacker
+        is not None
+    ):
+        if (
+            id(
+                app.DAMAGE_CALCULATOR_attacker
+            )
+            not in seen
+        ):
+            pokemon.append(
+                app.DAMAGE_CALCULATOR_attacker
+            )
+            seen.add(
+                id(
+                    app.DAMAGE_CALCULATOR_attacker
+                )
+            )
+
+    if (
+        app.DAMAGE_CALCULATOR_defender
+        is not None
+    ):
+        if (
+            id(
+                app.DAMAGE_CALCULATOR_defender
+            )
+            not in seen
+        ):
+            pokemon.append(
+                app.DAMAGE_CALCULATOR_defender
+            )
+            seen.add(
+                id(
+                    app.DAMAGE_CALCULATOR_defender
+                )
+            )
+    for p in (
+        app.POKEMON_IMPORT_preview_team
+        or []
+    ):
+        if id(p) not in seen:
+            pokemon.append(p)
+            seen.add(id(p))
     return pokemon
 
 TYPE_SHEET = None
@@ -725,7 +769,7 @@ def calculate_damage(
     )
 
     return max(
-        1,
+        0,
         damage
     )
 

@@ -76,6 +76,115 @@ def draw():
         draw_SINGLE_DEFEND_GYM()
     elif app.state == DAMAGE_CALCULATOR:
         draw_DAMAGE_CALCULATOR()
+    elif app.state == POKEMON_IMPORT:
+        draw_POKEMON_IMPORT()
+
+def draw_POKEMON_IMPORT():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "IMPORT POKEMON",
+        10,
+        10
+    )
+
+    visible_teams = app.teams_data[
+        app.POKEMON_IMPORT_scroll:
+        app.POKEMON_IMPORT_scroll + 8
+    ]
+
+    if len(app.teams_data) == 0:
+
+        app.font0.draw_text(
+            app.screen,
+            "NO SAVED TEAMS",
+            10,
+            40
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            "CREATE ONE FIRST",
+            10,
+            55
+        )
+
+        return
+
+    for row, team in enumerate(
+        visible_teams
+    ):
+
+        actual_index = (
+            app.POKEMON_IMPORT_scroll
+            + row
+        )
+
+        y = 35 + row * 15
+
+        if (
+            actual_index
+            ==
+            app.POKEMON_IMPORT_index
+        ):
+
+            app.screen.blit(
+                cursor,
+                (
+                    5,
+                    y
+                )
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            team["name"],
+            20,
+            y
+        )
+
+    if len(app.teams_data) > 0:
+
+        for i, pokemon in enumerate(
+            app.POKEMON_IMPORT_preview_team
+        ):
+
+            column = i % 2
+            row = i // 2
+
+            x = 105 + column * 64
+            y = row * 48
+
+            draw_sprite = True
+
+            if (
+                app.POKEMON_IMPORT_selecting_pokemon
+                and
+                i
+                ==
+                app.POKEMON_IMPORT_pokemon_index
+            ):
+
+                draw_sprite = (
+                    pygame.time.get_ticks()
+                    // 250
+                ) % 2 == 0
+
+            if draw_sprite:
+
+                app.screen.blit(
+                    get_display_sprite(
+                        pokemon
+                    ),
+                    (
+                        x,
+                        y
+                    )
+                )
 
 def draw_DAMAGE_CALCULATOR():
 

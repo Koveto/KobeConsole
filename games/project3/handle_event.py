@@ -38,6 +38,179 @@ def handle_event(event):
         handle_event_SINGLE_DEFEND_GYM(event)
     elif app.state == DAMAGE_CALCULATOR:
         handle_event_DAMAGE_CALCULATOR(event)
+    elif app.state == POKEMON_IMPORT:
+        handle_event_POKEMON_IMPORT(event)
+
+def handle_event_POKEMON_IMPORT(
+    event
+):
+
+    if len(app.teams_data) == 0:
+
+        if is_cancel(event):
+
+            change_state(
+                app.POKEMON_IMPORT_return_state
+            )
+
+        return
+
+    if app.POKEMON_IMPORT_selecting_pokemon:
+        if is_left(event):
+
+            app.POKEMON_IMPORT_pokemon_index = max(
+                0,
+                app.POKEMON_IMPORT_pokemon_index - 1
+            )
+
+        elif is_right(event):
+
+            app.POKEMON_IMPORT_pokemon_index = min(
+                5,
+                app.POKEMON_IMPORT_pokemon_index + 1
+            )
+
+        elif is_up(event):
+
+            app.POKEMON_IMPORT_pokemon_index = max(
+                0,
+                app.POKEMON_IMPORT_pokemon_index - 2
+            )
+
+        elif is_down(event):
+
+            app.POKEMON_IMPORT_pokemon_index = min(
+                5,
+                app.POKEMON_IMPORT_pokemon_index + 2
+            )
+
+        elif is_cancel(event):
+
+            app.POKEMON_IMPORT_selecting_pokemon = (
+                False
+            )
+
+        elif is_confirm(event):
+            team = (
+                app.teams_data[
+                    app.POKEMON_IMPORT_index
+                ]
+            )
+
+            selected_pokemon = (
+                Pokemon.from_dict(
+                    team[
+                        "pokemon"
+                    ][
+                        app.POKEMON_IMPORT_pokemon_index
+                    ]
+                )
+            )
+            if (
+                app.POKEMON_IMPORT_target
+                == "ATTACKER"
+            ):
+
+                app.DAMAGE_CALCULATOR_attacker = (
+                    selected_pokemon
+                )
+
+            else:
+
+                app.DAMAGE_CALCULATOR_defender = (
+                    selected_pokemon
+                )
+            app.POKEMON_IMPORT_selecting_pokemon = (
+                False
+            )
+
+            change_state(
+                app.POKEMON_IMPORT_return_state
+            )
+
+        return
+
+    if is_up(event):
+
+        app.POKEMON_IMPORT_index = max(
+            0,
+            app.POKEMON_IMPORT_index - 1
+        )
+
+        if (
+            app.POKEMON_IMPORT_index
+            <
+            app.POKEMON_IMPORT_scroll
+        ):
+            app.POKEMON_IMPORT_scroll -= 1
+        selected_team = (
+            app.teams_data[
+                app.POKEMON_IMPORT_index
+            ]
+        )
+
+        app.POKEMON_IMPORT_preview_team = [
+
+            Pokemon.from_dict(
+                pokemon_data
+            )
+
+            for pokemon_data
+            in selected_team[
+                "pokemon"
+            ]
+
+        ]
+
+    elif is_down(event):
+
+        app.POKEMON_IMPORT_index = min(
+            len(app.teams_data) - 1,
+            app.POKEMON_IMPORT_index + 1
+        )
+
+        if (
+            app.POKEMON_IMPORT_index
+            >=
+            app.POKEMON_IMPORT_scroll + 8
+        ):
+            app.POKEMON_IMPORT_scroll += 1
+
+        selected_team = (
+            app.teams_data[
+                app.POKEMON_IMPORT_index
+            ]
+        )
+
+        app.POKEMON_IMPORT_preview_team = [
+
+            Pokemon.from_dict(
+                pokemon_data
+            )
+
+            for pokemon_data
+            in selected_team[
+                "pokemon"
+            ]
+
+        ]
+    elif is_cancel(event):
+
+        change_state(
+            app.POKEMON_IMPORT_return_state
+        )
+
+    elif is_confirm(event):
+
+        app.POKEMON_IMPORT_selected_team = (
+            app.POKEMON_IMPORT_index
+        )
+
+        app.POKEMON_IMPORT_pokemon_index = 0
+
+        app.POKEMON_IMPORT_selecting_pokemon = (
+            True
+        )
 
 def handle_event_DAMAGE_CALCULATOR(
     event
@@ -92,6 +265,84 @@ def handle_event_DAMAGE_CALCULATOR(
         change_state(
             LAUNCHER_MENU
         )
+
+    elif is_confirm(event):
+
+        if (
+            app.DAMAGE_CALCULATOR_column
+            == 0
+            and
+            app.DAMAGE_CALCULATOR_index
+            == 0
+        ):
+
+            app.POKEMON_IMPORT_return_state = (
+                DAMAGE_CALCULATOR
+            )
+
+            app.POKEMON_IMPORT_target = (
+                "ATTACKER"
+            )
+
+            selected_team = (
+                app.teams_data[
+                    app.POKEMON_IMPORT_index
+                ]
+            )
+
+            app.POKEMON_IMPORT_preview_team = [
+
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+
+                for pokemon_data
+                in selected_team["pokemon"]
+
+            ]
+
+            change_state(
+                POKEMON_IMPORT
+            )
+
+        elif (
+            app.DAMAGE_CALCULATOR_column
+            == 2
+            and
+            app.DAMAGE_CALCULATOR_index
+            == 0
+        ):
+
+            app.POKEMON_IMPORT_return_state = (
+                DAMAGE_CALCULATOR
+            )
+
+            app.POKEMON_IMPORT_target = (
+                "DEFENDER"
+            )
+
+            selected_team = (
+                app.teams_data[
+                    app.POKEMON_IMPORT_index
+                ]
+            )
+
+            app.POKEMON_IMPORT_preview_team = [
+
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+
+                for pokemon_data
+                in selected_team["pokemon"]
+
+            ]
+
+            change_state(
+                POKEMON_IMPORT
+            )
+
+
 
 def ensure_gym_progress():
 

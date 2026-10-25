@@ -125,7 +125,6 @@ class App:
         self.SINGLE_MENU_TRAINER_selected_team = 0
         self.SINGLE_MENU_TRAINER_preview_team = []
         self.SINGLE_MENU_TRAINER_my_team_preview = []
-
         
         self.SINGLE_DEFEND_GYM_index = 0
         self.SINGLE_DEFEND_GYM_scroll = 0
@@ -139,5 +138,14 @@ class App:
         self.DAMAGE_CALCULATOR_defender = None
         self.DAMAGE_CALCULATOR_index = 0
         self.DAMAGE_CALCULATOR_column = 1
+
+        self.POKEMON_IMPORT_index = 0
+        self.POKEMON_IMPORT_scroll = 0
+        self.POKEMON_IMPORT_selected_team = None
+        self.POKEMON_IMPORT_selecting_pokemon = False
+        self.POKEMON_IMPORT_pokemon_index = 0
+        self.POKEMON_IMPORT_return_state = None
+        self.POKEMON_IMPORT_target = None
+        self.POKEMON_IMPORT_preview_team = []
 
 app = App()
