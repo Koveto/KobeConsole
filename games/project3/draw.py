@@ -1,6 +1,7 @@
 from constants import *
 from func import *
 from pkmn import *
+from handle_event import *
 
 cursor = None
 bracket = None
@@ -71,6 +72,170 @@ def draw():
         draw_BATTLE_END()
     elif app.state == SINGLE_BRACKET:
         draw_SINGLE_BRACKET()
+    elif app.state == SINGLE_DEFEND_GYM:
+        draw_SINGLE_DEFEND_GYM()
+
+def draw_SINGLE_DEFEND_GYM():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    start = (
+        app.gym_scroll
+    )
+
+    end = min(
+        len(app.gyms_data),
+        start + 2
+    )
+
+    for screen_row, gym_index in enumerate(
+        range(start, end)
+    ):
+
+        gym = (
+            app.gyms_data[
+                gym_index
+            ]
+        )
+
+        row_y = (
+            10
+            +
+            screen_row * 72
+        )
+
+        #
+        # Cursor
+        #
+
+        if gym_index == app.gym_index:
+
+            app.screen.blit(
+                cursor,
+                (2, row_y + 8)
+            )
+
+        #
+        # Type icon
+        #
+
+        app.screen.blit(
+            get_type_icon(
+                gym["type"]
+            ),
+            (18, row_y + 5)
+        )
+
+        #
+        # Selected trainer for THIS gym
+        #
+
+        trainer_index = (
+            app.gym_trainer_indices.get(
+                gym["type"],
+                0
+            )
+        )
+
+        trainer_x = [
+            60,
+            105,
+            150
+        ]
+
+        for i, trainer_name in enumerate(
+            gym["challengers"]
+        ):
+
+            trainer = next(
+                t
+                for t
+                in app.trainers_data
+                if t["name"] == trainer_name
+            )
+
+            draw_trainer = True
+
+            gym_progress = (
+                ensure_gym_progress()
+            )
+
+            progress = (
+                gym_progress[
+                    gym["type"]
+                ]
+            )
+
+            if (
+                gym_index
+                == app.gym_index
+                and
+                i
+                == trainer_index
+            ):
+
+                draw_trainer = (
+                    pygame.time.get_ticks()
+                    // 250
+                ) % 2 == 0
+
+            if draw_trainer:
+
+                app.screen.blit(
+                    get_trainer_sprite(
+                        trainer["sprite"]
+                    ),
+                    (
+                        trainer_x[i],
+                        row_y
+                    )
+                )
+        selected_trainer = (
+            app.gym_trainer_indices.get(
+                gym["type"],
+                0
+            )
+        )
+
+        if (
+            progress[
+                selected_trainer
+            ]
+        ):
+
+            app.font0.draw_text(
+                app.screen,
+                "DEFEATED",
+                10,
+                row_y + 32
+            )
+
+        #
+        # Progress placeholder
+        #
+
+        gym_progress = (
+            ensure_gym_progress()
+        )
+
+        progress = (
+            gym_progress[
+                gym["type"]
+            ]
+        )
+
+        num_defeated = sum(
+            progress
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"{num_defeated}/3",
+            220,
+            row_y + 10
+        )
 
 def draw_SINGLE_BRACKET():
 
@@ -312,7 +477,7 @@ def draw_SINGLE_MENU():
     options = [
        f"Trainer Battle        DEFEATED  {get_num_trainer_defeats()}",
        f"Endless Battle          RECORD  {get_endless_record()}",
-        "Defend Gym                GYMS  0",
+       f"Defend Gym                GYMS  {get_num_completed_gyms()}",
        f"Tournament              TITLES  {get_num_titles()}"
     ]
     for i, text in enumerate(options):
@@ -1089,6 +1254,19 @@ def draw_generic_team_select(
         app.team_select_scroll:
         app.team_select_scroll + 7
     ]
+
+    if (
+        app.team_select_error
+        is not None
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            app.team_select_error,
+            5,
+            145
+        )
+
     for row, team_name in enumerate(
         visible_teams
     ):

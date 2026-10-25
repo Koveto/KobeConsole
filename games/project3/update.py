@@ -2,7 +2,7 @@ from constants import *
 from func import *
 from state import *
 from save import *
-from handle_event import start_next_endless_battle
+from handle_event import *
 
 def update():
     current_time = pygame.time.get_ticks()
@@ -150,6 +150,37 @@ def update_BATTLE_END():
             change_state(
                 SINGLE_MENU
             )
+
+        return
+
+    if (
+        app.game_mode
+        == "DEFEND_GYM"
+    ):
+
+        if random.choice(
+            [True, False]
+        ):
+
+            gym_progress = (
+                ensure_gym_progress()
+            )
+
+            gym_progress[
+                app.selected_gym_type
+            ][
+                app.selected_gym_trainer_index
+            ] = True
+
+            save_gym_progress(
+                gym_progress
+            )
+
+        app.player_lead = None
+
+        change_state(
+            SINGLE_DEFEND_GYM
+        )
 
         return
 

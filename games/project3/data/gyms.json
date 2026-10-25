@@ -1,0 +1,167 @@
+{
+    "gyms": [
+
+        {
+            "type": "Normal",
+            "challengers": [
+                "ARCHIE",
+                "STEVEN",
+                "MAY"
+            ]
+        },
+
+        {
+            "type": "Fire",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Water",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Grass",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Electric",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Ice",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Fighting",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Poison",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Ground",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Flying",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Psychic",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Bug",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Rock",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Ghost",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Dragon",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Dark",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Steel",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        },
+
+        {
+            "type": "Fairy",
+            "challengers": [
+                "MAXIE",
+                "RED",
+                "ARCHIE"
+            ]
+        }
+
+    ]
+}

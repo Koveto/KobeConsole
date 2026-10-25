@@ -45,6 +45,7 @@ def change_state(new_state):
     if  (new_state == SPECIES_VIEW):
         app.SPECIES_VIEW_mode = "STATS"
     if  (new_state == TEAM_SELECT):
+        app.team_select_error = None
         if app.restore_team_select:
             app.restore_team_select = False
             app.player_team = None

@@ -19,7 +19,28 @@ SAVE_DEFAULT = {
     "trainer_defeats": [],
     "endless_record": 0,
     "titles": 0,
-    "gym_progress": {}
+    "gym_progress": {
+
+        "Normal": [False, False, False],
+        "Fire": [False, False, False],
+        "Water": [False, False, False],
+        "Grass": [False, False, False],
+        "Electric": [False, False, False],
+        "Ice": [False, False, False],
+        "Fighting": [False, False, False],
+        "Poison": [False, False, False],
+        "Ground": [False, False, False],
+        "Flying": [False, False, False],
+        "Psychic": [False, False, False],
+        "Bug": [False, False, False],
+        "Rock": [False, False, False],
+        "Ghost": [False, False, False],
+        "Dragon": [False, False, False],
+        "Dark": [False, False, False],
+        "Steel": [False, False, False],
+        "Fairy": [False, False, False],
+
+    }
 }
 
 
@@ -329,3 +350,26 @@ def save_title():
     save_save(
         save_data
     )
+
+def get_gym_progress():
+
+    save_data = load_save()
+
+    return save_data[
+        "gym_progress"
+    ]
+
+def save_gym_progress(
+    gym_progress
+):
+
+    save_data = load_save()
+
+    save_data[
+        "gym_progress"
+    ] = gym_progress
+
+    save_save(
+        save_data
+    )
+

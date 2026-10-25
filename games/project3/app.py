@@ -50,6 +50,15 @@ class App:
         self.tournament_semifinals = []
         self.tournament_finals = []
         self.tournament_champion = None
+        self.gyms_data = []
+        self.gym_index = 0
+        self.gym_scroll = 0
+        self.gym_trainer_index = 0
+        self.selected_gym = None
+        self.selected_gym_type = None
+        self.selected_gym_trainer = None
+        self.gym_trainer_indices = {}
+        self.team_select_error = None
         
         self.option_omniscient = False
         self.option_pkmn_animation = True

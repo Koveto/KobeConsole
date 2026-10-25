@@ -605,3 +605,21 @@ def connect_to_server(
 
     return client_socket
 
+def load_gyms():
+
+    filepath = os.path.join(
+        TEXT_ROOT,
+        "data",
+        "gyms.json"
+    )
+
+    with open(
+        filepath,
+        "r",
+        encoding="utf-8"
+    ) as infile:
+
+        return json.load(
+            infile
+        )
+

@@ -34,6 +34,264 @@ def handle_event(event):
         handle_event_BATTLE_END(event)
     elif app.state == SINGLE_BRACKET:
         handle_event_SINGLE_BRACKET(event)
+    elif app.state == SINGLE_DEFEND_GYM:
+        handle_event_SINGLE_DEFEND_GYM(event)
+
+def ensure_gym_progress():
+
+    save_data = load_save()
+
+    gym_progress = save_data[
+        "gym_progress"
+    ]
+
+    gyms_data = load_gyms()
+
+    changed = False
+
+    for gym in gyms_data[
+        "gyms"
+    ]:
+
+        gym_type = gym["type"]
+
+        if gym_type not in gym_progress:
+
+            gym_progress[
+                gym_type
+            ] = [
+                False,
+                False,
+                False
+            ]
+
+            changed = True
+
+    if changed:
+
+        save_save(
+            save_data
+        )
+
+    return gym_progress
+
+def generate_type_team(
+    type_name
+):
+
+    load_species()
+
+    candidates = []
+
+    for species in (
+        SPECIES.values()
+    ):
+
+        if (
+            type_name
+            in
+            species.types
+        ):
+
+            candidates.append(
+                species.no
+            )
+
+    random.shuffle(
+        candidates
+    )
+
+    return [
+
+        Pokemon.from_species_number(
+            species_no
+        )
+
+        for species_no
+        in
+        candidates[:6]
+
+    ]
+
+
+def team_matches_type(
+    team,
+    required_type
+):
+
+    for pokemon in team:
+
+        if (
+            required_type
+            not in
+            pokemon.species.types
+        ):
+
+            return False
+
+    return True
+
+def get_num_completed_gyms():
+
+    gym_progress = (
+        ensure_gym_progress()
+    )
+
+    count = 0
+
+    for progress in (
+        gym_progress.values()
+    ):
+
+        if all(progress):
+
+            count += 1
+
+    return count
+
+def handle_event_SINGLE_DEFEND_GYM(
+    event
+):
+
+    if is_up(event):
+
+        app.gym_index = max(
+            0,
+            app.gym_index - 1
+        )
+
+        if (
+            app.gym_index
+            <
+            app.gym_scroll
+        ):
+            app.gym_scroll -= 1
+
+    elif is_down(event):
+
+        app.gym_index = min(
+            len(app.gyms_data) - 1,
+            app.gym_index + 1
+        )
+
+        if (
+            app.gym_index
+            >=
+            app.gym_scroll + 2
+        ):
+            app.gym_scroll += 1
+
+    elif is_left(event):
+
+        gym = (
+            app.gyms_data[
+                app.gym_index
+            ]
+        )
+
+        current = (
+            app.gym_trainer_indices.get(
+                gym["type"],
+                0
+            )
+        )
+
+        app.gym_trainer_indices[
+            gym["type"]
+        ] = max(
+            0,
+            current - 1
+        )
+
+    elif is_right(event):
+
+        gym = (
+            app.gyms_data[
+                app.gym_index
+            ]
+        )
+
+        current = (
+            app.gym_trainer_indices.get(
+                gym["type"],
+                0
+            )
+        )
+
+        app.gym_trainer_indices[
+            gym["type"]
+        ] = min(
+            2,
+            current + 1
+        )
+
+    elif is_confirm(event):
+
+        gym = (
+            app.gyms_data[
+                app.gym_index
+            ]
+        )
+
+        trainer_index = (
+            app.gym_trainer_indices.get(
+                gym["type"],
+                0
+            )
+        )
+
+        trainer_name = (
+            gym["challengers"][
+                trainer_index
+            ]
+        )
+
+        trainer = next(
+            t
+            for t
+            in app.trainers_data
+            if t["name"] == trainer_name
+        )
+
+        app.selected_gym = gym
+
+        app.selected_gym_type = (
+            gym["type"]
+        )
+
+        app.selected_gym_trainer = (
+            trainer_name
+        )
+
+        app.selected_gym_trainer_index = (
+            trainer_index
+        )
+
+        app.selected_trainer_data = (
+            trainer
+        )
+
+        app.team_select_return_state = (
+            SINGLE_DEFEND_GYM
+        )
+
+        app.allow_team_change = True
+
+        app.allow_lead_change = True
+
+        app.game_mode = (
+            "DEFEND_GYM"
+        )
+
+        change_state(
+            TEAM_SELECT
+        )
+
+    elif is_cancel(event):
+
+        change_state(
+            SINGLE_MENU
+        )
 
 def start_tournament():
     app.tournament_semifinals = []
@@ -383,6 +641,17 @@ def handle_event_SINGLE_MENU(event):
                 change_state(
                     TEAM_SELECT
                 )
+        elif app.SINGLE_MENU_index == 2:
+
+            gyms_data = load_gyms()
+
+            app.gyms_data = (
+                gyms_data["gyms"]
+            )
+
+            change_state(
+                SINGLE_DEFEND_GYM
+            )
         elif app.SINGLE_MENU_index == 3:
             app.game_mode = "TOURNAMENT"
             start_tournament()
@@ -648,26 +917,62 @@ def handle_event_TEAM_SELECT(event):
     ):
         load_species()
         if app.team_select_index == 0:
-            app.player_team = [
-                Pokemon.from_species_number(
-                    random.choice(
-                        list(
-                            SPECIES.keys()
-                        )
+
+            if (
+                app.game_mode
+                == "DEFEND_GYM"
+            ):
+
+                app.player_team = (
+                    generate_type_team(
+                        app.selected_gym_type
                     )
                 )
-                for _ in range(6)
-            ]
+
+            else:
+
+                app.player_team = [
+                    Pokemon.from_species_number(
+                        random.choice(
+                            list(
+                                SPECIES.keys()
+                            )
+                        )
+                    )
+                    for _ in range(6)
+                ]
+
         else:
+
             app.player_team = [
                 Pokemon.from_dict(
                     pokemon_data
                 )
                 for pokemon_data in
-                app.selected_team_data["pokemon"]
+                app.selected_team_data[
+                    "pokemon"
+                ]
             ]
         for pokemon in app.player_team:
             pokemon.set_level(app.option_level)
+        if (
+            app.game_mode
+            == "DEFEND_GYM"
+        ):
+
+            if not team_matches_type(
+                app.player_team,
+                app.selected_gym_type
+            ):
+
+                app.team_select_error = (
+                    f"ONLY "
+                    f"{app.selected_gym_type.upper()} TYPES"
+                )
+
+                app.player_team = None
+
+                return
         if is_lan_battle:
             app.TEAM_SELECT_team_sent = False
         else:
@@ -682,6 +987,27 @@ def handle_event_TEAM_SELECT(event):
                     )
                     for pokemon_data in trainer["team"]
                 ]
+            elif (
+                app.game_mode
+                == "DEFEND_GYM"
+            ):
+
+                trainer = (
+                    app.selected_trainer_data
+                )
+
+                app.opponent_team = [
+
+                    Pokemon.from_dict(
+                        pokemon_data
+                    )
+
+                    for pokemon_data
+                    in
+                    trainer["team"]
+
+                ]
+
             elif (
                 app.single_battle_mode
                 == "RANDOM_TEAM"
