@@ -7,60 +7,6 @@ from draw import *
 from font import *
 from save import *
 
-def upgrade_trainers():
-
-    filepath = os.path.join(
-        TEXT_ROOT,
-        "data",
-        "trainers.json"
-    )
-
-    with open(
-        filepath,
-        "r",
-        encoding="utf-8"
-    ) as infile:
-
-        trainers_data = json.load(
-            infile
-        )
-
-    for trainer in trainers_data[
-        "trainers"
-    ]:
-
-        new_team = []
-
-        for species_no in trainer[
-            "team"
-        ]:
-
-            pokemon = (
-                Pokemon.from_species_number(
-                    species_no
-                )
-            )
-
-            new_team.append(
-                pokemon.to_dict()
-            )
-
-        trainer["team"] = (
-            new_team
-        )
-
-    with open(
-        filepath,
-        "w",
-        encoding="utf-8"
-    ) as outfile:
-
-        json.dump(
-            trainers_data,
-            outfile,
-            indent=4
-        )
-
 def main():
     pygame.init()
     pygame.mixer.init()
@@ -112,8 +58,6 @@ def main():
                 glyph_h=13,
                 scale=1,
                 spacing=6)
-    #generate_test_teams()
-    #upgrade_trainers()
     running = True
     while running:
         for event in pygame.event.get():
