@@ -23,11 +23,6 @@ class App:
         self.trainers_data = []
         self.single_battle_mode = None
         self.selected_trainer_data = None
-        self.preview_index = 0
-        self.preview_column = 0
-        self.team_select_index = 0
-        self.team_select_scroll = 0
-        self.team_select_preview_team = []
         self.selected_team_data = None
         self.game_mode = None
         self.allow_team_change = True
@@ -35,8 +30,6 @@ class App:
         self.pending_opponent_team = None
         self.pending_opponent_trainer = None
         self.battle_result = None
-        self.team_select_return_state = None
-        self.team_preview_return_state = None
         self.restore_team_select = False
         self.restore_single_menu_trainer = False
         self.endless_active = False
@@ -44,22 +37,13 @@ class App:
         self.endless_trainer_index = None
         self.tournament_active = False
         self.tournament_round = 0
-        self.tournament_trainers = []
         self.tournament_current_trainer = None
         self.tournament_quarterfinals = []
         self.tournament_semifinals = []
         self.tournament_finals = []
         self.tournament_champion = None
         self.gyms_data = []
-        self.gym_index = 0
-        self.gym_scroll = 0
-        self.gym_trainer_index = 0
-        self.selected_gym = None
-        self.selected_gym_type = None
-        self.selected_gym_trainer = None
-        self.gym_trainer_indices = {}
-        self.team_select_error = None
-        
+
         self.option_omniscient = False
         self.option_pkmn_animation = True
         self.option_music_shuffle = False
@@ -70,6 +54,7 @@ class App:
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
                                       "LAN Multiplayer",
+                                      "Damage Calculator",
                                       "Options")
         
         self.LAN_HOST_JOIN_index = None
@@ -90,6 +75,9 @@ class App:
         self.TEAM_PREVIEW_opponent_team = None
         self.TEAM_PREVIEW_ready_sent = None
         self.TEAM_PREVIEW_opponent_ready = None
+        self.TEAM_PREVIEW_return_state = None
+        self.TEAM_PREVIEW_index = 0
+        self.TEAM_PREVIEW_column = 0
 
         self.PKMN_VIEW_pokemon = None
         self.PKMN_VIEW_move_index = None
@@ -102,6 +90,11 @@ class App:
 
         self.TEAM_SELECT_team_sent = False
         self.TEAM_SELECT_opponent_team = None
+        self.TEAM_SELECT_error = None
+        self.TEAM_SELECT_return_state = None
+        self.TEAM_SELECT_index = 0
+        self.TEAM_SELECT_scroll = 0
+        self.TEAM_SELECT_preview_team = []
 
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
@@ -132,5 +125,19 @@ class App:
         self.SINGLE_MENU_TRAINER_selected_team = 0
         self.SINGLE_MENU_TRAINER_preview_team = []
         self.SINGLE_MENU_TRAINER_my_team_preview = []
+
+        
+        self.SINGLE_DEFEND_GYM_index = 0
+        self.SINGLE_DEFEND_GYM_scroll = 0
+        self.SINGLE_DEFEND_GYM_trainer_index = 0
+        self.SINGLE_DEFEND_GYM_selected_gym = None
+        self.SINGLE_DEFEND_GYM_selected_type = None
+        self.SINGLE_DEFEND_GYM_selected_trainer = None
+        self.SINGLE_DEFEND_GYM_trainer_indices = {}
+
+        self.DAMAGE_CALCULATOR_attacker = None
+        self.DAMAGE_CALCULATOR_defender = None
+        self.DAMAGE_CALCULATOR_index = 0
+        self.DAMAGE_CALCULATOR_column = 1
 
 app = App()

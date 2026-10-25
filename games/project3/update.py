@@ -167,9 +167,9 @@ def update_BATTLE_END():
             )
 
             gym_progress[
-                app.selected_gym_type
+                app.SINGLE_DEFEND_GYM_selected_type
             ][
-                app.selected_gym_trainer_index
+                app.selected_SINGLE_DEFEND_GYM_trainer_index
             ] = True
 
             save_gym_progress(

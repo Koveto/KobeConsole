@@ -25,8 +25,8 @@ def change_state(new_state):
     if  ((app.state == TEAM_SELECT)) and \
         (new_state == TEAM_PREVIEW):
         load_species()
-        app.preview_index = 0
-        app.preview_column = 0
+        app.TEAM_PREVIEW_index = 0
+        app.TEAM_PREVIEW_column = 0
         if (
             app.connection_socket
             is not None
@@ -45,7 +45,7 @@ def change_state(new_state):
     if  (new_state == SPECIES_VIEW):
         app.SPECIES_VIEW_mode = "STATS"
     if  (new_state == TEAM_SELECT):
-        app.team_select_error = None
+        app.TEAM_SELECT_error = None
         if app.restore_team_select:
             app.restore_team_select = False
             app.player_team = None
@@ -54,8 +54,8 @@ def change_state(new_state):
             app.TEAM_SELECT_team_sent = False
             app.TEAM_SELECT_opponent_team = None
             load_species()
-            app.team_select_index = 0
-            app.team_select_scroll = 0
+            app.TEAM_SELECT_index = 0
+            app.TEAM_SELECT_scroll = 0
             teams_data = load_teams()
             app.teams_data = (
                 teams_data["teams"]
@@ -68,7 +68,7 @@ def change_state(new_state):
                     team["name"]
                 )
             app.selected_team_data = None
-            app.team_select_preview_team = []
+            app.TEAM_SELECT_preview_team = []
             if len(app.teams_data) > 0:
                 app.selected_team_data = (
                     app.teams_data[0]

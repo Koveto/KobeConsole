@@ -74,6 +74,295 @@ def draw():
         draw_SINGLE_BRACKET()
     elif app.state == SINGLE_DEFEND_GYM:
         draw_SINGLE_DEFEND_GYM()
+    elif app.state == DAMAGE_CALCULATOR:
+        draw_DAMAGE_CALCULATOR()
+
+def draw_DAMAGE_CALCULATOR():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "DAMAGE CALCULATOR",
+        10,
+        5
+    )
+
+    attacker = (
+        app.DAMAGE_CALCULATOR_attacker
+    )
+
+    defender = (
+        app.DAMAGE_CALCULATOR_defender
+    )
+
+    #
+    # Attacker
+    #
+
+    if attacker is not None:
+
+        app.font0.draw_text(
+            app.screen,
+            attacker.species_name,
+            10,
+            20
+        )
+
+        app.screen.blit(
+            get_display_sprite(
+                attacker
+            ),
+            (
+                10,
+                35
+            )
+        )
+
+    #
+    # Defender
+    #
+
+    if defender is not None:
+
+        app.font0.draw_text(
+            app.screen,
+            defender.species_name,
+            170,
+            20
+        )
+
+        app.screen.blit(
+            get_display_sprite(
+                defender
+            ),
+            (
+                170,
+                35
+            )
+        )
+
+    #
+    # Attacker options
+    #
+
+    attacker_options = [
+        "IMPORT",
+        "EDIT"
+    ]
+
+    for i, text in enumerate(
+        attacker_options
+    ):
+
+        y = 115 + i * 15
+
+        if (
+            app.DAMAGE_CALCULATOR_column
+            == 0
+            and
+            app.DAMAGE_CALCULATOR_index
+            == i
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    5,
+                    y - 1,
+                    55,
+                    15
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            text,
+            10,
+            y
+        )
+
+    #
+    # Moves
+    #
+
+    if attacker is not None:
+
+        for i, move in enumerate(
+            attacker.moves
+        ):
+
+            y = 30 + i * 15
+
+            if (
+                app.DAMAGE_CALCULATOR_column
+                == 1
+                and
+                app.DAMAGE_CALCULATOR_index
+                == i
+            ):
+
+                pygame.draw.rect(
+                    app.screen,
+                    COLOR_BLACK,
+                    (
+                        80,
+                        y - 1,
+                        80,
+                        15
+                    ),
+                    1
+                )
+
+            app.font0.draw_text(
+                app.screen,
+                move.name,
+                85,
+                y
+            )
+
+    #
+    # Defender options
+    #
+
+    defender_options = [
+        "IMPORT",
+        "EDIT"
+    ]
+
+    for i, text in enumerate(
+        defender_options
+    ):
+
+        y = 115 + i * 15
+
+        if (
+            app.DAMAGE_CALCULATOR_column
+            == 2
+            and
+            app.DAMAGE_CALCULATOR_index
+            == i
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    175,
+                    y - 1,
+                    55,
+                    15
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            text,
+            180,
+            y
+        )
+
+    #
+    # Move information
+    #
+
+    if (
+        attacker is not None
+        and
+        app.DAMAGE_CALCULATOR_column
+        == 1
+    ):
+
+        selected_move = (
+            attacker.moves[
+                app.DAMAGE_CALCULATOR_index
+            ]
+        )
+
+        app.screen.blit(
+            get_type_icon(
+                selected_move.type
+            ),
+            (
+                60,
+                110
+            )
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            selected_move.category,
+            95,
+            113
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            (
+                "PWR "
+                +
+                str(
+                    selected_move.power
+                )
+            ),
+            60,
+            130
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            (
+                "ACC "
+                +
+                str(
+                    selected_move.accuracy
+                )
+            ),
+            120,
+            130
+        )
+
+    if (
+        attacker is not None
+        and
+        defender is not None
+        and
+        app.DAMAGE_CALCULATOR_column
+        == 1
+    ):
+
+        selected_move = (
+            attacker.moves[
+                app.DAMAGE_CALCULATOR_index
+            ]
+        )
+
+        min_percent, max_percent = (
+            calculate_damage_percent_range(
+                attacker,
+                defender,
+                selected_move
+            )
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"MIN {min_percent:.1f}%",
+            60,
+            145
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"MAX {max_percent:.1f}%",
+            120,
+            145
+        )
 
 def draw_SINGLE_DEFEND_GYM():
 
@@ -82,7 +371,7 @@ def draw_SINGLE_DEFEND_GYM():
     )
 
     start = (
-        app.gym_scroll
+        app.SINGLE_DEFEND_GYM_scroll
     )
 
     end = min(
@@ -90,13 +379,13 @@ def draw_SINGLE_DEFEND_GYM():
         start + 2
     )
 
-    for screen_row, gym_index in enumerate(
+    for screen_row, SINGLE_DEFEND_GYM_index in enumerate(
         range(start, end)
     ):
 
         gym = (
             app.gyms_data[
-                gym_index
+                SINGLE_DEFEND_GYM_index
             ]
         )
 
@@ -110,7 +399,7 @@ def draw_SINGLE_DEFEND_GYM():
         # Cursor
         #
 
-        if gym_index == app.gym_index:
+        if SINGLE_DEFEND_GYM_index == app.SINGLE_DEFEND_GYM_index:
 
             app.screen.blit(
                 cursor,
@@ -133,7 +422,7 @@ def draw_SINGLE_DEFEND_GYM():
         #
 
         trainer_index = (
-            app.gym_trainer_indices.get(
+            app.SINGLE_DEFEND_GYM_trainer_indices.get(
                 gym["type"],
                 0
             )
@@ -169,8 +458,8 @@ def draw_SINGLE_DEFEND_GYM():
             )
 
             if (
-                gym_index
-                == app.gym_index
+                SINGLE_DEFEND_GYM_index
+                == app.SINGLE_DEFEND_GYM_index
                 and
                 i
                 == trainer_index
@@ -193,7 +482,7 @@ def draw_SINGLE_DEFEND_GYM():
                     )
                 )
         selected_trainer = (
-            app.gym_trainer_indices.get(
+            app.SINGLE_DEFEND_GYM_trainer_indices.get(
                 gym["type"],
                 0
             )
@@ -900,12 +1189,13 @@ def draw_PKMN_VIEW():
             f"SPE {pokemon.speed}",
             10, 135
         )
-        draw_bar(60,63,pokemon.hp_max,714)
-        draw_bar(60,78,pokemon.attack,526)
-        draw_bar(60,93,pokemon.defense,526)
-        draw_bar(60,108,pokemon.special_attack,526)
-        draw_bar(60,123,pokemon.special_defense,526)
-        draw_bar(60,138,pokemon.speed,526)
+        STAT_BAR_MAX = 714
+        draw_bar(60,63,pokemon.hp_max,STAT_BAR_MAX)
+        draw_bar(60,78,pokemon.attack,STAT_BAR_MAX)
+        draw_bar(60,93,pokemon.defense,STAT_BAR_MAX)
+        draw_bar(60,108,pokemon.special_attack,STAT_BAR_MAX)
+        draw_bar(60,123,pokemon.special_defense,STAT_BAR_MAX)
+        draw_bar(60,138,pokemon.speed,STAT_BAR_MAX)
     elif app.PKMN_VIEW_mode == "EVS":
         app.font0.draw_text(
             app.screen,
@@ -943,6 +1233,96 @@ def draw_PKMN_VIEW():
         draw_bar(60,108,pokemon.special_attack_ev,252)
         draw_bar(60,123,pokemon.special_defense_ev,252)
         draw_bar(60,138,pokemon.speed_ev,252)
+    elif (
+        app.PKMN_VIEW_mode
+        == "BASE"
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            f"HP  {pokemon.hp_base}",
+            10,
+            60
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"ATK {pokemon.attack_base}",
+            10,
+            75
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"DEF {pokemon.defense_base}",
+            10,
+            90
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"SPA {pokemon.special_attack_base}",
+            10,
+            105
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"SPD {pokemon.special_defense_base}",
+            10,
+            120
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"SPE {pokemon.speed_base}",
+            10,
+            135
+        )
+
+        BASE_BAR_MAX = 255
+
+        draw_bar(
+            60,
+            63,
+            pokemon.hp_base,
+            BASE_BAR_MAX
+        )
+
+        draw_bar(
+            60,
+            78,
+            pokemon.attack_base,
+            BASE_BAR_MAX
+        )
+
+        draw_bar(
+            60,
+            93,
+            pokemon.defense_base,
+            BASE_BAR_MAX
+        )
+
+        draw_bar(
+            60,
+            108,
+            pokemon.special_attack_base,
+            BASE_BAR_MAX
+        )
+
+        draw_bar(
+            60,
+            123,
+            pokemon.special_defense_base,
+            BASE_BAR_MAX
+        )
+
+        draw_bar(
+            60,
+            138,
+            pokemon.speed_base,
+            BASE_BAR_MAX
+        )
     for i, move in enumerate(pokemon.moves):
         if (app.PKMN_VIEW_move_index == i):
             pygame.draw.rect(
@@ -972,6 +1352,12 @@ def draw_PKMN_VIEW():
         app.screen.blit(
             get_type_icon(selected_move.type),
             (110,90)
+        )
+        app.font0.draw_text(
+            app.screen,
+            selected_move.category,
+            110,
+            105
         )
         app.font0.draw_text(
             app.screen,
@@ -1040,8 +1426,8 @@ def draw_TEAM_PREVIEW():
             "OPPONENT READY"
         )
     draw_generic_team_preview(
-        app.preview_index,
-        app.preview_column,
+        app.TEAM_PREVIEW_index,
+        app.TEAM_PREVIEW_column,
         app.player_lead,
         ready_text
     )
@@ -1125,8 +1511,8 @@ def draw_LAUNCHER_MENU():
     )
 
 def draw_generic_team_preview(
-    preview_index,
-    preview_column,
+    TEAM_PREVIEW_index,
+    TEAM_PREVIEW_column,
     selected_lead,
     ready_text=""
 ):
@@ -1147,9 +1533,9 @@ def draw_generic_team_preview(
     ):
         y = 30 + i * 15
         if (
-            preview_column == 0
+            TEAM_PREVIEW_column == 0
             and
-            i == preview_index
+            i == TEAM_PREVIEW_index
         ):
             app.screen.blit(
                 cursor,
@@ -1177,9 +1563,9 @@ def draw_generic_team_preview(
         for i in range(6):
             y = 30 + i * 15
             if (
-                preview_column == 1
+                TEAM_PREVIEW_column == 1
                 and
-                i == preview_index
+                i == TEAM_PREVIEW_index
             ):
                 app.screen.blit(
                     cursor,
@@ -1203,21 +1589,21 @@ def draw_generic_team_preview(
                     y
                 )
     pokemon = None
-    if preview_column == 0:
+    if TEAM_PREVIEW_column == 0:
         pokemon = (
             app.player_team[
-                preview_index
+                TEAM_PREVIEW_index
             ]
         )
     elif (
         app.option_omniscient
         and
-        preview_index
+        TEAM_PREVIEW_index
         < len(app.opponent_team)
     ):
         pokemon = (
             app.opponent_team[
-                preview_index
+                TEAM_PREVIEW_index
             ]
         )
     if pokemon is not None:
@@ -1251,18 +1637,18 @@ def draw_generic_team_select(
         10
     )
     visible_teams = app.available_teams[
-        app.team_select_scroll:
-        app.team_select_scroll + 7
+        app.TEAM_SELECT_scroll:
+        app.TEAM_SELECT_scroll + 7
     ]
 
     if (
-        app.team_select_error
+        app.TEAM_SELECT_error
         is not None
     ):
 
         app.font0.draw_text(
             app.screen,
-            app.team_select_error,
+            app.TEAM_SELECT_error,
             5,
             145
         )
@@ -1271,14 +1657,14 @@ def draw_generic_team_select(
         visible_teams
     ):
         actual_index = (
-            app.team_select_scroll
+            app.TEAM_SELECT_scroll
             + row
         )
         y = 40 + row * 15
         if (
             actual_index
             ==
-            app.team_select_index
+            app.TEAM_SELECT_index
         ):
             app.screen.blit(
                 cursor,
@@ -1291,7 +1677,7 @@ def draw_generic_team_select(
             y
         )
     for i, pokemon in enumerate(
-        app.team_select_preview_team
+        app.TEAM_SELECT_preview_team
     ):
         column = i % 2
         row = i // 2

@@ -67,7 +67,7 @@ class Font:
         row2 = self.row2
 
         if row2 is None:
-            row2 = "0123456789!?+-♂♀ >/"
+            row2 = "0123456789!?+-♂♀ >/%."
 
         for i, ch in enumerate(row2):
             rect = pygame.Rect(

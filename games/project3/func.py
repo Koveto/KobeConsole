@@ -289,16 +289,16 @@ def disconnect():
     app.opponent_team = None
     app.player_lead = None
     app.opponent_lead = None
-    app.preview_index = 0
-    app.preview_column = 0
+    app.TEAM_PREVIEW_index = 0
+    app.TEAM_PREVIEW_column = 0
     app.PKMN_VIEW_pokemon = None
     app.PKMN_VIEW_move_index = None
     app.PKMN_VIEW_mode = "STATS"
     app.SPECIES_VIEW_pokemon = None
     app.SPECIES_VIEW_mode = "STATS"
-    app.team_select_index = 0
-    app.team_select_scroll = 0
-    app.team_select_preview_team = []
+    app.TEAM_SELECT_index = 0
+    app.TEAM_SELECT_scroll = 0
+    app.TEAM_SELECT_preview_team = []
     app.selected_team_data = None
     app.TEAM_SELECT_opponent_team = None
     app.TEAM_SELECT_team_sent = False
@@ -316,7 +316,7 @@ def get_loaded_pokemon():
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
-    for p in (app.team_select_preview_team or []):
+    for p in (app.TEAM_SELECT_preview_team or []):
         if id(p) not in seen:
             pokemon.append(p)
             seen.add(id(p))
@@ -623,3 +623,147 @@ def load_gyms():
             infile
         )
 
+def calculate_damage(
+    attacker,
+    defender,
+    move,
+    random_multiplier
+):
+
+    if move.category == "Physical":
+
+        attack_stat = (
+            attacker.attack
+        )
+
+        defense_stat = (
+            defender.defense
+        )
+
+    else:
+
+        attack_stat = (
+            attacker.special_attack
+        )
+
+        defense_stat = (
+            defender.special_defense
+        )
+
+    stab = 1.0
+
+    if (
+        move.type
+        in
+        attacker.species.types
+    ):
+
+        stab = 1.5
+
+    effectiveness = (
+        combined_effectiveness(
+            move.type,
+            defender.species.types
+        )
+    )
+
+    base_damage = (
+
+        2
+
+        +
+
+        math.floor(
+
+            (
+
+                (
+                    attack_stat
+                    /
+                    defense_stat
+                )
+
+                *
+
+                move.power
+
+                *
+
+                (
+                    2
+                    +
+                    math.floor(
+                        (
+                            2
+                            *
+                            attacker.level
+                        )
+                        /
+                        5
+                    )
+                )
+
+            )
+
+            /
+            50
+
+        )
+
+    )
+
+    damage = math.floor(
+
+        base_damage
+        *
+        stab
+        *
+        effectiveness
+        *
+        random_multiplier
+
+    )
+
+    return max(
+        1,
+        damage
+    )
+
+def calculate_damage_percent_range(
+    attacker,
+    defender,
+    move
+):
+
+    min_damage = calculate_damage(
+        attacker,
+        defender,
+        move,
+        0.85
+    )
+
+    max_damage = calculate_damage(
+        attacker,
+        defender,
+        move,
+        1.0
+    )
+
+    min_percent = (
+        min_damage
+        /
+        defender.hp_max
+        * 100
+    )
+
+    max_percent = (
+        max_damage
+        /
+        defender.hp_max
+        * 100
+    )
+
+    return (
+        min_percent,
+        max_percent
+    )
