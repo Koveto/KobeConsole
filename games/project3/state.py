@@ -5,8 +5,6 @@ from save import *
 
 def change_state(new_state):
     app.previous_state = app.state
-    if  (new_state == LAUNCHER_MENU):
-        app.LAUNCHER_MENU_index = 0
     if  (new_state == LAN_HOST_JOIN):
         app.LAN_HOST_JOIN_index = 0
     if  (app.state == LAN_HOST_JOIN) and \

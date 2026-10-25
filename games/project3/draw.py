@@ -34,10 +34,30 @@ def init_draw():
         bracket_filepath
     ).convert()
 
-def get_display_sprite(pokemon):
-    if app.option_pkmn_animation:
-        return pokemon.front_sprite_anim
-    return pokemon.front_sprite
+def get_display_sprite(
+    pokemon
+):
+
+    if (
+        app.option_fanart
+        and
+        pokemon.fanart_front
+        is not None
+    ):
+        return (
+            pokemon.fanart_front
+        )
+
+    if (
+        app.option_pkmn_animation
+    ):
+        return (
+            pokemon.front_sprite_anim
+        )
+
+    return (
+        pokemon.front_sprite
+    )
 
 def draw():
     if app.state == LAUNCHER_MENU:
@@ -1065,6 +1085,12 @@ def draw_OPTIONS():
             "Pokemon Animation",
             "ON"
             if app.option_pkmn_animation
+            else "OFF"
+        ),
+        (
+            "Fanart",
+            "ON"
+            if app.option_fanart
             else "OFF"
         ),
         (

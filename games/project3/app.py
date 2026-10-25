@@ -50,6 +50,7 @@ class App:
         self.option_mute = False
         self.option_level = 100
         self.option_level_npc = 100
+        self.option_fanart = False
 
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",

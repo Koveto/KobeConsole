@@ -39,6 +39,7 @@ def main():
     options_data = load_options()
     app.option_omniscient = options_data["omniscient"]
     app.option_pkmn_animation = options_data["pkmn_animation"]
+    app.option_fanart = options_data["fanart"]
     app.option_music_shuffle = options_data["music_shuffle"]
     app.option_mute = options_data["mute"]
     app.option_level = options_data["level"]

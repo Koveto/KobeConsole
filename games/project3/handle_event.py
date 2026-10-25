@@ -1211,6 +1211,11 @@ def handle_event_OPTIONS(event):
             app.option_pkmn_animation = not app.option_pkmn_animation
             save_options()
         elif app.OPTIONS_index == 5:
+            app.option_fanart = (
+                not app.option_fanart
+            )
+            save_options()
+        elif app.OPTIONS_index == 6:
             app.option_music_shuffle = not app.option_music_shuffle
             save_options()
     elif is_cancel(event):

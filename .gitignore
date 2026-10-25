@@ -2,4 +2,3 @@ __pycache__/
 *.pyc
 .venv/
 .vscode/
-games/project3/data/save.json

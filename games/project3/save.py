@@ -8,10 +8,11 @@ SAVE_DEFAULT = {
     "options": {
         "omniscient": True,
         "pkmn_animation": True,
+        "fanart": False,
         "music_shuffle": True,
         "mute": False,
         "level": 100,
-        "level_npc": 100
+        "level_npc": 100,
     },
     "music": {},
     "teams": [],
@@ -146,6 +147,8 @@ def save_options():
             app.option_omniscient,
         "pkmn_animation":
             app.option_pkmn_animation,
+        "fanart":
+            app.option_fanart,
         "music_shuffle":
             app.option_music_shuffle,
         "mute":

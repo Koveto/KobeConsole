@@ -15,6 +15,7 @@ ALPHA_KEY = (
     235,
     255
 )
+FANART_CACHE = {}
 def load_pokemon_sheet():
     global POKEMON_SHEET
     if POKEMON_SHEET is not None:
@@ -53,6 +54,85 @@ def get_sprite(
     return POKEMON_SHEET.subsurface(
         rect
     )
+def load_fanart(
+    species_name,
+    front=True
+):
+
+    direction = (
+        "f"
+        if front
+        else "b"
+    )
+
+    cache_key = (
+        species_name,
+        direction
+    )
+
+    if cache_key in FANART_CACHE:
+
+        return FANART_CACHE[
+            cache_key
+        ]
+
+    sprite_dir = os.path.join(
+        os.path.dirname(__file__),
+        "sprites"
+    )
+
+    candidates = []
+
+    prefix = (
+        f"fanart_{species_name.lower()}_{direction}_"
+    )
+
+    for filename in os.listdir(
+        sprite_dir
+    ):
+
+        if (
+            filename.startswith(
+                prefix
+            )
+            and
+            filename.endswith(
+                ".png"
+            )
+        ):
+
+            candidates.append(
+                filename
+            )
+
+    if len(candidates) == 0:
+
+        FANART_CACHE[
+            cache_key
+        ] = None
+
+        return None
+
+    filename = random.choice(
+        candidates
+    )
+
+    image = pygame.image.load(
+        os.path.join(
+            sprite_dir,
+            filename
+        )
+    ).convert()
+
+    image.set_colorkey(
+        ALPHA_KEY
+    )
+
+    FANART_CACHE[
+        cache_key
+    ] = image
+
+    return image
 
 class Pokemon:
     VALID_GENDERS = [
@@ -159,6 +239,8 @@ class Pokemon:
         if self.back_sprite_number is None:
             self.back_sprite_number = random.choice([0, 1])
         self.front_sprite_anim_state = False
+        self.fanart_front = None
+        self.fanart_back = None
         self.hp_max = self.calculate_hp()
         self.hp_current = self.hp_max
         self.attack = self.calculate_attack()
@@ -166,6 +248,18 @@ class Pokemon:
         self.special_attack = self.calculate_special_attack()
         self.special_defense = self.calculate_special_defense()
         self.speed = self.calculate_speed()
+        self.fanart_front = (
+            load_fanart(
+                self.species_name
+            )
+        )
+
+        self.fanart_back = (
+            load_fanart(
+                self.species_name,
+                front=False
+            )
+        )
         self.update_sprites()
 
     def calculate_hp(self):
