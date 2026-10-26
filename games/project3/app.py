@@ -96,6 +96,11 @@ class App:
         self.TEAM_SELECT_index = 0
         self.TEAM_SELECT_scroll = 0
         self.TEAM_SELECT_preview_team = []
+        self.TEAM_SELECT_mode = "BATTLE"
+        self.TEAM_SELECT_selecting_pokemon = False
+        self.TEAM_SELECT_pokemon_index = 0
+        self.TEAM_SELECT_import_target = None
+        self.TEAM_SELECT_return_state = None
 
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
@@ -139,14 +144,5 @@ class App:
         self.DAMAGE_CALCULATOR_defender = None
         self.DAMAGE_CALCULATOR_index = 0
         self.DAMAGE_CALCULATOR_column = 1
-
-        self.POKEMON_IMPORT_index = 0
-        self.POKEMON_IMPORT_scroll = 0
-        self.POKEMON_IMPORT_selected_team = None
-        self.POKEMON_IMPORT_selecting_pokemon = False
-        self.POKEMON_IMPORT_pokemon_index = 0
-        self.POKEMON_IMPORT_return_state = None
-        self.POKEMON_IMPORT_target = None
-        self.POKEMON_IMPORT_preview_team = []
 
 app = App()

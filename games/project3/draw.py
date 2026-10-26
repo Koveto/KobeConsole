@@ -38,15 +38,25 @@ def get_display_sprite(
     pokemon
 ):
 
-    if (
-        app.option_fanart
-        and
-        pokemon.fanart_front
-        is not None
-    ):
-        return (
-            pokemon.fanart_front
-        )
+    if app.option_fanart:
+
+        if (
+            pokemon.front_sprite_anim_state
+            and
+            pokemon.fanart_front_1
+            is not None
+        ):
+            return (
+                pokemon.fanart_front_1
+            )
+
+        if (
+            pokemon.fanart_front_0
+            is not None
+        ):
+            return (
+                pokemon.fanart_front_0
+            )
 
     if (
         app.option_pkmn_animation
@@ -96,116 +106,7 @@ def draw():
         draw_SINGLE_DEFEND_GYM()
     elif app.state == DAMAGE_CALCULATOR:
         draw_DAMAGE_CALCULATOR()
-    elif app.state == POKEMON_IMPORT:
-        draw_POKEMON_IMPORT()
-
-def draw_POKEMON_IMPORT():
-
-    app.screen.fill(
-        COLOR_WHITE
-    )
-
-    app.font0.draw_text(
-        app.screen,
-        "IMPORT POKEMON",
-        10,
-        10
-    )
-
-    visible_teams = app.teams_data[
-        app.POKEMON_IMPORT_scroll:
-        app.POKEMON_IMPORT_scroll + 8
-    ]
-
-    if len(app.teams_data) == 0:
-
-        app.font0.draw_text(
-            app.screen,
-            "NO SAVED TEAMS",
-            10,
-            40
-        )
-
-        app.font0.draw_text(
-            app.screen,
-            "CREATE ONE FIRST",
-            10,
-            55
-        )
-
-        return
-
-    for row, team in enumerate(
-        visible_teams
-    ):
-
-        actual_index = (
-            app.POKEMON_IMPORT_scroll
-            + row
-        )
-
-        y = 35 + row * 15
-
-        if (
-            actual_index
-            ==
-            app.POKEMON_IMPORT_index
-        ):
-
-            app.screen.blit(
-                cursor,
-                (
-                    5,
-                    y
-                )
-            )
-
-        app.font0.draw_text(
-            app.screen,
-            team["name"],
-            20,
-            y
-        )
-
-    if len(app.teams_data) > 0:
-
-        for i, pokemon in enumerate(
-            app.POKEMON_IMPORT_preview_team
-        ):
-
-            column = i % 2
-            row = i // 2
-
-            x = 105 + column * 64
-            y = row * 48
-
-            draw_sprite = True
-
-            if (
-                app.POKEMON_IMPORT_selecting_pokemon
-                and
-                i
-                ==
-                app.POKEMON_IMPORT_pokemon_index
-            ):
-
-                draw_sprite = (
-                    pygame.time.get_ticks()
-                    // 250
-                ) % 2 == 0
-
-            if draw_sprite:
-
-                app.screen.blit(
-                    get_display_sprite(
-                        pokemon
-                    ),
-                    (
-                        x,
-                        y
-                    )
-                )
-
+        
 def draw_DAMAGE_CALCULATOR():
 
     app.screen.fill(
@@ -406,7 +307,6 @@ def draw_DAMAGE_CALCULATOR():
         app.DAMAGE_CALCULATOR_column
         == 1
     ):
-
         selected_move = (
             attacker.moves[
                 app.DAMAGE_CALCULATOR_index
@@ -1139,24 +1039,132 @@ def draw_OPTIONS():
 
 def draw_TEAM_SELECT():
 
-    waiting_text = None
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    title = (
+        "IMPORT POKEMON"
+        if
+        app.TEAM_SELECT_mode
+        == "IMPORT"
+        else
+        "SELECT TEAM"
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        title,
+        10,
+        10
+    )
 
     if (
+        app.TEAM_SELECT_error
+        is not None
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            app.TEAM_SELECT_error,
+            5,
+            145
+        )
+
+    visible_teams = app.available_teams[
+        app.TEAM_SELECT_scroll:
+        app.TEAM_SELECT_scroll + 7
+    ]
+
+    for row, team_name in enumerate(
+        visible_teams
+    ):
+
+        actual_index = (
+            app.TEAM_SELECT_scroll
+            + row
+        )
+
+        y = 40 + row * 15
+
+        if (
+            actual_index
+            ==
+            app.TEAM_SELECT_index
+        ):
+
+            app.screen.blit(
+                cursor,
+                (
+                    10,
+                    y
+                )
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            team_name,
+            20,
+            y
+        )
+
+    for i, pokemon in enumerate(
+        app.TEAM_SELECT_preview_team
+    ):
+
+        column = i % 2
+        row = i // 2
+
+        x = 105 + column * 64
+        y = row * 48
+
+        draw_sprite = True
+
+        if (
+            app.TEAM_SELECT_mode
+            == "IMPORT"
+            and
+            app.TEAM_SELECT_selecting_pokemon
+            and
+            i
+            ==
+            app.TEAM_SELECT_pokemon_index
+        ):
+
+            draw_sprite = (
+                pygame.time.get_ticks()
+                // 250
+            ) % 2 == 0
+
+        if draw_sprite:
+
+            app.screen.blit(
+                get_display_sprite(
+                    pokemon
+                ),
+                (
+                    x,
+                    y
+                )
+            )
+
+    if (
+        app.TEAM_SELECT_mode
+        != "IMPORT"
+        and
         app.connection_socket
         is not None
         and
-        app.player_team is not None
+        app.player_team
+        is not None
     ):
 
-        waiting_text = (
-            "WAITING FOR OPPONENT"
+        app.font0.draw_text(
+            app.screen,
+            "WAITING FOR OPPONENT",
+            10,
+            145
         )
-
-    draw_generic_team_select(
-        "SELECT TEAM",
-        waiting_text
-    )
-
 
 def draw_BATTLE_START():
     app.screen.fill(COLOR_WHITE)
@@ -1491,8 +1499,8 @@ def draw_PKMN_VIEW():
         app.font0.draw_text(
             app.screen,
             selected_move.category,
-            110,
-            105
+            107,
+            140
         )
         app.font0.draw_text(
             app.screen,
@@ -1553,19 +1561,171 @@ def draw_PKMN_VIEW():
     
 
 def draw_TEAM_PREVIEW():
-    ready_text = ""
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "YOUR TEAM",
+        10,
+        10
+    )
+
+    if app.option_omniscient:
+
+        app.font0.draw_text(
+            app.screen,
+            "OPPONENT",
+            170,
+            10
+        )
+
+    for i, pokemon in enumerate(
+        app.player_team
+    ):
+
+        y = 30 + i * 15
+
+        if (
+            app.TEAM_PREVIEW_column
+            == 0
+            and
+            i
+            == app.TEAM_PREVIEW_index
+        ):
+
+            app.screen.blit(
+                cursor,
+                (
+                    5,
+                    y
+                )
+            )
+
+        if (
+            app.player_lead
+            == i
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    18,
+                    y - 1,
+                    70,
+                    15
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            pokemon.species_name,
+            20,
+            y
+        )
+
+    if app.option_omniscient:
+
+        for i in range(6):
+
+            y = 30 + i * 15
+
+            if (
+                app.TEAM_PREVIEW_column
+                == 1
+                and
+                i
+                ==
+                app.TEAM_PREVIEW_index
+            ):
+
+                app.screen.blit(
+                    cursor,
+                    (
+                        160,
+                        y
+                    )
+                )
+
+            if i < len(
+                app.opponent_team
+            ):
+
+                opponent = (
+                    app.opponent_team[i]
+                )
+
+                app.font0.draw_text(
+                    app.screen,
+                    opponent.species_name,
+                    175,
+                    y
+                )
+
+            else:
+
+                app.font0.draw_text(
+                    app.screen,
+                    "-----",
+                    175,
+                    y
+                )
+
+    pokemon = None
+
+    if (
+        app.TEAM_PREVIEW_column
+        == 0
+    ):
+
+        pokemon = (
+            app.player_team[
+                app.TEAM_PREVIEW_index
+            ]
+        )
+
+    elif (
+        app.option_omniscient
+        and
+        app.TEAM_PREVIEW_index
+        <
+        len(
+            app.opponent_team
+        )
+    ):
+
+        pokemon = (
+            app.opponent_team[
+                app.TEAM_PREVIEW_index
+            ]
+        )
+
+    if pokemon is not None:
+
+        app.screen.blit(
+            get_display_sprite(
+                pokemon
+            ),
+            (
+                90,
+                40
+            )
+        )
+
     if (
         app.TEAM_PREVIEW_opponent_ready
     ):
-        ready_text = (
-            "OPPONENT READY"
+
+        app.font0.draw_text(
+            app.screen,
+            "OPPONENT READY",
+            10,
+            145
         )
-    draw_generic_team_preview(
-        app.TEAM_PREVIEW_index,
-        app.TEAM_PREVIEW_column,
-        app.player_lead,
-        ready_text
-    )
 
 def draw_LAN_JOIN():
     app.screen.fill(COLOR_WHITE)
@@ -1644,193 +1804,3 @@ def draw_LAUNCHER_MENU():
         170,
         120
     )
-
-def draw_generic_team_preview(
-    TEAM_PREVIEW_index,
-    TEAM_PREVIEW_column,
-    selected_lead,
-    ready_text=""
-):
-    app.screen.fill(COLOR_WHITE)
-    app.font0.draw_text(
-        app.screen,
-        "YOUR TEAM",
-        10, 10
-    )
-    if app.option_omniscient:
-        app.font0.draw_text(
-            app.screen,
-            "OPPONENT",
-            170, 10
-        )
-    for i, pokemon in enumerate(
-        app.player_team
-    ):
-        y = 30 + i * 15
-        if (
-            TEAM_PREVIEW_column == 0
-            and
-            i == TEAM_PREVIEW_index
-        ):
-            app.screen.blit(
-                cursor,
-                (5, y)
-            )
-        if selected_lead == i:
-            pygame.draw.rect(
-                app.screen,
-                COLOR_BLACK,
-                (
-                    18,
-                    y - 1,
-                    70,
-                    15
-                ),
-                1
-            )
-        app.font0.draw_text(
-            app.screen,
-            pokemon.species_name,
-            20,
-            y
-        )
-    if app.option_omniscient:
-        for i in range(6):
-            y = 30 + i * 15
-            if (
-                TEAM_PREVIEW_column == 1
-                and
-                i == TEAM_PREVIEW_index
-            ):
-                app.screen.blit(
-                    cursor,
-                    (160, y)
-                )
-            if i < len(app.opponent_team):
-                opponent = (
-                    app.opponent_team[i]
-                )
-                app.font0.draw_text(
-                    app.screen,
-                    opponent.species_name,
-                    175,
-                    y
-                )
-            else:
-                app.font0.draw_text(
-                    app.screen,
-                    "-----",
-                    175,
-                    y
-                )
-    pokemon = None
-    if TEAM_PREVIEW_column == 0:
-        pokemon = (
-            app.player_team[
-                TEAM_PREVIEW_index
-            ]
-        )
-    elif (
-        app.option_omniscient
-        and
-        TEAM_PREVIEW_index
-        < len(app.opponent_team)
-    ):
-        pokemon = (
-            app.opponent_team[
-                TEAM_PREVIEW_index
-            ]
-        )
-    if pokemon is not None:
-        app.screen.blit(
-            get_display_sprite(
-                pokemon
-            ),
-            (
-                90,
-                40
-            )
-        )
-    app.font0.draw_text(
-        app.screen,
-        ready_text,
-        10,
-        145
-    )
-
-def draw_generic_team_select(
-    title,
-    waiting_text=None
-):
-    app.screen.fill(
-        COLOR_WHITE
-    )
-    app.font0.draw_text(
-        app.screen,
-        title,
-        10,
-        10
-    )
-    visible_teams = app.available_teams[
-        app.TEAM_SELECT_scroll:
-        app.TEAM_SELECT_scroll + 7
-    ]
-
-    if (
-        app.TEAM_SELECT_error
-        is not None
-    ):
-
-        app.font0.draw_text(
-            app.screen,
-            app.TEAM_SELECT_error,
-            5,
-            145
-        )
-
-    for row, team_name in enumerate(
-        visible_teams
-    ):
-        actual_index = (
-            app.TEAM_SELECT_scroll
-            + row
-        )
-        y = 40 + row * 15
-        if (
-            actual_index
-            ==
-            app.TEAM_SELECT_index
-        ):
-            app.screen.blit(
-                cursor,
-                (10, y)
-            )
-        app.font0.draw_text(
-            app.screen,
-            team_name,
-            20,
-            y
-        )
-    for i, pokemon in enumerate(
-        app.TEAM_SELECT_preview_team
-    ):
-        column = i % 2
-        row = i // 2
-        x = 105 + column * 64
-        y = row * 48
-        app.screen.blit(
-            get_display_sprite(
-                pokemon
-            ),
-            (
-                x,
-                y
-            )
-        )
-    if waiting_text is not None:
-        app.font0.draw_text(
-            app.screen,
-            waiting_text,
-            10,
-            145
-        )

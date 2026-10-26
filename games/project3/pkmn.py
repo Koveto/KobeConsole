@@ -133,6 +133,49 @@ def load_fanart(
     ] = image
 
     return image
+def load_fanart_frame(
+    species_name,
+    front,
+    frame
+):
+
+    sprite_dir = os.path.join(
+        os.path.dirname(__file__),
+        "sprites"
+    )
+
+    direction = (
+        "f"
+        if front
+        else "b"
+    )
+
+    filename = (
+        f"fanart_"
+        f"{species_name.lower()}_"
+        f"{direction}_"
+        f"{frame}.png"
+    )
+
+    filepath = os.path.join(
+        sprite_dir,
+        filename
+    )
+
+    if not os.path.exists(
+        filepath
+    ):
+        return None
+
+    image = pygame.image.load(
+        filepath
+    ).convert()
+
+    image.set_colorkey(
+        ALPHA_KEY
+    )
+
+    return image
 
 class Pokemon:
     VALID_GENDERS = [
@@ -207,11 +250,23 @@ class Pokemon:
         self.special_attack_iv = ivs[3]
         self.special_defense_iv = ivs[4]
         self.speed_iv = ivs[5]
+        self.learnset = []
+        self.moves = []
+        for move in species.moves:
+            if isinstance(
+                move,
+                str
+            ):
+                move = get_move(
+                    move
+                )
+            self.learnset.append(
+                move
+            )
         if moves is None:
-            moves = species.moves
+            moves = self.learnset[:4]
         if len(moves) > 4:
             raise ValueError("Pokemon may only know 4 moves")
-        self.moves = []
         for move in moves:
             if isinstance(move,str):
                 move = get_move(move)
@@ -239,8 +294,9 @@ class Pokemon:
         if self.back_sprite_number is None:
             self.back_sprite_number = random.choice([0, 1])
         self.front_sprite_anim_state = False
-        self.fanart_front = None
-        self.fanart_back = None
+        self.fanart_front_0 = None
+        self.fanart_front_1 = None
+        self.fanart_back_0 = None
         self.hp_max = self.calculate_hp()
         self.hp_current = self.hp_max
         self.attack = self.calculate_attack()
@@ -248,16 +304,25 @@ class Pokemon:
         self.special_attack = self.calculate_special_attack()
         self.special_defense = self.calculate_special_defense()
         self.speed = self.calculate_speed()
-        self.fanart_front = (
-            load_fanart(
-                self.species_name
+        self.fanart_front_0 = (
+            load_fanart_frame(
+                self.species_name,
+                True,
+                0
             )
         )
-
-        self.fanart_back = (
-            load_fanart(
+        self.fanart_front_1 = (
+            load_fanart_frame(
                 self.species_name,
-                front=False
+                True,
+                1
+            )
+        )
+        self.fanart_back_0 = (
+            load_fanart_frame(
+                self.species_name,
+                False,
+                0
             )
         )
         self.update_sprites()
@@ -545,4 +610,44 @@ class Pokemon:
         self.hp_current = min(
             self.hp_current,
             self.hp_max
+        )
+
+    def set_move(
+        self,
+        moveslot,
+        move
+    ):
+
+        if not (
+            0 <= moveslot < 4
+        ):
+            raise ValueError(
+                "moveslot must be 0-3"
+            )
+
+        if isinstance(
+            move,
+            str
+        ):
+            move = get_move(
+                move
+            )
+
+        if move is None:
+            raise ValueError(
+                "Invalid move"
+            )
+
+        self.moves[
+            moveslot
+        ] = move
+
+    def knows_move(
+        self,
+        move_name
+    ):
+
+        return any(
+            move.name == move_name
+            for move in self.moves
         )

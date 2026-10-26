@@ -371,13 +371,6 @@ def get_loaded_pokemon():
                     app.DAMAGE_CALCULATOR_defender
                 )
             )
-    for p in (
-        app.POKEMON_IMPORT_preview_team
-        or []
-    ):
-        if id(p) not in seen:
-            pokemon.append(p)
-            seen.add(id(p))
     return pokemon
 
 TYPE_SHEET = None

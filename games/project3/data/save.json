@@ -6,7 +6,7 @@
     "options": {
         "omniscient": true,
         "pkmn_animation": true,
-        "fanart": false,
+        "fanart": true,
         "music_shuffle": false,
         "mute": false,
         "level": 100,
@@ -6199,14 +6199,16 @@
         }
     ],
     "selected_team": 0,
-    "trainer_defeats": [],
-    "endless_record": 0,
+    "trainer_defeats": [
+        "RUBY"
+    ],
+    "endless_record": 2,
     "titles": 0,
     "gym_progress": {
         "Normal": [
             false,
             false,
-            false
+            true
         ],
         "Fire": [
             false,
