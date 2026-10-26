@@ -106,6 +106,86 @@ def draw():
         draw_SINGLE_DEFEND_GYM()
     elif app.state == DAMAGE_CALCULATOR:
         draw_DAMAGE_CALCULATOR()
+    elif app.state == PKMN_EDIT:
+        draw_PKMN_EDIT()
+
+def draw_PKMN_EDIT():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    pokemon = (
+        app.PKMN_EDIT_pokemon
+    )
+
+    if pokemon is None:
+
+        app.font0.draw_text(
+            app.screen,
+            "NO POKEMON",
+            10,
+            10
+        )
+
+        return
+
+    pygame.draw.rect(
+        app.screen,
+        COLOR_BLACK,
+        (
+            7,
+            7,
+            100,
+            17
+        ),
+        1
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        pokemon.species_name,
+        10,
+        10
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        pokemon.nickname,
+        10,
+        30
+    )
+
+    for i, pokemon_type in enumerate(
+        pokemon.species.types
+    ):
+
+        app.screen.blit(
+            get_type_icon(
+                pokemon_type
+            ),
+            (
+                10 + i * 32,
+                50
+            )
+        )
+
+    app.screen.blit(
+        get_display_sprite(
+            pokemon
+        ),
+        (
+            166,
+            0
+        )
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "CANCEL TO RETURN",
+        10,
+        145
+    )
 
 def draw_DAMAGE_CALCULATOR():
 
@@ -1146,9 +1226,6 @@ def draw_TEAM_SELECT():
         draw_sprite = True
 
         if (
-            app.TEAM_SELECT_mode
-            == "IMPORT"
-            and
             app.TEAM_SELECT_selecting_pokemon
             and
             i

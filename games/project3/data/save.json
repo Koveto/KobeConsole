@@ -13,8 +13,72 @@
         "level_npc": 100
     },
     "damage_calculator": {
-        "attacker": null,
-        "defender": null
+        "attacker": {
+            "species_no": 212,
+            "nickname": "Scizor",
+            "level": 100,
+            "nature": "Jolly",
+            "gender": "\u2642",
+            "is_shiny": false,
+            "front_sprite_number": 2,
+            "back_sprite_number": 0,
+            "evs": [
+                252,
+                0,
+                0,
+                4,
+                0,
+                252
+            ],
+            "ivs": [
+                31,
+                31,
+                31,
+                31,
+                31,
+                31
+            ],
+            "moves": [
+                "Signal Beam",
+                "Flash Cannon",
+                "Stone Edge",
+                "Bug Bite"
+            ],
+            "status": null
+        },
+        "defender": {
+            "species_no": 149,
+            "nickname": "Dragonite",
+            "level": 100,
+            "nature": "Sassy",
+            "gender": "\u2642",
+            "is_shiny": false,
+            "front_sprite_number": 1,
+            "back_sprite_number": 1,
+            "evs": [
+                0,
+                0,
+                252,
+                4,
+                0,
+                252
+            ],
+            "ivs": [
+                31,
+                31,
+                31,
+                31,
+                31,
+                31
+            ],
+            "moves": [
+                "Dragon Claw",
+                "Power Gem",
+                "Air Slash",
+                "Outrage"
+            ],
+            "status": null
+        }
     },
     "music": {
         "BW Kyurem.ogg": {
@@ -924,8 +988,207 @@
     },
     "teams": [
         {
-            "name": "New Team",
-            "pokemon": []
+            "name": "Z",
+            "pokemon": [
+                {
+                    "species_no": 212,
+                    "nickname": "Scizor",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        0,
+                        0,
+                        4,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Signal Beam",
+                        "Flash Cannon",
+                        "Stone Edge",
+                        "Bug Bite"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 149,
+                    "nickname": "Dragonite",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        252,
+                        4,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Dragon Claw",
+                        "Power Gem",
+                        "Air Slash",
+                        "Outrage"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 196,
+                    "nickname": "Espeon",
+                    "level": 100,
+                    "nature": "Naughty",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        252,
+                        252,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Zen Headbutt",
+                        "Psychic",
+                        "Psybeam",
+                        "Discharge"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 94,
+                    "nickname": "Gengar",
+                    "level": 100,
+                    "nature": "Adamant",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Punch",
+                        "Play Rough",
+                        "Shadow Ball",
+                        "Sludge Wave"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 127,
+                    "nickname": "Pinsir",
+                    "level": 100,
+                    "nature": "Bold",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        4,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flare Blitz",
+                        "Signal Beam",
+                        "Twineedle",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 141,
+                    "nickname": "Kabutops",
+                    "level": 100,
+                    "nature": "Serious",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        252,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "AncientPwr",
+                        "Rock Slide",
+                        "Hydro Pump",
+                        "Snarl"
+                    ],
+                    "status": null
+                }
+            ]
         }
     ],
     "selected_team": 0,

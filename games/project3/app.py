@@ -1,5 +1,3 @@
-from constants import *
-
 class App:
     def __init__(self):
         self.state = None
@@ -117,7 +115,7 @@ class App:
         self.KEYBOARD_column = 0
         self.KEYBOARD_text = ""
         self.KEYBOARD_mode = "PLAYER_NAME"
-        self.KEYBOARD_return_state = OPTIONS
+        self.KEYBOARD_return_state = None
         self.KEYBOARD_team_index = None
 
         self.OPTIONS_MUSIC_index = 0
@@ -154,5 +152,12 @@ class App:
         self.DAMAGE_CALCULATOR_defender = None
         self.DAMAGE_CALCULATOR_index = 0
         self.DAMAGE_CALCULATOR_column = 1
+
+        self.PKMN_EDIT_pokemon = None
+        self.PKMN_EDIT_index = 0
+        self.PKMN_EDIT_source = None
+        self.PKMN_EDIT_return_state = None
+        self.PKMN_EDIT_team_index = None
+        self.PKMN_EDIT_pokemon_index = None
 
 app = App()

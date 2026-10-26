@@ -38,6 +38,79 @@ def handle_event(event):
         handle_event_SINGLE_DEFEND_GYM(event)
     elif app.state == DAMAGE_CALCULATOR:
         handle_event_DAMAGE_CALCULATOR(event)
+    elif app.state == PKMN_EDIT:
+        handle_event_PKMN_EDIT(event)
+
+def handle_team_select_pokemon_navigation(
+    event
+):
+
+    team_size = len(
+        app.TEAM_SELECT_preview_team
+    )
+
+    if team_size == 0:
+        return
+
+    max_index = (
+        team_size - 1
+    )
+
+    if is_left(event):
+
+        app.TEAM_SELECT_pokemon_index = max(
+            0,
+            app.TEAM_SELECT_pokemon_index - 1
+        )
+
+    elif is_right(event):
+
+        app.TEAM_SELECT_pokemon_index = min(
+            max_index,
+            app.TEAM_SELECT_pokemon_index + 1
+        )
+
+    elif is_up(event):
+
+        app.TEAM_SELECT_pokemon_index = max(
+            0,
+            app.TEAM_SELECT_pokemon_index - 2
+        )
+
+    elif is_down(event):
+
+        new_index = (
+            app.TEAM_SELECT_pokemon_index
+            + 2
+        )
+
+        if new_index <= max_index:
+
+            app.TEAM_SELECT_pokemon_index = (
+                new_index
+            )
+
+        elif (
+            app.TEAM_SELECT_pokemon_index
+            % 2
+            == 0
+            and
+            max_index % 2 == 1
+        ):
+
+            app.TEAM_SELECT_pokemon_index = (
+                max_index
+            )
+
+def handle_event_PKMN_EDIT(
+    event
+):
+
+    if is_cancel(event):
+
+        change_state(
+            app.PKMN_EDIT_return_state
+        )
 
 def generate_teambuilder_team():
 
@@ -263,6 +336,42 @@ def handle_event_DAMAGE_CALCULATOR(
 
         elif (
             app.DAMAGE_CALCULATOR_column
+            == 0
+            and
+            app.DAMAGE_CALCULATOR_index
+            == 1
+        ):
+
+            if (
+                app.DAMAGE_CALCULATOR_attacker
+                is None
+            ):
+
+                return
+
+            app.PKMN_EDIT_pokemon = (
+                Pokemon.from_pokemon(
+                    app.DAMAGE_CALCULATOR_attacker
+                )
+            )
+
+            app.PKMN_EDIT_source = (
+                "DAMAGE_CALCULATOR_ATTACKER"
+            )
+
+            app.PKMN_EDIT_team_index = None
+            app.PKMN_EDIT_pokemon_index = None
+
+            app.PKMN_EDIT_return_state = (
+                DAMAGE_CALCULATOR
+            )
+
+            change_state(
+                PKMN_EDIT
+            )
+
+        elif (
+            app.DAMAGE_CALCULATOR_column
             == 2
             and
             app.DAMAGE_CALCULATOR_index
@@ -283,6 +392,42 @@ def handle_event_DAMAGE_CALCULATOR(
 
             change_state(
                 TEAM_SELECT
+            )
+
+        elif (
+            app.DAMAGE_CALCULATOR_column
+            == 2
+            and
+            app.DAMAGE_CALCULATOR_index
+            == 1
+        ):
+
+            if (
+                app.DAMAGE_CALCULATOR_defender
+                is None
+            ):
+
+                return
+
+            app.PKMN_EDIT_pokemon = (
+                Pokemon.from_pokemon(
+                    app.DAMAGE_CALCULATOR_defender
+                )
+            )
+
+            app.PKMN_EDIT_source = (
+                "DAMAGE_CALCULATOR_DEFENDER"
+            )
+
+            app.PKMN_EDIT_team_index = None
+            app.PKMN_EDIT_pokemon_index = None
+
+            app.PKMN_EDIT_return_state = (
+                DAMAGE_CALCULATOR
+            )
+
+            change_state(
+                PKMN_EDIT
             )
 
 
@@ -1012,9 +1157,14 @@ def handle_event_KEYBOARD(event):
                 )
             elif event.key == pygame.K_ESCAPE:
 
-                change_state(
+                if (
                     app.KEYBOARD_return_state
-                )
+                    is not None
+                ):
+
+                    change_state(
+                        app.KEYBOARD_return_state
+                    )
             elif (
                 event.key == pygame.K_SPACE
                 and
@@ -1181,6 +1331,78 @@ def handle_event_TEAM_SELECT(event):
         app.TEAM_SELECT_mode
         == "TEAMBUILDER"
         and
+        app.TEAM_SELECT_selecting_pokemon
+    ):
+
+        if is_cancel(event):
+
+            app.TEAM_SELECT_selecting_pokemon = (
+                False
+            )
+
+            return
+
+        if is_confirm(event):
+
+            team_index = (
+                app.TEAM_SELECT_index - 1
+            )
+
+            pokemon_index = (
+                app.TEAM_SELECT_pokemon_index
+            )
+
+            app.PKMN_EDIT_pokemon = (
+                Pokemon.from_pokemon(
+                    app.TEAM_SELECT_preview_team[
+                        pokemon_index
+                    ]
+                )
+            )
+
+            app.PKMN_EDIT_source = (
+                "TEAMBUILDER"
+            )
+
+            app.PKMN_EDIT_team_index = (
+                team_index
+            )
+
+            app.PKMN_EDIT_pokemon_index = (
+                pokemon_index
+            )
+
+            app.PKMN_EDIT_return_state = (
+                TEAM_SELECT
+            )
+
+            app.TEAM_SELECT_selecting_pokemon = (
+                False
+            )
+
+            app.TEAM_SELECT_restore_index = (
+                app.TEAM_SELECT_index
+            )
+
+            app.TEAM_SELECT_restore_scroll = (
+                app.TEAM_SELECT_scroll
+            )
+
+            change_state(
+                PKMN_EDIT
+            )
+
+            return
+
+        handle_team_select_pokemon_navigation(
+            event
+        )
+
+        return
+    if (
+        app.TEAM_SELECT_mode
+        == "TEAMBUILDER"
+        and
         app.TEAM_SELECT_submenu
     ):
         if is_up(event):
@@ -1202,8 +1424,38 @@ def handle_event_TEAM_SELECT(event):
             app.TEAM_SELECT_submenu = False
 
         elif is_confirm(event):
-            action = TEAM_BUILDER_ACTIONS[app.TEAM_SELECT_submenu_index]
-            if action == "RENAME":
+
+            action = (
+                TEAM_BUILDER_ACTIONS[
+                    app.TEAM_SELECT_submenu_index
+                ]
+            )
+
+            if action == "EDIT":
+
+                if len(
+                    app.TEAM_SELECT_preview_team
+                ) == 0:
+
+                    app.TEAM_SELECT_error = (
+                        "TEAM HAS NO POKEMON"
+                    )
+
+                    app.TEAM_SELECT_submenu = False
+
+                    return
+
+                app.TEAM_SELECT_error = None
+
+                app.TEAM_SELECT_submenu = False
+
+                app.TEAM_SELECT_selecting_pokemon = (
+                    True
+                )
+
+                app.TEAM_SELECT_pokemon_index = 0
+
+            elif action == "RENAME":
 
                 app.KEYBOARD_mode = (
                     "RENAME_TEAM"
@@ -1338,89 +1590,71 @@ def handle_event_TEAM_SELECT(event):
     if (
         app.TEAM_SELECT_mode
         == "IMPORT"
+        and
+        app.TEAM_SELECT_selecting_pokemon
     ):
-        if (
-            app.TEAM_SELECT_selecting_pokemon
-        ):
 
-            if is_left(event):
+        if is_cancel(event):
 
-                app.TEAM_SELECT_pokemon_index = max(
-                    0,
-                    app.TEAM_SELECT_pokemon_index - 1
-                )
-
-            elif is_right(event):
-
-                app.TEAM_SELECT_pokemon_index = min(
-                    5,
-                    app.TEAM_SELECT_pokemon_index + 1
-                )
-
-            elif is_up(event):
-
-                app.TEAM_SELECT_pokemon_index = max(
-                    0,
-                    app.TEAM_SELECT_pokemon_index - 2
-                )
-
-            elif is_down(event):
-
-                app.TEAM_SELECT_pokemon_index = min(
-                    5,
-                    app.TEAM_SELECT_pokemon_index + 2
-                )
-
-            elif is_cancel(event):
-
-                app.TEAM_SELECT_selecting_pokemon = (
-                    False
-                )
-
-            elif is_confirm(event):
-
-                selected_pokemon = (
-                    Pokemon.from_pokemon(
-                        app.TEAM_SELECT_preview_team[
-                            app.TEAM_SELECT_pokemon_index
-                        ]
-                    )
-                )
-
-                if (
-                    app.TEAM_SELECT_import_target
-                    ==
-                    "ATTACKER"
-                ):
-
-                    app.DAMAGE_CALCULATOR_attacker = (
-                        selected_pokemon
-                    )
-
-                else:
-
-                    app.DAMAGE_CALCULATOR_defender = (
-                        selected_pokemon
-                    )
-
-                save_damage_calculator(
-                    app.DAMAGE_CALCULATOR_attacker,
-                    app.DAMAGE_CALCULATOR_defender
-                )
-
-                app.TEAM_SELECT_selecting_pokemon = (
-                    False
-                )
-
-                app.TEAM_SELECT_mode = (
-                    "BATTLE"
-                )
-
-                change_state(
-                    app.TEAM_SELECT_return_state
-                )
+            app.TEAM_SELECT_selecting_pokemon = (
+                False
+            )
 
             return
+
+        if is_confirm(event):
+
+            pokemon_index = (
+                app.TEAM_SELECT_pokemon_index
+            )
+
+            selected_pokemon = (
+                Pokemon.from_pokemon(
+                    app.TEAM_SELECT_preview_team[
+                        pokemon_index
+                    ]
+                )
+            )
+
+            if (
+                app.TEAM_SELECT_import_target
+                == "ATTACKER"
+            ):
+
+                app.DAMAGE_CALCULATOR_attacker = (
+                    selected_pokemon
+                )
+
+            else:
+
+                app.DAMAGE_CALCULATOR_defender = (
+                    selected_pokemon
+                )
+
+            save_damage_calculator(
+                app.DAMAGE_CALCULATOR_attacker,
+                app.DAMAGE_CALCULATOR_defender
+            )
+
+            app.TEAM_SELECT_selecting_pokemon = (
+                False
+            )
+
+            app.TEAM_SELECT_mode = (
+                "BATTLE"
+            )
+
+            change_state(
+                app.TEAM_SELECT_return_state
+            )
+
+            return
+
+        handle_team_select_pokemon_navigation(
+            event
+        )
+
+        return
     is_lan_battle = app.connection_socket is not None
     if (
         is_up(event)

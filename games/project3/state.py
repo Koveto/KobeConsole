@@ -37,6 +37,8 @@ def change_state(new_state):
         app.opponent_lead = None
         app.TEAM_PREVIEW_ready_sent = False
         app.TEAM_PREVIEW_opponent_ready = False
+    if  (new_state == PKMN_EDIT):
+        app.PKMN_EDIT_index = 0
     if  (new_state == PKMN_VIEW):
         app.PKMN_VIEW_move_index = None
         app.PKMN_VIEW_mode = "STATS"
