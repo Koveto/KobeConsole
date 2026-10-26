@@ -1,3 +1,5 @@
+from constants import *
+
 class App:
     def __init__(self):
         self.state = None
@@ -56,6 +58,7 @@ class App:
         self.LAUNCHER_MENU_options = ("Single Player",
                                       "LAN Multiplayer",
                                       "Damage Calculator",
+                                      "Team Builder",
                                       "Options")
         
         self.LAN_HOST_JOIN_index = None
@@ -101,6 +104,10 @@ class App:
         self.TEAM_SELECT_pokemon_index = 0
         self.TEAM_SELECT_import_target = None
         self.TEAM_SELECT_return_state = None
+        self.TEAM_SELECT_submenu = False
+        self.TEAM_SELECT_submenu_index = 0
+        self.TEAM_SELECT_restore_index = None
+        self.TEAM_SELECT_restore_scroll = None
 
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
@@ -109,6 +116,9 @@ class App:
         self.KEYBOARD_row = 0
         self.KEYBOARD_column = 0
         self.KEYBOARD_text = ""
+        self.KEYBOARD_mode = "PLAYER_NAME"
+        self.KEYBOARD_return_state = OPTIONS
+        self.KEYBOARD_team_index = None
 
         self.OPTIONS_MUSIC_index = 0
         self.OPTIONS_MUSIC_scroll = 0

@@ -106,15 +106,6 @@ def get_trainer_sprite(sprite_number):
         rect
     )
 
-def load_teams():
-    save_data = load_save()
-    return {
-        "teams":
-            save_data[
-                "teams"
-            ]
-    }
-
 TYPE_CHART = {
     "Normal": {
         "Rock": 0.5, "Ghost": 0.0, "Steel": 0.5

@@ -42,42 +42,239 @@ def change_state(new_state):
         app.PKMN_VIEW_mode = "STATS"
     if  (new_state == SPECIES_VIEW):
         app.SPECIES_VIEW_mode = "STATS"
-    if  (new_state == TEAM_SELECT):
+    if new_state == TEAM_SELECT:
+
         app.TEAM_SELECT_error = None
+
         if app.restore_team_select:
+
             app.restore_team_select = False
             app.player_team = None
+
         else:
+
             app.player_team = None
             app.TEAM_SELECT_team_sent = False
             app.TEAM_SELECT_opponent_team = None
+            app.TEAM_SELECT_submenu = False
+            app.TEAM_SELECT_selecting_pokemon = False
+
             load_species()
-            app.TEAM_SELECT_index = 0
-            app.TEAM_SELECT_scroll = 0
+
             teams_data = load_teams()
+
             app.teams_data = (
                 teams_data["teams"]
             )
-            app.available_teams = [
-                "Random Team"
-            ]
-            for team in app.teams_data:
-                app.available_teams.append(
+
+            if (
+                app.TEAM_SELECT_mode
+                == "IMPORT"
+            ):
+
+                app.available_teams = [
                     team["name"]
+                    for team
+                    in app.teams_data
+                ]
+
+            elif (
+                app.TEAM_SELECT_mode
+                == "TEAMBUILDER"
+            ):
+
+                app.available_teams = [
+                    "Create Team"
+                ]
+
+                for team in app.teams_data:
+
+                    app.available_teams.append(
+                        team["name"]
+                    )
+
+            else:
+
+                app.available_teams = [
+                    "Random Team"
+                ]
+
+                for team in app.teams_data:
+
+                    app.available_teams.append(
+                        team["name"]
+                    )
+
+            if (
+                app.TEAM_SELECT_restore_index
+                is not None
+            ):
+
+                desired_index = (
+                    app.TEAM_SELECT_restore_index
                 )
+
+                desired_scroll = (
+                    app.TEAM_SELECT_restore_scroll
+                )
+
+                app.TEAM_SELECT_restore_index = None
+                app.TEAM_SELECT_restore_scroll = None
+
+            else:
+
+                desired_index = 0
+                desired_scroll = 0
+
+            if len(
+                app.available_teams
+            ) > 0:
+
+                app.TEAM_SELECT_index = max(
+                    0,
+                    min(
+                        desired_index,
+                        len(
+                            app.available_teams
+                        ) - 1
+                    )
+                )
+
+            else:
+
+                app.TEAM_SELECT_index = 0
+
+            max_scroll = max(
+                0,
+                len(
+                    app.available_teams
+                ) - 7
+            )
+
+            app.TEAM_SELECT_scroll = max(
+                0,
+                min(
+                    desired_scroll,
+                    max_scroll
+                )
+            )
+
+            if (
+                app.TEAM_SELECT_index
+                < app.TEAM_SELECT_scroll
+            ):
+
+                app.TEAM_SELECT_scroll = (
+                    app.TEAM_SELECT_index
+                )
+
+            elif (
+                app.TEAM_SELECT_index
+                >= app.TEAM_SELECT_scroll + 7
+            ):
+
+                app.TEAM_SELECT_scroll = max(
+                    0,
+                    app.TEAM_SELECT_index - 6
+                )
+
             app.selected_team_data = None
             app.TEAM_SELECT_preview_team = []
-            if len(app.teams_data) > 0:
-                app.selected_team_data = (
-                    app.teams_data[0]
+
+            if (
+                app.TEAM_SELECT_mode
+                == "IMPORT"
+            ):
+
+                team_index = (
+                    app.TEAM_SELECT_index
                 )
+
             else:
-                app.selected_team_data = None
+
+                team_index = (
+                    app.TEAM_SELECT_index - 1
+                )
+
+            if (
+                0
+                <= team_index
+                < len(
+                    app.teams_data
+                )
+            ):
+
+                app.selected_team_data = (
+                    app.teams_data[
+                        team_index
+                    ]
+                )
+
+                app.TEAM_SELECT_preview_team = [
+
+                    Pokemon.from_dict(
+                        pokemon_data
+                    )
+
+                    for pokemon_data
+                    in app.selected_team_data[
+                        "pokemon"
+                    ]
+
+                ]
     if  (new_state == OPTIONS):
         app.OPTIONS_scroll = 0
         app.OPTIONS_index = 0
     if  (new_state == KEYBOARD):
-        app.KEYBOARD_text = app.player_name
+
+        app.KEYBOARD_row = 0
+        app.KEYBOARD_column = 0
+
+        if (
+            app.KEYBOARD_mode
+            == "PLAYER_NAME"
+        ):
+
+            app.KEYBOARD_text = (
+                app.player_name
+            )
+
+        elif (
+            app.KEYBOARD_mode
+            == "RENAME_TEAM"
+            and
+            app.KEYBOARD_team_index
+            is not None
+        ):
+
+            save_data = load_save()
+
+            team_index = (
+                app.KEYBOARD_team_index
+            )
+
+            if (
+                0
+                <= team_index
+                < len(
+                    save_data["teams"]
+                )
+            ):
+
+                app.KEYBOARD_text = (
+                    save_data["teams"][
+                        team_index
+                    ]["name"]
+                )
+
+            else:
+
+                app.KEYBOARD_text = ""
+
+        else:
+
+            app.KEYBOARD_text = ""
+
     if  (new_state == OPTIONS_MUSIC):
         if new_state == OPTIONS_MUSIC:
             app.OPTIONS_MUSIC_index = 0

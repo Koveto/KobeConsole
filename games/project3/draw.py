@@ -106,7 +106,7 @@ def draw():
         draw_SINGLE_DEFEND_GYM()
     elif app.state == DAMAGE_CALCULATOR:
         draw_DAMAGE_CALCULATOR()
-        
+
 def draw_DAMAGE_CALCULATOR():
 
     app.screen.fill(
@@ -888,9 +888,34 @@ def draw_OPTIONS_MUSIC():
 
 def draw_KEYBOARD():
     app.screen.fill(COLOR_WHITE)
+    if (
+        app.KEYBOARD_mode
+        == "PLAYER_NAME"
+    ):
+
+        title = "PLAYER NAME"
+
+    elif (
+        app.KEYBOARD_mode
+        == "CREATE_TEAM"
+    ):
+
+        title = "NEW TEAM"
+
+    elif (
+        app.KEYBOARD_mode
+        == "RENAME_TEAM"
+    ):
+
+        title = "RENAME TEAM"
+
+    else:
+
+        title = "ENTER NAME"
+
     app.font0.draw_text(
         app.screen,
-        "ENTER NAME",
+        title,
         40,
         10
     )
@@ -1043,14 +1068,14 @@ def draw_TEAM_SELECT():
         COLOR_WHITE
     )
 
-    title = (
-        "IMPORT POKEMON"
-        if
-        app.TEAM_SELECT_mode
-        == "IMPORT"
-        else
-        "SELECT TEAM"
-    )
+    if app.TEAM_SELECT_mode == "IMPORT":
+        title = "IMPORT POKEMON"
+
+    elif app.TEAM_SELECT_mode == "TEAMBUILDER":
+        title = "TEAM BUILDER"
+
+    else:
+        title = "SELECT TEAM"
 
     app.font0.draw_text(
         app.screen,
@@ -1165,6 +1190,62 @@ def draw_TEAM_SELECT():
             10,
             145
         )
+    if (
+        app.TEAM_SELECT_mode
+        == "TEAMBUILDER"
+        and
+        app.TEAM_SELECT_submenu
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_WHITE,
+            (
+                50,
+                25,
+                90,
+                70
+            )
+        )
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                50,
+                25,
+                90,
+                70
+            ),
+            1
+        )
+
+        for i, text in enumerate(
+            TEAM_BUILDER_ACTIONS
+        ):
+
+            y = 35 + i * 15
+
+            if (
+                i
+                ==
+                app.TEAM_SELECT_submenu_index
+            ):
+
+                app.screen.blit(
+                    cursor,
+                    (
+                        52,
+                        y
+                    )
+                )
+
+            app.font0.draw_text(
+                app.screen,
+                text,
+                65,
+                y
+            )
 
 def draw_BATTLE_START():
     app.screen.fill(COLOR_WHITE)
@@ -1779,14 +1860,14 @@ def draw_LAUNCHER_MENU():
     app.font0.draw_text(
         app.screen,
         "Pokemon Battle Simulator",
-        40, 30
+        30, 30
     )
     for i, option in enumerate(app.LAUNCHER_MENU_options):
-        y = 80 + (i * 20)
+        y = 50 + (i * 20)
         if i == app.LAUNCHER_MENU_index:
             app.screen.blit(
                 cursor,
-                (30, y + 3)
+                (30, y)
             )
         app.font0.draw_text(
             app.screen,

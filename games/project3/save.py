@@ -14,6 +14,10 @@ SAVE_DEFAULT = {
         "level": 100,
         "level_npc": 100,
     },
+    "damage_calculator": {
+        "attacker": None,
+        "defender": None
+    },
     "music": {},
     "teams": [],
     "selected_team": 0,
@@ -376,3 +380,37 @@ def save_gym_progress(
         save_data
     )
 
+def load_damage_calculator():
+
+    save_data = load_save()
+
+    return save_data[
+        "damage_calculator"
+    ]
+
+def save_damage_calculator(
+    attacker,
+    defender
+):
+
+    save_data = load_save()
+
+    save_data[
+        "damage_calculator"
+    ] = {
+
+        "attacker":
+            None
+            if attacker is None
+            else attacker.to_dict(),
+
+        "defender":
+            None
+            if defender is None
+            else defender.to_dict()
+
+    }
+
+    save_save(
+        save_data
+    )

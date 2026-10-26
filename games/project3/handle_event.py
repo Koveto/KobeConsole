@@ -39,6 +39,148 @@ def handle_event(event):
     elif app.state == DAMAGE_CALCULATOR:
         handle_event_DAMAGE_CALCULATOR(event)
 
+def generate_teambuilder_team():
+
+    load_species()
+
+    candidates = []
+
+    for species in SPECIES.values():
+
+        bst = sum(
+            species.stats.values()
+        )
+
+        if bst > 480:
+
+            candidates.append(
+                species.no
+            )
+
+    if len(candidates) == 0:
+
+        raise ValueError(
+            "No species found with BST over 480"
+        )
+
+    return [
+
+        Pokemon.from_species_number(
+            random.choice(
+                candidates
+            )
+        )
+
+        for _ in range(6)
+
+    ]
+
+def complete_keyboard_entry():
+
+    text = (
+        app.KEYBOARD_text.strip()
+    )
+
+    if len(text) == 0:
+
+        return
+
+    if (
+        app.KEYBOARD_mode
+        == "PLAYER_NAME"
+    ):
+
+        app.player_name = text
+
+        save_player()
+
+        change_state(
+            OPTIONS
+        )
+
+        return
+
+    if (
+        app.KEYBOARD_mode
+        == "CREATE_TEAM"
+    ):
+
+        team = (
+            generate_teambuilder_team()
+        )
+
+        save_data = load_save()
+
+        save_data["teams"].insert(
+            0,
+            {
+                "name": text,
+                "pokemon": [
+                    pokemon.to_dict()
+                    for pokemon in team
+                ]
+            }
+        )
+
+        save_save(
+            save_data
+        )
+
+        app.TEAM_SELECT_restore_index = 1
+        app.TEAM_SELECT_restore_scroll = 0
+        app.TEAM_SELECT_submenu = False
+
+        change_state(
+            TEAM_SELECT
+        )
+
+        return
+
+    if (
+        app.KEYBOARD_mode
+        == "RENAME_TEAM"
+    ):
+
+        team_index = (
+            app.KEYBOARD_team_index
+        )
+
+        save_data = load_save()
+
+        if (
+            team_index is not None
+            and
+            0
+            <= team_index
+            < len(
+                save_data["teams"]
+            )
+        ):
+
+            save_data["teams"][
+                team_index
+            ]["name"] = text
+
+            save_save(
+                save_data
+            )
+
+        app.TEAM_SELECT_restore_index = (
+            team_index + 1
+            if team_index is not None
+            else 0
+        )
+
+        app.TEAM_SELECT_restore_scroll = (
+            app.TEAM_SELECT_scroll
+        )
+
+        app.TEAM_SELECT_submenu = False
+
+        change_state(
+            TEAM_SELECT
+        )
+
 def handle_event_DAMAGE_CALCULATOR(
     event
 ):
@@ -683,7 +825,8 @@ def handle_event_SINGLE_MENU_TRAINER(event):
 
             save_data = load_save()
 
-            save_data["teams"].append(
+            save_data["teams"].insert(
+                0,
                 {
                     "name": trainer["name"],
                     "pokemon": trainer["team"]
@@ -867,6 +1010,11 @@ def handle_event_KEYBOARD(event):
                 app.KEYBOARD_text += (
                     event.unicode.upper()
                 )
+            elif event.key == pygame.K_ESCAPE:
+
+                change_state(
+                    app.KEYBOARD_return_state
+                )
             elif (
                 event.key == pygame.K_SPACE
                 and
@@ -876,13 +1024,8 @@ def handle_event_KEYBOARD(event):
             elif (
                 event.key == pygame.K_RETURN
             ):
-                app.player_name = (
-                    app.KEYBOARD_text
-                )
-                save_player()
-                change_state(
-                    OPTIONS
-                )
+
+                complete_keyboard_entry()
             elif (
                 event.key == pygame.K_BACKSPACE
             ):
@@ -943,13 +1086,8 @@ def handle_event_KEYBOARD(event):
             elif (
                 selected == "DONE"
             ):
-                app.player_name = (
-                    app.KEYBOARD_text
-                )
-                save_player()
-                change_state(
-                    OPTIONS
-                )
+
+                complete_keyboard_entry()
             elif (
                 len(app.KEYBOARD_text) < 10
             ):
@@ -957,7 +1095,10 @@ def handle_event_KEYBOARD(event):
                     selected
                 )
         elif is_cancel(event):
-            app.KEYBOARD_text = app.KEYBOARD_text[:-1]
+
+            change_state(
+                app.KEYBOARD_return_state
+            )
     app.KEYBOARD_column = min(
         app.KEYBOARD_column,
         len(
@@ -973,7 +1114,7 @@ def handle_event_OPTIONS(event):
         if app.OPTIONS_index < app.OPTIONS_scroll:
             app.OPTIONS_scroll -= 1
     elif is_down(event):
-        app.OPTIONS_index = min(7, app.OPTIONS_index + 1)
+        app.OPTIONS_index = min(8, app.OPTIONS_index + 1)
         if app.OPTIONS_index >= app.OPTIONS_scroll + 6:
             app.OPTIONS_scroll += 1
     elif is_left(event):
@@ -982,10 +1123,10 @@ def handle_event_OPTIONS(event):
             if app.player_sprite < 0:
                 app.player_sprite = 161
             save_player()
-        elif app.OPTIONS_index == 6:
+        elif app.OPTIONS_index == 7:
             app.option_level = max(1, app.option_level - 1)
             save_options()
-        elif app.OPTIONS_index == 7:
+        elif app.OPTIONS_index == 8:
             app.option_level_npc = max(1, app.option_level_npc - 1)
             save_options()
     elif is_right(event):
@@ -994,15 +1135,28 @@ def handle_event_OPTIONS(event):
             if app.player_sprite > 161:
                 app.player_sprite = 0
             save_player()
-        elif app.OPTIONS_index == 6:
+        elif app.OPTIONS_index == 7:
             app.option_level = min(100, app.option_level + 1)
             save_options()
-        elif app.OPTIONS_index == 7:
+        elif app.OPTIONS_index == 8:
             app.option_level_npc = min(100, app.option_level_npc + 1)
             save_options()
     elif is_confirm(event):
         if app.OPTIONS_index == 0:
-            change_state(KEYBOARD)
+
+            app.KEYBOARD_mode = (
+                "PLAYER_NAME"
+            )
+
+            app.KEYBOARD_return_state = (
+                OPTIONS
+            )
+
+            app.KEYBOARD_team_index = None
+
+            change_state(
+                KEYBOARD
+            )
         elif app.OPTIONS_index == 2:
             change_state(OPTIONS_MUSIC)
         elif app.OPTIONS_index == 3:
@@ -1023,6 +1177,164 @@ def handle_event_OPTIONS(event):
         change_state(LAUNCHER_MENU)
 
 def handle_event_TEAM_SELECT(event):
+    if (
+        app.TEAM_SELECT_mode
+        == "TEAMBUILDER"
+        and
+        app.TEAM_SELECT_submenu
+    ):
+        if is_up(event):
+
+            app.TEAM_SELECT_submenu_index = max(
+                0,
+                app.TEAM_SELECT_submenu_index - 1
+            )
+
+        elif is_down(event):
+
+            app.TEAM_SELECT_submenu_index = min(
+                3,
+                app.TEAM_SELECT_submenu_index + 1
+            )
+
+        elif is_cancel(event):
+
+            app.TEAM_SELECT_submenu = False
+
+        elif is_confirm(event):
+            action = TEAM_BUILDER_ACTIONS[app.TEAM_SELECT_submenu_index]
+            if action == "RENAME":
+
+                app.KEYBOARD_mode = (
+                    "RENAME_TEAM"
+                )
+
+                app.KEYBOARD_return_state = (
+                    TEAM_SELECT
+                )
+
+                app.KEYBOARD_team_index = (
+                    app.TEAM_SELECT_index - 1
+                )
+
+                change_state(
+                    KEYBOARD
+                )
+
+            elif action == "DUPLICATE":
+                team = copy.deepcopy(
+                    app.selected_team_data
+                )
+
+                save_data = load_save()
+
+                save_data["teams"].insert(
+                    0, team
+                )
+
+                save_save(
+                    save_data
+                )
+
+                app.TEAM_SELECT_restore_index = 1
+                app.TEAM_SELECT_restore_scroll = 0
+                app.TEAM_SELECT_submenu = False
+
+                change_state(
+                    TEAM_SELECT
+                )
+
+            elif action == "ERASE":
+
+                old_index = (
+                    app.TEAM_SELECT_index
+                )
+
+                old_scroll = (
+                    app.TEAM_SELECT_scroll
+                )
+
+                team_index = (
+                    old_index - 1
+                )
+
+                save_data = load_save()
+
+                if (
+                    0
+                    <= team_index
+                    < len(
+                        save_data["teams"]
+                    )
+                ):
+
+                    del save_data[
+                        "teams"
+                    ][
+                        team_index
+                    ]
+
+                    save_save(
+                        save_data
+                    )
+
+                remaining_team_count = len(
+                    save_data["teams"]
+                )
+
+                new_index = min(
+                    old_index,
+                    remaining_team_count
+                )
+
+                available_count = (
+                    remaining_team_count
+                    + 1
+                )
+
+                max_scroll = max(
+                    0,
+                    available_count - 7
+                )
+
+                new_scroll = min(
+                    old_scroll,
+                    max_scroll
+                )
+
+                if (
+                    new_index
+                    < new_scroll
+                ):
+                    new_scroll = (
+                        new_index
+                    )
+
+                elif (
+                    new_index
+                    >= new_scroll + 7
+                ):
+                    new_scroll = max(
+                        0,
+                        new_index - 6
+                    )
+
+                app.TEAM_SELECT_restore_index = (
+                    new_index
+                )
+
+                app.TEAM_SELECT_restore_scroll = (
+                    new_scroll
+                )
+
+                app.TEAM_SELECT_submenu = False
+
+                change_state(
+                    TEAM_SELECT
+                )
+        
+        return
+
     if (
         app.TEAM_SELECT_mode
         == "IMPORT"
@@ -1091,6 +1403,11 @@ def handle_event_TEAM_SELECT(event):
                         selected_pokemon
                     )
 
+                save_damage_calculator(
+                    app.DAMAGE_CALCULATOR_attacker,
+                    app.DAMAGE_CALCULATOR_defender
+                )
+
                 app.TEAM_SELECT_selecting_pokemon = (
                     False
                 )
@@ -1110,7 +1427,7 @@ def handle_event_TEAM_SELECT(event):
         and
         app.player_team is None
     ):
-        handle_generic_team_select_navigation(
+        handle_team_select_navigation(
             -1
         )
     elif (
@@ -1118,7 +1435,7 @@ def handle_event_TEAM_SELECT(event):
         and
         app.player_team is None
     ):
-        handle_generic_team_select_navigation(
+        handle_team_select_navigation(
             1
         )
     elif is_cancel(event):
@@ -1137,8 +1454,48 @@ def handle_event_TEAM_SELECT(event):
     ):
         if (
             app.TEAM_SELECT_mode
+            == "TEAMBUILDER"
+        ):
+
+            if (
+                app.TEAM_SELECT_index
+                == 0
+            ):
+
+                app.KEYBOARD_mode = (
+                    "CREATE_TEAM"
+                )
+
+                app.KEYBOARD_return_state = (
+                    TEAM_SELECT
+                )
+
+                app.KEYBOARD_team_index = None
+
+                change_state(
+                    KEYBOARD
+                )
+            else:
+                app.TEAM_SELECT_submenu = True
+                app.TEAM_SELECT_submenu_index = 0
+
+            return
+        if (
+            app.TEAM_SELECT_mode
             == "IMPORT"
         ):
+
+            if len(
+                app.TEAM_SELECT_preview_team
+            ) == 0:
+
+                app.TEAM_SELECT_error = (
+                    "TEAM HAS NO POKEMON"
+                )
+
+                return
+
+            app.TEAM_SELECT_error = None
 
             app.TEAM_SELECT_selecting_pokemon = (
                 True
@@ -1584,30 +1941,70 @@ def handle_event_LAUNCHER_MENU(event):
                 LAN_HOST_JOIN
             )
         elif app.LAUNCHER_MENU_index == 2:
-
             load_species()
-
-            app.DAMAGE_CALCULATOR_attacker = (
-                Pokemon.from_species_number(6)
+            calculator_data = (
+                load_damage_calculator()
             )
-
-            app.DAMAGE_CALCULATOR_defender = (
-                Pokemon.from_species_number(248)
+            attacker_data = (
+                calculator_data.get(
+                    "attacker"
+                )
             )
-
+            defender_data = (
+                calculator_data.get(
+                    "defender"
+                )
+            )
+            if attacker_data is not None:
+                app.DAMAGE_CALCULATOR_attacker = (
+                    Pokemon.from_dict(
+                        attacker_data
+                    )
+                )
+            else:
+                app.DAMAGE_CALCULATOR_attacker = (
+                    Pokemon.from_species_number(
+                        6
+                    )
+                )
+            if defender_data is not None:
+                app.DAMAGE_CALCULATOR_defender = (
+                    Pokemon.from_dict(
+                        defender_data
+                    )
+                )
+            else:
+                app.DAMAGE_CALCULATOR_defender = (
+                    Pokemon.from_species_number(
+                        248
+                    )
+                )
             app.DAMAGE_CALCULATOR_index = 0
-
             app.DAMAGE_CALCULATOR_column = 1
-
             change_state(
                 DAMAGE_CALCULATOR
             )
         elif app.LAUNCHER_MENU_index == 3:
+
+            app.TEAM_SELECT_mode = (
+                "TEAMBUILDER"
+            )
+
+            app.TEAM_SELECT_return_state = (
+                LAUNCHER_MENU
+            )
+
+            change_state(
+                TEAM_SELECT
+            )
+
+        elif app.LAUNCHER_MENU_index == 4:
+
             change_state(
                 OPTIONS
             )
 
-def handle_generic_team_select_navigation(
+def handle_team_select_navigation(
     move_direction
 ):
 
@@ -1631,7 +2028,12 @@ def handle_generic_team_select_navigation(
     ):
         app.TEAM_SELECT_scroll += 1
 
-    if app.TEAM_SELECT_index == 0:
+    if (
+        app.TEAM_SELECT_mode
+        != "IMPORT"
+        and
+        app.TEAM_SELECT_index == 0
+    ):
 
         app.selected_team_data = None
 
@@ -1639,9 +2041,17 @@ def handle_generic_team_select_navigation(
 
         return
 
-    team_index = (
-        app.TEAM_SELECT_index - 1
-    )
+    if (
+        app.TEAM_SELECT_mode
+        == "IMPORT"
+    ):
+        team_index = (
+            app.TEAM_SELECT_index
+        )
+    else:
+        team_index = (
+            app.TEAM_SELECT_index - 1
+        )
 
     app.selected_team_data = (
         app.teams_data[

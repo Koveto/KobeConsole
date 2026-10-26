@@ -102,8 +102,8 @@ Every time you cancel out (or confirm?), save it. We will need some button to sa
 
 Let me know what you think on all this and we will proceed.
 So our priorities are (zoomed way out)
-1. Learnsets
-2. TEAM_SELECT (import ver)
+1. Learnsets (done)
+2. TEAM_SELECT (import ver) (done)
 3. TEAM_SELECT (teambuilder ver)
 4. PKMN_EDIT
 5. SPECIES_EDIT​‌
