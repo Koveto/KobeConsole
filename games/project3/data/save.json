@@ -991,16 +991,219 @@
             "name": "X",
             "pokemon": [
                 {
-                    "species_no": 126,
-                    "nickname": "Magmar",
+                    "species_no": 73,
+                    "nickname": "Tentacruel",
                     "level": 100,
-                    "nature": "Lax",
-                    "gender": "\u2642",
+                    "nature": "Relaxed",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        0,
+                        0,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Waterfall",
+                        "Sludge Wave",
+                        "Bug Bite",
+                        "Aqua Tail"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 242,
+                    "nickname": "Blissey",
+                    "level": 100,
+                    "nature": "Bold",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hyper Voice",
+                        "Earth Power",
+                        "Tri Attack",
+                        "Body Slam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 371,
+                    "nickname": "Gorebyss",
+                    "level": 100,
+                    "nature": "Adamant",
+                    "gender": "\u2640",
                     "is_shiny": false,
                     "front_sprite_number": 1,
                     "back_sprite_number": 1,
                     "evs": [
-                        112,
+                        252,
+                        0,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hydro Pump",
+                        "Waterfall",
+                        "Waterfall",
+                        "Aqua Tail"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 242,
+                    "nickname": "Blissey",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hyper Voice",
+                        "Earth Power",
+                        "Tri Attack",
+                        "Body Slam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 31,
+                    "nickname": "Nidoqueen",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        252,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Sludge Bomb",
+                        "Earth Power",
+                        "Poison Jab",
+                        "Thunder Fang"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 282,
+                    "nickname": "Gardevoir",
+                    "level": 100,
+                    "nature": "Docile",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Psycho Cut",
+                        "Signal Beam",
+                        "Zen Headbutt",
+                        "Spirit Break"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "X",
+            "pokemon": [
+                {
+                    "species_no": 126,
+                    "nickname": "Magmar",
+                    "level": 100,
+                    "nature": "Gentle",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        136,
                         96,
                         0,
                         4,
@@ -1059,8 +1262,8 @@
                 {
                     "species_no": 186,
                     "nickname": "Politoed",
-                    "level": 100,
-                    "nature": "Serious",
+                    "level": 54,
+                    "nature": "Bashful",
                     "gender": "\u2640",
                     "is_shiny": true,
                     "front_sprite_number": 2,
@@ -1093,7 +1296,7 @@
                     "species_no": 142,
                     "nickname": "Aerodactyl",
                     "level": 100,
-                    "nature": "Timid",
+                    "nature": "Lonely",
                     "gender": "\u2640",
                     "is_shiny": true,
                     "front_sprite_number": 1,

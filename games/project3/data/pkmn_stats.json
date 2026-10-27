@@ -23,7 +23,9 @@
                 "Metal Claw",
                 "Ice Punch",
                 "Power Gem",
-                "Double-Edge"
+                "Double-Edge",
+                "Giga Drain",
+                "Seed Bomb"
             ]
         },
         {
@@ -49,7 +51,9 @@
                 "Aqua Tail",
                 "Metal Claw",
                 "Crunch",
-                "Dragon Claw"
+                "Dragon Claw",
+                "Energy Ball",
+                "Sludge Bomb"
             ]
         },
         {
@@ -75,7 +79,9 @@
                 "Shadow Ball",
                 "Dark Pulse",
                 "Hyper Voice",
-                "Earthquake"
+                "Earthquake",
+                "Giga Drain",
+                "Poison Jab"
             ]
         },
         {
@@ -100,7 +106,9 @@
                 "Air Slash",
                 "Drill Run",
                 "Bug Bite",
-                "DragonBreth"
+                "DragonBreth",
+                "Fire Punch",
+                "Sludge Wave"
             ]
         },
         {
@@ -125,7 +133,9 @@
                 "ThunderPnch",
                 "Psybeam",
                 "Drill Run",
-                "Gunk Shot"
+                "Gunk Shot",
+                "Fire Blast",
+                "Power Gem"
             ]
         },
         {
@@ -151,7 +161,9 @@
                 "Energy Ball",
                 "Ice Beam",
                 "Discharge",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Hurricane",
+                "Flare Blitz"
             ]
         },
         {
@@ -176,7 +188,9 @@
                 "Crunch",
                 "Aura Sphere",
                 "Snarl",
-                "Signal Beam"
+                "Signal Beam",
+                "Hydro Pump",
+                "Power Gem"
             ]
         },
         {
@@ -201,7 +215,9 @@
                 "Shadow Claw",
                 "Icicle Crash",
                 "Play Rough",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Waterfall",
+                "Twineedle"
             ]
         },
         {
@@ -226,7 +242,9 @@
                 "Hyper Voice",
                 "Signal Beam",
                 "Shadow Claw",
-                "Crunch"
+                "Crunch",
+                "Waterfall",
+                "Poison Jab"
             ]
         },
         {
@@ -251,7 +269,9 @@
                 "Hyper Voice",
                 "Ice Punch",
                 "Fire Punch",
-                "Fire Blast"
+                "Fire Blast",
+                "Signal Beam",
+                "Mud Bomb"
             ]
         },
         {
@@ -276,7 +296,9 @@
                 "Icicle Crash",
                 "Drain Punch",
                 "Fly",
-                "Ice Punch"
+                "Ice Punch",
+                "Signal Beam",
+                "Fire Blast"
             ]
         },
         {
@@ -302,7 +324,9 @@
                 "Flash Cannon",
                 "Fly",
                 "Flare Blitz",
-                "Discharge"
+                "Discharge",
+                "Twineedle",
+                "Brave Bird"
             ]
         },
         {
@@ -328,7 +352,9 @@
                 "Metal Claw",
                 "Thunderbolt",
                 "Thunder Fang",
-                "Energy Ball"
+                "Energy Ball",
+                "Bug Bite",
+                "Gunk Shot"
             ]
         },
         {
@@ -354,7 +380,9 @@
                 "Power Gem",
                 "Gunk Shot",
                 "Fly",
-                "Thunder Fang"
+                "Thunder Fang",
+                "Silver Wind",
+                "Poison Jab"
             ]
         },
         {
@@ -380,7 +408,9 @@
                 "Icicle Crash",
                 "Hydro Pump",
                 "Focus Blast",
-                "Drain Punch"
+                "Drain Punch",
+                "Poison Jab",
+                "Gunk Shot"
             ]
         },
         {
@@ -406,7 +436,9 @@
                 "Flash Cannon",
                 "Surf",
                 "Gunk Shot",
-                "Psychic"
+                "Psychic",
+                "Double-Edge",
+                "Brave Bird"
             ]
         },
         {
@@ -432,7 +464,9 @@
                 "DragonBreth",
                 "Psycho Cut",
                 "Gunk Shot",
-                "Fire Blast"
+                "Fire Blast",
+                "Tri Attack",
+                "Fly"
             ]
         },
         {
@@ -458,7 +492,9 @@
                 "Shadow Ball",
                 "Thunderbolt",
                 "AncientPwr",
-                "Thunder Fang"
+                "Thunder Fang",
+                "Tri Attack",
+                "Air Slash"
             ]
         },
         {
@@ -483,7 +519,9 @@
                 "Mud Bomb",
                 "Drill Run",
                 "Thunder Fang",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Hyper Voice",
+                "Dragon Pulse"
             ]
         },
         {
@@ -508,7 +546,9 @@
                 "Psybeam",
                 "AncientPwr",
                 "Blizzard",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Hyper Voice",
+                "Signal Beam"
             ]
         },
         {
@@ -534,7 +574,9 @@
                 "Hyper Voice",
                 "Play Rough",
                 "Outrage",
-                "Flamethrower"
+                "Flamethrower",
+                "Air Slash",
+                "Fly"
             ]
         },
         {
@@ -560,7 +602,9 @@
                 "Signal Beam",
                 "Dragon Pulse",
                 "Psybeam",
-                "ThunderPnch"
+                "ThunderPnch",
+                "Air Slash",
+                "Fly"
             ]
         },
         {
@@ -585,7 +629,9 @@
                 "Icicle Crash",
                 "Mud Bomb",
                 "DazzlGleam",
-                "Signal Beam"
+                "Signal Beam",
+                "Sludge Wave",
+                "Fire Blast"
             ]
         },
         {
@@ -610,7 +656,9 @@
                 "Power Gem",
                 "Psychic",
                 "Mud Bomb",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Sludge Wave",
+                "Flare Blitz"
             ]
         },
         {
@@ -635,7 +683,9 @@
                 "Close Combat",
                 "Body Slam",
                 "Ominous Wind",
-                "Sludge Bomb"
+                "Sludge Bomb",
+                "ThunderPnch",
+                "Earthquake"
             ]
         },
         {
@@ -660,7 +710,9 @@
                 "Metal Claw",
                 "Signal Beam",
                 "Flare Blitz",
-                "Giga Drain"
+                "Giga Drain",
+                "Thunder Fang",
+                "Dark Pulse"
             ]
         },
         {
@@ -685,7 +737,9 @@
                 "Dragon Pulse",
                 "Body Slam",
                 "Snarl",
-                "Shadow Claw"
+                "Shadow Claw",
+                "Mud Bomb",
+                "Discharge"
             ]
         },
         {
@@ -710,7 +764,9 @@
                 "Blizzard",
                 "Spirit Break",
                 "Surf",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Drill Run",
+                "Iron Head"
             ]
         },
         {
@@ -735,7 +791,9 @@
                 "Double-Edge",
                 "DazzlGleam",
                 "Discharge",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Sludge Bomb",
+                "Shadow Punch"
             ]
         },
         {
@@ -760,7 +818,9 @@
                 "Tri Attack",
                 "Iron Head",
                 "Air Slash",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Gunk Shot",
+                "Surf"
             ]
         },
         {
@@ -786,7 +846,9 @@
                 "Fire Blast",
                 "Stone Edge",
                 "Giga Drain",
-                "DragonBreth"
+                "DragonBreth",
+                "Sludge Wave",
+                "Gunk Shot"
             ]
         },
         {
@@ -811,7 +873,9 @@
                 "Energy Ball",
                 "Focus Blast",
                 "Aura Sphere",
-                "Zen Headbutt"
+                "Zen Headbutt",
+                "Sludge Bomb",
+                "Earthquake"
             ]
         },
         {
@@ -836,7 +900,9 @@
                 "Focus Blast",
                 "Sludge Bomb",
                 "Double-Edge",
-                "Air Slash"
+                "Air Slash",
+                "Psycho Cut",
+                "Dragon Claw"
             ]
         },
         {
@@ -862,7 +928,9 @@
                 "Shadow Ball",
                 "Sludge Wave",
                 "Fire Punch",
-                "Rock Slide"
+                "Rock Slide",
+                "Earth Power",
+                "Poison Jab"
             ]
         },
         {
@@ -887,7 +955,9 @@
                 "Discharge",
                 "Giga Drain",
                 "Icicle Crash",
-                "Brave Bird"
+                "Brave Bird",
+                "Moonblast",
+                "Focus Blast"
             ]
         },
         {
@@ -912,7 +982,9 @@
                 "Iron Head",
                 "Hurricane",
                 "Mud Bomb",
-                "Bug Bite"
+                "Bug Bite",
+                "Play Rough",
+                "Sludge Wave"
             ]
         },
         {
@@ -937,7 +1009,9 @@
                 "Earth Power",
                 "Spirit Break",
                 "Poison Jab",
-                "Hurricane"
+                "Hurricane",
+                "Fire Punch",
+                "Drill Run"
             ]
         },
         {
@@ -962,7 +1036,9 @@
                 "Seed Bomb",
                 "Body Slam",
                 "Psycho Cut",
-                "Tri Attack"
+                "Tri Attack",
+                "Flamethrower",
+                "Icicle Crash"
             ]
         },
         {
@@ -988,7 +1064,9 @@
                 "Sludge Wave",
                 "Earthquake",
                 "Close Combat",
-                "Hyper Voice"
+                "Hyper Voice",
+                "Spirit Break",
+                "DazzlGleam"
             ]
         },
         {
@@ -1014,7 +1092,9 @@
                 "Metal Claw",
                 "Sludge Bomb",
                 "Fly",
-                "Shadow Claw"
+                "Shadow Claw",
+                "DazzlGleam",
+                "Play Rough"
             ]
         },
         {
@@ -1040,7 +1120,9 @@
                 "Hyper Voice",
                 "Waterfall",
                 "Psychic",
-                "Thunderbolt"
+                "Thunderbolt",
+                "Air Slash",
+                "Gunk Shot"
             ]
         },
         {
@@ -1066,7 +1148,9 @@
                 "Dragon Claw",
                 "Flare Blitz",
                 "Double-Edge",
-                "DragonBreth"
+                "DragonBreth",
+                "Brave Bird",
+                "Poison Jab"
             ]
         },
         {
@@ -1092,7 +1176,9 @@
                 "Aqua Tail",
                 "Mud Bomb",
                 "Icicle Crash",
-                "Ice Beam"
+                "Ice Beam",
+                "Sludge Bomb",
+                "Poison Jab"
             ]
         },
         {
@@ -1118,7 +1204,9 @@
                 "Shadow Claw",
                 "Twineedle",
                 "Flamethrower",
-                "Earthquake"
+                "Earthquake",
+                "Gunk Shot",
+                "Sludge Wave"
             ]
         },
         {
@@ -1144,7 +1232,9 @@
                 "Drain Punch",
                 "Snarl",
                 "Fire Punch",
-                "Hydro Pump"
+                "Hydro Pump",
+                "Gunk Shot",
+                "Sludge Bomb"
             ]
         },
         {
@@ -1170,7 +1260,9 @@
                 "Double-Edge",
                 "Psybeam",
                 "Hyper Voice",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Twineedle",
+                "Wood Hammer"
             ]
         },
         {
@@ -1196,7 +1288,9 @@
                 "Psybeam",
                 "Play Rough",
                 "Close Combat",
-                "Tri Attack"
+                "Tri Attack",
+                "Silver Wind",
+                "Wood Hammer"
             ]
         },
         {
@@ -1222,7 +1316,9 @@
                 "Body Slam",
                 "Play Rough",
                 "Mirror Shot",
-                "Rock Slide"
+                "Rock Slide",
+                "Signal Beam",
+                "Gunk Shot"
             ]
         },
         {
@@ -1248,7 +1344,9 @@
                 "Power Gem",
                 "Fire Punch",
                 "Icicle Crash",
-                "Blizzard"
+                "Blizzard",
+                "Sludge Wave",
+                "Bug Bite"
             ]
         },
         {
@@ -1273,7 +1371,9 @@
                 "Twineedle",
                 "Mirror Shot",
                 "Sludge Wave",
-                "AncientPwr"
+                "AncientPwr",
+                "Earthquake",
+                "Energy Ball"
             ]
         },
         {
@@ -1298,7 +1398,9 @@
                 "Night Slash",
                 "Gunk Shot",
                 "Fire Blast",
-                "Surf"
+                "Surf",
+                "Earthquake",
+                "Hydro Pump"
             ]
         },
         {
@@ -1323,7 +1425,9 @@
                 "Blizzard",
                 "Aura Sphere",
                 "Energy Ball",
-                "Ominous Wind"
+                "Ominous Wind",
+                "Body Slam",
+                "Hurricane"
             ]
         },
         {
@@ -1348,7 +1452,9 @@
                 "Air Slash",
                 "Tri Attack",
                 "Gunk Shot",
-                "Night Slash"
+                "Night Slash",
+                "Play Rough",
+                "Mud Bomb"
             ]
         },
         {
@@ -1373,7 +1479,9 @@
                 "Brave Bird",
                 "Dragon Pulse",
                 "Giga Drain",
-                "Psychic"
+                "Psychic",
+                "Aqua Tail",
+                "Sludge Bomb"
             ]
         },
         {
@@ -1398,7 +1506,9 @@
                 "Drain Punch",
                 "Poison Jab",
                 "Dragon Claw",
-                "Air Slash"
+                "Air Slash",
+                "Surf",
+                "Earthquake"
             ]
         },
         {
@@ -1423,7 +1533,9 @@
                 "AncientPwr",
                 "Blizzard",
                 "Twineedle",
-                "Metal Claw"
+                "Metal Claw",
+                "Close Combat",
+                "Thunder Fang"
             ]
         },
         {
@@ -1448,7 +1560,9 @@
                 "AncientPwr",
                 "DragonBreth",
                 "Spirit Break",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Focus Blast",
+                "Night Slash"
             ]
         },
         {
@@ -1473,7 +1587,9 @@
                 "Dragon Claw",
                 "Drain Punch",
                 "AncientPwr",
-                "Flash Cannon"
+                "Flash Cannon",
+                "Flamethrower",
+                "Hydro Pump"
             ]
         },
         {
@@ -1498,7 +1614,9 @@
                 "DragonBreth",
                 "Shadow Punch",
                 "Hydro Pump",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Fire Blast",
+                "Hurricane"
             ]
         },
         {
@@ -1523,7 +1641,9 @@
                 "Air Slash",
                 "Surf",
                 "Psycho Cut",
-                "Flamethrower"
+                "Flamethrower",
+                "Psychic",
+                "Stone Edge"
             ]
         },
         {
@@ -1548,7 +1668,9 @@
                 "Twineedle",
                 "Close Combat",
                 "Energy Ball",
-                "Mud Bomb"
+                "Mud Bomb",
+                "Waterfall",
+                "Thunder Fang"
             ]
         },
         {
@@ -1574,7 +1696,9 @@
                 "Dragon Claw",
                 "Psychic",
                 "Sludge Wave",
-                "Thunderbolt"
+                "Thunderbolt",
+                "Aura Sphere",
+                "Surf"
             ]
         },
         {
@@ -1599,7 +1723,9 @@
                 "Twineedle",
                 "Shadow Punch",
                 "Play Rough",
-                "Mud Bomb"
+                "Mud Bomb",
+                "Psycho Cut",
+                "Earth Power"
             ]
         },
         {
@@ -1624,7 +1750,9 @@
                 "Sludge Wave",
                 "Bug Bite",
                 "Outrage",
-                "Close Combat"
+                "Close Combat",
+                "Psychic",
+                "Metal Claw"
             ]
         },
         {
@@ -1649,7 +1777,9 @@
                 "Brave Bird",
                 "Gunk Shot",
                 "Ice Beam",
-                "Bug Bite"
+                "Bug Bite",
+                "Psycho Cut",
+                "Night Slash"
             ]
         },
         {
@@ -1674,7 +1804,9 @@
                 "Fire Punch",
                 "Energy Ball",
                 "Shadow Ball",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Drain Punch",
+                "Stone Edge"
             ]
         },
         {
@@ -1699,7 +1831,9 @@
                 "Metal Claw",
                 "Shadow Ball",
                 "Twineedle",
-                "Poison Jab"
+                "Poison Jab",
+                "Aura Sphere",
+                "DazzlGleam"
             ]
         },
         {
@@ -1724,7 +1858,9 @@
                 "Sludge Bomb",
                 "Seed Bomb",
                 "Shadow Punch",
-                "Dragon Claw"
+                "Dragon Claw",
+                "Focus Blast",
+                "Earthquake"
             ]
         },
         {
@@ -1750,7 +1886,9 @@
                 "Dragon Claw",
                 "Brave Bird",
                 "Blizzard",
-                "Fire Blast"
+                "Fire Blast",
+                "Gunk Shot",
+                "Wood Hammer"
             ]
         },
         {
@@ -1776,7 +1914,9 @@
                 "Signal Beam",
                 "Play Rough",
                 "Shadow Claw",
-                "Ominous Wind"
+                "Ominous Wind",
+                "Energy Ball",
+                "Sludge Wave"
             ]
         },
         {
@@ -1802,7 +1942,9 @@
                 "Ice Beam",
                 "Play Rough",
                 "Moonblast",
-                "Aqua Tail"
+                "Aqua Tail",
+                "Seed Bomb",
+                "Gunk Shot"
             ]
         },
         {
@@ -1828,7 +1970,9 @@
                 "Hyper Voice",
                 "Shadow Punch",
                 "Silver Wind",
-                "Brave Bird"
+                "Brave Bird",
+                "Sludge Wave",
+                "Gunk Shot"
             ]
         },
         {
@@ -1854,7 +1998,9 @@
                 "Twineedle",
                 "ThunderPnch",
                 "Hydro Pump",
-                "Surf"
+                "Surf",
+                "Gunk Shot",
+                "Poison Jab"
             ]
         },
         {
@@ -1880,7 +2026,9 @@
                 "Metal Claw",
                 "Wood Hammer",
                 "Tri Attack",
-                "Stone Edge"
+                "Stone Edge",
+                "Mud Bomb",
+                "Earthquake"
             ]
         },
         {
@@ -1906,7 +2054,9 @@
                 "Dragon Claw",
                 "Shadow Punch",
                 "Mirror Shot",
-                "Poison Jab"
+                "Poison Jab",
+                "Earth Power",
+                "Earthquake"
             ]
         },
         {
@@ -1932,7 +2082,9 @@
                 "Icicle Crash",
                 "Signal Beam",
                 "Poison Jab",
-                "Fire Punch"
+                "Fire Punch",
+                "Earth Power",
+                "Drill Run"
             ]
         },
         {
@@ -1957,7 +2109,9 @@
                 "Hurricane",
                 "Seed Bomb",
                 "Sludge Wave",
-                "Bug Bite"
+                "Bug Bite",
+                "Fire Blast",
+                "Moonblast"
             ]
         },
         {
@@ -1982,7 +2136,9 @@
                 "Night Slash",
                 "Energy Ball",
                 "Thunderbolt",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Fire Blast",
+                "Ominous Wind"
             ]
         },
         {
@@ -2008,7 +2164,9 @@
                 "Mirror Shot",
                 "Fly",
                 "Dragon Pulse",
-                "Play Rough"
+                "Play Rough",
+                "Waterfall",
+                "Psychic"
             ]
         },
         {
@@ -2034,7 +2192,9 @@
                 "Dark Pulse",
                 "Brave Bird",
                 "Poison Jab",
-                "Bug Bite"
+                "Bug Bite",
+                "Psycho Cut",
+                "Surf"
             ]
         },
         {
@@ -2060,7 +2220,9 @@
                 "Ice Punch",
                 "Mirror Shot",
                 "Hydro Pump",
-                "Fly"
+                "Fly",
+                "Metal Claw",
+                "Discharge"
             ]
         },
         {
@@ -2086,7 +2248,9 @@
                 "Stone Edge",
                 "Hyper Voice",
                 "Psychic",
-                "Dragon Claw"
+                "Dragon Claw",
+                "Flash Cannon",
+                "Mirror Shot"
             ]
         },
         {
@@ -2112,7 +2276,9 @@
                 "Flare Blitz",
                 "Spirit Break",
                 "Rock Slide",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Double-Edge",
+                "Air Slash"
             ]
         },
         {
@@ -2138,7 +2304,9 @@
                 "Fire Punch",
                 "Ice Beam",
                 "Thunder Fang",
-                "Hydro Pump"
+                "Hydro Pump",
+                "Fly",
+                "Hurricane"
             ]
         },
         {
@@ -2164,7 +2332,9 @@
                 "Outrage",
                 "Ice Punch",
                 "Twineedle",
-                "Earth Power"
+                "Earth Power",
+                "Brave Bird",
+                "Tri Attack"
             ]
         },
         {
@@ -2189,7 +2359,9 @@
                 "Snarl",
                 "Stone Edge",
                 "Energy Ball",
-                "Night Slash"
+                "Night Slash",
+                "Aqua Tail",
+                "Mirror Shot"
             ]
         },
         {
@@ -2215,7 +2387,9 @@
                 "Power Gem",
                 "Air Slash",
                 "Play Rough",
-                "Energy Ball"
+                "Energy Ball",
+                "Waterfall",
+                "Aqua Tail"
             ]
         },
         {
@@ -2240,7 +2414,9 @@
                 "Fly",
                 "Zen Headbutt",
                 "Air Slash",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Sludge Wave",
+                "Psychic"
             ]
         },
         {
@@ -2265,7 +2441,9 @@
                 "Surf",
                 "Drill Run",
                 "Fire Blast",
-                "Body Slam"
+                "Body Slam",
+                "Poison Jab",
+                "Dragon Pulse"
             ]
         },
         {
@@ -2290,7 +2468,9 @@
                 "Wood Hammer",
                 "Brave Bird",
                 "Focus Blast",
-                "Blizzard"
+                "Blizzard",
+                "Hydro Pump",
+                "Fly"
             ]
         },
         {
@@ -2316,7 +2496,9 @@
                 "Zen Headbutt",
                 "Earth Power",
                 "Shadow Ball",
-                "Psybeam"
+                "Psybeam",
+                "Icicle Crash",
+                "Surf"
             ]
         },
         {
@@ -2342,7 +2524,9 @@
                 "Rock Slide",
                 "Dragon Claw",
                 "Aqua Tail",
-                "Signal Beam"
+                "Signal Beam",
+                "Sludge Bomb",
+                "Sludge Wave"
             ]
         },
         {
@@ -2368,7 +2552,9 @@
                 "Power Gem",
                 "Fire Blast",
                 "Moonblast",
-                "Iron Head"
+                "Iron Head",
+                "Ominous Wind",
+                "Gunk Shot"
             ]
         },
         {
@@ -2394,7 +2580,9 @@
                 "Waterfall",
                 "Double-Edge",
                 "Psycho Cut",
-                "Stone Edge"
+                "Stone Edge",
+                "Poison Jab",
+                "Gunk Shot"
             ]
         },
         {
@@ -2420,7 +2608,9 @@
                 "Earthquake",
                 "Dark Pulse",
                 "Focus Blast",
-                "Surf"
+                "Surf",
+                "Mud Bomb",
+                "AncientPwr"
             ]
         },
         {
@@ -2445,7 +2635,9 @@
                 "Hurricane",
                 "Close Combat",
                 "DragonBreth",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Psybeam",
+                "Dragon Pulse"
             ]
         },
         {
@@ -2470,7 +2662,9 @@
                 "Discharge",
                 "Outrage",
                 "Waterfall",
-                "Play Rough"
+                "Play Rough",
+                "Psychic",
+                "Wood Hammer"
             ]
         },
         {
@@ -2495,7 +2689,9 @@
                 "Spirit Break",
                 "Moonblast",
                 "Outrage",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Surf",
+                "Gunk Shot"
             ]
         },
         {
@@ -2520,7 +2716,9 @@
                 "Mirror Shot",
                 "Blizzard",
                 "Aura Sphere",
-                "Drain Punch"
+                "Drain Punch",
+                "Aqua Tail",
+                "Ice Beam"
             ]
         },
         {
@@ -2545,7 +2743,9 @@
                 "Rock Slide",
                 "Crunch",
                 "Blizzard",
-                "Sludge Bomb"
+                "Sludge Bomb",
+                "Thunder Fang",
+                "Earthquake"
             ]
         },
         {
@@ -2570,7 +2770,9 @@
                 "Earth Power",
                 "Gunk Shot",
                 "Icicle Crash",
-                "ThunderPnch"
+                "ThunderPnch",
+                "Fly",
+                "Flare Blitz"
             ]
         },
         {
@@ -2596,7 +2798,9 @@
                 "Dark Pulse",
                 "Flamethrower",
                 "Ice Beam",
-                "Icicle Crash"
+                "Icicle Crash",
+                "Psycho Cut",
+                "Psybeam"
             ]
         },
         {
@@ -2622,7 +2826,9 @@
                 "Discharge",
                 "Brave Bird",
                 "ThunderPnch",
-                "Earthquake"
+                "Earthquake",
+                "Psycho Cut",
+                "Psychic"
             ]
         },
         {
@@ -2647,7 +2853,9 @@
                 "Surf",
                 "Giga Drain",
                 "Blizzard",
-                "Night Slash"
+                "Night Slash",
+                "Drill Run",
+                "Iron Head"
             ]
         },
         {
@@ -2672,7 +2880,9 @@
                 "Twineedle",
                 "Metal Claw",
                 "Thunder Fang",
-                "Night Slash"
+                "Night Slash",
+                "Drill Run",
+                "Shadow Claw"
             ]
         },
         {
@@ -2697,7 +2907,9 @@
                 "ThunderPnch",
                 "Flare Blitz",
                 "Surf",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Close Combat",
+                "Psycho Cut"
             ]
         },
         {
@@ -2722,7 +2934,9 @@
                 "Ominous Wind",
                 "Body Slam",
                 "Silver Wind",
-                "Play Rough"
+                "Play Rough",
+                "Close Combat",
+                "Bug Bite"
             ]
         },
         {
@@ -2747,7 +2961,9 @@
                 "Aura Sphere",
                 "Dark Pulse",
                 "Blizzard",
-                "Iron Head"
+                "Iron Head",
+                "Hyper Voice",
+                "Moonblast"
             ]
         },
         {
@@ -2772,7 +2988,9 @@
                 "Mirror Shot",
                 "ThunderPnch",
                 "Shadow Punch",
-                "Ice Beam"
+                "Ice Beam",
+                "Gunk Shot",
+                "Fire Blast"
             ]
         },
         {
@@ -2797,7 +3015,9 @@
                 "Moonblast",
                 "Surf",
                 "Fly",
-                "Psybeam"
+                "Psybeam",
+                "Poison Jab",
+                "Drain Punch"
             ]
         },
         {
@@ -2823,7 +3043,9 @@
                 "Air Slash",
                 "Psycho Cut",
                 "Moonblast",
-                "Outrage"
+                "Outrage",
+                "AncientPwr",
+                "Power Gem"
             ]
         },
         {
@@ -2849,7 +3071,9 @@
                 "Shadow Punch",
                 "Aqua Tail",
                 "Air Slash",
-                "Flash Cannon"
+                "Flash Cannon",
+                "Drill Run",
+                "Stone Edge"
             ]
         },
         {
@@ -2874,7 +3098,9 @@
                 "DazzlGleam",
                 "Stone Edge",
                 "Signal Beam",
-                "Shadow Claw"
+                "Shadow Claw",
+                "Tri Attack",
+                "Iron Head"
             ]
         },
         {
@@ -2899,7 +3125,9 @@
                 "Dragon Pulse",
                 "Bug Bite",
                 "Tri Attack",
-                "Silver Wind"
+                "Silver Wind",
+                "Energy Ball",
+                "Earthquake"
             ]
         },
         {
@@ -2924,7 +3152,9 @@
                 "Twineedle",
                 "Tri Attack",
                 "Discharge",
-                "Fire Blast"
+                "Fire Blast",
+                "Flare Blitz",
+                "Snarl"
             ]
         },
         {
@@ -2949,7 +3179,9 @@
                 "Psybeam",
                 "Giga Drain",
                 "Hyper Voice",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Waterfall",
+                "Psychic"
             ]
         },
         {
@@ -2974,7 +3206,9 @@
                 "Wood Hammer",
                 "Ice Punch",
                 "Metal Claw",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Hydro Pump",
+                "Moonblast"
             ]
         },
         {
@@ -2999,7 +3233,9 @@
                 "Flash Cannon",
                 "Power Gem",
                 "Body Slam",
-                "Energy Ball"
+                "Energy Ball",
+                "Surf",
+                "Ice Punch"
             ]
         },
         {
@@ -3024,7 +3260,9 @@
                 "Hurricane",
                 "ThunderPnch",
                 "Close Combat",
-                "Hyper Voice"
+                "Hyper Voice",
+                "Surf",
+                "Psychic"
             ]
         },
         {
@@ -3049,7 +3287,9 @@
                 "Night Slash",
                 "Hyper Voice",
                 "Bug Bite",
-                "Icicle Crash"
+                "Icicle Crash",
+                "Hydro Pump",
+                "Crunch"
             ]
         },
         {
@@ -3075,7 +3315,9 @@
                 "Giga Drain",
                 "ThunderPnch",
                 "Drain Punch",
-                "Sludge Bomb"
+                "Sludge Bomb",
+                "Waterfall",
+                "Psybeam"
             ]
         },
         {
@@ -3101,7 +3343,9 @@
                 "Gunk Shot",
                 "Energy Ball",
                 "Tri Attack",
-                "Outrage"
+                "Outrage",
+                "DazzlGleam",
+                "Moonblast"
             ]
         },
         {
@@ -3127,7 +3371,9 @@
                 "Drain Punch",
                 "Close Combat",
                 "Waterfall",
-                "Gunk Shot"
+                "Gunk Shot",
+                "Brave Bird",
+                "Signal Beam"
             ]
         },
         {
@@ -3153,7 +3399,9 @@
                 "Surf",
                 "Ominous Wind",
                 "Energy Ball",
-                "Gunk Shot"
+                "Gunk Shot",
+                "Psychic",
+                "Psybeam"
             ]
         },
         {
@@ -3178,7 +3426,9 @@
                 "Ice Beam",
                 "Psycho Cut",
                 "Aqua Tail",
-                "Earth Power"
+                "Earth Power",
+                "Discharge",
+                "Drain Punch"
             ]
         },
         {
@@ -3203,7 +3453,9 @@
                 "Drain Punch",
                 "ThunderPnch",
                 "Power Gem",
-                "Bug Bite"
+                "Bug Bite",
+                "Flamethrower",
+                "Stone Edge"
             ]
         },
         {
@@ -3228,7 +3480,9 @@
                 "Discharge",
                 "Earth Power",
                 "Rock Slide",
-                "Air Slash"
+                "Air Slash",
+                "Bug Bite",
+                "Flamethrower"
             ]
         },
         {
@@ -3253,7 +3507,9 @@
                 "Earthquake",
                 "Zen Headbutt",
                 "Iron Head",
-                "Rock Slide"
+                "Rock Slide",
+                "Double-Edge",
+                "Focus Blast"
             ]
         },
         {
@@ -3278,7 +3534,9 @@
                 "ThunderPnch",
                 "Flare Blitz",
                 "Metal Claw",
-                "Signal Beam"
+                "Signal Beam",
+                "Hydro Pump",
+                "Rock Slide"
             ]
         },
         {
@@ -3304,7 +3562,9 @@
                 "Double-Edge",
                 "Drain Punch",
                 "Iron Head",
-                "Earth Power"
+                "Earth Power",
+                "Aqua Tail",
+                "Fly"
             ]
         },
         {
@@ -3330,7 +3590,9 @@
                 "Iron Head",
                 "Play Rough",
                 "Dark Pulse",
-                "Moonblast"
+                "Moonblast",
+                "Hydro Pump",
+                "Icicle Crash"
             ]
         },
         {
@@ -3355,7 +3617,9 @@
                 "Hurricane",
                 "Dragon Claw",
                 "Hydro Pump",
-                "Poison Jab"
+                "Poison Jab",
+                "Tri Attack",
+                "Fire Punch"
             ]
         },
         {
@@ -3380,7 +3644,9 @@
                 "DazzlGleam",
                 "Thunderbolt",
                 "Spirit Break",
-                "Waterfall"
+                "Waterfall",
+                "Body Slam",
+                "Ice Beam"
             ]
         },
         {
@@ -3405,7 +3671,9 @@
                 "Gunk Shot",
                 "Flare Blitz",
                 "Shadow Ball",
-                "Brave Bird"
+                "Brave Bird",
+                "Aqua Tail",
+                "Ominous Wind"
             ]
         },
         {
@@ -3430,7 +3698,9 @@
                 "Poison Jab",
                 "Body Slam",
                 "Sludge Bomb",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Thunder Fang",
+                "Ice Punch"
             ]
         },
         {
@@ -3455,7 +3725,9 @@
                 "Close Combat",
                 "Blizzard",
                 "Zen Headbutt",
-                "Play Rough"
+                "Play Rough",
+                "Fire Blast",
+                "Brave Bird"
             ]
         },
         {
@@ -3480,7 +3752,9 @@
                 "Iron Head",
                 "Shadow Ball",
                 "Hydro Pump",
-                "Close Combat"
+                "Close Combat",
+                "Double-Edge",
+                "Fire Punch"
             ]
         },
         {
@@ -3506,7 +3780,9 @@
                 "Fire Blast",
                 "Signal Beam",
                 "Focus Blast",
-                "Sludge Bomb"
+                "Sludge Bomb",
+                "AncientPwr",
+                "Surf"
             ]
         },
         {
@@ -3532,7 +3808,9 @@
                 "Spirit Break",
                 "Hyper Voice",
                 "Psychic",
-                "Wood Hammer"
+                "Wood Hammer",
+                "AncientPwr",
+                "Hydro Pump"
             ]
         },
         {
@@ -3558,7 +3836,9 @@
                 "Silver Wind",
                 "Focus Blast",
                 "Surf",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Rock Slide",
+                "Power Gem"
             ]
         },
         {
@@ -3584,7 +3864,9 @@
                 "Dragon Pulse",
                 "Power Gem",
                 "Discharge",
-                "Earthquake"
+                "Earthquake",
+                "Surf",
+                "Stone Edge"
             ]
         },
         {
@@ -3610,7 +3892,9 @@
                 "Tri Attack",
                 "Mirror Shot",
                 "Aura Sphere",
-                "Hydro Pump"
+                "Hydro Pump",
+                "Hurricane",
+                "Power Gem"
             ]
         },
         {
@@ -3635,7 +3919,9 @@
                 "Outrage",
                 "Ominous Wind",
                 "Close Combat",
-                "Psychic"
+                "Psychic",
+                "Hyper Voice",
+                "Zen Headbutt"
             ]
         },
         {
@@ -3661,7 +3947,9 @@
                 "Spirit Break",
                 "Psybeam",
                 "Drain Punch",
-                "Poison Jab"
+                "Poison Jab",
+                "Ice Beam",
+                "Brave Bird"
             ]
         },
         {
@@ -3687,7 +3975,9 @@
                 "Brave Bird",
                 "Surf",
                 "Shadow Claw",
-                "Flash Cannon"
+                "Flash Cannon",
+                "Thunderbolt",
+                "Fly"
             ]
         },
         {
@@ -3713,7 +4003,9 @@
                 "Zen Headbutt",
                 "Energy Ball",
                 "Icicle Crash",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Brave Bird",
+                "Fly"
             ]
         },
         {
@@ -3738,7 +4030,9 @@
                 "Sludge Bomb",
                 "Aqua Tail",
                 "Metal Claw",
-                "Hyper Voice"
+                "Hyper Voice",
+                "Dragon Pulse",
+                "Iron Head"
             ]
         },
         {
@@ -3763,7 +4057,9 @@
                 "Bug Bite",
                 "DazzlGleam",
                 "Fire Blast",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Dragon Pulse",
+                "Drain Punch"
             ]
         },
         {
@@ -3789,7 +4085,9 @@
                 "Wood Hammer",
                 "Close Combat",
                 "AncientPwr",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Hurricane",
+                "Fly"
             ]
         },
         {
@@ -3814,7 +4112,9 @@
                 "Fire Blast",
                 "Discharge",
                 "Aqua Tail",
-                "Wood Hammer"
+                "Wood Hammer",
+                "Zen Headbutt",
+                "Night Slash"
             ]
         },
         {
@@ -3839,7 +4139,9 @@
                 "Bug Bite",
                 "Dragon Pulse",
                 "Brave Bird",
-                "Hyper Voice"
+                "Hyper Voice",
+                "Psycho Cut",
+                "Poison Jab"
             ]
         },
         {
@@ -3864,7 +4166,9 @@
                 "Fly",
                 "Drill Run",
                 "Aura Sphere",
-                "Ice Punch"
+                "Ice Punch",
+                "Giga Drain",
+                "ThunderPnch"
             ]
         },
         {
@@ -3889,7 +4193,9 @@
                 "Seed Bomb",
                 "Psychic",
                 "Fire Blast",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Iron Head",
+                "Flare Blitz"
             ]
         },
         {
@@ -3914,7 +4220,9 @@
                 "Air Slash",
                 "Shadow Punch",
                 "Flamethrower",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Energy Ball",
+                "Double-Edge"
             ]
         },
         {
@@ -3939,7 +4247,9 @@
                 "Gunk Shot",
                 "Wood Hammer",
                 "Thunderbolt",
-                "Icicle Crash"
+                "Icicle Crash",
+                "Flamethrower",
+                "Poison Jab"
             ]
         },
         {
@@ -3964,7 +4274,9 @@
                 "Aqua Tail",
                 "Shadow Claw",
                 "Poison Jab",
-                "Earth Power"
+                "Earth Power",
+                "Fire Punch",
+                "Air Slash"
             ]
         },
         {
@@ -3989,7 +4301,9 @@
                 "Air Slash",
                 "Mud Bomb",
                 "Energy Ball",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Flamethrower",
+                "Surf"
             ]
         },
         {
@@ -4014,7 +4328,9 @@
                 "Metal Claw",
                 "Dark Pulse",
                 "Drill Run",
-                "Silver Wind"
+                "Silver Wind",
+                "Waterfall",
+                "Brave Bird"
             ]
         },
         {
@@ -4039,7 +4355,9 @@
                 "Snarl",
                 "Power Gem",
                 "Aura Sphere",
-                "Seed Bomb"
+                "Seed Bomb",
+                "Hydro Pump",
+                "Wood Hammer"
             ]
         },
         {
@@ -4064,7 +4382,9 @@
                 "Energy Ball",
                 "Flash Cannon",
                 "Ice Punch",
-                "Hurricane"
+                "Hurricane",
+                "Surf",
+                "Rock Slide"
             ]
         },
         {
@@ -4089,7 +4409,9 @@
                 "Hurricane",
                 "DazzlGleam",
                 "Drain Punch",
-                "Blizzard"
+                "Blizzard",
+                "Double-Edge",
+                "Dark Pulse"
             ]
         },
         {
@@ -4114,7 +4436,9 @@
                 "Icicle Crash",
                 "Air Slash",
                 "Flare Blitz",
-                "Aqua Tail"
+                "Aqua Tail",
+                "Tri Attack",
+                "Brave Bird"
             ]
         },
         {
@@ -4140,7 +4464,9 @@
                 "Moonblast",
                 "Play Rough",
                 "Psybeam",
-                "Stone Edge"
+                "Stone Edge",
+                "Hyper Voice",
+                "Air Slash"
             ]
         },
         {
@@ -4166,7 +4492,9 @@
                 "Ice Punch",
                 "Outrage",
                 "Double-Edge",
-                "Dragon Pulse"
+                "Dragon Pulse",
+                "Fly",
+                "Hyper Voice"
             ]
         },
         {
@@ -4192,7 +4520,9 @@
                 "Brave Bird",
                 "Fire Punch",
                 "Earth Power",
-                "Ominous Wind"
+                "Ominous Wind",
+                "Hurricane",
+                "Twineedle"
             ]
         },
         {
@@ -4218,7 +4548,9 @@
                 "Dragon Pulse",
                 "Thunderbolt",
                 "Snarl",
-                "Shadow Claw"
+                "Shadow Claw",
+                "Fly",
+                "Air Slash"
             ]
         },
         {
@@ -4244,7 +4576,9 @@
                 "Earthquake",
                 "ThunderPnch",
                 "Silver Wind",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Bug Bite",
+                "Sludge Wave"
             ]
         },
         {
@@ -4270,7 +4604,9 @@
                 "Drain Punch",
                 "Focus Blast",
                 "Body Slam",
-                "Psybeam"
+                "Psybeam",
+                "Sludge Wave",
+                "Gunk Shot"
             ]
         },
         {
@@ -4296,7 +4632,9 @@
                 "Mud Bomb",
                 "Stone Edge",
                 "Poison Jab",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Sludge Wave",
+                "Hurricane"
             ]
         },
         {
@@ -4322,7 +4660,9 @@
                 "Energy Ball",
                 "Drill Run",
                 "Double-Edge",
-                "Icicle Crash"
+                "Icicle Crash",
+                "Thunderbolt",
+                "Waterfall"
             ]
         },
         {
@@ -4348,7 +4688,9 @@
                 "AncientPwr",
                 "DazzlGleam",
                 "Flare Blitz",
-                "Thunder Fang"
+                "Thunder Fang",
+                "ThunderPnch",
+                "Hydro Pump"
             ]
         },
         {
@@ -4373,7 +4715,9 @@
                 "Double-Edge",
                 "Fire Punch",
                 "Signal Beam",
-                "Surf"
+                "Surf",
+                "ThunderPnch",
+                "Silver Wind"
             ]
         },
         {
@@ -4398,7 +4742,9 @@
                 "Body Slam",
                 "Earth Power",
                 "Sludge Bomb",
-                "Thunderbolt"
+                "Thunderbolt",
+                "DazzlGleam",
+                "Drill Run"
             ]
         },
         {
@@ -4424,7 +4770,9 @@
                 "Wood Hammer",
                 "AncientPwr",
                 "Giga Drain",
-                "Thunderbolt"
+                "Thunderbolt",
+                "Double-Edge",
+                "Hyper Voice"
             ]
         },
         {
@@ -4449,7 +4797,9 @@
                 "Psychic",
                 "Focus Blast",
                 "Double-Edge",
-                "Blizzard"
+                "Blizzard",
+                "Moonblast",
+                "Thunder Fang"
             ]
         },
         {
@@ -4475,7 +4825,9 @@
                 "Outrage",
                 "Drain Punch",
                 "Icicle Crash",
-                "Blizzard"
+                "Blizzard",
+                "Hurricane",
+                "Air Slash"
             ]
         },
         {
@@ -4501,7 +4853,9 @@
                 "AncientPwr",
                 "Mud Bomb",
                 "Wood Hammer",
-                "Blizzard"
+                "Blizzard",
+                "Air Slash",
+                "Psybeam"
             ]
         },
         {
@@ -4527,7 +4881,9 @@
                 "Thunderbolt",
                 "Silver Wind",
                 "Bug Bite",
-                "Hurricane"
+                "Hurricane",
+                "Psybeam",
+                "Air Slash"
             ]
         },
         {
@@ -4552,7 +4908,9 @@
                 "Energy Ball",
                 "Icicle Crash",
                 "Drain Punch",
-                "Ice Beam"
+                "Ice Beam",
+                "Thunder Fang",
+                "Air Slash"
             ]
         },
         {
@@ -4577,7 +4935,9 @@
                 "Twineedle",
                 "AncientPwr",
                 "Blizzard",
-                "Focus Blast"
+                "Focus Blast",
+                "Discharge",
+                "Psycho Cut"
             ]
         },
         {
@@ -4602,7 +4962,9 @@
                 "Signal Beam",
                 "Metal Claw",
                 "Seed Bomb",
-                "Zen Headbutt"
+                "Zen Headbutt",
+                "Discharge",
+                "Ice Beam"
             ]
         },
         {
@@ -4627,7 +4989,9 @@
                 "Surf",
                 "Poison Jab",
                 "Shadow Ball",
-                "Double-Edge"
+                "Double-Edge",
+                "Energy Ball",
+                "Hurricane"
             ]
         },
         {
@@ -4653,7 +5017,9 @@
                 "Snarl",
                 "Mirror Shot",
                 "Shadow Ball",
-                "Close Combat"
+                "Close Combat",
+                "Aqua Tail",
+                "Moonblast"
             ]
         },
         {
@@ -4679,7 +5045,9 @@
                 "Air Slash",
                 "Signal Beam",
                 "Tri Attack",
-                "Earthquake"
+                "Earthquake",
+                "Spirit Break",
+                "Play Rough"
             ]
         },
         {
@@ -4704,7 +5072,9 @@
                 "Ice Beam",
                 "Metal Claw",
                 "Dragon Pulse",
-                "Drain Punch"
+                "Drain Punch",
+                "Rock Slide",
+                "DragonBreth"
             ]
         },
         {
@@ -4729,7 +5099,9 @@
                 "Drill Run",
                 "Fire Punch",
                 "Dark Pulse",
-                "Sludge Bomb"
+                "Sludge Bomb",
+                "Hydro Pump",
+                "Hyper Voice"
             ]
         },
         {
@@ -4755,7 +5127,9 @@
                 "Giga Drain",
                 "Rock Slide",
                 "Fire Punch",
-                "Aqua Tail"
+                "Aqua Tail",
+                "Energy Ball",
+                "Brave Bird"
             ]
         },
         {
@@ -4781,7 +5155,9 @@
                 "Hyper Voice",
                 "Icicle Crash",
                 "Hydro Pump",
-                "Air Slash"
+                "Air Slash",
+                "Fly",
+                "Hurricane"
             ]
         },
         {
@@ -4807,7 +5183,9 @@
                 "Rock Slide",
                 "Shadow Punch",
                 "Hyper Voice",
-                "Psybeam"
+                "Psybeam",
+                "Wood Hammer",
+                "Fly"
             ]
         },
         {
@@ -4832,7 +5210,9 @@
                 "Metal Claw",
                 "Double-Edge",
                 "Sludge Bomb",
-                "Wood Hammer"
+                "Wood Hammer",
+                "Earthquake",
+                "Focus Blast"
             ]
         },
         {
@@ -4857,7 +5237,9 @@
                 "Surf",
                 "Silver Wind",
                 "Sludge Wave",
-                "Stone Edge"
+                "Stone Edge",
+                "Giga Drain",
+                "Zen Headbutt"
             ]
         },
         {
@@ -4882,7 +5264,9 @@
                 "Shadow Claw",
                 "Waterfall",
                 "Fly",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Seed Bomb",
+                "Silver Wind"
             ]
         },
         {
@@ -4908,7 +5292,9 @@
                 "Double-Edge",
                 "Ominous Wind",
                 "Ice Punch",
-                "Mud Bomb"
+                "Mud Bomb",
+                "Fly",
+                "Air Slash"
             ]
         },
         {
@@ -4934,7 +5320,9 @@
                 "Crunch",
                 "Psychic",
                 "Hydro Pump",
-                "Signal Beam"
+                "Signal Beam",
+                "Aqua Tail",
+                "Mud Bomb"
             ]
         },
         {
@@ -4960,7 +5348,9 @@
                 "Tri Attack",
                 "Dragon Pulse",
                 "Fire Blast",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Hydro Pump",
+                "Earthquake"
             ]
         },
         {
@@ -4985,7 +5375,9 @@
                 "AncientPwr",
                 "Night Slash",
                 "Flash Cannon",
-                "Power Gem"
+                "Power Gem",
+                "Psycho Cut",
+                "Poison Jab"
             ]
         },
         {
@@ -5010,7 +5402,9 @@
                 "Shadow Ball",
                 "Aqua Tail",
                 "Shadow Claw",
-                "Zen Headbutt"
+                "Zen Headbutt",
+                "Crunch",
+                "Ice Beam"
             ]
         },
         {
@@ -5036,7 +5430,9 @@
                 "Rock Slide",
                 "Hydro Pump",
                 "Shadow Punch",
-                "Snarl"
+                "Snarl",
+                "Dark Pulse",
+                "Air Slash"
             ]
         },
         {
@@ -5062,7 +5458,9 @@
                 "Energy Ball",
                 "Flash Cannon",
                 "Spirit Break",
-                "Fire Blast"
+                "Fire Blast",
+                "Zen Headbutt",
+                "Waterfall"
             ]
         },
         {
@@ -5087,7 +5485,9 @@
                 "Bug Bite",
                 "Iron Head",
                 "Close Combat",
-                "Zen Headbutt"
+                "Zen Headbutt",
+                "Ominous Wind",
+                "Earthquake"
             ]
         },
         {
@@ -5112,7 +5512,9 @@
                 "Flamethrower",
                 "Surf",
                 "Spirit Break",
-                "Stone Edge"
+                "Stone Edge",
+                "Psybeam",
+                "Waterfall"
             ]
         },
         {
@@ -5137,7 +5539,9 @@
                 "Play Rough",
                 "Fire Blast",
                 "Tri Attack",
-                "Surf"
+                "Surf",
+                "Psybeam",
+                "Fly"
             ]
         },
         {
@@ -5163,7 +5567,9 @@
                 "Outrage",
                 "Thunderbolt",
                 "Aqua Tail",
-                "Air Slash"
+                "Air Slash",
+                "Zen Headbutt",
+                "Psychic"
             ]
         },
         {
@@ -5188,7 +5594,9 @@
                 "Power Gem",
                 "Shadow Ball",
                 "Flash Cannon",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Bug Bite",
+                "Psycho Cut"
             ]
         },
         {
@@ -5214,7 +5622,9 @@
                 "Metal Claw",
                 "Thunderbolt",
                 "Waterfall",
-                "Stone Edge"
+                "Stone Edge",
+                "Mirror Shot",
+                "Signal Beam"
             ]
         },
         {
@@ -5239,7 +5649,9 @@
                 "Shadow Ball",
                 "Energy Ball",
                 "Ice Beam",
-                "Moonblast"
+                "Moonblast",
+                "Hyper Voice",
+                "Discharge"
             ]
         },
         {
@@ -5265,7 +5677,9 @@
                 "Flare Blitz",
                 "Flash Cannon",
                 "Zen Headbutt",
-                "Signal Beam"
+                "Signal Beam",
+                "Hurricane",
+                "Earth Power"
             ]
         },
         {
@@ -5291,7 +5705,9 @@
                 "Poison Jab",
                 "Moonblast",
                 "Thunder Fang",
-                "Waterfall"
+                "Waterfall",
+                "Mud Bomb",
+                "Earth Power"
             ]
         },
         {
@@ -5316,7 +5732,9 @@
                 "Flash Cannon",
                 "Iron Head",
                 "Psycho Cut",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Play Rough",
+                "Waterfall"
             ]
         },
         {
@@ -5341,7 +5759,9 @@
                 "Waterfall",
                 "Night Slash",
                 "Double-Edge",
-                "Outrage"
+                "Outrage",
+                "DazzlGleam",
+                "Aura Sphere"
             ]
         },
         {
@@ -5367,7 +5787,9 @@
                 "Snarl",
                 "Twineedle",
                 "Power Gem",
-                "Drain Punch"
+                "Drain Punch",
+                "Gunk Shot",
+                "Sludge Wave"
             ]
         },
         {
@@ -5393,7 +5815,9 @@
                 "Air Slash",
                 "Earth Power",
                 "Giga Drain",
-                "Aqua Tail"
+                "Aqua Tail",
+                "Mirror Shot",
+                "Iron Head"
             ]
         },
         {
@@ -5419,7 +5843,9 @@
                 "Moonblast",
                 "Thunderbolt",
                 "Stone Edge",
-                "Seed Bomb"
+                "Seed Bomb",
+                "AncientPwr",
+                "Rock Slide"
             ]
         },
         {
@@ -5445,7 +5871,9 @@
                 "Thunderbolt",
                 "Psychic",
                 "Psybeam",
-                "Ice Beam"
+                "Ice Beam",
+                "Silver Wind",
+                "Focus Blast"
             ]
         },
         {
@@ -5471,7 +5899,9 @@
                 "Ice Beam",
                 "Metal Claw",
                 "Sludge Wave",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Blizzard",
+                "Snarl"
             ]
         },
         {
@@ -5496,7 +5926,9 @@
                 "Dragon Claw",
                 "Signal Beam",
                 "Psycho Cut",
-                "Flamethrower"
+                "Flamethrower",
+                "Tri Attack",
+                "Fire Blast"
             ]
         },
         {
@@ -5521,7 +5953,9 @@
                 "Mud Bomb",
                 "Flamethrower",
                 "Shadow Ball",
-                "Fire Blast"
+                "Fire Blast",
+                "Tri Attack",
+                "Discharge"
             ]
         },
         {
@@ -5546,7 +5980,9 @@
                 "Energy Ball",
                 "Earthquake",
                 "Shadow Ball",
-                "Seed Bomb"
+                "Seed Bomb",
+                "Flare Blitz",
+                "Ice Beam"
             ]
         },
         {
@@ -5572,7 +6008,9 @@
                 "Double-Edge",
                 "Discharge",
                 "Spirit Break",
-                "Close Combat"
+                "Close Combat",
+                "Power Gem",
+                "Fire Punch"
             ]
         },
         {
@@ -5598,7 +6036,9 @@
                 "Tri Attack",
                 "Brave Bird",
                 "Giga Drain",
-                "Crunch"
+                "Crunch",
+                "Drill Run",
+                "Earthquake"
             ]
         },
         {
@@ -5624,7 +6064,9 @@
                 "Body Slam",
                 "Shadow Punch",
                 "Psycho Cut",
-                "Sludge Wave"
+                "Sludge Wave",
+                "Ice Punch",
+                "Earthquake"
             ]
         },
         {
@@ -5650,7 +6092,9 @@
                 "Fire Blast",
                 "Hyper Voice",
                 "Double-Edge",
-                "ThunderPnch"
+                "ThunderPnch",
+                "Surf",
+                "Aqua Tail"
             ]
         },
         {
@@ -5675,7 +6119,9 @@
                 "Giga Drain",
                 "Sludge Bomb",
                 "Hyper Voice",
-                "Shadow Claw"
+                "Shadow Claw",
+                "Surf",
+                "Moonblast"
             ]
         },
         {
@@ -5700,7 +6146,9 @@
                 "Sludge Wave",
                 "Psycho Cut",
                 "Twineedle",
-                "Moonblast"
+                "Moonblast",
+                "Waterfall",
+                "DazzlGleam"
             ]
         },
         {
@@ -5726,7 +6174,9 @@
                 "Sludge Bomb",
                 "Fly",
                 "Hydro Pump",
-                "ThunderPnch"
+                "ThunderPnch",
+                "Hurricane",
+                "Brave Bird"
             ]
         },
         {
@@ -5752,7 +6202,9 @@
                 "ThunderPnch",
                 "Metal Claw",
                 "Flare Blitz",
-                "Night Slash"
+                "Night Slash",
+                "Fly",
+                "Hydro Pump"
             ]
         },
         {
@@ -5778,7 +6230,9 @@
                 "Thunderbolt",
                 "Ice Punch",
                 "Outrage",
-                "Waterfall"
+                "Waterfall",
+                "Metal Claw",
+                "Hurricane"
             ]
         },
         {
@@ -5804,7 +6258,9 @@
                 "Spirit Break",
                 "Wood Hammer",
                 "Focus Blast",
-                "Power Gem"
+                "Power Gem",
+                "Flamethrower",
+                "Snarl"
             ]
         },
         {
@@ -5830,7 +6286,9 @@
                 "Flare Blitz",
                 "Gunk Shot",
                 "Hydro Pump",
-                "Silver Wind"
+                "Silver Wind",
+                "Dark Pulse",
+                "Fire Blast"
             ]
         },
         {
@@ -5856,7 +6314,9 @@
                 "Poison Jab",
                 "Crunch",
                 "Drain Punch",
-                "Tri Attack"
+                "Tri Attack",
+                "Dragon Claw",
+                "Dragon Pulse"
             ]
         },
         {
@@ -5881,7 +6341,9 @@
                 "Psybeam",
                 "Dragon Pulse",
                 "Signal Beam",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Drill Run",
+                "Sludge Bomb"
             ]
         },
         {
@@ -5906,7 +6368,9 @@
                 "Outrage",
                 "Zen Headbutt",
                 "Energy Ball",
-                "Bug Bite"
+                "Bug Bite",
+                "Earthquake",
+                "Rock Slide"
             ]
         },
         {
@@ -5931,7 +6395,9 @@
                 "Fly",
                 "Outrage",
                 "Fire Punch",
-                "Iron Head"
+                "Iron Head",
+                "Double-Edge",
+                "Close Combat"
             ]
         },
         {
@@ -5956,7 +6422,9 @@
                 "Fire Blast",
                 "Psychic",
                 "Night Slash",
-                "Thunder Fang"
+                "Thunder Fang",
+                "Double-Edge",
+                "Earthquake"
             ]
         },
         {
@@ -5981,7 +6449,9 @@
                 "Shadow Punch",
                 "DragonBreth",
                 "Flamethrower",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Hyper Voice",
+                "Energy Ball"
             ]
         },
         {
@@ -6006,7 +6476,9 @@
                 "Dark Pulse",
                 "Shadow Ball",
                 "Waterfall",
-                "Silver Wind"
+                "Silver Wind",
+                "Focus Blast",
+                "Seed Bomb"
             ]
         },
         {
@@ -6031,7 +6503,9 @@
                 "Thunderbolt",
                 "Psycho Cut",
                 "Ice Beam",
-                "Moonblast"
+                "Moonblast",
+                "Close Combat",
+                "Stone Edge"
             ]
         },
         {
@@ -6057,7 +6531,9 @@
                 "Metal Claw",
                 "Dragon Claw",
                 "Thunderbolt",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Zen Headbutt",
+                "Psychic"
             ]
         },
         {
@@ -6082,7 +6558,9 @@
                 "Sludge Wave",
                 "Tri Attack",
                 "Bug Bite",
-                "Mud Bomb"
+                "Mud Bomb",
+                "Discharge",
+                "Ice Punch"
             ]
         },
         {
@@ -6107,7 +6585,9 @@
                 "ThunderPnch",
                 "Ice Punch",
                 "Play Rough",
-                "Wood Hammer"
+                "Wood Hammer",
+                "Fire Punch",
+                "Shadow Ball"
             ]
         },
         {
@@ -6132,7 +6612,9 @@
                 "Poison Jab",
                 "Energy Ball",
                 "Crunch",
-                "Night Slash"
+                "Night Slash",
+                "Tri Attack",
+                "Flare Blitz"
             ]
         },
         {
@@ -6157,7 +6639,9 @@
                 "Stone Edge",
                 "Icicle Crash",
                 "Silver Wind",
-                "Waterfall"
+                "Waterfall",
+                "Double-Edge",
+                "Iron Head"
             ]
         },
         {
@@ -6182,7 +6666,9 @@
                 "Crunch",
                 "Outrage",
                 "Energy Ball",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Discharge",
+                "AncientPwr"
             ]
         },
         {
@@ -6207,7 +6693,9 @@
                 "Crunch",
                 "Mirror Shot",
                 "Metal Claw",
-                "Discharge"
+                "Discharge",
+                "Fire Blast",
+                "Outrage"
             ]
         },
         {
@@ -6232,7 +6720,9 @@
                 "Outrage",
                 "Fire Punch",
                 "Discharge",
-                "Power Gem"
+                "Power Gem",
+                "Waterfall",
+                "Gunk Shot"
             ]
         },
         {
@@ -6258,7 +6748,9 @@
                 "Play Rough",
                 "ThunderPnch",
                 "Psycho Cut",
-                "Zen Headbutt"
+                "Zen Headbutt",
+                "Earthquake",
+                "Rock Slide"
             ]
         },
         {
@@ -6284,7 +6776,9 @@
                 "Sludge Wave",
                 "Outrage",
                 "Ice Punch",
-                "Stone Edge"
+                "Stone Edge",
+                "Mud Bomb",
+                "Earth Power"
             ]
         },
         {
@@ -6310,7 +6804,9 @@
                 "Silver Wind",
                 "Thunder Fang",
                 "Energy Ball",
-                "Surf"
+                "Surf",
+                "Snarl",
+                "Crunch"
             ]
         },
         {
@@ -6336,7 +6832,9 @@
                 "Thunderbolt",
                 "Aura Sphere",
                 "DazzlGleam",
-                "Seed Bomb"
+                "Seed Bomb",
+                "Brave Bird",
+                "Air Slash"
             ]
         },
         {
@@ -6362,7 +6860,9 @@
                 "Ominous Wind",
                 "Giga Drain",
                 "Iron Head",
-                "Drill Run"
+                "Drill Run",
+                "Air Slash",
+                "Flamethrower"
             ]
         },
         {
@@ -6388,7 +6888,9 @@
                 "AncientPwr",
                 "Aura Sphere",
                 "Sludge Wave",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Energy Ball",
+                "Psychic"
             ]
         },
         {
@@ -6413,7 +6915,9 @@
                 "Sludge Bomb",
                 "Thunder Fang",
                 "Surf",
-                "Focus Blast"
+                "Focus Blast",
+                "Wood Hammer",
+                "Sludge Wave"
             ]
         },
         {
@@ -6438,7 +6942,9 @@
                 "AncientPwr",
                 "Double-Edge",
                 "Fire Punch",
-                "Discharge"
+                "Discharge",
+                "Energy Ball",
+                "Twineedle"
             ]
         },
         {
@@ -6463,7 +6969,9 @@
                 "Zen Headbutt",
                 "Gunk Shot",
                 "Ominous Wind",
-                "Drill Run"
+                "Drill Run",
+                "Energy Ball",
+                "Power Gem"
             ]
         },
         {
@@ -6488,7 +6996,9 @@
                 "DragonBreth",
                 "Psychic",
                 "Waterfall",
-                "Brave Bird"
+                "Brave Bird",
+                "Fire Punch",
+                "Focus Blast"
             ]
         },
         {
@@ -6514,7 +7024,9 @@
                 "Dark Pulse",
                 "Seed Bomb",
                 "Air Slash",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Fire Blast",
+                "Focus Blast"
             ]
         },
         {
@@ -6540,7 +7052,9 @@
                 "Shadow Ball",
                 "Surf",
                 "Sludge Bomb",
-                "Psybeam"
+                "Psybeam",
+                "Fire Punch",
+                "Flamethrower"
             ]
         },
         {
@@ -6565,7 +7079,9 @@
                 "Stone Edge",
                 "Mirror Shot",
                 "Moonblast",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Surf",
+                "Ice Punch"
             ]
         },
         {
@@ -6591,7 +7107,9 @@
                 "Flare Blitz",
                 "Rock Slide",
                 "Hydro Pump",
-                "Focus Blast"
+                "Focus Blast",
+                "Aqua Tail",
+                "Earth Power"
             ]
         },
         {
@@ -6617,7 +7135,9 @@
                 "Air Slash",
                 "Dragon Pulse",
                 "Dragon Claw",
-                "Spirit Break"
+                "Spirit Break",
+                "Hydro Pump",
+                "Surf"
             ]
         },
         {
@@ -6642,7 +7162,9 @@
                 "Flare Blitz",
                 "Energy Ball",
                 "Waterfall",
-                "Discharge"
+                "Discharge",
+                "Night Slash",
+                "Body Slam"
             ]
         },
         {
@@ -6667,7 +7189,9 @@
                 "Sludge Wave",
                 "Body Slam",
                 "Psycho Cut",
-                "Power Gem"
+                "Power Gem",
+                "Snarl",
+                "Bug Bite"
             ]
         },
         {
@@ -6692,7 +7216,9 @@
                 "Aura Sphere",
                 "Shadow Ball",
                 "Psybeam",
-                "Sludge Wave"
+                "Sludge Wave",
+                "Body Slam",
+                "Dragon Claw"
             ]
         },
         {
@@ -6717,7 +7243,9 @@
                 "Snarl",
                 "Giga Drain",
                 "Wood Hammer",
-                "Focus Blast"
+                "Focus Blast",
+                "Body Slam",
+                "Blizzard"
             ]
         },
         {
@@ -6742,7 +7270,9 @@
                 "Tri Attack",
                 "Hydro Pump",
                 "Close Combat",
-                "Crunch"
+                "Crunch",
+                "Bug Bite",
+                "Thunder Fang"
             ]
         },
         {
@@ -6767,7 +7297,9 @@
                 "Thunder Fang",
                 "Surf",
                 "Gunk Shot",
-                "Icicle Crash"
+                "Icicle Crash",
+                "Signal Beam",
+                "Waterfall"
             ]
         },
         {
@@ -6793,7 +7325,9 @@
                 "Earth Power",
                 "Flare Blitz",
                 "Wood Hammer",
-                "Drill Run"
+                "Drill Run",
+                "Signal Beam",
+                "Air Slash"
             ]
         },
         {
@@ -6818,7 +7352,9 @@
                 "Psychic",
                 "Stone Edge",
                 "Mud Bomb",
-                "Outrage"
+                "Outrage",
+                "Bug Bite",
+                "ThunderPnch"
             ]
         },
         {
@@ -6844,7 +7380,9 @@
                 "Hydro Pump",
                 "Psybeam",
                 "Mirror Shot",
-                "Play Rough"
+                "Play Rough",
+                "Sludge Bomb",
+                "Sludge Wave"
             ]
         },
         {
@@ -6870,7 +7408,9 @@
                 "Drain Punch",
                 "Psychic",
                 "Bug Bite",
-                "Moonblast"
+                "Moonblast",
+                "Wood Hammer",
+                "Surf"
             ]
         },
         {
@@ -6896,7 +7436,9 @@
                 "Thunder Fang",
                 "Dark Pulse",
                 "Silver Wind",
-                "Focus Blast"
+                "Focus Blast",
+                "Waterfall",
+                "Energy Ball"
             ]
         },
         {
@@ -6922,7 +7464,9 @@
                 "Signal Beam",
                 "Outrage",
                 "Play Rough",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Waterfall",
+                "Energy Ball"
             ]
         },
         {
@@ -6947,7 +7491,9 @@
                 "Play Rough",
                 "Surf",
                 "Blizzard",
-                "Discharge"
+                "Discharge",
+                "Seed Bomb",
+                "Focus Blast"
             ]
         },
         {
@@ -6973,7 +7519,9 @@
                 "Signal Beam",
                 "Double-Edge",
                 "DragonBreth",
-                "Thunder Fang"
+                "Thunder Fang",
+                "Seed Bomb",
+                "Dark Pulse"
             ]
         },
         {
@@ -6999,7 +7547,9 @@
                 "Play Rough",
                 "Metal Claw",
                 "DazzlGleam",
-                "Ice Beam"
+                "Ice Beam",
+                "Giga Drain",
+                "Crunch"
             ]
         },
         {
@@ -7025,7 +7575,9 @@
                 "Dragon Claw",
                 "Signal Beam",
                 "Zen Headbutt",
-                "Body Slam"
+                "Body Slam",
+                "Fly",
+                "Double-Edge"
             ]
         },
         {
@@ -7051,7 +7603,9 @@
                 "Spirit Break",
                 "Outrage",
                 "Silver Wind",
-                "Drill Run"
+                "Drill Run",
+                "Fly",
+                "Brave Bird"
             ]
         },
         {
@@ -7077,7 +7631,9 @@
                 "Ice Beam",
                 "Surf",
                 "DazzlGleam",
-                "Silver Wind"
+                "Silver Wind",
+                "Brave Bird",
+                "Hurricane"
             ]
         },
         {
@@ -7103,7 +7659,9 @@
                 "Twineedle",
                 "Drill Run",
                 "Crunch",
-                "Flare Blitz"
+                "Flare Blitz",
+                "Hurricane",
+                "Fly"
             ]
         },
         {
@@ -7129,7 +7687,9 @@
                 "ThunderPnch",
                 "Dragon Pulse",
                 "Twineedle",
-                "Wood Hammer"
+                "Wood Hammer",
+                "Play Rough",
+                "Zen Headbutt"
             ]
         },
         {
@@ -7155,7 +7715,9 @@
                 "Fire Punch",
                 "Dragon Pulse",
                 "Spirit Break",
-                "Ice Punch"
+                "Ice Punch",
+                "Moonblast",
+                "DazzlGleam"
             ]
         },
         {
@@ -7181,7 +7743,9 @@
                 "Bug Bite",
                 "DragonBreth",
                 "Moonblast",
-                "Fire Punch"
+                "Fire Punch",
+                "Psybeam",
+                "Play Rough"
             ]
         },
         {
@@ -7207,7 +7771,9 @@
                 "Metal Claw",
                 "Sludge Bomb",
                 "Zen Headbutt",
-                "Signal Beam"
+                "Signal Beam",
+                "Aqua Tail",
+                "Waterfall"
             ]
         },
         {
@@ -7233,7 +7799,9 @@
                 "Dragon Pulse",
                 "Power Gem",
                 "Iron Head",
-                "Drain Punch"
+                "Drain Punch",
+                "Twineedle",
+                "Hydro Pump"
             ]
         },
         {
@@ -7258,7 +7826,9 @@
                 "Air Slash",
                 "Psybeam",
                 "Ice Punch",
-                "Discharge"
+                "Discharge",
+                "Wood Hammer",
+                "Flash Cannon"
             ]
         },
         {
@@ -7284,7 +7854,9 @@
                 "Iron Head",
                 "Snarl",
                 "Double-Edge",
-                "Sludge Wave"
+                "Sludge Wave",
+                "Aura Sphere",
+                "Close Combat"
             ]
         },
         {
@@ -7309,7 +7881,9 @@
                 "Sludge Bomb",
                 "Fire Punch",
                 "DazzlGleam",
-                "Shadow Claw"
+                "Shadow Claw",
+                "Hyper Voice",
+                "Ice Punch"
             ]
         },
         {
@@ -7334,7 +7908,9 @@
                 "Hurricane",
                 "Fly",
                 "Surf",
-                "Seed Bomb"
+                "Seed Bomb",
+                "Body Slam",
+                "Flare Blitz"
             ]
         },
         {
@@ -7359,7 +7935,9 @@
                 "Fire Punch",
                 "Dark Pulse",
                 "Gunk Shot",
-                "Moonblast"
+                "Moonblast",
+                "Body Slam",
+                "Rock Slide"
             ]
         },
         {
@@ -7385,7 +7963,9 @@
                 "Night Slash",
                 "Shadow Punch",
                 "Drain Punch",
-                "ThunderPnch"
+                "ThunderPnch",
+                "Mud Bomb",
+                "Silver Wind"
             ]
         },
         {
@@ -7411,7 +7991,9 @@
                 "Hyper Voice",
                 "Psybeam",
                 "Play Rough",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Fly",
+                "Hurricane"
             ]
         },
         {
@@ -7437,7 +8019,9 @@
                 "Aqua Tail",
                 "Dragon Pulse",
                 "Fire Blast",
-                "Flare Blitz"
+                "Flare Blitz",
+                "Shadow Claw",
+                "Signal Beam"
             ]
         },
         {
@@ -7462,7 +8046,9 @@
                 "Rock Slide",
                 "Play Rough",
                 "Outrage",
-                "Bug Bite"
+                "Bug Bite",
+                "Body Slam",
+                "Iron Head"
             ]
         },
         {
@@ -7487,7 +8073,9 @@
                 "Giga Drain",
                 "Psybeam",
                 "Moonblast",
-                "Metal Claw"
+                "Metal Claw",
+                "Tri Attack",
+                "Rock Slide"
             ]
         },
         {
@@ -7512,7 +8100,9 @@
                 "Power Gem",
                 "Dragon Pulse",
                 "Wood Hammer",
-                "Fire Punch"
+                "Fire Punch",
+                "Double-Edge",
+                "Shadow Punch"
             ]
         },
         {
@@ -7537,7 +8127,9 @@
                 "ThunderPnch",
                 "Moonblast",
                 "Crunch",
-                "Aqua Tail"
+                "Aqua Tail",
+                "Drain Punch",
+                "Thunder Fang"
             ]
         },
         {
@@ -7562,7 +8154,9 @@
                 "ThunderPnch",
                 "Psycho Cut",
                 "Play Rough",
-                "Blizzard"
+                "Blizzard",
+                "Close Combat",
+                "Dragon Pulse"
             ]
         },
         {
@@ -7588,7 +8182,9 @@
                 "Sludge Bomb",
                 "Stone Edge",
                 "Fly",
-                "Mirror Shot"
+                "Mirror Shot",
+                "Body Slam",
+                "Play Rough"
             ]
         },
         {
@@ -7613,7 +8209,9 @@
                 "AncientPwr",
                 "Air Slash",
                 "Double-Edge",
-                "Zen Headbutt"
+                "Zen Headbutt",
+                "Psybeam",
+                "Dragon Pulse"
             ]
         },
         {
@@ -7638,7 +8236,9 @@
                 "Seed Bomb",
                 "Fire Blast",
                 "Silver Wind",
-                "Moonblast"
+                "Moonblast",
+                "Double-Edge",
+                "Shadow Claw"
             ]
         },
         {
@@ -7663,7 +8263,9 @@
                 "Blizzard",
                 "Fly",
                 "Air Slash",
-                "Brave Bird"
+                "Brave Bird",
+                "Hyper Voice",
+                "Psybeam"
             ]
         },
         {
@@ -7689,7 +8291,9 @@
                 "Silver Wind",
                 "Hyper Voice",
                 "Tri Attack",
-                "Psychic"
+                "Psychic",
+                "Ominous Wind",
+                "Snarl"
             ]
         },
         {
@@ -7715,7 +8319,9 @@
                 "Play Rough",
                 "Aqua Tail",
                 "Close Combat",
-                "Blizzard"
+                "Blizzard",
+                "Iron Head",
+                "Mirror Shot"
             ]
         },
         {
@@ -7741,7 +8347,9 @@
                 "Rock Slide",
                 "Dark Pulse",
                 "Aqua Tail",
-                "Flash Cannon"
+                "Flash Cannon",
+                "Iron Head",
+                "Stone Edge"
             ]
         },
         {
@@ -7767,7 +8375,9 @@
                 "Outrage",
                 "Psybeam",
                 "Signal Beam",
-                "Dragon Claw"
+                "Dragon Claw",
+                "AncientPwr",
+                "Flash Cannon"
             ]
         },
         {
@@ -7793,7 +8403,9 @@
                 "Metal Claw",
                 "Drain Punch",
                 "Psychic",
-                "Bug Bite"
+                "Bug Bite",
+                "AncientPwr",
+                "Flash Cannon"
             ]
         },
         {
@@ -7819,7 +8431,9 @@
                 "Earthquake",
                 "Icicle Crash",
                 "Iron Head",
-                "Shadow Ball"
+                "Shadow Ball",
+                "Psychic",
+                "Close Combat"
             ]
         },
         {
@@ -7845,7 +8459,9 @@
                 "Blizzard",
                 "Energy Ball",
                 "Ominous Wind",
-                "Surf"
+                "Surf",
+                "Psychic",
+                "Psybeam"
             ]
         },
         {
@@ -7870,7 +8486,9 @@
                 "Signal Beam",
                 "Waterfall",
                 "Icicle Crash",
-                "Moonblast"
+                "Moonblast",
+                "Thunderbolt",
+                "Dragon Pulse"
             ]
         },
         {
@@ -7895,7 +8513,9 @@
                 "Thunder Fang",
                 "Focus Blast",
                 "Double-Edge",
-                "Sludge Bomb"
+                "Sludge Bomb",
+                "Fire Punch",
+                "Energy Ball"
             ]
         },
         {
@@ -7920,7 +8540,9 @@
                 "Twineedle",
                 "Psychic",
                 "Double-Edge",
-                "DragonBreth"
+                "DragonBreth",
+                "Discharge",
+                "Dragon Claw"
             ]
         },
         {
@@ -7945,7 +8567,9 @@
                 "Psychic",
                 "AncientPwr",
                 "Play Rough",
-                "Sludge Bomb"
+                "Sludge Bomb",
+                "Thunderbolt",
+                "Crunch"
             ]
         },
         {
@@ -7970,7 +8594,9 @@
                 "Blizzard",
                 "Night Slash",
                 "Mud Bomb",
-                "Wood Hammer"
+                "Wood Hammer",
+                "Bug Bite",
+                "Spirit Break"
             ]
         },
         {
@@ -7995,7 +8621,9 @@
                 "Psycho Cut",
                 "Shadow Punch",
                 "Close Combat",
-                "Poison Jab"
+                "Poison Jab",
+                "Bug Bite",
+                "AncientPwr"
             ]
         },
         {
@@ -8021,7 +8649,9 @@
                 "Ice Punch",
                 "Dark Pulse",
                 "Poison Jab",
-                "Brave Bird"
+                "Brave Bird",
+                "Seed Bomb",
+                "Sludge Wave"
             ]
         },
         {
@@ -8046,7 +8676,9 @@
                 "Crunch",
                 "Fly",
                 "DazzlGleam",
-                "Mud Bomb"
+                "Mud Bomb",
+                "Sludge Bomb",
+                "Body Slam"
             ]
         },
         {
@@ -8071,7 +8703,9 @@
                 "Close Combat",
                 "Flash Cannon",
                 "Fly",
-                "Psybeam"
+                "Psybeam",
+                "Sludge Wave",
+                "Air Slash"
             ]
         },
         {
@@ -8097,7 +8731,9 @@
                 "DazzlGleam",
                 "Mirror Shot",
                 "Spirit Break",
-                "Thunderbolt"
+                "Thunderbolt",
+                "Aqua Tail",
+                "Night Slash"
             ]
         },
         {
@@ -8123,7 +8759,9 @@
                 "Energy Ball",
                 "Spirit Break",
                 "Drill Run",
-                "Mud Bomb"
+                "Mud Bomb",
+                "Night Slash",
+                "Surf"
             ]
         },
         {
@@ -8148,7 +8786,9 @@
                 "Fly",
                 "Ominous Wind",
                 "Waterfall",
-                "Body Slam"
+                "Body Slam",
+                "Poison Jab",
+                "Drill Run"
             ]
         },
         {
@@ -8173,7 +8813,9 @@
                 "Fly",
                 "Earthquake",
                 "Sludge Bomb",
-                "Giga Drain"
+                "Giga Drain",
+                "Waterfall",
+                "Hurricane"
             ]
         },
         {
@@ -8199,7 +8841,9 @@
                 "Icicle Crash",
                 "Mud Bomb",
                 "Energy Ball",
-                "Iron Head"
+                "Iron Head",
+                "Earth Power",
+                "Earthquake"
             ]
         },
         {
@@ -8225,7 +8869,9 @@
                 "Mud Bomb",
                 "Dragon Pulse",
                 "Shadow Punch",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Flamethrower",
+                "Fire Punch"
             ]
         },
         {
@@ -8250,7 +8896,9 @@
                 "Drill Run",
                 "Sludge Bomb",
                 "Hurricane",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Fire Blast",
+                "Giga Drain"
             ]
         },
         {
@@ -8275,7 +8923,9 @@
                 "Snarl",
                 "Sludge Bomb",
                 "Focus Blast",
-                "Earthquake"
+                "Earthquake",
+                "Zen Headbutt",
+                "Hyper Voice"
             ]
         },
         {
@@ -8300,7 +8950,9 @@
                 "Hyper Voice",
                 "Brave Bird",
                 "Energy Ball",
-                "Aqua Tail"
+                "Aqua Tail",
+                "Zen Headbutt",
+                "Play Rough"
             ]
         },
         {
@@ -8325,7 +8977,9 @@
                 "Discharge",
                 "Spirit Break",
                 "Thunderbolt",
-                "DazzlGleam"
+                "DazzlGleam",
+                "Hyper Voice",
+                "Crunch"
             ]
         },
         {
@@ -8350,7 +9004,9 @@
                 "Drain Punch",
                 "Crunch",
                 "Brave Bird",
-                "Shadow Claw"
+                "Shadow Claw",
+                "Drill Run",
+                "Dragon Claw"
             ]
         },
         {
@@ -8376,7 +9032,9 @@
                 "Hyper Voice",
                 "Moonblast",
                 "Metal Claw",
-                "Stone Edge"
+                "Stone Edge",
+                "DragonBreth",
+                "Outrage"
             ]
         },
         {
@@ -8402,7 +9060,9 @@
                 "Drain Punch",
                 "Ice Beam",
                 "Twineedle",
-                "Discharge"
+                "Discharge",
+                "Outrage",
+                "Dragon Claw"
             ]
         },
         {
@@ -8427,7 +9087,9 @@
                 "Sludge Wave",
                 "Ice Punch",
                 "Snarl",
-                "Night Slash"
+                "Night Slash",
+                "Giga Drain",
+                "Spirit Break"
             ]
         },
         {
@@ -8453,7 +9115,9 @@
                 "Night Slash",
                 "Drill Run",
                 "Blizzard",
-                "Focus Blast"
+                "Focus Blast",
+                "Giga Drain",
+                "Dark Pulse"
             ]
         },
         {
@@ -8479,7 +9143,9 @@
                 "Dragon Pulse",
                 "Metal Claw",
                 "Spirit Break",
-                "Surf"
+                "Surf",
+                "Brave Bird",
+                "Hurricane"
             ]
         },
         {
@@ -8505,7 +9171,9 @@
                 "Mud Bomb",
                 "Sludge Wave",
                 "Air Slash",
-                "Thunder Fang"
+                "Thunder Fang",
+                "Hurricane",
+                "Dragon Pulse"
             ]
         },
         {
@@ -8530,7 +9198,9 @@
                 "Psybeam",
                 "Play Rough",
                 "Surf",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Tri Attack",
+                "Mirror Shot"
             ]
         },
         {
@@ -8555,7 +9225,9 @@
                 "Night Slash",
                 "Spirit Break",
                 "Shadow Ball",
-                "Metal Claw"
+                "Metal Claw",
+                "Sludge Bomb",
+                "Air Slash"
             ]
         },
         {
@@ -8581,7 +9253,9 @@
                 "Psybeam",
                 "Metal Claw",
                 "Wood Hammer",
-                "Thunder Fang"
+                "Thunder Fang",
+                "Rock Slide",
+                "Zen Headbutt"
             ]
         },
         {
@@ -8607,7 +9281,9 @@
                 "Play Rough",
                 "Flash Cannon",
                 "Double-Edge",
-                "Close Combat"
+                "Close Combat",
+                "Psycho Cut",
+                "AncientPwr"
             ]
         },
         {
@@ -8633,7 +9309,9 @@
                 "Power Gem",
                 "Double-Edge",
                 "Flare Blitz",
-                "Tri Attack"
+                "Tri Attack",
+                "Aqua Tail",
+                "Earth Power"
             ]
         },
         {
@@ -8659,7 +9337,9 @@
                 "Mirror Shot",
                 "Wood Hammer",
                 "Sludge Bomb",
-                "Icicle Crash"
+                "Icicle Crash",
+                "Aqua Tail",
+                "Earth Power"
             ]
         },
         {
@@ -8684,7 +9364,9 @@
                 "Signal Beam",
                 "Earthquake",
                 "Ice Punch",
-                "Flamethrower"
+                "Flamethrower",
+                "Waterfall",
+                "Psybeam"
             ]
         },
         {
@@ -8710,7 +9392,9 @@
                 "Fire Blast",
                 "Silver Wind",
                 "DazzlGleam",
-                "Dragon Claw"
+                "Dragon Claw",
+                "Surf",
+                "Aqua Tail"
             ]
         },
         {
@@ -8736,7 +9420,9 @@
                 "Energy Ball",
                 "Psybeam",
                 "Giga Drain",
-                "Flash Cannon"
+                "Flash Cannon",
+                "Earthquake",
+                "Zen Headbutt"
             ]
         },
         {
@@ -8762,7 +9448,9 @@
                 "Energy Ball",
                 "Tri Attack",
                 "Zen Headbutt",
-                "Surf"
+                "Surf",
+                "Psycho Cut",
+                "Psychic"
             ]
         },
         {
@@ -8788,7 +9476,9 @@
                 "Earth Power",
                 "Energy Ball",
                 "Tri Attack",
-                "Poison Jab"
+                "Poison Jab",
+                "Wood Hammer",
+                "Power Gem"
             ]
         },
         {
@@ -8814,7 +9504,9 @@
                 "Icicle Crash",
                 "Night Slash",
                 "Silver Wind",
-                "Drain Punch"
+                "Drain Punch",
+                "Seed Bomb",
+                "Stone Edge"
             ]
         },
         {
@@ -8840,7 +9532,9 @@
                 "Drain Punch",
                 "Close Combat",
                 "Sludge Bomb",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Signal Beam",
+                "Silver Wind"
             ]
         },
         {
@@ -8866,7 +9560,9 @@
                 "Play Rough",
                 "Discharge",
                 "DazzlGleam",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Rock Slide",
+                "Twineedle"
             ]
         },
         {
@@ -8891,7 +9587,9 @@
                 "Discharge",
                 "Air Slash",
                 "Fire Blast",
-                "Brave Bird"
+                "Brave Bird",
+                "Surf",
+                "Shadow Claw"
             ]
         },
         {
@@ -8916,7 +9614,9 @@
                 "Psychic",
                 "Shadow Punch",
                 "Drain Punch",
-                "Flamethrower"
+                "Flamethrower",
+                "Aqua Tail",
+                "Zen Headbutt"
             ]
         },
         {
@@ -8941,7 +9641,9 @@
                 "Drill Run",
                 "Drain Punch",
                 "Thunderbolt",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Hyper Voice",
+                "Focus Blast"
             ]
         },
         {
@@ -8966,7 +9668,9 @@
                 "Seed Bomb",
                 "Wood Hammer",
                 "Flash Cannon",
-                "Earthquake"
+                "Earthquake",
+                "Flare Blitz",
+                "Psychic"
             ]
         },
         {
@@ -8991,7 +9695,9 @@
                 "Dragon Claw",
                 "Flash Cannon",
                 "Crunch",
-                "Iron Head"
+                "Iron Head",
+                "Waterfall",
+                "Tri Attack"
             ]
         },
         {
@@ -9016,7 +9722,9 @@
                 "Air Slash",
                 "Psychic",
                 "DragonBreth",
-                "Tri Attack"
+                "Tri Attack",
+                "Ice Beam",
+                "Snarl"
             ]
         },
         {
@@ -9041,7 +9749,9 @@
                 "Wood Hammer",
                 "Rock Slide",
                 "Thunderbolt",
-                "Dragon Claw"
+                "Dragon Claw",
+                "Body Slam",
+                "Psychic"
             ]
         },
         {
@@ -9066,7 +9776,9 @@
                 "Hydro Pump",
                 "Night Slash",
                 "Crunch",
-                "Earthquake"
+                "Earthquake",
+                "Shadow Punch",
+                "Icicle Crash"
             ]
         },
         {
@@ -9091,7 +9803,9 @@
                 "Air Slash",
                 "Psycho Cut",
                 "Thunder Fang",
-                "Aura Sphere"
+                "Aura Sphere",
+                "Shadow Claw",
+                "Brave Bird"
             ]
         },
         {
@@ -9116,7 +9830,9 @@
                 "Mud Bomb",
                 "Earth Power",
                 "Surf",
-                "Discharge"
+                "Discharge",
+                "Shadow Claw",
+                "Dark Pulse"
             ]
         },
         {
@@ -9141,7 +9857,9 @@
                 "Surf",
                 "Mud Bomb",
                 "Snarl",
-                "Thunderbolt"
+                "Thunderbolt",
+                "Shadow Punch",
+                "Brave Bird"
             ]
         },
         {
@@ -9167,7 +9885,9 @@
                 "DragonBreth",
                 "Psychic",
                 "Thunderbolt",
-                "Hydro Pump"
+                "Hydro Pump",
+                "Seed Bomb",
+                "Energy Ball"
             ]
         },
         {
@@ -9192,7 +9912,9 @@
                 "Focus Blast",
                 "Night Slash",
                 "Fly",
-                "Fire Blast"
+                "Fire Blast",
+                "Psycho Cut",
+                "Drain Punch"
             ]
         },
         {
@@ -9217,7 +9939,9 @@
                 "Shadow Punch",
                 "Stone Edge",
                 "Outrage",
-                "Icicle Crash"
+                "Icicle Crash",
+                "Crunch",
+                "DragonBreth"
             ]
         },
         {
@@ -9242,7 +9966,9 @@
                 "Crunch",
                 "Body Slam",
                 "Flash Cannon",
-                "Silver Wind"
+                "Silver Wind",
+                "Psybeam",
+                "Earth Power"
             ]
         },
         {
@@ -9267,7 +9993,9 @@
                 "Hydro Pump",
                 "Seed Bomb",
                 "Aura Sphere",
-                "Psychic"
+                "Psychic",
+                "Icicle Crash",
+                "Metal Claw"
             ]
         },
         {
@@ -9292,7 +10020,9 @@
                 "Aqua Tail",
                 "Hydro Pump",
                 "Fly",
-                "Drain Punch"
+                "Drain Punch",
+                "Ice Punch",
+                "Air Slash"
             ]
         },
         {
@@ -9318,7 +10048,9 @@
                 "Psybeam",
                 "Thunderbolt",
                 "Energy Ball",
-                "Body Slam"
+                "Body Slam",
+                "Hydro Pump",
+                "Aqua Tail"
             ]
         },
         {
@@ -9344,7 +10076,9 @@
                 "Outrage",
                 "Rock Slide",
                 "ThunderPnch",
-                "Fire Blast"
+                "Fire Blast",
+                "Surf",
+                "Ice Beam"
             ]
         },
         {
@@ -9370,7 +10104,9 @@
                 "Focus Blast",
                 "Dragon Claw",
                 "Drain Punch",
-                "Night Slash"
+                "Night Slash",
+                "Hydro Pump",
+                "Surf"
             ]
         },
         {
@@ -9395,7 +10131,9 @@
                 "Thunder Fang",
                 "Snarl",
                 "Gunk Shot",
-                "Fire Blast"
+                "Fire Blast",
+                "Hydro Pump",
+                "Silver Wind"
             ]
         },
         {
@@ -9420,7 +10158,9 @@
                 "Hyper Voice",
                 "Zen Headbutt",
                 "Stone Edge",
-                "Thunderbolt"
+                "Thunderbolt",
+                "Hydro Pump",
+                "Flamethrower"
             ]
         },
         {
@@ -9445,7 +10185,9 @@
                 "Signal Beam",
                 "Sludge Wave",
                 "Crunch",
-                "Fire Blast"
+                "Fire Blast",
+                "Surf",
+                "Spirit Break"
             ]
         },
         {
@@ -9471,7 +10213,9 @@
                 "Outrage",
                 "Hyper Voice",
                 "Seed Bomb",
-                "Ice Beam"
+                "Ice Beam",
+                "AncientPwr",
+                "Surf"
             ]
         },
         {
@@ -9496,7 +10240,9 @@
                 "Drain Punch",
                 "Fire Punch",
                 "Mud Bomb",
-                "Fire Blast"
+                "Fire Blast",
+                "Aqua Tail",
+                "Focus Blast"
             ]
         },
         {
@@ -9521,7 +10267,9 @@
                 "Outrage",
                 "Moonblast",
                 "Focus Blast",
-                "Brave Bird"
+                "Brave Bird",
+                "Flare Blitz",
+                "Psybeam"
             ]
         },
         {
@@ -9546,7 +10294,9 @@
                 "Giga Drain",
                 "Silver Wind",
                 "Drill Run",
-                "Air Slash"
+                "Air Slash",
+                "Dragon Claw",
+                "Earth Power"
             ]
         },
         {
@@ -9572,7 +10322,9 @@
                 "Drain Punch",
                 "Night Slash",
                 "Icicle Crash",
-                "Blizzard"
+                "Blizzard",
+                "Air Slash",
+                "Fly"
             ]
         },
         {
@@ -9598,7 +10350,9 @@
                 "Earthquake",
                 "Energy Ball",
                 "Spirit Break",
-                "Twineedle"
+                "Twineedle",
+                "Zen Headbutt",
+                "Psychic"
             ]
         },
         {
@@ -9624,7 +10378,9 @@
                 "Shadow Claw",
                 "Signal Beam",
                 "Metal Claw",
-                "Ice Beam"
+                "Ice Beam",
+                "Psybeam",
+                "Psycho Cut"
             ]
         },
         {
@@ -9650,7 +10406,9 @@
                 "Icicle Crash",
                 "Mirror Shot",
                 "Drain Punch",
-                "Thunderbolt"
+                "Thunderbolt",
+                "Iron Head",
+                "Psychic"
             ]
         },
         {
@@ -9675,7 +10433,9 @@
                 "Blizzard",
                 "Ice Punch",
                 "Night Slash",
-                "Shadow Claw"
+                "Shadow Claw",
+                "Stone Edge",
+                "Poison Jab"
             ]
         },
         {
@@ -9700,7 +10460,9 @@
                 "Fly",
                 "Earthquake",
                 "Ominous Wind",
-                "Waterfall"
+                "Waterfall",
+                "Blizzard",
+                "Hyper Voice"
             ]
         },
         {
@@ -9725,7 +10487,9 @@
                 "Night Slash",
                 "Gunk Shot",
                 "Close Combat",
-                "Crunch"
+                "Crunch",
+                "Mirror Shot",
+                "Shadow Claw"
             ]
         },
         {
@@ -9751,7 +10515,9 @@
                 "Fire Blast",
                 "Psybeam",
                 "Drill Run",
-                "Fly"
+                "Fly",
+                "Zen Headbutt",
+                "Dragon Claw"
             ]
         },
         {
@@ -9777,7 +10543,9 @@
                 "Focus Blast",
                 "Flash Cannon",
                 "Iron Head",
-                "Twineedle"
+                "Twineedle",
+                "DragonBreth",
+                "Psycho Cut"
             ]
         },
         {
@@ -9802,7 +10570,9 @@
                 "Gunk Shot",
                 "Waterfall",
                 "Fire Punch",
-                "Metal Claw"
+                "Metal Claw",
+                "Ominous Wind",
+                "Aura Sphere"
             ]
         },
         {
@@ -9827,7 +10597,9 @@
                 "Drain Punch",
                 "Hurricane",
                 "Stone Edge",
-                "Shadow Punch"
+                "Shadow Punch",
+                "Mud Bomb",
+                "Flash Cannon"
             ]
         },
         {
@@ -9853,7 +10625,9 @@
                 "Play Rough",
                 "Ice Beam",
                 "Snarl",
-                "Psycho Cut"
+                "Psycho Cut",
+                "Outrage",
+                "Fly"
             ]
         },
         {
@@ -9879,7 +10653,9 @@
                 "Ice Beam",
                 "DazzlGleam",
                 "Sludge Bomb",
-                "Hurricane"
+                "Hurricane",
+                "Psybeam",
+                "Psychic"
             ]
         },
         {
@@ -9904,7 +10680,9 @@
                 "Ice Punch",
                 "Drain Punch",
                 "Fly",
-                "Night Slash"
+                "Night Slash",
+                "Psybeam",
+                "Flamethrower"
             ]
         },
         {
@@ -9929,7 +10707,9 @@
                 "Dark Pulse",
                 "Brave Bird",
                 "Flare Blitz",
-                "AncientPwr"
+                "AncientPwr",
+                "Psycho Cut",
+                "Aura Sphere"
             ]
         },
         {
@@ -9954,7 +10734,9 @@
                 "Iron Head",
                 "Discharge",
                 "Poison Jab",
-                "Bug Bite"
+                "Bug Bite",
+                "Psychic",
+                "Shadow Claw"
             ]
         },
         {
@@ -9979,7 +10761,9 @@
                 "Mirror Shot",
                 "Drill Run",
                 "DragonBreth",
-                "Hyper Voice"
+                "Hyper Voice",
+                "Psybeam",
+                "Double-Edge"
             ]
         }
     ]

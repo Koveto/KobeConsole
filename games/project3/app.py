@@ -166,5 +166,10 @@ class App:
         self.PKMN_EDIT_ev_hold_direction = 0
         self.PKMN_EDIT_ev_hold_start_time = 0
         self.PKMN_EDIT_ev_repeat_time = 0
+        self.PKMN_EDIT_info_mode = "ACTUAL"
+        self.PKMN_EDIT_stats_index = 0
+        self.PKMN_EDIT_move_index = 0
+        self.PKMN_EDIT_learnset_index = 0
+        self.PKMN_EDIT_selecting_move = False
 
 app = App()

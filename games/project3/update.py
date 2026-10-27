@@ -140,7 +140,28 @@ def update_PKMN_EDIT():
 
     if (
         app.PKMN_EDIT_mode
-        != "EVS"
+        != "STATS"
+    ):
+
+        reset_pkmn_edit_ev_hold()
+
+        return
+
+    is_level_selected = (
+        app.PKMN_EDIT_stats_index
+        == 2
+    )
+
+    is_ev_selected = (
+        3
+        <= app.PKMN_EDIT_stats_index
+        <= 8
+    )
+
+    if (
+        not is_level_selected
+        and
+        not is_ev_selected
     ):
 
         reset_pkmn_edit_ev_hold()
@@ -195,19 +216,34 @@ def update_PKMN_EDIT():
 
     if (
         held_time
-        >= initial_delay
-        and
+        < initial_delay
+        or
         since_last_repeat
-        >= repeat_delay
+        < repeat_delay
     ):
+
+        return
+
+    if is_level_selected:
+
+        adjust_pkmn_edit_level(
+            direction
+        )
+
+    elif is_ev_selected:
+
+        app.PKMN_EDIT_ev_index = (
+            app.PKMN_EDIT_stats_index
+            - 3
+        )
 
         adjust_pkmn_edit_ev(
             direction
         )
 
-        app.PKMN_EDIT_ev_repeat_time = (
-            current_time
-        )
+    app.PKMN_EDIT_ev_repeat_time = (
+        current_time
+    )
 
 def update_BATTLE_END():
     if (

@@ -42,11 +42,15 @@ def change_state(new_state):
         and
         app.state != KEYBOARD
     ):
-
         app.PKMN_EDIT_index = 0
         app.PKMN_EDIT_mode = "MAIN"
         app.PKMN_EDIT_ev_index = 0
+        app.PKMN_EDIT_stats_index = 0
+        app.PKMN_EDIT_move_index = 0
+        app.PKMN_EDIT_learnset_index = 0
+        app.PKMN_EDIT_selecting_move = False
         app.PKMN_EDIT_error = None
+        app.PKMN_EDIT_info_mode = "ACTUAL"
     if  (new_state == PKMN_VIEW):
         app.PKMN_VIEW_move_index = None
         app.PKMN_VIEW_mode = "STATS"

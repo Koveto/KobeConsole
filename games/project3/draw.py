@@ -109,6 +109,60 @@ def draw():
     elif app.state == PKMN_EDIT:
         draw_PKMN_EDIT()
 
+def draw_small_bar(
+    x,
+    y,
+    value,
+    max_value,
+    width=36,
+    height=6
+):
+
+    if max_value <= 0:
+
+        fill_width = 0
+
+    else:
+
+        fill_width = int(
+            value
+            / max_value
+            * width
+        )
+
+    fill_width = max(
+        0,
+        min(
+            width,
+            fill_width
+        )
+    )
+
+    pygame.draw.rect(
+        app.screen,
+        COLOR_BLACK,
+        (
+            x,
+            y,
+            width,
+            height
+        ),
+        1
+    )
+
+    if fill_width > 0:
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                x,
+                y,
+                fill_width,
+                height
+            )
+        )
+
 def draw_PKMN_EDIT():
 
     app.screen.fill(
@@ -132,50 +186,196 @@ def draw_PKMN_EDIT():
 
     if (
         app.PKMN_EDIT_mode
-        == "EVS"
+        == "MOVES"
     ):
-
-        ev_labels = [
-            "HP",
-            "ATK",
-            "DEF",
-            "SPA",
-            "SPD",
-            "SPE"
-        ]
-
-        ev_values = [
-            pokemon.hp_ev,
-            pokemon.attack_ev,
-            pokemon.defense_ev,
-            pokemon.special_attack_ev,
-            pokemon.special_defense_ev,
-            pokemon.speed_ev
-        ]
 
         app.font0.draw_text(
             app.screen,
-            "EDIT EVS",
+            "EDIT MOVES",
             10,
-            8
+            7
         )
 
-        for index, (
-            label,
-            value
-        ) in enumerate(
-            zip(
-                ev_labels,
-                ev_values
-            )
+        app.font0.draw_text(
+            app.screen,
+            pokemon.species_name,
+            145,
+            7
+        )
+
+        if (
+            app.PKMN_EDIT_selecting_move
         ):
 
-            y = (
-                30 + index * 17
+            learnset_size = len(
+                pokemon.learnset
+            )
+
+            if learnset_size == 0:
+
+                app.font0.draw_text(
+                    app.screen,
+                    "NO LEARNSET",
+                    10,
+                    40
+                )
+
+                return
+
+            app.font0.draw_text(
+                app.screen,
+                (
+                    "SLOT "
+                    f"{app.PKMN_EDIT_move_index + 1}"
+                ),
+                10,
+                24
+            )
+
+            visible_count = 8
+
+            visible_start = max(
+                0,
+                min(
+                    app.PKMN_EDIT_learnset_index - 3,
+                    max(
+                        0,
+                        learnset_size - visible_count
+                    )
+                )
+            )
+
+            visible_end = min(
+                learnset_size,
+                visible_start + visible_count
+            )
+
+            for row, learnset_index in enumerate(
+                range(
+                    visible_start,
+                    visible_end
+                )
+            ):
+
+                move = (
+                    pokemon.learnset[
+                        learnset_index
+                    ]
+                )
+
+                y = (
+                    40 + row * 14
+                )
+
+                if (
+                    app.PKMN_EDIT_learnset_index
+                    == learnset_index
+                ):
+
+                    pygame.draw.rect(
+                        app.screen,
+                        COLOR_BLACK,
+                        (
+                            7,
+                            y - 2,
+                            132,
+                            14
+                        ),
+                        1
+                    )
+
+                app.font0.draw_text(
+                    app.screen,
+                    move.name,
+                    10,
+                    y
+                )
+
+            selected_move = (
+                pokemon.learnset[
+                    app.PKMN_EDIT_learnset_index
+                ]
+            )
+
+            app.screen.blit(
+                get_type_icon(
+                    selected_move.type
+                ),
+                (
+                    160,
+                    40
+                )
+            )
+
+            app.font0.draw_text(
+                app.screen,
+                selected_move.category,
+                150,
+                62
+            )
+
+            app.font0.draw_text(
+                app.screen,
+                f"PWR {selected_move.power}",
+                150,
+                80
+            )
+
+            app.font0.draw_text(
+                app.screen,
+                f"ACC {selected_move.accuracy}",
+                150,
+                98
+            )
+
+            app.font0.draw_text(
+                app.screen,
+                (
+                    f"{app.PKMN_EDIT_learnset_index + 1}"
+                    f"/{learnset_size}"
+                ),
+                190,
+                115
             )
 
             if (
-                app.PKMN_EDIT_ev_index
+                app.PKMN_EDIT_error
+                is not None
+            ):
+
+                app.font0.draw_text(
+                    app.screen,
+                    app.PKMN_EDIT_error,
+                    140,
+                    116
+                )
+
+            app.font0.draw_text(
+                app.screen,
+                "CONFIRM: SET",
+                145,
+                132
+            )
+
+            app.font0.draw_text(
+                app.screen,
+                "CANCEL: BACK",
+                145,
+                146
+            )
+
+            return
+
+        for index, move in enumerate(
+            pokemon.moves
+        ):
+
+            y = (
+                30 + index * 24
+            )
+
+            if (
+                app.PKMN_EDIT_move_index
                 == index
             ):
 
@@ -185,34 +385,286 @@ def draw_PKMN_EDIT():
                     (
                         7,
                         y - 3,
-                        88,
-                        17
+                        145,
+                        18
                     ),
                     1
                 )
 
             app.font0.draw_text(
                 app.screen,
-                f"{label} {value}",
+                (
+                    f"{index + 1} "
+                    f"{move.name}"
+                ),
                 10,
                 y
             )
 
-            draw_bar(
-                65,
-                y + 3,
-                value,
-                252
+            app.screen.blit(
+                get_type_icon(
+                    move.type
+                ),
+                (
+                    155,
+                    y - 2
+                )
             )
 
-        ev_total = sum(
-            ev_values
+        if (
+            app.PKMN_EDIT_move_index
+            == 4
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    7,
+                    137,
+                    62,
+                    18
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            "BACK",
+            10,
+            140
+        )
+
+        return
+
+    stat_labels = [
+        "HP",
+        "ATK",
+        "DEF",
+        "SPA",
+        "SPD",
+        "SPE"
+    ]
+
+    nature_stat_names = [
+        None,
+        "atk",
+        "def",
+        "spatk",
+        "spdef",
+        "spe"
+    ]
+
+    if (
+        app.PKMN_EDIT_info_mode
+        == "ACTUAL"
+    ):
+
+        panel_title = "ACTUAL"
+
+        stat_values = [
+            pokemon.hp_max,
+            pokemon.attack,
+            pokemon.defense,
+            pokemon.special_attack,
+            pokemon.special_defense,
+            pokemon.speed
+        ]
+
+        stat_bar_max = 714
+
+    elif (
+        app.PKMN_EDIT_info_mode
+        == "BASE"
+    ):
+
+        panel_title = "BASE"
+
+        stat_values = [
+            pokemon.hp_base,
+            pokemon.attack_base,
+            pokemon.defense_base,
+            pokemon.special_attack_base,
+            pokemon.special_defense_base,
+            pokemon.speed_base
+        ]
+
+        stat_bar_max = 255
+
+    else:
+
+        panel_title = "EVS"
+
+        stat_values = [
+            pokemon.hp_ev,
+            pokemon.attack_ev,
+            pokemon.defense_ev,
+            pokemon.special_attack_ev,
+            pokemon.special_defense_ev,
+            pokemon.speed_ev
+        ]
+
+        stat_bar_max = 252
+
+    if (
+        app.PKMN_EDIT_mode
+        == "STATS"
+    ):
+
+        if (
+            app.PKMN_EDIT_stats_index
+            == 0
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    7,
+                    5,
+                    75,
+                    17
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            panel_title,
+            10,
+            8
+        )
+
+        if (
+            app.PKMN_EDIT_stats_index
+            == 1
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    7,
+                    23,
+                    140,
+                    17
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            f"NATURE {pokemon.nature.name}",
+            10,
+            26
+        )
+
+        if (
+            app.PKMN_EDIT_stats_index
+            == 2
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    7,
+                    41,
+                    85,
+                    17
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            f"LEVEL {pokemon.level}",
+            10,
+            44
+        )
+
+        for index, (
+            label,
+            value
+        ) in enumerate(
+            zip(
+                stat_labels,
+                stat_values
+            )
+        ):
+
+            y = (
+                63 + index * 13
+            )
+
+            nature_stat_name = (
+                nature_stat_names[
+                    index
+                ]
+            )
+
+            nature_symbol = ""
+
+            if (
+                nature_stat_name
+                is not None
+            ):
+
+                nature_symbol = (
+                    pokemon.nature_symbol(
+                        nature_stat_name
+                    )
+                )
+
+            if (
+                app.PKMN_EDIT_stats_index
+                == index + 3
+            ):
+
+                pygame.draw.rect(
+                    app.screen,
+                    COLOR_BLACK,
+                    (
+                        7,
+                        y - 2,
+                        145,
+                        14
+                    ),
+                    1
+                )
+
+            app.font0.draw_text(
+                app.screen,
+                (
+                    f"{label} "
+                    f"{value}"
+                    f"{nature_symbol}"
+                ),
+                10,
+                y
+            )
+
+            draw_small_bar(
+                72,
+                y + 4,
+                value,
+                stat_bar_max,
+                70
+            )
+
+        ev_total = (
+            pokemon.hp_ev
+            + pokemon.attack_ev
+            + pokemon.defense_ev
+            + pokemon.special_attack_ev
+            + pokemon.special_defense_ev
+            + pokemon.speed_ev
         )
 
         app.font0.draw_text(
             app.screen,
-            f"TOTAL {ev_total}/508",
-            130,
+            f"EV {ev_total}/508",
+            166,
             112
         )
 
@@ -224,101 +676,22 @@ def draw_PKMN_EDIT():
             app.font0.draw_text(
                 app.screen,
                 app.PKMN_EDIT_error,
-                100,
+                105,
                 132
             )
 
-        app.font0.draw_text(
-            app.screen,
-            "CONFIRM/BACK",
-            10,
-            145
-        )
-
-        return
-
-    boosted_stat = (
-        pokemon.nature.boosted_stat.upper()
-        if pokemon.nature.boosted_stat is not None
-        else "-"
-    )
-
-    reduced_stat = (
-        pokemon.nature.reduced_stat.upper()
-        if pokemon.nature.reduced_stat is not None
-        else "-"
-    )
-
-    fields = [
-        (
-            pokemon.species_name,
-            10,
-            8,
-            115
-        ),
-        (
-            f"NAME {pokemon.nickname}",
-            10,
-            26,
-            145
-        ),
-        (
-            (
-                "SHINY? YES"
-                if pokemon.is_shiny
-                else "SHINY? NO"
-            ),
-            10,
-            44,
-            90
-        ),
-        (
-            f"NATURE {pokemon.nature.name}",
-            10,
-            91,
-            140
-        ),
-        (
-            f"LEVEL {pokemon.level}",
-            10,
-            109,
-            85
-        ),
-        (
-            "EVS",
-            10,
-            127,
-            45
-        ),
-        (
-            "SAVE/BACK",
-            100,
-            145,
-            80
-        )
-    ]
-
-    for index, (
-        text,
-        x,
-        y,
-        width
-    ) in enumerate(
-        fields
-    ):
-
         if (
-            app.PKMN_EDIT_index
-            == index
+            app.PKMN_EDIT_stats_index
+            == 9
         ):
 
             pygame.draw.rect(
                 app.screen,
                 COLOR_BLACK,
                 (
-                    x - 3,
-                    y - 3,
-                    width,
+                    7,
+                    141,
+                    62,
                     17
                 ),
                 1
@@ -326,10 +699,46 @@ def draw_PKMN_EDIT():
 
         app.font0.draw_text(
             app.screen,
-            text,
-            x,
-            y
+            "BACK",
+            10,
+            144
         )
+
+        app.screen.blit(
+            get_display_sprite(
+                pokemon
+            ),
+            (
+                166,
+                0
+            )
+        )
+
+        return
+
+    if (
+        app.PKMN_EDIT_index
+        == 0
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                7,
+                5,
+                115,
+                17
+            ),
+            1
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        pokemon.species_name,
+        10,
+        8
+    )
 
     for i, pokemon_type in enumerate(
         pokemon.species.types
@@ -341,9 +750,61 @@ def draw_PKMN_EDIT():
             ),
             (
                 10 + i * 32,
-                63
+                26
             )
         )
+
+    if (
+        app.PKMN_EDIT_index
+        == 1
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                7,
+                45,
+                145,
+                17
+            ),
+            1
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        f"NAME {pokemon.nickname}",
+        10,
+        48
+    )
+
+    if (
+        app.PKMN_EDIT_index
+        == 2
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                7,
+                63,
+                90,
+                17
+            ),
+            1
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        (
+            "SHINY? YES"
+            if pokemon.is_shiny
+            else "SHINY? NO"
+        ),
+        10,
+        66
+    )
 
     app.screen.blit(
         get_display_sprite(
@@ -355,15 +816,138 @@ def draw_PKMN_EDIT():
         )
     )
 
+    moves_x = 7
+    moves_y = 82
+    moves_width = 98
+    moves_height = 76
+
+    stats_x = 109
+    stats_y = 72
+    stats_width = 128
+    stats_height = 86
+
+    if (
+        app.PKMN_EDIT_index
+        == 3
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                moves_x,
+                moves_y,
+                moves_width,
+                moves_height
+            ),
+            1
+        )
+
+    if (
+        app.PKMN_EDIT_index
+        == 4
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                stats_x,
+                stats_y,
+                stats_width,
+                stats_height
+            ),
+            1
+        )
+
     app.font0.draw_text(
         app.screen,
-        (
-            f"+{boosted_stat} "
-            f"-{reduced_stat}"
-        ),
-        150,
-        91
+        "MOVES",
+        11,
+        85
     )
+
+    for index, move in enumerate(
+        pokemon.moves
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            move.name,
+            11,
+            102 + index * 13
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        panel_title,
+        113,
+        75
+    )
+
+    main_stat_y_positions = [
+        88,
+        99,
+        110,
+        121,
+        132,
+        143
+    ]
+
+    for index, (
+        label,
+        value
+    ) in enumerate(
+        zip(
+            stat_labels,
+            stat_values
+        )
+    ):
+
+        y = (
+            main_stat_y_positions[
+                index
+            ]
+        )
+
+        nature_stat_name = (
+            nature_stat_names[
+                index
+            ]
+        )
+
+        nature_symbol = ""
+
+        if (
+            nature_stat_name
+            is not None
+        ):
+
+            nature_symbol = (
+                pokemon.nature_symbol(
+                    nature_stat_name
+                )
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            (
+                f"{label} "
+                f"{value}"
+                f"{nature_symbol}"
+            ),
+            113,
+            y
+        )
+
+        draw_small_bar(
+            174,
+            y + 3,
+            value,
+            stat_bar_max,
+            55,
+            6
+        )
 
 def draw_DAMAGE_CALCULATOR():
 

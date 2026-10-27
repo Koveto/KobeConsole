@@ -41,6 +41,102 @@ def handle_event(event):
     elif app.state == PKMN_EDIT:
         handle_event_PKMN_EDIT(event)
 
+def cycle_pkmn_edit_info_mode():
+
+    if (
+        app.PKMN_EDIT_info_mode
+        == "ACTUAL"
+    ):
+        app.PKMN_EDIT_info_mode = (
+            "BASE"
+        )
+
+    elif (
+        app.PKMN_EDIT_info_mode
+        == "BASE"
+    ):
+        app.PKMN_EDIT_info_mode = (
+            "EVS"
+        )
+
+    else:
+        app.PKMN_EDIT_info_mode = (
+            "ACTUAL"
+        )
+
+    app.PKMN_EDIT_error = None
+
+def adjust_pkmn_edit_level(
+    direction
+):
+
+    pokemon = (
+        app.PKMN_EDIT_pokemon
+    )
+
+    if pokemon is None:
+        return
+
+    new_level = max(
+        Pokemon.MIN_LEVEL,
+        min(
+            Pokemon.MAX_LEVEL,
+            pokemon.level + direction
+        )
+    )
+
+    if new_level == pokemon.level:
+        return
+
+    pokemon.set_level(
+        new_level
+    )
+
+    save_pkmn_edit_pokemon()
+
+def change_pkmn_edit_nature(
+    direction
+):
+
+    pokemon = (
+        app.PKMN_EDIT_pokemon
+    )
+
+    if pokemon is None:
+        return
+
+    natures = list(
+        NATURES.values()
+    )
+
+    nature_index = next(
+        index
+        for index, nature
+        in enumerate(
+            natures
+        )
+        if nature.name
+        == pokemon.nature.name
+    )
+
+    nature_index = (
+        nature_index + direction
+    ) % len(
+        natures
+    )
+
+    pokemon.nature = (
+        natures[
+            nature_index
+        ]
+    )
+
+    pokemon.set_level(
+        pokemon.level
+    )
+
+    save_pkmn_edit_pokemon()
+
 def adjust_pkmn_edit_ev(
     direction
 ):
@@ -340,70 +436,353 @@ def handle_event_PKMN_EDIT(
 
     if (
         app.PKMN_EDIT_mode
-        == "EVS"
+        == "MOVES"
     ):
 
-        evs = get_pkmn_edit_evs(
-            pokemon
-        )
+        if (
+            app.PKMN_EDIT_selecting_move
+        ):
+
+            learnset_size = len(
+                pokemon.learnset
+            )
+
+            if learnset_size == 0:
+
+                app.PKMN_EDIT_selecting_move = (
+                    False
+                )
+
+                return
+
+            if is_up(event):
+
+                app.PKMN_EDIT_learnset_index = max(
+                    0,
+                    app.PKMN_EDIT_learnset_index - 1
+                )
+                app.PKMN_EDIT_error = None
+
+            elif is_down(event):
+
+                app.PKMN_EDIT_learnset_index = min(
+                    learnset_size - 1,
+                    app.PKMN_EDIT_learnset_index + 1
+                )
+                app.PKMN_EDIT_error = None
+
+            elif is_confirm(event):
+
+                selected_move = (
+                    pokemon.learnset[
+                        app.PKMN_EDIT_learnset_index
+                    ]
+                )
+
+                move_is_duplicate = any(
+
+                    index
+                    != app.PKMN_EDIT_move_index
+
+                    and
+
+                    known_move.name
+                    == selected_move.name
+
+                    for index, known_move
+                    in enumerate(
+                        pokemon.moves
+                    )
+
+                )
+
+                if move_is_duplicate:
+
+                    app.PKMN_EDIT_error = (
+                        "MOVE ALREADY KNOWN"
+                    )
+
+                    return
+
+                pokemon.set_move(
+                    app.PKMN_EDIT_move_index,
+                    selected_move
+                )
+
+                save_pkmn_edit_pokemon()
+
+                app.PKMN_EDIT_error = None
+
+                app.PKMN_EDIT_selecting_move = (
+                    False
+                )
+
+            elif is_cancel(event):
+
+                app.PKMN_EDIT_selecting_move = (
+                    False
+                )
+                app.PKMN_EDIT_error = None
+
+            return
 
         if is_up(event):
 
-            app.PKMN_EDIT_ev_index = max(
+            app.PKMN_EDIT_move_index = max(
                 0,
-                app.PKMN_EDIT_ev_index - 1
+                app.PKMN_EDIT_move_index - 1
+            )
+
+        elif is_down(event):
+
+            app.PKMN_EDIT_move_index = min(
+                4,
+                app.PKMN_EDIT_move_index + 1
+            )
+
+        elif is_confirm(event):
+
+            if (
+                app.PKMN_EDIT_move_index
+                < 4
+            ):
+
+                if len(
+                    pokemon.learnset
+                ) == 0:
+
+                    return
+
+                current_move = (
+                    pokemon.moves[
+                        app.PKMN_EDIT_move_index
+                    ]
+                )
+
+                app.PKMN_EDIT_learnset_index = 0
+
+                for index, move in enumerate(
+                    pokemon.learnset
+                ):
+
+                    if (
+                        move.name
+                        == current_move.name
+                    ):
+
+                        app.PKMN_EDIT_learnset_index = (
+                            index
+                        )
+
+                        break
+
+                app.PKMN_EDIT_selecting_move = (
+                    True
+                )
+
+            else:
+
+                app.PKMN_EDIT_mode = (
+                    "MAIN"
+                )
+
+                app.PKMN_EDIT_index = 3
+
+        elif is_cancel(event):
+
+            app.PKMN_EDIT_mode = (
+                "MAIN"
+            )
+
+            app.PKMN_EDIT_index = 3
+
+        return
+
+    if (
+        app.PKMN_EDIT_mode
+        == "STATS"
+    ):
+
+        if is_cx(event):
+
+            cycle_pkmn_edit_info_mode()
+
+            return
+
+        if is_up(event):
+
+            app.PKMN_EDIT_stats_index = max(
+                0,
+                app.PKMN_EDIT_stats_index - 1
             )
 
             app.PKMN_EDIT_error = None
 
         elif is_down(event):
 
-            app.PKMN_EDIT_ev_index = min(
-                5,
-                app.PKMN_EDIT_ev_index + 1
+            app.PKMN_EDIT_stats_index = min(
+                9,
+                app.PKMN_EDIT_stats_index + 1
             )
 
             app.PKMN_EDIT_error = None
 
         elif is_left(event):
 
-            adjust_pkmn_edit_ev(
-                -1
-            )
+            if (
+                app.PKMN_EDIT_stats_index
+                == 0
+            ):
+
+                cycle_pkmn_edit_info_mode()
+
+            elif (
+                app.PKMN_EDIT_stats_index
+                == 1
+            ):
+
+                change_pkmn_edit_nature(
+                    -1
+                )
+
+            elif (
+                app.PKMN_EDIT_stats_index
+                == 2
+            ):
+
+                adjust_pkmn_edit_level(
+                    -1
+                )
+
+            elif (
+                3
+                <= app.PKMN_EDIT_stats_index
+                <= 8
+            ):
+
+                app.PKMN_EDIT_ev_index = (
+                    app.PKMN_EDIT_stats_index
+                    - 3
+                )
+
+                adjust_pkmn_edit_ev(
+                    -1
+                )
 
         elif is_right(event):
 
-            adjust_pkmn_edit_ev(
-                1
-            )
+            if (
+                app.PKMN_EDIT_stats_index
+                == 0
+            ):
 
-        elif (
-            is_confirm(event)
-            or
-            is_cancel(event)
-        ):
+                cycle_pkmn_edit_info_mode()
+
+            elif (
+                app.PKMN_EDIT_stats_index
+                == 1
+            ):
+
+                change_pkmn_edit_nature(
+                    1
+                )
+
+            elif (
+                app.PKMN_EDIT_stats_index
+                == 2
+            ):
+
+                adjust_pkmn_edit_level(
+                    1
+                )
+
+            elif (
+                3
+                <= app.PKMN_EDIT_stats_index
+                <= 8
+            ):
+
+                app.PKMN_EDIT_ev_index = (
+                    app.PKMN_EDIT_stats_index
+                    - 3
+                )
+
+                adjust_pkmn_edit_ev(
+                    1
+                )
+
+        elif is_confirm(event):
+
+            if (
+                app.PKMN_EDIT_stats_index
+                == 0
+            ):
+
+                cycle_pkmn_edit_info_mode()
+
+            elif (
+                app.PKMN_EDIT_stats_index
+                == 9
+            ):
+
+                app.PKMN_EDIT_mode = (
+                    "MAIN"
+                )
+
+                app.PKMN_EDIT_index = 4
+                app.PKMN_EDIT_error = None
+
+        elif is_cancel(event):
 
             app.PKMN_EDIT_mode = (
                 "MAIN"
             )
 
+            app.PKMN_EDIT_index = 4
             app.PKMN_EDIT_error = None
+
+        return
+
+    if is_cx(event):
+
+        cycle_pkmn_edit_info_mode()
 
         return
 
     if is_up(event):
 
-        app.PKMN_EDIT_index = max(
-            0,
-            app.PKMN_EDIT_index - 1
-        )
+        if (
+            app.PKMN_EDIT_index
+            in (
+                3,
+                4
+            )
+        ):
+
+            app.PKMN_EDIT_index = 2
+
+        else:
+
+            app.PKMN_EDIT_index = max(
+                0,
+                app.PKMN_EDIT_index - 1
+            )
 
     elif is_down(event):
 
-        app.PKMN_EDIT_index = min(
-            6,
-            app.PKMN_EDIT_index + 1
-        )
+        if (
+            app.PKMN_EDIT_index
+            < 2
+        ):
+
+            app.PKMN_EDIT_index += 1
+
+        elif (
+            app.PKMN_EDIT_index
+            == 2
+        ):
+
+            app.PKMN_EDIT_index = 3
 
     elif is_left(event):
 
@@ -420,54 +799,10 @@ def handle_event_PKMN_EDIT(
 
         elif (
             app.PKMN_EDIT_index
-            == 3
-        ):
-
-            natures = list(
-                NATURES.values()
-            )
-
-            nature_index = next(
-                index
-                for index, nature
-                in enumerate(
-                    natures
-                )
-                if nature.name
-                == pokemon.nature.name
-            )
-
-            nature_index = (
-                nature_index - 1
-            ) % len(
-                natures
-            )
-
-            pokemon.nature = (
-                natures[
-                    nature_index
-                ]
-            )
-
-            pokemon.set_level(
-                pokemon.level
-            )
-
-            save_pkmn_edit_pokemon()
-
-        elif (
-            app.PKMN_EDIT_index
             == 4
         ):
 
-            pokemon.set_level(
-                max(
-                    Pokemon.MIN_LEVEL,
-                    pokemon.level - 1
-                )
-            )
-
-            save_pkmn_edit_pokemon()
+            app.PKMN_EDIT_index = 3
 
     elif is_right(event):
 
@@ -487,51 +822,7 @@ def handle_event_PKMN_EDIT(
             == 3
         ):
 
-            natures = list(
-                NATURES.values()
-            )
-
-            nature_index = next(
-                index
-                for index, nature
-                in enumerate(
-                    natures
-                )
-                if nature.name
-                == pokemon.nature.name
-            )
-
-            nature_index = (
-                nature_index + 1
-            ) % len(
-                natures
-            )
-
-            pokemon.nature = (
-                natures[
-                    nature_index
-                ]
-            )
-
-            pokemon.set_level(
-                pokemon.level
-            )
-
-            save_pkmn_edit_pokemon()
-
-        elif (
-            app.PKMN_EDIT_index
-            == 4
-        ):
-
-            pokemon.set_level(
-                min(
-                    Pokemon.MAX_LEVEL,
-                    pokemon.level + 1
-                )
-            )
-
-            save_pkmn_edit_pokemon()
+            app.PKMN_EDIT_index = 4
 
     elif is_confirm(event):
 
@@ -579,26 +870,28 @@ def handle_event_PKMN_EDIT(
 
         elif (
             app.PKMN_EDIT_index
-            == 5
+            == 3
         ):
 
             app.PKMN_EDIT_mode = (
-                "EVS"
+                "MOVES"
             )
 
-            app.PKMN_EDIT_ev_index = 0
-            app.PKMN_EDIT_error = None
+            app.PKMN_EDIT_move_index = 0
+            app.PKMN_EDIT_learnset_index = 0
+            app.PKMN_EDIT_selecting_move = False
 
         elif (
             app.PKMN_EDIT_index
-            == 6
+            == 4
         ):
 
-            save_pkmn_edit_pokemon()
-
-            change_state(
-                app.PKMN_EDIT_return_state
+            app.PKMN_EDIT_mode = (
+                "STATS"
             )
+
+            app.PKMN_EDIT_stats_index = 0
+            app.PKMN_EDIT_error = None
 
     elif is_cancel(event):
 

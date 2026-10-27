@@ -621,6 +621,7 @@ class Pokemon:
         if not (
             0 <= moveslot < 4
         ):
+
             raise ValueError(
                 "moveslot must be 0-3"
             )
@@ -629,14 +630,31 @@ class Pokemon:
             move,
             str
         ):
+
             move = get_move(
                 move
             )
 
         if move is None:
+
             raise ValueError(
                 "Invalid move"
             )
+
+        for index, known_move in enumerate(
+            self.moves
+        ):
+
+            if (
+                index != moveslot
+                and
+                known_move.name == move.name
+            ):
+
+                raise ValueError(
+                    "Pokemon cannot know "
+                    "the same move twice"
+                )
 
         self.moves[
             moveslot
