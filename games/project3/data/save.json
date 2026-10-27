@@ -1000,11 +1000,11 @@
                     "front_sprite_number": 0,
                     "back_sprite_number": 0,
                     "evs": [
-                        252,
+                        192,
                         0,
                         0,
                         0,
-                        0,
+                        4,
                         252
                     ],
                     "ivs": [
@@ -1084,7 +1084,7 @@
                     "moves": [
                         "Hydro Pump",
                         "Waterfall",
-                        "Waterfall",
+                        "Signal Beam",
                         "Aqua Tail"
                     ],
                     "status": null

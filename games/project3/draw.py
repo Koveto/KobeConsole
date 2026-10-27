@@ -343,11 +343,22 @@ def draw_PKMN_EDIT():
                 is not None
             ):
 
+                pygame.draw.rect(
+                    app.screen,
+                    COLOR_WHITE,
+                    (
+                        102,
+                        112,
+                        145,
+                        17
+                    )
+                )
+
                 app.font0.draw_text(
                     app.screen,
                     app.PKMN_EDIT_error,
-                    140,
-                    116
+                    105,
+                    115
                 )
 
             app.font0.draw_text(
@@ -673,11 +684,22 @@ def draw_PKMN_EDIT():
             is not None
         ):
 
+            pygame.draw.rect(
+                app.screen,
+                COLOR_WHITE,
+                (
+                    118,
+                    139,
+                    130,
+                    18
+                )
+            )
+
             app.font0.draw_text(
                 app.screen,
                 app.PKMN_EDIT_error,
-                105,
-                132
+                121,
+                142
             )
 
         if (
