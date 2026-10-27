@@ -117,6 +117,7 @@ class App:
         self.KEYBOARD_mode = "PLAYER_NAME"
         self.KEYBOARD_return_state = None
         self.KEYBOARD_team_index = None
+        self.KEYBOARD_pokemon = None
 
         self.OPTIONS_MUSIC_index = 0
         self.OPTIONS_MUSIC_scroll = 0
@@ -159,5 +160,11 @@ class App:
         self.PKMN_EDIT_return_state = None
         self.PKMN_EDIT_team_index = None
         self.PKMN_EDIT_pokemon_index = None
+        self.PKMN_EDIT_mode = "MAIN"
+        self.PKMN_EDIT_ev_index = 0
+        self.PKMN_EDIT_error = None
+        self.PKMN_EDIT_ev_hold_direction = 0
+        self.PKMN_EDIT_ev_hold_start_time = 0
+        self.PKMN_EDIT_ev_repeat_time = 0
 
 app = App()

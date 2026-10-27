@@ -26,6 +26,188 @@ def update():
         update_TEAM_SELECT()
     elif app.state == BATTLE_END:
         update_BATTLE_END()
+    elif app.state == PKMN_EDIT:
+        update_PKMN_EDIT()
+
+def get_pkmn_edit_ev_hold_direction():
+
+    keys = pygame.key.get_pressed()
+
+    if keys[
+        pygame.K_LEFT
+    ]:
+
+        return -1
+
+    if keys[
+        pygame.K_RIGHT
+    ]:
+
+        return 1
+
+    if (
+        pygame.joystick.get_count()
+        == 0
+    ):
+
+        return 0
+
+    joystick = (
+        pygame.joystick.Joystick(
+            0
+        )
+    )
+
+    if not joystick.get_init():
+
+        joystick.init()
+
+    if (
+        joystick.get_numaxes()
+        > 0
+    ):
+
+        horizontal_axis = (
+            joystick.get_axis(
+                0
+            )
+        )
+
+        if horizontal_axis < -0.8:
+
+            return -1
+
+        if horizontal_axis > 0.8:
+
+            return 1
+
+    if IS_WINDOWS:
+
+        if (
+            joystick.get_numbuttons()
+            > CONTROLLER_DPAD_LEFT
+            and
+            joystick.get_button(
+                CONTROLLER_DPAD_LEFT
+            )
+        ):
+
+            return -1
+
+        if (
+            joystick.get_numbuttons()
+            > CONTROLLER_DPAD_RIGHT
+            and
+            joystick.get_button(
+                CONTROLLER_DPAD_RIGHT
+            )
+        ):
+
+            return 1
+
+    elif IS_LINUX:
+
+        if (
+            joystick.get_numhats()
+            > 0
+        ):
+
+            hat_x, hat_y = (
+                joystick.get_hat(
+                    0
+                )
+            )
+
+            if hat_x < 0:
+
+                return -1
+
+            if hat_x > 0:
+
+                return 1
+
+    return 0
+
+
+def reset_pkmn_edit_ev_hold():
+
+    app.PKMN_EDIT_ev_hold_direction = 0
+    app.PKMN_EDIT_ev_hold_start_time = 0
+    app.PKMN_EDIT_ev_repeat_time = 0
+
+
+def update_PKMN_EDIT():
+
+    if (
+        app.PKMN_EDIT_mode
+        != "EVS"
+    ):
+
+        reset_pkmn_edit_ev_hold()
+
+        return
+
+    direction = (
+        get_pkmn_edit_ev_hold_direction()
+    )
+
+    if direction == 0:
+
+        reset_pkmn_edit_ev_hold()
+
+        return
+
+    current_time = (
+        pygame.time.get_ticks()
+    )
+
+    if (
+        direction
+        != app.PKMN_EDIT_ev_hold_direction
+    ):
+
+        app.PKMN_EDIT_ev_hold_direction = (
+            direction
+        )
+
+        app.PKMN_EDIT_ev_hold_start_time = (
+            current_time
+        )
+
+        app.PKMN_EDIT_ev_repeat_time = (
+            current_time
+        )
+
+        return
+
+    initial_delay = 350
+    repeat_delay = 70
+
+    held_time = (
+        current_time
+        - app.PKMN_EDIT_ev_hold_start_time
+    )
+
+    since_last_repeat = (
+        current_time
+        - app.PKMN_EDIT_ev_repeat_time
+    )
+
+    if (
+        held_time
+        >= initial_delay
+        and
+        since_last_repeat
+        >= repeat_delay
+    ):
+
+        adjust_pkmn_edit_ev(
+            direction
+        )
+
+        app.PKMN_EDIT_ev_repeat_time = (
+            current_time
+        )
 
 def update_BATTLE_END():
     if (

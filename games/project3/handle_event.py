@@ -41,6 +41,224 @@ def handle_event(event):
     elif app.state == PKMN_EDIT:
         handle_event_PKMN_EDIT(event)
 
+def adjust_pkmn_edit_ev(
+    direction
+):
+
+    pokemon = (
+        app.PKMN_EDIT_pokemon
+    )
+
+    if pokemon is None:
+        return
+
+    evs = get_pkmn_edit_evs(
+        pokemon
+    )
+
+    ev_index = (
+        app.PKMN_EDIT_ev_index
+    )
+
+    if direction < 0:
+
+        new_value = max(
+            0,
+            evs[ev_index] - 4
+        )
+
+        if (
+            new_value
+            == evs[ev_index]
+        ):
+
+            app.PKMN_EDIT_error = (
+                "STAT EV MIN 0"
+            )
+
+            return
+
+        evs[ev_index] = (
+            new_value
+        )
+
+        app.PKMN_EDIT_error = None
+
+        set_pkmn_edit_evs(
+            pokemon,
+            evs
+        )
+
+        return
+
+    if direction > 0:
+
+        current_total = sum(
+            evs
+        )
+
+        available_evs = (
+            508 - current_total
+        )
+
+        increase = min(
+            4,
+            252 - evs[ev_index],
+            available_evs
+        )
+
+        if increase <= 0:
+
+            if (
+                evs[ev_index]
+                >= 252
+            ):
+
+                app.PKMN_EDIT_error = (
+                    "STAT EV MAX 252"
+                )
+
+            else:
+
+                app.PKMN_EDIT_error = (
+                    "TOTAL EV MAX 508"
+                )
+
+            return
+
+        evs[ev_index] += (
+            increase
+        )
+
+        app.PKMN_EDIT_error = None
+
+        set_pkmn_edit_evs(
+            pokemon,
+            evs
+        )
+
+
+def get_pkmn_edit_evs(
+    pokemon
+):
+
+    return [
+        pokemon.hp_ev,
+        pokemon.attack_ev,
+        pokemon.defense_ev,
+        pokemon.special_attack_ev,
+        pokemon.special_defense_ev,
+        pokemon.speed_ev
+    ]
+
+
+def set_pkmn_edit_evs(
+    pokemon,
+    evs
+):
+
+    pokemon.hp_ev = evs[0]
+    pokemon.attack_ev = evs[1]
+    pokemon.defense_ev = evs[2]
+    pokemon.special_attack_ev = evs[3]
+    pokemon.special_defense_ev = evs[4]
+    pokemon.speed_ev = evs[5]
+
+    pokemon.set_level(
+        pokemon.level
+    )
+
+    save_pkmn_edit_pokemon()
+
+def save_pkmn_edit_pokemon():
+
+    pokemon = (
+        app.PKMN_EDIT_pokemon
+    )
+
+    if pokemon is None:
+
+        return
+
+    if (
+        app.PKMN_EDIT_source
+        == "TEAMBUILDER"
+    ):
+
+        team_index = (
+            app.PKMN_EDIT_team_index
+        )
+
+        pokemon_index = (
+            app.PKMN_EDIT_pokemon_index
+        )
+
+        save_data = load_save()
+
+        if (
+            team_index is not None
+            and
+            pokemon_index is not None
+            and
+            0
+            <= team_index
+            < len(
+                save_data["teams"]
+            )
+            and
+            0
+            <= pokemon_index
+            < len(
+                save_data["teams"][
+                    team_index
+                ]["pokemon"]
+            )
+        ):
+
+            save_data["teams"][
+                team_index
+            ]["pokemon"][
+                pokemon_index
+            ] = (
+                pokemon.to_dict()
+            )
+
+            save_save(
+                save_data
+            )
+
+    elif (
+        app.PKMN_EDIT_source
+        == "DAMAGE_CALCULATOR_ATTACKER"
+    ):
+
+        app.DAMAGE_CALCULATOR_attacker = (
+            Pokemon.from_pokemon(
+                pokemon
+            )
+        )
+
+        save_damage_calculator(
+            app.DAMAGE_CALCULATOR_attacker,
+            app.DAMAGE_CALCULATOR_defender
+        )
+
+    elif (
+        app.PKMN_EDIT_source
+        == "DAMAGE_CALCULATOR_DEFENDER"
+    ):
+
+        app.DAMAGE_CALCULATOR_defender = (
+            Pokemon.from_pokemon(
+                pokemon
+            )
+        )
+
+        save_damage_calculator(
+            app.DAMAGE_CALCULATOR_attacker,
+            app.DAMAGE_CALCULATOR_defender
+        )
+
 def handle_team_select_pokemon_navigation(
     event
 ):
@@ -106,7 +324,285 @@ def handle_event_PKMN_EDIT(
     event
 ):
 
-    if is_cancel(event):
+    pokemon = (
+        app.PKMN_EDIT_pokemon
+    )
+
+    if pokemon is None:
+
+        if is_cancel(event):
+
+            change_state(
+                app.PKMN_EDIT_return_state
+            )
+
+        return
+
+    if (
+        app.PKMN_EDIT_mode
+        == "EVS"
+    ):
+
+        evs = get_pkmn_edit_evs(
+            pokemon
+        )
+
+        if is_up(event):
+
+            app.PKMN_EDIT_ev_index = max(
+                0,
+                app.PKMN_EDIT_ev_index - 1
+            )
+
+            app.PKMN_EDIT_error = None
+
+        elif is_down(event):
+
+            app.PKMN_EDIT_ev_index = min(
+                5,
+                app.PKMN_EDIT_ev_index + 1
+            )
+
+            app.PKMN_EDIT_error = None
+
+        elif is_left(event):
+
+            adjust_pkmn_edit_ev(
+                -1
+            )
+
+        elif is_right(event):
+
+            adjust_pkmn_edit_ev(
+                1
+            )
+
+        elif (
+            is_confirm(event)
+            or
+            is_cancel(event)
+        ):
+
+            app.PKMN_EDIT_mode = (
+                "MAIN"
+            )
+
+            app.PKMN_EDIT_error = None
+
+        return
+
+    if is_up(event):
+
+        app.PKMN_EDIT_index = max(
+            0,
+            app.PKMN_EDIT_index - 1
+        )
+
+    elif is_down(event):
+
+        app.PKMN_EDIT_index = min(
+            6,
+            app.PKMN_EDIT_index + 1
+        )
+
+    elif is_left(event):
+
+        if (
+            app.PKMN_EDIT_index
+            == 2
+        ):
+
+            pokemon.set_shiny(
+                not pokemon.is_shiny
+            )
+
+            save_pkmn_edit_pokemon()
+
+        elif (
+            app.PKMN_EDIT_index
+            == 3
+        ):
+
+            natures = list(
+                NATURES.values()
+            )
+
+            nature_index = next(
+                index
+                for index, nature
+                in enumerate(
+                    natures
+                )
+                if nature.name
+                == pokemon.nature.name
+            )
+
+            nature_index = (
+                nature_index - 1
+            ) % len(
+                natures
+            )
+
+            pokemon.nature = (
+                natures[
+                    nature_index
+                ]
+            )
+
+            pokemon.set_level(
+                pokemon.level
+            )
+
+            save_pkmn_edit_pokemon()
+
+        elif (
+            app.PKMN_EDIT_index
+            == 4
+        ):
+
+            pokemon.set_level(
+                max(
+                    Pokemon.MIN_LEVEL,
+                    pokemon.level - 1
+                )
+            )
+
+            save_pkmn_edit_pokemon()
+
+    elif is_right(event):
+
+        if (
+            app.PKMN_EDIT_index
+            == 2
+        ):
+
+            pokemon.set_shiny(
+                not pokemon.is_shiny
+            )
+
+            save_pkmn_edit_pokemon()
+
+        elif (
+            app.PKMN_EDIT_index
+            == 3
+        ):
+
+            natures = list(
+                NATURES.values()
+            )
+
+            nature_index = next(
+                index
+                for index, nature
+                in enumerate(
+                    natures
+                )
+                if nature.name
+                == pokemon.nature.name
+            )
+
+            nature_index = (
+                nature_index + 1
+            ) % len(
+                natures
+            )
+
+            pokemon.nature = (
+                natures[
+                    nature_index
+                ]
+            )
+
+            pokemon.set_level(
+                pokemon.level
+            )
+
+            save_pkmn_edit_pokemon()
+
+        elif (
+            app.PKMN_EDIT_index
+            == 4
+        ):
+
+            pokemon.set_level(
+                min(
+                    Pokemon.MAX_LEVEL,
+                    pokemon.level + 1
+                )
+            )
+
+            save_pkmn_edit_pokemon()
+
+    elif is_confirm(event):
+
+        if (
+            app.PKMN_EDIT_index
+            == 0
+        ):
+
+            # SPECIES_EDIT will open here.
+            pass
+
+        elif (
+            app.PKMN_EDIT_index
+            == 1
+        ):
+
+            app.KEYBOARD_mode = (
+                "POKEMON_NICKNAME"
+            )
+
+            app.KEYBOARD_return_state = (
+                PKMN_EDIT
+            )
+
+            app.KEYBOARD_team_index = None
+
+            app.KEYBOARD_pokemon = (
+                pokemon
+            )
+
+            change_state(
+                KEYBOARD
+            )
+
+        elif (
+            app.PKMN_EDIT_index
+            == 2
+        ):
+
+            pokemon.set_shiny(
+                not pokemon.is_shiny
+            )
+
+            save_pkmn_edit_pokemon()
+
+        elif (
+            app.PKMN_EDIT_index
+            == 5
+        ):
+
+            app.PKMN_EDIT_mode = (
+                "EVS"
+            )
+
+            app.PKMN_EDIT_ev_index = 0
+            app.PKMN_EDIT_error = None
+
+        elif (
+            app.PKMN_EDIT_index
+            == 6
+        ):
+
+            save_pkmn_edit_pokemon()
+
+            change_state(
+                app.PKMN_EDIT_return_state
+            )
+
+    elif is_cancel(event):
+
+        save_pkmn_edit_pokemon()
 
         change_state(
             app.PKMN_EDIT_return_state
@@ -253,6 +749,37 @@ def complete_keyboard_entry():
         change_state(
             TEAM_SELECT
         )
+
+        return
+
+    if (
+        app.KEYBOARD_mode
+        == "POKEMON_NICKNAME"
+    ):
+
+        pokemon = (
+            app.KEYBOARD_pokemon
+        )
+
+        if pokemon is None:
+
+            return
+
+        pokemon.nickname = text
+
+        app.PKMN_EDIT_pokemon = (
+            pokemon
+        )
+
+        app.KEYBOARD_pokemon = None
+
+        save_pkmn_edit_pokemon()
+
+        change_state(
+            PKMN_EDIT
+        )
+
+        return
 
 def handle_event_DAMAGE_CALCULATOR(
     event
@@ -1147,7 +1674,15 @@ def handle_event_OPTIONS_MUSIC(event):
 def handle_event_KEYBOARD(event):
     if not using_controller():
         if event.type == pygame.KEYDOWN:
-            if (
+            if event.key == pygame.K_ESCAPE:
+            
+                if app.KEYBOARD_mode == "POKEMON_NICKNAME":
+                    app.KEYBOARD_pokemon = None
+                if (
+                    app.KEYBOARD_return_state is not None
+                ):
+                    change_state(app.KEYBOARD_return_state)
+            elif (
                 event.unicode.isalnum()
                 and
                 len(app.KEYBOARD_text) < 10
@@ -1155,16 +1690,6 @@ def handle_event_KEYBOARD(event):
                 app.KEYBOARD_text += (
                     event.unicode.upper()
                 )
-            elif event.key == pygame.K_ESCAPE:
-
-                if (
-                    app.KEYBOARD_return_state
-                    is not None
-                ):
-
-                    change_state(
-                        app.KEYBOARD_return_state
-                    )
             elif (
                 event.key == pygame.K_SPACE
                 and
@@ -1246,9 +1771,12 @@ def handle_event_KEYBOARD(event):
                 )
         elif is_cancel(event):
 
-            change_state(
-                app.KEYBOARD_return_state
-            )
+            if (app.KEYBOARD_mode == "POKEMON_NICKNAME"):
+                app.KEYBOARD_pokemon = None
+            if (app.KEYBOARD_return_state is not None):
+                change_state(
+                    app.KEYBOARD_return_state
+                )
     app.KEYBOARD_column = min(
         app.KEYBOARD_column,
         len(

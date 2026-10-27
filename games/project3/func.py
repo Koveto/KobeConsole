@@ -343,7 +343,6 @@ def get_loaded_pokemon():
                     app.DAMAGE_CALCULATOR_attacker
                 )
             )
-
     if (
         app.DAMAGE_CALCULATOR_defender
         is not None
@@ -362,6 +361,10 @@ def get_loaded_pokemon():
                     app.DAMAGE_CALCULATOR_defender
                 )
             )
+    if ( app.PKMN_EDIT_pokemon is not None ): 
+        if ( id( app.PKMN_EDIT_pokemon ) not in seen ): 
+            pokemon.append( app.PKMN_EDIT_pokemon ) 
+            seen.add( id( app.PKMN_EDIT_pokemon ) )
     return pokemon
 
 TYPE_SHEET = None

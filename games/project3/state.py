@@ -37,8 +37,16 @@ def change_state(new_state):
         app.opponent_lead = None
         app.TEAM_PREVIEW_ready_sent = False
         app.TEAM_PREVIEW_opponent_ready = False
-    if  (new_state == PKMN_EDIT):
+    if (
+        new_state == PKMN_EDIT
+        and
+        app.state != KEYBOARD
+    ):
+
         app.PKMN_EDIT_index = 0
+        app.PKMN_EDIT_mode = "MAIN"
+        app.PKMN_EDIT_ev_index = 0
+        app.PKMN_EDIT_error = None
     if  (new_state == PKMN_VIEW):
         app.PKMN_VIEW_move_index = None
         app.PKMN_VIEW_mode = "STATS"
@@ -273,6 +281,19 @@ def change_state(new_state):
 
                 app.KEYBOARD_text = ""
 
+        elif (
+            app.KEYBOARD_mode
+            == "POKEMON_NICKNAME"
+            and
+            app.KEYBOARD_pokemon
+            is not None
+        ):
+
+            app.KEYBOARD_text = (
+                app.KEYBOARD_pokemon.nickname
+            )
+
+        
         else:
 
             app.KEYBOARD_text = ""

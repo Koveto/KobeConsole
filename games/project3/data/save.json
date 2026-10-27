@@ -988,6 +988,412 @@
     },
     "teams": [
         {
+            "name": "X",
+            "pokemon": [
+                {
+                    "species_no": 126,
+                    "nickname": "Magmar",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        112,
+                        96,
+                        0,
+                        4,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Icicle Crash",
+                        "Fire Punch",
+                        "Flare Blitz",
+                        "Fire Blast"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 384,
+                    "nickname": "Latios",
+                    "level": 100,
+                    "nature": "Serious",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Zen Headbutt",
+                        "Outrage",
+                        "Dragon Pulse",
+                        "Earthquake"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 186,
+                    "nickname": "Politoed",
+                    "level": 100,
+                    "nature": "Serious",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        252,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Close Combat",
+                        "Surf",
+                        "Waterfall",
+                        "Aqua Tail"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 142,
+                    "nickname": "Aerodactyl",
+                    "level": 100,
+                    "nature": "Timid",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Stone Edge",
+                        "Rock Slide",
+                        "Fly",
+                        "Brave Bird"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 59,
+                    "nickname": "ArcanineZ",
+                    "level": 100,
+                    "nature": "Serious",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Fire Punch",
+                        "Play Rough",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 368,
+                    "nickname": "Walrein",
+                    "level": 100,
+                    "nature": "Bold",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        4,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "ThunderPnch",
+                        "Ice Punch",
+                        "Aqua Tail",
+                        "Icicle Crash"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "ZZ",
+            "pokemon": [
+                {
+                    "species_no": 186,
+                    "nickname": "PolitoedX",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        4,
+                        252,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Close Combat",
+                        "Surf",
+                        "Waterfall",
+                        "Aqua Tail"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 254,
+                    "nickname": "SceptileX",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        0,
+                        0,
+                        0,
+                        252,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Giga Drain",
+                        "Seed Bomb",
+                        "Wood Hammer",
+                        "AncientPwr"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 94,
+                    "nickname": "Gengar",
+                    "level": 100,
+                    "nature": "Naughty",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Shadow Punch",
+                        "Play Rough",
+                        "Shadow Ball",
+                        "Sludge Wave"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 186,
+                    "nickname": "PolitoedXZ",
+                    "level": 100,
+                    "nature": "Mild",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        252,
+                        252,
+                        0,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Close Combat",
+                        "Surf",
+                        "Waterfall",
+                        "Aqua Tail"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 372,
+                    "nickname": "Relicanth",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Stone Edge",
+                        "Waterfall",
+                        "Hydro Pump",
+                        "Zen Headbutt"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 334,
+                    "nickname": "Altaria",
+                    "level": 100,
+                    "nature": "Timid",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        4,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Body Slam",
+                        "Outrage",
+                        "Brave Bird",
+                        "DragonBreth"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
             "name": "Z",
             "pokemon": [
                 {
