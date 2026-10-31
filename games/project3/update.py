@@ -16,20 +16,16 @@ def update():
         update_LAN_JOIN()
     elif app.state == TEAM_PREVIEW:
         update_TEAM_PREVIEW()
-    elif app.state == PKMN_VIEW:
-        update_PKMN_VIEW()
-    elif app.state == SPECIES_VIEW:
-        update_SPECIES_VIEW()
     elif app.state == BATTLE_START:
         update_BATTLE_START()
     elif app.state == TEAM_SELECT:
         update_TEAM_SELECT()
     elif app.state == BATTLE_END:
         update_BATTLE_END()
-    elif app.state == PKMN_EDIT:
-        update_PKMN_EDIT()
+    elif app.state == PKMN_INFO:
+        update_PKMN_INFO()
 
-def get_pkmn_edit_ev_hold_direction():
+def get_pkmn_info_ev_hold_direction():
 
     keys = pygame.key.get_pressed()
 
@@ -129,32 +125,54 @@ def get_pkmn_edit_ev_hold_direction():
     return 0
 
 
-def reset_pkmn_edit_ev_hold():
+def reset_pkmn_info_ev_hold():
 
-    app.PKMN_EDIT_ev_hold_direction = 0
-    app.PKMN_EDIT_ev_hold_start_time = 0
-    app.PKMN_EDIT_ev_repeat_time = 0
+    app.PKMN_INFO_ev_hold_direction = 0
+    app.PKMN_INFO_ev_hold_start_time = 0
+    app.PKMN_INFO_ev_repeat_time = 0
 
 
-def update_PKMN_EDIT():
+def update_PKMN_INFO():
 
     if (
-        app.PKMN_EDIT_mode
+        app.connection_socket
+        is not None
+    ):
+
+        for packet in recv_packets():
+
+            if (
+                packet["type"]
+                == "DISCONNECT"
+            ):
+
+                disconnect()
+
+                change_state(
+                    LAN_HOST_JOIN
+                )
+
+                return
+
+    if (
+        not app.PKMN_INFO_editable
+        or
+        app.PKMN_INFO_mode
         != "STATS"
     ):
 
-        reset_pkmn_edit_ev_hold()
+        reset_pkmn_info_ev_hold()
 
         return
 
     is_level_selected = (
-        app.PKMN_EDIT_stats_index
+        app.PKMN_INFO_stats_index
         == 2
     )
 
     is_ev_selected = (
         3
-        <= app.PKMN_EDIT_stats_index
+        <= app.PKMN_INFO_stats_index
         <= 8
     )
 
@@ -164,17 +182,17 @@ def update_PKMN_EDIT():
         not is_ev_selected
     ):
 
-        reset_pkmn_edit_ev_hold()
+        reset_pkmn_info_ev_hold()
 
         return
 
     direction = (
-        get_pkmn_edit_ev_hold_direction()
+        get_pkmn_info_ev_hold_direction()
     )
 
     if direction == 0:
 
-        reset_pkmn_edit_ev_hold()
+        reset_pkmn_info_ev_hold()
 
         return
 
@@ -184,18 +202,18 @@ def update_PKMN_EDIT():
 
     if (
         direction
-        != app.PKMN_EDIT_ev_hold_direction
+        != app.PKMN_INFO_ev_hold_direction
     ):
 
-        app.PKMN_EDIT_ev_hold_direction = (
+        app.PKMN_INFO_ev_hold_direction = (
             direction
         )
 
-        app.PKMN_EDIT_ev_hold_start_time = (
+        app.PKMN_INFO_ev_hold_start_time = (
             current_time
         )
 
-        app.PKMN_EDIT_ev_repeat_time = (
+        app.PKMN_INFO_ev_repeat_time = (
             current_time
         )
 
@@ -206,12 +224,12 @@ def update_PKMN_EDIT():
 
     held_time = (
         current_time
-        - app.PKMN_EDIT_ev_hold_start_time
+        - app.PKMN_INFO_ev_hold_start_time
     )
 
     since_last_repeat = (
         current_time
-        - app.PKMN_EDIT_ev_repeat_time
+        - app.PKMN_INFO_ev_repeat_time
     )
 
     if (
@@ -226,22 +244,22 @@ def update_PKMN_EDIT():
 
     if is_level_selected:
 
-        adjust_pkmn_edit_level(
+        adjust_pkmn_info_level(
             direction
         )
 
     elif is_ev_selected:
 
-        app.PKMN_EDIT_ev_index = (
-            app.PKMN_EDIT_stats_index
+        app.PKMN_INFO_ev_index = (
+            app.PKMN_INFO_stats_index
             - 3
         )
 
-        adjust_pkmn_edit_ev(
+        adjust_pkmn_info_ev(
             direction
         )
 
-    app.PKMN_EDIT_ev_repeat_time = (
+    app.PKMN_INFO_ev_repeat_time = (
         current_time
     )
 
@@ -470,29 +488,6 @@ def update_TEAM_SELECT():
         )
 
 
-def update_SPECIES_VIEW():
-    for packet in recv_packets():
-        if packet["type"] == "DISCONNECT":
-            disconnect()
-            change_state(LAN_HOST_JOIN)
-
-
-def update_PKMN_VIEW():
-    if (
-        app.connection_socket
-        is None
-    ):
-        return
-    for packet in recv_packets():
-        if (
-            packet["type"]
-            == "DISCONNECT"
-        ):
-            disconnect()
-            change_state(
-                LAN_HOST_JOIN
-            )
-
 def update_TEAM_PREVIEW():
     if app.connection_socket is None:
         return
@@ -553,7 +548,10 @@ def update_LAN_JOIN():
             app.LAN_JOIN_is_host = False
             app.connection_socket = app.LAN_JOIN_client_socket
             app.connection_is_host = False
-            change_state(TEAM_SELECT)
+            open_team_select(
+                mode="BATTLE",
+                return_state=LAN_HOST_JOIN
+            )
         except OSError:
             pass
 
@@ -574,7 +572,10 @@ def update_LAN_HOST():
             app.LAN_HOST_is_host = True
             app.connection_socket = app.LAN_HOST_client_socket
             app.connection_is_host = True
-            change_state(TEAM_SELECT)
+            open_team_select(
+                mode="BATTLE",
+                return_state=LAN_HOST_JOIN
+            )
         except (
             BlockingIOError,
             OSError

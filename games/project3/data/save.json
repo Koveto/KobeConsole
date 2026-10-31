@@ -1,32 +1,32 @@
 {
     "player": {
         "player_name": "KOBE",
-        "player_sprite": 4
+        "player_sprite": 0
     },
     "options": {
-        "omniscient": true,
+        "omniscient": false,
         "pkmn_animation": true,
         "fanart": false,
-        "music_shuffle": false,
+        "music_shuffle": true,
         "mute": false,
         "level": 100,
         "level_npc": 100
     },
     "damage_calculator": {
         "attacker": {
-            "species_no": 212,
-            "nickname": "Scizor",
+            "species_no": 6,
+            "nickname": "Charizard",
             "level": 100,
-            "nature": "Jolly",
+            "nature": "Sassy",
             "gender": "\u2642",
-            "is_shiny": false,
+            "is_shiny": true,
             "front_sprite_number": 2,
-            "back_sprite_number": 0,
+            "back_sprite_number": 1,
             "evs": [
-                252,
-                0,
                 0,
                 4,
+                0,
+                252,
                 0,
                 252
             ],
@@ -39,27 +39,27 @@
                 31
             ],
             "moves": [
-                "Signal Beam",
-                "Flash Cannon",
-                "Stone Edge",
-                "Bug Bite"
+                "Fire Punch",
+                "Brave Bird",
+                "Fire Blast",
+                "Spirit Break"
             ],
             "status": null
         },
         "defender": {
-            "species_no": 149,
-            "nickname": "Dragonite",
+            "species_no": 248,
+            "nickname": "Tyranitar",
             "level": 100,
-            "nature": "Sassy",
-            "gender": "\u2642",
+            "nature": "Naughty",
+            "gender": "\u2640",
             "is_shiny": false,
             "front_sprite_number": 1,
-            "back_sprite_number": 1,
+            "back_sprite_number": 0,
             "evs": [
-                0,
-                0,
-                252,
                 4,
+                252,
+                0,
+                0,
                 0,
                 252
             ],
@@ -72,445 +72,445 @@
                 31
             ],
             "moves": [
-                "Dragon Claw",
-                "Power Gem",
-                "Air Slash",
-                "Outrage"
+                "Stone Edge",
+                "Flamethrower",
+                "Dark Pulse",
+                "Rock Slide"
             ],
             "status": null
         }
     },
     "music": {
         "BW Kyurem.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Cynthia.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Elite Four.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Frontier Brain.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Galactic Boss.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Galactic Commander.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Gym Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Lab.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "DPP Rival.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Celadon City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Champion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Cinnabar Island.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Cycling.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Deoxys.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Four Island.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Fuchsia City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Game Corner.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Gym Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Legendary.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Mewtwo.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Opening.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Pallet Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Pewter City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Pokemon Center.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Rival.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Rocket Hideout.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Route 3.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Route 6.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Six Island.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG SS Anne.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Surfing.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Trainer Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Vermillion City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Victory Road.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "FRLG Wild Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Azalea Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Celadon City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Champion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Credits.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Cycling.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Ecruteak City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Eusine.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Game Corner.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Goldenrod City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Gym Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Gym.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Hall of Fame.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Kanto Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Kanto Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Kanto Wild.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Lab.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC League.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC National Park.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC New Bark Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Pallet Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Pewter City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Pokemon Center.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Rival Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Rocket Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 1.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 11.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 26.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 29.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 3.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 30.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 34.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 38.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Route 42.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Suicune.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Surf.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Title.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Trainer Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Vermillion City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Viridian Forest.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Wild Day.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "GSC Wild Night.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Frontier Brain.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Groudon.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Gym Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Kanto Gym.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Red.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Rival Encounter.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Rival.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Rocket Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "HGSS Suicune.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Aqua Appears.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Deoxys.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Elite Four.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Emotion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Giratina.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Gym Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS HoOh.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Lisia.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Lugia.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Maxie.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Primal.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Rayquaza.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Regi Trio.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Rival Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Steven.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Team Magma.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Wally Encounter.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Wally.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS World Champion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Zinnia Encounter.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "ORAS Zinnia.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "PE Trace.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Casino.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Celadon City.ogg": {
@@ -518,55 +518,55 @@
             "battle": false
         },
         "RBY Cerulean City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Champion Blue.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Cinnabar Island.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Come Along.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Cycling.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Gym Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Gym.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Indigo Plateau.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Lab.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Pallet Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Pewter City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Pokemon Center.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Professor Oak.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Rival Appears.ogg": {
@@ -574,27 +574,27 @@
             "battle": false
         },
         "RBY Rocket Hideout.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Route 1.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Route 24.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Route 3.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Route 6.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY St Anne.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Staff Credits.ogg": {
@@ -602,410 +602,410 @@
             "battle": false
         },
         "RBY Surfing.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Title.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Trainer Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Vermillion City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RBY Wild Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Champion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Cycling.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Deoxys.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Dewford Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Elite Four.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Fallarbor Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Fortree City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Frontier Brain.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Game Corner.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Gym Leader.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Gym.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Lilycove City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Littleroot Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Magma Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Magma Hideout.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Maxie Archie.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Mew.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Mt Pyre.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Museum.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Oceanic Museum.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Oldale Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Petalburg City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Poke Mart.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Pokemon Center.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Regi Trio.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Rival.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Route 101.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Route 104.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Route 110.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Route 111.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Route 113.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Route 119.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Route 120.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Rustboro City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Slateport City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Sootopolis City.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Staff Credits.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Surf.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Title.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Trainer Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Trainer School.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Trick House.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Verdanturf Town.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Victory Road.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Victory Wild.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "RSE Wild Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Champion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Elite Four.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Gladion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Guzma.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Hau.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Kahuna.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Solgaleo.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Totem.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SM Trainer Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Battle Tower.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Bede.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Chairman Rose.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Champion.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Elite Four.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Eternamax.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Eternatus Zacian.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Eternatus.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Final Hop.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Final Marnie.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Hop.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Illusion Zacian.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Marnie.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Oleana.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Piers.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Team Yell.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Trainer Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Wild Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "SS Zacian.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Cyrus.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Final Hau.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Ghetsis.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Giovanni Meet.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Giovanni.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Lysandre.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Maxie.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Megalopolis.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Necrozma.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Rainbow Rocket.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Recon Encounter.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Trainer Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Ultra Necrozma.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Ultra Recon Squad.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "USUM Wild Battle.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "XY Champion Diantha.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         },
         "XY Elite Four.ogg": {
-            "menu": true,
+            "menu": false,
             "battle": false
         }
     },
     "teams": [
         {
-            "name": "X",
+            "name": "ZA",
             "pokemon": [
                 {
-                    "species_no": 73,
-                    "nickname": "Tentacruel",
+                    "species_no": 213,
+                    "nickname": "Shuckle",
                     "level": 100,
                     "nature": "Relaxed",
                     "gender": "\u2640",
-                    "is_shiny": false,
-                    "front_sprite_number": 0,
-                    "back_sprite_number": 0,
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
                     "evs": [
-                        192,
-                        0,
-                        0,
-                        0,
+                        252,
                         4,
-                        252
+                        0,
+                        252,
+                        0,
+                        0
                     ],
                     "ivs": [
                         31,
@@ -1016,195 +1016,25 @@
                         31
                     ],
                     "moves": [
-                        "Waterfall",
-                        "Sludge Wave",
+                        "Double-Edge",
+                        "Power Gem",
                         "Bug Bite",
-                        "Aqua Tail"
+                        "Twineedle"
                     ],
                     "status": null
                 },
                 {
-                    "species_no": 242,
-                    "nickname": "Blissey",
+                    "species_no": 141,
+                    "nickname": "Kabutops",
                     "level": 100,
-                    "nature": "Bold",
+                    "nature": "Sassy",
                     "gender": "\u2640",
                     "is_shiny": false,
-                    "front_sprite_number": 0,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        252,
-                        252,
-                        0,
-                        0,
-                        0,
-                        4
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Hyper Voice",
-                        "Earth Power",
-                        "Tri Attack",
-                        "Body Slam"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 371,
-                    "nickname": "Gorebyss",
-                    "level": 100,
-                    "nature": "Adamant",
-                    "gender": "\u2640",
-                    "is_shiny": false,
-                    "front_sprite_number": 1,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        252,
-                        0,
-                        4,
-                        0,
-                        252,
-                        0
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Hydro Pump",
-                        "Waterfall",
-                        "Signal Beam",
-                        "Aqua Tail"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 242,
-                    "nickname": "Blissey",
-                    "level": 100,
-                    "nature": "Lax",
-                    "gender": "\u2642",
-                    "is_shiny": true,
-                    "front_sprite_number": 1,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        0,
-                        252,
-                        4,
-                        0,
-                        252,
-                        0
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Hyper Voice",
-                        "Earth Power",
-                        "Tri Attack",
-                        "Body Slam"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 31,
-                    "nickname": "Nidoqueen",
-                    "level": 100,
-                    "nature": "Hasty",
-                    "gender": "\u2642",
-                    "is_shiny": true,
-                    "front_sprite_number": 1,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        0,
-                        252,
-                        252,
-                        0,
-                        4,
-                        0
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Sludge Bomb",
-                        "Earth Power",
-                        "Poison Jab",
-                        "Thunder Fang"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 282,
-                    "nickname": "Gardevoir",
-                    "level": 100,
-                    "nature": "Docile",
-                    "gender": "\u2640",
-                    "is_shiny": false,
-                    "front_sprite_number": 1,
+                    "front_sprite_number": 2,
                     "back_sprite_number": 0,
                     "evs": [
                         252,
                         0,
-                        4,
-                        0,
-                        0,
-                        252
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Psycho Cut",
-                        "Signal Beam",
-                        "Zen Headbutt",
-                        "Spirit Break"
-                    ],
-                    "status": null
-                }
-            ]
-        },
-        {
-            "name": "X",
-            "pokemon": [
-                {
-                    "species_no": 126,
-                    "nickname": "Magmar",
-                    "level": 100,
-                    "nature": "Gentle",
-                    "gender": "\u2642",
-                    "is_shiny": true,
-                    "front_sprite_number": 1,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        136,
-                        96,
                         0,
                         4,
                         0,
@@ -1219,60 +1049,27 @@
                         31
                     ],
                     "moves": [
-                        "Icicle Crash",
-                        "Fire Punch",
-                        "Flare Blitz",
-                        "Fire Blast"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 384,
-                    "nickname": "Latios",
-                    "level": 100,
-                    "nature": "Serious",
-                    "gender": "\u2640",
-                    "is_shiny": false,
-                    "front_sprite_number": 1,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        252,
-                        252,
-                        0,
-                        0,
-                        4,
-                        0
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Zen Headbutt",
-                        "Outrage",
-                        "Dragon Pulse",
-                        "Earthquake"
+                        "AncientPwr",
+                        "Rock Slide",
+                        "Hydro Pump",
+                        "Snarl"
                     ],
                     "status": null
                 },
                 {
                     "species_no": 186,
                     "nickname": "Politoed",
-                    "level": 54,
-                    "nature": "Bashful",
-                    "gender": "\u2640",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
                     "is_shiny": true,
-                    "front_sprite_number": 2,
+                    "front_sprite_number": 0,
                     "back_sprite_number": 0,
                     "evs": [
-                        0,
                         252,
                         0,
                         252,
+                        0,
                         4,
                         0
                     ],
@@ -1293,14 +1090,217 @@
                     "status": null
                 },
                 {
-                    "species_no": 142,
-                    "nickname": "Aerodactyl",
+                    "species_no": 379,
+                    "nickname": "Metagross",
+                    "level": 99,
+                    "nature": "Hasty",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        4,
+                        0,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Metal Claw",
+                        "Flash Cannon",
+                        "Fire Punch",
+                        "Zen Headbutt"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 62,
+                    "nickname": "Poliwrath",
                     "level": 100,
-                    "nature": "Lonely",
+                    "nature": "Gentle",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        0,
+                        252,
+                        4,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hyper Voice",
+                        "Focus Blast",
+                        "Hydro Pump",
+                        "Aqua Tail"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 382,
+                    "nickname": "Registeel",
+                    "level": 100,
+                    "nature": "Docile",
                     "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        252,
+                        252,
+                        0,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Metal Claw",
+                        "Outrage",
+                        "Flash Cannon",
+                        "Iron Head"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 1",
+            "pokemon": [
+                {
+                    "species_no": 181,
+                    "nickname": "Ampharos",
+                    "level": 100,
+                    "nature": "Naughty",
+                    "gender": "\u2642",
                     "is_shiny": true,
                     "front_sprite_number": 1,
                     "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        252,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Brave Bird",
+                        "ThunderPnch",
+                        "Thunder Fang",
+                        "Thunderbolt"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 6,
+                    "nickname": "Charizard",
+                    "level": 100,
+                    "nature": "Sassy",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        4,
+                        0,
+                        252,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Fire Punch",
+                        "Brave Bird",
+                        "Fire Blast",
+                        "Spirit Break"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 248,
+                    "nickname": "Tyranitar",
+                    "level": 100,
+                    "nature": "Naughty",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        4,
+                        252,
+                        0,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Stone Edge",
+                        "Flamethrower",
+                        "Dark Pulse",
+                        "Rock Slide"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 158,
+                    "nickname": "Totodile",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
                     "evs": [
                         252,
                         252,
@@ -1308,6 +1308,242 @@
                         0,
                         0,
                         4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hydro Pump",
+                        "Aqua Tail",
+                        "Surf",
+                        "Flamethrower"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 167,
+                    "nickname": "Spinarak",
+                    "level": 100,
+                    "nature": "Docile",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        4,
+                        0,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Gunk Shot",
+                        "Twineedle",
+                        "Signal Beam",
+                        "Metal Claw"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 104,
+                    "nickname": "Cubone",
+                    "level": 100,
+                    "nature": "Gentle",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        252,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Snarl",
+                        "Earthquake",
+                        "Mud Bomb",
+                        "Earth Power"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 2",
+            "pokemon": [
+                {
+                    "species_no": 18,
+                    "nickname": "Pidgeot",
+                    "level": 100,
+                    "nature": "Rash",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        0,
+                        252,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Iron Head",
+                        "Double-Edge",
+                        "Fly",
+                        "Body Slam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 225,
+                    "nickname": "Deliberd",
+                    "level": 100,
+                    "nature": "Quirky",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Air Slash",
+                        "Ice Punch",
+                        "Surf",
+                        "Ice Beam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 99,
+                    "nickname": "Kingler",
+                    "level": 100,
+                    "nature": "Relaxed",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        4,
+                        0,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hydro Pump",
+                        "Earth Power",
+                        "Waterfall",
+                        "Surf"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 85,
+                    "nickname": "Dodrio",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        0,
+                        0,
+                        4,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Sludge Wave",
+                        "Body Slam",
+                        "Air Slash",
+                        "Double-Edge"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 142,
+                    "nickname": "Aerodactyl",
+                    "level": 100,
+                    "nature": "Modest",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        4,
+                        0,
+                        252,
+                        252,
+                        0
                     ],
                     "ivs": [
                         31,
@@ -1326,118 +1562,14 @@
                     "status": null
                 },
                 {
-                    "species_no": 59,
-                    "nickname": "ArcanineZ",
+                    "species_no": 350,
+                    "nickname": "Milotic",
                     "level": 100,
-                    "nature": "Serious",
-                    "gender": "\u2642",
-                    "is_shiny": false,
-                    "front_sprite_number": 0,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        252,
-                        0,
-                        4,
-                        252,
-                        0,
-                        0
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Flamethrower",
-                        "Fire Punch",
-                        "Play Rough",
-                        "Flare Blitz"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 368,
-                    "nickname": "Walrein",
-                    "level": 100,
-                    "nature": "Bold",
+                    "nature": "Naughty",
                     "gender": "\u2642",
                     "is_shiny": true,
                     "front_sprite_number": 0,
                     "back_sprite_number": 1,
-                    "evs": [
-                        0,
-                        0,
-                        0,
-                        4,
-                        252,
-                        252
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "ThunderPnch",
-                        "Ice Punch",
-                        "Aqua Tail",
-                        "Icicle Crash"
-                    ],
-                    "status": null
-                }
-            ]
-        },
-        {
-            "name": "ZZ",
-            "pokemon": [
-                {
-                    "species_no": 186,
-                    "nickname": "PolitoedX",
-                    "level": 100,
-                    "nature": "Hardy",
-                    "gender": "\u2640",
-                    "is_shiny": true,
-                    "front_sprite_number": 2,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        0,
-                        4,
-                        252,
-                        0,
-                        0,
-                        252
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Close Combat",
-                        "Surf",
-                        "Waterfall",
-                        "Aqua Tail"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 254,
-                    "nickname": "SceptileX",
-                    "level": 100,
-                    "nature": "Hasty",
-                    "gender": "\u2642",
-                    "is_shiny": true,
-                    "front_sprite_number": 2,
-                    "back_sprite_number": 0,
                     "evs": [
                         252,
                         0,
@@ -1455,18 +1587,155 @@
                         31
                     ],
                     "moves": [
-                        "Giga Drain",
-                        "Seed Bomb",
-                        "Wood Hammer",
-                        "AncientPwr"
+                        "Surf",
+                        "Waterfall",
+                        "Hydro Pump",
+                        "Moonblast"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 3",
+            "pokemon": [
+                {
+                    "species_no": 266,
+                    "nickname": "Silcoon",
+                    "level": 100,
+                    "nature": "Bashful",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        252,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Silver Wind",
+                        "Earthquake",
+                        "Bug Bite",
+                        "Twineedle"
                     ],
                     "status": null
                 },
                 {
-                    "species_no": 94,
-                    "nickname": "Gengar",
+                    "species_no": 199,
+                    "nickname": "Slowking",
                     "level": 100,
-                    "nature": "Naughty",
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        4,
+                        0,
+                        252,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Psybeam",
+                        "Shadow Punch",
+                        "Hydro Pump",
+                        "Surf"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 150,
+                    "nickname": "Mewtwo",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        252,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Psybeam",
+                        "Psycho Cut",
+                        "Psychic",
+                        "Thunderbolt"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 14,
+                    "nickname": "Kakuna",
+                    "level": 100,
+                    "nature": "Bashful",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        4,
+                        0,
+                        252,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "AncientPwr",
+                        "Bug Bite",
+                        "Sludge Wave"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 147,
+                    "nickname": "Dratini",
+                    "level": 100,
+                    "nature": "Rash",
                     "gender": "\u2642",
                     "is_shiny": false,
                     "front_sprite_number": 0,
@@ -1476,6 +1745,988 @@
                         0,
                         4,
                         0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Outrage",
+                        "DragonBreth",
+                        "Sludge Wave",
+                        "Dragon Claw"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 34,
+                    "nickname": "Nidoking",
+                    "level": 100,
+                    "nature": "Naughty",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        0,
+                        0,
+                        4,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Gunk Shot",
+                        "Sludge Bomb",
+                        "Fire Blast",
+                        "Earthquake"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 4",
+            "pokemon": [
+                {
+                    "species_no": 210,
+                    "nickname": "Granbull",
+                    "level": 100,
+                    "nature": "Bold",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        252,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Play Rough",
+                        "Spirit Break",
+                        "Moonblast",
+                        "Dark Pulse"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 88,
+                    "nickname": "Grimer",
+                    "level": 100,
+                    "nature": "Relaxed",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        252,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Poison Jab",
+                        "Gunk Shot",
+                        "Shadow Ball",
+                        "Sludge Bomb"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 122,
+                    "nickname": "Mr. Mime",
+                    "level": 100,
+                    "nature": "Calm",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        252,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hyper Voice",
+                        "Psychic",
+                        "Psybeam",
+                        "Play Rough"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 26,
+                    "nickname": "Raichu",
+                    "level": 100,
+                    "nature": "Quirky",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        4,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Thunderbolt",
+                        "Ominous Wind",
+                        "Discharge",
+                        "ThunderPnch"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 239,
+                    "nickname": "Elekid",
+                    "level": 100,
+                    "nature": "Quiet",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        4,
+                        252,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Thunderbolt",
+                        "ThunderPnch",
+                        "Thunder Fang",
+                        "Moonblast"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 335,
+                    "nickname": "Zangoose",
+                    "level": 100,
+                    "nature": "Adamant",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        0,
+                        252,
+                        252,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Power Gem",
+                        "Double-Edge",
+                        "Hyper Voice",
+                        "Body Slam"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 5",
+            "pokemon": [
+                {
+                    "species_no": 114,
+                    "nickname": "Tangela",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        0,
+                        252,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Giga Drain",
+                        "Wood Hammer",
+                        "Seed Bomb",
+                        "Poison Jab"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 312,
+                    "nickname": "Minun",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        252,
+                        0,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Outrage",
+                        "Discharge",
+                        "ThunderPnch",
+                        "Thunder Fang"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 173,
+                    "nickname": "Cleffa",
+                    "level": 100,
+                    "nature": "Serious",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        252,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "ThunderPnch",
+                        "Moonblast",
+                        "Play Rough",
+                        "Spirit Break"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 118,
+                    "nickname": "Goldeen",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hydro Pump",
+                        "Metal Claw",
+                        "Aqua Tail",
+                        "Waterfall"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 30,
+                    "nickname": "Nidorina",
+                    "level": 100,
+                    "nature": "Naughty",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        4,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Poison Jab",
+                        "Sludge Bomb",
+                        "Body Slam",
+                        "Sludge Wave"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 125,
+                    "nickname": "Electabuzz",
+                    "level": 100,
+                    "nature": "Bold",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        252,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "ThunderPnch",
+                        "Thunderbolt",
+                        "Thunder Fang",
+                        "Energy Ball"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 6",
+            "pokemon": [
+                {
+                    "species_no": 268,
+                    "nickname": "Cascoon",
+                    "level": 100,
+                    "nature": "Calm",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        0,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Silver Wind",
+                        "Fire Blast",
+                        "Signal Beam",
+                        "Twineedle"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 358,
+                    "nickname": "Duskull",
+                    "level": 100,
+                    "nature": "Modest",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Fly",
+                        "Ominous Wind",
+                        "Shadow Punch",
+                        "Shadow Ball"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 367,
+                    "nickname": "Sealeo",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        4,
+                        0,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hydro Pump",
+                        "Blizzard",
+                        "Icicle Crash",
+                        "Stone Edge"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 365,
+                    "nickname": "Glalie",
+                    "level": 100,
+                    "nature": "Serious",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        252,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Blizzard",
+                        "Dragon Pulse",
+                        "Icicle Crash",
+                        "Ice Beam"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 291,
+                    "nickname": "Ninjask",
+                    "level": 100,
+                    "nature": "Careful",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        252,
+                        4,
+                        0,
+                        0,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Twineedle",
+                        "Signal Beam",
+                        "Silver Wind",
+                        "Air Slash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 107,
+                    "nickname": "Hitmonchan",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Focus Blast",
+                        "Drain Punch",
+                        "Shadow Claw",
+                        "Aura Sphere"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 7",
+            "pokemon": [
+                {
+                    "species_no": 264,
+                    "nickname": "Linoone",
+                    "level": 100,
+                    "nature": "Jolly",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        252,
+                        4,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Tri Attack",
+                        "ThunderPnch",
+                        "Hyper Voice"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 350,
+                    "nickname": "Milotic",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        252,
+                        252,
+                        0,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Surf",
+                        "Waterfall",
+                        "Hydro Pump",
+                        "Moonblast"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 233,
+                    "nickname": "Porygon2",
+                    "level": 100,
+                    "nature": "Serious",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        252,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Tri Attack",
+                        "Body Slam",
+                        "Hyper Voice",
+                        "Dark Pulse"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 131,
+                    "nickname": "Lapras",
+                    "level": 100,
+                    "nature": "Timid",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        0,
+                        252,
+                        252,
+                        4,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Aqua Tail",
+                        "Waterfall",
+                        "Blizzard",
+                        "DragonBreth"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 74,
+                    "nickname": "Geodude",
+                    "level": 100,
+                    "nature": "Docile",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        0,
+                        0,
+                        0,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Rock Slide",
+                        "AncientPwr",
+                        "Energy Ball",
+                        "Drill Run"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 193,
+                    "nickname": "Yanma",
+                    "level": 100,
+                    "nature": "Relaxed",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        0,
+                        4,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Brave Bird",
+                        "Bug Bite",
+                        "Silver Wind",
+                        "Psychic"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 8",
+            "pokemon": [
+                {
+                    "species_no": 49,
+                    "nickname": "Venomoth",
+                    "level": 100,
+                    "nature": "Bold",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        4,
+                        252,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Sludge Bomb",
+                        "Body Slam",
+                        "Twineedle",
+                        "Silver Wind"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 367,
+                    "nickname": "Sealeo",
+                    "level": 100,
+                    "nature": "Adamant",
+                    "gender": "\u2640",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hydro Pump",
+                        "Blizzard",
+                        "Icicle Crash",
+                        "Stone Edge"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 159,
+                    "nickname": "Croconaw",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        4,
+                        0,
+                        252,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Discharge",
+                        "Aqua Tail",
+                        "Waterfall",
+                        "Surf"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 94,
+                    "nickname": "Gengar",
+                    "level": 100,
+                    "nature": "Naive",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        4,
                         252,
                         252
                     ],
@@ -1496,21 +2747,21 @@
                     "status": null
                 },
                 {
-                    "species_no": 186,
-                    "nickname": "PolitoedXZ",
+                    "species_no": 233,
+                    "nickname": "Porygon2",
                     "level": 100,
-                    "nature": "Mild",
+                    "nature": "Sassy",
                     "gender": "\u2640",
                     "is_shiny": false,
-                    "front_sprite_number": 0,
+                    "front_sprite_number": 2,
                     "back_sprite_number": 1,
                     "evs": [
                         4,
-                        252,
-                        252,
                         0,
                         0,
-                        0
+                        252,
+                        0,
+                        252
                     ],
                     "ivs": [
                         31,
@@ -1521,43 +2772,10 @@
                         31
                     ],
                     "moves": [
-                        "Close Combat",
-                        "Surf",
-                        "Waterfall",
-                        "Aqua Tail"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 372,
-                    "nickname": "Relicanth",
-                    "level": 100,
-                    "nature": "Naive",
-                    "gender": "\u2642",
-                    "is_shiny": false,
-                    "front_sprite_number": 1,
-                    "back_sprite_number": 0,
-                    "evs": [
-                        252,
-                        252,
-                        0,
-                        0,
-                        4,
-                        0
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Stone Edge",
-                        "Waterfall",
-                        "Hydro Pump",
-                        "Zen Headbutt"
+                        "Tri Attack",
+                        "Body Slam",
+                        "Hyper Voice",
+                        "Dark Pulse"
                     ],
                     "status": null
                 },
@@ -1565,16 +2783,16 @@
                     "species_no": 334,
                     "nickname": "Altaria",
                     "level": 100,
-                    "nature": "Timid",
+                    "nature": "Lonely",
                     "gender": "\u2640",
-                    "is_shiny": true,
-                    "front_sprite_number": 2,
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
                     "back_sprite_number": 1,
                     "evs": [
-                        252,
                         0,
                         4,
                         0,
+                        252,
                         0,
                         252
                     ],
@@ -1597,13 +2815,112 @@
             ]
         },
         {
-            "name": "Z",
+            "name": "Test Team 9",
             "pokemon": [
                 {
-                    "species_no": 212,
-                    "nickname": "Scizor",
+                    "species_no": 226,
+                    "nickname": "Mantine",
                     "level": 100,
-                    "nature": "Jolly",
+                    "nature": "Impish",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        4,
+                        252,
+                        0,
+                        0,
+                        0,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Rock Slide",
+                        "Waterfall",
+                        "Brave Bird",
+                        "Aqua Tail"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 43,
+                    "nickname": "Oddish",
+                    "level": 100,
+                    "nature": "Hardy",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        252,
+                        0,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Wood Hammer",
+                        "Giga Drain",
+                        "Seed Bomb",
+                        "Gunk Shot"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 130,
+                    "nickname": "Gyarados",
+                    "level": 100,
+                    "nature": "Careful",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        0,
+                        4,
+                        252,
+                        252
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Ice Beam",
+                        "Hurricane",
+                        "Hydro Pump",
+                        "Surf"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 269,
+                    "nickname": "Dustox",
+                    "level": 100,
+                    "nature": "Bold",
                     "gender": "\u2642",
                     "is_shiny": false,
                     "front_sprite_number": 2,
@@ -1612,8 +2929,8 @@
                         252,
                         0,
                         0,
-                        4,
                         0,
+                        4,
                         252
                     ],
                     "ivs": [
@@ -1625,60 +2942,27 @@
                         31
                     ],
                     "moves": [
+                        "Gunk Shot",
+                        "Ice Punch",
                         "Signal Beam",
-                        "Flash Cannon",
-                        "Stone Edge",
                         "Bug Bite"
                     ],
                     "status": null
                 },
                 {
-                    "species_no": 149,
-                    "nickname": "Dragonite",
+                    "species_no": 65,
+                    "nickname": "Alakazam",
                     "level": 100,
                     "nature": "Sassy",
-                    "gender": "\u2642",
-                    "is_shiny": false,
-                    "front_sprite_number": 1,
-                    "back_sprite_number": 1,
-                    "evs": [
-                        0,
-                        0,
-                        252,
-                        4,
-                        0,
-                        252
-                    ],
-                    "ivs": [
-                        31,
-                        31,
-                        31,
-                        31,
-                        31,
-                        31
-                    ],
-                    "moves": [
-                        "Dragon Claw",
-                        "Power Gem",
-                        "Air Slash",
-                        "Outrage"
-                    ],
-                    "status": null
-                },
-                {
-                    "species_no": 196,
-                    "nickname": "Espeon",
-                    "level": 100,
-                    "nature": "Naughty",
                     "gender": "\u2640",
                     "is_shiny": false,
                     "front_sprite_number": 1,
-                    "back_sprite_number": 1,
+                    "back_sprite_number": 0,
                     "evs": [
-                        0,
+                        252,
                         0,
                         252,
-                        252,
+                        0,
                         0,
                         4
                     ],
@@ -1692,25 +2976,129 @@
                     ],
                     "moves": [
                         "Zen Headbutt",
-                        "Psychic",
                         "Psybeam",
-                        "Discharge"
+                        "Psychic",
+                        "Energy Ball"
                     ],
                     "status": null
                 },
                 {
-                    "species_no": 94,
-                    "nickname": "Gengar",
+                    "species_no": 143,
+                    "nickname": "Snorlax",
                     "level": 100,
-                    "nature": "Adamant",
+                    "nature": "Brave",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        4,
+                        252,
+                        252,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Double-Edge",
+                        "Body Slam",
+                        "DragonBreth",
+                        "Tri Attack"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
+            "name": "Test Team 10",
+            "pokemon": [
+                {
+                    "species_no": 12,
+                    "nickname": "Butterfree",
+                    "level": 100,
+                    "nature": "Timid",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Silver Wind",
+                        "Bug Bite",
+                        "Sludge Bomb",
+                        "Air Slash"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 172,
+                    "nickname": "Pichu",
+                    "level": 100,
+                    "nature": "Brave",
                     "gender": "\u2640",
                     "is_shiny": false,
                     "front_sprite_number": 0,
                     "back_sprite_number": 0,
                     "evs": [
+                        252,
                         0,
                         252,
+                        0,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Thunderbolt",
+                        "Thunder Fang",
+                        "Discharge",
+                        "Shadow Ball"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 103,
+                    "nickname": "Exeggutor",
+                    "level": 100,
+                    "nature": "Docile",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
                         4,
+                        252,
                         0,
                         252,
                         0
@@ -1724,28 +3112,28 @@
                         31
                     ],
                     "moves": [
-                        "Shadow Punch",
-                        "Play Rough",
-                        "Shadow Ball",
-                        "Sludge Wave"
+                        "DragonBreth",
+                        "Zen Headbutt",
+                        "Seed Bomb",
+                        "Energy Ball"
                     ],
                     "status": null
                 },
                 {
-                    "species_no": 127,
-                    "nickname": "Pinsir",
+                    "species_no": 193,
+                    "nickname": "Yanma",
                     "level": 100,
-                    "nature": "Bold",
+                    "nature": "Modest",
                     "gender": "\u2642",
-                    "is_shiny": false,
-                    "front_sprite_number": 2,
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
                     "back_sprite_number": 0,
                     "evs": [
-                        0,
-                        0,
-                        0,
                         4,
                         252,
+                        0,
+                        0,
+                        0,
                         252
                     ],
                     "ivs": [
@@ -1757,26 +3145,59 @@
                         31
                     ],
                     "moves": [
-                        "Flare Blitz",
-                        "Signal Beam",
-                        "Twineedle",
-                        "Silver Wind"
+                        "Brave Bird",
+                        "Bug Bite",
+                        "Silver Wind",
+                        "Psychic"
                     ],
                     "status": null
                 },
                 {
-                    "species_no": 141,
-                    "nickname": "Kabutops",
+                    "species_no": 385,
+                    "nickname": "Kyogre",
                     "level": 100,
-                    "nature": "Serious",
-                    "gender": "\u2642",
-                    "is_shiny": false,
-                    "front_sprite_number": 1,
+                    "nature": "Rash",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
                     "back_sprite_number": 0,
                     "evs": [
+                        252,
+                        4,
                         0,
                         252,
                         0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hydro Pump",
+                        "Aqua Tail",
+                        "Surf",
+                        "Stone Edge"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 30,
+                    "nickname": "Nidorina",
+                    "level": 100,
+                    "nature": "Quirky",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        0,
+                        252,
                         252,
                         4,
                         0
@@ -1790,10 +3211,10 @@
                         31
                     ],
                     "moves": [
-                        "AncientPwr",
-                        "Rock Slide",
-                        "Hydro Pump",
-                        "Snarl"
+                        "Poison Jab",
+                        "Sludge Bomb",
+                        "Body Slam",
+                        "Sludge Wave"
                     ],
                     "status": null
                 }
@@ -1801,16 +3222,14 @@
         }
     ],
     "selected_team": 0,
-    "trainer_defeats": [
-        "RUBY"
-    ],
-    "endless_record": 2,
+    "trainer_defeats": [],
+    "endless_record": 0,
     "titles": 0,
     "gym_progress": {
         "Normal": [
             false,
             false,
-            true
+            false
         ],
         "Fire": [
             false,

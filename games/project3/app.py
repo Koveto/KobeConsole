@@ -81,15 +81,6 @@ class App:
         self.TEAM_PREVIEW_index = 0
         self.TEAM_PREVIEW_column = 0
 
-        self.PKMN_VIEW_pokemon = None
-        self.PKMN_VIEW_move_index = None
-        self.PKMN_VIEW_mode = None
-        self.PKMN_VIEW_index = 0
-        self.PKMN_VIEW_column = 0
-
-        self.SPECIES_VIEW_pokemon = None
-        self.SPECIES_VIEW_mode = None
-
         self.TEAM_SELECT_team_sent = False
         self.TEAM_SELECT_opponent_team = None
         self.TEAM_SELECT_error = None
@@ -106,6 +97,9 @@ class App:
         self.TEAM_SELECT_submenu_index = 0
         self.TEAM_SELECT_restore_index = None
         self.TEAM_SELECT_restore_scroll = None
+        self.TEAM_SELECT_pending_mode = None
+        self.TEAM_SELECT_pending_return_state = None
+        self.TEAM_SELECT_pending_target = None
 
         self.OPTIONS_index = 0
         self.OPTIONS_editing_name = False
@@ -154,22 +148,25 @@ class App:
         self.DAMAGE_CALCULATOR_index = 0
         self.DAMAGE_CALCULATOR_column = 1
 
-        self.PKMN_EDIT_pokemon = None
-        self.PKMN_EDIT_index = 0
-        self.PKMN_EDIT_source = None
-        self.PKMN_EDIT_return_state = None
-        self.PKMN_EDIT_team_index = None
-        self.PKMN_EDIT_pokemon_index = None
-        self.PKMN_EDIT_mode = "MAIN"
-        self.PKMN_EDIT_ev_index = 0
-        self.PKMN_EDIT_error = None
-        self.PKMN_EDIT_ev_hold_direction = 0
-        self.PKMN_EDIT_ev_hold_start_time = 0
-        self.PKMN_EDIT_ev_repeat_time = 0
-        self.PKMN_EDIT_info_mode = "ACTUAL"
-        self.PKMN_EDIT_stats_index = 0
-        self.PKMN_EDIT_move_index = 0
-        self.PKMN_EDIT_learnset_index = 0
-        self.PKMN_EDIT_selecting_move = False
+        self.PKMN_INFO_pokemon = None
+        self.PKMN_INFO_editable = False
+        self.PKMN_INFO_species = False
+        self.PKMN_INFO_index = 0
+        self.PKMN_INFO_source = None
+        self.PKMN_INFO_return_state = None
+        self.PKMN_INFO_team_index = None
+        self.PKMN_INFO_pokemon_index = None
+        self.PKMN_INFO_mode = "MAIN"
+        self.PKMN_INFO_ev_index = 0
+        self.PKMN_INFO_error = None
+        self.PKMN_INFO_ev_hold_direction = 0
+        self.PKMN_INFO_ev_hold_start_time = 0
+        self.PKMN_INFO_ev_repeat_time = 0
+        self.PKMN_INFO_info_mode = "ACTUAL"
+        self.PKMN_INFO_stats_index = 0
+        self.PKMN_INFO_move_index = 0
+        self.PKMN_INFO_learnset_index = 0
+        self.PKMN_INFO_selecting_move = False
+        self.PKMN_INFO_pending_request = None
 
 app = App()

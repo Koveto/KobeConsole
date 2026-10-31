@@ -282,11 +282,6 @@ def disconnect():
     app.opponent_lead = None
     app.TEAM_PREVIEW_index = 0
     app.TEAM_PREVIEW_column = 0
-    app.PKMN_VIEW_pokemon = None
-    app.PKMN_VIEW_move_index = None
-    app.PKMN_VIEW_mode = "STATS"
-    app.SPECIES_VIEW_pokemon = None
-    app.SPECIES_VIEW_mode = "STATS"
     app.TEAM_SELECT_index = 0
     app.TEAM_SELECT_scroll = 0
     app.TEAM_SELECT_preview_team = []
@@ -361,10 +356,10 @@ def get_loaded_pokemon():
                     app.DAMAGE_CALCULATOR_defender
                 )
             )
-    if ( app.PKMN_EDIT_pokemon is not None ): 
-        if ( id( app.PKMN_EDIT_pokemon ) not in seen ): 
-            pokemon.append( app.PKMN_EDIT_pokemon ) 
-            seen.add( id( app.PKMN_EDIT_pokemon ) )
+    if ( app.PKMN_INFO_pokemon is not None ): 
+        if ( id( app.PKMN_INFO_pokemon ) not in seen ): 
+            pokemon.append( app.PKMN_INFO_pokemon ) 
+            seen.add( id( app.PKMN_INFO_pokemon ) )
     return pokemon
 
 TYPE_SHEET = None

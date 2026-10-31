@@ -20,8 +20,6 @@ LAN_HOST_JOIN       = 1
 LAN_HOST            = 2
 LAN_JOIN            = 3
 TEAM_PREVIEW        = 4
-PKMN_VIEW           = 5
-SPECIES_VIEW        = 6
 BATTLE_START        = 7
 TEAM_SELECT         = 8
 OPTIONS             = 9
@@ -34,7 +32,7 @@ BATTLE_END          = 15
 SINGLE_BRACKET      = 16
 SINGLE_DEFEND_GYM   = 17
 DAMAGE_CALCULATOR   = 18
-PKMN_EDIT           = 19
+PKMN_INFO           = 19
 
 COLOR_BLACK = (0, 0, 0)
 COLOR_BLUE = (0, 0, 255)

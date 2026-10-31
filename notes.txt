@@ -1,0 +1,349 @@
+LAUNCHER_MENU
+
+Main menu.
+
+Responsibilities:
+
+Select Single Player
+Select LAN Multiplayer
+Open Damage Calculator
+Open Team Builder
+Open Options
+
+LAN_HOST_JOIN
+
+LAN multiplayer menu.
+
+Responsibilities:
+
+Choose Host
+Choose Join
+Cancel to the main menu
+
+LAN_HOST
+
+Host selected.
+
+Responsibilities:
+
+Broadcast the host
+Wait for a connection
+Establish the multiplayer connection
+Proceed to battle-mode TEAM_SELECT
+
+LAN_JOIN
+
+Join selected.
+
+Responsibilities:
+
+Search for a host
+Connect to the discovered host
+Proceed to battle-mode TEAM_SELECT
+
+TEAM_PREVIEW
+
+Display both teams and select a lead.
+
+Responsibilities:
+
+Navigate player Pokémon
+Navigate opponent Pokémon when Omniscient permits it
+Select the player’s lead
+Open PKMN_INFO
+Pass appropriate read-only/species-only flags to PKMN_INFO
+Synchronize lead choices during multiplayer
+
+BATTLE_START
+
+Temporary battle placeholder.
+
+Responsibilities:
+
+Eventually run the battle
+For now, proceed to BATTLE_END
+
+TEAM_SELECT
+
+Shared saved-team selection state.
+Supported modes:
+"BATTLE"
+"TEAMBUILDER"
+"IMPORT"
+"SAVE"
+Battle mode
+Always includes Random Team
+Select a team before battle
+Proceeds to TEAM_PREVIEW
+Teambuilder mode
+Always includes Create Team
+Never includes Random Team
+Create, edit, rename, duplicate, and erase teams
+Edit a selected Pokémon through editable PKMN_INFO
+Import mode
+Select a saved team
+Select a Pokémon from that team
+Copy it into the Damage Calculator
+Do not change the saved-team Pokémon
+Save mode
+Opened from the Damage Calculator
+Select a saved team
+Select one Pokémon slot
+Overwrite that saved Pokémon with the calculator attacker or defender
+Do not create teams
+Do not remember where the calculator Pokémon originally came from
+TEAM_SELECT should be configured centrally by change_state() using pending entry context, rather than relying on stale mode flags from its previous use.
+
+OPTIONS
+
+Display and edit general options.
+
+Responsibilities include:
+
+Player name
+Player sprite
+Music submenu
+Omniscient mode
+Pokémon animation
+Fanart
+Music shuffle
+Player level
+Opponent level
+
+KEYBOARD
+
+Shared text-entry state.
+
+Supported uses include:
+
+Player name
+Team creation
+Team rename
+Pokémon nickname
+
+Responsibilities:
+
+Enforce the appropriate character limit
+Preserve the caller’s selected field when returning
+Use caller context to determine what receives the completed text
+
+OPTIONS_MUSIC
+
+Music options submenu.
+
+Responsibilities:
+
+Preview tracks
+Enable or disable menu music
+Enable or disable battle music
+
+SINGLE_MENU
+
+Select a single-player mode.
+
+Modes:
+
+Trainer Battle
+Endless Battle
+Defend Gym
+Tournament
+
+SINGLE_MENU_TRAINER
+
+Configure a Trainer Battle.
+
+Options:
+
+Random Team
+My Team
+Trainer
+
+Responsibilities:
+
+Select the opponent source
+Preview teams when allowed
+Proceed to battle-mode TEAM_SELECT
+
+BATTLE_END
+
+Temporary battle-result state.
+
+Responsibilities:
+
+Update mode-specific save data
+Continue or end Endless mode
+Advance Tournament mode
+Update Gym progress
+Record Trainer defeats
+Return to the appropriate menu
+
+SINGLE_BRACKET
+
+Tournament bracket display.
+
+Responsibilities:
+
+Show tournament participants
+Advance between rounds
+Start the appropriate battle
+Record tournament titles
+
+SINGLE_DEFEND_GYM
+
+Gym-defense selection.
+
+Responsibilities:
+
+Choose a Gym type
+Choose one of its three challengers
+Display Gym progress
+Require a matching monotype player team
+Proceed to battle-mode TEAM_SELECT
+
+DAMAGE_CALCULATOR
+
+Calculate damage between an attacker and defender.
+
+Responsibilities:
+
+Display attacker and defender
+Select an attacker move
+Calculate minimum and maximum damage
+Import attacker or defender from saved teams
+Open editable PKMN_INFO
+Save attacker or defender into a chosen saved-team slot
+Damage Calculator
+→ SAVE
+→ TEAM_SELECT mode "SAVE"
+→ select saved team
+→ select Pokémon slot
+→ overwrite selected slot
+→ return to Damage Calculator
+The calculator’s Pokémon remain local copies until the user explicitly uses Save.
+
+PKMN_INFO
+
+Generalized Pokémon information state.
+
+This replaces:
+PKMN_EDIT
+PKMN_VIEW
+SPECIES_VIEW
+
+Core flags:
+app.PKMN_INFO_editable
+app.PKMN_INFO_species
+app.PKMN_INFO_source
+app.option_omniscient
+
+Editable instance mode
+Python
+PKMN_INFO_editable = True
+PKMN_INFO_species = False
+
+Used by:
+
+Team Builder
+Damage Calculator
+
+Allows:
+
+Species change
+Nickname change
+Shiny toggle
+Nature change
+Level change
+EV changes
+Moveset changes
+Read-only instance mode
+Python
+PKMN_INFO_editable = False
+PKMN_INFO_species = False
+
+Used when the player is permitted to inspect a complete Pokémon instance.
+
+Shows:
+
+Species
+Types
+Nickname
+Shiny status
+Actual stats
+Base stats
+EVs
+Nature
+Level
+Current moveset
+Move information
+
+No values can be modified.
+
+Species-information mode
+Python
+PKMN_INFO_editable = False
+PKMN_INFO_species = True
+
+Used when the player knows the opponent’s species but is not entitled to its hidden training information.
+
+Shows:
+
+Species
+Types
+Base stats
+Full species learnset
+Other species-level information
+
+Hides:
+
+Actual stats
+EVs
+Exact nature
+Exact level if considered hidden
+Unrevealed moves
+Other instance-specific information
+
+The four moveset slots initially display:
+
+Plain Text
+?
+?
+?
+?
+
+The learnset remains visible in the Moves submenu because it belongs to the species, not the specific enemy instance.
+
+Future revealed-information support
+
+During battle, PKMN_INFO_species can eventually incorporate partial knowledge:
+
+A used move becomes revealed in one moveset slot.
+Outspeeding establishes a lower bound for Speed.
+Damage dealt establishes a possible offensive-stat range.
+Damage received establishes possible HP and defensive-stat ranges.
+Nature possibilities narrow as stat ranges narrow.
+Revealed values remain ranges unless battle evidence determines an exact value.
+
+Possible future display:
+
+Plain Text
+SPE 400+
+SPA 330-350
+HP 300-340
+DEF 220-255
+
+This is deferred until battle implementation.
+
+SPECIES_EDIT
+
+Shared species-selection state called from editable PKMN_INFO.
+
+Responsibilities:
+
+Display six species at once
+Scroll through all species
+Select by grid navigation
+Select by Dex number
+Warp to major index ranges
+Sort by Dex number, BST, Type, or Stat
+Return a selected species to PKMN_INFO
+Rebuild the Pokémon safely while preserving intended instance data

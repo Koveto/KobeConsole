@@ -1,77 +1,1316 @@
 from constants import *
 from state import *
 
-def handle_event(event):
-    if app.state == LAUNCHER_MENU:
-        handle_event_LAUNCHER_MENU(event)
-    elif app.state == LAN_HOST_JOIN:
-        handle_event_LAN_HOST_JOIN(event)
-    elif app.state == LAN_HOST:
-        handle_event_LAN_HOST(event)
-    elif app.state == LAN_JOIN:
-        handle_event_LAN_JOIN(event)
-    elif app.state == TEAM_PREVIEW:
-        handle_event_TEAM_PREVIEW(event)
-    elif app.state == PKMN_VIEW:
-        handle_event_PKMN_VIEW(event)
-    elif app.state == SPECIES_VIEW:
-        handle_event_SPECIES_VIEW(event)
-    elif app.state == BATTLE_START:
-        handle_event_BATTLE_START(event)
-    elif app.state == TEAM_SELECT:
-        handle_event_TEAM_SELECT(event)
-    elif app.state == OPTIONS:
-        handle_event_OPTIONS(event)
-    elif app.state == KEYBOARD:
-        handle_event_KEYBOARD(event)
-    elif app.state == OPTIONS_MUSIC:
-        handle_event_OPTIONS_MUSIC(event)
-    elif app.state == SINGLE_MENU:
-        handle_event_SINGLE_MENU(event)
-    elif app.state == SINGLE_MENU_TRAINER:
-        handle_event_SINGLE_MENU_TRAINER(event)
-    elif app.state == BATTLE_END:
-        handle_event_BATTLE_END(event)
-    elif app.state == SINGLE_BRACKET:
-        handle_event_SINGLE_BRACKET(event)
-    elif app.state == SINGLE_DEFEND_GYM:
-        handle_event_SINGLE_DEFEND_GYM(event)
-    elif app.state == DAMAGE_CALCULATOR:
-        handle_event_DAMAGE_CALCULATOR(event)
-    elif app.state == PKMN_EDIT:
-        handle_event_PKMN_EDIT(event)
+def handle_event(
+    event
+):
 
-def cycle_pkmn_edit_info_mode():
+    if app.state == LAUNCHER_MENU:
+
+        handle_event_LAUNCHER_MENU(
+            event
+        )
+
+    elif app.state == LAN_HOST_JOIN:
+
+        handle_event_LAN_HOST_JOIN(
+            event
+        )
+
+    elif app.state == LAN_HOST:
+
+        handle_event_LAN_HOST(
+            event
+        )
+
+    elif app.state == LAN_JOIN:
+
+        handle_event_LAN_JOIN(
+            event
+        )
+
+    elif app.state == TEAM_PREVIEW:
+
+        handle_event_TEAM_PREVIEW(
+            event
+        )
+
+    elif app.state == BATTLE_START:
+
+        handle_event_BATTLE_START(
+            event
+        )
+
+    elif app.state == TEAM_SELECT:
+
+        if (
+            app.TEAM_SELECT_mode
+            == "SAVE"
+        ):
+
+            handle_event_TEAM_SELECT_save(
+                event
+            )
+
+        else:
+
+            handle_event_TEAM_SELECT(
+                event
+            )
+
+    elif app.state == OPTIONS:
+
+        handle_event_OPTIONS(
+            event
+        )
+
+    elif app.state == KEYBOARD:
+
+        handle_event_KEYBOARD(
+            event
+        )
+
+    elif app.state == OPTIONS_MUSIC:
+
+        handle_event_OPTIONS_MUSIC(
+            event
+        )
+
+    elif app.state == SINGLE_MENU:
+
+        handle_event_SINGLE_MENU(
+            event
+        )
+
+    elif app.state == SINGLE_MENU_TRAINER:
+
+        handle_event_SINGLE_MENU_TRAINER(
+            event
+        )
+
+    elif app.state == BATTLE_END:
+
+        handle_event_BATTLE_END(
+            event
+        )
+
+    elif app.state == SINGLE_BRACKET:
+
+        handle_event_SINGLE_BRACKET(
+            event
+        )
+
+    elif app.state == SINGLE_DEFEND_GYM:
+
+        handle_event_SINGLE_DEFEND_GYM(
+            event
+        )
+
+    elif app.state == DAMAGE_CALCULATOR:
+
+        handle_event_DAMAGE_CALCULATOR(
+            event
+        )
+
+    elif app.state == PKMN_INFO:
+
+        handle_event_PKMN_INFO(
+            event
+        )
+
+def get_pkmn_info_source_team():
 
     if (
-        app.PKMN_EDIT_info_mode
+        app.PKMN_INFO_source
+        == "TEAMBUILDER"
+    ):
+
+        return (
+            app.TEAM_SELECT_preview_team
+        )
+
+    if (
+        app.PKMN_INFO_source
+        == "TEAM_PREVIEW"
+    ):
+
+        if (
+            app.TEAM_PREVIEW_column
+            == 0
+        ):
+
+            return (
+                app.player_team
+                or []
+            )
+
+        return (
+            app.opponent_team
+            or []
+        )
+
+    return []
+
+
+def load_pkmn_info_pokemon(
+    pokemon
+):
+
+    if pokemon is None:
+        return False
+
+    app.PKMN_INFO_pokemon = (
+        Pokemon.from_pokemon(
+            pokemon
+        )
+    )
+
+    app.PKMN_INFO_mode = (
+        "MAIN"
+    )
+
+    app.PKMN_INFO_error = None
+    app.PKMN_INFO_selecting_move = False
+
+    return True
+
+
+def navigate_pkmn_info_team(
+    direction
+):
+
+    if (
+        app.PKMN_INFO_source
+        == "TEAMBUILDER"
+    ):
+
+        team_index = (
+            app.PKMN_INFO_team_index
+        )
+
+        current_index = (
+            app.PKMN_INFO_pokemon_index
+        )
+
+        if (
+            team_index is None
+            or
+            current_index is None
+        ):
+
+            return False
+
+        save_pkmn_info_pokemon()
+
+        save_data = load_save()
+
+        if not (
+            0
+            <= team_index
+            < len(
+                save_data["teams"]
+            )
+        ):
+
+            return False
+
+        team_data = (
+            save_data["teams"][
+                team_index
+            ]["pokemon"]
+        )
+
+        if len(
+            team_data
+        ) == 0:
+
+            return False
+
+        new_index = max(
+            0,
+            min(
+                len(team_data) - 1,
+                current_index + direction
+            )
+        )
+
+        if (
+            new_index
+            == current_index
+        ):
+
+            return False
+
+        new_pokemon = (
+            Pokemon.from_dict(
+                team_data[
+                    new_index
+                ]
+            )
+        )
+
+        app.PKMN_INFO_pokemon_index = (
+            new_index
+        )
+
+        app.TEAM_SELECT_pokemon_index = (
+            new_index
+        )
+
+        app.TEAM_SELECT_preview_team = [
+
+            Pokemon.from_dict(
+                pokemon_data
+            )
+
+            for pokemon_data
+            in team_data
+
+        ]
+
+        return load_pkmn_info_pokemon(
+            new_pokemon
+        )
+
+    if (
+        app.PKMN_INFO_source
+        == "TEAM_PREVIEW"
+    ):
+
+        player_team = (
+            app.player_team
+            or []
+        )
+
+        opponent_team = (
+            app.opponent_team
+            or []
+        )
+
+        visible_entries = []
+
+        for pokemon_index, pokemon in enumerate(
+            player_team
+        ):
+
+            visible_entries.append(
+                (
+                    0,
+                    pokemon_index,
+                    pokemon
+                )
+            )
+
+        if app.option_omniscient:
+
+            for pokemon_index, pokemon in enumerate(
+                opponent_team
+            ):
+
+                visible_entries.append(
+                    (
+                        1,
+                        pokemon_index,
+                        pokemon
+                    )
+                )
+
+        if len(
+            visible_entries
+        ) == 0:
+
+            return False
+
+        current_position = None
+
+        for position, (
+            column,
+            pokemon_index,
+            pokemon
+        ) in enumerate(
+            visible_entries
+        ):
+
+            if (
+                column
+                == app.TEAM_PREVIEW_column
+                and
+                pokemon_index
+                == app.TEAM_PREVIEW_index
+            ):
+
+                current_position = (
+                    position
+                )
+
+                break
+
+        if current_position is None:
+
+            current_position = 0
+
+        new_position = max(
+            0,
+            min(
+                len(visible_entries) - 1,
+                current_position + direction
+            )
+        )
+
+        if (
+            new_position
+            == current_position
+        ):
+
+            return False
+
+        (
+            new_column,
+            new_index,
+            new_pokemon
+        ) = visible_entries[
+            new_position
+        ]
+
+        app.TEAM_PREVIEW_column = (
+            new_column
+        )
+
+        app.TEAM_PREVIEW_index = (
+            new_index
+        )
+
+        app.PKMN_INFO_species = (
+            False
+        )
+
+        return load_pkmn_info_pokemon(
+            new_pokemon
+        )
+
+    return False
+
+
+def switch_pkmn_info_calculator_side():
+
+    source = (
+        app.PKMN_INFO_source
+    )
+
+    if (
+        source
+        == "DAMAGE_CALCULATOR_ATTACKER"
+    ):
+
+        save_pkmn_info_pokemon()
+
+        defender = (
+            app.DAMAGE_CALCULATOR_defender
+        )
+
+        if defender is None:
+            return False
+
+        app.PKMN_INFO_source = (
+            "DAMAGE_CALCULATOR_DEFENDER"
+        )
+
+        app.DAMAGE_CALCULATOR_column = 2
+
+        return load_pkmn_info_pokemon(
+            defender
+        )
+
+    if (
+        source
+        == "DAMAGE_CALCULATOR_DEFENDER"
+    ):
+
+        save_pkmn_info_pokemon()
+
+        attacker = (
+            app.DAMAGE_CALCULATOR_attacker
+        )
+
+        if attacker is None:
+            return False
+
+        app.PKMN_INFO_source = (
+            "DAMAGE_CALCULATOR_ATTACKER"
+        )
+
+        app.DAMAGE_CALCULATOR_column = 0
+
+        return load_pkmn_info_pokemon(
+            attacker
+        )
+
+    return False
+
+
+def navigate_pkmn_info_source(
+    direction
+):
+
+    if (
+        app.PKMN_INFO_source
+        in (
+            "TEAMBUILDER",
+            "TEAM_PREVIEW"
+        )
+    ):
+
+        return navigate_pkmn_info_team(
+            direction
+        )
+
+    if (
+        app.PKMN_INFO_source
+        in (
+            "DAMAGE_CALCULATOR_ATTACKER",
+            "DAMAGE_CALCULATOR_DEFENDER"
+        )
+    ):
+
+        return switch_pkmn_info_calculator_side()
+
+    return False
+
+def handle_event_PKMN_INFO_stats(
+    event
+):
+
+    if is_cx(event):
+
+        cycle_pkmn_info_info_mode()
+
+        return
+
+    if is_up(event):
+
+        app.PKMN_INFO_stats_index = max(
+            0,
+            app.PKMN_INFO_stats_index - 1
+        )
+
+        app.PKMN_INFO_error = None
+
+    elif is_down(event):
+
+        app.PKMN_INFO_stats_index = min(
+            9,
+            app.PKMN_INFO_stats_index + 1
+        )
+
+        app.PKMN_INFO_error = None
+
+    elif is_left(event):
+
+        if (
+            not app.PKMN_INFO_editable
+            and
+            app.PKMN_INFO_stats_index
+            != 0
+        ):
+
+            return
+
+        if (
+            app.PKMN_INFO_stats_index
+            == 0
+        ):
+
+            cycle_pkmn_info_info_mode()
+
+        elif (
+            app.PKMN_INFO_stats_index
+            == 1
+        ):
+
+            change_pkmn_info_nature(
+                -1
+            )
+
+        elif (
+            app.PKMN_INFO_stats_index
+            == 2
+        ):
+
+            adjust_pkmn_info_level(
+                -1
+            )
+
+        elif (
+            3
+            <= app.PKMN_INFO_stats_index
+            <= 8
+        ):
+
+            app.PKMN_INFO_ev_index = (
+                app.PKMN_INFO_stats_index
+                - 3
+            )
+
+            adjust_pkmn_info_ev(
+                -1
+            )
+
+    elif is_right(event):
+
+        if (
+            not app.PKMN_INFO_editable
+            and
+            app.PKMN_INFO_stats_index
+            != 0
+        ):
+
+            return
+
+        if (
+            app.PKMN_INFO_stats_index
+            == 0
+        ):
+
+            cycle_pkmn_info_info_mode()
+
+        elif (
+            app.PKMN_INFO_stats_index
+            == 1
+        ):
+
+            change_pkmn_info_nature(
+                1
+            )
+
+        elif (
+            app.PKMN_INFO_stats_index
+            == 2
+        ):
+
+            adjust_pkmn_info_level(
+                1
+            )
+
+        elif (
+            3
+            <= app.PKMN_INFO_stats_index
+            <= 8
+        ):
+
+            app.PKMN_INFO_ev_index = (
+                app.PKMN_INFO_stats_index
+                - 3
+            )
+
+            adjust_pkmn_info_ev(
+                1
+            )
+
+    elif is_confirm(event):
+
+        if (
+            app.PKMN_INFO_stats_index
+            == 0
+        ):
+
+            cycle_pkmn_info_info_mode()
+
+        elif (
+            app.PKMN_INFO_stats_index
+            == 9
+        ):
+
+            app.PKMN_INFO_mode = (
+                "MAIN"
+            )
+
+            app.PKMN_INFO_index = 4
+            app.PKMN_INFO_error = None
+
+    elif is_cancel(event):
+
+        app.PKMN_INFO_mode = (
+            "MAIN"
+        )
+
+        app.PKMN_INFO_index = 4
+        app.PKMN_INFO_error = None
+
+def handle_event_PKMN_INFO_moves(
+    event
+):
+
+    pokemon = (
+        app.PKMN_INFO_pokemon
+    )
+
+    if pokemon is None:
+
+        app.PKMN_INFO_mode = (
+            "MAIN"
+        )
+
+        return
+
+    if (
+        app.PKMN_INFO_selecting_move
+    ):
+
+        learnset_size = len(
+            pokemon.learnset
+        )
+
+        if learnset_size == 0:
+
+            if is_cancel(event):
+
+                app.PKMN_INFO_selecting_move = (
+                    False
+                )
+
+                app.PKMN_INFO_error = None
+
+            return
+
+        if is_up(event):
+
+            app.PKMN_INFO_learnset_index = max(
+                0,
+                app.PKMN_INFO_learnset_index - 1
+            )
+
+            app.PKMN_INFO_error = None
+
+        elif is_down(event):
+
+            app.PKMN_INFO_learnset_index = min(
+                learnset_size - 1,
+                app.PKMN_INFO_learnset_index + 1
+            )
+
+            app.PKMN_INFO_error = None
+
+        elif is_confirm(event):
+
+            if not app.PKMN_INFO_editable:
+                return
+
+            selected_move = (
+                pokemon.learnset[
+                    app.PKMN_INFO_learnset_index
+                ]
+            )
+
+            move_is_duplicate = any(
+
+                index
+                != app.PKMN_INFO_move_index
+
+                and
+
+                known_move.name
+                == selected_move.name
+
+                for index, known_move
+                in enumerate(
+                    pokemon.moves
+                )
+
+            )
+
+            if move_is_duplicate:
+
+                app.PKMN_INFO_error = (
+                    "MOVE ALREADY KNOWN"
+                )
+
+                return
+
+            pokemon.set_move(
+                app.PKMN_INFO_move_index,
+                selected_move
+            )
+
+            save_pkmn_info_pokemon()
+
+            app.PKMN_INFO_error = None
+
+            app.PKMN_INFO_selecting_move = (
+                False
+            )
+
+        elif is_cancel(event):
+
+            app.PKMN_INFO_selecting_move = (
+                False
+            )
+
+            app.PKMN_INFO_error = None
+
+        return
+
+    if is_up(event):
+
+        app.PKMN_INFO_move_index = max(
+            0,
+            app.PKMN_INFO_move_index - 1
+        )
+
+    elif is_down(event):
+
+        app.PKMN_INFO_move_index = min(
+            4,
+            app.PKMN_INFO_move_index + 1
+        )
+
+    elif is_confirm(event):
+
+        if (
+            app.PKMN_INFO_move_index
+            == 4
+        ):
+
+            app.PKMN_INFO_mode = (
+                "MAIN"
+            )
+
+            app.PKMN_INFO_index = 3
+            app.PKMN_INFO_error = None
+
+            return
+
+        if not app.PKMN_INFO_editable:
+            return
+
+        if not (
+            0
+            <= app.PKMN_INFO_move_index
+            < len(
+                pokemon.moves
+            )
+        ):
+
+            return
+
+        if len(
+            pokemon.learnset
+        ) == 0:
+
+            return
+
+        current_move = (
+            pokemon.moves[
+                app.PKMN_INFO_move_index
+            ]
+        )
+
+        app.PKMN_INFO_learnset_index = 0
+
+        for index, move in enumerate(
+            pokemon.learnset
+        ):
+
+            if (
+                move.name
+                == current_move.name
+            ):
+
+                app.PKMN_INFO_learnset_index = (
+                    index
+                )
+
+                break
+
+        app.PKMN_INFO_selecting_move = (
+            True
+        )
+
+        app.PKMN_INFO_error = None
+
+    elif is_cancel(event):
+
+        app.PKMN_INFO_mode = (
+            "MAIN"
+        )
+
+        app.PKMN_INFO_index = 3
+        app.PKMN_INFO_error = None
+
+def handle_event_PKMN_INFO_main(
+    event
+):
+
+    pokemon = (
+        app.PKMN_INFO_pokemon
+    )
+
+    if pokemon is None:
+
+        if is_cancel(event):
+
+            change_state(
+                app.PKMN_INFO_return_state
+            )
+
+        return
+
+    if is_left_shoulder_back(
+        event
+    ):
+
+        navigate_pkmn_info_source(
+            -1
+        )
+
+        return
+
+    if is_right_shoulder_back(
+        event
+    ):
+
+        navigate_pkmn_info_source(
+            1
+        )
+
+        return
+
+    if is_cx(event):
+
+        cycle_pkmn_info_info_mode()
+
+        return
+
+    if not app.PKMN_INFO_editable:
+
+        if is_left(event):
+
+            if (
+                app.PKMN_INFO_index
+                == 4
+            ):
+
+                app.PKMN_INFO_index = 3
+
+        elif is_right(event):
+
+            if (
+                app.PKMN_INFO_index
+                == 3
+            ):
+
+                app.PKMN_INFO_index = 4
+
+        elif is_confirm(event):
+
+            if (
+                app.PKMN_INFO_index
+                == 3
+            ):
+
+                app.PKMN_INFO_mode = (
+                    "MOVES"
+                )
+
+                app.PKMN_INFO_move_index = 0
+                app.PKMN_INFO_learnset_index = 0
+                app.PKMN_INFO_selecting_move = False
+                app.PKMN_INFO_error = None
+
+            elif (
+                app.PKMN_INFO_index
+                == 4
+            ):
+
+                app.PKMN_INFO_mode = (
+                    "STATS"
+                )
+
+                app.PKMN_INFO_stats_index = 0
+                app.PKMN_INFO_error = None
+
+        elif is_cancel(event):
+
+            change_state(
+                app.PKMN_INFO_return_state
+            )
+
+        return
+
+    if is_up(event):
+
+        if (
+            app.PKMN_INFO_index
+            in (
+                3,
+                4
+            )
+        ):
+
+            app.PKMN_INFO_index = 2
+
+        else:
+
+            app.PKMN_INFO_index = max(
+                0,
+                app.PKMN_INFO_index - 1
+            )
+
+    elif is_down(event):
+
+        if (
+            app.PKMN_INFO_index
+            < 2
+        ):
+
+            app.PKMN_INFO_index += 1
+
+        elif (
+            app.PKMN_INFO_index
+            == 2
+        ):
+
+            app.PKMN_INFO_index = 3
+
+    elif is_left(event):
+
+        if (
+            app.PKMN_INFO_index
+            == 2
+        ):
+
+            pokemon.set_shiny(
+                not pokemon.is_shiny
+            )
+
+            save_pkmn_info_pokemon()
+
+        elif (
+            app.PKMN_INFO_index
+            == 4
+        ):
+
+            app.PKMN_INFO_index = 3
+
+    elif is_right(event):
+
+        if (
+            app.PKMN_INFO_index
+            == 2
+        ):
+
+            pokemon.set_shiny(
+                not pokemon.is_shiny
+            )
+
+            save_pkmn_info_pokemon()
+
+        elif (
+            app.PKMN_INFO_index
+            == 3
+        ):
+
+            app.PKMN_INFO_index = 4
+
+    elif is_confirm(event):
+
+        if (
+            app.PKMN_INFO_index
+            == 0
+        ):
+
+            # SPECIES_EDIT will open here.
+            pass
+
+        elif (
+            app.PKMN_INFO_index
+            == 1
+        ):
+
+            app.KEYBOARD_mode = (
+                "POKEMON_NICKNAME"
+            )
+
+            app.KEYBOARD_return_state = (
+                PKMN_INFO
+            )
+
+            app.KEYBOARD_team_index = None
+
+            app.KEYBOARD_pokemon = (
+                pokemon
+            )
+
+            change_state(
+                KEYBOARD
+            )
+
+        elif (
+            app.PKMN_INFO_index
+            == 2
+        ):
+
+            pokemon.set_shiny(
+                not pokemon.is_shiny
+            )
+
+            save_pkmn_info_pokemon()
+
+        elif (
+            app.PKMN_INFO_index
+            == 3
+        ):
+
+            app.PKMN_INFO_mode = (
+                "MOVES"
+            )
+
+            app.PKMN_INFO_move_index = 0
+            app.PKMN_INFO_learnset_index = 0
+            app.PKMN_INFO_selecting_move = False
+            app.PKMN_INFO_error = None
+
+        elif (
+            app.PKMN_INFO_index
+            == 4
+        ):
+
+            app.PKMN_INFO_mode = (
+                "STATS"
+            )
+
+            app.PKMN_INFO_stats_index = 0
+            app.PKMN_INFO_error = None
+
+    elif is_cancel(event):
+
+        save_pkmn_info_pokemon()
+
+        change_state(
+            app.PKMN_INFO_return_state
+        )
+
+def get_damage_calculator_save_pokemon():
+
+    if (
+        app.TEAM_SELECT_import_target
+        == "ATTACKER"
+    ):
+
+        return (
+            app.DAMAGE_CALCULATOR_attacker
+        )
+
+    if (
+        app.TEAM_SELECT_import_target
+        == "DEFENDER"
+    ):
+
+        return (
+            app.DAMAGE_CALCULATOR_defender
+        )
+
+    return None
+
+
+def save_damage_calculator_pokemon_to_team():
+
+    pokemon = (
+        get_damage_calculator_save_pokemon()
+    )
+
+    if pokemon is None:
+
+        app.TEAM_SELECT_error = (
+            "NO POKEMON TO SAVE"
+        )
+
+        return False
+
+    team_index = (
+        app.TEAM_SELECT_index
+    )
+
+    pokemon_index = (
+        app.TEAM_SELECT_pokemon_index
+    )
+
+    save_data = load_save()
+
+    if not (
+        0
+        <= team_index
+        < len(
+            save_data["teams"]
+        )
+    ):
+
+        app.TEAM_SELECT_error = (
+            "INVALID TEAM"
+        )
+
+        return False
+
+    team_pokemon = (
+        save_data["teams"][
+            team_index
+        ]["pokemon"]
+    )
+
+    if not (
+        0
+        <= pokemon_index
+        < len(
+            team_pokemon
+        )
+    ):
+
+        app.TEAM_SELECT_error = (
+            "INVALID SLOT"
+        )
+
+        return False
+
+    team_pokemon[
+        pokemon_index
+    ] = pokemon.to_dict()
+
+    save_save(
+        save_data
+    )
+
+    app.TEAM_SELECT_error = None
+
+    return True
+
+
+def handle_event_TEAM_SELECT_save(
+    event
+):
+
+    if (
+        app.TEAM_SELECT_selecting_pokemon
+    ):
+
+        if is_cancel(event):
+
+            app.TEAM_SELECT_selecting_pokemon = (
+                False
+            )
+
+            app.TEAM_SELECT_error = None
+
+            return
+
+        if is_confirm(event):
+
+            saved = (
+                save_damage_calculator_pokemon_to_team()
+            )
+
+            if not saved:
+                return
+
+            app.TEAM_SELECT_selecting_pokemon = (
+                False
+            )
+
+            change_state(
+                app.TEAM_SELECT_return_state
+            )
+
+            return
+
+        handle_team_select_pokemon_navigation(
+            event
+        )
+
+        return
+
+    if is_up(event):
+
+        handle_team_select_navigation(
+            -1
+        )
+
+    elif is_down(event):
+
+        handle_team_select_navigation(
+            1
+        )
+
+    elif is_confirm(event):
+
+        if len(
+            app.TEAM_SELECT_preview_team
+        ) == 0:
+
+            app.TEAM_SELECT_error = (
+                "TEAM HAS NO POKEMON"
+            )
+
+            return
+
+        app.TEAM_SELECT_error = None
+
+        app.TEAM_SELECT_selecting_pokemon = (
+            True
+        )
+
+        app.TEAM_SELECT_pokemon_index = 0
+
+    elif is_cancel(event):
+
+        change_state(
+            app.TEAM_SELECT_return_state
+        )
+
+def apply_battle_level_cap(
+    team,
+    level_cap
+):
+
+    for pokemon in team:
+
+        battle_level = min(
+            pokemon.level,
+            level_cap
+        )
+
+        pokemon.set_level(
+            battle_level
+        )
+
+def cycle_pkmn_info_info_mode():
+
+    if (
+        app.PKMN_INFO_info_mode
         == "ACTUAL"
     ):
-        app.PKMN_EDIT_info_mode = (
+        app.PKMN_INFO_info_mode = (
             "BASE"
         )
 
     elif (
-        app.PKMN_EDIT_info_mode
+        app.PKMN_INFO_info_mode
         == "BASE"
     ):
-        app.PKMN_EDIT_info_mode = (
+        app.PKMN_INFO_info_mode = (
             "EVS"
         )
 
     else:
-        app.PKMN_EDIT_info_mode = (
+        app.PKMN_INFO_info_mode = (
             "ACTUAL"
         )
 
-    app.PKMN_EDIT_error = None
+    app.PKMN_INFO_error = None
 
-def adjust_pkmn_edit_level(
+def adjust_pkmn_info_level(
     direction
 ):
 
     pokemon = (
-        app.PKMN_EDIT_pokemon
+        app.PKMN_INFO_pokemon
     )
 
     if pokemon is None:
@@ -92,14 +1331,14 @@ def adjust_pkmn_edit_level(
         new_level
     )
 
-    save_pkmn_edit_pokemon()
+    save_pkmn_info_pokemon()
 
-def change_pkmn_edit_nature(
+def change_pkmn_info_nature(
     direction
 ):
 
     pokemon = (
-        app.PKMN_EDIT_pokemon
+        app.PKMN_INFO_pokemon
     )
 
     if pokemon is None:
@@ -135,25 +1374,25 @@ def change_pkmn_edit_nature(
         pokemon.level
     )
 
-    save_pkmn_edit_pokemon()
+    save_pkmn_info_pokemon()
 
-def adjust_pkmn_edit_ev(
+def adjust_pkmn_info_ev(
     direction
 ):
 
     pokemon = (
-        app.PKMN_EDIT_pokemon
+        app.PKMN_INFO_pokemon
     )
 
     if pokemon is None:
         return
 
-    evs = get_pkmn_edit_evs(
+    evs = get_pkmn_info_evs(
         pokemon
     )
 
     ev_index = (
-        app.PKMN_EDIT_ev_index
+        app.PKMN_INFO_ev_index
     )
 
     if direction < 0:
@@ -168,7 +1407,7 @@ def adjust_pkmn_edit_ev(
             == evs[ev_index]
         ):
 
-            app.PKMN_EDIT_error = (
+            app.PKMN_INFO_error = (
                 "STAT EV MIN 0"
             )
 
@@ -178,9 +1417,9 @@ def adjust_pkmn_edit_ev(
             new_value
         )
 
-        app.PKMN_EDIT_error = None
+        app.PKMN_INFO_error = None
 
-        set_pkmn_edit_evs(
+        set_pkmn_info_evs(
             pokemon,
             evs
         )
@@ -210,13 +1449,13 @@ def adjust_pkmn_edit_ev(
                 >= 252
             ):
 
-                app.PKMN_EDIT_error = (
+                app.PKMN_INFO_error = (
                     "STAT EV MAX 252"
                 )
 
             else:
 
-                app.PKMN_EDIT_error = (
+                app.PKMN_INFO_error = (
                     "TOTAL EV MAX 508"
                 )
 
@@ -226,15 +1465,15 @@ def adjust_pkmn_edit_ev(
             increase
         )
 
-        app.PKMN_EDIT_error = None
+        app.PKMN_INFO_error = None
 
-        set_pkmn_edit_evs(
+        set_pkmn_info_evs(
             pokemon,
             evs
         )
 
 
-def get_pkmn_edit_evs(
+def get_pkmn_info_evs(
     pokemon
 ):
 
@@ -248,7 +1487,7 @@ def get_pkmn_edit_evs(
     ]
 
 
-def set_pkmn_edit_evs(
+def set_pkmn_info_evs(
     pokemon,
     evs
 ):
@@ -264,12 +1503,12 @@ def set_pkmn_edit_evs(
         pokemon.level
     )
 
-    save_pkmn_edit_pokemon()
+    save_pkmn_info_pokemon()
 
-def save_pkmn_edit_pokemon():
+def save_pkmn_info_pokemon():
 
     pokemon = (
-        app.PKMN_EDIT_pokemon
+        app.PKMN_INFO_pokemon
     )
 
     if pokemon is None:
@@ -277,16 +1516,16 @@ def save_pkmn_edit_pokemon():
         return
 
     if (
-        app.PKMN_EDIT_source
+        app.PKMN_INFO_source
         == "TEAMBUILDER"
     ):
 
         team_index = (
-            app.PKMN_EDIT_team_index
+            app.PKMN_INFO_team_index
         )
 
         pokemon_index = (
-            app.PKMN_EDIT_pokemon_index
+            app.PKMN_INFO_pokemon_index
         )
 
         save_data = load_save()
@@ -324,7 +1563,7 @@ def save_pkmn_edit_pokemon():
             )
 
     elif (
-        app.PKMN_EDIT_source
+        app.PKMN_INFO_source
         == "DAMAGE_CALCULATOR_ATTACKER"
     ):
 
@@ -340,7 +1579,7 @@ def save_pkmn_edit_pokemon():
         )
 
     elif (
-        app.PKMN_EDIT_source
+        app.PKMN_INFO_source
         == "DAMAGE_CALCULATOR_DEFENDER"
     ):
 
@@ -416,490 +1655,35 @@ def handle_team_select_pokemon_navigation(
                 max_index
             )
 
-def handle_event_PKMN_EDIT(
+def handle_event_PKMN_INFO(
     event
 ):
 
-    pokemon = (
-        app.PKMN_EDIT_pokemon
-    )
-
-    if pokemon is None:
-
-        if is_cancel(event):
-
-            change_state(
-                app.PKMN_EDIT_return_state
-            )
-
-        return
-
     if (
-        app.PKMN_EDIT_mode
+        app.PKMN_INFO_mode
         == "MOVES"
     ):
 
-        if (
-            app.PKMN_EDIT_selecting_move
-        ):
-
-            learnset_size = len(
-                pokemon.learnset
-            )
-
-            if learnset_size == 0:
-
-                app.PKMN_EDIT_selecting_move = (
-                    False
-                )
-
-                return
-
-            if is_up(event):
-
-                app.PKMN_EDIT_learnset_index = max(
-                    0,
-                    app.PKMN_EDIT_learnset_index - 1
-                )
-                app.PKMN_EDIT_error = None
-
-            elif is_down(event):
-
-                app.PKMN_EDIT_learnset_index = min(
-                    learnset_size - 1,
-                    app.PKMN_EDIT_learnset_index + 1
-                )
-                app.PKMN_EDIT_error = None
-
-            elif is_confirm(event):
-
-                selected_move = (
-                    pokemon.learnset[
-                        app.PKMN_EDIT_learnset_index
-                    ]
-                )
-
-                move_is_duplicate = any(
-
-                    index
-                    != app.PKMN_EDIT_move_index
-
-                    and
-
-                    known_move.name
-                    == selected_move.name
-
-                    for index, known_move
-                    in enumerate(
-                        pokemon.moves
-                    )
-
-                )
-
-                if move_is_duplicate:
-
-                    app.PKMN_EDIT_error = (
-                        "MOVE ALREADY KNOWN"
-                    )
-
-                    return
-
-                pokemon.set_move(
-                    app.PKMN_EDIT_move_index,
-                    selected_move
-                )
-
-                save_pkmn_edit_pokemon()
-
-                app.PKMN_EDIT_error = None
-
-                app.PKMN_EDIT_selecting_move = (
-                    False
-                )
-
-            elif is_cancel(event):
-
-                app.PKMN_EDIT_selecting_move = (
-                    False
-                )
-                app.PKMN_EDIT_error = None
-
-            return
-
-        if is_up(event):
-
-            app.PKMN_EDIT_move_index = max(
-                0,
-                app.PKMN_EDIT_move_index - 1
-            )
-
-        elif is_down(event):
-
-            app.PKMN_EDIT_move_index = min(
-                4,
-                app.PKMN_EDIT_move_index + 1
-            )
-
-        elif is_confirm(event):
-
-            if (
-                app.PKMN_EDIT_move_index
-                < 4
-            ):
-
-                if len(
-                    pokemon.learnset
-                ) == 0:
-
-                    return
-
-                current_move = (
-                    pokemon.moves[
-                        app.PKMN_EDIT_move_index
-                    ]
-                )
-
-                app.PKMN_EDIT_learnset_index = 0
-
-                for index, move in enumerate(
-                    pokemon.learnset
-                ):
-
-                    if (
-                        move.name
-                        == current_move.name
-                    ):
-
-                        app.PKMN_EDIT_learnset_index = (
-                            index
-                        )
-
-                        break
-
-                app.PKMN_EDIT_selecting_move = (
-                    True
-                )
-
-            else:
-
-                app.PKMN_EDIT_mode = (
-                    "MAIN"
-                )
-
-                app.PKMN_EDIT_index = 3
-
-        elif is_cancel(event):
-
-            app.PKMN_EDIT_mode = (
-                "MAIN"
-            )
-
-            app.PKMN_EDIT_index = 3
+        handle_event_PKMN_INFO_moves(
+            event
+        )
 
         return
 
     if (
-        app.PKMN_EDIT_mode
+        app.PKMN_INFO_mode
         == "STATS"
     ):
 
-        if is_cx(event):
-
-            cycle_pkmn_edit_info_mode()
-
-            return
-
-        if is_up(event):
-
-            app.PKMN_EDIT_stats_index = max(
-                0,
-                app.PKMN_EDIT_stats_index - 1
-            )
-
-            app.PKMN_EDIT_error = None
-
-        elif is_down(event):
-
-            app.PKMN_EDIT_stats_index = min(
-                9,
-                app.PKMN_EDIT_stats_index + 1
-            )
-
-            app.PKMN_EDIT_error = None
-
-        elif is_left(event):
-
-            if (
-                app.PKMN_EDIT_stats_index
-                == 0
-            ):
-
-                cycle_pkmn_edit_info_mode()
-
-            elif (
-                app.PKMN_EDIT_stats_index
-                == 1
-            ):
-
-                change_pkmn_edit_nature(
-                    -1
-                )
-
-            elif (
-                app.PKMN_EDIT_stats_index
-                == 2
-            ):
-
-                adjust_pkmn_edit_level(
-                    -1
-                )
-
-            elif (
-                3
-                <= app.PKMN_EDIT_stats_index
-                <= 8
-            ):
-
-                app.PKMN_EDIT_ev_index = (
-                    app.PKMN_EDIT_stats_index
-                    - 3
-                )
-
-                adjust_pkmn_edit_ev(
-                    -1
-                )
-
-        elif is_right(event):
-
-            if (
-                app.PKMN_EDIT_stats_index
-                == 0
-            ):
-
-                cycle_pkmn_edit_info_mode()
-
-            elif (
-                app.PKMN_EDIT_stats_index
-                == 1
-            ):
-
-                change_pkmn_edit_nature(
-                    1
-                )
-
-            elif (
-                app.PKMN_EDIT_stats_index
-                == 2
-            ):
-
-                adjust_pkmn_edit_level(
-                    1
-                )
-
-            elif (
-                3
-                <= app.PKMN_EDIT_stats_index
-                <= 8
-            ):
-
-                app.PKMN_EDIT_ev_index = (
-                    app.PKMN_EDIT_stats_index
-                    - 3
-                )
-
-                adjust_pkmn_edit_ev(
-                    1
-                )
-
-        elif is_confirm(event):
-
-            if (
-                app.PKMN_EDIT_stats_index
-                == 0
-            ):
-
-                cycle_pkmn_edit_info_mode()
-
-            elif (
-                app.PKMN_EDIT_stats_index
-                == 9
-            ):
-
-                app.PKMN_EDIT_mode = (
-                    "MAIN"
-                )
-
-                app.PKMN_EDIT_index = 4
-                app.PKMN_EDIT_error = None
-
-        elif is_cancel(event):
-
-            app.PKMN_EDIT_mode = (
-                "MAIN"
-            )
-
-            app.PKMN_EDIT_index = 4
-            app.PKMN_EDIT_error = None
-
-        return
-
-    if is_cx(event):
-
-        cycle_pkmn_edit_info_mode()
-
-        return
-
-    if is_up(event):
-
-        if (
-            app.PKMN_EDIT_index
-            in (
-                3,
-                4
-            )
-        ):
-
-            app.PKMN_EDIT_index = 2
-
-        else:
-
-            app.PKMN_EDIT_index = max(
-                0,
-                app.PKMN_EDIT_index - 1
-            )
-
-    elif is_down(event):
-
-        if (
-            app.PKMN_EDIT_index
-            < 2
-        ):
-
-            app.PKMN_EDIT_index += 1
-
-        elif (
-            app.PKMN_EDIT_index
-            == 2
-        ):
-
-            app.PKMN_EDIT_index = 3
-
-    elif is_left(event):
-
-        if (
-            app.PKMN_EDIT_index
-            == 2
-        ):
-
-            pokemon.set_shiny(
-                not pokemon.is_shiny
-            )
-
-            save_pkmn_edit_pokemon()
-
-        elif (
-            app.PKMN_EDIT_index
-            == 4
-        ):
-
-            app.PKMN_EDIT_index = 3
-
-    elif is_right(event):
-
-        if (
-            app.PKMN_EDIT_index
-            == 2
-        ):
-
-            pokemon.set_shiny(
-                not pokemon.is_shiny
-            )
-
-            save_pkmn_edit_pokemon()
-
-        elif (
-            app.PKMN_EDIT_index
-            == 3
-        ):
-
-            app.PKMN_EDIT_index = 4
-
-    elif is_confirm(event):
-
-        if (
-            app.PKMN_EDIT_index
-            == 0
-        ):
-
-            # SPECIES_EDIT will open here.
-            pass
-
-        elif (
-            app.PKMN_EDIT_index
-            == 1
-        ):
-
-            app.KEYBOARD_mode = (
-                "POKEMON_NICKNAME"
-            )
-
-            app.KEYBOARD_return_state = (
-                PKMN_EDIT
-            )
-
-            app.KEYBOARD_team_index = None
-
-            app.KEYBOARD_pokemon = (
-                pokemon
-            )
-
-            change_state(
-                KEYBOARD
-            )
-
-        elif (
-            app.PKMN_EDIT_index
-            == 2
-        ):
-
-            pokemon.set_shiny(
-                not pokemon.is_shiny
-            )
-
-            save_pkmn_edit_pokemon()
-
-        elif (
-            app.PKMN_EDIT_index
-            == 3
-        ):
-
-            app.PKMN_EDIT_mode = (
-                "MOVES"
-            )
-
-            app.PKMN_EDIT_move_index = 0
-            app.PKMN_EDIT_learnset_index = 0
-            app.PKMN_EDIT_selecting_move = False
-
-        elif (
-            app.PKMN_EDIT_index
-            == 4
-        ):
-
-            app.PKMN_EDIT_mode = (
-                "STATS"
-            )
-
-            app.PKMN_EDIT_stats_index = 0
-            app.PKMN_EDIT_error = None
-
-    elif is_cancel(event):
-
-        save_pkmn_edit_pokemon()
-
-        change_state(
-            app.PKMN_EDIT_return_state
+        handle_event_PKMN_INFO_stats(
+            event
         )
+
+        return
+
+    handle_event_PKMN_INFO_main(
+        event
+    )
 
 def generate_teambuilder_team():
 
@@ -1060,16 +1844,16 @@ def complete_keyboard_entry():
 
         pokemon.nickname = text
 
-        app.PKMN_EDIT_pokemon = (
+        app.PKMN_INFO_pokemon = (
             pokemon
         )
 
         app.KEYBOARD_pokemon = None
 
-        save_pkmn_edit_pokemon()
+        save_pkmn_info_pokemon()
 
         change_state(
-            PKMN_EDIT
+            PKMN_INFO
         )
 
         return
@@ -1110,15 +1894,28 @@ def handle_event_DAMAGE_CALCULATOR(
             == 1
         ):
 
-            app.DAMAGE_CALCULATOR_index = min(
-                3,
-                app.DAMAGE_CALCULATOR_index + 1
-            )
+            move_count = 0
+
+            if (
+                app.DAMAGE_CALCULATOR_attacker
+                is not None
+            ):
+
+                move_count = len(
+                    app.DAMAGE_CALCULATOR_attacker.moves
+                )
+
+            if move_count > 0:
+
+                app.DAMAGE_CALCULATOR_index = min(
+                    move_count - 1,
+                    app.DAMAGE_CALCULATOR_index + 1
+                )
 
         else:
 
             app.DAMAGE_CALCULATOR_index = min(
-                1,
+                2,
                 app.DAMAGE_CALCULATOR_index + 1
             )
 
@@ -1133,124 +1930,116 @@ def handle_event_DAMAGE_CALCULATOR(
         if (
             app.DAMAGE_CALCULATOR_column
             == 0
-            and
-            app.DAMAGE_CALCULATOR_index
-            == 0
-        ):
-
-            app.TEAM_SELECT_mode = (
-                "IMPORT"
-            )
-
-            app.TEAM_SELECT_import_target = (
-                "ATTACKER"
-            )
-
-            app.TEAM_SELECT_return_state = (
-                DAMAGE_CALCULATOR
-            )
-
-            change_state(
-                TEAM_SELECT
-            )
-
-        elif (
-            app.DAMAGE_CALCULATOR_column
-            == 0
-            and
-            app.DAMAGE_CALCULATOR_index
-            == 1
         ):
 
             if (
-                app.DAMAGE_CALCULATOR_attacker
-                is None
+                app.DAMAGE_CALCULATOR_index
+                == 0
             ):
 
-                return
+                open_team_select(
+                    mode="IMPORT",
+                    return_state=DAMAGE_CALCULATOR,
+                    target="ATTACKER"
+                )
 
-            app.PKMN_EDIT_pokemon = (
-                Pokemon.from_pokemon(
+            elif (
+                app.DAMAGE_CALCULATOR_index
+                == 1
+            ):
+
+                if (
                     app.DAMAGE_CALCULATOR_attacker
+                    is None
+                ):
+
+                    return
+
+                open_pokemon_details(
+                    pokemon=(
+                        app.DAMAGE_CALCULATOR_attacker
+                    ),
+                    editable=True,
+                    return_state=DAMAGE_CALCULATOR,
+                    source=(
+                        "DAMAGE_CALCULATOR_ATTACKER"
+                    )
                 )
-            )
 
-            app.PKMN_EDIT_source = (
-                "DAMAGE_CALCULATOR_ATTACKER"
-            )
+            elif (
+                app.DAMAGE_CALCULATOR_index
+                == 2
+            ):
 
-            app.PKMN_EDIT_team_index = None
-            app.PKMN_EDIT_pokemon_index = None
+                if (
+                    app.DAMAGE_CALCULATOR_attacker
+                    is None
+                ):
 
-            app.PKMN_EDIT_return_state = (
-                DAMAGE_CALCULATOR
-            )
+                    return
 
-            change_state(
-                PKMN_EDIT
-            )
-
-        elif (
-            app.DAMAGE_CALCULATOR_column
-            == 2
-            and
-            app.DAMAGE_CALCULATOR_index
-            == 0
-        ):
-
-            app.TEAM_SELECT_mode = (
-                "IMPORT"
-            )
-
-            app.TEAM_SELECT_import_target = (
-                "DEFENDER"
-            )
-
-            app.TEAM_SELECT_return_state = (
-                DAMAGE_CALCULATOR
-            )
-
-            change_state(
-                TEAM_SELECT
-            )
+                open_team_select(
+                    mode="SAVE",
+                    return_state=DAMAGE_CALCULATOR,
+                    target="ATTACKER"
+                )
 
         elif (
             app.DAMAGE_CALCULATOR_column
             == 2
-            and
-            app.DAMAGE_CALCULATOR_index
-            == 1
         ):
 
             if (
-                app.DAMAGE_CALCULATOR_defender
-                is None
+                app.DAMAGE_CALCULATOR_index
+                == 0
             ):
 
-                return
-
-            app.PKMN_EDIT_pokemon = (
-                Pokemon.from_pokemon(
-                    app.DAMAGE_CALCULATOR_defender
+                open_team_select(
+                    mode="IMPORT",
+                    return_state=DAMAGE_CALCULATOR,
+                    target="DEFENDER"
                 )
-            )
 
-            app.PKMN_EDIT_source = (
-                "DAMAGE_CALCULATOR_DEFENDER"
-            )
+            elif (
+                app.DAMAGE_CALCULATOR_index
+                == 1
+            ):
 
-            app.PKMN_EDIT_team_index = None
-            app.PKMN_EDIT_pokemon_index = None
+                if (
+                    app.DAMAGE_CALCULATOR_defender
+                    is None
+                ):
 
-            app.PKMN_EDIT_return_state = (
-                DAMAGE_CALCULATOR
-            )
+                    return
 
-            change_state(
-                PKMN_EDIT
-            )
+                open_pokemon_details(
+                    pokemon=(
+                        app.DAMAGE_CALCULATOR_defender
+                    ),
+                    editable=True,
+                    return_state=DAMAGE_CALCULATOR,
+                    source=(
+                        "DAMAGE_CALCULATOR_DEFENDER"
+                    )
+                )
 
+            elif (
+                app.DAMAGE_CALCULATOR_index
+                == 2
+            ):
 
+                if (
+                    app.DAMAGE_CALCULATOR_defender
+                    is None
+                ):
+
+                    return
+
+                open_team_select(
+                    mode="SAVE",
+                    return_state=DAMAGE_CALCULATOR,
+                    target="DEFENDER"
+                )
 
 def ensure_gym_progress():
 
@@ -1486,10 +2275,6 @@ def handle_event_SINGLE_DEFEND_GYM(
             trainer
         )
 
-        app.TEAM_SELECT_return_state = (
-            SINGLE_DEFEND_GYM
-        )
-
         app.allow_team_change = True
 
         app.allow_lead_change = True
@@ -1498,8 +2283,9 @@ def handle_event_SINGLE_DEFEND_GYM(
             "DEFEND_GYM"
         )
 
-        change_state(
-            TEAM_SELECT
+        open_team_select(
+            mode="BATTLE",
+            return_state=SINGLE_DEFEND_GYM
         )
 
     elif is_cancel(event):
@@ -1542,16 +2328,11 @@ def handle_event_SINGLE_BRACKET(
             == 0
         ):
 
-            app.TEAM_SELECT_return_state = (
-                SINGLE_BRACKET
-            )
-
             app.allow_team_change = True
-
             app.allow_lead_change = True
-
-            change_state(
-                TEAM_SELECT
+            open_team_select(
+                mode="BATTLE",
+                return_state=SINGLE_BRACKET
             )
 
         else:
@@ -1604,32 +2385,42 @@ def handle_event_SINGLE_BRACKET(
             )
 
 def start_next_endless_battle():
+
     trainer_index = random.randint(
         0,
         len(app.trainers_data) - 1
     )
+
     app.endless_trainer_index = (
         trainer_index
     )
+
     trainer = (
         app.trainers_data[
             trainer_index
         ]
     )
+
     app.selected_trainer_data = (
         trainer
     )
+
     app.opponent_team = [
+
         Pokemon.from_dict(
             pokemon_data
         )
-        for pokemon_data in
-        trainer["team"]
+
+        for pokemon_data
+        in trainer["team"]
+
     ]
-    for pokemon in app.opponent_team:
-        pokemon.set_level(
-            app.option_level_npc
-        )
+
+    apply_battle_level_cap(
+        app.opponent_team,
+        app.option_level_npc
+    )
+
 
 def handle_event_BATTLE_END(event):
     pass
@@ -1665,9 +2456,6 @@ def handle_event_SINGLE_MENU_TRAINER(event):
                 app.SINGLE_MENU_TRAINER_selected_trainer
             ]
         )
-        app.TEAM_SELECT_return_state = (
-            SINGLE_MENU_TRAINER
-        )
 
         app.allow_team_change = True
         app.allow_lead_change = True
@@ -1682,8 +2470,9 @@ def handle_event_SINGLE_MENU_TRAINER(event):
             return
 
         app.restore_single_menu_trainer = True
-        change_state(
-            TEAM_SELECT
+        open_team_select(
+            mode="BATTLE",
+            return_state=SINGLE_MENU_TRAINER
         )
     elif is_left(event):
         if (
@@ -1875,13 +2664,11 @@ def handle_event_SINGLE_MENU(event):
                     True
                 )
                 app.endless_wins = 0
-                app.TEAM_SELECT_return_state = (
-                    SINGLE_MENU
-                )
                 app.allow_team_change = True
                 app.allow_lead_change = True
-                change_state(
-                    TEAM_SELECT
+                open_team_select(
+                    mode="BATTLE",
+                    return_state=SINGLE_MENU
                 )
         elif app.SINGLE_MENU_index == 2:
 
@@ -2173,28 +2960,17 @@ def handle_event_TEAM_SELECT(event):
                 app.TEAM_SELECT_pokemon_index
             )
 
-            app.PKMN_EDIT_pokemon = (
-                Pokemon.from_pokemon(
+            open_pokemon_details(
+                pokemon=(
                     app.TEAM_SELECT_preview_team[
                         pokemon_index
                     ]
-                )
-            )
-
-            app.PKMN_EDIT_source = (
-                "TEAMBUILDER"
-            )
-
-            app.PKMN_EDIT_team_index = (
-                team_index
-            )
-
-            app.PKMN_EDIT_pokemon_index = (
-                pokemon_index
-            )
-
-            app.PKMN_EDIT_return_state = (
-                TEAM_SELECT
+                ),
+                editable=True,
+                return_state=TEAM_SELECT,
+                source="TEAMBUILDER",
+                team_index=team_index,
+                pokemon_index=pokemon_index
             )
 
             app.TEAM_SELECT_selecting_pokemon = (
@@ -2207,10 +2983,6 @@ def handle_event_TEAM_SELECT(event):
 
             app.TEAM_SELECT_restore_scroll = (
                 app.TEAM_SELECT_scroll
-            )
-
-            change_state(
-                PKMN_EDIT
             )
 
             return
@@ -2461,10 +3233,6 @@ def handle_event_TEAM_SELECT(event):
                 False
             )
 
-            app.TEAM_SELECT_mode = (
-                "BATTLE"
-            )
-
             change_state(
                 app.TEAM_SELECT_return_state
             )
@@ -2559,6 +3327,13 @@ def handle_event_TEAM_SELECT(event):
             app.TEAM_SELECT_pokemon_index = 0
 
             return
+        if (
+            app.TEAM_SELECT_mode
+            == "SAVE"
+        ):
+
+            # Save-mode slot selection will be added next.
+            return
         load_species()
         if app.TEAM_SELECT_index == 0:
 
@@ -2597,8 +3372,10 @@ def handle_event_TEAM_SELECT(event):
                     "pokemon"
                 ]
             ]
-        for pokemon in app.player_team:
-            pokemon.set_level(app.option_level)
+        apply_battle_level_cap(
+            app.player_team,
+            app.option_level
+        )
         if (
             app.game_mode
             == "DEFEND_GYM"
@@ -2697,10 +3474,10 @@ def handle_event_TEAM_SELECT(event):
                         "team"
                     ]
                 ]
-            for pokemon in app.opponent_team:
-                pokemon.set_level(
-                    app.option_level_npc
-                )
+            apply_battle_level_cap(
+                app.opponent_team,
+                app.option_level_npc
+            )
             app.TEAM_PREVIEW_return_state = (
                 TEAM_SELECT
             )
@@ -2711,168 +3488,6 @@ def handle_event_TEAM_SELECT(event):
 
 def handle_event_BATTLE_START(event):
     pass
-
-def handle_event_SPECIES_VIEW(event):
-    if is_up(event):
-        app.TEAM_PREVIEW_index = max(
-            0,
-            app.TEAM_PREVIEW_index - 1
-        )
-    elif is_down(event):
-        app.TEAM_PREVIEW_index = min(
-            5,
-            app.TEAM_PREVIEW_index + 1
-        )
-    elif is_left(event):
-        if app.option_omniscient:
-            app.TEAM_PREVIEW_column = 0
-    elif is_right(event):
-        if app.option_omniscient:
-            app.TEAM_PREVIEW_column = 1
-    elif is_vy(event):
-        if (
-            app.SPECIES_VIEW_mode
-            == "STATS"
-        ):
-            app.SPECIES_VIEW_mode = (
-                "AFFINITIES"
-            )
-        else:
-            app.SPECIES_VIEW_mode = (
-                "STATS"
-            )
-    elif is_cancel(event):
-        change_state(
-            app.previous_state
-        )
-    if app.TEAM_PREVIEW_column == 0:
-        app.SPECIES_VIEW_pokemon = (
-            app.player_team[
-                app.TEAM_PREVIEW_index
-            ]
-        )
-    elif (
-        app.option_omniscient
-        and
-        app.TEAM_PREVIEW_index
-        <
-        len(app.opponent_team)
-    ):
-        app.SPECIES_VIEW_pokemon = (
-            app.opponent_team[
-                app.TEAM_PREVIEW_index
-            ]
-        )
-
-def handle_event_PKMN_VIEW(event):
-    if is_up(event):
-        if app.PKMN_VIEW_move_index is None:
-            app.PKMN_VIEW_index = max(
-                0,
-                app.PKMN_VIEW_index - 1
-            )
-        else:
-            app.PKMN_VIEW_move_index = max(
-                0,
-                app.PKMN_VIEW_move_index - 1
-            )
-    elif is_down(event):
-        if app.PKMN_VIEW_move_index is None:
-            app.PKMN_VIEW_index = min(
-                5,
-                app.PKMN_VIEW_index + 1
-            )
-        else:
-            app.PKMN_VIEW_move_index = min(
-                len(
-                    app.PKMN_VIEW_pokemon.moves
-                ) - 1,
-                app.PKMN_VIEW_move_index + 1
-            )
-    elif is_left(event):
-
-        if (
-            app.PKMN_VIEW_move_index
-            is None
-            and
-            app.option_omniscient
-        ):
-            
-            if app.PKMN_VIEW_column == 0:
-                app.PKMN_VIEW_column = 1
-            else:
-                app.PKMN_VIEW_column = 0
-
-    elif is_right(event):
-
-        if (
-            app.PKMN_VIEW_move_index
-            is None
-            and
-            app.option_omniscient
-        ):
-            if app.PKMN_VIEW_column == 0:
-                app.PKMN_VIEW_column = 1
-            else:
-                app.PKMN_VIEW_column = 0
-    elif is_cx(event):
-        if (
-            app.PKMN_VIEW_mode
-            == "STATS"
-        ):
-
-            app.PKMN_VIEW_mode = (
-                "EVS"
-            )
-
-        elif (
-            app.PKMN_VIEW_mode
-            == "EVS"
-        ):
-
-            app.PKMN_VIEW_mode = (
-                "BASE"
-            )
-
-        else:
-
-            app.PKMN_VIEW_mode = (
-                "STATS"
-            )
-    elif is_vy(event):
-        if app.PKMN_VIEW_mode == "AFFINITIES":
-            app.PKMN_VIEW_mode = "STATS"
-        else:
-            app.PKMN_VIEW_mode = "AFFINITIES"
-    elif is_confirm(event):
-        if app.PKMN_VIEW_move_index is None:
-            app.PKMN_VIEW_move_index = 0
-    elif is_cancel(event):
-        if app.PKMN_VIEW_move_index is not None:
-            app.PKMN_VIEW_move_index = None
-        else:
-            change_state(
-                app.previous_state
-            )
-    if app.PKMN_VIEW_column == 0:
-        app.PKMN_VIEW_pokemon = (
-            app.player_team[
-                app.PKMN_VIEW_index
-            ]
-        )
-    elif (
-        app.option_omniscient
-        and
-        app.PKMN_VIEW_index
-        <
-        len(app.opponent_team)
-    ):
-        app.PKMN_VIEW_pokemon = (
-            app.opponent_team[
-                app.PKMN_VIEW_index
-            ]
-        )
-
 
 def handle_event_TEAM_PREVIEW(event):
     if is_up(event):
@@ -2903,41 +3518,41 @@ def handle_event_TEAM_PREVIEW(event):
                     BATTLE_START
                 )
     elif is_cvxy(event):
-        if app.TEAM_PREVIEW_column == 0:
-            app.PKMN_VIEW_index = (
-                app.TEAM_PREVIEW_index
-            )
-            app.PKMN_VIEW_column = (
-                app.TEAM_PREVIEW_column
-            )
-            app.PKMN_VIEW_pokemon = (
+        pokemon = None
+
+        if (
+            app.TEAM_PREVIEW_column
+            == 0
+        ):
+
+            pokemon = (
                 app.player_team[
                     app.TEAM_PREVIEW_index
                 ]
             )
-            change_state(
-                PKMN_VIEW
-            )
+
         elif (
             app.option_omniscient
             and
             app.TEAM_PREVIEW_index
-            <
-            len(app.opponent_team)
+            < len(
+                app.opponent_team
+            )
         ):
-            app.PKMN_VIEW_index = (
-                app.TEAM_PREVIEW_index
-            )
-            app.PKMN_VIEW_column = (
-                app.TEAM_PREVIEW_column
-            )
-            app.PKMN_VIEW_pokemon = (
+
+            pokemon = (
                 app.opponent_team[
                     app.TEAM_PREVIEW_index
                 ]
             )
-            change_state(
-                PKMN_VIEW
+
+        if pokemon is not None:
+
+            open_pokemon_details(
+                pokemon=pokemon,
+                editable=False,
+                return_state=TEAM_PREVIEW,
+                source="TEAM_PREVIEW"
             )
     elif is_cancel(event):
         if (
@@ -3041,16 +3656,9 @@ def handle_event_LAUNCHER_MENU(event):
             )
         elif app.LAUNCHER_MENU_index == 3:
 
-            app.TEAM_SELECT_mode = (
-                "TEAMBUILDER"
-            )
-
-            app.TEAM_SELECT_return_state = (
-                LAUNCHER_MENU
-            )
-
-            change_state(
-                TEAM_SELECT
+            open_team_select(
+                mode="TEAMBUILDER",
+                return_state=LAUNCHER_MENU
             )
 
         elif app.LAUNCHER_MENU_index == 4:
@@ -3085,7 +3693,10 @@ def handle_team_select_navigation(
 
     if (
         app.TEAM_SELECT_mode
-        != "IMPORT"
+        not in (
+            "IMPORT",
+            "SAVE"
+        )
         and
         app.TEAM_SELECT_index == 0
     ):
@@ -3098,7 +3709,10 @@ def handle_team_select_navigation(
 
     if (
         app.TEAM_SELECT_mode
-        == "IMPORT"
+        in (
+            "IMPORT",
+            "SAVE"
+        )
     ):
         team_index = (
             app.TEAM_SELECT_index
