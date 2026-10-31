@@ -143,6 +143,60 @@ def draw():
 
         draw_SPECIES_EDIT()
 
+def draw_SPECIES_EDIT_controls():
+
+    sort_hint = (
+        get_input_hint(
+            INPUT_BUTTON_X,
+            "SORT"
+        )
+    )
+
+    dex_hint = (
+        get_input_hint(
+            INPUT_BUTTON_Y,
+            "DEX"
+        )
+    )
+
+    previous_type_label = (
+        get_input_label(
+            INPUT_LEFT_SHOULDER_BACK
+        )
+    )
+
+    next_type_label = (
+        get_input_label(
+            INPUT_RIGHT_SHOULDER_BACK
+        )
+    )
+
+    type_hint = (
+        f"{previous_type_label}/"
+        f"{next_type_label}:TYPE"
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        sort_hint,
+        57,
+        147
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        dex_hint,
+        106,
+        147
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        type_hint,
+        151,
+        147
+    )
+
 
 def draw_SPECIES_EDIT():
 
@@ -150,18 +204,66 @@ def draw_SPECIES_EDIT():
         COLOR_WHITE
     )
 
-    app.font0.draw_text(
-        app.screen,
-        "SELECT SPECIES",
-        8,
-        5
+    if (
+        app.SPECIES_EDIT_type_filter
+        is None
+    ):
+
+        filter_text = "ALL"
+
+    else:
+
+        filter_text = (
+            app.SPECIES_EDIT_type_filter
+        )
+
+    if (
+        app.SPECIES_EDIT_stat_sort
+        is None
+    ):
+
+        ordering_text = (
+            app.SPECIES_EDIT_sort_mode
+        )
+
+    else:
+
+        ordering_text = (
+            app.SPECIES_EDIT_stat_sort
+        )
+
+    minus_label = (
+        get_input_label(
+            INPUT_MINUS
+        )
+    )
+
+    plus_label = (
+        get_input_label(
+            INPUT_PLUS
+        )
+    )
+
+    stat_hint = (
+        f"{minus_label}/"
+        f"{plus_label}:STAT"
     )
 
     app.font0.draw_text(
         app.screen,
-        app.SPECIES_EDIT_sort_mode,
-        180,
-        5
+        stat_hint,
+        5,
+        2
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        (
+            f"{ordering_text} "
+            f"{filter_text}"
+        ),
+        145,
+        2
     )
 
     species_list = (
@@ -181,6 +283,30 @@ def draw_SPECIES_EDIT():
             "NO SPECIES",
             10,
             40
+        )
+
+        previous_type_label = (
+            get_input_label(
+                INPUT_LEFT_SHOULDER_BACK
+            )
+        )
+
+        next_type_label = (
+            get_input_label(
+                INPUT_RIGHT_SHOULDER_BACK
+            )
+        )
+
+        type_hint = (
+            f"{previous_type_label}/"
+            f"{next_type_label}:TYPE"
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            type_hint,
+            145,
+            147
         )
 
         return
@@ -287,19 +413,7 @@ def draw_SPECIES_EDIT():
         147
     )
 
-    app.font0.draw_text(
-        app.screen,
-        "C:SORT",
-        83,
-        147
-    )
-
-    app.font0.draw_text(
-        app.screen,
-        "V:DEX",
-        176,
-        147
-    )
+    draw_SPECIES_EDIT_controls()
 
     if (
         app.SPECIES_EDIT_error
@@ -310,9 +424,9 @@ def draw_SPECIES_EDIT():
             app.screen,
             COLOR_WHITE,
             (
-                64,
+                55,
                 142,
-                108,
+                181,
                 18
             )
         )
@@ -320,7 +434,7 @@ def draw_SPECIES_EDIT():
         app.font0.draw_text(
             app.screen,
             app.SPECIES_EDIT_error,
-            67,
+            58,
             147
         )
 
@@ -332,9 +446,9 @@ def draw_SPECIES_EDIT():
         COLOR_WHITE,
         (
             51,
-            46,
+            43,
             138,
-            67
+            76
         )
     )
 
@@ -343,9 +457,9 @@ def draw_SPECIES_EDIT():
         COLOR_BLACK,
         (
             51,
-            46,
+            43,
             138,
-            67
+            76
         ),
         1
     )
@@ -354,7 +468,7 @@ def draw_SPECIES_EDIT():
         app.screen,
         "GO TO DEX NO.",
         67,
-        55
+        51
     )
 
     digit_x_positions = [
@@ -383,7 +497,7 @@ def draw_SPECIES_EDIT():
                 COLOR_BLACK,
                 (
                     x - 4,
-                    72,
+                    68,
                     17,
                     19
                 ),
@@ -396,14 +510,35 @@ def draw_SPECIES_EDIT():
                 digit
             ),
             x,
-            76
+            72
         )
+
+    confirm_hint = (
+        get_input_hint(
+            INPUT_CONFIRM,
+            "GO"
+        )
+    )
+
+    cancel_hint = (
+        get_input_hint(
+            INPUT_CANCEL,
+            "BACK"
+        )
+    )
 
     app.font0.draw_text(
         app.screen,
-        "CONFIRM: GO",
+        confirm_hint,
         68,
-        96
+        92
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        cancel_hint,
+        68,
+        105
     )
 
 def draw_PKMN_INFO_species(
@@ -433,6 +568,13 @@ def draw_PKMN_INFO_species(
             7
         )
 
+        cancel_hint = (
+            get_input_hint(
+                INPUT_CANCEL,
+                "BACK"
+            )
+        )
+
         if learnset_size == 0:
 
             app.font0.draw_text(
@@ -444,9 +586,9 @@ def draw_PKMN_INFO_species(
 
             app.font0.draw_text(
                 app.screen,
-                "BACK",
-                10,
-                140
+                cancel_hint,
+                145,
+                146
             )
 
             return
@@ -572,9 +714,9 @@ def draw_PKMN_INFO_species(
 
         app.font0.draw_text(
             app.screen,
-            "BACK",
-            10,
-            140
+            cancel_hint,
+            145,
+            146
         )
 
         return
@@ -745,7 +887,6 @@ def draw_PKMN_INFO_species(
             6
         )
 
-
 def draw_small_bar(
     x,
     y,
@@ -838,6 +979,13 @@ def draw_PKMN_INFO_moves(
             pokemon.learnset
         )
 
+        cancel_hint = (
+            get_input_hint(
+                INPUT_CANCEL,
+                "BACK"
+            )
+        )
+
         if learnset_size == 0:
 
             app.font0.draw_text(
@@ -849,7 +997,7 @@ def draw_PKMN_INFO_moves(
 
             app.font0.draw_text(
                 app.screen,
-                "CANCEL: BACK",
+                cancel_hint,
                 145,
                 146
             )
@@ -1010,16 +1158,23 @@ def draw_PKMN_INFO_moves(
 
         if app.PKMN_INFO_editable:
 
+            confirm_hint = (
+                get_input_hint(
+                    INPUT_CONFIRM,
+                    "SET"
+                )
+            )
+
             app.font0.draw_text(
                 app.screen,
-                "CONFIRM: SET",
+                confirm_hint,
                 145,
                 132
             )
 
         app.font0.draw_text(
             app.screen,
-            "CANCEL: BACK",
+            cancel_hint,
             145,
             146
         )
@@ -1158,9 +1313,16 @@ def draw_PKMN_INFO_moves(
 
         if app.PKMN_INFO_editable:
 
+            confirm_hint = (
+                get_input_hint(
+                    INPUT_CONFIRM,
+                    "CHANGE"
+                )
+            )
+
             app.font0.draw_text(
                 app.screen,
-                "CONFIRM: CHANGE",
+                confirm_hint,
                 145,
                 112
             )

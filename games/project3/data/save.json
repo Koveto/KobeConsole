@@ -14,8 +14,8 @@
     },
     "damage_calculator": {
         "attacker": {
-            "species_no": 6,
-            "nickname": "Charizard",
+            "species_no": 9,
+            "nickname": "Blastoise",
             "level": 100,
             "nature": "Sassy",
             "gender": "\u2642",
@@ -39,10 +39,10 @@
                 31
             ],
             "moves": [
-                "Fire Punch",
-                "Brave Bird",
-                "Fire Blast",
-                "Spirit Break"
+                "Stone Edge",
+                "Hydro Pump",
+                "Surf",
+                "Aqua Tail"
             ],
             "status": null
         },
@@ -82,51 +82,51 @@
     },
     "music": {
         "BW Kyurem.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Cynthia.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Elite Four.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Frontier Brain.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Galactic Boss.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Galactic Commander.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Gym Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Lab.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "DPP Rival.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Celadon City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Champion.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Cinnabar Island.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Cycling.ogg": {
@@ -134,23 +134,23 @@
             "battle": false
         },
         "FRLG Deoxys.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Four Island.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Fuchsia City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Game Corner.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Gym Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Legendary.ogg": {
@@ -158,19 +158,19 @@
             "battle": false
         },
         "FRLG Mewtwo.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Opening.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Pallet Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Pewter City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Pokemon Center.ogg": {
@@ -178,15 +178,15 @@
             "battle": false
         },
         "FRLG Rival.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Rocket Hideout.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Route 3.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Route 6.ogg": {
@@ -194,15 +194,15 @@
             "battle": false
         },
         "FRLG Six Island.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG SS Anne.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Surfing.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Trainer Battle.ogg": {
@@ -210,19 +210,19 @@
             "battle": false
         },
         "FRLG Vermillion City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Victory Road.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "FRLG Wild Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Azalea Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Celadon City.ogg": {
@@ -230,19 +230,19 @@
             "battle": false
         },
         "GSC Champion.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Credits.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Cycling.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Ecruteak City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Eusine.ogg": {
@@ -250,19 +250,19 @@
             "battle": false
         },
         "GSC Game Corner.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Goldenrod City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Gym Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Gym.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Hall of Fame.ogg": {
@@ -270,15 +270,15 @@
             "battle": false
         },
         "GSC Kanto Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Kanto Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Kanto Wild.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Lab.ogg": {
@@ -286,19 +286,19 @@
             "battle": false
         },
         "GSC League.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC National Park.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC New Bark Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Pallet Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Pewter City.ogg": {
@@ -306,15 +306,15 @@
             "battle": false
         },
         "GSC Pokemon Center.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Rival Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Rocket Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Route 1.ogg": {
@@ -322,15 +322,15 @@
             "battle": false
         },
         "GSC Route 11.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Route 26.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Route 29.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Route 3.ogg": {
@@ -338,19 +338,19 @@
             "battle": false
         },
         "GSC Route 30.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Route 34.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Route 38.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Route 42.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Suicune.ogg": {
@@ -358,11 +358,11 @@
             "battle": false
         },
         "GSC Surf.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Title.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Trainer Battle.ogg": {
@@ -370,19 +370,19 @@
             "battle": false
         },
         "GSC Vermillion City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Viridian Forest.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Wild Day.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "GSC Wild Night.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "HGSS Frontier Brain.ogg": {
@@ -390,19 +390,19 @@
             "battle": false
         },
         "HGSS Groudon.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "HGSS Gym Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "HGSS Kanto Gym.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "HGSS Red.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "HGSS Rival Encounter.ogg": {
@@ -410,19 +410,19 @@
             "battle": false
         },
         "HGSS Rival.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "HGSS Rocket Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "HGSS Suicune.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Aqua Appears.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Deoxys.ogg": {
@@ -430,11 +430,11 @@
             "battle": false
         },
         "ORAS Elite Four.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Emotion.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Giratina.ogg": {
@@ -442,15 +442,15 @@
             "battle": false
         },
         "ORAS Gym Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS HoOh.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Lisia.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Lugia.ogg": {
@@ -458,19 +458,19 @@
             "battle": false
         },
         "ORAS Maxie.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Primal.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Rayquaza.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Regi Trio.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Rival Battle.ogg": {
@@ -478,19 +478,19 @@
             "battle": false
         },
         "ORAS Steven.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Team Magma.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Wally Encounter.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Wally.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS World Champion.ogg": {
@@ -498,15 +498,15 @@
             "battle": false
         },
         "ORAS Zinnia Encounter.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "ORAS Zinnia.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "PE Trace.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Casino.ogg": {
@@ -514,19 +514,19 @@
             "battle": false
         },
         "RBY Celadon City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Cerulean City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Champion Blue.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Cinnabar Island.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Come Along.ogg": {
@@ -534,15 +534,15 @@
             "battle": false
         },
         "RBY Cycling.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Gym Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Gym.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Indigo Plateau.ogg": {
@@ -550,15 +550,15 @@
             "battle": false
         },
         "RBY Lab.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Pallet Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Pewter City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Pokemon Center.ogg": {
@@ -566,19 +566,19 @@
             "battle": false
         },
         "RBY Professor Oak.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Rival Appears.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Rocket Hideout.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Route 1.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Route 24.ogg": {
@@ -586,19 +586,19 @@
             "battle": false
         },
         "RBY Route 3.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Route 6.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY St Anne.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Staff Credits.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Surfing.ogg": {
@@ -606,15 +606,15 @@
             "battle": false
         },
         "RBY Title.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Trainer Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Vermillion City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RBY Wild Battle.ogg": {
@@ -622,7 +622,7 @@
             "battle": false
         },
         "RSE Champion.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Cycling.ogg": {
@@ -634,23 +634,23 @@
             "battle": false
         },
         "RSE Dewford Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Elite Four.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Fallarbor Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Fortree City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Frontier Brain.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Game Corner.ogg": {
@@ -658,19 +658,19 @@
             "battle": false
         },
         "RSE Gym Leader.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Gym.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Lilycove City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Littleroot Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Magma Battle.ogg": {
@@ -678,23 +678,23 @@
             "battle": false
         },
         "RSE Magma Hideout.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Maxie Archie.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Mew.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Mt Pyre.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Museum.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Oceanic Museum.ogg": {
@@ -702,19 +702,19 @@
             "battle": false
         },
         "RSE Oldale Town.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Petalburg City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Poke Mart.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Pokemon Center.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Regi Trio.ogg": {
@@ -722,11 +722,11 @@
             "battle": false
         },
         "RSE Rival.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Route 101.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Route 104.ogg": {
@@ -734,19 +734,19 @@
             "battle": false
         },
         "RSE Route 110.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Route 111.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Route 113.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Route 119.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Route 120.ogg": {
@@ -754,19 +754,19 @@
             "battle": false
         },
         "RSE Rustboro City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Slateport City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Sootopolis City.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Staff Credits.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Surf.ogg": {
@@ -774,19 +774,19 @@
             "battle": false
         },
         "RSE Title.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Trainer Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Trainer School.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Trick House.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Verdanturf Town.ogg": {
@@ -794,19 +794,19 @@
             "battle": false
         },
         "RSE Victory Road.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Victory Wild.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "RSE Wild Battle.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "SM Champion.ogg": {
-            "menu": false,
+            "menu": true,
             "battle": false
         },
         "SM Elite Four.ogg": {
@@ -991,8 +991,8 @@
             "name": "X",
             "pokemon": [
                 {
-                    "species_no": 65,
-                    "nickname": "Alakazam",
+                    "species_no": 20,
+                    "nickname": "Raticate",
                     "level": 100,
                     "nature": "Lax",
                     "gender": "\u2642",
@@ -1016,10 +1016,10 @@
                         31
                     ],
                     "moves": [
-                        "Zen Headbutt",
                         "Psybeam",
-                        "Psychic",
-                        "Energy Ball"
+                        "Energy Ball",
+                        "Body Slam",
+                        "Tri Attack"
                     ],
                     "status": null
                 },
@@ -1090,8 +1090,8 @@
                     "status": null
                 },
                 {
-                    "species_no": 59,
-                    "nickname": "Arcanine",
+                    "species_no": 55,
+                    "nickname": "Golduck",
                     "level": 100,
                     "nature": "Hasty",
                     "gender": "\u2642",
@@ -1115,10 +1115,10 @@
                         31
                     ],
                     "moves": [
-                        "Flamethrower",
-                        "Fire Punch",
-                        "Play Rough",
-                        "Flare Blitz"
+                        "Waterfall",
+                        "Hydro Pump",
+                        "Aqua Tail",
+                        "Drill Run"
                     ],
                     "status": null
                 },

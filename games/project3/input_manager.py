@@ -2,6 +2,22 @@ import platform
 
 import pygame
 
+#
+# Active input device
+#
+
+INPUT_DEVICE_KEYBOARD = (
+    "KEYBOARD"
+)
+
+INPUT_DEVICE_CONTROLLER = (
+    "CONTROLLER"
+)
+
+ACTIVE_INPUT_DEVICE = (
+    INPUT_DEVICE_KEYBOARD
+)
+
 
 #
 # Platform
@@ -30,10 +46,17 @@ IS_LINUX = (
 #
 # Shoulder controls:
 #
-# A = Left front shoulder
-# S = Right front shoulder
-# D = Left back shoulder / left trigger
-# F = Right back shoulder / right trigger
+# A = Left front shoulder / L
+# S = Right front shoulder / R
+# D = Left back shoulder / ZL
+# F = Right back shoulder / ZR
+#
+# System controls:
+#
+# B = Minus
+# N = Plus
+# 1 = Left stick button
+# 2 = Right stick button
 #
 
 KEYBOARD_CONFIRM = pygame.K_z
@@ -58,8 +81,8 @@ KEYBOARD_RIGHT_SHOULDER_BACK = (
     pygame.K_f
 )
 
-KEYBOARD_PLUS = pygame.K_EQUALS
-KEYBOARD_MINUS = pygame.K_MINUS
+KEYBOARD_PLUS = pygame.K_n
+KEYBOARD_MINUS = pygame.K_b
 
 KEYBOARD_LEFT_STICK_BUTTON = (
     pygame.K_1
@@ -78,7 +101,121 @@ KEYBOARD_ENTER = pygame.K_RETURN
 KEYBOARD_ESCAPE = pygame.K_ESCAPE
 KEYBOARD_QUIT = pygame.K_q
 
+#
+# Input action names
+#
 
+INPUT_CONFIRM = "CONFIRM"
+INPUT_CANCEL = "CANCEL"
+
+INPUT_BUTTON_X = "BUTTON_X"
+INPUT_BUTTON_Y = "BUTTON_Y"
+
+INPUT_LEFT_SHOULDER_FRONT = (
+    "LEFT_SHOULDER_FRONT"
+)
+
+INPUT_RIGHT_SHOULDER_FRONT = (
+    "RIGHT_SHOULDER_FRONT"
+)
+
+INPUT_LEFT_SHOULDER_BACK = (
+    "LEFT_SHOULDER_BACK"
+)
+
+INPUT_RIGHT_SHOULDER_BACK = (
+    "RIGHT_SHOULDER_BACK"
+)
+
+INPUT_PLUS = "PLUS"
+INPUT_MINUS = "MINUS"
+
+INPUT_LEFT_STICK_BUTTON = (
+    "LEFT_STICK_BUTTON"
+)
+
+INPUT_RIGHT_STICK_BUTTON = (
+    "RIGHT_STICK_BUTTON"
+)
+
+KEYBOARD_INPUT_LABELS = {
+
+    INPUT_CONFIRM:
+        "Z",
+
+    INPUT_CANCEL:
+        "X",
+
+    INPUT_BUTTON_X:
+        "C",
+
+    INPUT_BUTTON_Y:
+        "V",
+
+    INPUT_LEFT_SHOULDER_FRONT:
+        "A",
+
+    INPUT_RIGHT_SHOULDER_FRONT:
+        "S",
+
+    INPUT_LEFT_SHOULDER_BACK:
+        "D",
+
+    INPUT_RIGHT_SHOULDER_BACK:
+        "F",
+
+    INPUT_PLUS:
+        "N",
+
+    INPUT_MINUS:
+        "B",
+
+    INPUT_LEFT_STICK_BUTTON:
+        "1",
+
+    INPUT_RIGHT_STICK_BUTTON:
+        "2"
+}
+
+
+CONTROLLER_INPUT_LABELS = {
+
+    INPUT_CONFIRM:
+        "A",
+
+    INPUT_CANCEL:
+        "B",
+
+    INPUT_BUTTON_X:
+        "X",
+
+    INPUT_BUTTON_Y:
+        "Y",
+
+    INPUT_LEFT_SHOULDER_FRONT:
+        "L",
+
+    INPUT_RIGHT_SHOULDER_FRONT:
+        "R",
+
+    INPUT_LEFT_SHOULDER_BACK:
+        "ZL",
+
+    INPUT_RIGHT_SHOULDER_BACK:
+        "ZR",
+
+    INPUT_PLUS:
+        "+",
+
+    INPUT_MINUS:
+        "-",
+
+    INPUT_LEFT_STICK_BUTTON:
+        "LS",
+
+    INPUT_RIGHT_STICK_BUTTON:
+        "RS"
+}
 
 #
 # Controller mappings
@@ -252,6 +389,41 @@ for joystick_index in range(
     joystick.init()
 
 
+def set_active_input_device(
+    input_device
+):
+
+    global ACTIVE_INPUT_DEVICE
+
+    if input_device not in (
+        INPUT_DEVICE_KEYBOARD,
+        INPUT_DEVICE_CONTROLLER
+    ):
+
+        return
+
+    ACTIVE_INPUT_DEVICE = (
+        input_device
+    )
+
+
+def using_keyboard_labels():
+
+    return (
+        ACTIVE_INPUT_DEVICE
+        == INPUT_DEVICE_KEYBOARD
+    )
+
+
+def using_controller_labels():
+
+    return (
+        ACTIVE_INPUT_DEVICE
+        == INPUT_DEVICE_CONTROLLER
+        and
+        using_controller()
+    )
+
 def get_controller():
 
     if (
@@ -290,20 +462,73 @@ def using_controller():
     )
 
 
+def get_input_label(
+    action
+):
+
+    if using_controller_labels():
+
+        labels = (
+            CONTROLLER_INPUT_LABELS
+        )
+
+    else:
+
+        labels = (
+            KEYBOARD_INPUT_LABELS
+        )
+
+    return labels.get(
+        action,
+        "?"
+    )
+
+
+def get_input_hint(
+    action,
+    description
+):
+
+    input_label = (
+        get_input_label(
+            action
+        )
+    )
+
+    return (
+        f"{input_label}:{description}"
+    )
+
 def get_launcher_text():
 
-    if using_controller():
+    confirm_label = (
+        get_input_label(
+            INPUT_CONFIRM
+        )
+    )
 
-        return (
-            "D-PAD/STICK = Select    "
-            "A = Launch    "
-            "B = Exit"
+    cancel_label = (
+        get_input_label(
+            INPUT_CANCEL
+        )
+    )
+
+    if using_controller_labels():
+
+        navigation_label = (
+            "D-PAD/STICK"
+        )
+
+    else:
+
+        navigation_label = (
+            "ARROWS"
         )
 
     return (
-        "LEFT/RIGHT = Select    "
-        "Z/ENTER = Launch    "
-        "X/ESC = Exit"
+        f"{navigation_label} = SELECT    "
+        f"{confirm_label} = LAUNCH    "
+        f"{cancel_label} = EXIT"
     )
 
 
@@ -316,12 +541,19 @@ def is_keyboard(
     key
 ):
 
-    return (
+    pressed = (
         event.type == pygame.KEYDOWN
         and
         event.key == key
     )
 
+    if pressed:
+
+        set_active_input_device(
+            INPUT_DEVICE_KEYBOARD
+        )
+
+    return pressed
 
 def is_controller_button(
     event,
@@ -331,11 +563,19 @@ def is_controller_button(
     if button is None:
         return False
 
-    return (
+    pressed = (
         event.type == pygame.JOYBUTTONDOWN
         and
         event.button == button
     )
+
+    if pressed:
+
+        set_active_input_device(
+            INPUT_DEVICE_CONTROLLER
+        )
+
+    return pressed
 
 
 def is_controller_hat(
@@ -343,12 +583,19 @@ def is_controller_hat(
     value
 ):
 
-    return (
+    pressed = (
         event.type == pygame.JOYHATMOTION
         and
         event.value == value
     )
 
+    if pressed:
+
+        set_active_input_device(
+            INPUT_DEVICE_CONTROLLER
+        )
+
+    return pressed
 
 def is_controller_axis_direction(
     event,
@@ -385,6 +632,10 @@ def is_controller_axis_direction(
                 state_name
             ] = True
 
+            set_active_input_device(
+                INPUT_DEVICE_CONTROLLER
+            )
+
             return True
 
         if (
@@ -411,6 +662,10 @@ def is_controller_axis_direction(
                 state_name
             ] = True
 
+            set_active_input_device(
+                INPUT_DEVICE_CONTROLLER
+            )
+
             return True
 
         if (
@@ -423,7 +678,6 @@ def is_controller_axis_direction(
             ] = False
 
     return False
-
 
 def is_controller_trigger(
     event,
@@ -455,6 +709,10 @@ def is_controller_trigger(
         AXIS_ACTIVE[
             state_name
         ] = True
+
+        set_active_input_device(
+            INPUT_DEVICE_CONTROLLER
+        )
 
         return True
 

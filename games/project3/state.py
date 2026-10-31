@@ -3,6 +3,31 @@ from func import *
 from pkmn import *
 from save import *
 
+def close_species_edit():
+
+    return_state = (
+        app.SPECIES_EDIT_return_state
+    )
+
+    app.SPECIES_EDIT_preview_pokemon = []
+
+    app.SPECIES_EDIT_pokemon = None
+    app.SPECIES_EDIT_return_state = None
+
+    app.SPECIES_EDIT_dex_mode = False
+    app.SPECIES_EDIT_error = None
+
+    reset_species_edit_hold()
+
+    if return_state is None:
+
+        return_state = (
+            PKMN_INFO
+        )
+
+    change_state(
+        return_state
+    )
 
 def reset_species_edit_hold():
 

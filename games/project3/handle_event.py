@@ -124,160 +124,57 @@ def handle_event(
             event
         )
 
-def move_species_edit_selection(
-    direction
-):
-
-    species_list = (
-        app.SPECIES_EDIT_species_list
-    )
-
-    if len(
-        species_list
-    ) == 0:
-
-        return False
-
-    old_index = (
-        app.SPECIES_EDIT_index
-    )
-
-    if direction == "LEFT":
-
-        app.SPECIES_EDIT_index = max(
-            0,
-            app.SPECIES_EDIT_index - 1
-        )
-
-    elif direction == "RIGHT":
-
-        app.SPECIES_EDIT_index = min(
-            len(
-                species_list
-            ) - 1,
-            app.SPECIES_EDIT_index + 1
-        )
-
-    elif direction == "UP":
-
-        app.SPECIES_EDIT_index = max(
-            0,
-            app.SPECIES_EDIT_index
-            - app.SPECIES_EDIT_columns
-        )
-
-    elif direction == "DOWN":
-
-        new_index = (
-            app.SPECIES_EDIT_index
-            + app.SPECIES_EDIT_columns
-        )
-
-        if (
-            new_index
-            < len(
-                species_list
-            )
-        ):
-
-            app.SPECIES_EDIT_index = (
-                new_index
-            )
-
-        else:
-
-            final_row_start = (
-                (
-                    len(
-                        species_list
-                    )
-                    - 1
-                )
-                // app.SPECIES_EDIT_columns
-                * app.SPECIES_EDIT_columns
-            )
-
-            target_column = (
-                app.SPECIES_EDIT_index
-                % app.SPECIES_EDIT_columns
-            )
-
-            app.SPECIES_EDIT_index = min(
-                len(
-                    species_list
-                ) - 1,
-                final_row_start
-                + target_column
-            )
-
-    else:
-
-        return False
-
-    if (
-        app.SPECIES_EDIT_index
-        == old_index
-    ):
-
-        return False
-
-    sync_species_edit_scroll()
-
-    sync_species_edit_dex_to_selection()
-
-    app.SPECIES_EDIT_error = None
-
-    return True
-
-def find_species_edit_index(
-    species_number
-):
-
-    for index, species in enumerate(
-        app.SPECIES_EDIT_species_list
-    ):
-
-        if (
-            species.no
-            == species_number
-        ):
-
-            return index
-
-    return None
-
-
 def apply_species_edit_sort(
-    sort_mode
+    sort_mode,
+    preserve_species_number=None
 ):
 
-    species_list = (
+    current_species_list = (
         app.SPECIES_EDIT_species_list
     )
 
-    selected_species_number = None
-
     if (
+        preserve_species_number
+        is None
+        and
         0
         <= app.SPECIES_EDIT_index
         < len(
-            species_list
+            current_species_list
         )
     ):
 
-        selected_species_number = (
-            species_list[
+        preserve_species_number = (
+            current_species_list[
                 app.SPECIES_EDIT_index
             ].no
         )
 
-    if (
-        sort_mode
-        == "NAME"
-    ):
+    species_list = (
+        get_species_edit_base_list()
+    )
 
-        app.SPECIES_EDIT_species_list = sorted(
-            SPECIES.values(),
+    stat_sort = (
+        app.SPECIES_EDIT_stat_sort
+    )
+
+    if stat_sort is not None:
+
+        species_list = sorted(
+            species_list,
+            key=lambda species: (
+                -get_species_edit_stat_value(
+                    species,
+                    stat_sort
+                ),
+                species.no
+            )
+        )
+
+    elif sort_mode == "NAME":
+
+        species_list = sorted(
+            species_list,
             key=lambda species: (
                 species.name.lower(),
                 species.no
@@ -286,14 +183,16 @@ def apply_species_edit_sort(
 
     else:
 
-        sort_mode = (
-            "DEXNO"
-        )
+        sort_mode = "DEXNO"
 
-        app.SPECIES_EDIT_species_list = sorted(
-            SPECIES.values(),
+        species_list = sorted(
+            species_list,
             key=lambda species: species.no
         )
+
+    app.SPECIES_EDIT_species_list = (
+        species_list
+    )
 
     app.SPECIES_EDIT_sort_mode = (
         sort_mode
@@ -303,13 +202,13 @@ def apply_species_edit_sort(
     app.SPECIES_EDIT_scroll_row = 0
 
     if (
-        selected_species_number
+        preserve_species_number
         is not None
     ):
 
         selected_index = (
             find_species_edit_index(
-                selected_species_number
+                preserve_species_number
             )
         )
 
@@ -334,20 +233,293 @@ def apply_species_edit_sort(
 
 def cycle_species_edit_sort():
 
+    current_species_number = None
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if (
+        0
+        <= app.SPECIES_EDIT_index
+        < len(
+            species_list
+        )
+    ):
+
+        current_species_number = (
+            species_list[
+                app.SPECIES_EDIT_index
+            ].no
+        )
+
+    app.SPECIES_EDIT_stat_sort = None
+
     if (
         app.SPECIES_EDIT_sort_mode
         == "DEXNO"
     ):
 
-        apply_species_edit_sort(
-            "NAME"
+        new_sort_mode = "NAME"
+
+    else:
+
+        new_sort_mode = "DEXNO"
+
+    apply_species_edit_sort(
+        new_sort_mode,
+        preserve_species_number=(
+            current_species_number
+        )
+    )
+
+def cycle_species_edit_type_filter(
+    direction
+):
+
+    type_filters = (
+        get_species_edit_type_filters()
+    )
+
+    if len(
+        type_filters
+    ) == 0:
+
+        return
+
+    current_filter = (
+        app.SPECIES_EDIT_type_filter
+    )
+
+    if current_filter in type_filters:
+
+        current_index = (
+            type_filters.index(
+                current_filter
+            )
         )
 
     else:
 
-        apply_species_edit_sort(
-            "DEXNO"
+        current_index = 0
+
+    new_index = (
+        current_index
+        + direction
+    ) % len(
+        type_filters
+    )
+
+    preserve_species_number = None
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if (
+        0
+        <= app.SPECIES_EDIT_index
+        < len(
+            species_list
         )
+    ):
+
+        preserve_species_number = (
+            species_list[
+                app.SPECIES_EDIT_index
+            ].no
+        )
+
+    app.SPECIES_EDIT_type_filter = (
+        type_filters[
+            new_index
+        ]
+    )
+
+    apply_species_edit_sort(
+        app.SPECIES_EDIT_sort_mode,
+        preserve_species_number=(
+            preserve_species_number
+        )
+    )
+
+
+
+def get_species_edit_stat_sorts():
+
+    return [
+        None,
+        "BST",
+        "HP",
+        "ATK",
+        "DEF",
+        "SPA",
+        "SPD",
+        "SPE"
+    ]
+
+
+def get_species_edit_stat_value(
+    species,
+    stat_sort
+):
+
+    if stat_sort == "BST":
+
+        return sum(
+            species.stats.values()
+        )
+
+    stat_keys = {
+        "HP": "HP",
+        "ATK": "Atk",
+        "DEF": "Def",
+        "SPA": "SpAtk",
+        "SPD": "SpDef",
+        "SPE": "Spd"
+    }
+
+    stat_key = (
+        stat_keys.get(
+            stat_sort
+        )
+    )
+
+    if stat_key is None:
+
+        return 0
+
+    return species.stats.get(
+        stat_key,
+        0
+    )
+
+def cycle_species_edit_stat_sort(
+    direction
+):
+
+    stat_sorts = (
+        get_species_edit_stat_sorts()
+    )
+
+    if len(
+        stat_sorts
+    ) == 0:
+
+        return
+
+    current_stat_sort = (
+        app.SPECIES_EDIT_stat_sort
+    )
+
+    if current_stat_sort in stat_sorts:
+
+        current_index = (
+            stat_sorts.index(
+                current_stat_sort
+            )
+        )
+
+    else:
+
+        current_index = 0
+
+    new_index = (
+        current_index
+        + direction
+    ) % len(
+        stat_sorts
+    )
+
+    preserve_species_number = None
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if (
+        0
+        <= app.SPECIES_EDIT_index
+        < len(
+            species_list
+        )
+    ):
+
+        preserve_species_number = (
+            species_list[
+                app.SPECIES_EDIT_index
+            ].no
+        )
+
+    app.SPECIES_EDIT_stat_sort = (
+        stat_sorts[
+            new_index
+        ]
+    )
+
+    apply_species_edit_sort(
+        app.SPECIES_EDIT_sort_mode,
+        preserve_species_number=(
+            preserve_species_number
+        )
+    )
+
+def get_species_edit_type_filters():
+
+    type_names = set()
+
+    for species in SPECIES.values():
+
+        for type_name in species.types:
+
+            type_names.add(
+                type_name
+            )
+
+    return [
+        None
+    ] + sorted(
+        type_names
+    )
+
+
+def get_species_edit_base_list():
+
+    species_list = list(
+        SPECIES.values()
+    )
+
+    type_filter = (
+        app.SPECIES_EDIT_type_filter
+    )
+
+    if type_filter is None:
+
+        return species_list
+
+    return [
+        species
+        for species in species_list
+        if type_filter in species.types
+    ]
+
+def find_species_edit_index(
+    species_number
+):
+
+    for index, species in enumerate(
+        app.SPECIES_EDIT_species_list
+    ):
+
+        if (
+            species.no
+            == species_number
+        ):
+
+            return index
+
+    return None
+
 
 def get_species_edit_dex_number():
 
@@ -392,83 +564,6 @@ def set_species_edit_dex_number(
 
 def sync_species_edit_scroll():
 
-    columns = (
-        app.SPECIES_EDIT_columns
-    )
-
-    visible_rows = (
-        app.SPECIES_EDIT_visible_rows
-    )
-
-    selected_row = (
-        app.SPECIES_EDIT_index
-        // columns
-    )
-
-    old_scroll_row = (
-        app.SPECIES_EDIT_scroll_row
-    )
-
-    if (
-        selected_row
-        < app.SPECIES_EDIT_scroll_row
-    ):
-
-        app.SPECIES_EDIT_scroll_row = (
-            selected_row
-        )
-
-    elif (
-        selected_row
-        >= (
-            app.SPECIES_EDIT_scroll_row
-            + visible_rows
-        )
-    ):
-
-        app.SPECIES_EDIT_scroll_row = (
-            selected_row
-            - visible_rows
-            + 1
-        )
-
-    if (
-        app.SPECIES_EDIT_scroll_row
-        != old_scroll_row
-    ):
-
-        rebuild_species_edit_preview()
-
-
-def sync_species_edit_dex_to_selection():
-
-    species_list = (
-        app.SPECIES_EDIT_species_list
-    )
-
-    if not (
-        0
-        <= app.SPECIES_EDIT_index
-        < len(
-            species_list
-        )
-    ):
-
-        return
-
-    selected_species = (
-        species_list[
-            app.SPECIES_EDIT_index
-        ]
-    )
-
-    set_species_edit_dex_number(
-        selected_species.no
-    )
-
-
-def jump_species_edit_to_dex_number():
-
     species_list = (
         app.SPECIES_EDIT_species_list
     )
@@ -477,108 +572,30 @@ def jump_species_edit_to_dex_number():
         species_list
     ) == 0:
 
-        app.SPECIES_EDIT_error = (
-            "NO SPECIES"
-        )
-
-        return False
-
-    desired_number = (
-        get_species_edit_dex_number()
-    )
-
-    exact_index = None
-
-    for index, species in enumerate(
-        species_list
-    ):
-
-        if (
-            species.no
-            == desired_number
-        ):
-
-            exact_index = index
-
-            break
-
-    if exact_index is None:
-
-        app.SPECIES_EDIT_error = (
-            "INVALID DEX NO."
-        )
-
-        return False
-
-    old_scroll_row = (
-        app.SPECIES_EDIT_scroll_row
-    )
-
-    app.SPECIES_EDIT_index = (
-        exact_index
-    )
-
-    sync_species_edit_scroll()
-
-    if (
-        app.SPECIES_EDIT_scroll_row
-        == old_scroll_row
-    ):
+        app.SPECIES_EDIT_index = 0
+        app.SPECIES_EDIT_scroll_row = 0
 
         rebuild_species_edit_preview()
 
-    app.SPECIES_EDIT_error = None
+        return
 
-    return True
-
-def get_species_edit_dex_number():
-
-    digits = (
-        app.SPECIES_EDIT_dex_digits
-    )
-
-    if len(
-        digits
-    ) != 3:
-
-        return 0
-
-    return (
-        digits[0] * 100
-        + digits[1] * 10
-        + digits[2]
-    )
-
-
-def set_species_edit_dex_number(
-    species_number
-):
-
-    species_number = max(
+    app.SPECIES_EDIT_index = max(
         0,
         min(
-            999,
-            species_number
+            len(
+                species_list
+            ) - 1,
+            app.SPECIES_EDIT_index
         )
     )
 
-    app.SPECIES_EDIT_dex_digits = [
-        species_number // 100,
-        (
-            species_number
-            // 10
-        ) % 10,
-        species_number % 10
-    ]
-
-
-def sync_species_edit_scroll():
-
-    columns = (
+    columns = max(
+        1,
         app.SPECIES_EDIT_columns
     )
 
-    visible_rows = (
+    visible_rows = max(
+        1,
         app.SPECIES_EDIT_visible_rows
     )
 
@@ -613,6 +630,31 @@ def sync_species_edit_scroll():
             - visible_rows
             + 1
         )
+
+    max_row = (
+        (
+            len(
+                species_list
+            )
+            - 1
+        )
+        // columns
+    )
+
+    max_scroll_row = max(
+        0,
+        max_row
+        - visible_rows
+        + 1
+    )
+
+    app.SPECIES_EDIT_scroll_row = max(
+        0,
+        min(
+            max_scroll_row,
+            app.SPECIES_EDIT_scroll_row
+        )
+    )
 
     if (
         app.SPECIES_EDIT_scroll_row
@@ -651,44 +693,43 @@ def sync_species_edit_dex_to_selection():
 
 def jump_species_edit_to_dex_number():
 
-    species_list = (
-        app.SPECIES_EDIT_species_list
-    )
-
-    if len(
-        species_list
-    ) == 0:
-
-        app.SPECIES_EDIT_error = (
-            "NO SPECIES"
-        )
-
-        return False
-
     desired_number = (
         get_species_edit_dex_number()
     )
 
-    exact_index = None
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
 
-    for index, species in enumerate(
-        species_list
-    ):
-
-        if (
-            species.no
-            == desired_number
-        ):
-
-            exact_index = index
-
-            break
+    exact_index = (
+        find_species_edit_index(
+            desired_number
+        )
+    )
 
     if exact_index is None:
 
-        app.SPECIES_EDIT_error = (
-            "INVALID DEX NO."
+        species_exists = any(
+
+            species.no
+            == desired_number
+
+            for species
+            in SPECIES.values()
+
         )
+
+        if species_exists:
+
+            app.SPECIES_EDIT_error = (
+                "EXCLUDED BY FILTER"
+            )
+
+        else:
+
+            app.SPECIES_EDIT_error = (
+                "INVALID DEX NO."
+            )
 
         return False
 
@@ -709,7 +750,11 @@ def jump_species_edit_to_dex_number():
 
         rebuild_species_edit_preview()
 
+    sync_species_edit_dex_to_selection()
+
     app.SPECIES_EDIT_error = None
+
+    reset_species_edit_hold()
 
     return True
 
@@ -792,13 +837,121 @@ def handle_species_edit_dex_mode(
 
         sync_species_edit_dex_to_selection()
 
-def handle_event_SPECIES_EDIT(
-    event
+        reset_species_edit_hold()
+
+def move_species_edit_selection(
+    direction
 ):
 
     species_list = (
         app.SPECIES_EDIT_species_list
     )
+
+    if len(
+        species_list
+    ) == 0:
+
+        return False
+
+    old_index = (
+        app.SPECIES_EDIT_index
+    )
+
+    columns = max(
+        1,
+        app.SPECIES_EDIT_columns
+    )
+
+    if direction == "LEFT":
+
+        app.SPECIES_EDIT_index = max(
+            0,
+            app.SPECIES_EDIT_index - 1
+        )
+
+    elif direction == "RIGHT":
+
+        app.SPECIES_EDIT_index = min(
+            len(
+                species_list
+            ) - 1,
+            app.SPECIES_EDIT_index + 1
+        )
+
+    elif direction == "UP":
+
+        app.SPECIES_EDIT_index = max(
+            0,
+            app.SPECIES_EDIT_index
+            - columns
+        )
+
+    elif direction == "DOWN":
+
+        new_index = (
+            app.SPECIES_EDIT_index
+            + columns
+        )
+
+        if (
+            new_index
+            < len(
+                species_list
+            )
+        ):
+
+            app.SPECIES_EDIT_index = (
+                new_index
+            )
+
+        else:
+
+            final_row_start = (
+                (
+                    len(
+                        species_list
+                    )
+                    - 1
+                )
+                // columns
+                * columns
+            )
+
+            target_column = (
+                app.SPECIES_EDIT_index
+                % columns
+            )
+
+            app.SPECIES_EDIT_index = min(
+                len(
+                    species_list
+                ) - 1,
+                final_row_start
+                + target_column
+            )
+
+    else:
+
+        return False
+
+    if (
+        app.SPECIES_EDIT_index
+        == old_index
+    ):
+
+        return False
+
+    sync_species_edit_scroll()
+
+    sync_species_edit_dex_to_selection()
+
+    app.SPECIES_EDIT_error = None
+
+    return True
+
+def handle_event_SPECIES_EDIT(
+    event
+):
 
     if (
         app.SPECIES_EDIT_dex_mode
@@ -810,15 +963,53 @@ def handle_event_SPECIES_EDIT(
 
         return
 
+    if is_left_shoulder_back(
+        event
+    ):
+
+        cycle_species_edit_type_filter(
+            -1
+        )
+
+        return
+
+    if is_right_shoulder_back(
+        event
+    ):
+
+        cycle_species_edit_type_filter(
+            1
+        )
+
+        return
+
+    if is_minus(event):
+
+        cycle_species_edit_stat_sort(
+            -1
+        )
+
+        return
+
+    if is_plus(event):
+
+        cycle_species_edit_stat_sort(
+            1
+        )
+
+        return
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
     if len(
         species_list
     ) == 0:
 
         if is_cancel(event):
 
-            change_state(
-                app.SPECIES_EDIT_return_state
-            )
+            close_species_edit()
 
         return
 
@@ -884,6 +1075,20 @@ def handle_event_SPECIES_EDIT(
 
             return
 
+        if not (
+            0
+            <= app.SPECIES_EDIT_index
+            < len(
+                species_list
+            )
+        ):
+
+            app.SPECIES_EDIT_error = (
+                "INVALID SPECIES"
+            )
+
+            return
+
         selected_species = (
             species_list[
                 app.SPECIES_EDIT_index
@@ -900,15 +1105,15 @@ def handle_event_SPECIES_EDIT(
 
         save_pkmn_info_pokemon()
 
-        change_state(
-            app.SPECIES_EDIT_return_state
-        )
+        close_species_edit()
+
+        return
 
     elif is_cancel(event):
 
-        change_state(
-            app.SPECIES_EDIT_return_state
-        )
+        close_species_edit()
+
+        return
 
 def get_pkmn_info_source_team():
 
@@ -3672,119 +3877,231 @@ def handle_event_OPTIONS_MUSIC(event):
         )
         save_music_data(app.music_data)
 
-def handle_event_KEYBOARD(event):
-    if not using_controller():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-            
-                if app.KEYBOARD_mode == "POKEMON_NICKNAME":
-                    app.KEYBOARD_pokemon = None
-                if (
-                    app.KEYBOARD_return_state is not None
-                ):
-                    change_state(app.KEYBOARD_return_state)
-            elif (
-                event.unicode.isalnum()
-                and
-                len(app.KEYBOARD_text) < 10
-            ):
-                app.KEYBOARD_text += (
-                    event.unicode.upper()
-                )
-            elif (
-                event.key == pygame.K_SPACE
-                and
-                len(app.KEYBOARD_text) < 10
-            ):
-                app.KEYBOARD_text += " "
-            elif (
-                event.key == pygame.K_RETURN
-            ):
+def handle_event_KEYBOARD(
+    event
+):
 
-                complete_keyboard_entry()
-            elif (
-                event.key == pygame.K_BACKSPACE
-            ):
-                app.KEYBOARD_text = (
-                    app.KEYBOARD_text[:-1]
-                )
-    else:
-        if is_up(event):
-            app.KEYBOARD_row = max(
-                0,
-                app.KEYBOARD_row - 1
-            )
-        elif is_down(event):
-            app.KEYBOARD_row = min(
-                len(KEYBOARD_GRID) - 1,
-                app.KEYBOARD_row + 1
-            )
-        elif is_left(event):
-            app.KEYBOARD_column = max(
-                0,
-                app.KEYBOARD_column - 1
-            )
-        elif is_right(event):
-            max_column = (
-                len(
-                    KEYBOARD_GRID[
-                        app.KEYBOARD_row
-                    ]
-                ) - 1
-            )
-            app.KEYBOARD_column = min(
-                max_column,
-                app.KEYBOARD_column + 1
-            )
-        elif is_confirm(event):
-            row = KEYBOARD_GRID[
-                app.KEYBOARD_row
-            ]
-            app.KEYBOARD_column = min(
-                app.KEYBOARD_column,
-                len(row) - 1
-            )
-            selected = row[
-                app.KEYBOARD_column
-            ]
+    if event.type == pygame.KEYDOWN:
+
+        set_active_input_device(
+            INPUT_DEVICE_KEYBOARD
+        )
+
+        if event.key == pygame.K_ESCAPE:
+
             if (
-                selected == "SPACE"
-                and
-                len(app.KEYBOARD_text) < 10
-            ):
-                app.KEYBOARD_text += " "
-            elif (
-                selected == "BACK"
-            ):
-                app.KEYBOARD_text = (
-                    app.KEYBOARD_text[:-1]
-                )
-            elif (
-                selected == "DONE"
+                app.KEYBOARD_mode
+                == "POKEMON_NICKNAME"
             ):
 
-                complete_keyboard_entry()
-            elif (
-                len(app.KEYBOARD_text) < 10
-            ):
-                app.KEYBOARD_text += (
-                    selected
-                )
-        elif is_cancel(event):
-
-            if (app.KEYBOARD_mode == "POKEMON_NICKNAME"):
                 app.KEYBOARD_pokemon = None
-            if (app.KEYBOARD_return_state is not None):
+
+            if (
+                app.KEYBOARD_return_state
+                is not None
+            ):
+
                 change_state(
                     app.KEYBOARD_return_state
                 )
-    app.KEYBOARD_column = min(
-        app.KEYBOARD_column,
-        len(
+
+            return
+
+        if (
+            event.key
+            == pygame.K_RETURN
+        ):
+
+            complete_keyboard_entry()
+
+            return
+
+        if (
+            event.key
+            == pygame.K_BACKSPACE
+        ):
+
+            app.KEYBOARD_text = (
+                app.KEYBOARD_text[:-1]
+            )
+
+            return
+
+        if (
+            event.key
+            == pygame.K_SPACE
+            and
+            len(
+                app.KEYBOARD_text
+            ) < 10
+        ):
+
+            app.KEYBOARD_text += " "
+
+            return
+
+        if (
+            event.unicode.isalnum()
+            and
+            len(
+                app.KEYBOARD_text
+            ) < 10
+        ):
+
+            app.KEYBOARD_text += (
+                event.unicode.upper()
+            )
+
+            return
+
+    if is_up(
+        event
+    ):
+
+        app.KEYBOARD_row = max(
+            0,
+            app.KEYBOARD_row - 1
+        )
+
+    elif is_down(
+        event
+    ):
+
+        app.KEYBOARD_row = min(
+            len(
+                KEYBOARD_GRID
+            ) - 1,
+            app.KEYBOARD_row + 1
+        )
+
+    elif is_left(
+        event
+    ):
+
+        app.KEYBOARD_column = max(
+            0,
+            app.KEYBOARD_column - 1
+        )
+
+    elif is_right(
+        event
+    ):
+
+        max_column = (
+            len(
+                KEYBOARD_GRID[
+                    app.KEYBOARD_row
+                ]
+            )
+            - 1
+        )
+
+        app.KEYBOARD_column = min(
+            max_column,
+            app.KEYBOARD_column + 1
+        )
+
+    elif is_confirm(
+        event
+    ):
+
+        row = (
             KEYBOARD_GRID[
                 app.KEYBOARD_row
             ]
-        ) - 1
+        )
+
+        app.KEYBOARD_column = min(
+            app.KEYBOARD_column,
+            len(
+                row
+            ) - 1
+        )
+
+        selected = (
+            row[
+                app.KEYBOARD_column
+            ]
+        )
+
+        if (
+            selected == "SPACE"
+            and
+            len(
+                app.KEYBOARD_text
+            ) < 10
+        ):
+
+            app.KEYBOARD_text += " "
+
+        elif (
+            selected == "BACK"
+        ):
+
+            app.KEYBOARD_text = (
+                app.KEYBOARD_text[:-1]
+            )
+
+        elif (
+            selected == "DONE"
+        ):
+
+            complete_keyboard_entry()
+
+        elif (
+            len(
+                app.KEYBOARD_text
+            ) < 10
+        ):
+
+            app.KEYBOARD_text += (
+                selected
+            )
+
+    elif is_cancel(
+        event
+    ):
+
+        if (
+            app.KEYBOARD_mode
+            == "POKEMON_NICKNAME"
+        ):
+
+            app.KEYBOARD_pokemon = None
+
+        if (
+            app.KEYBOARD_return_state
+            is not None
+        ):
+
+            change_state(
+                app.KEYBOARD_return_state
+            )
+
+    app.KEYBOARD_row = max(
+        0,
+        min(
+            len(
+                KEYBOARD_GRID
+            ) - 1,
+            app.KEYBOARD_row
+        )
+    )
+
+    current_row = (
+        KEYBOARD_GRID[
+            app.KEYBOARD_row
+        ]
+    )
+
+    app.KEYBOARD_column = max(
+        0,
+        min(
+            len(
+                current_row
+            ) - 1,
+            app.KEYBOARD_column
+        )
     )
 
 def handle_event_OPTIONS(event):
@@ -4475,6 +4792,9 @@ def handle_event_TEAM_PREVIEW(
 
     elif is_right(event):
 
+        if not app.option_omniscient:
+            return
+
         opponent_team_size = len(
             app.opponent_team
             or []
@@ -4512,7 +4832,6 @@ def handle_event_TEAM_PREVIEW(
     elif is_cvxy(event):
 
         pokemon = None
-        species_only = False
 
         if (
             app.TEAM_PREVIEW_column
@@ -4532,6 +4851,8 @@ def handle_event_TEAM_PREVIEW(
             )
 
         elif (
+            app.option_omniscient
+            and
             app.TEAM_PREVIEW_column
             == 1
             and
@@ -4548,10 +4869,6 @@ def handle_event_TEAM_PREVIEW(
                 ]
             )
 
-            species_only = (
-                not app.option_omniscient
-            )
-
         if pokemon is not None:
 
             open_pokemon_details(
@@ -4559,7 +4876,7 @@ def handle_event_TEAM_PREVIEW(
                 editable=False,
                 return_state=TEAM_PREVIEW,
                 source="TEAM_PREVIEW",
-                species=species_only
+                species=False
             )
 
     elif is_cancel(event):
