@@ -1,7 +1,7 @@
 {
     "player": {
         "player_name": "KOBE",
-        "player_sprite": 0
+        "player_sprite": 161
     },
     "options": {
         "omniscient": false,
@@ -988,11 +988,214 @@
     },
     "teams": [
         {
+            "name": "X",
+            "pokemon": [
+                {
+                    "species_no": 65,
+                    "nickname": "Alakazam",
+                    "level": 100,
+                    "nature": "Lax",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        0,
+                        252,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Zen Headbutt",
+                        "Psybeam",
+                        "Psychic",
+                        "Energy Ball"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 372,
+                    "nickname": "Relicanth",
+                    "level": 100,
+                    "nature": "Bashful",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        0,
+                        252,
+                        252,
+                        0,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Stone Edge",
+                        "Waterfall",
+                        "Hydro Pump",
+                        "Zen Headbutt"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 160,
+                    "nickname": "Feraligatr",
+                    "level": 100,
+                    "nature": "Mild",
+                    "gender": "\u2640",
+                    "is_shiny": true,
+                    "front_sprite_number": 1,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        252,
+                        4,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Aqua Tail",
+                        "Waterfall",
+                        "Psycho Cut",
+                        "Hydro Pump"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 59,
+                    "nickname": "Arcanine",
+                    "level": 100,
+                    "nature": "Hasty",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 0,
+                    "evs": [
+                        0,
+                        4,
+                        252,
+                        252,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Flamethrower",
+                        "Fire Punch",
+                        "Play Rough",
+                        "Flare Blitz"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 6,
+                    "nickname": "Charizard",
+                    "level": 100,
+                    "nature": "Careful",
+                    "gender": "\u2642",
+                    "is_shiny": true,
+                    "front_sprite_number": 2,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        252,
+                        252,
+                        0,
+                        0,
+                        0,
+                        4
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Fire Punch",
+                        "Brave Bird",
+                        "Fire Blast",
+                        "Spirit Break"
+                    ],
+                    "status": null
+                },
+                {
+                    "species_no": 242,
+                    "nickname": "Blissey",
+                    "level": 100,
+                    "nature": "Timid",
+                    "gender": "\u2642",
+                    "is_shiny": false,
+                    "front_sprite_number": 0,
+                    "back_sprite_number": 1,
+                    "evs": [
+                        4,
+                        252,
+                        252,
+                        0,
+                        0,
+                        0
+                    ],
+                    "ivs": [
+                        31,
+                        31,
+                        31,
+                        31,
+                        31,
+                        31
+                    ],
+                    "moves": [
+                        "Hyper Voice",
+                        "Earth Power",
+                        "Tri Attack",
+                        "Body Slam"
+                    ],
+                    "status": null
+                }
+            ]
+        },
+        {
             "name": "ZA",
             "pokemon": [
                 {
-                    "species_no": 213,
-                    "nickname": "Shuckle",
+                    "species_no": 16,
+                    "nickname": "Pidgey",
                     "level": 100,
                     "nature": "Relaxed",
                     "gender": "\u2640",
@@ -1017,9 +1220,9 @@
                     ],
                     "moves": [
                         "Double-Edge",
-                        "Power Gem",
-                        "Bug Bite",
-                        "Twineedle"
+                        "Hyper Voice",
+                        "Zen Headbutt",
+                        "Body Slam"
                     ],
                     "status": null
                 },

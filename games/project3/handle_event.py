@@ -118,6 +118,798 @@ def handle_event(
             event
         )
 
+    elif app.state == SPECIES_EDIT:
+
+        handle_event_SPECIES_EDIT(
+            event
+        )
+
+def move_species_edit_selection(
+    direction
+):
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if len(
+        species_list
+    ) == 0:
+
+        return False
+
+    old_index = (
+        app.SPECIES_EDIT_index
+    )
+
+    if direction == "LEFT":
+
+        app.SPECIES_EDIT_index = max(
+            0,
+            app.SPECIES_EDIT_index - 1
+        )
+
+    elif direction == "RIGHT":
+
+        app.SPECIES_EDIT_index = min(
+            len(
+                species_list
+            ) - 1,
+            app.SPECIES_EDIT_index + 1
+        )
+
+    elif direction == "UP":
+
+        app.SPECIES_EDIT_index = max(
+            0,
+            app.SPECIES_EDIT_index
+            - app.SPECIES_EDIT_columns
+        )
+
+    elif direction == "DOWN":
+
+        new_index = (
+            app.SPECIES_EDIT_index
+            + app.SPECIES_EDIT_columns
+        )
+
+        if (
+            new_index
+            < len(
+                species_list
+            )
+        ):
+
+            app.SPECIES_EDIT_index = (
+                new_index
+            )
+
+        else:
+
+            final_row_start = (
+                (
+                    len(
+                        species_list
+                    )
+                    - 1
+                )
+                // app.SPECIES_EDIT_columns
+                * app.SPECIES_EDIT_columns
+            )
+
+            target_column = (
+                app.SPECIES_EDIT_index
+                % app.SPECIES_EDIT_columns
+            )
+
+            app.SPECIES_EDIT_index = min(
+                len(
+                    species_list
+                ) - 1,
+                final_row_start
+                + target_column
+            )
+
+    else:
+
+        return False
+
+    if (
+        app.SPECIES_EDIT_index
+        == old_index
+    ):
+
+        return False
+
+    sync_species_edit_scroll()
+
+    sync_species_edit_dex_to_selection()
+
+    app.SPECIES_EDIT_error = None
+
+    return True
+
+def find_species_edit_index(
+    species_number
+):
+
+    for index, species in enumerate(
+        app.SPECIES_EDIT_species_list
+    ):
+
+        if (
+            species.no
+            == species_number
+        ):
+
+            return index
+
+    return None
+
+
+def apply_species_edit_sort(
+    sort_mode
+):
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    selected_species_number = None
+
+    if (
+        0
+        <= app.SPECIES_EDIT_index
+        < len(
+            species_list
+        )
+    ):
+
+        selected_species_number = (
+            species_list[
+                app.SPECIES_EDIT_index
+            ].no
+        )
+
+    if (
+        sort_mode
+        == "NAME"
+    ):
+
+        app.SPECIES_EDIT_species_list = sorted(
+            SPECIES.values(),
+            key=lambda species: (
+                species.name.lower(),
+                species.no
+            )
+        )
+
+    else:
+
+        sort_mode = (
+            "DEXNO"
+        )
+
+        app.SPECIES_EDIT_species_list = sorted(
+            SPECIES.values(),
+            key=lambda species: species.no
+        )
+
+    app.SPECIES_EDIT_sort_mode = (
+        sort_mode
+    )
+
+    app.SPECIES_EDIT_index = 0
+    app.SPECIES_EDIT_scroll_row = 0
+
+    if (
+        selected_species_number
+        is not None
+    ):
+
+        selected_index = (
+            find_species_edit_index(
+                selected_species_number
+            )
+        )
+
+        if (
+            selected_index
+            is not None
+        ):
+
+            app.SPECIES_EDIT_index = (
+                selected_index
+            )
+
+    sync_species_edit_scroll()
+
+    rebuild_species_edit_preview()
+
+    sync_species_edit_dex_to_selection()
+
+    reset_species_edit_hold()
+
+    app.SPECIES_EDIT_error = None
+
+def cycle_species_edit_sort():
+
+    if (
+        app.SPECIES_EDIT_sort_mode
+        == "DEXNO"
+    ):
+
+        apply_species_edit_sort(
+            "NAME"
+        )
+
+    else:
+
+        apply_species_edit_sort(
+            "DEXNO"
+        )
+
+def get_species_edit_dex_number():
+
+    digits = (
+        app.SPECIES_EDIT_dex_digits
+    )
+
+    if len(
+        digits
+    ) != 3:
+
+        return 0
+
+    return (
+        digits[0] * 100
+        + digits[1] * 10
+        + digits[2]
+    )
+
+
+def set_species_edit_dex_number(
+    species_number
+):
+
+    species_number = max(
+        0,
+        min(
+            999,
+            species_number
+        )
+    )
+
+    app.SPECIES_EDIT_dex_digits = [
+        species_number // 100,
+        (
+            species_number
+            // 10
+        ) % 10,
+        species_number % 10
+    ]
+
+
+def sync_species_edit_scroll():
+
+    columns = (
+        app.SPECIES_EDIT_columns
+    )
+
+    visible_rows = (
+        app.SPECIES_EDIT_visible_rows
+    )
+
+    selected_row = (
+        app.SPECIES_EDIT_index
+        // columns
+    )
+
+    old_scroll_row = (
+        app.SPECIES_EDIT_scroll_row
+    )
+
+    if (
+        selected_row
+        < app.SPECIES_EDIT_scroll_row
+    ):
+
+        app.SPECIES_EDIT_scroll_row = (
+            selected_row
+        )
+
+    elif (
+        selected_row
+        >= (
+            app.SPECIES_EDIT_scroll_row
+            + visible_rows
+        )
+    ):
+
+        app.SPECIES_EDIT_scroll_row = (
+            selected_row
+            - visible_rows
+            + 1
+        )
+
+    if (
+        app.SPECIES_EDIT_scroll_row
+        != old_scroll_row
+    ):
+
+        rebuild_species_edit_preview()
+
+
+def sync_species_edit_dex_to_selection():
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if not (
+        0
+        <= app.SPECIES_EDIT_index
+        < len(
+            species_list
+        )
+    ):
+
+        return
+
+    selected_species = (
+        species_list[
+            app.SPECIES_EDIT_index
+        ]
+    )
+
+    set_species_edit_dex_number(
+        selected_species.no
+    )
+
+
+def jump_species_edit_to_dex_number():
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if len(
+        species_list
+    ) == 0:
+
+        app.SPECIES_EDIT_error = (
+            "NO SPECIES"
+        )
+
+        return False
+
+    desired_number = (
+        get_species_edit_dex_number()
+    )
+
+    exact_index = None
+
+    for index, species in enumerate(
+        species_list
+    ):
+
+        if (
+            species.no
+            == desired_number
+        ):
+
+            exact_index = index
+
+            break
+
+    if exact_index is None:
+
+        app.SPECIES_EDIT_error = (
+            "INVALID DEX NO."
+        )
+
+        return False
+
+    old_scroll_row = (
+        app.SPECIES_EDIT_scroll_row
+    )
+
+    app.SPECIES_EDIT_index = (
+        exact_index
+    )
+
+    sync_species_edit_scroll()
+
+    if (
+        app.SPECIES_EDIT_scroll_row
+        == old_scroll_row
+    ):
+
+        rebuild_species_edit_preview()
+
+    app.SPECIES_EDIT_error = None
+
+    return True
+
+def get_species_edit_dex_number():
+
+    digits = (
+        app.SPECIES_EDIT_dex_digits
+    )
+
+    if len(
+        digits
+    ) != 3:
+
+        return 0
+
+    return (
+        digits[0] * 100
+        + digits[1] * 10
+        + digits[2]
+    )
+
+
+def set_species_edit_dex_number(
+    species_number
+):
+
+    species_number = max(
+        0,
+        min(
+            999,
+            species_number
+        )
+    )
+
+    app.SPECIES_EDIT_dex_digits = [
+        species_number // 100,
+        (
+            species_number
+            // 10
+        ) % 10,
+        species_number % 10
+    ]
+
+
+def sync_species_edit_scroll():
+
+    columns = (
+        app.SPECIES_EDIT_columns
+    )
+
+    visible_rows = (
+        app.SPECIES_EDIT_visible_rows
+    )
+
+    selected_row = (
+        app.SPECIES_EDIT_index
+        // columns
+    )
+
+    old_scroll_row = (
+        app.SPECIES_EDIT_scroll_row
+    )
+
+    if (
+        selected_row
+        < app.SPECIES_EDIT_scroll_row
+    ):
+
+        app.SPECIES_EDIT_scroll_row = (
+            selected_row
+        )
+
+    elif (
+        selected_row
+        >= (
+            app.SPECIES_EDIT_scroll_row
+            + visible_rows
+        )
+    ):
+
+        app.SPECIES_EDIT_scroll_row = (
+            selected_row
+            - visible_rows
+            + 1
+        )
+
+    if (
+        app.SPECIES_EDIT_scroll_row
+        != old_scroll_row
+    ):
+
+        rebuild_species_edit_preview()
+
+
+def sync_species_edit_dex_to_selection():
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if not (
+        0
+        <= app.SPECIES_EDIT_index
+        < len(
+            species_list
+        )
+    ):
+
+        return
+
+    selected_species = (
+        species_list[
+            app.SPECIES_EDIT_index
+        ]
+    )
+
+    set_species_edit_dex_number(
+        selected_species.no
+    )
+
+
+def jump_species_edit_to_dex_number():
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if len(
+        species_list
+    ) == 0:
+
+        app.SPECIES_EDIT_error = (
+            "NO SPECIES"
+        )
+
+        return False
+
+    desired_number = (
+        get_species_edit_dex_number()
+    )
+
+    exact_index = None
+
+    for index, species in enumerate(
+        species_list
+    ):
+
+        if (
+            species.no
+            == desired_number
+        ):
+
+            exact_index = index
+
+            break
+
+    if exact_index is None:
+
+        app.SPECIES_EDIT_error = (
+            "INVALID DEX NO."
+        )
+
+        return False
+
+    old_scroll_row = (
+        app.SPECIES_EDIT_scroll_row
+    )
+
+    app.SPECIES_EDIT_index = (
+        exact_index
+    )
+
+    sync_species_edit_scroll()
+
+    if (
+        app.SPECIES_EDIT_scroll_row
+        == old_scroll_row
+    ):
+
+        rebuild_species_edit_preview()
+
+    app.SPECIES_EDIT_error = None
+
+    return True
+
+
+def handle_species_edit_dex_mode(
+    event
+):
+
+    if is_left(event):
+
+        app.SPECIES_EDIT_dex_digit_index = max(
+            0,
+            app.SPECIES_EDIT_dex_digit_index - 1
+        )
+
+    elif is_right(event):
+
+        app.SPECIES_EDIT_dex_digit_index = min(
+            2,
+            app.SPECIES_EDIT_dex_digit_index + 1
+        )
+
+    elif is_up(event):
+
+        digit_index = (
+            app.SPECIES_EDIT_dex_digit_index
+        )
+
+        app.SPECIES_EDIT_dex_digits[
+            digit_index
+        ] = (
+            app.SPECIES_EDIT_dex_digits[
+                digit_index
+            ]
+            + 1
+        ) % 10
+
+        app.SPECIES_EDIT_error = None
+
+    elif is_down(event):
+
+        digit_index = (
+            app.SPECIES_EDIT_dex_digit_index
+        )
+
+        app.SPECIES_EDIT_dex_digits[
+            digit_index
+        ] = (
+            app.SPECIES_EDIT_dex_digits[
+                digit_index
+            ]
+            - 1
+        ) % 10
+
+        app.SPECIES_EDIT_error = None
+
+    elif is_confirm(event):
+
+        jumped = (
+            jump_species_edit_to_dex_number()
+        )
+
+        if jumped:
+
+            app.SPECIES_EDIT_dex_mode = (
+                False
+            )
+
+    elif (
+        is_cancel(event)
+        or
+        is_vy(event)
+    ):
+
+        app.SPECIES_EDIT_dex_mode = (
+            False
+        )
+
+        app.SPECIES_EDIT_error = None
+
+        sync_species_edit_dex_to_selection()
+
+def handle_event_SPECIES_EDIT(
+    event
+):
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    if (
+        app.SPECIES_EDIT_dex_mode
+    ):
+
+        handle_species_edit_dex_mode(
+            event
+        )
+
+        return
+
+    if len(
+        species_list
+    ) == 0:
+
+        if is_cancel(event):
+
+            change_state(
+                app.SPECIES_EDIT_return_state
+            )
+
+        return
+
+    if is_cx(event):
+
+        cycle_species_edit_sort()
+
+        return
+
+    if is_vy(event):
+
+        sync_species_edit_dex_to_selection()
+
+        app.SPECIES_EDIT_dex_mode = (
+            True
+        )
+
+        app.SPECIES_EDIT_dex_digit_index = (
+            0
+        )
+
+        app.SPECIES_EDIT_error = None
+
+        reset_species_edit_hold()
+
+        return
+
+    if is_left(event):
+
+        move_species_edit_selection(
+            "LEFT"
+        )
+
+    elif is_right(event):
+
+        move_species_edit_selection(
+            "RIGHT"
+        )
+
+    elif is_up(event):
+
+        move_species_edit_selection(
+            "UP"
+        )
+
+    elif is_down(event):
+
+        move_species_edit_selection(
+            "DOWN"
+        )
+
+    elif is_confirm(event):
+
+        pokemon = (
+            app.SPECIES_EDIT_pokemon
+        )
+
+        if pokemon is None:
+
+            app.SPECIES_EDIT_error = (
+                "NO POKEMON"
+            )
+
+            return
+
+        selected_species = (
+            species_list[
+                app.SPECIES_EDIT_index
+            ]
+        )
+
+        pokemon.set_species(
+            selected_species
+        )
+
+        app.PKMN_INFO_pokemon = (
+            pokemon
+        )
+
+        save_pkmn_info_pokemon()
+
+        change_state(
+            app.SPECIES_EDIT_return_state
+        )
+
+    elif is_cancel(event):
+
+        change_state(
+            app.SPECIES_EDIT_return_state
+        )
+
 def get_pkmn_info_source_team():
 
     if (
@@ -173,7 +965,6 @@ def load_pkmn_info_pokemon(
     app.PKMN_INFO_selecting_move = False
 
     return True
-
 
 def navigate_pkmn_info_team(
     direction
@@ -268,6 +1059,9 @@ def navigate_pkmn_info_team(
 
         ]
 
+        app.PKMN_INFO_species = False
+        app.PKMN_INFO_editable = True
+
         return load_pkmn_info_pokemon(
             new_pokemon
         )
@@ -294,11 +1088,11 @@ def navigate_pkmn_info_team(
         ):
 
             visible_entries.append(
-                (
-                    0,
-                    pokemon_index,
-                    pokemon
-                )
+                {
+                    "column": 0,
+                    "index": pokemon_index,
+                    "pokemon": pokemon
+                }
             )
 
         if app.option_omniscient:
@@ -308,11 +1102,11 @@ def navigate_pkmn_info_team(
             ):
 
                 visible_entries.append(
-                    (
-                        1,
-                        pokemon_index,
-                        pokemon
-                    )
+                    {
+                        "column": 1,
+                        "index": pokemon_index,
+                        "pokemon": pokemon
+                    }
                 )
 
         if len(
@@ -323,19 +1117,15 @@ def navigate_pkmn_info_team(
 
         current_position = None
 
-        for position, (
-            column,
-            pokemon_index,
-            pokemon
-        ) in enumerate(
+        for position, entry in enumerate(
             visible_entries
         ):
 
             if (
-                column
+                entry["column"]
                 == app.TEAM_PREVIEW_column
                 and
-                pokemon_index
+                entry["index"]
                 == app.TEAM_PREVIEW_index
             ):
 
@@ -364,31 +1154,156 @@ def navigate_pkmn_info_team(
 
             return False
 
-        (
-            new_column,
-            new_index,
-            new_pokemon
-        ) = visible_entries[
-            new_position
-        ]
+        new_entry = (
+            visible_entries[
+                new_position
+            ]
+        )
 
         app.TEAM_PREVIEW_column = (
-            new_column
+            new_entry["column"]
         )
 
         app.TEAM_PREVIEW_index = (
-            new_index
+            new_entry["index"]
         )
 
-        app.PKMN_INFO_species = (
-            False
-        )
+        app.PKMN_INFO_species = False
+        app.PKMN_INFO_editable = False
 
         return load_pkmn_info_pokemon(
-            new_pokemon
+            new_entry["pokemon"]
         )
 
     return False
+
+def handle_event_PKMN_INFO_species(
+    event
+):
+
+    pokemon = (
+        app.PKMN_INFO_pokemon
+    )
+
+    if pokemon is None:
+
+        if is_cancel(event):
+
+            change_state(
+                app.PKMN_INFO_return_state
+            )
+
+        return
+
+    if is_left_shoulder_back(
+        event
+    ):
+
+        navigate_pkmn_info_source(
+            -1
+        )
+
+        return
+
+    if is_right_shoulder_back(
+        event
+    ):
+
+        navigate_pkmn_info_source(
+            1
+        )
+
+        return
+
+    if (
+        app.PKMN_INFO_mode
+        == "MOVES"
+    ):
+
+        learnset_size = len(
+            pokemon.learnset
+        )
+
+        if learnset_size == 0:
+
+            if is_cancel(event):
+
+                app.PKMN_INFO_mode = (
+                    "MAIN"
+                )
+
+                app.PKMN_INFO_index = 3
+
+            return
+
+        if is_up(event):
+
+            app.PKMN_INFO_learnset_index = max(
+                0,
+                app.PKMN_INFO_learnset_index - 1
+            )
+
+        elif is_down(event):
+
+            app.PKMN_INFO_learnset_index = min(
+                learnset_size - 1,
+                app.PKMN_INFO_learnset_index + 1
+            )
+
+        elif (
+            is_cancel(event)
+            or
+            is_confirm(event)
+            and
+            app.PKMN_INFO_learnset_index
+            == learnset_size
+        ):
+
+            app.PKMN_INFO_mode = (
+                "MAIN"
+            )
+
+            app.PKMN_INFO_index = 3
+
+        return
+
+    if is_left(event):
+
+        if (
+            app.PKMN_INFO_index
+            == 4
+        ):
+
+            app.PKMN_INFO_index = 3
+
+    elif is_right(event):
+
+        if (
+            app.PKMN_INFO_index
+            == 3
+        ):
+
+            app.PKMN_INFO_index = 4
+
+    elif is_confirm(event):
+
+        if (
+            app.PKMN_INFO_index
+            == 3
+        ):
+
+            app.PKMN_INFO_mode = (
+                "MOVES"
+            )
+
+            app.PKMN_INFO_learnset_index = 0
+            app.PKMN_INFO_error = None
+
+    elif is_cancel(event):
+
+        change_state(
+            app.PKMN_INFO_return_state
+        )
 
 
 def switch_pkmn_info_calculator_side():
@@ -1018,8 +1933,10 @@ def handle_event_PKMN_INFO_main(
             == 0
         ):
 
-            # SPECIES_EDIT will open here.
-            pass
+            open_species_edit(
+                pokemon=pokemon,
+                return_state=PKMN_INFO
+            )
 
         elif (
             app.PKMN_INFO_index
@@ -1492,15 +2409,11 @@ def set_pkmn_info_evs(
     evs
 ):
 
-    pokemon.hp_ev = evs[0]
-    pokemon.attack_ev = evs[1]
-    pokemon.defense_ev = evs[2]
-    pokemon.special_attack_ev = evs[3]
-    pokemon.special_defense_ev = evs[4]
-    pokemon.speed_ev = evs[5]
+    if pokemon is None:
+        return
 
-    pokemon.set_level(
-        pokemon.level
+    pokemon.set_evs(
+        evs
     )
 
     save_pkmn_info_pokemon()
@@ -1658,6 +2571,14 @@ def handle_team_select_pokemon_navigation(
 def handle_event_PKMN_INFO(
     event
 ):
+
+    if app.PKMN_INFO_species:
+
+        handle_event_PKMN_INFO_species(
+            event
+        )
+
+        return
 
     if (
         app.PKMN_INFO_mode
@@ -3489,40 +4410,119 @@ def handle_event_TEAM_SELECT(event):
 def handle_event_BATTLE_START(event):
     pass
 
-def handle_event_TEAM_PREVIEW(event):
+def handle_event_TEAM_PREVIEW(
+    event
+):
+
     if is_up(event):
-        app.TEAM_PREVIEW_index = max(
-            0,
-            app.TEAM_PREVIEW_index - 1
+
+        current_team = (
+            app.player_team
+            if app.TEAM_PREVIEW_column == 0
+            else app.opponent_team
         )
-    elif is_down(event):
-        app.TEAM_PREVIEW_index = min(
-            5,
-            app.TEAM_PREVIEW_index + 1
+
+        team_size = len(
+            current_team
+            or []
         )
-    elif is_left(event):
-        app.TEAM_PREVIEW_column = 0
-    elif is_right(event):
-        if app.option_omniscient:
-            app.TEAM_PREVIEW_column = 1
-    elif is_confirm(event):
-        if app.TEAM_PREVIEW_column == 0:
-            app.player_lead = (
-                app.TEAM_PREVIEW_index
-            )
-            if (
-                app.connection_socket
-                is None
-            ):
-                change_state(
-                    BATTLE_START
+
+        if team_size > 0:
+
+            app.TEAM_PREVIEW_index = max(
+                0,
+                min(
+                    team_size - 1,
+                    app.TEAM_PREVIEW_index - 1
                 )
-    elif is_cvxy(event):
-        pokemon = None
+            )
+
+    elif is_down(event):
+
+        current_team = (
+            app.player_team
+            if app.TEAM_PREVIEW_column == 0
+            else app.opponent_team
+        )
+
+        team_size = len(
+            current_team
+            or []
+        )
+
+        if team_size > 0:
+
+            app.TEAM_PREVIEW_index = min(
+                team_size - 1,
+                app.TEAM_PREVIEW_index + 1
+            )
+
+    elif is_left(event):
+
+        app.TEAM_PREVIEW_column = 0
+
+        player_team_size = len(
+            app.player_team
+            or []
+        )
+
+        if player_team_size > 0:
+
+            app.TEAM_PREVIEW_index = min(
+                app.TEAM_PREVIEW_index,
+                player_team_size - 1
+            )
+
+    elif is_right(event):
+
+        opponent_team_size = len(
+            app.opponent_team
+            or []
+        )
+
+        if opponent_team_size > 0:
+
+            app.TEAM_PREVIEW_column = 1
+
+            app.TEAM_PREVIEW_index = min(
+                app.TEAM_PREVIEW_index,
+                opponent_team_size - 1
+            )
+
+    elif is_confirm(event):
 
         if (
             app.TEAM_PREVIEW_column
             == 0
+        ):
+
+            app.player_lead = (
+                app.TEAM_PREVIEW_index
+            )
+
+            if (
+                app.connection_socket
+                is None
+            ):
+
+                change_state(
+                    BATTLE_START
+                )
+
+    elif is_cvxy(event):
+
+        pokemon = None
+        species_only = False
+
+        if (
+            app.TEAM_PREVIEW_column
+            == 0
+            and
+            app.TEAM_PREVIEW_index
+            < len(
+                app.player_team
+                or []
+            )
         ):
 
             pokemon = (
@@ -3532,11 +4532,13 @@ def handle_event_TEAM_PREVIEW(event):
             )
 
         elif (
-            app.option_omniscient
+            app.TEAM_PREVIEW_column
+            == 1
             and
             app.TEAM_PREVIEW_index
             < len(
                 app.opponent_team
+                or []
             )
         ):
 
@@ -3546,29 +4548,40 @@ def handle_event_TEAM_PREVIEW(event):
                 ]
             )
 
+            species_only = (
+                not app.option_omniscient
+            )
+
         if pokemon is not None:
 
             open_pokemon_details(
                 pokemon=pokemon,
                 editable=False,
                 return_state=TEAM_PREVIEW,
-                source="TEAM_PREVIEW"
+                source="TEAM_PREVIEW",
+                species=species_only
             )
+
     elif is_cancel(event):
+
         if (
             app.game_mode
             == "ENDLESS"
         ):
+
             change_state(
                 SINGLE_MENU
             )
+
         elif (
             app.allow_team_change
             and
             app.TEAM_SELECT_return_state
             is not None
         ):
+
             app.restore_team_select = True
+
             change_state(
                 app.TEAM_PREVIEW_return_state
             )

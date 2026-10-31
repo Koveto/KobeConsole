@@ -290,76 +290,83 @@ def disconnect():
     app.TEAM_SELECT_team_sent = False
     app.TEAM_PREVIEW_ready_sent = False
     app.TEAM_PREVIEW_opponent_ready = False
-
+    
 def get_loaded_pokemon():
+
     pokemon = []
     seen = set()
-    for p in (app.player_team or []):
-        if id(p) not in seen:
-            pokemon.append(p)
-            seen.add(id(p))
-    for p in (app.opponent_team or []):
-        if id(p) not in seen:
-            pokemon.append(p)
-            seen.add(id(p))
-    for p in (app.TEAM_SELECT_preview_team or []):
-        if id(p) not in seen:
-            pokemon.append(p)
-            seen.add(id(p))
-    for p in (
+
+    def add_pokemon(
+        loaded_pokemon
+    ):
+
+        if loaded_pokemon is None:
+            return
+
+        pokemon_id = id(
+            loaded_pokemon
+        )
+
+        if pokemon_id in seen:
+            return
+
+        pokemon.append(
+            loaded_pokemon
+        )
+
+        seen.add(
+            pokemon_id
+        )
+
+    def add_team(
+        team
+    ):
+
+        for loaded_pokemon in (
+            team
+            or []
+        ):
+
+            add_pokemon(
+                loaded_pokemon
+            )
+
+    add_team(
+        app.player_team
+    )
+
+    add_team(
+        app.opponent_team
+    )
+
+    add_team(
+        app.TEAM_SELECT_preview_team
+    )
+
+    add_team(
         app.SINGLE_MENU_TRAINER_preview_team
-        or []
-    ):
-        if id(p) not in seen:
-            pokemon.append(p)
-            seen.add(id(p))
-    for p in (
+    )
+
+    add_team(
         app.SINGLE_MENU_TRAINER_my_team_preview
-        or []
-    ):
-        if id(p) not in seen:
-            pokemon.append(p)
-            seen.add(id(p))
-    if (
+    )
+
+    add_team(
+        app.SPECIES_EDIT_preview_pokemon
+    )
+
+    add_pokemon(
         app.DAMAGE_CALCULATOR_attacker
-        is not None
-    ):
-        if (
-            id(
-                app.DAMAGE_CALCULATOR_attacker
-            )
-            not in seen
-        ):
-            pokemon.append(
-                app.DAMAGE_CALCULATOR_attacker
-            )
-            seen.add(
-                id(
-                    app.DAMAGE_CALCULATOR_attacker
-                )
-            )
-    if (
+    )
+
+    add_pokemon(
         app.DAMAGE_CALCULATOR_defender
-        is not None
-    ):
-        if (
-            id(
-                app.DAMAGE_CALCULATOR_defender
-            )
-            not in seen
-        ):
-            pokemon.append(
-                app.DAMAGE_CALCULATOR_defender
-            )
-            seen.add(
-                id(
-                    app.DAMAGE_CALCULATOR_defender
-                )
-            )
-    if ( app.PKMN_INFO_pokemon is not None ): 
-        if ( id( app.PKMN_INFO_pokemon ) not in seen ): 
-            pokemon.append( app.PKMN_INFO_pokemon ) 
-            seen.add( id( app.PKMN_INFO_pokemon ) )
+    )
+
+    add_pokemon(
+        app.PKMN_INFO_pokemon
+    )
+
     return pokemon
 
 TYPE_SHEET = None

@@ -186,6 +186,322 @@ class Pokemon:
     MIN_LEVEL = 1
     MAX_LEVEL = 100
 
+    @staticmethod
+    def normalize_integer(
+        value,
+        minimum,
+        maximum,
+        default
+    ):
+
+        try:
+
+            value = int(
+                value
+            )
+
+        except (
+            TypeError,
+            ValueError
+        ):
+
+            value = default
+
+        return max(
+            minimum,
+            min(
+                maximum,
+                value
+            )
+        )
+
+
+    @classmethod
+    def normalize_level(
+        cls,
+        level
+    ):
+
+        return cls.normalize_integer(
+            level,
+            cls.MIN_LEVEL,
+            cls.MAX_LEVEL,
+            cls.MAX_LEVEL
+        )
+
+
+    @staticmethod
+    def normalize_stat_values(
+        values,
+        value_count,
+        minimum,
+        maximum,
+        default_value=0,
+        total_maximum=None
+    ):
+
+        if not isinstance(
+            values,
+            (
+                list,
+                tuple
+            )
+        ):
+
+            values = []
+
+        normalized_values = []
+
+        for index in range(
+            value_count
+        ):
+
+            if index < len(
+                values
+            ):
+
+                value = values[
+                    index
+                ]
+
+            else:
+
+                value = default_value
+
+            value = (
+                Pokemon.normalize_integer(
+                    value,
+                    minimum,
+                    maximum,
+                    default_value
+                )
+            )
+
+            normalized_values.append(
+                value
+            )
+
+        if total_maximum is None:
+
+            return normalized_values
+
+        overflow = max(
+            0,
+            sum(
+                normalized_values
+            )
+            - total_maximum
+        )
+
+        for index in range(
+            len(
+                normalized_values
+            ) - 1,
+            -1,
+            -1
+        ):
+
+            if overflow <= 0:
+                break
+
+            reduction = min(
+                normalized_values[
+                    index
+                ],
+                overflow
+            )
+
+            normalized_values[
+                index
+            ] -= reduction
+
+            overflow -= reduction
+
+        return normalized_values
+
+
+    @staticmethod
+    def get_move_name(
+        move
+    ):
+
+        if isinstance(
+            move,
+            str
+        ):
+
+            return move
+
+        if move is None:
+
+            return None
+
+        return getattr(
+            move,
+            "name",
+            None
+        )
+
+
+    @staticmethod
+    def resolve_move(
+        move
+    ):
+
+        move_name = (
+            Pokemon.get_move_name(
+                move
+            )
+        )
+
+        if not move_name:
+
+            return None
+
+        return get_move(
+            move_name
+        )
+
+
+    @staticmethod
+    def build_unique_move_list(
+        moves
+    ):
+
+        unique_moves = []
+        known_move_names = set()
+
+        if not isinstance(
+            moves,
+            (
+                list,
+                tuple
+            )
+        ):
+
+            return unique_moves
+
+        for move in moves:
+
+            resolved_move = (
+                Pokemon.resolve_move(
+                    move
+                )
+            )
+
+            if resolved_move is None:
+                continue
+
+            if (
+                resolved_move.name
+                in known_move_names
+            ):
+
+                continue
+
+            known_move_names.add(
+                resolved_move.name
+            )
+
+            unique_moves.append(
+                resolved_move
+            )
+
+        return unique_moves
+
+
+    @staticmethod
+    def normalize_moveset(
+        moves,
+        learnset
+    ):
+
+        legal_moves = (
+            Pokemon.build_unique_move_list(
+                learnset
+            )
+        )
+
+        legal_move_names = {
+            move.name
+            for move in legal_moves
+        }
+
+        normalized_moves = []
+        known_move_names = set()
+
+        if isinstance(
+            moves,
+            (
+                list,
+                tuple
+            )
+        ):
+
+            for move in moves:
+
+                resolved_move = (
+                    Pokemon.resolve_move(
+                        move
+                    )
+                )
+
+                if resolved_move is None:
+                    continue
+
+                if (
+                    resolved_move.name
+                    not in legal_move_names
+                ):
+
+                    continue
+
+                if (
+                    resolved_move.name
+                    in known_move_names
+                ):
+
+                    continue
+
+                normalized_moves.append(
+                    resolved_move
+                )
+
+                known_move_names.add(
+                    resolved_move.name
+                )
+
+                if len(
+                    normalized_moves
+                ) == 4:
+
+                    return normalized_moves
+
+        for move in legal_moves:
+
+            if (
+                move.name
+                in known_move_names
+            ):
+
+                continue
+
+            normalized_moves.append(
+                move
+            )
+
+            known_move_names.add(
+                move.name
+            )
+
+            if len(
+                normalized_moves
+            ) == 4:
+
+                break
+
+        return normalized_moves
+
     def __init__(
         self,
         species,
@@ -201,109 +517,288 @@ class Pokemon:
         back_sprite_number=None,
         status=None
     ):
+
+        if species is None:
+
+            raise ValueError(
+                "Pokemon requires a valid species"
+            )
+
         self.species = species
-        self.species_no = species.no
-        self.species_name = species.name
-        self.nickname = nickname if nickname is not None else species.name
-        if not (Pokemon.MIN_LEVEL <= level <= Pokemon.MAX_LEVEL):
-            raise ValueError(f"Invalid level: {level}")
-        self.level = level
-        if nature is None:
-            nature = random.choice(list(NATURES.values()))
-        if not isinstance(nature,Nature):
-            raise ValueError("Invalid nature")
+
+        self.species_no = (
+            species.no
+        )
+
+        self.species_name = (
+            species.name
+        )
+
+        if (
+            nickname is None
+            or
+            not isinstance(
+                nickname,
+                str
+            )
+            or
+            len(
+                nickname.strip()
+            ) == 0
+        ):
+
+            self.nickname = (
+                species.name
+            )
+
+        else:
+
+            self.nickname = (
+                nickname
+            )
+
+        self.level = (
+            Pokemon.normalize_level(
+                level
+            )
+        )
+
+        if not isinstance(
+            nature,
+            Nature
+        ):
+
+            nature = random.choice(
+                list(
+                    NATURES.values()
+                )
+            )
+
         self.nature = nature
-        if gender is None:
-            gender = random.choice(Pokemon.VALID_GENDERS)
-        if (gender not in Pokemon.VALID_GENDERS):
-            raise ValueError(f"Invalid gender: {gender}")
+
+        if (
+            gender
+            not in Pokemon.VALID_GENDERS
+        ):
+
+            gender = random.choice(
+                Pokemon.VALID_GENDERS
+            )
+
         self.gender = gender
+
         self.status = status
+
         if evs is None:
-            stats = [0,1,2,3,4,5]
-            random.shuffle(stats)
-            evs = [0,0,0,0,0,0]
-            evs[stats[0]] = 252
-            evs[stats[1]] = 252
-            evs[stats[2]] = 4
-        if len(evs) != 6:
-            raise ValueError("EV list must contain 6 values")
-        if any(ev < 0 or ev > 252 for ev in evs):
-            raise ValueError("EVs must be between 0 and 252")
-        if sum(evs) > 508:
-            raise ValueError("EV total exceeds 508")
+
+            stat_indices = [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+
+            random.shuffle(
+                stat_indices
+            )
+
+            evs = [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+
+            evs[
+                stat_indices[0]
+            ] = 252
+
+            evs[
+                stat_indices[1]
+            ] = 252
+
+            evs[
+                stat_indices[2]
+            ] = 4
+
+        evs = (
+            Pokemon.normalize_stat_values(
+                values=evs,
+                value_count=6,
+                minimum=0,
+                maximum=252,
+                default_value=0,
+                total_maximum=508
+            )
+        )
+
         if ivs is None:
-            ivs = [31, 31, 31, 31, 31, 31]
-        if len(ivs) != 6:
-            raise ValueError("IV list must contain 6 values")
-        if any(iv < 0 or iv > 31 for iv in ivs):
-            raise ValueError("IVs must be between 0 and 31")
+
+            ivs = [
+                31,
+                31,
+                31,
+                31,
+                31,
+                31
+            ]
+
+        ivs = (
+            Pokemon.normalize_stat_values(
+                values=ivs,
+                value_count=6,
+                minimum=0,
+                maximum=31,
+                default_value=31
+            )
+        )
+
         self.hp_ev = evs[0]
         self.attack_ev = evs[1]
         self.defense_ev = evs[2]
         self.special_attack_ev = evs[3]
         self.special_defense_ev = evs[4]
         self.speed_ev = evs[5]
+
         self.hp_iv = ivs[0]
         self.attack_iv = ivs[1]
         self.defense_iv = ivs[2]
         self.special_attack_iv = ivs[3]
         self.special_defense_iv = ivs[4]
         self.speed_iv = ivs[5]
-        self.learnset = []
-        self.moves = []
-        for move in species.moves:
-            if isinstance(
-                move,
-                str
-            ):
-                move = get_move(
-                    move
-                )
-            self.learnset.append(
-                move
+
+        self.learnset = (
+            Pokemon.build_unique_move_list(
+                species.moves
             )
-        if moves is None:
-            moves = self.learnset[:4]
-        if len(moves) > 4:
-            raise ValueError("Pokemon may only know 4 moves")
-        for move in moves:
-            if isinstance(move,str):
-                move = get_move(move)
-            if move is None:
-                raise ValueError("Invalid move")
-            self.moves.append(move)
-        self.hp_base = species.stats["HP"]
-        self.attack_base = species.stats["Atk"]
-        self.defense_base = species.stats["Def"]
-        self.special_attack_base = species.stats["SpAtk"]
-        self.special_defense_base = species.stats["SpDef"]
-        self.speed_base = species.stats["Spd"]
+        )
+
+        self.moves = (
+            Pokemon.normalize_moveset(
+                moves,
+                self.learnset
+            )
+        )
+
+        self.hp_base = (
+            species.stats["HP"]
+        )
+
+        self.attack_base = (
+            species.stats["Atk"]
+        )
+
+        self.defense_base = (
+            species.stats["Def"]
+        )
+
+        self.special_attack_base = (
+            species.stats["SpAtk"]
+        )
+
+        self.special_defense_base = (
+            species.stats["SpDef"]
+        )
+
+        self.speed_base = (
+            species.stats["Spd"]
+        )
+
         self.attack_modifier = 0
         self.defense_modifier = 0
         self.special_attack_modifier = 0
         self.special_defense_modifier = 0
         self.speed_modifier = 0
-        if is_shiny not in (True, False):
-            is_shiny = random.randint(1,2) == 1
-        self.is_shiny = is_shiny
-        self.front_sprite_number = front_sprite_number
-        self.back_sprite_number = back_sprite_number
-        if self.front_sprite_number is None:
-            self.front_sprite_number = random.choice([0, 1, 2])
-        if self.back_sprite_number is None:
-            self.back_sprite_number = random.choice([0, 1])
-        self.front_sprite_anim_state = False
+
+        if (
+            is_shiny
+            not in (
+                True,
+                False
+            )
+        ):
+
+            is_shiny = (
+                random.randint(
+                    1,
+                    2
+                )
+                == 1
+            )
+
+        self.is_shiny = (
+            is_shiny
+        )
+
+        self.front_sprite_number = (
+            Pokemon.normalize_integer(
+                front_sprite_number,
+                0,
+                2,
+                random.choice(
+                    [
+                        0,
+                        1,
+                        2
+                    ]
+                )
+            )
+        )
+
+        self.back_sprite_number = (
+            Pokemon.normalize_integer(
+                back_sprite_number,
+                0,
+                1,
+                random.choice(
+                    [
+                        0,
+                        1
+                    ]
+                )
+            )
+        )
+
+        self.front_sprite_anim_state = (
+            False
+        )
+
         self.fanart_front_0 = None
         self.fanart_front_1 = None
         self.fanart_back_0 = None
-        self.hp_max = self.calculate_hp()
-        self.hp_current = self.hp_max
-        self.attack = self.calculate_attack()
-        self.defense = self.calculate_defense()
-        self.special_attack = self.calculate_special_attack()
-        self.special_defense = self.calculate_special_defense()
-        self.speed = self.calculate_speed()
+
+        self.hp_max = (
+            self.calculate_hp()
+        )
+
+        self.hp_current = (
+            self.hp_max
+        )
+
+        self.attack = (
+            self.calculate_attack()
+        )
+
+        self.defense = (
+            self.calculate_defense()
+        )
+
+        self.special_attack = (
+            self.calculate_special_attack()
+        )
+
+        self.special_defense = (
+            self.calculate_special_defense()
+        )
+
+        self.speed = (
+            self.calculate_speed()
+        )
+
         self.fanart_front_0 = (
             load_fanart_frame(
                 self.species_name,
@@ -311,6 +806,7 @@ class Pokemon:
                 0
             )
         )
+
         self.fanart_front_1 = (
             load_fanart_frame(
                 self.species_name,
@@ -318,6 +814,7 @@ class Pokemon:
                 1
             )
         )
+
         self.fanart_back_0 = (
             load_fanart_frame(
                 self.species_name,
@@ -325,6 +822,7 @@ class Pokemon:
                 0
             )
         )
+
         self.update_sprites()
 
     def calculate_hp(self):
@@ -508,19 +1006,85 @@ class Pokemon:
         cls,
         data
     ):
+
+        if not isinstance(
+            data,
+            dict
+        ):
+
+            raise ValueError(
+                "Pokemon data must be a dictionary"
+            )
+
+        species_number = (
+            data.get(
+                "species_no"
+            )
+        )
+
+        species = (
+            get_species(
+                species_number
+            )
+        )
+
+        if species is None:
+
+            raise ValueError(
+                (
+                    "Invalid species number: "
+                    f"{species_number}"
+                )
+            )
+
+        nature_name = (
+            data.get(
+                "nature"
+            )
+        )
+
+        nature = (
+            NATURES.get(
+                nature_name
+            )
+        )
+
         return cls(
-            species=get_species(data["species_no"]),
-            nickname=data["nickname"],
-            level=data["level"],
-            nature=NATURES[data["nature"]],
-            gender=data["gender"],
-            evs=data["evs"],
-            ivs=data["ivs"],
-            moves=data["moves"],
-            is_shiny=data["is_shiny"],
-            front_sprite_number=data["front_sprite_number"],
-            back_sprite_number=data["back_sprite_number"],
-            status=data.get("status", STATUS_NONE)
+            species=species,
+            nickname=data.get(
+                "nickname",
+                species.name
+            ),
+            level=data.get(
+                "level",
+                cls.MAX_LEVEL
+            ),
+            nature=nature,
+            gender=data.get(
+                "gender"
+            ),
+            evs=data.get(
+                "evs"
+            ),
+            ivs=data.get(
+                "ivs"
+            ),
+            moves=data.get(
+                "moves"
+            ),
+            is_shiny=data.get(
+                "is_shiny"
+            ),
+            front_sprite_number=data.get(
+                "front_sprite_number"
+            ),
+            back_sprite_number=data.get(
+                "back_sprite_number"
+            ),
+            status=data.get(
+                "status",
+                STATUS_NONE
+            )
         )
 
     def animate_sprite(self):
@@ -619,26 +1183,43 @@ class Pokemon:
     ):
 
         if not (
-            0 <= moveslot < 4
+            0
+            <= moveslot
+            < 4
         ):
 
             raise ValueError(
                 "moveslot must be 0-3"
             )
 
-        if isinstance(
-            move,
-            str
-        ):
-
-            move = get_move(
+        move = (
+            Pokemon.resolve_move(
                 move
             )
+        )
 
         if move is None:
 
             raise ValueError(
                 "Invalid move"
+            )
+
+        legal_move_names = {
+            legal_move.name
+            for legal_move
+            in self.learnset
+        }
+
+        if (
+            move.name
+            not in legal_move_names
+        ):
+
+            raise ValueError(
+                (
+                    f"{self.species_name} "
+                    f"cannot learn {move.name}"
+                )
             )
 
         for index, known_move in enumerate(
@@ -648,17 +1229,46 @@ class Pokemon:
             if (
                 index != moveslot
                 and
-                known_move.name == move.name
+                known_move.name
+                == move.name
             ):
 
                 raise ValueError(
-                    "Pokemon cannot know "
-                    "the same move twice"
+                    (
+                        "Pokemon cannot know "
+                        "the same move twice"
+                    )
                 )
 
-        self.moves[
+        if (
             moveslot
-        ] = move
+            < len(
+                self.moves
+            )
+        ):
+
+            self.moves[
+                moveslot
+            ] = move
+
+            return
+
+        if (
+            moveslot
+            == len(
+                self.moves
+            )
+        ):
+
+            self.moves.append(
+                move
+            )
+
+            return
+
+        raise ValueError(
+            "Cannot leave empty moveslots"
+        )
 
     def knows_move(
         self,
@@ -669,3 +1279,191 @@ class Pokemon:
             move.name == move_name
             for move in self.moves
         )
+
+    def set_evs(
+        self,
+        evs
+    ):
+
+        evs = (
+            Pokemon.normalize_stat_values(
+                values=evs,
+                value_count=6,
+                minimum=0,
+                maximum=252,
+                default_value=0,
+                total_maximum=508
+            )
+        )
+
+        self.hp_ev = evs[0]
+        self.attack_ev = evs[1]
+        self.defense_ev = evs[2]
+        self.special_attack_ev = evs[3]
+        self.special_defense_ev = evs[4]
+        self.speed_ev = evs[5]
+
+        self.set_level(
+            self.level
+        )
+
+    def set_species(
+        self,
+        species
+    ):
+
+        if species is None:
+
+            raise ValueError(
+                "Pokemon requires a valid species"
+            )
+
+        old_species_name = (
+            self.species_name
+        )
+
+        old_nickname = (
+            self.nickname
+        )
+
+        old_hp_max = (
+            self.hp_max
+        )
+
+        old_hp_current = (
+            self.hp_current
+        )
+
+        old_moves = list(
+            self.moves
+        )
+
+        self.species = species
+
+        self.species_no = (
+            species.no
+        )
+
+        self.species_name = (
+            species.name
+        )
+
+        if (
+            old_nickname
+            == old_species_name
+        ):
+
+            self.nickname = (
+                species.name
+            )
+
+        self.learnset = (
+            Pokemon.build_unique_move_list(
+                species.moves
+            )
+        )
+
+        self.moves = (
+            Pokemon.normalize_moveset(
+                old_moves,
+                self.learnset
+            )
+        )
+
+        self.hp_base = (
+            species.stats["HP"]
+        )
+
+        self.attack_base = (
+            species.stats["Atk"]
+        )
+
+        self.defense_base = (
+            species.stats["Def"]
+        )
+
+        self.special_attack_base = (
+            species.stats["SpAtk"]
+        )
+
+        self.special_defense_base = (
+            species.stats["SpDef"]
+        )
+
+        self.speed_base = (
+            species.stats["Spd"]
+        )
+
+        self.fanart_front_0 = (
+            load_fanart_frame(
+                self.species_name,
+                True,
+                0
+            )
+        )
+
+        self.fanart_front_1 = (
+            load_fanart_frame(
+                self.species_name,
+                True,
+                1
+            )
+        )
+
+        self.fanart_back_0 = (
+            load_fanart_frame(
+                self.species_name,
+                False,
+                0
+            )
+        )
+
+        if old_hp_max > 0:
+
+            hp_percent = (
+                old_hp_current
+                / old_hp_max
+            )
+
+        else:
+
+            hp_percent = 1.0
+
+        self.hp_max = (
+            self.calculate_hp()
+        )
+
+        self.attack = (
+            self.calculate_attack()
+        )
+
+        self.defense = (
+            self.calculate_defense()
+        )
+
+        self.special_attack = (
+            self.calculate_special_attack()
+        )
+
+        self.special_defense = (
+            self.calculate_special_defense()
+        )
+
+        self.speed = (
+            self.calculate_speed()
+        )
+
+        self.hp_current = int(
+            self.hp_max
+            * hp_percent
+        )
+
+        self.hp_current = max(
+            0,
+            min(
+                self.hp_max,
+                self.hp_current
+            )
+        )
+
+        self.update_sprites()

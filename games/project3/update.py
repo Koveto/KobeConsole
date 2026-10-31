@@ -5,25 +5,312 @@ from save import *
 from handle_event import *
 
 def update():
-    current_time = pygame.time.get_ticks()
-    if (app.option_pkmn_animation and current_time - app.pkmn_animation_time > 500):
-        app.pkmn_animation_time = current_time
+
+    current_time = (
+        pygame.time.get_ticks()
+    )
+
+    if (
+        app.option_pkmn_animation
+        and
+        current_time
+        - app.pkmn_animation_time
+        > 500
+    ):
+
+        app.pkmn_animation_time = (
+            current_time
+        )
+
         for pokemon in get_loaded_pokemon():
+
             pokemon.animate_sprite()
+
     if app.state == LAN_HOST:
+
         update_LAN_HOST()
+
     elif app.state == LAN_JOIN:
+
         update_LAN_JOIN()
+
     elif app.state == TEAM_PREVIEW:
+
         update_TEAM_PREVIEW()
+
     elif app.state == BATTLE_START:
+
         update_BATTLE_START()
+
     elif app.state == TEAM_SELECT:
+
         update_TEAM_SELECT()
+
     elif app.state == BATTLE_END:
+
         update_BATTLE_END()
+
     elif app.state == PKMN_INFO:
+
         update_PKMN_INFO()
+
+    elif app.state == SPECIES_EDIT:
+
+        update_SPECIES_EDIT()
+
+def get_species_edit_hold_direction():
+
+    keys = (
+        pygame.key.get_pressed()
+    )
+
+    if keys[
+        pygame.K_LEFT
+    ]:
+
+        return "LEFT"
+
+    if keys[
+        pygame.K_RIGHT
+    ]:
+
+        return "RIGHT"
+
+    if keys[
+        pygame.K_UP
+    ]:
+
+        return "UP"
+
+    if keys[
+        pygame.K_DOWN
+    ]:
+
+        return "DOWN"
+
+    if (
+        pygame.joystick.get_count()
+        == 0
+    ):
+
+        return None
+
+    joystick = (
+        pygame.joystick.Joystick(
+            0
+        )
+    )
+
+    if not joystick.get_init():
+
+        joystick.init()
+
+    if (
+        joystick.get_numaxes()
+        > CONTROLLER_LEFT_STICK_X_AXIS
+    ):
+
+        horizontal_axis = (
+            joystick.get_axis(
+                CONTROLLER_LEFT_STICK_X_AXIS
+            )
+        )
+
+        if (
+            horizontal_axis
+            < -STICK_PRESS_THRESHOLD
+        ):
+
+            return "LEFT"
+
+        if (
+            horizontal_axis
+            > STICK_PRESS_THRESHOLD
+        ):
+
+            return "RIGHT"
+
+    if (
+        joystick.get_numaxes()
+        > CONTROLLER_LEFT_STICK_Y_AXIS
+    ):
+
+        vertical_axis = (
+            joystick.get_axis(
+                CONTROLLER_LEFT_STICK_Y_AXIS
+            )
+        )
+
+        if (
+            vertical_axis
+            < -STICK_PRESS_THRESHOLD
+        ):
+
+            return "UP"
+
+        if (
+            vertical_axis
+            > STICK_PRESS_THRESHOLD
+        ):
+
+            return "DOWN"
+
+    if IS_WINDOWS:
+
+        if (
+            joystick.get_numbuttons()
+            > CONTROLLER_DPAD_LEFT
+            and
+            joystick.get_button(
+                CONTROLLER_DPAD_LEFT
+            )
+        ):
+
+            return "LEFT"
+
+        if (
+            joystick.get_numbuttons()
+            > CONTROLLER_DPAD_RIGHT
+            and
+            joystick.get_button(
+                CONTROLLER_DPAD_RIGHT
+            )
+        ):
+
+            return "RIGHT"
+
+        if (
+            joystick.get_numbuttons()
+            > CONTROLLER_DPAD_UP
+            and
+            joystick.get_button(
+                CONTROLLER_DPAD_UP
+            )
+        ):
+
+            return "UP"
+
+        if (
+            joystick.get_numbuttons()
+            > CONTROLLER_DPAD_DOWN
+            and
+            joystick.get_button(
+                CONTROLLER_DPAD_DOWN
+            )
+        ):
+
+            return "DOWN"
+
+    elif IS_LINUX:
+
+        if (
+            joystick.get_numhats()
+            > 0
+        ):
+
+            hat_x, hat_y = (
+                joystick.get_hat(
+                    0
+                )
+            )
+
+            if hat_x < 0:
+
+                return "LEFT"
+
+            if hat_x > 0:
+
+                return "RIGHT"
+
+            if hat_y > 0:
+
+                return "UP"
+
+            if hat_y < 0:
+
+                return "DOWN"
+
+    return None
+
+def update_SPECIES_EDIT():
+
+    if (
+        app.SPECIES_EDIT_dex_mode
+    ):
+
+        reset_species_edit_hold()
+
+        return
+
+    direction = (
+        get_species_edit_hold_direction()
+    )
+
+    if direction is None:
+
+        reset_species_edit_hold()
+
+        return
+
+    current_time = (
+        pygame.time.get_ticks()
+    )
+
+    if (
+        direction
+        != app.SPECIES_EDIT_hold_direction
+    ):
+
+        app.SPECIES_EDIT_hold_direction = (
+            direction
+        )
+
+        app.SPECIES_EDIT_hold_start_time = (
+            current_time
+        )
+
+        app.SPECIES_EDIT_repeat_time = (
+            current_time
+        )
+
+        return
+
+    initial_delay = 350
+    repeat_delay = 80
+
+    held_time = (
+        current_time
+        - app.SPECIES_EDIT_hold_start_time
+    )
+
+    since_last_repeat = (
+        current_time
+        - app.SPECIES_EDIT_repeat_time
+    )
+
+    if (
+        held_time
+        < initial_delay
+        or
+        since_last_repeat
+        < repeat_delay
+    ):
+
+        return
+
+    moved = (
+        move_species_edit_selection(
+            direction
+        )
+    )
+
+    app.SPECIES_EDIT_repeat_time = (
+        current_time
+    )
+
+    if not moved:
+
+        return
 
 def get_pkmn_info_ev_hold_direction():
 

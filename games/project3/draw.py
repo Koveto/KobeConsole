@@ -70,40 +70,681 @@ def get_display_sprite(
     )
 
 def draw():
+
     if app.state == LAUNCHER_MENU:
+
         draw_LAUNCHER_MENU()
+
     elif app.state == LAN_HOST_JOIN:
+
         draw_LAN_HOST_JOIN()
+
     elif app.state == LAN_HOST:
+
         draw_LAN_HOST()
+
     elif app.state == LAN_JOIN:
+
         draw_LAN_JOIN()
+
     elif app.state == TEAM_PREVIEW:
+
         draw_TEAM_PREVIEW()
+
     elif app.state == BATTLE_START:
+
         draw_BATTLE_START()
+
     elif app.state == TEAM_SELECT:
+
         draw_TEAM_SELECT()
+
     elif app.state == OPTIONS:
+
         draw_OPTIONS()
+
     elif app.state == KEYBOARD:
+
         draw_KEYBOARD()
+
     elif app.state == OPTIONS_MUSIC:
+
         draw_OPTIONS_MUSIC()
+
     elif app.state == SINGLE_MENU:
+
         draw_SINGLE_MENU()
+
     elif app.state == SINGLE_MENU_TRAINER:
+
         draw_SINGLE_MENU_TRAINER()
+
     elif app.state == BATTLE_END:
+
         draw_BATTLE_END()
+
     elif app.state == SINGLE_BRACKET:
+
         draw_SINGLE_BRACKET()
+
     elif app.state == SINGLE_DEFEND_GYM:
+
         draw_SINGLE_DEFEND_GYM()
+
     elif app.state == DAMAGE_CALCULATOR:
+
         draw_DAMAGE_CALCULATOR()
+
     elif app.state == PKMN_INFO:
+
         draw_PKMN_INFO()
+
+    elif app.state == SPECIES_EDIT:
+
+        draw_SPECIES_EDIT()
+
+
+def draw_SPECIES_EDIT():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "SELECT SPECIES",
+        8,
+        5
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        app.SPECIES_EDIT_sort_mode,
+        180,
+        5
+    )
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    preview_pokemon = (
+        app.SPECIES_EDIT_preview_pokemon
+    )
+
+    if len(
+        species_list
+    ) == 0:
+
+        app.font0.draw_text(
+            app.screen,
+            "NO SPECIES",
+            10,
+            40
+        )
+
+        return
+
+    columns = (
+        app.SPECIES_EDIT_columns
+    )
+
+    start_index = (
+        app.SPECIES_EDIT_scroll_row
+        * columns
+    )
+
+    for visible_index, pokemon in enumerate(
+        preview_pokemon
+    ):
+
+        species_index = (
+            start_index
+            + visible_index
+        )
+
+        if (
+            species_index
+            >= len(
+                species_list
+            )
+        ):
+
+            break
+
+        column = (
+            visible_index
+            % columns
+        )
+
+        row = (
+            visible_index
+            // columns
+        )
+
+        x = (
+            5
+            + column * 79
+        )
+
+        y = (
+            14
+            + row * 66
+        )
+
+        species = (
+            species_list[
+                species_index
+            ]
+        )
+
+        if (
+            species_index
+            == app.SPECIES_EDIT_index
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    x,
+                    y,
+                    75,
+                    62
+                ),
+                1
+            )
+
+        app.screen.blit(
+            get_display_sprite(
+                pokemon
+            ),
+            (
+                x + 6,
+                y
+            )
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            species.name,
+            x + 3,
+            y + 48
+        )
+
+    selected_species = (
+        species_list[
+            app.SPECIES_EDIT_index
+        ]
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        (
+            f"NO.{selected_species.no:03d}"
+        ),
+        5,
+        147
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "C:SORT",
+        83,
+        147
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "V:DEX",
+        176,
+        147
+    )
+
+    if (
+        app.SPECIES_EDIT_error
+        is not None
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_WHITE,
+            (
+                64,
+                142,
+                108,
+                18
+            )
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            app.SPECIES_EDIT_error,
+            67,
+            147
+        )
+
+    if not app.SPECIES_EDIT_dex_mode:
+        return
+
+    pygame.draw.rect(
+        app.screen,
+        COLOR_WHITE,
+        (
+            51,
+            46,
+            138,
+            67
+        )
+    )
+
+    pygame.draw.rect(
+        app.screen,
+        COLOR_BLACK,
+        (
+            51,
+            46,
+            138,
+            67
+        ),
+        1
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "GO TO DEX NO.",
+        67,
+        55
+    )
+
+    digit_x_positions = [
+        91,
+        111,
+        131
+    ]
+
+    for digit_index, digit in enumerate(
+        app.SPECIES_EDIT_dex_digits
+    ):
+
+        x = (
+            digit_x_positions[
+                digit_index
+            ]
+        )
+
+        if (
+            digit_index
+            == app.SPECIES_EDIT_dex_digit_index
+        ):
+
+            pygame.draw.rect(
+                app.screen,
+                COLOR_BLACK,
+                (
+                    x - 4,
+                    72,
+                    17,
+                    19
+                ),
+                1
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            str(
+                digit
+            ),
+            x,
+            76
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        "CONFIRM: GO",
+        68,
+        96
+    )
+
+def draw_PKMN_INFO_species(
+    pokemon
+):
+
+    if (
+        app.PKMN_INFO_mode
+        == "MOVES"
+    ):
+
+        learnset_size = len(
+            pokemon.learnset
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            "LEARNSET",
+            10,
+            7
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            pokemon.species_name,
+            145,
+            7
+        )
+
+        if learnset_size == 0:
+
+            app.font0.draw_text(
+                app.screen,
+                "NO LEARNSET",
+                10,
+                40
+            )
+
+            app.font0.draw_text(
+                app.screen,
+                "BACK",
+                10,
+                140
+            )
+
+            return
+
+        app.PKMN_INFO_learnset_index = max(
+            0,
+            min(
+                app.PKMN_INFO_learnset_index,
+                learnset_size - 1
+            )
+        )
+
+        visible_count = 8
+
+        visible_start = max(
+            0,
+            min(
+                app.PKMN_INFO_learnset_index - 3,
+                max(
+                    0,
+                    learnset_size - visible_count
+                )
+            )
+        )
+
+        visible_end = min(
+            learnset_size,
+            visible_start + visible_count
+        )
+
+        for row, learnset_index in enumerate(
+            range(
+                visible_start,
+                visible_end
+            )
+        ):
+
+            move = (
+                pokemon.learnset[
+                    learnset_index
+                ]
+            )
+
+            y = (
+                30 + row * 14
+            )
+
+            if (
+                app.PKMN_INFO_learnset_index
+                == learnset_index
+            ):
+
+                pygame.draw.rect(
+                    app.screen,
+                    COLOR_BLACK,
+                    (
+                        7,
+                        y - 2,
+                        132,
+                        14
+                    ),
+                    1
+                )
+
+            app.font0.draw_text(
+                app.screen,
+                move.name,
+                10,
+                y
+            )
+
+        selected_move = (
+            pokemon.learnset[
+                app.PKMN_INFO_learnset_index
+            ]
+        )
+
+        if (
+            selected_move.type
+            in TYPE_POSITIONS
+        ):
+
+            app.screen.blit(
+                get_type_icon(
+                    selected_move.type
+                ),
+                (
+                    160,
+                    30
+                )
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            selected_move.category,
+            150,
+            52
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"PWR {selected_move.power}",
+            150,
+            70
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"ACC {selected_move.accuracy}",
+            150,
+            88
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            (
+                f"{app.PKMN_INFO_learnset_index + 1}"
+                f"/{learnset_size}"
+            ),
+            190,
+            112
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            "BACK",
+            10,
+            140
+        )
+
+        return
+
+    stat_labels = [
+        "HP",
+        "ATK",
+        "DEF",
+        "SPA",
+        "SPD",
+        "SPE"
+    ]
+
+    stat_values = [
+        pokemon.hp_base,
+        pokemon.attack_base,
+        pokemon.defense_base,
+        pokemon.special_attack_base,
+        pokemon.special_defense_base,
+        pokemon.speed_base
+    ]
+
+    app.font0.draw_text(
+        app.screen,
+        pokemon.species_name,
+        10,
+        8
+    )
+
+    for type_index, pokemon_type in enumerate(
+        pokemon.species.types
+    ):
+
+        app.screen.blit(
+            get_type_icon(
+                pokemon_type
+            ),
+            (
+                10 + type_index * 32,
+                26
+            )
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        "SPECIES INFO",
+        10,
+        48
+    )
+
+    app.screen.blit(
+        get_display_sprite(
+            pokemon
+        ),
+        (
+            166,
+            0
+        )
+    )
+
+    moves_x = 7
+    moves_y = 82
+    moves_width = 98
+    moves_height = 76
+
+    stats_x = 109
+    stats_y = 72
+    stats_width = 128
+    stats_height = 86
+
+    if (
+        app.PKMN_INFO_index
+        == 3
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                moves_x,
+                moves_y,
+                moves_width,
+                moves_height
+            ),
+            1
+        )
+
+    if (
+        app.PKMN_INFO_index
+        == 4
+    ):
+
+        pygame.draw.rect(
+            app.screen,
+            COLOR_BLACK,
+            (
+                stats_x,
+                stats_y,
+                stats_width,
+                stats_height
+            ),
+            1
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        "MOVES",
+        11,
+        85
+    )
+
+    for move_index in range(
+        4
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            "?",
+            11,
+            102 + move_index * 13
+        )
+
+    app.font0.draw_text(
+        app.screen,
+        "BASE",
+        113,
+        75
+    )
+
+    stat_y_positions = [
+        88,
+        99,
+        110,
+        121,
+        132,
+        143
+    ]
+
+    for stat_index, (
+        label,
+        value
+    ) in enumerate(
+        zip(
+            stat_labels,
+            stat_values
+        )
+    ):
+
+        y = (
+            stat_y_positions[
+                stat_index
+            ]
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            f"{label} {value}",
+            113,
+            y
+        )
+
+        draw_small_bar(
+            174,
+            y + 3,
+            value,
+            255,
+            55,
+            6
+        )
+
 
 def draw_small_bar(
     x,
@@ -590,6 +1231,14 @@ def draw_PKMN_INFO():
 
         return
 
+    if app.PKMN_INFO_species:
+
+        draw_PKMN_INFO_species(
+            pokemon
+        )
+
+        return
+
     if (
         app.PKMN_INFO_mode
         == "MOVES"
@@ -602,7 +1251,7 @@ def draw_PKMN_INFO():
         return
 
     stat_labels = [
-        "HP ",
+        "HP",
         "ATK",
         "DEF",
         "SPA",
@@ -915,7 +1564,7 @@ def draw_PKMN_INFO():
         8
     )
 
-    for i, pokemon_type in enumerate(
+    for type_index, pokemon_type in enumerate(
         pokemon.species.types
     ):
 
@@ -924,7 +1573,7 @@ def draw_PKMN_INFO():
                 pokemon_type
             ),
             (
-                10 + i * 32,
+                10 + type_index * 32,
                 26
             )
         )
@@ -1973,15 +2622,18 @@ def draw_KEYBOARD():
             )
 
 def draw_OPTIONS():
+
     app.screen.fill(
         COLOR_WHITE
     )
+
     app.font0.draw_text(
         app.screen,
         "OPTIONS",
         10,
         10
     )
+
     options = [
         (
             "Player Name",
@@ -1999,59 +2651,97 @@ def draw_OPTIONS():
         ),
         (
             "Omniscient",
-            "ON"
-            if app.option_omniscient
-            else "OFF"
+            (
+                "ON"
+                if app.option_omniscient
+                else "OFF"
+            )
         ),
         (
             "Pokemon Animation",
-            "ON"
-            if app.option_pkmn_animation
-            else "OFF"
+            (
+                "ON"
+                if app.option_pkmn_animation
+                else "OFF"
+            )
         ),
         (
             "Fanart",
-            "ON"
-            if app.option_fanart
-            else "OFF"
+            (
+                "ON"
+                if app.option_fanart
+                else "OFF"
+            )
         ),
         (
             "Music Shuffle",
-            "ON"
-            if app.option_music_shuffle
-            else "OFF"
+            (
+                "ON"
+                if app.option_music_shuffle
+                else "OFF"
+            )
         ),
         (
-            "Player Level",
+            "Player Level Cap",
             app.option_level
         ),
         (
-            "Opponent Level",
+            "Opponent Level Cap",
             app.option_level_npc
         )
     ]
+
     visible_options = options[
         app.OPTIONS_scroll:
         app.OPTIONS_scroll + 6
     ]
-    for row, (label, value) in enumerate(visible_options):
-        actual_index = app.OPTIONS_scroll + row
-        y = 40 + row * 20
-        if actual_index == app.OPTIONS_index:
+
+    for row, (
+        label,
+        value
+    ) in enumerate(
+        visible_options
+    ):
+
+        actual_index = (
+            app.OPTIONS_scroll
+            + row
+        )
+
+        y = (
+            40 + row * 20
+        )
+
+        if (
+            actual_index
+            == app.OPTIONS_index
+        ):
+
             app.screen.blit(
                 cursor,
-                (10, y)
+                (
+                    10,
+                    y
+                )
             )
+
         app.font0.draw_text(
             app.screen,
             f"{label}: {value}",
             20,
             y
         )
+
     app.screen.blit(
-        get_trainer_sprite(app.player_sprite),
-        (170,30)
+        get_trainer_sprite(
+            app.player_sprite
+        ),
+        (
+            170,
+            30
+        )
     )
+
     app.font0.draw_text(
         app.screen,
         app.player_name,

@@ -3,6 +3,239 @@ from func import *
 from pkmn import *
 from save import *
 
+
+def reset_species_edit_hold():
+
+    app.SPECIES_EDIT_hold_direction = None
+    app.SPECIES_EDIT_hold_start_time = 0
+    app.SPECIES_EDIT_repeat_time = 0
+
+def rebuild_species_edit_preview():
+
+    app.SPECIES_EDIT_preview_pokemon = []
+
+    species_list = (
+        app.SPECIES_EDIT_species_list
+    )
+
+    columns = (
+        app.SPECIES_EDIT_columns
+    )
+
+    visible_rows = (
+        app.SPECIES_EDIT_visible_rows
+    )
+
+    start_index = (
+        app.SPECIES_EDIT_scroll_row
+        * columns
+    )
+
+    visible_count = (
+        columns
+        * visible_rows
+    )
+
+    end_index = min(
+        len(
+            species_list
+        ),
+        start_index
+        + visible_count
+    )
+
+    for species_index in range(
+        start_index,
+        end_index
+    ):
+
+        species = (
+            species_list[
+                species_index
+            ]
+        )
+
+        preview_pokemon = (
+            Pokemon(
+                species=species,
+                level=100,
+                evs=[
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                ivs=[
+                    31,
+                    31,
+                    31,
+                    31,
+                    31,
+                    31
+                ],
+                is_shiny=False,
+                front_sprite_number=0,
+                back_sprite_number=0
+            )
+        )
+
+        app.SPECIES_EDIT_preview_pokemon.append(
+            preview_pokemon
+        )
+
+def consume_species_edit_request():
+
+    request = (
+        app.SPECIES_EDIT_pending_request
+    )
+
+    if request is None:
+        return False
+
+    app.SPECIES_EDIT_pokemon = (
+        request["pokemon"]
+    )
+
+    app.SPECIES_EDIT_return_state = (
+        request["return_state"]
+    )
+
+    app.SPECIES_EDIT_pending_request = None
+
+    return True
+
+def open_species_edit(
+    pokemon,
+    return_state=PKMN_INFO
+):
+
+    if pokemon is None:
+        return
+
+    app.SPECIES_EDIT_pending_request = {
+        "pokemon": pokemon,
+        "return_state": return_state
+    }
+
+    change_state(
+        SPECIES_EDIT
+    )
+
+def initialize_species_edit():
+
+    entered_with_request = (
+        consume_species_edit_request()
+    )
+
+    if not entered_with_request:
+        return
+
+    load_species()
+
+    app.SPECIES_EDIT_species_list = sorted(
+        SPECIES.values(),
+        key=lambda species: species.no
+    )
+
+    app.SPECIES_EDIT_sort_mode = (
+        "DEXNO"
+    )
+
+    app.SPECIES_EDIT_type_filter = None
+    app.SPECIES_EDIT_stat_sort = None
+
+    app.SPECIES_EDIT_scroll_row = 0
+
+    app.SPECIES_EDIT_dex_mode = False
+    app.SPECIES_EDIT_dex_digit_index = 0
+
+    app.SPECIES_EDIT_error = None
+
+    app.SPECIES_EDIT_hold_direction = None
+    app.SPECIES_EDIT_hold_start_time = 0
+    app.SPECIES_EDIT_repeat_time = 0
+
+    pokemon = (
+        app.SPECIES_EDIT_pokemon
+    )
+
+    selected_index = 0
+
+    if pokemon is not None:
+
+        for index, species in enumerate(
+            app.SPECIES_EDIT_species_list
+        ):
+
+            if (
+                species.no
+                == pokemon.species_no
+            ):
+
+                selected_index = index
+
+                break
+
+    app.SPECIES_EDIT_index = (
+        selected_index
+    )
+
+    species_number = 1
+
+    if (
+        len(
+            app.SPECIES_EDIT_species_list
+        )
+        > 0
+    ):
+
+        species_number = (
+            app.SPECIES_EDIT_species_list[
+                selected_index
+            ].no
+        )
+
+    species_number = max(
+        0,
+        min(
+            999,
+            species_number
+        )
+    )
+
+    app.SPECIES_EDIT_dex_digits = [
+        species_number // 100,
+        (
+            species_number
+            // 10
+        ) % 10,
+        species_number % 10
+    ]
+
+    columns = (
+        app.SPECIES_EDIT_columns
+    )
+
+    visible_rows = (
+        app.SPECIES_EDIT_visible_rows
+    )
+
+    selected_row = (
+        selected_index
+        // columns
+    )
+
+    app.SPECIES_EDIT_scroll_row = max(
+        0,
+        selected_row
+        - visible_rows
+        + 1
+    )
+
+    rebuild_species_edit_preview()
+
 def consume_pkmn_info_request():
 
     request = (
@@ -739,6 +972,10 @@ def change_state(
         initialize_pkmn_info(
             old_state
         )
+
+    elif new_state == SPECIES_EDIT:
+
+        initialize_species_edit()
 
     elif new_state == OPTIONS:
 

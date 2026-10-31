@@ -169,4 +169,30 @@ class App:
         self.PKMN_INFO_selecting_move = False
         self.PKMN_INFO_pending_request = None
 
+        self.SPECIES_EDIT_pokemon = None
+        self.SPECIES_EDIT_return_state = None
+        self.SPECIES_EDIT_species_list = []
+        self.SPECIES_EDIT_index = 0
+        self.SPECIES_EDIT_scroll_row = 0
+        self.SPECIES_EDIT_columns = 3
+        self.SPECIES_EDIT_visible_rows = 2
+        self.SPECIES_EDIT_sort_mode = (
+            "DEXNO"
+        )
+        self.SPECIES_EDIT_type_filter = None
+        self.SPECIES_EDIT_stat_sort = None
+        self.SPECIES_EDIT_dex_mode = False
+        self.SPECIES_EDIT_dex_digits = [
+            0,
+            0,
+            1
+        ]
+        self.SPECIES_EDIT_dex_digit_index = 0
+        self.SPECIES_EDIT_error = None
+        self.SPECIES_EDIT_pending_request = None
+        self.SPECIES_EDIT_preview_pokemon = []
+        self.SPECIES_EDIT_hold_direction = None
+        self.SPECIES_EDIT_hold_start_time = 0
+        self.SPECIES_EDIT_repeat_time = 0
+
 app = App()
