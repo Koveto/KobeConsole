@@ -814,8 +814,9 @@ def initialize_pkmn_info(
     app.PKMN_INFO_error = None
     app.PKMN_INFO_info_mode = "ACTUAL"
 
-
 def initialize_keyboard():
+
+    pygame.key.start_text_input()
 
     app.KEYBOARD_row = 0
     app.KEYBOARD_column = 0

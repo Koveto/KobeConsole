@@ -3674,10 +3674,10 @@ def draw_LAUNCHER_MENU():
     app.font0.draw_text(
         app.screen,
         "Pokemon Battle Simulator",
-        30, 30
+        30, 10
     )
     for i, option in enumerate(app.LAUNCHER_MENU_options):
-        y = 50 + (i * 20)
+        y = 30 + (i * 20)
         if i == app.LAUNCHER_MENU_index:
             app.screen.blit(
                 cursor,

@@ -4102,7 +4102,6 @@ def handle_event_OPTIONS_MUSIC(event):
         )
         save_music_data(app.music_data)
 
-
 def handle_event_KEYBOARD(
     event
 ):
@@ -4123,10 +4122,74 @@ def handle_event_KEYBOARD(
         text_limit = 10
 
     #
-    # Physical keyboard
+    # Physical keyboard text input
     #
-    # Every KEYDOWN event is fully handled here.
-    # It must never reach is_confirm() or is_cancel().
+
+    if (
+        event.type
+        == pygame.TEXTINPUT
+    ):
+
+        set_active_input_device(
+            INPUT_DEVICE_KEYBOARD
+        )
+
+        for character in event.text:
+
+            if (
+                len(
+                    app.KEYBOARD_text
+                )
+                >= text_limit
+            ):
+
+                break
+
+            if is_room_code:
+
+                if not character.isalnum():
+
+                    continue
+
+                character = (
+                    character.upper()
+                )
+
+            else:
+
+                if (
+                    not character.isalnum()
+                    and
+                    character != " "
+                ):
+
+                    continue
+
+                character = (
+                    character.upper()
+                )
+
+            app.KEYBOARD_text += (
+                character
+            )
+
+        if is_room_code:
+
+            app.ONLINE_error = None
+
+            if (
+                len(
+                    app.KEYBOARD_text
+                )
+                == ONLINE_ROOM_CODE_LENGTH
+            ):
+
+                complete_keyboard_entry()
+
+        return
+
+    #
+    # Physical keyboard control keys
     #
 
     if (
@@ -4142,6 +4205,8 @@ def handle_event_KEYBOARD(
             event.key
             == pygame.K_ESCAPE
         ):
+
+            pygame.key.stop_text_input()
 
             if (
                 app.KEYBOARD_mode
@@ -4178,7 +4243,13 @@ def handle_event_KEYBOARD(
             == pygame.K_RETURN
         ):
 
-            complete_keyboard_entry()
+            completed = (
+                complete_keyboard_entry()
+            )
+
+            if completed:
+
+                pygame.key.stop_text_input()
 
             return
 
@@ -4261,100 +4332,15 @@ def handle_event_KEYBOARD(
 
             return
 
-        if (
-            event.key
-            == pygame.K_SPACE
-        ):
-
-            if (
-                not is_room_code
-                and
-                len(
-                    app.KEYBOARD_text
-                )
-                < text_limit
-            ):
-
-                app.KEYBOARD_text += " "
-
-            return
-
-        typed_character = ""
-
-        if (
-            pygame.K_a
-            <= event.key
-            <= pygame.K_z
-        ):
-
-            typed_character = chr(
-                ord("A")
-                + event.key
-                - pygame.K_a
-            )
-
-        elif (
-            pygame.K_0
-            <= event.key
-            <= pygame.K_9
-        ):
-
-            typed_character = chr(
-                ord("0")
-                + event.key
-                - pygame.K_0
-            )
-
-        elif (
-            pygame.K_KP0
-            <= event.key
-            <= pygame.K_KP9
-        ):
-
-            typed_character = str(
-                event.key
-                - pygame.K_KP0
-            )
-
-        if (
-            typed_character
-            and
-            len(
-                app.KEYBOARD_text
-            )
-            < text_limit
-        ):
-
-            app.KEYBOARD_text += (
-                typed_character
-            )
-
-            if is_room_code:
-
-                app.ONLINE_error = None
-
-            if (
-                is_room_code
-                and
-                len(
-                    app.KEYBOARD_text
-                )
-                == ONLINE_ROOM_CODE_LENGTH
-            ):
-
-                complete_keyboard_entry()
-
-            return
-
         #
-        # Consume every remaining keyboard event.
-        # Never let it reach the virtual-button logic.
+        # Letters and numbers are deliberately ignored here.
+        # They are added by pygame.TEXTINPUT.
         #
 
         return
 
     #
-    # Controller-only virtual keyboard navigation
+    # Controller-only virtual keyboard
     #
 
     if (
@@ -4468,7 +4454,13 @@ def handle_event_KEYBOARD(
             selected == "DONE"
         ):
 
-            complete_keyboard_entry()
+            completed = (
+                complete_keyboard_entry()
+            )
+
+            if completed:
+
+                pygame.key.stop_text_input()
 
         elif (
             len(
@@ -4494,11 +4486,19 @@ def handle_event_KEYBOARD(
                 == ONLINE_ROOM_CODE_LENGTH
             ):
 
-                complete_keyboard_entry()
+                completed = (
+                    complete_keyboard_entry()
+                )
+
+                if completed:
+
+                    pygame.key.stop_text_input()
 
     elif is_cancel(
         event
     ):
+
+        pygame.key.stop_text_input()
 
         if (
             app.KEYBOARD_mode
