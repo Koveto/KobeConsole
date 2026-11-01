@@ -4094,6 +4094,12 @@ def handle_event_KEYBOARD(
 
         text_limit = 10
 
+    #
+    # Physical keyboard text entry
+    #
+    # This must run before the virtual keyboard controls.
+    #
+
     if (
         event.type
         == pygame.KEYDOWN
@@ -4179,6 +4185,8 @@ def handle_event_KEYBOARD(
             return
 
         if (
+            event.unicode
+            and
             event.unicode.isalnum()
             and
             len(
@@ -4190,6 +4198,8 @@ def handle_event_KEYBOARD(
             app.KEYBOARD_text += (
                 event.unicode.upper()
             )
+
+            app.ONLINE_error = None
 
             if (
                 is_room_code
@@ -4203,6 +4213,13 @@ def handle_event_KEYBOARD(
                 complete_keyboard_entry()
 
             return
+
+    #
+    # Virtual keyboard navigation
+    #
+    # Physical arrow keys and controller directions
+    # may navigate the on-screen keyboard.
+    #
 
     if is_up(
         event
@@ -4251,8 +4268,19 @@ def handle_event_KEYBOARD(
             app.KEYBOARD_column + 1
         )
 
-    elif is_confirm(
-        event
+    #
+    # Only a controller may select virtual keys.
+    #
+    # Keyboard Z and Enter were already handled above.
+    #
+
+    elif (
+        event.type
+        == pygame.JOYBUTTONDOWN
+        and
+        is_confirm(
+            event
+        )
     ):
 
         row = (
@@ -4318,6 +4346,8 @@ def handle_event_KEYBOARD(
                 selected
             )
 
+            app.ONLINE_error = None
+
             if (
                 is_room_code
                 and
@@ -4329,8 +4359,17 @@ def handle_event_KEYBOARD(
 
                 complete_keyboard_entry()
 
-    elif is_cancel(
-        event
+    elif (
+        event.type
+        in (
+            pygame.JOYBUTTONDOWN,
+            pygame.JOYHATMOTION,
+            pygame.JOYAXISMOTION
+        )
+        and
+        is_cancel(
+            event
+        )
     ):
 
         if (
@@ -4362,6 +4401,10 @@ def handle_event_KEYBOARD(
             )
 
         return
+
+    #
+    # Keep the virtual cursor valid after changing rows.
+    #
 
     app.KEYBOARD_row = max(
         0,
