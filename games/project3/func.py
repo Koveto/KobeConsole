@@ -247,49 +247,144 @@ def get_affinities(pokemon):
     return affinities
 
 def disconnect():
-    if app.connection_socket is not None:
+
+    connection_socket = (
+        app.connection_socket
+    )
+
+    if connection_socket is not None:
+
         try:
-            send_packet({"type": "DISCONNECT"})
+
+            send_packet(
+                {
+                    "type": "DISCONNECT"
+                }
+            )
+
         except OSError:
+
             pass
+
     sockets = [
         app.connection_socket,
+        app.ONLINE_connection_socket,
         app.LAN_HOST_server_socket,
         app.LAN_HOST_client_socket,
         app.LAN_JOIN_discovery_socket,
         app.LAN_JOIN_client_socket
     ]
+
+    closed_socket_ids = set()
+
     for sock in sockets:
-        if sock is not None:
-            try:
-                sock.close()
-            except OSError:
-                pass
+
+        if sock is None:
+            continue
+
+        socket_id = id(
+            sock
+        )
+
+        if socket_id in closed_socket_ids:
+            continue
+
+        closed_socket_ids.add(
+            socket_id
+        )
+
+        try:
+
+            sock.close()
+
+        except OSError:
+
+            pass
+
     app.connection_socket = None
+    app.connection_is_host = False
+    app.connection_buffer = ""
+
+    app.multiplayer_transport = None
+
+    app.ONLINE_connection_socket = None
+    app.ONLINE_connected = False
+    app.ONLINE_matched = False
+    app.ONLINE_is_host = False
+    app.ONLINE_room_code = ""
+    app.ONLINE_status = None
+
     app.LAN_HOST_server_socket = None
     app.LAN_HOST_client_socket = None
     app.LAN_JOIN_discovery_socket = None
     app.LAN_JOIN_client_socket = None
-    app.connection_is_host = False
+
     app.LAN_HOST_connected = False
     app.LAN_JOIN_connected = False
     app.LAN_HOST_is_host = False
     app.LAN_JOIN_is_host = False
-    app.connection_buffer = ""
+
     app.player_team = None
     app.opponent_team = None
+
     app.player_lead = None
     app.opponent_lead = None
+
     app.TEAM_PREVIEW_index = 0
     app.TEAM_PREVIEW_column = 0
+
     app.TEAM_SELECT_index = 0
     app.TEAM_SELECT_scroll = 0
     app.TEAM_SELECT_preview_team = []
-    app.selected_team_data = None
     app.TEAM_SELECT_opponent_team = None
     app.TEAM_SELECT_team_sent = False
+
+    app.selected_team_data = None
+
     app.TEAM_PREVIEW_ready_sent = False
     app.TEAM_PREVIEW_opponent_ready = False
+
+def is_multiplayer_connected():
+
+    return (
+        app.connection_socket
+        is not None
+    )
+
+
+def is_lan_multiplayer():
+
+    return (
+        app.multiplayer_transport
+        == "LAN"
+    )
+
+
+def is_online_multiplayer():
+
+    return (
+        app.multiplayer_transport
+        == "ONLINE"
+    )
+
+
+def send_multiplayer_packet(
+    packet
+):
+
+    return send_packet(
+        packet
+    )
+
+
+def receive_multiplayer_packets():
+
+    return recv_packets()
+
+
+def disconnect_multiplayer():
+
+    disconnect()
     
 def get_loaded_pokemon():
 
@@ -422,45 +517,142 @@ def get_type_icon(
     return TYPE_SHEET.subsurface(rect)
 
 
-def send_packet(packet):
-    app.connection_socket.send(
+def send_packet(
+    packet
+):
+
+    if (
+        app.connection_socket
+        is None
+    ):
+
+        return False
+
+    packet_data = (
         (
-            json.dumps(packet)
+            json.dumps(
+                packet
+            )
             + "\n"
-        ).encode()
+        ).encode(
+            "utf-8"
+        )
     )
 
-def recv_packets():
-    packets = []
     try:
-        data = app.connection_socket.recv(
-            8192
+
+        app.connection_socket.sendall(
+            packet_data
         )
-        if data == b"":
-            packets.append({"type":"DISCONNECT"})
-            return packets
-        if data:
-            app.connection_buffer += (
-                data.decode()
-            )
-    except (
-        BlockingIOError,
-        OSError
+
+    except OSError:
+
+        return False
+
+    return True
+
+def recv_packets():
+
+    packets = []
+
+    if (
+        app.connection_socket
+        is None
     ):
+
+        return packets
+
+    try:
+
+        data = (
+            app.connection_socket.recv(
+                8192
+            )
+        )
+
+        if data == b"":
+
+            packets.append(
+                {
+                    "type": "DISCONNECT"
+                }
+            )
+
+            return packets
+
+        if data:
+
+            app.connection_buffer += (
+                data.decode(
+                    "utf-8"
+                )
+            )
+
+    except BlockingIOError:
+
         pass
-    while "\n" in app.connection_buffer:
+
+    except (
+        OSError,
+        UnicodeDecodeError
+    ):
+
+        packets.append(
+            {
+                "type": "DISCONNECT"
+            }
+        )
+
+        return packets
+
+    while (
+        "\n"
+        in app.connection_buffer
+    ):
+
         line, app.connection_buffer = (
             app.connection_buffer.split(
                 "\n",
                 1
             )
         )
-        if line:
-            packets.append(
+
+        if not line:
+
+            continue
+
+        try:
+
+            packet = (
                 json.loads(
                     line
                 )
             )
+
+        except json.JSONDecodeError:
+
+            packets.append(
+                {
+                    "type": (
+                        "NETWORK_ERROR"
+                    ),
+                    "message": (
+                        "INVALID PACKET"
+                    )
+                }
+            )
+
+            continue
+
+        if isinstance(
+            packet,
+            dict
+        ):
+
+            packets.append(
+                packet
+            )
+
     return packets
 
 SPECIES = {}
@@ -637,6 +829,179 @@ def connect_to_server(
     )
 
     return client_socket
+
+def connect_to_online_relay():
+
+    relay_socket = (
+        socket.socket(
+            socket.AF_INET,
+            socket.SOCK_STREAM
+        )
+    )
+
+    relay_socket.settimeout(
+        5
+    )
+
+    try:
+
+        relay_socket.connect(
+            (
+                ONLINE_RELAY_HOST,
+                ONLINE_RELAY_PORT
+            )
+        )
+
+    except OSError:
+
+        relay_socket.close()
+
+        return None
+
+    relay_socket.setblocking(
+        False
+    )
+
+    return relay_socket
+
+def create_online_room():
+
+    disconnect()
+
+    relay_socket = (
+        connect_to_online_relay()
+    )
+
+    if relay_socket is None:
+
+        app.ONLINE_error = (
+            "RELAY UNAVAILABLE"
+        )
+
+        return False
+
+    app.connection_socket = (
+        relay_socket
+    )
+
+    app.connection_is_host = True
+    app.connection_buffer = ""
+
+    app.multiplayer_transport = (
+        "ONLINE"
+    )
+
+    app.ONLINE_connection_socket = (
+        relay_socket
+    )
+
+    app.ONLINE_connected = True
+    app.ONLINE_matched = False
+    app.ONLINE_is_host = True
+
+    app.ONLINE_room_code = ""
+    app.ONLINE_error = None
+    app.ONLINE_status = (
+        "CREATING ROOM"
+    )
+
+    sent = send_packet(
+        {
+            "type": "CREATE_ROOM"
+        }
+    )
+
+    if not sent:
+
+        disconnect()
+
+        app.ONLINE_error = (
+            "CONNECTION FAILED"
+        )
+
+        return False
+
+    return True
+
+
+def join_online_room(
+    room_code
+):
+
+    room_code = str(
+        room_code
+    ).strip().upper()
+
+    if len(
+        room_code
+    ) != ONLINE_ROOM_CODE_LENGTH:
+
+        app.ONLINE_error = (
+            "INVALID ROOM CODE"
+        )
+
+        return False
+
+    disconnect()
+
+    relay_socket = (
+        connect_to_online_relay()
+    )
+
+    if relay_socket is None:
+
+        app.ONLINE_error = (
+            "RELAY UNAVAILABLE"
+        )
+
+        return False
+
+    app.connection_socket = (
+        relay_socket
+    )
+
+    app.connection_is_host = False
+    app.connection_buffer = ""
+
+    app.multiplayer_transport = (
+        "ONLINE"
+    )
+
+    app.ONLINE_connection_socket = (
+        relay_socket
+    )
+
+    app.ONLINE_connected = True
+    app.ONLINE_matched = False
+    app.ONLINE_is_host = False
+
+    app.ONLINE_room_code = (
+        room_code
+    )
+
+    app.ONLINE_error = None
+    app.ONLINE_status = (
+        "JOINING ROOM"
+    )
+
+    sent = send_packet(
+        {
+            "type": "JOIN_ROOM",
+            "room_code": room_code
+        }
+    )
+
+    if not sent:
+
+        disconnect()
+
+        app.ONLINE_error = (
+            "CONNECTION FAILED"
+        )
+
+        return False
+
+    return True
 
 def load_gyms():
 

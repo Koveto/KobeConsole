@@ -43,6 +43,7 @@ class App:
         self.tournament_finals = []
         self.tournament_champion = None
         self.gyms_data = []
+        self.multiplayer_transport = None
 
         self.option_omniscient = False
         self.option_pkmn_animation = True
@@ -55,6 +56,7 @@ class App:
         self.LAUNCHER_MENU_index = 0
         self.LAUNCHER_MENU_options = ("Single Player",
                                       "LAN Multiplayer",
+                                      "Online Multiplayer",
                                       "Damage Calculator",
                                       "Team Builder",
                                       "Options")
@@ -194,5 +196,20 @@ class App:
         self.SPECIES_EDIT_hold_direction = None
         self.SPECIES_EDIT_hold_start_time = 0
         self.SPECIES_EDIT_repeat_time = 0
+
+        self.ONLINE_connection_socket = None
+        self.ONLINE_connected = False
+        self.ONLINE_matched = False
+        self.ONLINE_is_host = False
+        self.ONLINE_room_code = ""
+        self.ONLINE_error = None
+        self.ONLINE_status = None
+        self.ONLINE_pending_mode = None
+        self.ONLINE_join_code = ""
+
+        self.ONLINE_MENU_index = 0
+
+        self.ONLINE_JOIN_entering_code = False
+        self.ONLINE_JOIN_connect_requested = False
 
 app = App()

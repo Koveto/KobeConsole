@@ -3,6 +3,98 @@ from func import *
 from pkmn import *
 from save import *
 
+def initialize_online_menu():
+
+    app.ONLINE_MENU_index = 0
+
+    app.ONLINE_error = None
+    app.ONLINE_status = None
+
+    app.ONLINE_JOIN_entering_code = False
+    app.ONLINE_JOIN_connect_requested = False
+
+    app.ONLINE_join_code = ""
+
+
+def initialize_online_host(
+    old_state
+):
+
+    if (
+        old_state
+        != ONLINE_MENU
+    ):
+
+        return
+
+    app.ONLINE_error = None
+    app.ONLINE_status = (
+        "CONNECTING"
+    )
+
+    app.ONLINE_room_code = ""
+    app.ONLINE_matched = False
+    app.ONLINE_is_host = True
+
+    created = (
+        create_online_room()
+    )
+
+    if not created:
+
+        app.ONLINE_status = (
+            "FAILED"
+        )
+
+
+def initialize_online_join(
+    old_state
+):
+
+    app.ONLINE_error = None
+    app.ONLINE_matched = False
+    app.ONLINE_is_host = False
+
+    if (
+        old_state
+        == ONLINE_MENU
+    ):
+
+        app.ONLINE_join_code = ""
+        app.ONLINE_JOIN_entering_code = False
+        app.ONLINE_JOIN_connect_requested = False
+        app.ONLINE_status = (
+            "ENTER ROOM CODE"
+        )
+
+        return
+
+    if (
+        old_state
+        == KEYBOARD
+        and
+        app.ONLINE_JOIN_connect_requested
+    ):
+
+        app.ONLINE_JOIN_connect_requested = False
+        app.ONLINE_JOIN_entering_code = False
+
+        app.ONLINE_status = (
+            "CONNECTING"
+        )
+
+        joined = (
+            join_online_room(
+                app.ONLINE_join_code
+            )
+        )
+
+        if not joined:
+
+            app.ONLINE_status = (
+                "FAILED"
+            )
+
 def close_species_edit():
 
     return_state = (
@@ -745,7 +837,9 @@ def initialize_keyboard():
         is not None
     ):
 
-        save_data = load_save()
+        save_data = (
+            load_save()
+        )
 
         team_index = (
             app.KEYBOARD_team_index
@@ -779,6 +873,15 @@ def initialize_keyboard():
 
         app.KEYBOARD_text = (
             app.KEYBOARD_pokemon.nickname
+        )
+
+    elif (
+        app.KEYBOARD_mode
+        == "ONLINE_ROOM_CODE"
+    ):
+
+        app.KEYBOARD_text = (
+            app.ONLINE_join_code
         )
 
     else:
@@ -951,7 +1054,6 @@ def initialize_lan_join(
     app.LAN_JOIN_discovered_host_ip = None
     app.LAN_JOIN_client_socket = None
 
-
 def change_state(
     new_state
 ):
@@ -977,6 +1079,22 @@ def change_state(
     elif new_state == LAN_JOIN:
 
         initialize_lan_join(
+            old_state
+        )
+
+    elif new_state == ONLINE_MENU:
+
+        initialize_online_menu()
+
+    elif new_state == ONLINE_HOST:
+
+        initialize_online_host(
+            old_state
+        )
+
+    elif new_state == ONLINE_JOIN:
+
+        initialize_online_join(
             old_state
         )
 

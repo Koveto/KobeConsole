@@ -29,6 +29,24 @@ def handle_event(
             event
         )
 
+    elif app.state == ONLINE_MENU:
+
+        handle_event_ONLINE_MENU(
+            event
+        )
+
+    elif app.state == ONLINE_HOST:
+
+        handle_event_ONLINE_HOST(
+            event
+        )
+
+    elif app.state == ONLINE_JOIN:
+
+        handle_event_ONLINE_JOIN(
+            event
+        )
+
     elif app.state == TEAM_PREVIEW:
 
         handle_event_TEAM_PREVIEW(
@@ -122,6 +140,128 @@ def handle_event(
 
         handle_event_SPECIES_EDIT(
             event
+        )
+
+def handle_event_ONLINE_MENU(
+    event
+):
+
+    if is_up(
+        event
+    ):
+
+        app.ONLINE_MENU_index = max(
+            0,
+            app.ONLINE_MENU_index - 1
+        )
+
+    elif is_down(
+        event
+    ):
+
+        app.ONLINE_MENU_index = min(
+            1,
+            app.ONLINE_MENU_index + 1
+        )
+
+    elif is_confirm(
+        event
+    ):
+
+        if (
+            app.ONLINE_MENU_index
+            == 0
+        ):
+
+            change_state(
+                ONLINE_HOST
+            )
+
+        else:
+
+            change_state(
+                ONLINE_JOIN
+            )
+
+    elif is_cancel(
+        event
+    ):
+
+        disconnect_multiplayer()
+
+        change_state(
+            LAUNCHER_MENU
+        )
+
+
+def handle_event_ONLINE_HOST(
+    event
+):
+
+    if is_cancel(
+        event
+    ):
+
+        disconnect_multiplayer()
+
+        change_state(
+            ONLINE_MENU
+        )
+
+
+def handle_event_ONLINE_JOIN(
+    event
+):
+
+    if (
+        app.ONLINE_connected
+    ):
+
+        if is_cancel(
+            event
+        ):
+
+            disconnect_multiplayer()
+
+            change_state(
+                ONLINE_MENU
+            )
+
+        return
+
+    if is_confirm(
+        event
+    ):
+
+        app.KEYBOARD_mode = (
+            "ONLINE_ROOM_CODE"
+        )
+
+        app.KEYBOARD_return_state = (
+            ONLINE_JOIN
+        )
+
+        app.KEYBOARD_team_index = None
+        app.KEYBOARD_pokemon = None
+
+        app.ONLINE_JOIN_entering_code = (
+            True
+        )
+
+        app.ONLINE_error = None
+
+        change_state(
+            KEYBOARD
+        )
+
+    elif is_cancel(
+        event
+    ):
+
+        disconnect_multiplayer()
+
+        change_state(
+            ONLINE_MENU
         )
 
 def apply_species_edit_sort(
@@ -2853,7 +2993,9 @@ def complete_keyboard_entry():
         app.KEYBOARD_text.strip()
     )
 
-    if len(text) == 0:
+    if len(
+        text
+    ) == 0:
 
         return
 
@@ -2881,7 +3023,9 @@ def complete_keyboard_entry():
             generate_teambuilder_team()
         )
 
-        save_data = load_save()
+        save_data = (
+            load_save()
+        )
 
         save_data["teams"].insert(
             0,
@@ -2917,7 +3061,9 @@ def complete_keyboard_entry():
             app.KEYBOARD_team_index
         )
 
-        save_data = load_save()
+        save_data = (
+            load_save()
+        )
 
         if (
             team_index is not None
@@ -2980,6 +3126,44 @@ def complete_keyboard_entry():
 
         change_state(
             PKMN_INFO
+        )
+
+        return
+
+    if (
+        app.KEYBOARD_mode
+        == "ONLINE_ROOM_CODE"
+    ):
+
+        room_code = (
+            text.upper()
+        )
+
+        if (
+            len(
+                room_code
+            )
+            != ONLINE_ROOM_CODE_LENGTH
+        ):
+
+            app.ONLINE_error = (
+                "CODE MUST BE 6 CHARACTERS"
+            )
+
+            return
+
+        app.ONLINE_join_code = (
+            room_code
+        )
+
+        app.ONLINE_JOIN_connect_requested = (
+            True
+        )
+
+        app.KEYBOARD_text = ""
+
+        change_state(
+            ONLINE_JOIN
         )
 
         return
@@ -4926,76 +5110,147 @@ def handle_event_LAN_HOST_JOIN(event):
     elif is_cancel(event):
         change_state(LAUNCHER_MENU)
 
-def handle_event_LAUNCHER_MENU(event):
-    if is_up(event):
-        app.LAUNCHER_MENU_index = max(0, app.LAUNCHER_MENU_index - 1)
-    elif is_down(event):
-        app.LAUNCHER_MENU_index = min(len(app.LAUNCHER_MENU_options) - 1, app.LAUNCHER_MENU_index + 1)
-    elif is_confirm(event):
-        if app.LAUNCHER_MENU_index == 0:
+def handle_event_LAUNCHER_MENU(
+    event
+):
+
+    if is_up(
+        event
+    ):
+
+        app.LAUNCHER_MENU_index = max(
+            0,
+            app.LAUNCHER_MENU_index - 1
+        )
+
+    elif is_down(
+        event
+    ):
+
+        app.LAUNCHER_MENU_index = min(
+            len(
+                app.LAUNCHER_MENU_options
+            ) - 1,
+            app.LAUNCHER_MENU_index + 1
+        )
+
+    elif is_confirm(
+        event
+    ):
+
+        if (
+            app.LAUNCHER_MENU_index
+            == 0
+        ):
+
             change_state(
                 SINGLE_MENU
             )
-        elif app.LAUNCHER_MENU_index == 1:
+
+        elif (
+            app.LAUNCHER_MENU_index
+            == 1
+        ):
+
             change_state(
                 LAN_HOST_JOIN
             )
-        elif app.LAUNCHER_MENU_index == 2:
+
+        elif (
+            app.LAUNCHER_MENU_index
+            == 2
+        ):
+
+            change_state(
+                ONLINE_MENU
+            )
+
+        elif (
+            app.LAUNCHER_MENU_index
+            == 3
+        ):
+
             load_species()
+
             calculator_data = (
                 load_damage_calculator()
             )
+
             attacker_data = (
                 calculator_data.get(
                     "attacker"
                 )
             )
+
             defender_data = (
                 calculator_data.get(
                     "defender"
                 )
             )
+
             if attacker_data is not None:
+
                 app.DAMAGE_CALCULATOR_attacker = (
                     Pokemon.from_dict(
                         attacker_data
                     )
                 )
+
             else:
+
                 app.DAMAGE_CALCULATOR_attacker = (
                     Pokemon.from_species_number(
                         6
                     )
                 )
+
             if defender_data is not None:
+
                 app.DAMAGE_CALCULATOR_defender = (
                     Pokemon.from_dict(
                         defender_data
                     )
                 )
+
             else:
+
                 app.DAMAGE_CALCULATOR_defender = (
                     Pokemon.from_species_number(
                         248
                     )
                 )
+
             app.DAMAGE_CALCULATOR_index = 0
             app.DAMAGE_CALCULATOR_column = 1
+
             change_state(
                 DAMAGE_CALCULATOR
             )
-        elif app.LAUNCHER_MENU_index == 3:
+
+        elif (
+            app.LAUNCHER_MENU_index
+            == 4
+        ):
 
             open_team_select(
                 mode="TEAMBUILDER",
                 return_state=LAUNCHER_MENU
             )
 
-        elif app.LAUNCHER_MENU_index == 4:
+        elif (
+            app.LAUNCHER_MENU_index
+            == 5
+        ):
 
             change_state(
                 OPTIONS
             )
+
+    elif is_cancel(
+        event
+    ):
+
+        return
 
 def handle_team_select_navigation(
     move_direction

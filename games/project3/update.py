@@ -34,6 +34,14 @@ def update():
 
         update_LAN_JOIN()
 
+    elif app.state == ONLINE_HOST:
+
+        update_ONLINE_HOST()
+
+    elif app.state == ONLINE_JOIN:
+
+        update_ONLINE_JOIN()
+
     elif app.state == TEAM_PREVIEW:
 
         update_TEAM_PREVIEW()
@@ -57,6 +65,150 @@ def update():
     elif app.state == SPECIES_EDIT:
 
         update_SPECIES_EDIT()
+
+def process_online_packets():
+
+    for packet in recv_packets():
+
+        packet_type = (
+            packet.get(
+                "type"
+            )
+        )
+
+        if (
+            packet_type
+            == "ROOM_CREATED"
+        ):
+
+            app.ONLINE_room_code = (
+                packet.get(
+                    "room_code",
+                    ""
+                )
+            )
+
+            app.ONLINE_status = (
+                "WAITING FOR PLAYER"
+            )
+
+        elif (
+            packet_type
+            == "MATCH_FOUND"
+        ):
+
+            app.ONLINE_room_code = (
+                packet.get(
+                    "room_code",
+                    app.ONLINE_room_code
+                )
+            )
+
+            app.ONLINE_is_host = bool(
+                packet.get(
+                    "is_host",
+                    False
+                )
+            )
+
+            app.connection_is_host = (
+                app.ONLINE_is_host
+            )
+
+            app.ONLINE_connected = True
+            app.ONLINE_matched = True
+            app.ONLINE_status = (
+                "MATCH FOUND"
+            )
+
+            return "MATCH_FOUND"
+
+        elif (
+            packet_type
+            == "ONLINE_ERROR"
+        ):
+
+            app.ONLINE_error = (
+                packet.get(
+                    "message",
+                    "ONLINE ERROR"
+                )
+            )
+
+            app.ONLINE_status = (
+                "FAILED"
+            )
+
+            disconnect_multiplayer()
+
+            return "ERROR"
+
+        elif (
+            packet_type
+            == "NETWORK_ERROR"
+        ):
+
+            app.ONLINE_error = (
+                packet.get(
+                    "message",
+                    "NETWORK ERROR"
+                )
+            )
+
+            app.ONLINE_status = (
+                "FAILED"
+            )
+
+            disconnect_multiplayer()
+
+            return "ERROR"
+
+        elif (
+            packet_type
+            == "DISCONNECT"
+        ):
+
+            app.ONLINE_error = (
+                "OTHER PLAYER DISCONNECTED"
+            )
+
+            app.ONLINE_status = (
+                "DISCONNECTED"
+            )
+
+            disconnect_multiplayer()
+
+            return "DISCONNECT"
+
+    return None
+
+
+def update_ONLINE_HOST():
+
+    result = (
+        process_online_packets()
+    )
+
+    if result == "MATCH_FOUND":
+
+        open_team_select(
+            mode="BATTLE",
+            return_state=ONLINE_MENU
+        )
+
+
+def update_ONLINE_JOIN():
+
+    result = (
+        process_online_packets()
+    )
+
+    if result == "MATCH_FOUND":
+
+        open_team_select(
+            mode="BATTLE",
+            return_state=ONLINE_MENU
+        )
 
 def get_species_edit_hold_direction():
 
@@ -817,57 +969,130 @@ def update_TEAM_PREVIEW():
         )
 
 def update_LAN_JOIN():
-    if app.LAN_JOIN_discovery_socket is None:
-        return
-    try:
-        data, address = (app.LAN_JOIN_discovery_socket.recvfrom(1024))
-        app.LAN_JOIN_discovered_host_ip = (address[0])
-    except (
-        BlockingIOError,
-        OSError
+
+    if (
+        app.LAN_JOIN_discovery_socket
+        is not None
     ):
-        pass
-    if ((app.LAN_JOIN_discovered_host_ip is not None) and \
-        not (app.LAN_JOIN_connected)):
+
         try:
-            app.LAN_JOIN_client_socket = (connect_to_server(app.LAN_JOIN_discovered_host_ip))
-            app.LAN_JOIN_connected = True
-            app.LAN_JOIN_is_host = False
-            app.connection_socket = app.LAN_JOIN_client_socket
-            app.connection_is_host = False
-            open_team_select(
-                mode="BATTLE",
-                return_state=LAN_HOST_JOIN
+
+            data, address = (
+                app.LAN_JOIN_discovery_socket.recvfrom(
+                    1024
+                )
             )
-        except OSError:
+
+            app.LAN_JOIN_discovered_host_ip = (
+                address[0]
+            )
+
+        except (
+            BlockingIOError,
+            OSError
+        ):
+
             pass
 
+    if (
+        app.LAN_JOIN_discovered_host_ip
+        is None
+        or
+        app.LAN_JOIN_connected
+    ):
+
+        return
+
+    try:
+
+        app.LAN_JOIN_client_socket = (
+            connect_to_server(
+                app.LAN_JOIN_discovered_host_ip
+            )
+        )
+
+        app.LAN_JOIN_connected = True
+        app.LAN_JOIN_is_host = False
+
+        app.connection_socket = (
+            app.LAN_JOIN_client_socket
+        )
+
+        app.connection_is_host = False
+        app.connection_buffer = ""
+
+        app.multiplayer_transport = (
+            "LAN"
+        )
+
+        open_team_select(
+            mode="BATTLE",
+            return_state=LAN_HOST_JOIN
+        )
+
+    except OSError:
+
+        pass
+
 def update_LAN_HOST():
-    current_time = pygame.time.get_ticks()
+
+    current_time = (
+        pygame.time.get_ticks()
+    )
+
     if (
         current_time
         - app.LAN_HOST_last_broadcast_time
         > 1000
     ):
+
         broadcast_host()
-        app.LAN_HOST_last_broadcast_time = (current_time)
-    if not app.LAN_HOST_connected:
-        try:
-            (app.LAN_HOST_client_socket, address) = app.LAN_HOST_server_socket.accept()
-            app.LAN_HOST_client_socket.setblocking(False)
-            app.LAN_HOST_connected = True
-            app.LAN_HOST_is_host = True
-            app.connection_socket = app.LAN_HOST_client_socket
-            app.connection_is_host = True
-            open_team_select(
-                mode="BATTLE",
-                return_state=LAN_HOST_JOIN
-            )
-        except (
-            BlockingIOError,
-            OSError
-        ):
-            pass
+
+        app.LAN_HOST_last_broadcast_time = (
+            current_time
+        )
+
+    if app.LAN_HOST_connected:
+        return
+
+    try:
+
+        (
+            app.LAN_HOST_client_socket,
+            address
+        ) = (
+            app.LAN_HOST_server_socket.accept()
+        )
+
+        app.LAN_HOST_client_socket.setblocking(
+            False
+        )
+
+        app.LAN_HOST_connected = True
+        app.LAN_HOST_is_host = True
+
+        app.connection_socket = (
+            app.LAN_HOST_client_socket
+        )
+
+        app.connection_is_host = True
+        app.connection_buffer = ""
+
+        app.multiplayer_transport = (
+            "LAN"
+        )
+
+        open_team_select(
+            mode="BATTLE",
+            return_state=LAN_HOST_JOIN
+        )
+
+    except (
+        BlockingIOError,
+        OSError
+    ):
+
+        pass
 
 def update_BATTLE_START():
 

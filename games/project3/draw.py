@@ -87,6 +87,18 @@ def draw():
 
         draw_LAN_JOIN()
 
+    elif app.state == ONLINE_MENU:
+
+        draw_ONLINE_MENU()
+
+    elif app.state == ONLINE_HOST:
+
+        draw_ONLINE_HOST()
+
+    elif app.state == ONLINE_JOIN:
+
+        draw_ONLINE_JOIN()
+
     elif app.state == TEAM_PREVIEW:
 
         draw_TEAM_PREVIEW()
@@ -142,6 +154,184 @@ def draw():
     elif app.state == SPECIES_EDIT:
 
         draw_SPECIES_EDIT()
+
+
+def draw_ONLINE_MENU():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "ONLINE MULTIPLAYER",
+        40,
+        35
+    )
+
+    options = (
+        "Create Room",
+        "Join Room"
+    )
+
+    for index, option in enumerate(
+        options
+    ):
+
+        y = (
+            75
+            + index * 22
+        )
+
+        if (
+            index
+            == app.ONLINE_MENU_index
+        ):
+
+            app.screen.blit(
+                cursor,
+                (
+                    30,
+                    y
+                )
+            )
+
+        app.font0.draw_text(
+            app.screen,
+            option,
+            45,
+            y
+        )
+
+
+def draw_ONLINE_HOST():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "CREATE ONLINE ROOM",
+        38,
+        25
+    )
+
+    status = (
+        app.ONLINE_status
+        or
+        "CONNECTING"
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        status,
+        55,
+        55
+    )
+
+    if (
+        app.ONLINE_room_code
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            "ROOM CODE",
+            75,
+            82
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            app.ONLINE_room_code,
+            94,
+            101
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            "SEND THIS CODE",
+            63,
+            122
+        )
+
+    if (
+        app.ONLINE_error
+        is not None
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            app.ONLINE_error,
+            35,
+            142
+        )
+
+
+def draw_ONLINE_JOIN():
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        "JOIN ONLINE ROOM",
+        45,
+        25
+    )
+
+    status = (
+        app.ONLINE_status
+        or
+        "ENTER ROOM CODE"
+    )
+
+    app.font0.draw_text(
+        app.screen,
+        status,
+        55,
+        55
+    )
+
+    if (
+        app.ONLINE_join_code
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            app.ONLINE_join_code,
+            94,
+            82
+        )
+
+    if not app.ONLINE_connected:
+
+        confirm_hint = (
+            get_input_hint(
+                INPUT_CONFIRM,
+                "ENTER CODE"
+            )
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            confirm_hint,
+            63,
+            108
+        )
+
+    if (
+        app.ONLINE_error
+        is not None
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            app.ONLINE_error,
+            35,
+            142
+        )
 
 def draw_SPECIES_EDIT_controls():
 
