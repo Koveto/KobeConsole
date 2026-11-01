@@ -4106,6 +4106,14 @@ def handle_event_KEYBOARD(
     event
 ):
 
+    print(
+        "KEYBOARD EVENT:",
+        pygame.event.event_name(
+            event.type
+        ),
+        event
+    )
+
     is_room_code = (
         app.KEYBOARD_mode
         == "ONLINE_ROOM_CODE"
