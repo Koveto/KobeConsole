@@ -4015,6 +4015,34 @@ def handle_event_SINGLE_MENU(event):
             SINGLE_MENU
         )
 
+def clamp_keyboard_cursor():
+
+    app.KEYBOARD_row = max(
+        0,
+        min(
+            len(
+                KEYBOARD_GRID
+            ) - 1,
+            app.KEYBOARD_row
+        )
+    )
+
+    current_row = (
+        KEYBOARD_GRID[
+            app.KEYBOARD_row
+        ]
+    )
+
+    app.KEYBOARD_column = max(
+        0,
+        min(
+            len(
+                current_row
+            ) - 1,
+            app.KEYBOARD_column
+        )
+    )
+
 def handle_event_OPTIONS_MUSIC(event):
     filenames = sorted(
         app.music_data.keys()
@@ -4095,9 +4123,10 @@ def handle_event_KEYBOARD(
         text_limit = 10
 
     #
-    # Physical keyboard text entry
+    # Physical keyboard
     #
-    # This must run before the virtual keyboard controls.
+    # Every KEYDOWN event is fully handled here.
+    # It must never reach is_confirm() or is_cancel().
     #
 
     if (
@@ -4169,25 +4198,126 @@ def handle_event_KEYBOARD(
             return
 
         if (
-            not is_room_code
-            and
             event.key
-            == pygame.K_SPACE
-            and
-            len(
-                app.KEYBOARD_text
-            )
-            < text_limit
+            == pygame.K_UP
         ):
 
-            app.KEYBOARD_text += " "
+            app.KEYBOARD_row = max(
+                0,
+                app.KEYBOARD_row - 1
+            )
+
+            clamp_keyboard_cursor()
 
             return
 
         if (
-            event.unicode
-            and
-            event.unicode.isalnum()
+            event.key
+            == pygame.K_DOWN
+        ):
+
+            app.KEYBOARD_row = min(
+                len(
+                    KEYBOARD_GRID
+                ) - 1,
+                app.KEYBOARD_row + 1
+            )
+
+            clamp_keyboard_cursor()
+
+            return
+
+        if (
+            event.key
+            == pygame.K_LEFT
+        ):
+
+            app.KEYBOARD_column = max(
+                0,
+                app.KEYBOARD_column - 1
+            )
+
+            clamp_keyboard_cursor()
+
+            return
+
+        if (
+            event.key
+            == pygame.K_RIGHT
+        ):
+
+            current_row = (
+                KEYBOARD_GRID[
+                    app.KEYBOARD_row
+                ]
+            )
+
+            app.KEYBOARD_column = min(
+                len(
+                    current_row
+                ) - 1,
+                app.KEYBOARD_column + 1
+            )
+
+            return
+
+        if (
+            event.key
+            == pygame.K_SPACE
+        ):
+
+            if (
+                not is_room_code
+                and
+                len(
+                    app.KEYBOARD_text
+                )
+                < text_limit
+            ):
+
+                app.KEYBOARD_text += " "
+
+            return
+
+        typed_character = ""
+
+        if (
+            pygame.K_a
+            <= event.key
+            <= pygame.K_z
+        ):
+
+            typed_character = chr(
+                ord("A")
+                + event.key
+                - pygame.K_a
+            )
+
+        elif (
+            pygame.K_0
+            <= event.key
+            <= pygame.K_9
+        ):
+
+            typed_character = chr(
+                ord("0")
+                + event.key
+                - pygame.K_0
+            )
+
+        elif (
+            pygame.K_KP0
+            <= event.key
+            <= pygame.K_KP9
+        ):
+
+            typed_character = str(
+                event.key
+                - pygame.K_KP0
+            )
+
+        if (
+            typed_character
             and
             len(
                 app.KEYBOARD_text
@@ -4196,10 +4326,12 @@ def handle_event_KEYBOARD(
         ):
 
             app.KEYBOARD_text += (
-                event.unicode.upper()
+                typed_character
             )
 
-            app.ONLINE_error = None
+            if is_room_code:
+
+                app.ONLINE_error = None
 
             if (
                 is_room_code
@@ -4214,12 +4346,27 @@ def handle_event_KEYBOARD(
 
             return
 
+        #
+        # Consume every remaining keyboard event.
+        # Never let it reach the virtual-button logic.
+        #
+
+        return
+
     #
-    # Virtual keyboard navigation
+    # Controller-only virtual keyboard navigation
     #
-    # Physical arrow keys and controller directions
-    # may navigate the on-screen keyboard.
-    #
+
+    if (
+        event.type
+        not in (
+            pygame.JOYBUTTONDOWN,
+            pygame.JOYHATMOTION,
+            pygame.JOYAXISMOTION
+        )
+    ):
+
+        return
 
     if is_up(
         event
@@ -4254,36 +4401,24 @@ def handle_event_KEYBOARD(
         event
     ):
 
-        max_column = (
-            len(
-                KEYBOARD_GRID[
-                    app.KEYBOARD_row
-                ]
-            )
-            - 1
+        current_row = (
+            KEYBOARD_GRID[
+                app.KEYBOARD_row
+            ]
         )
 
         app.KEYBOARD_column = min(
-            max_column,
+            len(
+                current_row
+            ) - 1,
             app.KEYBOARD_column + 1
         )
 
-    #
-    # Only a controller may select virtual keys.
-    #
-    # Keyboard Z and Enter were already handled above.
-    #
-
-    elif (
-        event.type
-        == pygame.JOYBUTTONDOWN
-        and
-        is_confirm(
-            event
-        )
+    elif is_confirm(
+        event
     ):
 
-        row = (
+        current_row = (
             KEYBOARD_GRID[
                 app.KEYBOARD_row
             ]
@@ -4292,12 +4427,12 @@ def handle_event_KEYBOARD(
         app.KEYBOARD_column = min(
             app.KEYBOARD_column,
             len(
-                row
+                current_row
             ) - 1
         )
 
         selected = (
-            row[
+            current_row[
                 app.KEYBOARD_column
             ]
         )
@@ -4346,7 +4481,9 @@ def handle_event_KEYBOARD(
                 selected
             )
 
-            app.ONLINE_error = None
+            if is_room_code:
+
+                app.ONLINE_error = None
 
             if (
                 is_room_code
@@ -4359,17 +4496,8 @@ def handle_event_KEYBOARD(
 
                 complete_keyboard_entry()
 
-    elif (
-        event.type
-        in (
-            pygame.JOYBUTTONDOWN,
-            pygame.JOYHATMOTION,
-            pygame.JOYAXISMOTION
-        )
-        and
-        is_cancel(
-            event
-        )
+    elif is_cancel(
+        event
     ):
 
         if (
@@ -4402,35 +4530,7 @@ def handle_event_KEYBOARD(
 
         return
 
-    #
-    # Keep the virtual cursor valid after changing rows.
-    #
-
-    app.KEYBOARD_row = max(
-        0,
-        min(
-            len(
-                KEYBOARD_GRID
-            ) - 1,
-            app.KEYBOARD_row
-        )
-    )
-
-    current_row = (
-        KEYBOARD_GRID[
-            app.KEYBOARD_row
-        ]
-    )
-
-    app.KEYBOARD_column = max(
-        0,
-        min(
-            len(
-                current_row
-            ) - 1,
-            app.KEYBOARD_column
-        )
-    )
+    clamp_keyboard_cursor()
 
 def handle_event_OPTIONS(event):
     if is_up(event):
