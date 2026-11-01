@@ -4,7 +4,7 @@
         "player_sprite": 161
     },
     "options": {
-        "omniscient": false,
+        "omniscient": true,
         "pkmn_animation": true,
         "fanart": false,
         "music_shuffle": true,

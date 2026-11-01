@@ -1,5 +1,15 @@
+# Python
 __pycache__/
 *.pyc
+
+# Virtual environments
 .venv/
+
+# Editor settings
 .vscode/
-/save.json
+
+# Local Project 3 runtime data
+/games/project3/data/save.json
+/games/project3/data/music.json
+/games/project3/data/options.json
+/games/project3/data/player.json

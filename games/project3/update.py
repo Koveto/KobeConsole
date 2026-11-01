@@ -638,7 +638,7 @@ def update_PKMN_INFO():
                 disconnect()
 
                 change_state(
-                    LAN_HOST_JOIN
+                    LAUNCHER_MENU
                 )
 
                 return
@@ -962,7 +962,7 @@ def update_TEAM_SELECT():
                 )
         elif packet["type"] == "DISCONNECT":
             disconnect()
-            change_state(LAN_HOST_JOIN)
+            change_state(LAUNCHER_MENU)
     if (
         app.connection_socket
         is not None
@@ -1006,7 +1006,7 @@ def update_TEAM_PREVIEW():
         ):
             disconnect()
             change_state(
-                LAN_HOST_JOIN
+                LAUNCHER_MENU
             )
     if (
         app.player_lead
@@ -1165,5 +1165,5 @@ def update_BATTLE_START():
         ):
             disconnect()
             change_state(
-                LAN_HOST_JOIN
+                LAUNCHER_MENU
             )

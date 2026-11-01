@@ -48,12 +48,26 @@ particles = create_particles(80)
 selected_index = 0
 fullscreen = False
 time = 0
+fresh_install_armed = False
+fresh_install_armed_until = 0
+launcher_status = ""
 
 games = [
     {
         "title": "Update",
         "path": None,
         "color": (220, 180, 0),
+        "logo": os.path.join(
+            BASE_DIR,
+            "assets",
+            "logos",
+            "logo1.png"
+        )
+    },
+        {
+        "title": "Fresh Install",
+        "path": None,
+        "color": (200, 50, 50),
         "logo": os.path.join(
             BASE_DIR,
             "assets",
@@ -104,18 +118,231 @@ for game in games:
 
 
 def update_kobeconsole():
-    result = subprocess.run(
-        ["git", "pull"],
-        cwd=BASE_DIR
+
+    global launcher_status
+
+    launcher_status = (
+        "UPDATING..."
     )
+
+    pygame.display.flip()
+
+    result = subprocess.run(
+        [
+            "git",
+            "pull",
+            "--ff-only"
+        ],
+        cwd=BASE_DIR,
+        check=False
+    )
+
+    if result.returncode != 0:
+
+        launcher_status = (
+            "UPDATE FAILED"
+        )
+
+        pygame.event.clear()
+
+        return False
+
     pygame.event.clear()
+
     os.execv(
         sys.executable,
         [
             sys.executable,
-            os.path.abspath(__file__)
+            os.path.abspath(
+                __file__
+            )
         ]
     )
+
+    return True
+
+def factory_reset_kobeconsole():
+
+    global launcher_status
+
+    launcher_status = (
+        "PREPARING FRESH INSTALL..."
+    )
+
+    pygame.display.flip()
+
+    try:
+
+        remote_url = (
+            subprocess.check_output(
+                [
+                    "git",
+                    "remote",
+                    "get-url",
+                    "origin"
+                ],
+                cwd=BASE_DIR,
+                text=True
+            ).strip()
+        )
+
+        branch_name = (
+            subprocess.check_output(
+                [
+                    "git",
+                    "branch",
+                    "--show-current"
+                ],
+                cwd=BASE_DIR,
+                text=True
+            ).strip()
+        )
+
+    except (
+        OSError,
+        subprocess.CalledProcessError
+    ):
+
+        launcher_status = (
+            "COULD NOT READ GIT REMOTE"
+        )
+
+        pygame.event.clear()
+
+        return False
+
+    if not remote_url:
+
+        launcher_status = (
+            "NO ORIGIN REMOTE"
+        )
+
+        pygame.event.clear()
+
+        return False
+
+    if not branch_name:
+
+        branch_name = "main"
+
+    repository_path = (
+        os.path.abspath(
+            BASE_DIR
+        )
+    )
+
+    repository_parent = (
+        os.path.dirname(
+            repository_path
+        )
+    )
+
+    repository_name = (
+        os.path.basename(
+            repository_path
+        )
+    )
+
+    backup_path = (
+        repository_path
+        + ".fresh-install-backup"
+    )
+
+    launcher_filename = (
+        os.path.basename(
+            os.path.abspath(
+                __file__
+            )
+        )
+    )
+
+    script_path = (
+        os.path.join(
+            "/tmp",
+            "kobeconsole_fresh_install.sh"
+        )
+    )
+
+    script = f"""#!/bin/bash
+
+set -u
+
+REPOSITORY_PATH={repository_path!r}
+REPOSITORY_PARENT={repository_parent!r}
+REPOSITORY_NAME={repository_name!r}
+BACKUP_PATH={backup_path!r}
+REMOTE_URL={remote_url!r}
+BRANCH_NAME={branch_name!r}
+LAUNCHER_FILENAME={launcher_filename!r}
+
+sleep 1
+
+rm -rf "$BACKUP_PATH"
+
+mv "$REPOSITORY_PATH" "$BACKUP_PATH"
+
+if git clone \\
+    --branch "$BRANCH_NAME" \\
+    --single-branch \\
+    "$REMOTE_URL" \\
+    "$REPOSITORY_PATH"
+then
+    rm -rf "$BACKUP_PATH"
+
+    cd "$REPOSITORY_PATH" || exit 1
+
+    exec python3 "$LAUNCHER_FILENAME"
+fi
+
+rm -rf "$REPOSITORY_PATH"
+
+mv "$BACKUP_PATH" "$REPOSITORY_PATH"
+
+cd "$REPOSITORY_PATH" || exit 1
+
+exec python3 "$LAUNCHER_FILENAME"
+"""
+
+    try:
+
+        with open(
+            script_path,
+            "w",
+            encoding="utf-8"
+        ) as outfile:
+
+            outfile.write(
+                script
+            )
+
+        os.chmod(
+            script_path,
+            0o700
+        )
+
+    except OSError:
+
+        launcher_status = (
+            "COULD NOT CREATE RESET SCRIPT"
+        )
+
+        pygame.event.clear()
+
+        return False
+
+    pygame.event.clear()
+
+    pygame.quit()
+
+    os.execv(
+        "/bin/bash",
+        [
+            "/bin/bash",
+            script_path
+        ]
+    )
+
+    return True
 
 def launch_game(path):
 
@@ -182,31 +409,125 @@ while running:
 
     for event in pygame.event.get():
 
-        if (IS_WINDOWS and is_quit(event)) or (event.type == pygame.QUIT):
+        if (
+            (
+                IS_WINDOWS
+                and
+                is_quit(
+                    event
+                )
+            )
+            or
+            event.type
+            == pygame.QUIT
+        ):
+
             running = False
-        
-        if is_right(event):
+
+            continue
+
+        if is_right(
+            event
+        ):
+
             selected_index += 1
 
-        elif is_left(event):
+            fresh_install_armed = False
+            fresh_install_armed_until = 0
+            launcher_status = ""
+
+        elif is_left(
+            event
+        ):
+
             selected_index -= 1
 
-        elif is_confirm(event):
+            fresh_install_armed = False
+            fresh_install_armed_until = 0
+            launcher_status = ""
 
-            selected_game = games[selected_index]
+        elif is_confirm(
+            event
+        ):
 
-            if selected_game["title"] == "Update":
+            selected_game = (
+                games[
+                    selected_index
+                ]
+            )
+
+            if (
+                selected_game["title"]
+                == "Update"
+            ):
+
+                fresh_install_armed = False
+                fresh_install_armed_until = 0
 
                 update_kobeconsole()
 
-            else:
+            elif (
+                selected_game["title"]
+                == "Fresh Install"
+            ):
 
-                launch_game(
-                    selected_game["path"]
+                current_time = (
+                    pygame.time.get_ticks()
                 )
 
-        elif is_cancel(event):
-            running = False
+                if (
+                    not fresh_install_armed
+                    or
+                    current_time
+                    > fresh_install_armed_until
+                ):
+
+                    fresh_install_armed = True
+
+                    fresh_install_armed_until = (
+                        current_time
+                        + 5000
+                    )
+
+                    launcher_status = (
+                        "PRESS CONFIRM AGAIN TO ERASE EVERYTHING"
+                    )
+
+                else:
+
+                    fresh_install_armed = False
+                    fresh_install_armed_until = 0
+
+                    factory_reset_kobeconsole()
+
+            else:
+
+                fresh_install_armed = False
+                fresh_install_armed_until = 0
+                launcher_status = ""
+
+                launch_game(
+                    selected_game[
+                        "path"
+                    ]
+                )
+
+        elif is_cancel(
+            event
+        ):
+
+            if fresh_install_armed:
+
+                fresh_install_armed = False
+                fresh_install_armed_until = 0
+
+                launcher_status = (
+                    "FRESH INSTALL CANCELED"
+                )
+
+            else:
+
+                running = False
 
 
     selected_index = max(0, min(selected_index, len(games) - 1))
@@ -291,6 +612,28 @@ while running:
         (0, 0, 0),
         (WIDTH // 2, HEIGHT - 50)
     )
+
+    if launcher_status:
+
+        draw_text_outline(
+            screen,
+            launcher_status,
+            info_font,
+            (
+                255,
+                220,
+                80
+            ),
+            (
+                0,
+                0,
+                0
+            ),
+            (
+                WIDTH // 2,
+                HEIGHT - 95
+            )
+        )
 
     pygame.display.flip()
 
