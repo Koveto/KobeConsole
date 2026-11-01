@@ -2987,17 +2987,66 @@ def generate_teambuilder_team():
 
     ]
 
+
 def complete_keyboard_entry():
 
     text = (
         app.KEYBOARD_text.strip()
     )
 
+    if (
+        app.KEYBOARD_mode
+        == "ONLINE_ROOM_CODE"
+    ):
+
+        room_code = (
+            "".join(
+                character
+                for character in text.upper()
+                if character.isalnum()
+            )
+        )
+
+        if (
+            len(
+                room_code
+            )
+            != ONLINE_ROOM_CODE_LENGTH
+        ):
+
+            app.ONLINE_error = (
+                "CODE MUST BE 6 CHARACTERS"
+            )
+
+            return False
+
+        app.ONLINE_join_code = (
+            room_code
+        )
+
+        app.ONLINE_JOIN_connect_requested = (
+            True
+        )
+
+        app.ONLINE_JOIN_entering_code = (
+            False
+        )
+
+        app.ONLINE_error = None
+
+        app.KEYBOARD_text = ""
+
+        change_state(
+            ONLINE_JOIN
+        )
+
+        return True
+
     if len(
         text
     ) == 0:
 
-        return
+        return False
 
     if (
         app.KEYBOARD_mode
@@ -3012,7 +3061,7 @@ def complete_keyboard_entry():
             OPTIONS
         )
 
-        return
+        return True
 
     if (
         app.KEYBOARD_mode
@@ -3050,7 +3099,7 @@ def complete_keyboard_entry():
             TEAM_SELECT
         )
 
-        return
+        return True
 
     if (
         app.KEYBOARD_mode
@@ -3099,7 +3148,7 @@ def complete_keyboard_entry():
             TEAM_SELECT
         )
 
-        return
+        return True
 
     if (
         app.KEYBOARD_mode
@@ -3112,7 +3161,7 @@ def complete_keyboard_entry():
 
         if pokemon is None:
 
-            return
+            return False
 
         pokemon.nickname = text
 
@@ -3128,45 +3177,9 @@ def complete_keyboard_entry():
             PKMN_INFO
         )
 
-        return
+        return True
 
-    if (
-        app.KEYBOARD_mode
-        == "ONLINE_ROOM_CODE"
-    ):
-
-        room_code = (
-            text.upper()
-        )
-
-        if (
-            len(
-                room_code
-            )
-            != ONLINE_ROOM_CODE_LENGTH
-        ):
-
-            app.ONLINE_error = (
-                "CODE MUST BE 6 CHARACTERS"
-            )
-
-            return
-
-        app.ONLINE_join_code = (
-            room_code
-        )
-
-        app.ONLINE_JOIN_connect_requested = (
-            True
-        )
-
-        app.KEYBOARD_text = ""
-
-        change_state(
-            ONLINE_JOIN
-        )
-
-        return
+    return False
 
 def handle_event_DAMAGE_CALCULATOR(
     event
@@ -4061,17 +4074,39 @@ def handle_event_OPTIONS_MUSIC(event):
         )
         save_music_data(app.music_data)
 
+
 def handle_event_KEYBOARD(
     event
 ):
 
-    if event.type == pygame.KEYDOWN:
+    is_room_code = (
+        app.KEYBOARD_mode
+        == "ONLINE_ROOM_CODE"
+    )
+
+    if is_room_code:
+
+        text_limit = (
+            ONLINE_ROOM_CODE_LENGTH
+        )
+
+    else:
+
+        text_limit = 10
+
+    if (
+        event.type
+        == pygame.KEYDOWN
+    ):
 
         set_active_input_device(
             INPUT_DEVICE_KEYBOARD
         )
 
-        if event.key == pygame.K_ESCAPE:
+        if (
+            event.key
+            == pygame.K_ESCAPE
+        ):
 
             if (
                 app.KEYBOARD_mode
@@ -4079,6 +4114,18 @@ def handle_event_KEYBOARD(
             ):
 
                 app.KEYBOARD_pokemon = None
+
+            if is_room_code:
+
+                app.ONLINE_JOIN_entering_code = (
+                    False
+                )
+
+                app.ONLINE_JOIN_connect_requested = (
+                    False
+                )
+
+                app.ONLINE_error = None
 
             if (
                 app.KEYBOARD_return_state
@@ -4109,15 +4156,22 @@ def handle_event_KEYBOARD(
                 app.KEYBOARD_text[:-1]
             )
 
+            if is_room_code:
+
+                app.ONLINE_error = None
+
             return
 
         if (
+            not is_room_code
+            and
             event.key
             == pygame.K_SPACE
             and
             len(
                 app.KEYBOARD_text
-            ) < 10
+            )
+            < text_limit
         ):
 
             app.KEYBOARD_text += " "
@@ -4129,12 +4183,24 @@ def handle_event_KEYBOARD(
             and
             len(
                 app.KEYBOARD_text
-            ) < 10
+            )
+            < text_limit
         ):
 
             app.KEYBOARD_text += (
                 event.unicode.upper()
             )
+
+            if (
+                is_room_code
+                and
+                len(
+                    app.KEYBOARD_text
+                )
+                == ONLINE_ROOM_CODE_LENGTH
+            ):
+
+                complete_keyboard_entry()
 
             return
 
@@ -4210,13 +4276,18 @@ def handle_event_KEYBOARD(
 
         if (
             selected == "SPACE"
-            and
-            len(
-                app.KEYBOARD_text
-            ) < 10
         ):
 
-            app.KEYBOARD_text += " "
+            if (
+                not is_room_code
+                and
+                len(
+                    app.KEYBOARD_text
+                )
+                < text_limit
+            ):
+
+                app.KEYBOARD_text += " "
 
         elif (
             selected == "BACK"
@@ -4225,6 +4296,10 @@ def handle_event_KEYBOARD(
             app.KEYBOARD_text = (
                 app.KEYBOARD_text[:-1]
             )
+
+            if is_room_code:
+
+                app.ONLINE_error = None
 
         elif (
             selected == "DONE"
@@ -4235,12 +4310,24 @@ def handle_event_KEYBOARD(
         elif (
             len(
                 app.KEYBOARD_text
-            ) < 10
+            )
+            < text_limit
         ):
 
             app.KEYBOARD_text += (
                 selected
             )
+
+            if (
+                is_room_code
+                and
+                len(
+                    app.KEYBOARD_text
+                )
+                == ONLINE_ROOM_CODE_LENGTH
+            ):
+
+                complete_keyboard_entry()
 
     elif is_cancel(
         event
@@ -4253,6 +4340,18 @@ def handle_event_KEYBOARD(
 
             app.KEYBOARD_pokemon = None
 
+        if is_room_code:
+
+            app.ONLINE_JOIN_entering_code = (
+                False
+            )
+
+            app.ONLINE_JOIN_connect_requested = (
+                False
+            )
+
+            app.ONLINE_error = None
+
         if (
             app.KEYBOARD_return_state
             is not None
@@ -4261,6 +4360,8 @@ def handle_event_KEYBOARD(
             change_state(
                 app.KEYBOARD_return_state
             )
+
+        return
 
     app.KEYBOARD_row = max(
         0,

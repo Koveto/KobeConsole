@@ -2878,7 +2878,11 @@ def draw_OPTIONS_MUSIC():
             )
 
 def draw_KEYBOARD():
-    app.screen.fill(COLOR_WHITE)
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
     if (
         app.KEYBOARD_mode
         == "PLAYER_NAME"
@@ -2907,6 +2911,13 @@ def draw_KEYBOARD():
 
         title = "NICKNAME"
 
+    elif (
+        app.KEYBOARD_mode
+        == "ONLINE_ROOM_CODE"
+    ):
+
+        title = "ROOM CODE"
+
     else:
 
         title = "ENTER NAME"
@@ -2914,15 +2925,17 @@ def draw_KEYBOARD():
     app.font0.draw_text(
         app.screen,
         title,
-        40,
+        20,
         10
     )
+
     app.font0.draw_text(
         app.screen,
         app.KEYBOARD_text,
         120,
         10
     )
+
     pygame.draw.rect(
         app.screen,
         COLOR_BLACK,
@@ -2934,31 +2947,54 @@ def draw_KEYBOARD():
         ),
         1
     )
+
     for row_index, row in enumerate(
         KEYBOARD_GRID
     ):
+
         for column_index, text in enumerate(
             row
         ):
-            if row_index == len(KEYBOARD_GRID) - 1:
-                x_positions = [
-                    40,   # SPACE
-                    100,  # BACK
-                    160   # DONE
-                ]
-                x = x_positions[column_index]
-            else:
-                x = 40 + column_index * 20
-            y = 30 + row_index * 20
+
             if (
                 row_index
-                ==
-                app.KEYBOARD_row
+                == len(
+                    KEYBOARD_GRID
+                ) - 1
+            ):
+
+                x_positions = [
+                    40,
+                    100,
+                    160
+                ]
+
+                x = (
+                    x_positions[
+                        column_index
+                    ]
+                )
+
+            else:
+
+                x = (
+                    40
+                    + column_index * 20
+                )
+
+            y = (
+                30
+                + row_index * 20
+            )
+
+            if (
+                row_index
+                == app.KEYBOARD_row
                 and
                 column_index
-                ==
-                app.KEYBOARD_column
+                == app.KEYBOARD_column
             ):
+
                 app.screen.blit(
                     cursor,
                     (
@@ -2966,11 +3002,39 @@ def draw_KEYBOARD():
                         y
                     )
                 )
+
             app.font0.draw_text(
                 app.screen,
                 text,
                 x,
                 y
+            )
+
+    if (
+        app.KEYBOARD_mode
+        == "ONLINE_ROOM_CODE"
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            (
+                f"{len(app.KEYBOARD_text)}"
+                f"/{ONLINE_ROOM_CODE_LENGTH}"
+            ),
+            205,
+            10
+        )
+
+        if (
+            app.ONLINE_error
+            is not None
+        ):
+
+            app.font0.draw_text(
+                app.screen,
+                app.ONLINE_error,
+                5,
+                148
             )
 
 def draw_OPTIONS():
