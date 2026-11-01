@@ -4106,14 +4106,6 @@ def handle_event_KEYBOARD(
     event
 ):
 
-    print(
-        "KEYBOARD EVENT:",
-        pygame.event.event_name(
-            event.type
-        ),
-        event
-    )
-
     is_room_code = (
         app.KEYBOARD_mode
         == "ONLINE_ROOM_CODE"
@@ -4184,15 +4176,6 @@ def handle_event_KEYBOARD(
         if is_room_code:
 
             app.ONLINE_error = None
-
-            if (
-                len(
-                    app.KEYBOARD_text
-                )
-                == ONLINE_ROOM_CODE_LENGTH
-            ):
-
-                complete_keyboard_entry()
 
         return
 
@@ -4338,11 +4321,12 @@ def handle_event_KEYBOARD(
                 app.KEYBOARD_column + 1
             )
 
+            clamp_keyboard_cursor()
+
             return
 
         #
-        # Letters and numbers are deliberately ignored here.
-        # They are added by pygame.TEXTINPUT.
+        # Characters are supplied by TEXTINPUT.
         #
 
         return
@@ -4484,23 +4468,6 @@ def handle_event_KEYBOARD(
             if is_room_code:
 
                 app.ONLINE_error = None
-
-            if (
-                is_room_code
-                and
-                len(
-                    app.KEYBOARD_text
-                )
-                == ONLINE_ROOM_CODE_LENGTH
-            ):
-
-                completed = (
-                    complete_keyboard_entry()
-                )
-
-                if completed:
-
-                    pygame.key.stop_text_input()
 
     elif is_cancel(
         event
