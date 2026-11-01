@@ -2987,7 +2987,6 @@ def generate_teambuilder_team():
 
     ]
 
-
 def complete_keyboard_entry():
 
     text = (
@@ -2999,12 +2998,18 @@ def complete_keyboard_entry():
         == "ONLINE_ROOM_CODE"
     ):
 
-        room_code = (
-            "".join(
+        room_code = "".join(
+
+            character
+
+            for character
+            in text.upper()
+
+            if (
                 character
-                for character in text.upper()
-                if character.isalnum()
+                in ONLINE_ROOM_CODE_CHARACTERS
             )
+
         )
 
         if (
@@ -3015,7 +3020,7 @@ def complete_keyboard_entry():
         ):
 
             app.ONLINE_error = (
-                "CODE MUST BE 6 CHARACTERS"
+                "ENTER 6 LETTERS"
             )
 
             return False
@@ -4147,13 +4152,16 @@ def handle_event_KEYBOARD(
 
             if is_room_code:
 
-                if not character.isalnum():
-
-                    continue
-
                 character = (
                     character.upper()
                 )
+
+                if (
+                    character
+                    not in ONLINE_ROOM_CODE_CHARACTERS
+                ):
+
+                    continue
 
             else:
 

@@ -31,19 +31,21 @@ def encode_packet(
 def generate_room_code():
 
     characters = (
-        string.ascii_uppercase
-        + string.digits
+        "ABCDEFGHJKLMNPQRSTUVWXYZ"
     )
 
     while True:
 
         room_code = "".join(
+
             random.choice(
                 characters
             )
+
             for _ in range(
                 ROOM_CODE_LENGTH
             )
+
         )
 
         with ROOMS_LOCK:
@@ -58,11 +60,31 @@ def send_relay_packet(
     packet
 ):
 
-    sock.sendall(
-        encode_packet(
-            packet
+    if sock is None:
+
+        return False
+
+    try:
+
+        sock.sendall(
+            encode_packet(
+                packet
+            )
         )
-    )
+
+    except OSError as error:
+
+        print(
+            (
+                "Relay send failed: "
+                f"{error}"
+            ),
+            flush=True
+        )
+
+        return False
+
+    return True
 
 
 def receive_first_packet(
@@ -265,19 +287,48 @@ class RelayRequestHandler(
                 room_code
             ] = room
 
-        send_relay_packet(
-            self.request,
-            {
-                "type": "ROOM_CREATED",
-                "room_code": room_code
-            }
+        sent = (
+            send_relay_packet(
+                self.request,
+                {
+                    "type": "ROOM_CREATED",
+                    "room_code": room_code
+                }
+            )
+        )
+
+        if not sent:
+
+            with ROOMS_LOCK:
+
+                if (
+                    ROOMS.get(
+                        room_code
+                    )
+                    is room
+                ):
+
+                    del ROOMS[
+                        room_code
+                    ]
+
+            return (
+                None,
+                True
+            )
+
+        print(
+            (
+                "Room created: "
+                f"{room_code}"
+            ),
+            flush=True
         )
 
         return (
             room,
             True
         )
-
 
     def join_room(
         self,
@@ -306,6 +357,14 @@ class RelayRequestHandler(
                     }
                 )
 
+                print(
+                    (
+                        "Join failed, room "
+                        f"not found: {room_code}"
+                    ),
+                    flush=True
+                )
+
                 return (
                     None,
                     False
@@ -326,6 +385,14 @@ class RelayRequestHandler(
                     }
                 )
 
+                print(
+                    (
+                        "Join failed, room "
+                        f"full: {room_code}"
+                    ),
+                    flush=True
+                )
+
                 return (
                     None,
                     False
@@ -335,29 +402,97 @@ class RelayRequestHandler(
                 self.request
             )
 
-        send_relay_packet(
-            room.host_socket,
-            {
-                "type": "MATCH_FOUND",
-                "room_code": room_code,
-                "is_host": True
-            }
+        #
+        # Notify the joining client first.
+        #
+        # The host must not advance unless the joining
+        # client was also successfully notified.
+        #
+
+        join_notified = (
+            send_relay_packet(
+                room.join_socket,
+                {
+                    "type": "MATCH_FOUND",
+                    "room_code": room_code,
+                    "is_host": False
+                }
+            )
         )
 
-        send_relay_packet(
-            room.join_socket,
-            {
-                "type": "MATCH_FOUND",
-                "room_code": room_code,
-                "is_host": False
-            }
+        if not join_notified:
+
+            with ROOMS_LOCK:
+
+                if (
+                    room.join_socket
+                    is self.request
+                ):
+
+                    room.join_socket = None
+
+            print(
+                (
+                    "Could not notify joining "
+                    f"client for room {room_code}"
+                ),
+                flush=True
+            )
+
+            return (
+                None,
+                False
+            )
+
+        host_notified = (
+            send_relay_packet(
+                room.host_socket,
+                {
+                    "type": "MATCH_FOUND",
+                    "room_code": room_code,
+                    "is_host": True
+                }
+            )
+        )
+
+        if not host_notified:
+
+            send_relay_packet(
+                room.join_socket,
+                {
+                    "type": "ONLINE_ERROR",
+                    "message": (
+                        "HOST DISCONNECTED"
+                    )
+                }
+            )
+
+            print(
+                (
+                    "Could not notify host "
+                    f"for room {room_code}"
+                ),
+                flush=True
+            )
+
+            return (
+                None,
+                False
+            )
+
+        print(
+            (
+                "Match found in room: "
+                f"{room_code}"
+            ),
+            flush=True
         )
 
         return (
             room,
             False
         )
-
+    
 
     def get_peer_socket(
         self,

@@ -68,7 +68,19 @@ def update():
 
 def process_online_packets():
 
-    for packet in recv_packets():
+    packets = (
+        recv_packets()
+    )
+
+    for packet in packets:
+
+        print(
+            (
+                "ONLINE PACKET: "
+                f"{packet}"
+            ),
+            flush=True
+        )
 
         packet_type = (
             packet.get(
@@ -117,6 +129,7 @@ def process_online_packets():
 
             app.ONLINE_connected = True
             app.ONLINE_matched = True
+
             app.ONLINE_status = (
                 "MATCH FOUND"
             )
@@ -128,18 +141,22 @@ def process_online_packets():
             == "ONLINE_ERROR"
         ):
 
-            app.ONLINE_error = (
+            message = (
                 packet.get(
                     "message",
                     "ONLINE ERROR"
                 )
             )
 
+            disconnect_multiplayer()
+
+            app.ONLINE_error = (
+                message
+            )
+
             app.ONLINE_status = (
                 "FAILED"
             )
-
-            disconnect_multiplayer()
 
             return "ERROR"
 
@@ -148,18 +165,22 @@ def process_online_packets():
             == "NETWORK_ERROR"
         ):
 
-            app.ONLINE_error = (
+            message = (
                 packet.get(
                     "message",
                     "NETWORK ERROR"
                 )
             )
 
+            disconnect_multiplayer()
+
+            app.ONLINE_error = (
+                message
+            )
+
             app.ONLINE_status = (
                 "FAILED"
             )
-
-            disconnect_multiplayer()
 
             return "ERROR"
 
@@ -167,6 +188,8 @@ def process_online_packets():
             packet_type
             == "DISCONNECT"
         ):
+
+            disconnect_multiplayer()
 
             app.ONLINE_error = (
                 "OTHER PLAYER DISCONNECTED"
@@ -176,8 +199,6 @@ def process_online_packets():
                 "DISCONNECTED"
             )
 
-            disconnect_multiplayer()
-
             return "DISCONNECT"
 
     return None
@@ -185,25 +206,54 @@ def process_online_packets():
 
 def update_ONLINE_HOST():
 
+    if (
+        app.connection_socket
+        is None
+    ):
+
+        return
+
     result = (
         process_online_packets()
     )
 
-    if result == "MATCH_FOUND":
+    if (
+        result
+        == "MATCH_FOUND"
+    ):
+
+        print(
+            "HOST ENTERING TEAM SELECT",
+            flush=True
+        )
 
         open_team_select(
             mode="BATTLE",
             return_state=ONLINE_MENU
         )
 
-
 def update_ONLINE_JOIN():
+
+    if (
+        app.connection_socket
+        is None
+    ):
+
+        return
 
     result = (
         process_online_packets()
     )
 
-    if result == "MATCH_FOUND":
+    if (
+        result
+        == "MATCH_FOUND"
+    ):
+
+        print(
+            "JOINER ENTERING TEAM SELECT",
+            flush=True
+        )
 
         open_team_select(
             mode="BATTLE",
