@@ -3,6 +3,83 @@ from func import *
 from pkmn import *
 from save import *
 
+def handle_multiplayer_disconnect():
+
+    disconnect()
+
+    change_state(
+        LAUNCHER_MENU
+    )
+
+def start_battle_text(
+    text
+):
+
+    app.BATTLE_text = str(
+        text
+    )
+
+    app.BATTLE_text_visible_characters = 0
+
+    app.BATTLE_text_last_time = (
+        pygame.time.get_ticks()
+    )
+
+    app.BATTLE_text_complete = (
+        len(
+            app.BATTLE_text
+        )
+        == 0
+    )
+
+
+def initialize_battle_start(
+    old_state
+):
+
+    app.BATTLE_initialized = False
+    app.BATTLE_init_sent = False
+
+    app.BATTLE_background_index = None
+
+    app.BATTLE_advance_requested = False
+
+    app.BATTLE_text = ""
+    app.BATTLE_text_visible_characters = 0
+    app.BATTLE_text_last_time = 0
+    app.BATTLE_text_complete = False
+
+    opponent_name, opponent_sprite = (
+        get_battle_opponent_profile()
+    )
+
+    app.opponent_name = (
+        opponent_name
+    )
+
+    app.opponent_sprite = (
+        opponent_sprite
+    )
+
+    if (
+        not is_multiplayer_battle()
+    ):
+
+        app.BATTLE_background_index = (
+            random.randrange(
+                BATTLE_BACKGROUND_COUNT
+            )
+        )
+
+        app.BATTLE_initialized = True
+
+        start_battle_text(
+            (
+                f"{opponent_name}\n"
+                "challenges you!"
+            )
+        )
+
 def initialize_online_menu():
 
     app.ONLINE_MENU_index = 0
@@ -1108,6 +1185,12 @@ def change_state(
     elif new_state == TEAM_PREVIEW:
 
         initialize_team_preview(
+            old_state
+        )
+
+    elif new_state == BATTLE_START:
+
+        initialize_battle_start(
             old_state
         )
 

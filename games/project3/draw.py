@@ -5,34 +5,226 @@ from handle_event import *
 
 cursor = None
 bracket = None
+battle_background_sheet = None
+battle_frame = None
+trainer_back_sheet = None
 
 def init_draw():
+
     global cursor
     global bracket
+    global battle_background_sheet
+    global battle_frame
+    global trainer_back_sheet
 
-    cursor_filepath = os.path.join(
-        TEXT_ROOT,
-        "sprites",
-        "cursor.png"
+    cursor_filepath = (
+        os.path.join(
+            TEXT_ROOT,
+            "sprites",
+            "cursor.png"
+        )
     )
 
-    cursor = pygame.image.load(
-        cursor_filepath
-    ).convert()
+    cursor = (
+        pygame.image.load(
+            cursor_filepath
+        ).convert()
+    )
 
     cursor.set_colorkey(
         COLOR_ALPHA_0
     )
 
-    bracket_filepath = os.path.join(
-        TEXT_ROOT,
-        "sprites",
-        "bracket.png"
+    bracket_filepath = (
+        os.path.join(
+            TEXT_ROOT,
+            "sprites",
+            "bracket.png"
+        )
     )
 
-    bracket = pygame.image.load(
-        bracket_filepath
-    ).convert()
+    bracket = (
+        pygame.image.load(
+            bracket_filepath
+        ).convert()
+    )
+
+    battle_background_filepath = (
+        os.path.join(
+            TEXT_ROOT,
+            "sprites",
+            "battlebackgrounds.png"
+        )
+    )
+
+    battle_background_sheet = (
+        pygame.image.load(
+            battle_background_filepath
+        ).convert()
+    )
+
+    battle_frame_filepath = (
+        os.path.join(
+            TEXT_ROOT,
+            "sprites",
+            "battleframe.png"
+        )
+    )
+
+    battle_frame = (
+        pygame.image.load(
+            battle_frame_filepath
+        ).convert()
+    )
+
+    trainer_back_filepath = (
+        os.path.join(
+            TEXT_ROOT,
+            "sprites",
+            "trainerback.png"
+        )
+    )
+
+    trainer_back_sheet = (
+        pygame.image.load(
+            trainer_back_filepath
+        ).convert()
+    )
+
+    trainer_back_sheet.set_colorkey(
+        (
+            112,
+            192,
+            160
+        )
+    )
+
+def get_battle_background(
+    background_index
+):
+
+    if (
+        battle_background_sheet
+        is None
+    ):
+
+        return None
+
+    if not (
+        0
+        <= background_index
+        < BATTLE_BACKGROUND_COUNT
+    ):
+
+        return None
+
+    column = (
+        background_index
+        % BATTLE_BACKGROUND_COLUMNS
+    )
+
+    row = (
+        background_index
+        // BATTLE_BACKGROUND_COLUMNS
+    )
+
+    background_rect = (
+        pygame.Rect(
+            column
+            * BATTLE_BACKGROUND_WIDTH,
+            row
+            * BATTLE_BACKGROUND_HEIGHT,
+            BATTLE_BACKGROUND_WIDTH,
+            BATTLE_BACKGROUND_HEIGHT
+        )
+    )
+
+    return (
+        battle_background_sheet.subsurface(
+            background_rect
+        )
+    )
+
+
+def get_trainer_back_sprite(
+    player_sprite
+):
+
+    if (
+        trainer_back_sheet
+        is None
+    ):
+
+        return None
+
+    if not (
+        0
+        <= player_sprite
+        < TRAINER_BACK_ROWS
+    ):
+
+        return None
+
+    x = (
+        TRAINER_BACK_DISPLAY_COLUMN
+        * TRAINER_BACK_CELL_SIZE
+        + TRAINER_BACK_BORDER_SIZE
+    )
+
+    y = (
+        player_sprite
+        * TRAINER_BACK_CELL_SIZE
+        + TRAINER_BACK_BORDER_SIZE
+    )
+
+    sprite_rect = (
+        pygame.Rect(
+            x,
+            y,
+            TRAINER_BACK_SPRITE_SIZE,
+            TRAINER_BACK_SPRITE_SIZE
+        )
+    )
+
+    return (
+        trainer_back_sheet.subsurface(
+            sprite_rect
+        )
+    )
+
+
+def draw_battle_text():
+
+    visible_character_count = (
+        app.BATTLE_text_visible_characters
+    )
+
+    visible_text = (
+        app.BATTLE_text[
+            :visible_character_count
+        ]
+    )
+
+    lines = (
+        visible_text.split(
+            "\n"
+        )
+    )
+
+    for line_index, line in enumerate(
+        lines
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            line,
+            BATTLE_TEXT_X,
+            (
+                BATTLE_TEXT_Y
+                + line_index
+                * BATTLE_TEXT_LINE_HEIGHT
+            )
+        )
 
 def get_display_sprite(
     pokemon
@@ -2660,7 +2852,35 @@ def draw_SINGLE_BRACKET():
         )
 
 def draw_BATTLE_END():
-    app.screen.fill(COLOR_WHITE)
+
+    app.screen.fill(
+        COLOR_WHITE
+    )
+
+    if is_multiplayer_battle():
+
+        app.font0.draw_text(
+            app.screen,
+            "MULTIPLAYER BATTLE END",
+            35,
+            65
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            "REMATCH MENU NEXT",
+            55,
+            85
+        )
+
+        return
+
+    app.font0.draw_text(
+        app.screen,
+        "BATTLE END",
+        75,
+        75
+    )
 
 def draw_SINGLE_MENU_TRAINER():
     app.screen.fill(COLOR_WHITE)
@@ -3439,7 +3659,117 @@ def draw_TEAM_SELECT():
             )
 
 def draw_BATTLE_START():
-    app.screen.fill(COLOR_WHITE)
+
+    app.screen.fill(
+        COLOR_BLACK
+    )
+
+    if not (
+        app.BATTLE_initialized
+    ):
+
+        app.font0.draw_text(
+            app.screen,
+            "WAITING FOR BATTLE...",
+            45,
+            72
+        )
+
+        return
+
+    background_index = (
+        app.BATTLE_background_index
+    )
+
+    background = (
+        get_battle_background(
+            background_index
+        )
+    )
+
+    if background is not None:
+
+        background_x = (
+            W_SCREEN_LOGICAL
+            - BATTLE_BACKGROUND_WIDTH
+        )
+
+        app.screen.blit(
+            background,
+            (
+                background_x,
+                0
+            )
+        )
+
+    opponent_sprite_number = (
+        app.opponent_sprite
+    )
+
+    if opponent_sprite_number is None:
+
+        opponent_sprite_number = 0
+
+    opponent_sprite = (
+        get_trainer_sprite(
+            opponent_sprite_number
+        )
+    )
+
+    app.screen.blit(
+        opponent_sprite,
+        (
+            164,
+            28
+        )
+    )
+
+    player_back_sprite = (
+        get_trainer_back_sprite(
+            app.player_sprite
+        )
+    )
+
+    if player_back_sprite is not None:
+
+        app.screen.blit(
+            player_back_sprite,
+            (
+                20,
+                48
+            )
+        )
+
+    if battle_frame is not None:
+
+        app.screen.blit(
+            battle_frame,
+            (
+                0,
+                H_SCREEN_LOGICAL
+                - BATTLE_FRAME_HEIGHT
+            )
+        )
+
+    draw_battle_text()
+
+    if (
+        app.BATTLE_text_complete
+    ):
+
+        confirm_hint = (
+            get_input_hint(
+                INPUT_CONFIRM,
+                "CONTINUE"
+            )
+        )
+
+        app.font0.draw_text(
+            app.screen,
+            confirm_hint,
+            158,
+            145
+        )
 
 def draw_bar(x,y,value,max_value):
     width = int(value / max_value * 80)

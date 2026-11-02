@@ -2,6 +2,135 @@ from constants import *
 from pkmn_species import *
 from pkmn_move import *
 
+def get_selected_battle_trainer():
+
+    trainer = (
+        app.selected_trainer_data
+    )
+
+    if isinstance(
+        trainer,
+        dict
+    ):
+
+        return trainer
+
+    return None
+
+
+def get_battle_opponent_profile():
+
+    if (
+        app.connection_socket
+        is not None
+    ):
+
+        opponent_name = (
+            app.opponent_name
+            or
+            "OPPONENT"
+        )
+
+        opponent_sprite = (
+            app.opponent_sprite
+        )
+
+        if opponent_sprite is None:
+
+            opponent_sprite = 0
+
+        return (
+            opponent_name,
+            opponent_sprite
+        )
+
+    if (
+        app.game_mode
+        in (
+            "ENDLESS",
+            "TOURNAMENT",
+            "DEFEND_GYM"
+        )
+    ):
+
+        trainer = (
+            get_selected_battle_trainer()
+        )
+
+        if trainer is not None:
+
+            return (
+                trainer.get(
+                    "name",
+                    "TRAINER"
+                ),
+                trainer.get(
+                    "sprite",
+                    0
+                )
+            )
+
+        return (
+            "TRAINER",
+            0
+        )
+
+    if (
+        app.single_battle_mode
+        == "MY_TEAM"
+    ):
+
+        return (
+            app.player_name,
+            app.player_sprite
+        )
+
+    if (
+        app.single_battle_mode
+        == "TRAINER"
+    ):
+
+        trainer = (
+            get_selected_battle_trainer()
+        )
+
+        if trainer is not None:
+
+            return (
+                trainer.get(
+                    "name",
+                    "TRAINER"
+                ),
+                trainer.get(
+                    "sprite",
+                    0
+                )
+            )
+
+    return (
+        "TRAINER",
+        0
+    )
+
+
+def is_multiplayer_battle():
+
+    return (
+        app.connection_socket
+        is not None
+    )
+
+
+def is_battle_authority():
+
+    if not is_multiplayer_battle():
+
+        return True
+
+    return bool(
+        app.connection_is_host
+    )
+
 def load_trainers():
     filepath = os.path.join(
         TEXT_ROOT,
@@ -280,6 +409,7 @@ def disconnect():
     for sock in sockets:
 
         if sock is None:
+
             continue
 
         socket_id = id(
@@ -287,6 +417,7 @@ def disconnect():
         )
 
         if socket_id in closed_socket_ids:
+
             continue
 
         closed_socket_ids.add(
@@ -330,6 +461,9 @@ def disconnect():
     app.player_lead = None
     app.opponent_lead = None
 
+    app.opponent_name = None
+    app.opponent_sprite = None
+
     app.TEAM_PREVIEW_index = 0
     app.TEAM_PREVIEW_column = 0
 
@@ -343,6 +477,18 @@ def disconnect():
 
     app.TEAM_PREVIEW_ready_sent = False
     app.TEAM_PREVIEW_opponent_ready = False
+
+    app.BATTLE_background_index = None
+
+    app.BATTLE_initialized = False
+    app.BATTLE_init_sent = False
+
+    app.BATTLE_text = ""
+    app.BATTLE_text_visible_characters = 0
+    app.BATTLE_text_last_time = 0
+    app.BATTLE_text_complete = False
+
+    app.BATTLE_advance_requested = False
 
 def is_multiplayer_connected():
 

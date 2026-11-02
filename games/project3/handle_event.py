@@ -5135,8 +5135,77 @@ def handle_event_TEAM_SELECT(event):
             )
 
 
-def handle_event_BATTLE_START(event):
-    pass
+def handle_event_BATTLE_START(
+    event
+):
+
+    if not (
+        app.BATTLE_initialized
+    ):
+
+        return
+
+    if not is_confirm(
+        event
+    ):
+
+        return
+
+    if not (
+        app.BATTLE_text_complete
+    ):
+
+        return
+
+    if (
+        not is_multiplayer_battle()
+    ):
+
+        change_state(
+            BATTLE_END
+        )
+
+        return
+
+    if (
+        app.BATTLE_advance_requested
+    ):
+
+        return
+
+    app.BATTLE_advance_requested = (
+        True
+    )
+
+    if is_battle_authority():
+
+        send_packet(
+            {
+                "type": "BATTLE_ADVANCE"
+            }
+        )
+
+        change_state(
+            BATTLE_END
+        )
+
+    else:
+
+        sent = (
+            send_packet(
+                {
+                    "type": (
+                        "BATTLE_ADVANCE_REQUEST"
+                    )
+                }
+            )
+        )
+
+        if not sent:
+
+            app.BATTLE_advance_requested = (
+                False
+            )
 
 def handle_event_TEAM_PREVIEW(
     event

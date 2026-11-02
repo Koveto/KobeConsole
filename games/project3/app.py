@@ -44,6 +44,8 @@ class App:
         self.tournament_champion = None
         self.gyms_data = []
         self.multiplayer_transport = None
+        self.opponent_name = None
+        self.opponent_sprite = None
 
         self.option_omniscient = False
         self.option_pkmn_animation = True
@@ -211,5 +213,14 @@ class App:
 
         self.ONLINE_JOIN_entering_code = False
         self.ONLINE_JOIN_connect_requested = False
+
+        self.BATTLE_background_index = None
+        self.BATTLE_initialized = False
+        self.BATTLE_init_sent = False
+        self.BATTLE_text = ""
+        self.BATTLE_text_visible_characters = 0
+        self.BATTLE_text_last_time = 0
+        self.BATTLE_text_complete = False
+        self.BATTLE_advance_requested = False
 
 app = App()

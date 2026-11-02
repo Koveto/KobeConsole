@@ -66,6 +66,104 @@ def update():
 
         update_SPECIES_EDIT()
 
+
+def update_battle_text():
+
+    if (
+        app.BATTLE_text_complete
+    ):
+
+        return
+
+    current_time = (
+        pygame.time.get_ticks()
+    )
+
+    elapsed_time = (
+        current_time
+        - app.BATTLE_text_last_time
+    )
+
+    if (
+        elapsed_time
+        < BATTLE_TEXT_CHARACTER_DELAY
+    ):
+
+        return
+
+    character_count = max(
+        1,
+        elapsed_time
+        // BATTLE_TEXT_CHARACTER_DELAY
+    )
+
+    app.BATTLE_text_visible_characters = min(
+        len(
+            app.BATTLE_text
+        ),
+        app.BATTLE_text_visible_characters
+        + character_count
+    )
+
+    app.BATTLE_text_last_time = (
+        current_time
+    )
+
+    if (
+        app.BATTLE_text_visible_characters
+        >= len(
+            app.BATTLE_text
+        )
+    ):
+
+        app.BATTLE_text_visible_characters = (
+            len(
+                app.BATTLE_text
+            )
+        )
+
+        app.BATTLE_text_complete = (
+            True
+        )
+
+
+def initialize_received_battle(
+    background_index
+):
+
+    background_index = max(
+        0,
+        min(
+            BATTLE_BACKGROUND_COUNT - 1,
+            background_index
+        )
+    )
+
+    app.BATTLE_background_index = (
+        background_index
+    )
+
+    opponent_name, opponent_sprite = (
+        get_battle_opponent_profile()
+    )
+
+    app.opponent_name = (
+        opponent_name
+    )
+
+    app.opponent_sprite = (
+        opponent_sprite
+    )
+
+    app.BATTLE_initialized = True
+
+    start_battle_text(
+        (
+            f"{opponent_name}\n"
+            "challenges you!"
+        )
+    )
+
 def process_online_packets():
 
     packets = (
@@ -753,6 +851,8 @@ def update_PKMN_INFO():
     )
 
 def update_BATTLE_END():
+    if is_multiplayer_battle():
+        return
     if (
         app.game_mode
         == "ENDLESS"
@@ -935,85 +1035,237 @@ def update_BATTLE_END():
     )
 
 def update_TEAM_SELECT():
-    if app.connection_socket is None:
-        return
+
     if (
-        app.player_team is not None
+        app.connection_socket
+        is None
+    ):
+
+        return
+
+    if (
+        app.player_team
+        is not None
         and
         not app.TEAM_SELECT_team_sent
     ):
+
         team_data = [
+
             pokemon.to_dict()
-            for pokemon in app.player_team
+
+            for pokemon
+            in app.player_team
+
         ]
-        send_packet(
-            {
-                "type": "TEAM",
-                "data": team_data
-            }
+
+        sent = (
+            send_packet(
+                {
+                    "type": "TEAM",
+                    "team": team_data,
+                    "player_name": (
+                        app.player_name
+                    ),
+                    "player_sprite": (
+                        app.player_sprite
+                    )
+                }
+            )
         )
-        app.TEAM_SELECT_team_sent = True
+
+        if sent:
+
+            app.TEAM_SELECT_team_sent = (
+                True
+            )
+
     for packet in recv_packets():
-        if packet["type"] == "TEAM":
-            app.TEAM_SELECT_opponent_team = []
-            for pokemon_data in packet["data"]:
-                app.TEAM_SELECT_opponent_team.append(
-                    Pokemon.from_dict(pokemon_data)
+
+        packet_type = (
+            packet.get(
+                "type"
+            )
+        )
+
+        if packet_type == "TEAM":
+
+            team_data = (
+                packet.get(
+                    "team"
                 )
-        elif packet["type"] == "DISCONNECT":
-            disconnect()
-            change_state(LAUNCHER_MENU)
+            )
+
+            if team_data is None:
+
+                team_data = (
+                    packet.get(
+                        "data",
+                        []
+                    )
+                )
+
+            app.TEAM_SELECT_opponent_team = [
+
+                Pokemon.from_dict(
+                    pokemon_data
+                )
+
+                for pokemon_data
+                in team_data
+
+            ]
+
+            app.opponent_name = str(
+                packet.get(
+                    "player_name",
+                    "OPPONENT"
+                )
+            )
+
+            try:
+
+                app.opponent_sprite = int(
+                    packet.get(
+                        "player_sprite",
+                        0
+                    )
+                )
+
+            except (
+                TypeError,
+                ValueError
+            ):
+
+                app.opponent_sprite = 0
+
+        elif (
+            packet_type
+            == "DISCONNECT"
+        ):
+
+            handle_multiplayer_disconnect()
+
+            return
+
     if (
         app.connection_socket
         is not None
         and
-        app.player_team is not None
+        app.player_team
+        is not None
         and
         app.TEAM_SELECT_opponent_team
         is not None
     ):
+
         change_state(
             TEAM_PREVIEW
         )
 
 
 def update_TEAM_PREVIEW():
-    if app.connection_socket is None:
+
+    if (
+        app.connection_socket
+        is None
+    ):
+
         return
+
     if (
         app.player_lead
         is not None
         and
         not app.TEAM_PREVIEW_ready_sent
     ):
-        send_packet(
-            {
-                "type": "LEAD",
-                "data":
-                    app.player_lead
-            }
-        )
-        app.TEAM_PREVIEW_ready_sent = True
-    for packet in recv_packets():
-        if packet["type"] == "LEAD":
-            app.opponent_lead = (
-                packet["data"]
+
+        sent = (
+            send_packet(
+                {
+                    "type": "LEAD",
+                    "data": (
+                        app.player_lead
+                    )
+                }
             )
-            app.TEAM_PREVIEW_opponent_ready = True
+        )
+
+        if sent:
+
+            app.TEAM_PREVIEW_ready_sent = (
+                True
+            )
+
+    for packet in recv_packets():
+
+        packet_type = (
+            packet.get(
+                "type"
+            )
+        )
+
+        if packet_type == "LEAD":
+
+            try:
+
+                opponent_lead = int(
+                    packet.get(
+                        "data",
+                        0
+                    )
+                )
+
+            except (
+                TypeError,
+                ValueError
+            ):
+
+                opponent_lead = 0
+
+            opponent_team_size = len(
+                app.opponent_team
+                or []
+            )
+
+            if opponent_team_size > 0:
+
+                opponent_lead = max(
+                    0,
+                    min(
+                        opponent_team_size - 1,
+                        opponent_lead
+                    )
+                )
+
+            else:
+
+                opponent_lead = 0
+
+            app.opponent_lead = (
+                opponent_lead
+            )
+
+            app.TEAM_PREVIEW_opponent_ready = (
+                True
+            )
+
         elif (
-            packet["type"]
+            packet_type
             == "DISCONNECT"
         ):
-            disconnect()
-            change_state(
-                LAUNCHER_MENU
-            )
+
+            handle_multiplayer_disconnect()
+
+            return
+
     if (
         app.player_lead
         is not None
         and
         app.TEAM_PREVIEW_opponent_ready
     ):
+
         change_state(
             BATTLE_START
         )
@@ -1147,23 +1399,133 @@ def update_LAN_HOST():
 def update_BATTLE_START():
 
     if (
+        not is_multiplayer_battle()
+    ):
+
+        if app.BATTLE_initialized:
+
+            update_battle_text()
+
+        return
+
+    if (
         app.connection_socket
         is None
     ):
 
-        change_state(
-            BATTLE_END
-        )
+        handle_multiplayer_disconnect()
 
         return
 
+    if (
+        is_battle_authority()
+        and
+        not app.BATTLE_init_sent
+    ):
+
+        background_index = (
+            random.randrange(
+                BATTLE_BACKGROUND_COUNT
+            )
+        )
+
+        sent = (
+            send_packet(
+                {
+                    "type": "BATTLE_INIT",
+                    "background_index": (
+                        background_index
+                    )
+                }
+            )
+        )
+
+        if sent:
+
+            app.BATTLE_init_sent = (
+                True
+            )
+
+            initialize_received_battle(
+                background_index
+            )
+
     for packet in recv_packets():
 
+        packet_type = (
+            packet.get(
+                "type"
+            )
+        )
+
         if (
-            packet["type"]
+            packet_type
+            == "BATTLE_INIT"
+        ):
+
+            try:
+
+                background_index = int(
+                    packet.get(
+                        "background_index",
+                        0
+                    )
+                )
+
+            except (
+                TypeError,
+                ValueError
+            ):
+
+                background_index = 0
+
+            initialize_received_battle(
+                background_index
+            )
+
+        elif (
+            packet_type
+            == "BATTLE_ADVANCE_REQUEST"
+        ):
+
+            if not is_battle_authority():
+
+                continue
+
+            send_packet(
+                {
+                    "type": "BATTLE_ADVANCE"
+                }
+            )
+
+            change_state(
+                BATTLE_END
+            )
+
+            return
+
+        elif (
+            packet_type
+            == "BATTLE_ADVANCE"
+        ):
+
+            change_state(
+                BATTLE_END
+            )
+
+            return
+
+        elif (
+            packet_type
             == "DISCONNECT"
         ):
-            disconnect()
-            change_state(
-                LAUNCHER_MENU
-            )
+
+            handle_multiplayer_disconnect()
+
+            return
+
+    if (
+        app.BATTLE_initialized
+    ):
+
+        update_battle_text()
