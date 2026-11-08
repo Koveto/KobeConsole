@@ -3,6 +3,72 @@ from func import *
 from pkmn import *
 from save import *
 
+BATTLE_MUSIC_STATES = (
+    BATTLE_START,
+    BATTLE_END
+)
+
+
+MENU_MUSIC_STATES = (
+    LAUNCHER_MENU,
+    LAN_HOST_JOIN,
+    LAN_HOST,
+    LAN_JOIN,
+    TEAM_PREVIEW,
+    TEAM_SELECT,
+    OPTIONS,
+    KEYBOARD,
+    OPTIONS_MUSIC,
+    SINGLE_MENU,
+    SINGLE_MENU_TRAINER,
+    SINGLE_BRACKET,
+    SINGLE_DEFEND_GYM,
+    DAMAGE_CALCULATOR,
+    PKMN_INFO,
+    SPECIES_EDIT,
+    ONLINE_MENU,
+    ONLINE_HOST,
+    ONLINE_JOIN
+)
+
+
+def update_music_for_state_change(
+    old_state,
+    new_state
+):
+
+    old_is_battle = (
+        old_state
+        in BATTLE_MUSIC_STATES
+    )
+
+    new_is_battle = (
+        new_state
+        in BATTLE_MUSIC_STATES
+    )
+
+    if (
+        new_state
+        == BATTLE_START
+        and
+        not old_is_battle
+    ):
+
+        play_random_battle_music()
+
+        return
+
+    if (
+        old_is_battle
+        and
+        not new_is_battle
+        and
+        new_state
+        in MENU_MUSIC_STATES
+    ):
+
+        play_random_menu_music()
+
 def handle_multiplayer_disconnect():
 
     disconnect()
@@ -1223,6 +1289,11 @@ def change_state(
     elif new_state == SINGLE_MENU_TRAINER:
 
         initialize_single_menu_trainer()
+
+    update_music_for_state_change(
+        old_state,
+        new_state
+    )
 
     app.state = (
         new_state
